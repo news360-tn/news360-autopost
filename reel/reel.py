@@ -245,6 +245,16 @@ def main(spec_path, out_mp4, page="namakkal"):
         # 1. voice per scene (free Tamil voice model)
         (work / "lines.json").write_text(json.dumps(texts, ensure_ascii=False))
         subprocess.run([sys.executable, str(HERE / "tts.py"), str(work / "lines.json"), str(work), spec.get("voice", "female")], check=True)
+        # keep the reel within 30 s: speed the voice up a little (max 1.25x) if needed
+        speech = sum(wav_dur(work / f"line{i}.wav") for i in range(len(texts)))
+        room = 29.5 - lead - 0.6 - gap * (len(texts) - 1)
+        if room > 0 and speech > room:
+            factor = min(1.25, speech / room)
+            for i in range(len(texts)):
+                src, tmp = work / f"line{i}.wav", work / f"line{i}_fast.wav"
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-af", f"atempo={factor:.3f}", str(tmp)], check=True)
+                tmp.replace(src)
+            print(f"voice sped up x{factor:.2f} to fit 30 s")
         starts, ends, t = [], [], lead
         for i in range(len(texts)):
             d = wav_dur(work / f"line{i}.wav")
