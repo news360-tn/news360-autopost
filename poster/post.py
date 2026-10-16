@@ -364,7 +364,8 @@ def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else "carousel"
     for name, val in (("BRIDGE_URL", BRIDGE_URL), ("BRIDGE_KEY", BRIDGE_KEY), ("CLOUDINARY_CLOUD", CLOUD), ("CLOUDINARY_PRESET", PRESET)):
         if not val:
-            sys.exit(f"Missing secret {name}")
+            log(f"Setup not finished: secret {name} is missing - nothing to do.")
+            return
     rows = bridge_get("queue")["rows"]
     log(f"{len(rows)} stories waiting")
     done = run_carousel(rows) if mode == "carousel" else run_reel(rows)
