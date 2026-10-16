@@ -366,6 +366,9 @@ def main():
         if not val:
             log(f"Setup not finished: secret {name} is missing - nothing to do.")
             return
+    if not DRY and os.environ.get("GITHUB_EVENT_NAME") == "schedule" and not (ROOT / "LIVE").exists():
+        log("Not live yet (no LIVE file in the repository) - scheduled posting is switched off.")
+        return
     rows = bridge_get("queue")["rows"]
     log(f"{len(rows)} stories waiting")
     done = run_carousel(rows) if mode == "carousel" else run_reel(rows)
