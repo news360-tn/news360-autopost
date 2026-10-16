@@ -34,26 +34,26 @@ jobs:
         if: env.PAUSED == 'true'
         run: echo "Posting is paused (repository variable PAUSED=true)." && exit 0
       - uses: actions/setup-python@v5
-        if: env.PAUSED != 'true'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != ''
         with:
           python-version: "3.11"
           cache: pip
           cache-dependency-path: poster/requirements.txt
       - uses: actions/setup-node@v4
-        if: env.PAUSED != 'true'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != ''
         with:
           node-version: "20"
       - name: Install
-        if: env.PAUSED != 'true'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != ''
         run: |
           pip install -r poster/requirements.txt
           python -m playwright install --with-deps chromium
           cd kit && npm install --no-audit --no-fund
       - name: Post carousels
-        if: env.PAUSED != 'true'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != ''
         run: python poster/post.py carousel
       - name: Keep the schedule alive (daily heartbeat)
-        if: env.PAUSED != 'true' && github.event_name == 'schedule'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != '' && github.event_name == 'schedule'
         run: |
           if [ "$(date -u +%H)" = "18" ]; then
             date -u +"%Y-%m-%d %H:%M UTC" > .heartbeat

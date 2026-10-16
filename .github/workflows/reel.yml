@@ -32,31 +32,31 @@ jobs:
         if: env.PAUSED == 'true'
         run: echo "Posting is paused (repository variable PAUSED=true)." && exit 0
       - uses: actions/setup-python@v5
-        if: env.PAUSED != 'true'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != ''
         with:
           python-version: "3.11"
           cache: pip
           cache-dependency-path: reel/requirements.txt
       - uses: actions/setup-node@v4
-        if: env.PAUSED != 'true'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != ''
         with:
           node-version: "20"
       - name: Tamil voice model (cached)
-        if: env.PAUSED != 'true'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != ''
         id: model
         uses: actions/cache@v4
         with:
           path: reel/models/ta
           key: indic-tts-ta-v1
       - name: Download voice model
-        if: env.PAUSED != 'true' && steps.model.outputs.cache-hit != 'true'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != '' && steps.model.outputs.cache-hit != 'true'
         run: |
           mkdir -p reel/models
           curl -sL -o /tmp/ta.zip https://github.com/AI4Bharat/Indic-TTS/releases/download/v1-checkpoints-release/ta.zip
           unzip -q /tmp/ta.zip -d reel/models && rm /tmp/ta.zip
           ls reel/models/ta
       - name: Install
-        if: env.PAUSED != 'true'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != ''
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu
@@ -64,5 +64,5 @@ jobs:
           python -m playwright install --with-deps chromium
           cd kit && npm install --no-audit --no-fund
       - name: Make and post the reel
-        if: env.PAUSED != 'true'
+        if: env.PAUSED != 'true' && env.BRIDGE_URL != ''
         run: python poster/post.py reel
