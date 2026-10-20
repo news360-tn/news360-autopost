@@ -1,13 +1,13 @@
-"""News360 Instagram poster (runs in GitHub Actions).
+"""News360 Instagram poster (runs in GitHub Actions) - photo flow.
 
-Modes:
-  python poster/post.py carousel   # every hour: post the top queued story to each page (max 1 per page per run)
-  python poster/post.py reel       # every 2 hours: post the top reel-worthy story as a 10-30 s reel
+Flow: the research task queues a story (text + image prompts) -> you reply to the email with the ChatGPT images ->
+the Apps Script bridge saves the images and sets the story to "Queued" -> this job builds the photo carousel and the
+photo reel and posts both to நாமக்கல் 360. Rasipuram-area stories also invite இராசிபுரம் 360 as a collaborator.
 
-Environment (GitHub Secrets):
-  BRIDGE_URL, BRIDGE_KEY           Google Apps Script web app (Sheet, Doc, Drive, Gmail, Instagram tokens)
-  CLOUDINARY_CLOUD, CLOUDINARY_PRESET   free image/video hosting (unsigned upload preset)
-  DRY_RUN=1                        render + upload but do not publish (for testing)
+  python poster/post.py check   # prints ready=<n> (for the workflow); decides whether the heavy job must run
+  python poster/post.py run     # posts the top ready story (carousel + reel); one story per run
+
+Environment (GitHub Secrets): BRIDGE_URL, BRIDGE_KEY, CLOUDINARY_CLOUD, CLOUDINARY_PRESET.  DRY_RUN=1 -> render + upload, no publishing.
 """
 import base64, json, os, re, subprocess, sys, time
 from datetime import datetime, timedelta, timezone
@@ -21,6 +21,7 @@ KIT = ROOT / "kit"
 REEL = ROOT / "reel"
 OUT = ROOT / "out"
 IST = timezone(timedelta(hours=5, minutes=30))
+CONFIG = json.loads((Path(__file__).resolve().parent / "config.json").read_text())
 
 BRIDGE_URL = os.environ.get("BRIDGE_URL", "")
 BRIDGE_KEY = os.environ.get("BRIDGE_KEY", "")
@@ -28,16 +29,22 @@ CLOUD = os.environ.get("CLOUDINARY_CLOUD", "")
 PRESET = os.environ.get("CLOUDINARY_PRESET", "")
 DRY = os.environ.get("DRY_RUN", "") in ("1", "true", "yes")
 IG_HOST = "https://graph.instagram.com"
-IG_VER = os.environ.get("IG_API_VERSION", "")  # e.g. "v23.0"; empty = default version
+IG_VER = os.environ.get("IG_API_VERSION", "")
 
-PAGES = {
-    "rasipuram": {"label": "Rasipuram 360", "link_col": "rasipuram_link", "logo": "logo_rasipuram.png",
-                  "example": "example_slides_rasipuram.json", "tag": "#Rasipuram360"},
-    "namakkal": {"label": "Namakkal 360", "link_col": "namakkal_link", "logo": "logo_namakkal.png",
-                 "example": "example_slides_namakkal.json", "tag": "#Namakkal360"},
-}
+PAGE = "namakkal"
+LOGO = KIT / "logo_namakkal.png"
+TAG = "#Namakkal360"
 IMPORTANCE = {"High": 0, "Medium": 1, "Low": 2}
-MAX_AGE_H = {"carousel": 36, "reel": 24}
+MAX_AGE_H = 36
+AI_LINE = "📌 படங்கள் செய்தியை விளக்க AI மூலம் உருவாக்கப்பட்ட பிரதிநிதித்துவப் படங்கள்."
+
+# news outlets must never appear on a post, a slide or in a reel
+OUTLETS = ["தினமலர்", "தினத்தந்தி", "தினமணி", "மாலைமலர்", "தினகரன்", "இந்து தமிழ்", "தி இந்து", "புதிய தலைமுறை", "நியூஸ்18",
+           "நியூஸ் 18", "பாலிமர்", "சன் நியூஸ்", "நியூஸ்7", "நியூஸ் 7", "கலைஞர் செய்திகள்", "விகடன்", "ஒன்இந்தியா", "வே2நியூஸ்",
+           "டாப் தமிழ்", "தமிழ் மணி", "டைம்ஸ் ஆஃப் இந்தியா", "டி.டி. நெக்ஸ்ட்",
+           "dinamalar", "dinamani", "dinathanthi", "daily thanthi", "maalaimalar", "dinakaran", "the hindu", "hindu tamil", "times of india",
+           "toi", "dt next", "indian express", "news18", "polimer", "sun news", "news7", "vikatan", "oneindia", "way2news", "puthiya thalaimurai",
+           "kalaignar", "toptamilnews", "tamil mani", "ஆதாரம்", "source:"]
 
 
 def log(*a):
@@ -66,16 +73,6 @@ def bridge_post(action, payload):
 
 
 # ---------------------------------------------------------------- selection
-def targets(row):
-    s = (row.get("post_to") or "").lower()
-    out = []
-    if "rasipuram" in s:
-        out.append("rasipuram")
-    if "namakkal" in s or not out:
-        out.append("namakkal")
-    return out
-
-
 def age_hours(row):
     for key in ("researched", "published"):
         v = (row.get(key) or "").lstrip("'").replace(" IST", "").strip()
@@ -92,130 +89,142 @@ def is_shutdown(row):
     return "மின் தடை" in (row.get("category") or "") or "shutdown" in (row.get("category") or "").lower()
 
 
-def pick(rows, page, kind):
-    cands = []
-    for r in rows:
-        if (r.get("review") or "").strip().lower() == "hold":
-            continue
-        if page not in targets(r):
-            continue
-        if kind == "carousel" and r.get(PAGES[page]["link_col"]):
-            continue
-        if kind == "reel":
-            if (r.get("reel") or "").strip().lower() != "yes" or r.get("reel_link"):
-                continue
-        limit = MAX_AGE_H[kind] * (2 if is_shutdown(r) else 1)
-        if age_hours(r) > limit:
-            continue
-        cands.append(r)
-    cands.sort(key=lambda r: (IMPORTANCE.get((r.get("importance") or "").strip(), 1), -age_hours(r)))
-    return cands[0] if cands else None
+def ready(row):
+    if (row.get("review") or "").strip().lower() == "hold":
+        return False
+    if not row.get("images") or not row.get("slides_spec"):
+        return False
+    if row.get("namakkal_link") and row.get("reel_link"):
+        return False
+    return age_hours(row) <= MAX_AGE_H * (2 if is_shutdown(row) else 1)
 
 
-# ---------------------------------------------------------------- rendering
-def page_spec(spec, page):
-    """Same slides, but the follow slide (last) comes from the page's example, with the story's date."""
-    ex = json.loads((KIT / PAGES[page]["example"]).read_text())
-    follow = ex["slides"][-1]["html"]
-    m = re.search(r'<i data-ic="calendar-days"></i>([^<]+)</div>', spec["slides"][0]["html"])
-    if m:
-        follow = re.sub(r'(<i data-ic="calendar-days"></i>)[^<]+(</div>)', lambda mm: mm.group(1) + m.group(1) + mm.group(2), follow, count=1)
-    out = json.loads(json.dumps(spec))
-    last = out["slides"][-1]
-    if "இணைந்திருங்கள்" in last["html"] or "follow" in last.get("file", ""):
-        last["html"] = follow
-    else:
-        out["slides"].append({"file": f"{spec.get('story', 'X')}_slide{len(out['slides']) + 1}_follow.png", "html": follow})
-    return out
-
-
-def render_carousel(row, page):
-    sid = row["story_id"]
-    spec = json.loads(row["slides_spec"])
-    spec = page_spec(spec, page)
-    work = OUT / f"{sid}_{page}"
-    work.mkdir(parents=True, exist_ok=True)
-    (work / "spec.json").write_text(json.dumps(spec, ensure_ascii=False))
-    raw, final = work / "raw", work / "final"
-    subprocess.run([sys.executable, str(KIT / "render_v2.py"), str(work / "spec.json"), str(raw)], check=True)
-    subprocess.run([sys.executable, str(KIT / "overlay_logo_v2.py"), str(KIT / PAGES[page]["logo"]), str(raw), str(final)], check=True)
-    jpgs = []
-    for png in sorted(final.glob("*.png"), key=lambda p: int(re.search(r"slide(\d+)", p.name).group(1)) if re.search(r"slide(\d+)", p.name) else 0):
-        jpg = png.with_suffix(".jpg")
-        Image.open(png).convert("RGB").save(jpg, "JPEG", quality=92, optimize=True)
-        jpgs.append(jpg)
-    if not 1 <= len(jpgs) <= 10:
-        raise RuntimeError(f"{sid}: {len(jpgs)} slides (Instagram allows 1-10)")
-    return jpgs
-
-
-def reel_spec_from_row(row):
-    """Column U may hold a JSON reel spec (scenes) or a plain spoken script."""
-    txt = (row.get("reel_script") or "").strip()
-    try:
-        spec = json.loads(txt)
-        if isinstance(spec, dict) and spec.get("scenes"):
-            return spec
-    except ValueError:
-        pass
-    sentences = [s.strip() for s in re.split(r"(?<=[.!?।])\s+", txt) if s.strip()]
-    if not sentences:
-        raise RuntimeError(f"{row['story_id']}: empty reel script")
-    date = ""
-    try:
-        m = re.search(r'<i data-ic="calendar-days"></i>([^<]+)</div>', json.loads(row["slides_spec"])["slides"][0]["html"])
-        date = m.group(1) if m else ""
-    except Exception:
-        pass
-    headline = (row.get("headline_ta") or "").split(":")[0].strip()
-    scenes = [{"type": "title", "kicker": (row.get("category") or "முக்கியச் செய்தி").strip(), "line1": headline, "line2": "",
-               "icon": "bullhorn", "say": sentences[0], "caption": sentences[0]}]
-    icons = ["circle-info", "location-dot", "clock", "bell", "shield-halved"]
-    for i, s in enumerate(sentences[1:-1]):
-        scenes.append({"type": "advice", "icon": icons[i % len(icons)], "title": "", "text": s, "say": s, "caption": s})
-    if len(sentences) > 1:
-        scenes.append({"type": "outro", "say": sentences[-1], "caption": "உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள்"})
-    return {"story": row["story_id"], "date": date, "location": (row.get("location") or "").split(",")[0][:30],
-            "voice": "female", "scenes": scenes}
-
-
-def render_reel(row, page, voice_file=None):
-    sid = row["story_id"]
-    work = OUT / f"{sid}_{page}_reel"
-    work.mkdir(parents=True, exist_ok=True)
-    spec = reel_spec_from_row(row)
-    (work / "reel.json").write_text(json.dumps(spec, ensure_ascii=False))
-    env = dict(os.environ)
-    if voice_file:
-        env["VOICE_FILE"] = str(voice_file)
-    mp4 = work / f"{sid}_{page}_reel.mp4"
-    subprocess.run([sys.executable, str(REEL / "reel.py"), str(work / "reel.json"), str(mp4), page], check=True, env=env)
-    return mp4
+def pick(rows):
+    c = [r for r in rows if ready(r)]
+    c.sort(key=lambda r: (IMPORTANCE.get((r.get("importance") or "").strip(), 1), -age_hours(r)))
+    return c[0] if c else None
 
 
 # ---------------------------------------------------------------- checks before posting
-def check_text(row):
+def all_text(row, spec):
+    parts = [row.get("caption") or "", row.get("reel_script") or "", spec.get("hl1", ""), spec.get("hl2", ""), spec.get("cat", ""), spec.get("loc", "")]
+    for s in spec.get("slides", []):
+        parts.append(s.get("title", ""))
+        parts += s.get("lines", [])
+    return "\n".join(parts)
+
+
+def check_text(row, spec):
     cap = row.get("caption") or ""
     problems = []
     if not cap.strip():
         problems.append("empty caption")
-    if len(cap) > 2200:
-        problems.append(f"caption too long ({len(cap)} > 2200)")
+    if len(cap) > 2150:
+        problems.append(f"caption too long ({len(cap)})")
     if cap.count("#") > 30:
         problems.append("more than 30 hashtags")
-    if re.search(r"ஆதாரம்|https?://", cap):
-        problems.append("caption contains a source or link")
-    if re.search(r"[�]", cap):
+    if re.search(r"https?://", cap):
+        problems.append("caption contains a link")
+    if "�" in cap:
         problems.append("broken characters in caption")
+    low = all_text(row, spec).lower()
+    hits = [o for o in OUTLETS if o.lower() in low]
+    if hits:
+        problems.append("a news source name appears in the post text: " + ", ".join(hits[:3]))
+    if spec.get("v") != 3 or not spec.get("slides"):
+        problems.append("slides spec is not the photo format (v3)")
+    if not (row.get("reel_script") or "").strip():
+        problems.append("empty reel script")
     return problems
 
 
-def page_caption(row, page):
+def final_caption(row):
     cap = (row.get("caption") or "").strip()
-    tag = PAGES[page]["tag"]
-    if tag not in cap:
-        cap += " " + tag
+    if TAG not in cap:
+        cap += " " + TAG
+    if CONFIG.get("ai_label", True) and "AI" not in cap.split("#")[0][-300:]:
+        lines = cap.split("\n")
+        idx = max([i for i, l in enumerate(lines) if l.strip().startswith("#")] or [len(lines)])
+        if idx < len(lines):
+            lines[idx:idx] = [AI_LINE, ""]
+        else:
+            lines += ["", AI_LINE]
+        cap = "\n".join(lines)
     return cap
+
+
+# ---------------------------------------------------------------- images
+def fetch_images(row, work):
+    urls = json.loads(row["images"])
+    work.mkdir(parents=True, exist_ok=True)
+    out = []
+    for i, u in enumerate(urls, 1):
+        r = requests.get(u, timeout=120)
+        r.raise_for_status()
+        raw = work / f"raw{i}"
+        raw.write_bytes(r.content)
+        im = Image.open(raw).convert("RGB")
+        im.thumbnail((2000, 3000))
+        dst = work / f"img{i}.jpg"
+        im.save(dst, "JPEG", quality=93)
+        raw.unlink()
+        out.append(dst)
+    return out
+
+
+# ---------------------------------------------------------------- rendering
+def render_carousel(row, spec, work):
+    (work / "spec.json").write_text(json.dumps(spec, ensure_ascii=False))
+    raw, final = work / "raw", work / "final"
+    cmd = [sys.executable, str(KIT / "render_photo.py"), str(work / "spec.json"), str(work), str(raw)]
+    if CONFIG.get("ai_label", True):
+        cmd.append("--ai-label")
+    subprocess.run(cmd, check=True)
+    subprocess.run([sys.executable, str(KIT / "overlay_logo_v2.py"), str(LOGO), str(raw), str(final)], check=True)
+    jpgs = []
+    for png in sorted(final.glob("*.png"), key=lambda p: int(re.search(r"slide(\d+)", p.name).group(1))):
+        jpg = png.with_suffix(".jpg")
+        Image.open(png).convert("RGB").save(jpg, "JPEG", quality=92, optimize=True)
+        jpgs.append(jpg)
+    if not 2 <= len(jpgs) <= 10:
+        raise RuntimeError(f"{row['story_id']}: {len(jpgs)} slides (Instagram allows 2-10)")
+    return jpgs
+
+
+def reel_spec(row, spec, images):
+    txt = (row.get("reel_script") or "").strip()
+    sentences = [s.strip() for s in re.split(r"(?<=[.!?।])\s+", txt) if s.strip()]
+    if len(sentences) < 3:
+        raise RuntimeError(f"{row['story_id']}: reel script needs at least 3 sentences")
+    body, last = sentences[:-1], sentences[-1]
+    n = len(images)
+    scenes = []
+    titles = [s.get("title", "") for s in spec["slides"]]
+    for i, sent in enumerate(body):
+        k = min(n - 1, round(i * (n - 1) / max(1, len(body) - 1))) if len(body) > 1 else 0
+        sc = {"type": "photo", "image": str(images[k]), "say": sent, "caption": sent}
+        if i == 0:
+            sc["tag"] = (spec.get("cat") or "").strip()
+            sc["big"] = spec.get("hl1", "")
+        else:
+            t = titles[min(i - 1, len(titles) - 1)] if titles else ""
+            if t:
+                sc["tag"] = t
+        scenes.append(sc)
+    scenes.append({"type": "outro", "say": last, "caption": "நாமக்கல் 360 – Follow செய்யுங்கள்"})
+    return {"story": row["story_id"], "date": spec["date"], "location": (spec.get("loc") or "நாமக்கல்")[:30],
+            "voice": "female", "ai_label": bool(CONFIG.get("ai_label", True)), "scenes": scenes}
+
+
+def render_reel(row, spec, images, work, voice_file=None):
+    rs = reel_spec(row, spec, images)
+    (work / "reel.json").write_text(json.dumps(rs, ensure_ascii=False))
+    env = dict(os.environ)
+    if voice_file:
+        env["VOICE_FILE"] = str(voice_file)
+    mp4 = work / f"{row['story_id']}_reel.mp4"
+    subprocess.run([sys.executable, str(REEL / "reel.py"), str(work / "reel.json"), str(mp4), PAGE], check=True, env=env)
+    return mp4
 
 
 # ---------------------------------------------------------------- hosting + Instagram
@@ -262,116 +271,171 @@ def ig_account(token):
     return me.get("user_id") or me.get("id"), me.get("username")
 
 
-def publish_carousel(token, urls, caption):
+def create_with_collab(uid, token, params, collab):
+    """Create the media container; if the collaborator invite is refused, create it without (and say so)."""
+    if collab:
+        try:
+            return ig("POST", f"{uid}/media", token, collaborators=json.dumps([CONFIG["collab_username"]]), **params)["id"], True, ""
+        except RuntimeError as e:
+            log("collaborator invite refused, posting without it:", e)
+            return ig("POST", f"{uid}/media", token, **params)["id"], False, str(e)[:300]
+    return ig("POST", f"{uid}/media", token, **params)["id"], False, ""
+
+
+def publish_carousel(token, urls, caption, collab):
     uid, _ = ig_account(token)
-    if len(urls) == 1:
-        cid = ig("POST", f"{uid}/media", token, image_url=urls[0], caption=caption)["id"]
-    else:
-        kids = [ig("POST", f"{uid}/media", token, image_url=u, is_carousel_item="true")["id"] for u in urls]
-        for k in kids:
-            wait_ready(k, token, 5)
-        cid = ig("POST", f"{uid}/media", token, media_type="CAROUSEL", children=",".join(kids), caption=caption)["id"]
+    kids = [ig("POST", f"{uid}/media", token, image_url=u, is_carousel_item="true")["id"] for u in urls]
+    for k in kids:
+        wait_ready(k, token, 5)
+    cid, collab_ok, why = create_with_collab(uid, token, dict(media_type="CAROUSEL", children=",".join(kids), caption=caption), collab)
     wait_ready(cid, token, 5)
     mid = ig("POST", f"{uid}/media_publish", token, creation_id=cid)["id"]
-    return mid, ig("GET", mid, token, fields="permalink").get("permalink", "")
+    return mid, ig("GET", mid, token, fields="permalink").get("permalink", ""), collab_ok, why
 
 
-def publish_reel(token, video_url, caption):
+def publish_reel(token, video_url, caption, collab):
     uid, _ = ig_account(token)
-    cid = ig("POST", f"{uid}/media", token, media_type="REELS", video_url=video_url, caption=caption, share_to_feed="true")["id"]
+    cid, collab_ok, why = create_with_collab(uid, token, dict(media_type="REELS", video_url=video_url, caption=caption, share_to_feed="true"), collab)
     wait_ready(cid, token, 15)
     mid = ig("POST", f"{uid}/media_publish", token, creation_id=cid)["id"]
-    return mid, ig("GET", mid, token, fields="permalink").get("permalink", "")
+    return mid, ig("GET", mid, token, fields="permalink").get("permalink", ""), collab_ok, why
 
 
 # ---------------------------------------------------------------- main flows
-def run_carousel(rows):
-    done = []
-    for page in ("rasipuram", "namakkal"):
-        row = pick(rows, page, "carousel")
-        if not row:
-            log(page, "nothing queued")
-            continue
-        sid = row["story_id"]
-        log(page, "->", sid, row.get("headline_ta"))
-        try:
-            problems = check_text(row)
-            if problems:
-                raise RuntimeError("; ".join(problems))
-            jpgs = render_carousel(row, page)
-            urls = [upload(j, "image") for j in jpgs]
-            caption = page_caption(row, page)
-            if DRY:
-                log("DRY RUN - not publishing", urls)
-                bridge_post("posted", {"row": row["row"], "page": page, "kind": "carousel", "dry_run": True,
-                                       "permalink": "", "media_urls": urls, "caption": caption, "slides": len(urls)})
-                continue
-            token = bridge_get("token", page=page)["token"]
-            mid, link = publish_carousel(token, urls, caption)
-            log("posted", page, sid, link)
-            bridge_post("posted", {"row": row["row"], "page": page, "kind": "carousel", "permalink": link, "media_id": mid,
-                                   "media_urls": urls, "caption": caption, "slides": len(urls)})
-            row[PAGES[page]["link_col"]] = link
-            done.append((page, sid, link))
-        except Exception as e:  # report and continue with the other page
-            log("ERROR", page, sid, e)
-            bridge_post("error", {"row": row["row"], "page": page, "kind": "carousel", "error": str(e)[:900]})
-    return done
+def fail(row, kind, msg):
+    log("NOT POSTED -", row["story_id"], msg)
+    bridge_post("error", {"row": row["row"], "page": PAGE, "kind": kind, "error": msg[:900]})
 
 
-def run_reel(rows):
-    row = None
-    for page in ("rasipuram", "namakkal"):
-        row = row or pick(rows, page, "reel")
-    if not row:
-        log("no reel-worthy story waiting")
-        return []
+def run_story(row):
+    """Build the carousel and the reel, run every check, and only then publish (carousel first, then reel)."""
+    import verify
     sid = row["story_id"]
+    spec = json.loads(row["slides_spec"])
+    problems = check_text(row, spec) + verify.check_news(row)
+    if problems:
+        return fail(row, "carousel", "Checks failed: " + "; ".join(problems))
+    collab = "rasipuram" in (row.get("post_to") or "").lower()
+    caption = final_caption(row)
+    work = OUT / sid
+    images = fetch_images(row, work)
+    need_carousel, need_reel = not row.get("namakkal_link"), not row.get("reel_link")
+    jpgs = mp4 = None
     voice_file = None
+    rs = None
+    checks = []
+
+    # 1. build everything (nothing is published yet)
     try:
-        v = bridge_get("voice", story=sid)
-        if v.get("found"):
-            voice_file = OUT / f"{sid}_voice{v.get('ext', '.m4a')}"
-            OUT.mkdir(exist_ok=True)
-            voice_file.write_bytes(base64.b64decode(v["data"]))
-            log("using recorded human voice", v.get("name"))
+        if need_reel:
+            rs = reel_spec(row, spec, images)
+        probs = verify.check_texts(spec, [sc.get("caption", "") for sc in (rs or {}).get("scenes", [])])
+        if probs:
+            return fail(row, "carousel", "Tamil text check failed: " + "; ".join(probs))
+        checks.append("Tamil text and fonts OK")
+        if need_carousel:
+            jpgs = render_carousel(row, spec, work)
+            checks.append(f"{len(jpgs)} slides rendered, no clipped text")
+        if need_reel:
+            try:
+                v = bridge_get("voice", story=sid)
+                if v.get("found"):
+                    voice_file = work / f"voice{v.get('ext', '.m4a')}"
+                    voice_file.write_bytes(base64.b64decode(v["data"]))
+                    log("using recorded human voice", v.get("name"))
+            except Exception as e:
+                log("voice lookup failed, using the voice model:", e)
+            mp4 = render_reel(row, spec, images, work, voice_file)
+            probs = verify.check_reel(mp4, [sc["say"] for sc in rs["scenes"]])
+            if probs:
+                return fail(row, "reel", "Reel check failed: " + "; ".join(probs))
+            checks.append("reel 1080x1920, 10-30 s, voice present and fully pronounceable")
+    except subprocess.CalledProcessError as e:
+        return fail(row, "carousel", f"Build failed ({e.cmd[1].split('/')[-1]}, exit {e.returncode})")
     except Exception as e:
-        log("voice lookup failed, using voice model:", e)
+        return fail(row, "carousel", f"Build failed: {e}")
+    checks.append("news marked verified: " + (row.get("verification") or "")[:60])
+    note = "; ".join(checks)
+    log("all checks passed:", note)
+
+    # 2. upload and publish
     done = []
-    for page in targets(row):
+    voice = "recorded" if voice_file else "voice model"
+    if need_carousel:
         try:
-            mp4 = render_reel(row, page, voice_file)
-            url = upload(mp4, "video")
-            caption = page_caption(row, page)
+            urls = [upload(j, "image") for j in jpgs]
             if DRY:
-                log("DRY RUN - not publishing", url)
-                bridge_post("posted", {"row": row["row"], "page": page, "kind": "reel", "dry_run": True, "permalink": "",
-                                       "media_urls": [url], "caption": caption, "voice": "recorded" if voice_file else "voice model"})
-                continue
-            token = bridge_get("token", page=page)["token"]
-            mid, link = publish_reel(token, url, caption)
-            log("reel posted", page, sid, link)
-            bridge_post("posted", {"row": row["row"], "page": page, "kind": "reel", "permalink": link, "media_id": mid,
-                                   "media_urls": [url], "caption": caption, "voice": "recorded" if voice_file else "voice model"})
-            done.append((page, sid, link))
+                log("DRY RUN carousel - not publishing", urls)
+                bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "dry_run": True, "permalink": "",
+                                       "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab, "checks": note})
+            else:
+                token = bridge_get("token", page=PAGE)["token"]
+                mid, link, collab_ok, why = publish_carousel(token, urls, caption, collab)
+                log("carousel posted", sid, link)
+                bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "permalink": link, "media_id": mid,
+                                       "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab_ok, "checks": note})
+                done.append(("carousel", link))
         except Exception as e:
-            log("ERROR reel", page, sid, e)
-            bridge_post("error", {"row": row["row"], "page": page, "kind": "reel", "error": str(e)[:900]})
+            log("ERROR carousel", sid, e)
+            bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "carousel", "error": str(e)[:900]})
+    if need_reel:
+        try:
+            url = upload(mp4, "video")
+            if DRY:
+                log("DRY RUN reel - not publishing", url)
+                bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "dry_run": True, "permalink": "",
+                                       "media_urls": [url], "caption": caption, "voice": voice, "collab": collab, "checks": note})
+            else:
+                token = bridge_get("token", page=PAGE)["token"]
+                mid, link, collab_ok, why = publish_reel(token, url, caption, collab)
+                log("reel posted", sid, link)
+                bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "permalink": link, "media_id": mid,
+                                       "media_urls": [url], "caption": caption, "voice": voice, "collab": collab_ok, "checks": note})
+                done.append(("reel", link))
+        except Exception as e:
+            log("ERROR reel", sid, e)
+            bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "reel", "error": str(e)[:900]})
     return done
 
 
-def main():
-    mode = sys.argv[1] if len(sys.argv) > 1 else "carousel"
+def live_allowed():
+    if DRY:
+        return True
+    if os.environ.get("GITHUB_EVENT_NAME") == "schedule" and not (ROOT / "LIVE").exists():
+        log("Not live yet (no LIVE file in the repository) - scheduled posting is switched off.")
+        return False
+    return True
+
+
+def missing_setup():
     for name, val in (("BRIDGE_URL", BRIDGE_URL), ("BRIDGE_KEY", BRIDGE_KEY), ("CLOUDINARY_CLOUD", CLOUD), ("CLOUDINARY_PRESET", PRESET)):
         if not val:
             log(f"Setup not finished: secret {name} is missing - nothing to do.")
-            return
-    if not DRY and os.environ.get("GITHUB_EVENT_NAME") == "schedule" and not (ROOT / "LIVE").exists():
-        log("Not live yet (no LIVE file in the repository) - scheduled posting is switched off.")
+            return True
+    return False
+
+
+def main():
+    mode = sys.argv[1] if len(sys.argv) > 1 else "run"
+    if missing_setup() or not live_allowed():
+        n = 0
+        rows = []
+    else:
+        rows = bridge_get("queue")["rows"]
+        n = 1 if pick(rows) else 0
+    if mode == "check":
+        log(f"{len(rows)} stories in the queue, ready to post: {n}")
+        out = os.environ.get("GITHUB_OUTPUT")
+        if out:
+            with open(out, "a") as f:
+                f.write(f"ready={n}\n")
         return
-    rows = bridge_get("queue")["rows"]
-    log(f"{len(rows)} stories waiting")
-    done = run_carousel(rows) if mode == "carousel" else run_reel(rows)
+    row = pick(rows)
+    if not row:
+        log("no story with images is waiting")
+        return
+    log("->", row["story_id"], row.get("headline_ta"))
+    done = run_story(row)
     log("finished:", done or "nothing posted")
 
 

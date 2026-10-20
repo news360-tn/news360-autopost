@@ -112,6 +112,14 @@ body{font-family:'CT','NST',sans-serif;color:#fff;position:relative}
 .fbtn{background:var(--red);font:900 74px 'CT','NST';padding:22px 54px 10px;border-radius:999px}
 .fname{font:800 56px 'CT','NST';color:var(--yellow)}
 .flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:42;pointer-events:none}
+/* photo scenes (your realistic images, moving camera) */
+.scene.photo{top:0;bottom:0;left:0;right:0;z-index:12;overflow:hidden}
+.pimg{position:absolute;inset:-90px;background-size:cover;background-position:center;background-repeat:no-repeat;will-change:transform}
+.pshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,11,30,.72) 0%,rgba(4,11,30,0) 24%,rgba(4,11,30,0) 46%,rgba(4,11,30,.86) 78%,rgba(4,11,30,.96) 100%)}
+.ptag{position:absolute;left:60px;top:190px;background:var(--red);font:800 46px 'CT','NST';padding:14px 34px 6px;border-radius:12px;transform-origin:left;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.pbig{position:absolute;left:60px;right:60px;bottom:420px;font:900 92px/1.16 'CT','NST';text-shadow:0 8px 0 rgba(4,11,30,.9),0 14px 36px rgba(0,0,0,.6);white-space:pre-line}
+.pbig b{color:var(--yellow)}
+#aichip{position:absolute;left:60px;top:132px;z-index:36;font:700 26px 'NST','CT';background:rgba(0,0,0,.55);border:1.5px solid rgba(255,255,255,.55);padding:6px 16px 2px;border-radius:999px}
 """
 
 def scene_html(i, s):
@@ -147,6 +155,13 @@ def scene_html(i, s):
   <div class="adv-t a-up">{E(s['title'])}</div>
   <div class="adv-x a-up2">{E(s['text'])}</div>
 </div>"""
+    if t == "photo":
+        big = f'<div class="pbig a-up">{E(s["big"])}</div>' if s.get("big") else ""
+        tag = f'<div class="ptag a-k">{E(s["tag"])}</div>' if s.get("tag") else ""
+        img = "file://" + str(Path(s["image"]).resolve())
+        return f"""<div class="scene photo" id="s{i}" data-dir="{i % 4}">
+  <div class="pimg a-kb" style="background-image:url('{img}')"></div><div class="pshade"></div>{tag}{big}
+</div>"""
     if t == "outro":
         return f"""<div class="scene center" id="s{i}">
   <div class="f-ic a-pop">{icon('bullhorn')}</div>
@@ -166,6 +181,7 @@ def build_html(spec, starts, ends, total):
 <div id="bg"></div><div id="grid"></div><div class="beam" id="b1"></div><div class="beam" id="b2"></div>
 <div id="top"><div id="live"><i></i>செய்திகள்</div><div id="date">{icon('calendar-days')}{E(spec['date'])}</div></div>
 <img id="logo" src="{logo}">
+{'<div id="aichip">AI பிரதிநிதித்துவப் படங்கள்</div>' if spec.get('ai_label') else ''}
 {scenes}
 <div id="sub">{caps}</div>
 <div id="ticker"><div id="tk-l">{icon('location-dot').replace('class="ic"','class="ic" style="display:inline-block;vertical-align:-4px"')} {E(spec.get('location','ராசிபுரம்'))}</div><div id="tk-t">{ticker} &nbsp;&nbsp;•&nbsp;&nbsp; {ticker}</div></div>
@@ -187,6 +203,12 @@ window.renderAt=function(t){{
     const zoom=1+0.06*cl((t-s)/Math.max(1,next-s));
     el.style.transform=`scale(${{zoom}}) translateY(${{(1-ease(tin))*60}}px)`;
     const lt=t-s;
+    if(el.classList.contains('photo')){{
+      el.style.transform='none';
+      const dur=Math.max(1,next-s), pr=cl((t-s)/dur), dir=+el.dataset.dir;
+      const sc=1.06+0.16*pr, px=[-1,1,0,0][dir]*50*(pr-0.5)*2, py=[0,0,-1,1][dir]*50*(pr-0.5)*2;
+      el.querySelectorAll('.a-kb').forEach(x=>{{x.style.transform=`translate(${{px}}px,${{py}}px) scale(${{sc}})`}});
+    }}
     el.querySelectorAll('.a-k').forEach(x=>{{const p=back(seg(lt,0.1,0.5));x.style.transform=`scaleX(${{p}})`;x.style.opacity=cl(p*2)}});
     el.querySelectorAll('.a-l1').forEach(x=>{{const p=ease(seg(lt,0.3,0.6));x.style.transform=`translateY(${{(1-p)*80}}px)`;x.style.opacity=p;x.style.filter=`blur(${{(1-p)*12}}px)`}});
     el.querySelectorAll('.a-l2').forEach(x=>{{const p=back(seg(lt,0.7,0.6));x.style.transform=`scale(${{0.6+0.4*p}})`;x.style.opacity=cl(p)}});

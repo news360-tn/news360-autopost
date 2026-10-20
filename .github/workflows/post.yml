@@ -1,0 +1,97 @@
+name: Post stories (carousel + reel)
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"   # every 20 minutes: look for a story whose images you have sent
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Test only (build + upload, do not post to Instagram)"
+        type: boolean
+        default: true
+
+concurrency:
+  group: news360-post
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+env:
+  BRIDGE_URL: ${{ secrets.BRIDGE_URL }}
+  BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
+  CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
+  CLOUDINARY_PRESET: ${{ secrets.CLOUDINARY_PRESET }}
+  DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
+  PAUSED: ${{ vars.PAUSED }}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      ready: ${{ steps.chk.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Is a story ready?
+        id: chk
+        run: |
+          if [ "$PAUSED" = "true" ] || [ -z "$BRIDGE_URL" ]; then
+            echo "ready=0" >> "$GITHUB_OUTPUT"
+            echo "Paused or setup not finished."
+          else
+            pip install -q requests==2.32.5 pillow==11.3.0
+            python poster/post.py check
+          fi
+      - name: Keep the schedule alive (daily heartbeat)
+        if: github.event_name == 'schedule' && env.BRIDGE_URL != ''
+        run: |
+          if [ "$(date -u +%H)" = "18" ] && [ "$(date -u +%M)" -lt 20 ]; then
+            date -u +"%Y-%m-%d %H:%M UTC" > .heartbeat
+            git config user.name "news360-bot"
+            git config user.email "news360-bot@users.noreply.github.com"
+            git add .heartbeat && git commit -m "Heartbeat" && git push || true
+          fi
+
+  post:
+    needs: check
+    if: needs.check.outputs.ready == '1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      TA_MODEL: ${{ github.workspace }}/reel/models/ta
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: reel/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Tamil voice model (cached)
+        id: model
+        uses: actions/cache@v4
+        with:
+          path: reel/models/ta
+          key: indic-tts-ta-v1
+      - name: Download voice model
+        if: steps.model.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p reel/models
+          curl -sL -o /tmp/ta.zip https://github.com/AI4Bharat/Indic-TTS/releases/download/v1-checkpoints-release/ta.zip
+          unzip -q /tmp/ta.zip -d reel/models && rm /tmp/ta.zip
+          ls reel/models/ta
+      - name: Install
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r reel/requirements.txt
+          python -m playwright install --with-deps chromium
+          cd kit && npm install --no-audit --no-fund
+      - name: Build and post the carousel and the reel
+        run: python poster/post.py run

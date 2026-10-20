@@ -20,8 +20,15 @@ var C = {
   story_id: 1, researched: 2, published: 3, headline_ta: 4, headline_en: 5, category: 6, location: 7,
   importance: 8, verification: 9, source: 10, other_sources: 11, review_page: 12, doc: 13, notion: 14,
   caption: 15, email_sent: 16, gmail_id: 17, review: 18, post_to: 19, reel: 20, reel_script: 21,
-  slides_spec: 22, post_status: 23, posted_at: 24, rasipuram_link: 25, namakkal_link: 26, reel_link: 27, notes: 28
+  slides_spec: 22, post_status: 23, posted_at: 24, rasipuram_link: 25, namakkal_link: 26, reel_link: 27, notes: 28,
+  batch: 29, prompts: 30, images: 31
 };
+var NCOLS = 31;
+var CLOUD_NAME = 'bgk9wm1u';
+var UPLOAD_PRESET = 'news360';
+var MIN_IMAGES = 3;
+var EXPIRE_HOURS = 12;
+var COLLAB_USERNAME = 'rasipuram.360';
 var PAGE_LABEL = { rasipuram: 'இராசிபுரம் 360', namakkal: 'நாமக்கல் 360' };
 var PAGE_COL = { rasipuram: C.rasipuram_link, namakkal: C.namakkal_link };
 
@@ -72,26 +79,22 @@ function rowObj_(values, rowNum) {
   for (var k in C) o[k] = String(values[C[k] - 1] || '');
   return o;
 }
-function targets_(postTo) {
-  var s = String(postTo || '').toLowerCase(), out = [];
-  if (s.indexOf('rasipuram') >= 0) out.push('rasipuram');
-  if (s.indexOf('namakkal') >= 0 || out.length === 0) out.push('namakkal');
-  return out;
-}
+/** Only நாமக்கல் 360 posts. Rasipuram stories add இராசிபுரம் 360 as a collaborator instead of a second post. */
+function targets_(postTo) { return ['namakkal']; }
 function queue_() {
   var sh = sheet_();
   var last = sh.getLastRow();
   if (last < 2) return [];
-  var data = sh.getRange(2, 1, last - 1, 28).getValues();
+  var data = sh.getRange(2, 1, last - 1, NCOLS).getValues();
   var out = [];
   for (var i = 0; i < data.length; i++) {
     var r = rowObj_(data[i], i + 2);
     var st = r.post_status.toLowerCase();
-    if (!r.story_id || !r.slides_spec) continue;
+    if (!r.story_id || !r.slides_spec || !r.images) continue;
     if (st !== 'queued' && st !== 'partly posted' && st !== 'posted') continue;
     if (r.review.toLowerCase() === 'hold') continue;
     var pagesLeft = targets_(r.post_to).filter(function (p) { return !r[p + '_link']; }).length;
-    var reelLeft = r.reel.toLowerCase() === 'yes' && !r.reel_link;
+    var reelLeft = !r.reel_link;
     if (pagesLeft === 0 && !reelLeft) continue;
     out.push(r);
   }
@@ -148,7 +151,7 @@ function hashtags_(caption) {
 }
 function posted_(b) {
   var sh = sheet_();
-  var vals = sh.getRange(b.row, 1, 1, 28).getValues()[0];
+  var vals = sh.getRange(b.row, 1, 1, NCOLS).getValues()[0];
   var r = rowObj_(vals, b.row);
   var label = PAGE_LABEL[b.page] || b.page;
   var kindLabel = b.kind === 'reel' ? 'Reel' : 'Carousel';
@@ -164,11 +167,11 @@ function posted_(b) {
   if (b.kind === 'reel') {
     var prev = r.reel_link ? r.reel_link + '\n' : '';
     sh.getRange(b.row, C.reel_link).setValue(prev + label + ': ' + b.permalink);
+    if (r.namakkal_link) sh.getRange(b.row, C.post_status).setValue('Posted');
   } else {
     sh.getRange(b.row, PAGE_COL[b.page]).setValue(b.permalink);
     r[b.page + '_link'] = b.permalink;
-    var left = targets_(r.post_to).filter(function (p) { return !r[p + '_link']; });
-    sh.getRange(b.row, C.post_status).setValue(left.length ? 'Partly posted' : 'Posted');
+    sh.getRange(b.row, C.post_status).setValue(r.reel_link ? 'Posted' : 'Partly posted');
   }
   sh.getRange(b.row, C.posted_at).setValue("'" + time);
   appendNote_(sh, b.row, r.notes, time + ' ' + kindLabel + ' posted to ' + label);
@@ -204,6 +207,7 @@ function emailBody_(r, b, label, kindLabel, time, test) {
     'Time: ' + time + ' IST',
     'Instagram link: ' + (b.permalink || '(test – not posted)'),
     b.voice ? 'Voice: ' + b.voice : '',
+    b.checks ? 'Checks passed before posting: ' + b.checks : '',
     '',
     'Story ID: ' + r.story_id,
     'Headline: ' + r.headline_ta,
@@ -215,6 +219,8 @@ function emailBody_(r, b, label, kindLabel, time, test) {
     b.caption,
     '',
     'HASHTAGS: ' + hashtags_(b.caption),
+    '',
+    b.collab ? 'Collaboration invite sent to @' + COLLAB_USERNAME + ' – open the இராசிபுரம் 360 app → notifications and tap Accept so the post also shows on that page.' : '',
     '',
     'Images / video used: ' + (b.media_urls || []).join('\n'),
     '',
@@ -231,7 +237,7 @@ function appendNote_(sh, row, oldNotes, text) {
 
 function error_(b) {
   var sh = sheet_();
-  var r = rowObj_(sh.getRange(b.row, 1, 1, 28).getValues()[0], b.row);
+  var r = rowObj_(sh.getRange(b.row, 1, 1, NCOLS).getValues()[0], b.row);
   var key = 'ERR_' + b.row + '_' + b.page + '_' + b.kind;
   var n = Number(props_().getProperty(key) || 0) + 1;
   props_().setProperty(key, String(n));
@@ -245,16 +251,182 @@ function error_(b) {
   return { ok: true };
 }
 
+// ------------------------------------------------------------------ reading your image reply
+/**
+ * Runs every 5 minutes. Looks for your reply to a "[NEWS360 IMAGES NEEDED]" email, takes the attached images
+ * (a zip, or the images themselves), uploads them to Cloudinary, saves the links in the Sheet and queues the story.
+ * Skip a story by writing  SKIP RN-26  in your reply (e.g. when you already posted it yourself).
+ */
+function processReplies() {
+  var lock = LockService.getScriptLock();
+  if (!lock.tryLock(20000)) return;
+  try {
+    expireOld_();
+    var p = props_();
+    var done = JSON.parse(p.getProperty('DONE_MSGS') || '[]');
+    var allowed = allowedSenders_();
+    var threads = GmailApp.search('subject:"NEWS360 IMAGES NEEDED" newer_than:5d', 0, 20);
+    threads.forEach(function (th) {
+      var m = th.getFirstMessageSubject().match(/B\d{8}-\d{4}/);
+      if (!m) return;
+      th.getMessages().forEach(function (msg) {
+        var id = msg.getId();
+        if (done.indexOf(id) >= 0) return;
+        var from = String(msg.getFrom()).replace(/^.*<|>.*$/g, '').trim().toLowerCase();
+        if (allowed.indexOf(from) < 0) return;
+        done.push(id);
+        p.setProperty('DONE_MSGS', JSON.stringify(done.slice(-200)));
+        try { handleReply_(msg, m[0]); } catch (err) {
+          GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 PROBLEM] Could not read your image reply', String(err) + '\n\nBatch ' + m[0]);
+        }
+      });
+    });
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function allowedSenders_() {
+  var extra = String(props_().getProperty('ALLOWED_SENDERS') || '').split(',');
+  return [OWNER_EMAIL.toLowerCase()].concat(extra.map(function (x) { return x.trim().toLowerCase(); }).filter(String));
+}
+
+function imageBlobs_(msg) {
+  var out = [];
+  msg.getAttachments({ includeInlineImages: false, includeAttachments: true }).forEach(function (a) {
+    var n = String(a.getName()).toLowerCase();
+    var blobs = (n.slice(-4) === '.zip' || a.getContentType().indexOf('zip') >= 0) ? Utilities.unzip(a) : [a];
+    blobs.forEach(function (b) {
+      var bn = String(b.getName());
+      if (/(^|\/)\.|__MACOSX/.test(bn)) return;
+      if (/\.(png|jpe?g|webp)$/i.test(bn)) out.push(b);
+    });
+  });
+  return out;
+}
+
+function naturalKey_(name) {
+  return String(name).replace(/\d+/g, function (d) { return ('00000000' + d).slice(-8); }).toLowerCase();
+}
+
+function handleReply_(msg, batchId) {
+  var sh = sheet_();
+  var last = sh.getLastRow();
+  if (last < 2) return;
+  var data = sh.getRange(2, 1, last - 1, NCOLS).getValues();
+  var rows = [];
+  for (var i = 0; i < data.length; i++) {
+    var r = rowObj_(data[i], i + 2);
+    if (r.batch === batchId && r.post_status === 'Awaiting images' && r.review.toLowerCase() !== 'hold') rows.push(r);
+  }
+  var report = [];
+
+  // SKIP lines (only in what you typed, not in the quoted original)
+  var typed = String(msg.getPlainBody()).split(/\n\s*(?:On .+wrote:|>|-{2,}\s*Original)/)[0];
+  var skipped = {};
+  (typed.match(/SKIP\s+RN-?\d+/gi) || []).forEach(function (x) {
+    skipped['RN-' + x.match(/\d+/)[0]] = true;
+  });
+  rows = rows.filter(function (r) {
+    if (skipped[r.story_id]) {
+      sh.getRange(r.row, C.review).setValue('Hold');
+      sh.getRange(r.row, C.post_status).setValue('Skipped (posted manually)');
+      report.push(r.story_id + ': skipped as you asked');
+      return false;
+    }
+    return true;
+  });
+
+  var blobs = imageBlobs_(msg);
+  if (blobs.length && rows.length) {
+    var byStory = {};
+    var unnamed = [];
+    blobs.forEach(function (b) {
+      var nm = String(b.getName());
+      var sm = nm.match(/RN-?(\d+)/i);
+      if (sm) {
+        var key = 'RN-' + sm[1];
+        (byStory[key] = byStory[key] || []).push(b);
+      } else unnamed.push(b);
+    });
+    unnamed.sort(function (a, b) { return naturalKey_(a.getName()) < naturalKey_(b.getName()) ? -1 : 1; });
+    rows.forEach(function (r) {
+      var need = promptCount_(r);
+      var mine = (byStory[r.story_id] || []).sort(function (a, b) { return naturalKey_(a.getName()) < naturalKey_(b.getName()) ? -1 : 1; });
+      while (mine.length < need && unnamed.length) mine.push(unnamed.shift());
+      mine = mine.slice(0, 10);
+      if (mine.length < Math.min(MIN_IMAGES, need)) {
+        if (mine.length) report.push(r.story_id + ': only ' + mine.length + ' image(s) found, need ' + need + ' – please reply again with all ' + need + ' images');
+        else report.push(r.story_id + ': no images found yet');
+        return;
+      }
+      var urls = mine.map(function (b) { return uploadImage_(b, r.story_id); });
+      sh.getRange(r.row, C.images).setValue(JSON.stringify(urls));
+      sh.getRange(r.row, C.post_status).setValue('Queued');
+      appendNote_(sh, r.row, r.notes, nowIst_() + ' ' + urls.length + ' images received (batch ' + batchId + ')');
+      report.push(r.story_id + ': ' + urls.length + ' images received – carousel and reel will be made and posted within about 20-40 minutes');
+    });
+  } else if (!report.length && rows.length) {
+    return; // e.g. the original email itself: nothing to do
+  }
+  if (report.length) {
+    GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 IMAGES RECEIVED] ' + batchId,
+      report.join('\n') + '\n\nSheet: ' + SHEET_LINK);
+  }
+}
+
+function promptCount_(r) {
+  var n = String(r.prompts || '').split(/\n-{3,}\n/).filter(function (x) { return x.trim(); }).length;
+  return n || 5;
+}
+
+function uploadImage_(blob, story) {
+  var res = UrlFetchApp.fetch('https://api.cloudinary.com/v1_1/' + CLOUD_NAME + '/image/upload', {
+    method: 'post', muteHttpExceptions: true,
+    payload: { file: blob, upload_preset: UPLOAD_PRESET, folder: 'news360/src/' + story }
+  });
+  var d = JSON.parse(res.getContentText());
+  if (!d.secure_url) throw new Error('Image upload failed for ' + story + ': ' + res.getContentText().slice(0, 300));
+  return d.secure_url;
+}
+
+/** Stories still waiting for images after EXPIRE_HOURS are closed, so old news is never posted. */
+function expireOld_() {
+  var sh = sheet_();
+  var last = sh.getLastRow();
+  if (last < 2) return;
+  var data = sh.getRange(2, 1, last - 1, NCOLS).getValues();
+  for (var i = 0; i < data.length; i++) {
+    var r = rowObj_(data[i], i + 2);
+    if (r.post_status !== 'Awaiting images') continue;
+    var t = parseIst_(r.researched);
+    if (t && (Date.now() - t.getTime()) / 3600000 > EXPIRE_HOURS) {
+      sh.getRange(r.row, C.post_status).setValue('Expired - no images');
+      appendNote_(sh, r.row, r.notes, nowIst_() + ' expired: no images within ' + EXPIRE_HOURS + ' hours');
+    }
+  }
+}
+function parseIst_(txt) {
+  var m = String(txt).replace(/^'/, '').match(/(\d{1,2}) (\w{3}) (\d{4}),? (\d{1,2}):(\d{2})/);
+  if (!m) return null;
+  var mon = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 }[m[2]];
+  if (mon === undefined) return null;
+  return new Date(Date.UTC(+m[3], mon, +m[1], +m[4], +m[5]) - 5.5 * 3600000);
+}
+
 // ------------------------------------------------------------------ one-time setup
-/** Run once from the editor: creates the secret key, the Voice folder and the weekly token refresh. */
+/** Run once from the editor (and again after every update): secret key, Voice folder, triggers. Asks for Gmail permission. */
 function setup() {
   var p = props_();
   if (!p.getProperty('BRIDGE_KEY')) p.setProperty('BRIDGE_KEY', Utilities.getUuid().replace(/-/g, ''));
   voiceFolder_();
   ScriptApp.getProjectTriggers().forEach(function (t) {
-    if (t.getHandlerFunction() === 'refreshTokens') ScriptApp.deleteTrigger(t);
+    var h = t.getHandlerFunction();
+    if (h === 'refreshTokens' || h === 'processReplies') ScriptApp.deleteTrigger(t);
   });
   ScriptApp.newTrigger('refreshTokens').timeBased().everyWeeks(1).onWeekDay(ScriptApp.WeekDay.SUNDAY).atHour(3).create();
-  Logger.log('BRIDGE_KEY = ' + p.getProperty('BRIDGE_KEY'));
+  ScriptApp.newTrigger('processReplies').timeBased().everyMinutes(5).create();
+  GmailApp.getInboxThreads(0, 1); // makes Google ask for Gmail permission now
+  Logger.log('BRIDGE_KEY is saved in Script properties (not shown here).');
   Logger.log('Voice folder: https://drive.google.com/drive/folders/' + p.getProperty('VOICE_FOLDER_ID'));
 }

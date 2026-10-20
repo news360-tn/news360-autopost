@@ -1,0 +1,149 @@
+"""நாமக்கல் 360 — photo carousel renderer (v3).
+Usage: python3 render_photo.py spec.json images_dir out_dir [--ai-label] [--page namakkal]
+
+spec (v3):
+ {"v":3,"story":"RN-26","date":"20 அக்டோபர் 2026","cat":"மழை","loc":"நாமக்கல்",
+  "hl1":"நாமக்கல்லில் கனமழை","hl2":"அடுத்த 5 நாட்கள் தொடரும்",
+  "slides":[{"title":"என்ன நடந்தது","lines":["...","...","..."]}, ...]}
+images_dir holds img1.jpg, img2.jpg ... (img1 = cover, img2.. = detail slides, in order).
+Output: <story>_slide1_cover.png ... + the follow slide last. The logo is added afterwards (overlay_logo_v2.py).
+"""
+import json, os, re, sys, html
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import render_v2 as R2  # fonts, icons, the follow slide
+
+E = html.escape
+
+CSS = R2.CSS + """
+html,body{width:1080px;height:1350px}
+.photo{position:absolute;background-size:cover;background-position:center 40%;background-repeat:no-repeat}
+.full{inset:0}
+.shade{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(6,18,50,.55) 0%,rgba(6,18,50,0) 22%,rgba(6,18,50,0) 38%,rgba(6,18,50,.88) 66%,#061232 100%)}
+.top-img{left:0;right:0;top:0;height:640px}
+.top-shade{position:absolute;left:0;right:0;top:0;height:640px;background:linear-gradient(180deg,rgba(6,18,50,.5) 0%,rgba(6,18,50,0) 30%,rgba(6,18,50,0) 70%,rgba(6,18,50,.55) 100%)}
+.cut{position:absolute;left:0;right:0;top:560px;height:130px;background:var(--navy);clip-path:polygon(0 60%,100% 0,100% 100%,0 100%)}
+.cut:before{content:"";position:absolute;left:0;right:0;top:0;height:100%;background:var(--red);clip-path:polygon(0 52%,100% 0,100% 12%,0 66%)}
+.panel{position:absolute;left:0;right:0;top:600px;bottom:0;background:linear-gradient(180deg,var(--navy) 0%,#061232 100%);z-index:0}
+.cat2{position:absolute;left:36px;top:560px;z-index:3;background:var(--red);color:#fff;font:800 40px 'BT','NST';padding:10px 30px 2px;border-radius:12px;transform:rotate(-2deg)}
+.brush2{position:absolute;left:30px;top:700px;max-width:1010px;background:var(--yellow);color:var(--navy);padding:12px 36px 4px 30px;border-radius:10px;transform:rotate(-1deg);z-index:3}
+.brush2 h2{font:800 66px/1.15 'BT','NST';white-space:nowrap}
+.pts{position:absolute;left:36px;right:36px;top:820px;bottom:96px;display:flex;flex-direction:column;gap:18px;z-index:3;justify-content:flex-start}
+.pt{display:flex;gap:20px;align-items:flex-start;background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.14);border-radius:22px;padding:16px 24px 12px}
+.pt .dot{flex:0 0 18px;height:18px;border-radius:50%;background:var(--yellow);margin-top:24px}
+.pt .tx{font:700 40px/1.38 'NST','CT';color:#fff}
+.pt .tx b{color:var(--yellow)}
+.cover-cat{position:absolute;left:40px;top:640px;z-index:3;background:var(--red);color:#fff;font:800 52px 'BT','NST';padding:12px 40px 2px;clip-path:polygon(4% 0,100% 6%,96% 100%,0 92%);transform:rotate(-3deg)}
+.cover-h1{position:absolute;left:40px;right:40px;top:740px;height:330px;z-index:3;font:800 104px/1.12 'BT','NST';color:#fff;text-shadow:0 6px 0 #061232,0 12px 26px rgba(0,0,0,.55);display:flex;align-items:center}
+.cover-h2{position:absolute;left:40px;right:40px;top:1086px;z-index:3;font:800 76px/1.15 'BT','NST';color:var(--yellow);text-shadow:0 5px 0 #6b4700,0 10px 22px rgba(0,0,0,.5);white-space:nowrap}
+.cover-loc{position:absolute;left:40px;right:40px;bottom:34px;z-index:3;display:flex;align-items:center;gap:14px;font:800 38px 'CT','NST';color:#fff;border-top:2px solid rgba(255,255,255,.35);padding-top:16px}
+.cover-loc .ic{font-size:40px;color:var(--red)}
+.ai{position:absolute;right:30px;bottom:34px;z-index:5;background:rgba(0,0,0,.55);color:#fff;font:700 24px 'NST','CT';padding:6px 16px 2px;border-radius:999px;border:1.5px solid rgba(255,255,255,.5)}
+.ai.l{left:30px;right:auto}
+.date{z-index:6}
+"""
+
+FIT = """
+function fitBox(el,maxH,min){var s=parseFloat(getComputedStyle(el).fontSize);while(el.scrollHeight>maxH&&s>min){s-=2;el.style.fontSize=s+'px';}}
+function fitW(el,max,min){var s=parseFloat(getComputedStyle(el).fontSize);while(el.scrollWidth>max&&s>min){s-=2;el.style.fontSize=s+'px';}}
+document.fonts.ready.then(function(){
+  var h=document.querySelector('.cover-h1'); if(h){fitBox(h,330,56);}
+  var h2=document.querySelector('.cover-h2'); if(h2){fitW(h2,1000,36);}
+  var b=document.querySelector('.brush2 h2'); if(b){fitW(b,940,34);}
+  var pts=document.querySelector('.pts');
+  if(pts){var lim=pts.clientHeight,t=null;
+    document.querySelectorAll('.pt .tx').forEach(function(x){x.dataset.s=parseFloat(getComputedStyle(x).fontSize)});
+    var size=40;while(pts.scrollHeight>lim&&size>26){size-=2;document.querySelectorAll('.pt .tx').forEach(function(x){x.style.fontSize=size+'px'});}}
+  var bad=0;
+  if(h&&h.scrollHeight>334)bad=1;
+  if(h2&&h2.scrollWidth>1004)bad=1;
+  if(b&&b.scrollWidth>944)bad=1;
+  if(pts&&pts.scrollHeight>pts.clientHeight+2)bad=1;
+  document.body.dataset.overflow=bad;
+  document.body.dataset.ready='1';
+});
+"""
+
+def uri(p):
+    return "file://" + str(Path(p).resolve())
+
+def cover_html(spec, img, ai):
+    return f"""<div class="photo full" style="background-image:url('{uri(img)}')"></div><div class="shade"></div>
+<div class="date"><i data-ic="calendar-days"></i>{E(spec['date'])}</div>
+<div class="cover-cat">{E(spec.get('cat',''))}</div>
+<div class="cover-h1">{E(spec['hl1'])}</div>
+<div class="cover-h2">{E(spec.get('hl2',''))}</div>
+<div class="cover-loc"><i data-ic="location-dot"></i>{E(spec.get('loc','நாமக்கல்'))}</div>
+{AI_CHIP if ai else ''}"""
+
+def detail_html(spec, s, img, ai):
+    pts = "".join(f'<div class="pt"><div class="dot"></div><div class="tx">{l}</div></div>' for l in s["lines"])
+    return f"""<div class="photo top-img" style="background-image:url('{uri(img)}')"></div><div class="top-shade"></div>
+<div class="panel"></div><div class="cut"></div>
+<div class="date"><i data-ic="calendar-days"></i>{E(spec['date'])}</div>
+<div class="cat2">{E(spec.get('cat',''))}</div>
+<div class="brush2"><h2>{E(s['title'])}</h2></div>
+<div class="pts">{pts}</div>
+{AI_CHIP if ai else ''}"""
+
+AI_CHIP = '<div class="ai">AI பிரதிநிதித்துவப் படம்</div>'
+
+def page(inner, light=False):
+    inner = re.sub(r'<i data-ic="([a-z0-9-]+)"></i>', lambda m: R2.icon(m.group(1)), inner)
+    return f"""<!doctype html><html lang="ta"><head><meta charset="utf-8"><style>{CSS}</style></head>
+<body><div class="layer" style="z-index:1">{inner}</div><script>{FIT}</script></body></html>"""
+
+def follow_slide(date):
+    ex = json.loads((HERE / "example_slides_namakkal.json").read_text())
+    h = ex["slides"][-1]["html"]
+    return re.sub(r'(<i data-ic="calendar-days"></i>)[^<]+(</div>)', lambda m: m.group(1) + date + m.group(2), h, count=1)
+
+def main(spec_path, images_dir, out_dir, ai=False):
+    spec = json.loads(Path(spec_path).read_text(encoding="utf-8"))
+    imgs = sorted(Path(images_dir).glob("img*.jpg"), key=lambda p: int(re.search(r"(\d+)", p.stem).group(1)))
+    n_detail = len(spec["slides"])
+    if len(imgs) < 1 + min(n_detail, 1):
+        raise SystemExit("not enough images")
+    os.makedirs(out_dir, exist_ok=True)
+    story = spec.get("story", "X")
+    pages = [(f"{story}_slide1_cover.png", cover_html(spec, imgs[0], ai))]
+    for k, s in enumerate(spec["slides"]):
+        img = imgs[min(k + 1, len(imgs) - 1)]
+        pages.append((f"{story}_slide{k + 2}_{k + 2}.png", detail_html(spec, s, img, ai)))
+    clipped = []
+    with sync_playwright() as p:
+        b = p.chromium.launch()
+        pg = b.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=1)
+        for name, inner in pages:
+            hp = (Path(out_dir) / (Path(name).stem + ".html")).resolve()
+            hp.write_text(page(inner), encoding="utf-8")
+            pg.goto("file://" + str(hp))
+            pg.wait_for_function("document.body.dataset.ready === '1'", timeout=20000)
+            pg.wait_for_timeout(250)
+            if pg.evaluate("document.body.dataset.overflow") == "1":
+                clipped.append(name)
+            pg.screenshot(path=str(Path(out_dir) / name), clip={"x": 0, "y": 0, "width": 1080, "height": 1350})
+            print("rendered", name)
+        name = f"{story}_slide{len(pages) + 1}_follow.png"
+        fs = {"file": name, "html": follow_slide(spec["date"])}
+        hp = (Path(out_dir) / (Path(name).stem + ".html")).resolve()
+        hp.write_text(R2.render_page(fs, 0, 0), encoding="utf-8")
+        pg.goto("file://" + str(hp))
+        pg.wait_for_function("document.body.dataset.ready === '1'", timeout=20000)
+        pg.wait_for_timeout(250)
+        pg.screenshot(path=str(Path(out_dir) / name), clip={"x": 0, "y": 0, "width": 1080, "height": 1350})
+        print("rendered", name)
+        b.close()
+    if clipped:
+        print("TEXT DOES NOT FIT on: " + ", ".join(clipped))
+        sys.exit(3)
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    ai = "--ai-label" in a
+    a = [x for x in a if not x.startswith("--")]
+    main(a[0], a[1], a[2], ai)
