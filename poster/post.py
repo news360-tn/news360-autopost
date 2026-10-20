@@ -99,8 +99,33 @@ def ready(row):
     return age_hours(row) <= MAX_AGE_H * (2 if is_shutdown(row) else 1)
 
 
+def in_post_window():
+    """Best-time posting: scheduled runs publish only inside the IST windows in config.json (manual runs ignore this)."""
+    if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
+        return True
+    try:
+        cfg = json.loads((Path(__file__).parent / "config.json").read_text())
+    except Exception:
+        cfg = {}
+    wins = cfg.get("post_windows_ist") or []
+    if not wins:
+        return True
+    from datetime import datetime, timedelta, timezone
+    now = datetime.now(timezone(timedelta(hours=5, minutes=30)))
+    m = now.hour * 60 + now.minute
+    for w in wins:
+        a, b = w.split("-")
+        am = int(a[:2]) * 60 + int(a[3:]); bm = int(b[:2]) * 60 + int(b[3:])
+        if am <= m <= bm:
+            return True
+    return False
+
+
 def pick(rows):
     c = [r for r in rows if ready(r)]
+    if not in_post_window():
+        # outside the best-time windows only urgent items go out (high importance or power shutdowns)
+        c = [r for r in c if is_shutdown(r) or (r.get("importance") or "").strip() == "High"]
     c.sort(key=lambda r: (IMPORTANCE.get((r.get("importance") or "").strip(), 1), -age_hours(r)))
     return c[0] if c else None
 
