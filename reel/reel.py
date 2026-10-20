@@ -299,11 +299,17 @@ def make_voice_track(work, texts, starts, total):
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *inputs, "-filter_complex", ";".join(filt), "-map", "[v]", "-ac", "1", str(work / "voice.wav")], check=True)
 
 def build_rest(spec, work, starts, ends, total, out_mp4):
+    import json as _j
+    try:
+        _c = _j.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text())
+    except Exception:
+        _c = {}
+    BED_VOL = 0.16 if _c.get("bgm", False) else 0.0  # default: no background music; you add Tamil music in the Instagram app
     # 3. music bed (synthesised, royalty-free) + whooshes at cuts
     pulse = "0.5*sin(2*PI*55*t)*(0.6+0.4*sin(2*PI*0.5*t))+0.25*sin(2*PI*110*t)*exp(-6*mod(t,0.5))+0.12*sin(2*PI*220*t)*exp(-12*mod(t,0.5))"
     pad = "0.18*sin(2*PI*196*t)+0.14*sin(2*PI*246.94*t)+0.12*sin(2*PI*293.66*t)"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", f"aevalsrc='{pulse}+{pad}':s=44100:d={total}",
-                    "-af", f"lowpass=f=1200,volume=0.16,afade=t=in:d=1,afade=t=out:st={total-1.2}:d=1.2", str(work / "bed.wav")], check=True)
+                    "-af", f"lowpass=f=1200,volume={BED_VOL},afade=t=in:d=1,afade=t=out:st={total-1.2}:d=1.2", str(work / "bed.wav")], check=True)
     wh = []
     for i, s in enumerate(starts[1:], 1):
         wh.append(f"anoisesrc=d=0.5:c=pink:a=0.5,bandpass=f=1800:w=1500,afade=t=in:d=0.25,afade=t=out:st=0.25:d=0.25,adelay={int((s-0.25)*1000)}[w{i}]")
