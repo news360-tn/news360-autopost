@@ -313,7 +313,7 @@ def build_rest(spec, work, starts, ends, total, out_mp4):
         sfx = ["-i", str(work / "whoosh.wav")]
     else:
         sfx = []
-    mixf = "[1:a]volume=1.0[bd];[0:a]volume=1.9,acompressor=threshold=0.2:ratio=3[vo];" + ("[2:a]volume=1[wh];[vo][bd][wh]amix=inputs=3" if sfx else "[vo][bd]amix=inputs=2") + ":normalize=0,alimiter=limit=0.95[m]"
+    mixf = "[1:a]volume=1.0[bd];[0:a]volume=1.9,acompressor=threshold=0.2:ratio=3[vo];" + ("[2:a]volume=1[wh];[vo][bd][wh]amix=inputs=3" if sfx else "[vo][bd]amix=inputs=2") + ":normalize=0,alimiter=limit=0.8:level=0[m]"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(work / "voice.wav"), "-i", str(work / "bed.wav"), *sfx,
                     "-filter_complex", mixf, "-map", "[m]", "-ar", "44100", str(work / "mix.wav")], check=True)
     # 4. frames
