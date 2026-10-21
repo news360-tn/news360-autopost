@@ -1,0 +1,38 @@
+bridge 'recent' not available yet (Apps Script not updated): {'ok': False, 'error': 'unknown action recent'}
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temp
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temp
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temp
+fail groq/llama-3.3-70b-versatile: groq llama-3.3-70b-versatile 404: {"error":{"message":"The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.","type":"invalid_requ
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is tem
+ok openrouter/google/gemma-4-31b-it:free
+attempt 1 openrouter/google/gemma-4-31b-it:free: 6 problems
+  slide 1 line 1 longer than 60 characters
+  slide 2 title longer than 18 characters
+  slide 2 line 3 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
+  scenes must be 4 (slides + 1), got 5
+  numbers not found in the article: 21
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temp
+fail gemini/gemini-3.7-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=180)
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temp
+fail groq/llama-3.3-70b-versatile: groq llama-3.3-70b-versatile 404: {"error":{"message":"The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.","type":"invalid_requ
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is tem
+fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-31b-it:free is temporarily
+fail openrouter/minimax/minimax-m3.1-flash:free: Expecting value: line 1 column 1 (char 0)
