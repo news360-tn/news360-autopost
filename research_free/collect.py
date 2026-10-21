@@ -57,8 +57,9 @@ def main():
     seen_src = {r.get("source") for r in recent}
     today = datetime.datetime.now(IST).strftime("%A %d %B %Y")
     out, log = [], []
+    arts = []
     for u in sources.candidate_links(20):
-        if len(out) >= MAX_STORIES or time.time() > DEADLINE:
+        if len(arts) >= MAX_STORIES + 2:
             break
         if u in seen_src:
             continue
@@ -73,12 +74,23 @@ def main():
         if any(difflib.SequenceMatcher(None, r.get("headline_ta", ""), art["title"]).ratio() > 0.72 for r in recent):
             log.append(f"skip (already filed) {art['title'][:50]}")
             continue
-        print(f"[{int(time.time()-DEADLINE+int(os.environ.get('BUDGET_MIN','22'))*60)}s] writing: {art['title'][:60]}", flush=True)
+        arts.append(art)
+    arts = arts[:MAX_STORIES]
+
+    def work(art):
+        print(f"writing: {art['title'][:60]}", flush=True)
         try:
-            d, model, errors, att = run.write(art, today)
+            return art, run.write(art, today)
         except Exception as e:
-            log.append(f"all free models failed for {art['title'][:50]}: {e}")
+            return art, e
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=3) as ex:
+        results = list(ex.map(work, arts))
+    for art, res in results:
+        if isinstance(res, Exception):
+            log.append(f"all free models failed for {art['title'][:50]}: {res}")
             continue
+        d, model, errors, att = res
         if is_dup(art, d, recent):
             log.append(f"skip (duplicate after write) {art['title'][:50]}")
             continue
@@ -89,7 +101,7 @@ def main():
                     "importance": d["importance"], "post_to": d["post_to"], "slides_spec": d["slides_spec"], "reel_script": d["reel_script"],
                     "caption": d["caption"], "prompts": prompts, "source": art["url"], "published": art["published"], "verification": ver,
                     "note": f"free-model draft {model}, {att} attempt(s), {len(errors)} validator problem(s)",
-                    "post_time": "right after your reply, same day" })
+                    "post_time": "right after your reply, same day"})
         recent.append({"headline_ta": d["tamil_headline"], "source": art["url"]})
     Path(HERE / "results").mkdir(exist_ok=True)
     (HERE / "results" / "collect.json").write_text(json.dumps({"log": log, "llm": llm.LOG, "stories": out}, ensure_ascii=False, indent=1), encoding="utf-8")
