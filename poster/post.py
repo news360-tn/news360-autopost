@@ -304,15 +304,50 @@ def ig_account(token):
     return me.get("user_id") or me.get("id"), me.get("username")
 
 
+LOC_ID = ""   # Instagram location (place) id for the story being posted; set in run_story
+
+
+def pick_location(row, spec):
+    """Instagram place id from config.json "locations" (keyword -> id); the first keyword found in the story location wins."""
+    text = " ".join([spec.get("loc", ""), row.get("location", ""), row.get("headline_ta", "")]).lower()
+    locs = CONFIG.get("locations") or {}
+    for key, pid in locs.items():
+        if key != "default" and str(pid).strip().isdigit() and key.lower() in text:
+            return str(pid).strip()
+    d = str(locs.get("default", "")).strip()
+    return d if d.isdigit() else ""
+
+
 def create_with_collab(uid, token, params, collab):
-    """Create the media container; if the collaborator invite is refused, create it without (and say so)."""
-    if collab:
+    """Create the media container with the location tag and the collaborator invite; if either is refused, retry without it (and say so)."""
+    base = dict(params)
+    if LOC_ID:
+        base["location_id"] = LOC_ID
+
+    def attempt(extra, p):
+        return ig("POST", f"{uid}/media", token, **extra, **p)["id"]
+
+    for use_loc in ([True, False] if LOC_ID else [False]):
+        p = dict(base) if use_loc else dict(params)
+        if collab:
+            try:
+                return attempt(dict(collaborators=json.dumps([CONFIG["collab_username"]])), p), True, ("" if use_loc or not LOC_ID else "location refused")
+            except RuntimeError as e:
+                log("container refused with collaborator" + (" + location" if use_loc and LOC_ID else "") + ":", e)
+                try:
+                    return attempt({}, p), False, str(e)[:300]
+                except RuntimeError as e2:
+                    log("container refused:", e2)
+                    if not (use_loc and LOC_ID):
+                        raise
+                    continue
         try:
-            return ig("POST", f"{uid}/media", token, collaborators=json.dumps([CONFIG["collab_username"]]), **params)["id"], True, ""
+            return attempt({}, p), False, ""
         except RuntimeError as e:
-            log("collaborator invite refused, posting without it:", e)
-            return ig("POST", f"{uid}/media", token, **params)["id"], False, str(e)[:300]
-    return ig("POST", f"{uid}/media", token, **params)["id"], False, ""
+            log("container refused:", e)
+            if not (use_loc and LOC_ID):
+                raise
+    raise RuntimeError("could not create the media container")
 
 
 def publish_carousel(token, urls, caption, collab):
@@ -346,6 +381,10 @@ def run_story(row):
     sid = row["story_id"]
     spec = json.loads(row["slides_spec"])
     spec["date"] = tamil_date_today()  # date shown on poster/reel = actual posting date (IST)
+    global LOC_ID
+    LOC_ID = pick_location(row, spec)
+    if LOC_ID:
+        log("location tag:", LOC_ID)
     problems = check_text(row, spec) + verify.check_news(row)
     if problems:
         return fail(row, "carousel", "Checks failed: " + "; ".join(problems))
