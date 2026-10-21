@@ -35,8 +35,12 @@ def main(urls):
     today = datetime.datetime.now(IST).strftime("%A %d %B %Y")
     rep = []
     for n, u in enumerate(urls, 1):
-        art = sources.article(u)
-        d, model, errors, att = write(art, today)
+        try:
+            art = sources.article(u)
+            d, model, errors, att = write(art, today)
+        except Exception as e:
+            rep.append(f"{n}. FAILED {u}: {type(e).__name__}: {str(e)[:300]}")
+            continue
         (HERE / "out" / f"{n}.json").write_text(json.dumps({"url": u, "article": art, "model": model, "attempts": att, "problems": errors, "draft": d}, ensure_ascii=False, indent=1), encoding="utf-8")
         rep.append(f"{n}. {art['title'][:70]} | {model} | attempts {att} | problems {len(errors)}")
     (HERE / "out" / "report.txt").write_text("\n".join(rep) + "\n\n" + "\n".join(llm.LOG), encoding="utf-8")
