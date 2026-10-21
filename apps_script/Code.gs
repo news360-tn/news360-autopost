@@ -322,9 +322,13 @@ function handleReply_(msg, batchId) {
   var report = [];
 
   // SKIP lines (only in what you typed, not in the quoted original)
-  var typed = String(msg.getPlainBody()).split(/\n\s*(?:On .+wrote:|>|-{2,}\s*Original)/)[0];
+  var body = String(msg.getPlainBody()).replace(/\r/g, '');
+  // cut everything from the quoted original ("On <date> ... wrote:" which may wrap over two lines, "> " lines, "Original Message")
+  var cut = body.search(/(^|\n)[ \t]*On [^\n]*(\n[^\n]*)?wrote:|(^|\n)[ \t]*>|(^|\n)[ \t]*-{2,}[ \t]*Original|(^|\n)[ \t]*From:/i);
+  var typed = cut >= 0 ? body.slice(0, cut) : body;
   var skipped = {};
-  (typed.match(/SKIP\s+RN-?\d+/gi) || []).forEach(function (x) {
+  // only a line that STARTS with SKIP counts (so example text can never trigger it)
+  (typed.match(/^[ \t]*SKIP[ \t]+RN-?\d+/gmi) || []).forEach(function (x) {
     skipped['RN-' + x.match(/\d+/)[0]] = true;
   });
   rows = rows.filter(function (r) {
