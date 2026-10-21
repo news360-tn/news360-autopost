@@ -21,7 +21,10 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: python research_free/run.py ${{ github.event.inputs.urls }}
+        run: |
+          mkdir -p research_free/out
+          python -u research_free/run.py ${{ github.event.inputs.urls }} > research_free/out/run.log 2>&1 || echo "exit $?" >> research_free/out/run.log
+          tail -5 research_free/out/run.log
       - name: Commit results
         if: always()
         run: |
