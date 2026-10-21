@@ -30,6 +30,13 @@ def article(url):
         return html.unescape(m.group(1)).strip() if m else ""
     title = g(r'"newstitle"\s*:\s*"([^"]+)"') or g(r"<title>([^<]+)</title>")
     pub = g(r'"publisheddate"\s*:\s*"([^"]+)"')
-    paras = [html.unescape(re.sub(r"<[^>]+>", "", x)).strip() for x in re.findall(r"<p[^>]*>(.*?)</p>", h, re.S)]
-    text = "\n".join(x for x in paras if len(x) > 40)
-    return {"url": url, "title": title, "published": pub, "text": text}
+    body = g(r'"articleBody"\s*:\s*"([^"]{80,})"').replace("\\n", "\n")
+    h2 = re.sub(r"<(style|script|noscript|svg)[^>]*>.*?</\1>", " ", h, flags=re.S)
+    paras = [html.unescape(x).strip() for x in re.sub(r"<[^>]+>", "\n", h2).split("\n")]
+    paras = [re.sub(r"\s+", " ", x) for x in paras if len(x) > 60 and re.search(r"[\u0B80-\u0BFF]", x) and "{" not in x and "css-" not in x]
+    seen, out = set(), []
+    for x in paras:
+        if x not in seen:
+            seen.add(x); out.append(x)
+    text = body if len(body) > 200 else "\n".join(out)
+    return {"url": url, "title": title, "published": pub, "text": text.strip()}
