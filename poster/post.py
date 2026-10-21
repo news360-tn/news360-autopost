@@ -404,9 +404,18 @@ def create_with_collab(uid, token, params, collab):
     raise RuntimeError("could not create the media container")
 
 
-def publish_carousel(token, urls, caption, collab):
+def publish_carousel(token, urls, caption, collab, alt=""):
     uid, _ = ig_account(token)
-    kids = [ig("POST", f"{uid}/media", token, image_url=u, is_carousel_item="true")["id"] for u in urls]
+
+    def kid(u, i):
+        # alt text helps Instagram understand the picture (search / accessibility); dropped if the API refuses it
+        if alt:
+            try:
+                return ig("POST", f"{uid}/media", token, image_url=u, is_carousel_item="true", alt_text=f"{alt} - slide {i}")["id"]
+            except Exception as e:
+                log("alt text refused, posting without it:", e)
+        return ig("POST", f"{uid}/media", token, image_url=u, is_carousel_item="true")["id"]
+    kids = [kid(u, i) for i, u in enumerate(urls, 1)]
     for k in kids:
         wait_ready(k, token, 5)
     cid, collab_ok, why = create_with_collab(uid, token, dict(media_type="CAROUSEL", children=",".join(kids), caption=caption), collab)
@@ -576,7 +585,7 @@ def run_story(row):
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab, "checks": note})
             else:
                 token = bridge_get("token", page=PAGE)["token"]
-                mid, link, collab_ok, why = publish_carousel(token, urls, caption, collab)
+                mid, link, collab_ok, why = publish_carousel(token, urls, caption, collab, (row.get('headline_en') or '')[:200] + ' - Namakkal 360 news')
                 log("carousel posted", sid, link)
                 first_comment(token, mid, sid, 0)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "permalink": link, "media_id": mid,

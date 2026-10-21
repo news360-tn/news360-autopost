@@ -28,6 +28,29 @@ def write(art, today):
         best = (d, model, errors, attempt)
         if not errors:
             break
+    return proofread(best, art)
+
+
+PROOF = """You are a senior Tamil news editor and proofreader for the Instagram page "நாமக்கல் 360".
+You get a JSON draft. Return the SAME JSON object (same keys, same structure, same facts, same numbers) with ONLY these fixes:
+1. Correct Tamil spelling, sandhi (புணர்ச்சி), grammar and place names in every Tamil text.
+2. reel_script: make it read like ONE continuous story by a professional Tamil TV news reader: smooth connecting words between sentences (மேலும், இதனால், இதையடுத்து, இந்நிலையில்), no abrupt jumps, no repeated facts, first sentence = the hook. Keep it 4-6 sentences, 38-55 words, numbers as Tamil words, no digits, no English letters. English words that people say in Tamil must be written in Tamil script so a Tamil voice pronounces them (மொபைல், ஆன்லைன், பஸ்). Keep the last sentence exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
+3. slides_spec texts and caption: natural modern Tamil, no half-English sentences except fixed words (Follow, Share, Save). Keep the character limits (hl1 40, hl2 28, title 18, lines 60).
+Never add facts. Never remove the follow line or hashtags. Output ONLY the JSON object."""
+
+
+def proofread(best, art):
+    """second free-model pass: Tamil grammar/spelling, smooth news-reader flow. Kept only if it still passes every check."""
+    d, model, errors, att = best
+    try:
+        fixed, m2 = llm.ask_json(PROOF, json.dumps(d, ensure_ascii=False))
+        e2 = validate(fixed, art["text"] + " " + art["title"])
+        if len(e2) <= len(errors) and set(fixed) >= set(d):
+            print(f"proofread by {m2}: {len(e2)} problems")
+            return fixed, model + " + proofread " + m2, e2, att
+        print(f"proofread rejected ({len(e2)} problems)", *e2, sep="\n  ")
+    except Exception as e:
+        print("proofread skipped:", e)
     return best
 
 

@@ -38,7 +38,7 @@ reel_script rules
 caption rules
 - Instagram search reads the caption, so the FIRST line is a hook that already contains the place name and the key fact (max 110 characters), with 1 emoji, e.g. "🥚 நாமக்கல்லில் முட்டை விலை 10 காசு உயர்வு - இன்றைய விலை 560 காசு". Numbers, times and dates are written as digits in the caption.
 - Then 3-5 short lines with the useful details (what, where, when, numbers, who announced, what residents should do). End with a question or a save/share prompt that fits the story (e.g. "உங்கள் பகுதியிலும் இதே நிலையா? கமெண்டில் சொல்லுங்கள்", "தேவைப்படுவோருக்கு Share செய்யுங்கள்").
-- Then a line "📍 exact place, Namakkal | date" naming the town or village. Then exactly: உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏
+- Then ONE short English search line so people searching in English find the post, e.g. "Namakkal egg price today | Namakkal news". Then a line "📍 exact place, Namakkal | date" naming the town or village. Then exactly: உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏
 - Then exactly 5 hashtags (Instagram allows at most 5): #Namakkal360 + #Namakkal + ONE for the exact town/place (English or Tamil) + ONE for the topic + #NamakkalNews (for Rasipuram-area stories use #Rasipuram instead of #NamakkalNews; for power shutdowns the topic tag is #மின்தடை).
 - No links, no source names, no clickbait, no false urgency.
 
