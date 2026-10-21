@@ -1,0 +1,50 @@
+name: research-free
+# every 3 hours (IST 06:17, 09:17 ... 21:17). Scheduled runs only work once the file research_free/ENABLED exists.
+on:
+  schedule:
+    - cron: "47 0,3,6,9,12,15 * * *"
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: "dry run (do not write to Sheet / send email)"
+        default: "false"
+permissions:
+  contents: write
+concurrency: research-free
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check switch
+        id: sw
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] && [ ! -f research_free/ENABLED ]; then echo "go=no" >> $GITHUB_OUTPUT; else echo "go=yes" >> $GITHUB_OUTPUT; fi
+      - uses: actions/setup-python@v5
+        if: steps.sw.outputs.go == 'yes'
+        with: {python-version: "3.11"}
+      - run: pip install requests
+        if: steps.sw.outputs.go == 'yes'
+      - name: Collect, write, validate, send
+        if: steps.sw.outputs.go == 'yes'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          BRIDGE_URL: ${{ secrets.BRIDGE_URL }}
+          BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
+        run: |
+          mkdir -p research_free/results
+          FLAG=""; [ "${{ github.event.inputs.dry }}" = "true" ] && FLAG="--dry"
+          python -u research_free/collect.py $FLAG > research_free/results/collect.log 2>&1 || echo "exit $?" >> research_free/results/collect.log
+          tail -15 research_free/results/collect.log
+      - name: Save log
+        if: always() && steps.sw.outputs.go == 'yes'
+        run: |
+          git config user.name "news360-bot"; git config user.email "bot@users.noreply.github.com"
+          git add -f research_free/results/collect.log research_free/results/collect.json || true
+          git commit -m "free collector log" || echo none
+          git pull --rebase --autostash origin main || true
+          git push || true
