@@ -12,6 +12,7 @@ BRIDGE_URL, BRIDGE_KEY = os.environ.get("BRIDGE_URL", ""), os.environ.get("BRIDG
 MAX_STORIES = int(os.environ.get("MAX_STORIES", "5"))
 DRY = "--dry" in sys.argv
 DEADLINE = time.time() + int(os.environ.get("BUDGET_MIN", "22")) * 60
+llm.DEADLINE[0] = DEADLINE
 
 TEMPLATE = ("Ultra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), "
             "4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. {scene} "
