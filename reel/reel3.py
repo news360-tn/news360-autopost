@@ -40,6 +40,10 @@ body{font-family:'NST','CT',sans-serif;color:#fff;position:relative}
 #hook .h1{font:900 96px/1.12 'CT','NST';color:#fff}
 #hook .h2{font:900 108px/1.12 'CT','NST';color:var(--yellow);margin-top:6px}
 #hook div{-webkit-text-stroke:14px #000;paint-order:stroke fill;text-shadow:0 10px 30px rgba(0,0,0,.5)}
+#dust{position:absolute;inset:0;z-index:4;pointer-events:none;overflow:hidden}
+.dp{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,244,214,.95),rgba(255,244,214,0) 70%)}
+#sweep{position:absolute;inset:-300px;z-index:4;pointer-events:none;mix-blend-mode:soft-light;background:linear-gradient(105deg,transparent 40%,rgba(255,236,190,.55) 50%,transparent 60%)}
+#grain{position:absolute;inset:0;z-index:8;pointer-events:none;opacity:.10;mix-blend-mode:overlay}
 .sticker{position:absolute;left:0;top:360px;max-width:940px;z-index:22;background:var(--yellow);color:var(--navy);font:800 46px/1.3 'NST','CT';padding:16px 34px 10px 30px;border-radius:0 24px 24px 0;box-shadow:0 10px 30px rgba(0,0,0,.45);opacity:0}
 .sticker b{color:#C4100F}
 #cap{position:absolute;left:40px;right:40px;top:1150px;height:190px;z-index:25;display:flex;align-items:center;justify-content:center;text-align:center}
@@ -123,6 +127,9 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
     imgs = "".join(f'<img class="pic" id="p{i}" src="file://{Path(p).resolve()}">' for i, p in enumerate(spec["images"]))
     acc = accent_for(spec.get("cat", ""))
     stick = "".join(f'<div class="sticker" id="k{i}">{s["fact"]}</div>' for i, s in enumerate(sents) if s.get("fact"))
+    import random
+    rnd = random.Random(7)
+    dust = "".join(f'<div class="dp" style="left:{rnd.randint(0,1040)}px;top:{rnd.randint(0,1880)}px;width:{(sz:=rnd.randint(6,22))}px;height:{sz}px;opacity:.0" data-s="{rnd.random()*6.28:.2f}" data-v="{rnd.uniform(.4,1.3):.2f}"></div>' for _ in range(34))
     cap_html = ""
     for gi, g in enumerate(caps):
         spans = "".join(f'<span id="w{gi}_{k}">{E(w[0])}</span> ' for k, w in enumerate(g["words"]))
@@ -132,7 +139,9 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
                        "caps": [{"a": g["a"], "b": g["b"], "w": [[x[1], x[2]] for x in g["words"]]} for g in caps],
                        "hook_end": hook_end, "end_t": end_t, "total": total, "n": len(spec["images"])})
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
-<div id="stage">{imgs}</div><div id="shade"></div><div id="vig"></div><div id="flash"></div>
+<svg width="0" height="0" style="position:absolute"><filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence id="tb" type="fractalNoise" baseFrequency="0.006 0.010" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="gr" x="0" y="0" width="100%" height="100%"><feTurbulence id="gt" type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="1"/><feColorMatrix type="saturate" values="0"/></filter></svg>
+<div id="stage">{imgs}</div><div id="dust">{dust}</div><div id="sweep"></div><svg id="grain" width="1080" height="1920"><rect width="1080" height="1920" filter="url(#gr)"/></svg><div id="shade"></div><div id="vig"></div><div id="flash"></div>
 <div id="prog" style="background:{acc}"></div>
 <div id="brand"><div class="row1"><div class="bar" style="background:{acc}"></div><div class="nm">{page['name']}</div></div>
 <div class="pill" style="background:{acc}">{E(spec.get('cat',''))}</div>
@@ -153,12 +162,23 @@ window.renderAt=function(t){{
   for(let i=0;i<D.n;i++){{const el=document.getElementById('p'+i); el.style.opacity=(i===active.img)?1:0;}}
   const el=document.getElementById('p'+active.img);
   const dur=Math.max(0.5,active.b-active.a), pr=cl((t-active.a)/Math.min(dur,CUTMAX)), k=t-active.a;
-  const z=active.z0+(active.z1-active.z0)*pr;
+  const pe=pr<0.5?2*pr*pr:1-Math.pow(-2*pr+2,2)/2;   // ease in/out camera move
+  const z=active.z0+(active.z1-active.z0)*pe;
   const punch=1+0.05*Math.max(0,1-k/0.18);
+  // handheld camera: layered slow noise (shake grows a little on the cut)
+  const sh=1+0.8*Math.max(0,1-k/0.5);
+  const hx=(5*Math.sin(t*1.3)+2.6*Math.sin(t*2.9+1)+1.2*Math.sin(t*7.1))*sh, hy=(4.2*Math.sin(t*1.1+2)+2.2*Math.sin(t*3.3)+1.0*Math.sin(t*6.3+1))*sh, hr=0.32*Math.sin(t*0.9)+0.12*Math.sin(t*2.3);
   el.style.transformOrigin=(active.fx*100)+'% '+(active.fy*100)+'%';
-  el.style.transform='translate('+(active.px*(pr-0.5))+'px,'+(active.py*(pr-0.5))+'px) scale('+(z*punch)+')';
+  el.style.transform='translate('+(active.px*(pe-0.5)+hx)+'px,'+(active.py*(pe-0.5)+hy)+'px) rotate('+hr+'deg) scale('+(z*punch*1.025)+')';
+  // living air: slow ripple of the picture (heat / wind / water shimmer)
+  document.getElementById('tb').setAttribute('baseFrequency',(0.006+0.0012*Math.sin(t*0.8))+' '+(0.010+0.0015*Math.cos(t*0.6)));
+  document.getElementById('tb').setAttribute('seed',''+(3+Math.floor(t*2)%5));
+  el.style.filter='url(#wob)';
   const wb=(k<0.14&&active.a>0)?(6*(1-k/0.14)):0;
-  el.style.filter='blur('+(wb+blurEnd*22)+'px)';
+  if(wb+blurEnd>0)el.style.filter='url(#wob) blur('+(wb+blurEnd*22)+'px)';
+  document.querySelectorAll('.dp').forEach(d=>{{const sd=+d.dataset.s,v=+d.dataset.v;d.style.transform='translate('+(30*Math.sin(t*0.5*v+sd))+'px,'+(-(t*40*v)%1900)+'px)';d.style.opacity=0.18+0.18*Math.sin(t*1.2*v+sd);}});
+  document.getElementById('sweep').style.transform='translateX('+(((t*90)%2600)-900)+'px)';
+  document.getElementById('gt').setAttribute('seed',''+Math.floor(t*24));
   document.getElementById('flash').style.opacity=(active.a>0&&k<0.12)?0.16*(1-k/0.12):0;
   document.getElementById('prog').style.width=(100*cl(t/D.end_t))+'%';
   // hook: visible from frame 1
@@ -229,7 +249,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     for i, s in enumerate(sents):
         wt = word_times(s["say"], starts[i], ends[i])
         for g in phrases(wt):
-            caps.append({"a": g[0][1], "b": g[-1][2] + 0.05, "words": g})
+            caps.append({"a": g[0][1], "b": g[-1][2], "words": g})
     snaps = [w[1] for g in caps for w in g["words"]]
     shots = plan_shots(len(spec["images"]), end_t, snaps)
     hook_end = min(2.7, ends[0])
