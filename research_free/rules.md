@@ -14,7 +14,7 @@ OUTPUT JSON KEYS
  "importance": "High | Medium | Low   (High: affects many people today: power shutdown in Rasipuram/Namakkal town, heavy rain alert, big public safety/service news)",
  "post_to": "Namakkal 360 + Rasipuram 360 (collab)  if the place is Rasipuram town or its taluk villages (Namagiripettai, Vennandur, Puduchatram, Pattanam, Mettala, Ayilpatti, Seerapalli, Singalandapuram, Andagalur Gate, Athanur, Mallasamudram, Kurukkapuram, Anaippalayam, Muthukalipatti, Kakkaveri, Vadugam etc.), otherwise  Namakkal 360",
  "slides_spec": {"v":3, "cat":"short Tamil tag e.g. மழை எச்சரிக்கை", "loc":"Tamil place", "hl1":"cover headline, max 40 characters, strong and clear", "hl2":"cover key fact in yellow, max 28 characters", "slides":[{"title":"Tamil title, max 18 characters","lines":["fact line 1","fact line 2","optional line 3"]}]},
- "reel_script": "spoken local Tamil, 5-8 short sentences, 55-70 words",
+ "reel_script": "professional Tamil news-reader script, 6-9 sentences, 55-75 words",
  "caption": "Instagram caption",
  "scenes": ["English scene for image 1 (cover)", "scene for image 2", "..."]
 }
@@ -27,9 +27,11 @@ slides_spec rules
 - Power shutdown story: slide 1 = date and time, slide 2 = substation and affected areas exactly as published (split if long), last slide = what people should do. Never guess areas or times.
 
 reel_script rules
-- Natural spoken Tamil as a local presenter would say it (not newspaper Tamil).
+- PROFESSIONAL TAMIL NEWS-READER STYLE, as read by a television news anchor: formal, clear, neutral, grammatically correct written-standard Tamil (செய்தி வாசிப்பாளர் நடை). NO village slang or spoken contractions: write உள்ளது (not இருக்கு), இல்லை (not இல்ல), செய்யப்படும், தெரிவிக்கப்பட்டுள்ளது, கேட்டுக்கொள்ளப்படுகின்றனர், அறிவுறுத்தப்பட்டுள்ளது. No "மக்களே கவனிங்க" style addressing.
+- Easy to PRONOUNCE for a voice engine: complete words only. Expand every abbreviation (அக். -> அக்டோபர், கி.மீ. -> கிலோமீட்டர், ரூ. -> ரூபாய், டன் stays டன்). Avoid very long sentences (max 25 words each), avoid brackets, quotes and symbols. Keep sentences connected so the story flows: what happened -> where/when -> numbers/details -> what happens next or what people should do.
 - The FIRST sentence carries the main news straight away. No greeting, no "வணக்கம்".
-- Write numbers as Tamil words (ஏழு பேர், ஐந்து நாட்கள், அக்டோபர் இருபத்தி ஒண்ணாம் தேதி). NO digits and NO English letters.
+- Write ALL numbers, dates and times as proper Tamil number words for the voice (ஏழு பேர், அக்டோபர் இருபத்தொன்றாம் தேதி, காலை ஒன்பது மணி). NO digits and NO English letters here; the system shows digits on screen.
+- 6-9 sentences, 55-75 words in total (the reel must stay short).
 - The LAST sentence is exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
 - No private individuals' names, no source names.
 
@@ -39,6 +41,6 @@ caption rules
 - No links, no source names, no clickbait, no false urgency.
 
 scenes rules
-- One English scene description per image: 4 for a small story, 5 for a normal story (number of scenes = number of slides + 1). Scene 1 is the cover: the most representative wide scene. Describe what is visible in the Namakkal / Tamil Nadu setting, time of day, weather, objects. People only from behind or far away. For crime/accident show only symbolic scenes (police vehicle at night, empty road). Never ask for text, signs, logos or real faces. Keep every scene in the same light and colour mood. Do NOT write the technical photo wording; the system adds it.
+- One English scene description per image: 4 for a small story, 5 for a normal story (number of scenes = number of slides + 1). Scene 1 is the cover: the most representative wide scene. Every scene must show the SPECIFIC subject of THIS story (the exact object, event or place named in the article, e.g. the cobra on a two-wheeler, egg trays at a farm, the farmers' market stalls) - never a generic filler picture; each scene shows a different angle or moment of the same story. Describe what is visible in the Namakkal / Tamil Nadu setting, time of day, weather, objects. People only from behind or far away. For crime/accident show only symbolic scenes (police vehicle at night, empty road). Never ask for text, signs, logos or real faces. Keep every scene in the same light and colour mood. Do NOT write the technical photo wording; the system adds it.
 
 PROOFREAD before answering: Tamil spelling and sandhi, place names (ராசிபுரம், நாமகிரிப்பேட்டை, திருச்செங்கோடு, சேந்தமங்கலம், கொல்லிமலை, மல்லசமுத்திரம், புதுச்சத்திரம், பரமத்தி வேலூர், குமாரபாளையம், பள்ளிப்பாளையம், மோகனூர், எருமப்பட்டி, வெண்ணந்தூர்), and that every fact and number is in the article.

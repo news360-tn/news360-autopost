@@ -253,6 +253,11 @@ def reel_spec(row, spec, images):
     sentences = [s.strip() for s in re.split(r"(?<=[.!?।])\s+", txt) if s.strip()]
     if len(sentences) < 3:
         raise RuntimeError(f"{row['story_id']}: reel script needs at least 3 sentences")
+    # every reel ends with the same follow line (spoken in English by the system)
+    STD = "மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்."
+    if "பின்தொடரு" in sentences[-1] or "Follow" in sentences[-1]:
+        sentences = sentences[:-1]
+    sentences.append(STD)
     body, last = sentences[:-1], sentences[-1]
     facts = []
     for sl in spec.get("slides", []):
@@ -264,7 +269,7 @@ def reel_spec(row, spec, images):
         sents.append({"say": sent, "caption": sent, "fact": fact})
     hook = [(spec.get("hl1") or "").strip(), (spec.get("hl2") or "").strip()]
     return {"v": 3, "story": row["story_id"], "date": spec["date"], "cat": (spec.get("cat") or "").strip(),
-            "location": (spec.get("loc") or "நாமக்கல்")[:30], "voice": "female", "hook": hook,
+            "location": (spec.get("loc") or "நாமக்கல்")[:30], "voice": "male", "hook": hook,
             "images": [str(p) for p in images], "sentences": sents, "outro": {"say": last},
             "scenes": [{"caption": x["caption"]} for x in sents] + [{"caption": last}]}
 

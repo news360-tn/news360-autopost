@@ -219,7 +219,7 @@ def english_outro(work, idx):
     """The brand line is spoken in clear Indian English (Tamil TTS cannot say English words well). Falls back to the Tamil line on any error."""
     try:
         mp3 = work / "outro_en.mp3"
-        subprocess.run([sys.executable, "-m", "edge_tts", "--voice", "en-IN-NeerjaNeural", "--rate=+0%", "--text", OUTRO_EN, "--write-media", str(mp3)], check=True, timeout=60)
+        subprocess.run([sys.executable, "-m", "edge_tts", "--voice", "en-IN-PrabhatNeural", "--rate=+0%", "--text", OUTRO_EN, "--write-media", str(mp3)], check=True, timeout=60)
         out = work / f"line{idx}.wav"
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af",
                         "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,"
@@ -247,14 +247,14 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "tts.py"), str(work / "lines.json"), str(work), spec.get("voice", "female")], check=True)
     english_outro(work, len(texts) - 1)
     speech = sum(wav_dur(work / f"line{i}.wav") for i in range(len(texts)))
-    room = 29.0 - lead - 0.5 - gap * (len(texts) - 1)
+    room = 43.0 - lead - 0.5 - gap * (len(texts) - 1)
     if room > 0 and speech > room:
-        factor = min(1.25, speech / room)
+        factor = min(1.1, speech / room)
         for i in range(len(texts)):
             src, tmp = work / f"line{i}.wav", work / f"line{i}_fast.wav"
             subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(src), "-af", f"atempo={factor:.3f}", str(tmp)], check=True)
             tmp.replace(src)
-        print(f"voice sped up x{factor:.2f} to fit 30 s")
+        print(f"voice sped up x{factor:.2f} to fit the time limit")
     starts, ends, t = [], [], lead
     for i in range(len(texts)):
         d = wav_dur(work / f"line{i}.wav")
