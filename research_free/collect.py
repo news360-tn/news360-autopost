@@ -87,7 +87,9 @@ def main():
     out, log = [], []
     arts = []
     arts = []
-    links = [u for u in sources.candidate_links(40) if u not in seen_src]
+    all_links = sources.candidate_links(40)
+    links = [u for u in all_links if u not in seen_src]
+    log.append(f"links on the news list: {len(all_links)}, not yet filed: {len(links)}")
     from concurrent.futures import ThreadPoolExecutor as _TPE
 
     def _fetch(u):
