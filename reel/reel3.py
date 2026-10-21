@@ -274,6 +274,19 @@ def main(spec_path, out_mp4, page_key="namakkal"):
         b.close()
     enc.stdin.close(); enc.wait()
     print(f"done {out_mp4} {total:.1f}s")
+    # cover photo for Instagram: sharp 9:16 frame with the hook headline, without the moving caption/progress bar
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch()
+            pg = b.new_page(viewport={"width": W, "height": H})
+            pg.goto(page.resolve().as_uri())
+            pg.wait_for_function("document.fonts.status==='loaded'")
+            pg.evaluate("renderAt(0.9)")
+            pg.evaluate("document.getElementById('cap').style.display='none';document.getElementById('prog').style.display='none';document.getElementById('hook').style.opacity=1;")
+            pg.screenshot(path=str(Path(out_mp4).with_name(Path(out_mp4).stem + "_cover.jpg")), type="jpeg", quality=95)
+            b.close()
+    except Exception as e:
+        print("cover failed:", e)
 
 
 def build_audio(work, starts, shots, sents, total):

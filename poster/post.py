@@ -434,12 +434,10 @@ def run_story(row):
             if probs:
                 return fail(row, "reel", "Reel check failed: " + "; ".join(probs))
             checks.append("reel 1080x1920, 10-30 s, voice present and fully pronounceable")
-            try:  # cover photo: sharp frame 0.9 s in (photo + hook headline + brand), 9:16
-                cover = work / "reel_cover.jpg"
-                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "0.9", "-i", str(mp4), "-frames:v", "1", "-q:v", "2", str(cover)], check=True)
-                reel_cover = cover
-            except Exception as e:
-                log("cover frame failed, Instagram will pick one:", e)
+            cov = mp4.with_name(mp4.stem + "_cover.jpg")
+            reel_cover = cov if cov.exists() else None
+            if not reel_cover:
+                log("no cover image made, Instagram will pick a frame")
     except subprocess.CalledProcessError as e:
         return fail(row, "carousel", f"Build failed ({e.cmd[1].split('/')[-1]}, exit {e.returncode})")
     except Exception as e:
