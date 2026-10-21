@@ -436,7 +436,7 @@ def run_story(row):
             except Exception as e:
                 log("voice lookup failed, using the voice model:", e)
             mp4 = render_reel(row, spec, images, work, voice_file)
-            probs = verify.check_reel(mp4, [sc["say"] for sc in rs["scenes"]])
+            probs = verify.check_reel(mp4, [x["say"] for x in rs["sentences"]] + [rs["outro"]["say"]])
             if probs:
                 return fail(row, "reel", "Reel check failed: " + "; ".join(probs))
             checks.append("reel 1080x1920, 10-30 s, voice present and fully pronounceable")
