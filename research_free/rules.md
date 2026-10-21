@@ -14,7 +14,7 @@ OUTPUT JSON KEYS
  "importance": "High | Medium | Low   (High: affects many people today: power shutdown in Rasipuram/Namakkal town, heavy rain alert, big public safety/service news)",
  "post_to": "Namakkal 360 + Rasipuram 360 (collab)  if the place is Rasipuram town or its taluk villages (Namagiripettai, Vennandur, Puduchatram, Pattanam, Mettala, Ayilpatti, Seerapalli, Singalandapuram, Andagalur Gate, Athanur, Mallasamudram, Kurukkapuram, Anaippalayam, Muthukalipatti, Kakkaveri, Vadugam etc.), otherwise  Namakkal 360",
  "slides_spec": {"v":3, "cat":"short Tamil tag e.g. மழை எச்சரிக்கை", "loc":"Tamil place", "hl1":"cover headline, max 40 characters, strong and clear", "hl2":"cover key fact in yellow, max 28 characters", "slides":[{"title":"Tamil title, max 18 characters","lines":["fact line 1","fact line 2","optional line 3"]}]},
- "reel_script": "professional Tamil news-reader script, 6-9 sentences, 55-75 words",
+ "reel_script": "professional Tamil news-reader script, 4-6 sentences, 38-55 words",
  "caption": "Instagram caption",
  "scenes": ["English scene for image 1 (cover)", "scene for image 2", "..."]
 }
@@ -29,9 +29,9 @@ slides_spec rules
 reel_script rules
 - PROFESSIONAL TAMIL NEWS-READER STYLE, as read by a television news anchor: formal, clear, neutral, grammatically correct written-standard Tamil (செய்தி வாசிப்பாளர் நடை). NO village slang or spoken contractions: write உள்ளது (not இருக்கு), இல்லை (not இல்ல), செய்யப்படும், தெரிவிக்கப்பட்டுள்ளது, கேட்டுக்கொள்ளப்படுகின்றனர், அறிவுறுத்தப்பட்டுள்ளது. No "மக்களே கவனிங்க" style addressing.
 - Easy to PRONOUNCE for a voice engine: complete words only. Expand every abbreviation (அக். -> அக்டோபர், கி.மீ. -> கிலோமீட்டர், ரூ. -> ரூபாய், டன் stays டன்). Avoid very long sentences (max 25 words each), avoid brackets, quotes and symbols. Keep sentences connected so the story flows: what happened -> where/when -> numbers/details -> what happens next or what people should do.
-- The FIRST sentence carries the main news straight away. No greeting, no "வணக்கம்".
+- HOOK: the FIRST sentence (max 12 words) is the single most surprising or most useful fact of the story, with the key number or place in it, so viewers do not swipe away in the first 3 seconds. No greeting, no "வணக்கம்", no scene-setting. A reel must run about 18-22 seconds in total, so every sentence must earn its place; drop minor details (they are in the carousel and caption).
 - Write ALL numbers, dates and times as proper Tamil number words for the voice (ஏழு பேர், அக்டோபர் இருபத்தொன்றாம் தேதி, காலை ஒன்பது மணி). NO digits and NO English letters here; the system shows digits on screen.
-- 6-9 sentences, 55-75 words in total (the reel must stay short).
+- 4-6 sentences, 38-55 words in total (the reel must stay short).
 - The LAST sentence is exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
 - No private individuals' names, no source names.
 

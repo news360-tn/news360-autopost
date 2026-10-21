@@ -36,6 +36,8 @@ body{font-family:'NST','CT',sans-serif;color:#fff;position:relative}
 #brand .dt{display:flex;align-items:center;gap:10px;font:700 30px 'NST','CT';text-shadow:0 2px 8px rgba(0,0,0,.8)}
 #brand .dt .ic{font-size:26px;color:var(--yellow)}
 #logo{position:absolute;right:44px;top:50px;width:124px;height:124px;border-radius:50%;z-index:30;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+#big{position:absolute;left:0;right:0;top:760px;z-index:21;text-align:center;opacity:0;font:900 230px/1.1 'CT','NST';color:var(--yellow);-webkit-text-stroke:16px #000;paint-order:stroke fill;text-shadow:0 12px 40px rgba(0,0,0,.6)}
+#bigu{position:absolute;left:0;right:0;top:1010px;z-index:21;text-align:center;opacity:0;font:900 70px/1.2 'CT','NST';color:#fff;-webkit-text-stroke:12px #000;paint-order:stroke fill}
 #hook{position:absolute;left:50px;right:50px;top:380px;z-index:20;text-align:center;opacity:0}
 #hook .h1{font:900 96px/1.12 'CT','NST';color:#fff}
 #hook .h2{font:900 108px/1.12 'CT','NST';color:var(--yellow);margin-top:6px}
@@ -141,10 +143,16 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
         spans = "".join(f'<span id="w{gi}_{k}">{E(w[0])}</span> ' for k, w in enumerate(g["words"]))
         cap_html += f'<div class="ph" id="g{gi}">{spans}</div>'
     hook = spec.get("hook") or ["", ""]
+    big = None
+    for src in [hook[1], hook[0]] + [x.get("fact", "") for x in sents]:
+        m_ = re.search(r"(\d[\d,]*(?:\.\d+)?)\s*([^\d\s,.:;•]{0,14})", src or "")
+        if m_:
+            big = {"n": m_.group(1), "u": m_.group(2)}
+            break
     tick = E("  •  ".join(x for x in [hook[0], hook[1], spec.get("location", "")] if x)) + "  •  "
     data = json.dumps({"shots": shots, "sents": [{"a": s["a"], "b": s["b"], "fact": bool(s.get("fact"))} for s in sents],
                        "caps": [{"a": g["a"], "b": g["b"], "w": [[x[1], x[2]] for x in g["words"]]} for g in caps],
-                       "hook_end": hook_end, "end_t": end_t, "total": total, "n": len(spec["images"])})
+                       "big": big, "hook_end": hook_end, "end_t": end_t, "total": total, "n": len(spec["images"])})
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body style="--accent:{acc}">
 <svg width="0" height="0" style="position:absolute"><filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence id="tb" type="fractalNoise" baseFrequency="0.006 0.010" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="gr" x="0" y="0" width="100%" height="100%"><feTurbulence id="gt" type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="1"/><feColorMatrix type="saturate" values="0"/></filter></svg>
@@ -154,6 +162,7 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
 <div class="pill" style="background:{acc}">{E(spec.get('cat',''))}</div>
 <div class="dt">{R.icon('calendar-days')}{E(spec['date'])}</div></div>
 <img id="logo" src="{logo}">
+<div id="big"></div><div id="bigu"></div>
 <div id="hook"><div class="h1">{E(hook[0])}</div><div class="h2">{E(hook[1])}</div></div>
 {stick}
 <div id="cap">{cap_html}</div>
@@ -196,6 +205,15 @@ window.renderAt=function(t){{
   const hin=ease(cl(t/0.18)), hout=cl((t-(D.hook_end-0.3))/0.3);
   h.style.opacity=(t<D.hook_end)?hin*(1-hout):0;
   h.style.transform='scale('+(0.92+0.08*back(cl(t/0.35)))+')';
+  // big number pop (first 1.9 s): the number counts up and punches in
+  const bg=document.getElementById('big'), bu=document.getElementById('bigu');
+  if(D.big&&t<2.1){{
+    const u=ease(cl((t-0.12)/0.5)), pp=back(cl((t-0.12)/0.35)), out=cl((t-1.7)/0.35);
+    const raw=D.big.n.replace(/,/g,''), val=parseFloat(raw);
+    bg.textContent=(isNaN(val)||raw.indexOf('.')>=0)?D.big.n:Math.round(val*u).toLocaleString('en-IN');
+    bg.style.opacity=(t>=0.12)?cl(pp*2)*(1-out):0; bg.style.transform='scale('+(0.6+0.4*Math.min(1.1,pp))+')';
+    bu.textContent=D.big.u; bu.style.opacity=(t>=0.3&&D.big.u)?cl((t-0.3)/0.2)*(1-out):0;
+  }} else {{bg.style.opacity=0; bu.style.opacity=0;}}
   // fact stickers
   let ki=0;
   D.sents.forEach((s,i)=>{{
@@ -272,7 +290,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "tts.py"), str(work / "lines.json"), str(work), spec.get("voice", "female")], check=True)
     english_outro(work, len(texts) - 1)
     speech = sum(wav_dur(work / f"line{i}.wav") for i in range(len(texts)))
-    room = 43.0 - lead - 0.5 - gap * (len(texts) - 1)
+    room = 26.0 - lead - 0.5 - gap * (len(texts) - 1)
     if room > 0 and speech > room:
         factor = min(1.1, speech / room)
         for i in range(len(texts)):
