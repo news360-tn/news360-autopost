@@ -76,6 +76,7 @@ def cover_html(spec, img, ai):
 <div class="cover-h1">{E(spec['hl1'])}</div>
 <div class="cover-h2">{E(spec.get('hl2',''))}</div>
 <div class="cover-loc"><i data-ic="location-dot"></i>{E(spec.get('loc','நாமக்கல்'))}</div>
+<div style="position:absolute;right:34px;bottom:34px;z-index:6;display:flex;align-items:center;gap:12px;background:#FFCC1F;color:#06132F;font:800 34px/1 'NST','CT',sans-serif;padding:16px 26px 12px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.45)">முழு விவரம் <span style="display:inline-block;width:30px;height:30px"><i data-ic="arrow-right"></i></span></div>
 {AI_CHIP if ai else ''}"""
 
 def detail_html(spec, s, img, ai):
@@ -98,7 +99,10 @@ def page(inner, light=False):
 def follow_slide(date):
     ex = json.loads((HERE / "example_slides_namakkal.json").read_text())
     h = ex["slides"][-1]["html"]
-    return re.sub(r'(<i data-ic="calendar-days"></i>)[^<]+(</div>)', lambda m: m.group(1) + date + m.group(2), h, count=1)
+    h = re.sub(r'(<i data-ic="calendar-days"></i>)[^<]+(</div>)', lambda m: m.group(1) + date + m.group(2), h, count=1)
+    # shares and saves push a post further than likes: ask for them on the last slide
+    h = h.replace('<i data-ic="bell"></i>', '<i data-ic="share-nodes"></i>')
+    return h.replace("புதிய பதிவுகளுக்கு Notification-ஐ ON செய்யுங்கள்", "Save செய்யுங்கள் • தேவைப்படுவோருக்கு Share செய்யுங்கள்")
 
 def shot(pg, path):
     """screenshot at 2x then downscale to 1080x1350: crisp text and photo edges"""

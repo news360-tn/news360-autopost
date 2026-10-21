@@ -65,8 +65,8 @@ def validate(d, article, today_digits=("2026",)):
     if FOLLOW not in cap:
         p.append("caption must contain the exact follow line")
     tags = re.findall(r"#\S+", cap)
-    if not 3 <= len(tags) <= 7:
-        p.append(f"caption needs 4-6 hashtags, has {len(tags)}")
+    if not 3 <= len(tags) <= 5:
+        p.append(f"caption needs 5 hashtags (Instagram max), has {len(tags)}")
     if d.get("importance") not in ("High", "Medium", "Low"):
         p.append("importance must be High, Medium or Low")
     if not (d["post_to"].startswith("Namakkal 360")):

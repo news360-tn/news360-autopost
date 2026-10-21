@@ -194,8 +194,16 @@ def final_caption(row):
     sys.path.insert(0, str(REEL))
     from digits import to_digits
     cap = to_digits((row.get("caption") or "").strip())
-    if TAG not in cap:
-        cap += " " + TAG
+    # Instagram allows at most 5 hashtags: keep #Namakkal360 + the first 4 others, as ONE line at the end
+    tags, seen = [], set()
+    for t in [TAG] + re.findall(r"#[^\s#]+", cap):
+        k = t.lower().rstrip(".,!")
+        if k not in seen:
+            seen.add(k); tags.append(t.rstrip(".,!"))
+    tags = [TAG] + [t for t in tags if t != TAG][:4]
+    body = "\n".join(re.sub(r"#[^\s#]+", "", l).rstrip() for l in cap.split("\n")).rstrip()
+    body = re.sub(r"\n{3,}", "\n\n", body)
+    cap = body + "\n\n" + " ".join(tags[1:] + [TAG])
     if CONFIG.get("ai_label", True) and "AI" not in cap.split("#")[0][-300:]:
         lines = cap.split("\n")
         idx = max([i for i, l in enumerate(lines) if l.strip().startswith("#")] or [len(lines)])
@@ -425,6 +433,25 @@ def publish_reel(token, video_url, caption, collab, cover_url=""):
     return mid, ig("GET", mid, token, fields="permalink").get("permalink", ""), collab_ok, why
 
 
+FIRST_COMMENTS = [
+    "இந்த செய்தி உங்களுக்கு பயனுள்ளதா? தேவைப்படும் நண்பர்களுக்கு Share செய்யுங்கள் 🙏",
+    "உங்கள் பகுதியில் இதன் நிலை என்ன? கமெண்டில் சொல்லுங்கள் 👇",
+    "நாமக்கல் செய்திகளைத் தவறவிடாமல் இருக்க Save செய்து Follow செய்யுங்கள் 📌",
+]
+
+
+def first_comment(token, media_id, sid, k=0):
+    """the page's own first comment (a question / share prompt, no hashtags) to start the conversation. Never raises."""
+    try:
+        if not CONFIG.get("first_comment", True) or not media_id:
+            return
+        msg = FIRST_COMMENTS[(sum(map(ord, sid)) + k) % len(FIRST_COMMENTS)]
+        ig("POST", f"{media_id}/comments", token, message=msg)
+        log("first comment added", media_id)
+    except Exception as e:
+        log("first comment not added (post itself is fine):", e)
+
+
 def publish_story(token, media_url, kind):
     """Instagram Story (image or video) on the same account. Never raises: a story problem must not undo the post."""
     try:
@@ -551,6 +578,7 @@ def run_story(row):
                 token = bridge_get("token", page=PAGE)["token"]
                 mid, link, collab_ok, why = publish_carousel(token, urls, caption, collab)
                 log("carousel posted", sid, link)
+                first_comment(token, mid, sid, 0)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "permalink": link, "media_id": mid,
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab_ok, "checks": note})
                 done.append(("carousel", link))
@@ -577,6 +605,7 @@ def run_story(row):
                     log("cover upload failed:", e)
                 mid, link, collab_ok, why = publish_reel(token, url, caption, collab, cover_url)
                 log("reel posted", sid, link)
+                first_comment(token, mid, sid, 1)
                 publish_story(token, url, "video")
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "permalink": link, "media_id": mid,
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab_ok, "checks": note})
