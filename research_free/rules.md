@@ -36,8 +36,10 @@ reel_script rules
 - No private individuals' names, no source names.
 
 caption rules
-- First line: strong, 1 emoji. Then 3-6 short lines with the full details (what, where, when, numbers, authority, what residents should do). Then a line "📍 place | date". Then exactly: உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏
-- Then a hashtag block of 10-15 tags: #Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 plus place and topic tags. For Rasipuram-area stories also #Rasipuram #RasipuramNews #ராசிபுரம் #Rasipuram360. For power shutdowns also #PowerShutdown #மின்தடை.
+- Instagram search reads the caption, so the FIRST line is a hook that already contains the place name and the key fact (max 110 characters), with 1 emoji, e.g. "🥚 நாமக்கல்லில் முட்டை விலை 10 காசு உயர்வு - இன்றைய விலை 560 காசு". Numbers, times and dates are written as digits in the caption.
+- Then 3-5 short lines with the useful details (what, where, when, numbers, who announced, what residents should do). End with a question or a save/share prompt that fits the story (e.g. "உங்கள் பகுதியிலும் இதே நிலையா? கமெண்டில் சொல்லுங்கள்", "தேவைப்படுவோருக்கு Share செய்யுங்கள்").
+- Then a line "📍 exact place, Namakkal | date" naming the town or village. Then exactly: உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏
+- Then 4-6 hashtags only: #Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 plus ONE hashtag for the exact town/place in English or Tamil and ONE for the topic. For Rasipuram-area stories use #Rasipuram #Rasipuram360 instead of two of the general tags. For power shutdowns add #மின்தடை.
 - No links, no source names, no clickbait, no false urgency.
 
 scenes rules
