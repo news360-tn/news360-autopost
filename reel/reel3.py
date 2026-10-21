@@ -47,12 +47,14 @@ body{font-family:'NST','CT',sans-serif;color:#fff;position:relative}
 .sticker{position:absolute;left:0;top:360px;max-width:940px;z-index:22;background:var(--yellow);color:var(--navy);font:800 46px/1.3 'NST','CT';padding:16px 34px 10px 30px;border-radius:0 24px 24px 0;box-shadow:0 10px 30px rgba(0,0,0,.45);opacity:0}
 .sticker b{color:#C4100F}
 #cap{position:absolute;left:40px;right:40px;top:1110px;height:310px;z-index:25;text-align:center;background:linear-gradient(90deg,rgba(6,19,47,.93),rgba(6,19,47,.82));border-left:16px solid var(--accent);border-radius:8px 30px 30px 8px;box-shadow:0 14px 40px rgba(0,0,0,.5);opacity:0}
-.ph{position:absolute;left:34px;right:30px;top:50%;transform:translateY(-50%);font:800 70px/1.3 'CT','NST';color:#fff;opacity:0;text-shadow:0 4px 14px rgba(0,0,0,.7)}
+.ph{position:absolute;left:52px;right:46px;top:50%;transform:translateY(-50%);font:800 70px/1.3 'CT','NST';color:#fff;opacity:0;text-shadow:0 4px 14px rgba(0,0,0,.7)}
 #tick{position:absolute;left:0;right:0;top:1446px;height:96px;z-index:26;display:flex;overflow:hidden;background:rgba(6,19,47,.95);border-top:6px solid var(--accent)}
 #tick .lab{flex:none;background:var(--red);padding:12px 34px 0;font:900 46px/1.5 'CT','NST';color:#fff}
 #tick .trk{position:relative;flex:1;overflow:hidden}
 #tick .txt{position:absolute;left:0;top:10px;white-space:nowrap;font:700 44px/1.5 'NST','CT';color:#fff}
+.ph span{display:inline-block;transform-origin:50% 80%}
 .ph span.on{color:var(--yellow)}
+#pulse{display:inline-block;width:22px;height:22px;border-radius:50%;background:#fff;margin-right:12px;vertical-align:middle}
 #end{position:absolute;inset:0;z-index:40;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;text-align:center;background:rgba(4,10,28,.55)}
 #end img{width:330px;height:330px;border-radius:50%;box-shadow:0 14px 50px rgba(0,0,0,.6)}
 #end .e1{font:900 76px/1.25 'CT','NST'}
@@ -155,30 +157,34 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
 <div id="hook"><div class="h1">{E(hook[0])}</div><div class="h2">{E(hook[1])}</div></div>
 {stick}
 <div id="cap">{cap_html}</div>
-<div id="tick"><div class="lab">செய்தி</div><div class="trk"><div class="txt" id="ttxt"><span id="cyc">{tick}</span>{tick}{tick}{tick}</div></div></div>
+<div id="tick"><div class="lab" id="lab"><span id="pulse"></span>செய்தி</div><div class="trk"><div class="txt" id="ttxt"><span id="cyc">{tick}</span>{tick}{tick}{tick}</div></div></div>
 <div id="end"><img src="{logo}"><div class="e1">நம்ம நாமக்கல் செய்திகள்</div><div class="e2">FOLLOW @namakkal.360</div><div class="e3">{E(spec.get('location',''))}</div></div>
 <script>
 const D={data};
 const cl=x=>Math.max(0,Math.min(1,x)), ease=x=>1-Math.pow(1-x,3), back=x=>{{const c=1.70158,c3=c+1;return 1+c3*Math.pow(x-1,3)+c*Math.pow(x-1,2)}};
-window.renderAt=function(t){{
-  let active=null;
-  D.shots.forEach(s=>{{if(t>=s.a&&t<s.b)active=s}});
-  if(!active)active=D.shots[D.shots.length-1];
-  const blurEnd=t>=D.end_t?Math.min(1,(t-D.end_t)/0.3):0;
-  for(let i=0;i<D.n;i++){{const el=document.getElementById('p'+i); el.style.opacity=(i===active.img)?1:0;}}
-  const el=document.getElementById('p'+active.img);
-  const dur=Math.max(0.5,active.b-active.a), pr=cl((t-active.a)/Math.min(dur,CUTMAX)), k=t-active.a;
-  const pe=pr<0.5?2*pr*pr:1-Math.pow(-2*pr+2,2)/2;   // ease in/out camera move
-  const z=active.z0+(active.z1-active.z0)*pe;
-  const punch=1+0.05*Math.max(0,1-k/0.18);
-  // handheld camera: layered slow noise (shake grows a little on the cut)
+function place(sh_,t,el,extra){{
+  const dur=Math.max(0.5,sh_.b-sh_.a), tt=Math.min(t,sh_.b), pr=cl((tt-sh_.a)/Math.min(dur,CUTMAX)), k=tt-sh_.a;
+  const pe=pr<0.5?2*pr*pr:1-Math.pow(-2*pr+2,2)/2;
+  const z=sh_.z0+(sh_.z1-sh_.z0)*pe;
+  const punch=1+0.07*Math.max(0,1-k/0.22);
   const sh=0.45+0.5*Math.max(0,1-k/0.5);
   const hx=(5*Math.sin(t*1.3)+2.6*Math.sin(t*2.9+1)+1.2*Math.sin(t*7.1))*sh, hy=(4.2*Math.sin(t*1.1+2)+2.2*Math.sin(t*3.3)+1.0*Math.sin(t*6.3+1))*sh, hr=0.32*Math.sin(t*0.9)+0.12*Math.sin(t*2.3);
-  el.style.transformOrigin=(active.fx*100)+'% '+(active.fy*100)+'%';
-  el.style.transform='translate('+(active.px*(pe-0.5)+hx)+'px,'+(active.py*(pe-0.5)+hy)+'px) rotate('+hr+'deg) scale('+(z*punch*1.025)+')';
-  // living air: slow ripple of the picture (heat / wind / water shimmer)
-  el.style.filter='none';
-  const wb=(k<0.14&&active.a>0)?(6*(1-k/0.14)):0;
+  el.style.transformOrigin=(sh_.fx*100)+'% '+(sh_.fy*100)+'%';
+  el.style.transform='translate('+(sh_.px*(pe-0.5)+hx+(extra||0))+'px,'+(sh_.py*(pe-0.5)+hy)+'px) rotate('+hr+'deg) scale('+(z*punch*1.025)+')';
+}}
+window.renderAt=function(t){{
+  let ai=D.shots.length-1;
+  D.shots.forEach((s,i)=>{{if(t>=s.a&&t<s.b)ai=i}});
+  const active=D.shots[ai], k=t-active.a;
+  const blurEnd=t>=D.end_t?Math.min(1,(t-D.end_t)/0.3):0;
+  const prev=ai>0?D.shots[ai-1]:null;
+  const TR=0.28, trans=(prev&&prev.img!==active.img&&k<TR)?cl(k/TR):1;   // push + dissolve between photos
+  for(let i=0;i<D.n;i++){{const e=document.getElementById('p'+i); e.style.opacity=0; e.style.zIndex=0; e.style.filter='none';}}
+  const el=document.getElementById('p'+active.img);
+  el.style.opacity=ease(trans); el.style.zIndex=2;
+  place(active,t,el,(1-ease(trans))*120);
+  if(trans<1){{const pe_=document.getElementById('p'+prev.img); pe_.style.opacity=1; pe_.style.zIndex=1; place(prev,t,pe_,-ease(trans)*160);}}
+  const wb=(k<0.14&&active.a>0&&trans>=1)?(6*(1-k/0.14)):0;
   if(wb+blurEnd>0)el.style.filter='blur('+(wb+blurEnd*22)+'px)';
   document.querySelectorAll('.dp').forEach(d=>{{const sd=+d.dataset.s,v=+d.dataset.v;d.style.transform='translate('+(30*Math.sin(t*0.5*v+sd))+'px,'+(-(t*40*v)%1900)+'px)';d.style.opacity=0.18+0.18*Math.sin(t*1.2*v+sd);}});
   document.getElementById('sweep').style.transform='translateX('+(((t*90)%2600)-900)+'px)';
@@ -198,18 +204,23 @@ window.renderAt=function(t){{
     const a=s.a+0.1,b=s.b+0.15;
     const p=back(cl((t-a)/0.35)), out=cl((t-(b-0.2))/0.2);
     st.style.opacity=(t>=a&&t<b)?cl(p*2)*(1-out):0;
-    st.style.transform='translateX('+((1-Math.min(1,p))*-900)+'px)';
+    st.style.transform='translateX('+((1-Math.min(1,p))*-900)+'px) scale('+(1+0.05*Math.sin(Math.PI*cl((t-a)/0.5)))+')';
   }});
-  document.getElementById('cap').style.opacity=(t<D.end_t)?1:0;
-  document.getElementById('tick').style.opacity=(t<D.end_t)?1:0;
+  const pin=ease(cl((t-0.15)/0.45)), pend=t<D.end_t?1:0;
+  const capE=document.getElementById('cap'), tkE=document.getElementById('tick');
+  capE.style.opacity=pend; capE.style.transform='translateX('+(-(1-pin)*1100)+'px)';
+  tkE.style.opacity=pend; tkE.style.transform='translateY('+((1-ease(cl((t-0.35)/0.45)))*140)+'px)';
+  document.getElementById('pulse').style.opacity=0.55+0.45*Math.sin(t*6);
+  const lab=document.getElementById('lab'); lab.style.filter='brightness('+(1+0.25*Math.max(0,Math.sin(t*3.1)))+')';
   const cy=document.getElementById('cyc').offsetWidth||1;
   document.getElementById('ttxt').style.transform='translateX('+(-((t*150)%cy))+'px)';
   // captions
   D.caps.forEach((g,gi)=>{{
     const ge=document.getElementById('g'+gi);
     const on=(t>=g.a&&t<g.b)&&t<D.end_t;
-    ge.style.opacity=on?1:0;
-    if(on){{g.w.forEach((w,k)=>{{document.getElementById('w'+gi+'_'+k).className=(t>=w[0]&&t<w[1])?'on':''}});}}
+    ge.style.opacity=on?cl((t-g.a)/0.1):0;
+    if(on){{const u=ease(cl((t-g.a)/0.22)); ge.style.transform='translateY(calc(-50% + '+(26*(1-u))+'px))';
+      g.w.forEach((w,k)=>{{const sp=document.getElementById('w'+gi+'_'+k),act=(t>=w[0]&&t<w[1]); sp.className=act?'on':''; sp.style.transform=act?'scale('+(1+0.04*Math.sin(Math.PI*cl((t-w[0])/Math.max(0.12,w[1]-w[0])))) +')':'none';}});}}
   }});
   const e=document.getElementById('end');
   e.style.opacity=ease(cl((t-D.end_t)/0.3));
