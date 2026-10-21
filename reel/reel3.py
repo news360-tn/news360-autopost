@@ -373,12 +373,38 @@ def build_audio(work, starts, shots, sents, total):
     if not labels:
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(work / "voice.wav"), "-af", "volume=1.9,alimiter=limit=0.8:level=0",
                         "-ar", "44100", str(work / "mix.wav")], check=True)
+        add_music(work, total)
         return
     fx = ";".join(parts) + ";" + "".join(labels) + f"amix=inputs={len(labels)}:normalize=0,volume=0.22,apad,atrim=0:{total}[o]"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-filter_complex", fx, "-map", "[o]", "-ar", "44100", str(work / "sfx.wav")], check=True)
     mixf = "[0:a]volume=1.9,acompressor=threshold=0.2:ratio=3[vo];[1:a]volume=1[sf];[vo][sf]amix=inputs=2:normalize=0,alimiter=limit=0.8:level=0[m]"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(work / "voice.wav"), "-i", str(work / "sfx.wav"),
                     "-filter_complex", mixf, "-map", "[m]", "-ar", "44100", str(work / "mix.wav")], check=True)
+    add_music(work, total)
+
+
+def add_music(work, total):
+    """quiet background bed under the voice (ducks while the voice speaks). Own tracks in reel/music/ are used if present, otherwise an
+    original generated bed. Any failure keeps the reel without music."""
+    try:
+        mix = work / "mix.wav"
+        here = Path(__file__).resolve().parent
+        tracks = sorted([p for p in (here / "music").glob("*") if p.suffix.lower() in (".mp3", ".wav", ".m4a")])
+        bed = work / "bed_music.wav"
+        if tracks:
+            src = tracks[sum(map(ord, work.name)) % len(tracks)]
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "-1", "-i", str(src), "-t", f"{total:.2f}", "-ac", "1", "-ar", "44100", str(bed)], check=True)
+        else:
+            subprocess.run([sys.executable, str(here / "music.py"), str(bed), f"{total:.2f}", str(sum(map(ord, work.name)) % 4)], check=True)
+        out = work / "mix_music.wav"
+        fx = ("[1:a]volume=0.4,afade=t=out:st=%.2f:d=1.2[mu];[0:a]asplit=2[vo][sc];"
+              "[mu][sc]sidechaincompress=threshold=0.02:ratio=10:attack=15:release=350[duck];"
+              "[vo][duck]amix=inputs=2:normalize=0,alimiter=limit=0.9:level=0[m]") % max(0.5, total - 1.3)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mix), "-i", str(bed), "-filter_complex", fx, "-map", "[m]", "-ar", "44100", str(out)], check=True)
+        out.replace(mix)
+        print("background music added")
+    except Exception as e:
+        print("music skipped:", e)
 
 
 if __name__ == "__main__":

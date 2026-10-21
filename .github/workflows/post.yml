@@ -70,6 +70,7 @@ jobs:
       matrix: ${{ fromJson(needs.check.outputs.matrix) }}
     env:
       TA_MODEL: ${{ github.workspace }}/reel/models/ta
+      SLOT_MIN: ${{ matrix.slot }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

@@ -27,6 +27,7 @@ BRIDGE_URL = os.environ.get("BRIDGE_URL", "")
 BRIDGE_KEY = os.environ.get("BRIDGE_KEY", "")
 CLOUD = os.environ.get("CLOUDINARY_CLOUD", "")
 PRESET = os.environ.get("CLOUDINARY_PRESET", "")
+START = time.time()
 DRY = os.environ.get("DRY_RUN", "") in ("1", "true", "yes")
 IG_HOST = "https://graph.instagram.com"
 IG_VER = os.environ.get("IG_API_VERSION", "")
@@ -492,6 +493,16 @@ def run_story(row):
     note = "; ".join(checks)
     log("all checks passed:", note)
 
+    # stagger: stories of one run are published SLOT_MIN minutes apart (account reach is better than a burst of posts)
+    try:
+        slot = float(os.environ.get("SLOT_MIN", "0") or 0)
+    except ValueError:
+        slot = 0
+    wait_s = START + slot * 60 - time.time()
+    if slot and not DRY and wait_s > 0:
+        log(f"waiting {wait_s / 60:.0f} min for this story's posting slot")
+        time.sleep(wait_s)
+
     # 2. upload and publish
     done = []
     voice = "recorded" if voice_file else "voice model"
@@ -573,9 +584,9 @@ def main():
         out = os.environ.get("GITHUB_OUTPUT")
         if out:
             with open(out, "a") as f:
-                ids = [r["story_id"] for r in pick_all(rows)][:12] if n else []
+                ids = [r["story_id"] for r in pick_all(rows)][:3] if n else []   # 3 stories per run, 25 min apart
                 f.write(f"ready={1 if n else 0}\n")
-                f.write("matrix=" + json.dumps({"story": ids}) + "\n")
+                f.write("matrix=" + json.dumps({"include": [{"story": i, "slot": k * 25} for k, i in enumerate(ids)]}) + "\n")
         return
     want = sys.argv[2] if len(sys.argv) > 2 else ""
     row = next((r for r in pick_all(rows) if r.get("story_id") == want), None) if want else pick(rows)
