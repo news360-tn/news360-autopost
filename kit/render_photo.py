@@ -24,18 +24,16 @@ html,body{width:1080px;height:1350px}
 .full{inset:0}
 .shade{position:absolute;inset:0;background:
   linear-gradient(180deg,rgba(6,18,50,.55) 0%,rgba(6,18,50,0) 22%,rgba(6,18,50,0) 38%,rgba(6,18,50,.88) 66%,#061232 100%)}
-.top-img{left:0;right:0;top:0;height:640px}
-.top-shade{position:absolute;left:0;right:0;top:0;height:640px;background:linear-gradient(180deg,rgba(6,18,50,.5) 0%,rgba(6,18,50,0) 30%,rgba(6,18,50,0) 70%,rgba(6,18,50,.55) 100%)}
-.cut{position:absolute;left:0;right:0;top:560px;height:130px;background:var(--navy);clip-path:polygon(0 60%,100% 0,100% 100%,0 100%)}
-.cut:before{content:"";position:absolute;left:0;right:0;top:0;height:100%;background:var(--red);clip-path:polygon(0 52%,100% 0,100% 12%,0 66%)}
-.panel{position:absolute;left:0;right:0;top:600px;bottom:0;background:linear-gradient(180deg,var(--navy) 0%,#061232 100%);z-index:0}
-.cat2{position:absolute;left:36px;top:560px;z-index:3;background:var(--red);color:#fff;font:800 40px 'BT','NST';padding:10px 30px 2px;border-radius:12px;transform:rotate(-2deg)}
-.brush2{position:absolute;left:30px;top:700px;max-width:1010px;background:var(--yellow);color:var(--navy);padding:12px 36px 4px 30px;border-radius:10px;transform:rotate(-1deg);z-index:3}
+.top-img{left:0;right:0;top:0;height:1350px;background-position:center 30%}
+.top-shade{position:absolute;left:0;right:0;top:0;height:1350px;background:linear-gradient(180deg,rgba(6,18,50,.55) 0%,rgba(6,18,50,0) 20%,rgba(6,18,50,0) 30%,rgba(6,18,50,.82) 47%,rgba(6,18,50,.95) 60%,#061232 100%)}
+.cut,.panel{display:none}
+.cat2{position:absolute;left:36px;top:420px;z-index:3;background:var(--red);color:#fff;font:800 40px 'BT','NST';padding:10px 30px 2px;border-radius:12px;transform:rotate(-2deg)}
+.brush2{position:absolute;left:30px;top:520px;max-width:1010px;background:var(--yellow);color:var(--navy);padding:12px 36px 4px 30px;border-radius:10px;transform:rotate(-1deg);z-index:3}
 .brush2 h2{font:800 66px/1.15 'BT','NST';white-space:nowrap}
-.pts{position:absolute;left:36px;right:36px;top:820px;bottom:96px;display:flex;flex-direction:column;gap:18px;z-index:3;justify-content:flex-start}
+.pts{position:absolute;left:36px;right:36px;top:650px;bottom:60px;display:flex;flex-direction:column;gap:18px;z-index:3;justify-content:flex-start}
 .pt{display:flex;gap:20px;align-items:flex-start;background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.14);border-radius:22px;padding:16px 24px 12px}
-.pt .dot{flex:0 0 18px;height:18px;border-radius:50%;background:var(--yellow);margin-top:24px}
-.pt .tx{font:700 40px/1.38 'NST','CT';color:#fff}
+.pt .dot{flex:0 0 58px;height:58px;border-radius:50%;background:var(--yellow);color:#061232;font:900 40px/58px 'CT';text-align:center;margin-top:8px;padding-top:4px}
+.pt .tx{font:700 46px/1.38 'NST','CT';color:#fff}
 .pt .tx b{color:var(--yellow)}
 .cover-cat{position:absolute;left:40px;top:640px;z-index:3;background:var(--red);color:#fff;font:800 52px 'BT','NST';padding:12px 40px 2px;clip-path:polygon(4% 0,100% 6%,96% 100%,0 92%);transform:rotate(-3deg)}
 .cover-h1{position:absolute;left:40px;right:40px;top:740px;height:330px;z-index:3;font:800 104px/1.12 'BT','NST';color:#fff;text-shadow:0 6px 0 #061232,0 12px 26px rgba(0,0,0,.55);display:flex;align-items:center}
@@ -57,7 +55,7 @@ document.fonts.ready.then(function(){
   var pts=document.querySelector('.pts');
   if(pts){var lim=pts.clientHeight,t=null;
     document.querySelectorAll('.pt .tx').forEach(function(x){x.dataset.s=parseFloat(getComputedStyle(x).fontSize)});
-    var size=40;while(pts.scrollHeight>lim&&size>26){size-=2;document.querySelectorAll('.pt .tx').forEach(function(x){x.style.fontSize=size+'px'});}}
+    var size=46;while(pts.scrollHeight>lim&&size>26){size-=2;document.querySelectorAll('.pt .tx').forEach(function(x){x.style.fontSize=size+'px'});}}
   var bad=0;
   if(h&&h.scrollHeight>334)bad=1;
   if(h2&&h2.scrollWidth>1004)bad=1;
@@ -81,7 +79,7 @@ def cover_html(spec, img, ai):
 {AI_CHIP if ai else ''}"""
 
 def detail_html(spec, s, img, ai):
-    pts = "".join(f'<div class="pt"><div class="dot"></div><div class="tx">{l}</div></div>' for l in s["lines"])
+    pts = "".join(f'<div class="pt"><div class="dot">{n}</div><div class="tx">{l}</div></div>' for n, l in enumerate(s["lines"], 1))
     return f"""<div class="photo top-img" style="background-image:url('{uri(img)}')"></div><div class="top-shade"></div>
 <div class="panel"></div><div class="cut"></div>
 <div class="date"><i data-ic="calendar-days"></i>{E(spec['date'])}</div>
@@ -102,6 +100,16 @@ def follow_slide(date):
     h = ex["slides"][-1]["html"]
     return re.sub(r'(<i data-ic="calendar-days"></i>)[^<]+(</div>)', lambda m: m.group(1) + date + m.group(2), h, count=1)
 
+def shot(pg, path):
+    """screenshot at 2x then downscale to 1080x1350: crisp text and photo edges"""
+    from PIL import Image
+    pg.screenshot(path=str(path), clip={"x": 0, "y": 0, "width": 1080, "height": 1350})
+    im = Image.open(path).convert("RGB")
+    if im.size != (1080, 1350):
+        im = im.resize((1080, 1350), Image.LANCZOS)
+    im.save(path)
+
+
 def main(spec_path, images_dir, out_dir, ai=False):
     spec = json.loads(Path(spec_path).read_text(encoding="utf-8"))
     imgs = sorted(Path(images_dir).glob("img*.jpg"), key=lambda p: int(re.search(r"(\d+)", p.stem).group(1)))
@@ -117,7 +125,7 @@ def main(spec_path, images_dir, out_dir, ai=False):
     clipped = []
     with sync_playwright() as p:
         b = p.chromium.launch()
-        pg = b.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=1)
+        pg = b.new_page(viewport={"width": 1080, "height": 1350}, device_scale_factor=2)
         for name, inner in pages:
             hp = (Path(out_dir) / (Path(name).stem + ".html")).resolve()
             hp.write_text(page(inner), encoding="utf-8")
@@ -126,7 +134,7 @@ def main(spec_path, images_dir, out_dir, ai=False):
             pg.wait_for_timeout(250)
             if pg.evaluate("document.body.dataset.overflow") == "1":
                 clipped.append(name)
-            pg.screenshot(path=str(Path(out_dir) / name), clip={"x": 0, "y": 0, "width": 1080, "height": 1350})
+            shot(pg, Path(out_dir) / name)
             print("rendered", name)
         name = f"{story}_slide{len(pages) + 1}_follow.png"
         fs = {"file": name, "html": follow_slide(spec["date"])}
@@ -135,7 +143,7 @@ def main(spec_path, images_dir, out_dir, ai=False):
         pg.goto("file://" + str(hp))
         pg.wait_for_function("document.body.dataset.ready === '1'", timeout=20000)
         pg.wait_for_timeout(250)
-        pg.screenshot(path=str(Path(out_dir) / name), clip={"x": 0, "y": 0, "width": 1080, "height": 1350})
+        shot(pg, Path(out_dir) / name)
         print("rendered", name)
         b.close()
     if clipped:

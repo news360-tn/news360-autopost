@@ -14,7 +14,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
-from PIL import Image
+from PIL import Image, ImageFilter
 
 ROOT = Path(__file__).resolve().parent.parent
 KIT = ROOT / "kit"
@@ -197,9 +197,13 @@ def fetch_images(row, work):
         raw = work / f"raw{i}"
         raw.write_bytes(r.content)
         im = Image.open(raw).convert("RGB")
-        im.thumbnail((2000, 3000))
+        if im.width < 1800:  # upscale small AI images so zooming and cropping stay sharp
+            f = 1800 / im.width
+            im = im.resize((round(im.width * f), round(im.height * f)), Image.LANCZOS)
+            im = im.filter(ImageFilter.UnsharpMask(radius=1.4, percent=70, threshold=2))
+        im.thumbnail((2600, 4000))
         dst = work / f"img{i}.jpg"
-        im.save(dst, "JPEG", quality=93)
+        im.save(dst, "JPEG", quality=96, subsampling=0)
         raw.unlink()
         out.append(dst)
     return out
@@ -230,23 +234,19 @@ def reel_spec(row, spec, images):
     if len(sentences) < 3:
         raise RuntimeError(f"{row['story_id']}: reel script needs at least 3 sentences")
     body, last = sentences[:-1], sentences[-1]
-    n = len(images)
-    scenes = []
-    titles = [s.get("title", "") for s in spec["slides"]]
+    facts = []
+    for sl in spec.get("slides", []):
+        for ln in sl.get("lines", [])[:1]:
+            facts.append(ln)
+    sents = []
     for i, sent in enumerate(body):
-        k = min(n - 1, round(i * (n - 1) / max(1, len(body) - 1))) if len(body) > 1 else 0
-        sc = {"type": "photo", "image": str(images[k]), "say": sent, "caption": sent}
-        if i == 0:
-            sc["tag"] = (spec.get("cat") or "").strip()
-            sc["big"] = spec.get("hl1", "")
-        else:
-            t = titles[min(i - 1, len(titles) - 1)] if titles else ""
-            if t:
-                sc["tag"] = t
-        scenes.append(sc)
-    scenes.append({"type": "outro", "say": last, "caption": "நாமக்கல் 360 – Follow செய்யுங்கள்"})
-    return {"story": row["story_id"], "date": spec["date"], "location": (spec.get("loc") or "நாமக்கல்")[:30],
-            "voice": "female", "ai_label": bool(CONFIG.get("ai_label", True)), "scenes": scenes}
+        fact = facts[(i - 1) % len(facts)] if (i >= 1 and facts) else ""
+        sents.append({"say": sent, "caption": sent, "fact": fact})
+    hook = [(spec.get("hl1") or "").strip(), (spec.get("hl2") or "").strip()]
+    return {"v": 3, "story": row["story_id"], "date": spec["date"], "cat": (spec.get("cat") or "").strip(),
+            "location": (spec.get("loc") or "நாமக்கல்")[:30], "voice": "female", "hook": hook,
+            "images": [str(p) for p in images], "sentences": sents, "outro": {"say": last},
+            "scenes": [{"caption": x["caption"]} for x in sents] + [{"caption": last}]}
 
 
 def render_reel(row, spec, images, work, voice_file=None):
@@ -256,7 +256,7 @@ def render_reel(row, spec, images, work, voice_file=None):
     if voice_file:
         env["VOICE_FILE"] = str(voice_file)
     mp4 = work / f"{row['story_id']}_reel.mp4"
-    subprocess.run([sys.executable, str(REEL / "reel.py"), str(work / "reel.json"), str(mp4), PAGE], check=True, env=env)
+    subprocess.run([sys.executable, str(REEL / "reel3.py"), str(work / "reel.json"), str(mp4), PAGE], check=True, env=env)
     return mp4
 
 
