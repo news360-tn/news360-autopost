@@ -536,7 +536,7 @@ var PROMPT_RULES = 'READ THIS FIRST - STRICT RULES (follow every one):\n' +
   '1. Make EACH image as its OWN separate single image: one prompt = one image generation = one file. Do ONE image generation per prompt, one after another. Never combine prompts. If you are about to merge two prompts into one picture, STOP and make them separately.\n' +
   '1b. Every image is ONE continuous photograph taken with ONE camera from ONE angle: no panels, no strips, no tiles, no borders, no split frames, no inset pictures, no captions or labels written on the image.\n' +
   '2. NEVER make a collage, grid, contact sheet, storyboard, multi-panel, split-screen or "all scenes in one picture". Every image shows exactly ONE scene filling the whole frame.\n' +
-  '3. Every image is a single full-frame tall vertical 9:16 portrait, 1080x1920 or larger, highest resolution, ultra-sharp, photorealistic, no text, letters, numbers or logos.\n' +
+  '3. Every image is a single full-frame tall vertical 9:16 portrait, 1080x1920 or larger, highest resolution, MAXIMUM CLARITY: tack-sharp focus over the whole picture, crisp detail, clean and noise-free, no blur or soft focus, no painterly or over-smoothed AI look, photorealistic, no text, letters, numbers or logos. Generate at the largest size and best quality available.\n' +
   '4. Do NOT crop, resize, compress, sharpen or edit the images after creating them. Use the original generated image files.\n' +
   '5. Name each file exactly as its FILE name below (for example RN-26_1.png).\n' +
   '6. At the end, if you can run code: make ZIP files with the separate original image files (store them as they are, no re-compression, no folders, no resizing). Each zip must be SMALLER THAN 24 MB (email limit). Put WHOLE stories in a zip: never split one story across two zips. Use as many zips as needed (usually about 15-20 images per zip) and name them BATCH_part1.zip, BATCH_part2.zip, BATCH_part3.zip and so on. If everything fits under 24 MB, make just BATCH.zip. Give me a separate downloadable link for each zip and tell me its size in MB and the number of images in it. If you cannot make zips, list every file so I can download each one.\n' +
@@ -550,7 +550,7 @@ function sendPromptEmail_(batch, items) {
     lines.push(it.id + ' | ' + it.ta + ' | ' + it.prompts.length + ' images | ' + it.post_to + ' | ' + it.importance + ' | post: ' + (it.post_time || 'right after your reply'));
     summary.push('| ' + it.id + ' | ' + it.ta + ' | ' + it.en + ' | ' + it.prompts.length + ' |');
     md.push('## STORY ' + it.id + ' - ' + it.ta + ' (' + it.en + ') - ' + it.prompts.length + ' images');
-    it.prompts.forEach(function (pr, k) { md.push('### FILE: ' + it.id + '_' + (k + 1) + '.png\nCreate this as ONE separate single image (not a collage):\n' + pr.trim() + '\n'); });
+    it.prompts.forEach(function (pr, k) { md.push('### FILE: ' + it.id + '_' + (k + 1) + '.png\nCreate this as ONE separate single image (not a collage), with maximum clarity and sharpness:\n' + pr.trim() + '\n'); });
   });
   var head = '# NEWS360 IMAGE PROMPTS - ' + batch + '\n## INSTRUCTIONS FOR CHATGPT (copy this whole file into ChatGPT, then follow it)\nYou are an image generator. Total separate images to create: ' + total + '.\n' +
     PROMPT_RULES.replace('BATCH.zip', batch + '.zip') + '## SUMMARY\n| Story ID | Tamil headline | English headline | Images |\n|---|---|---|---|\n' + summary.join('\n') + '\n\n';

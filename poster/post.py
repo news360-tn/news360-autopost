@@ -14,7 +14,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
-from PIL import Image, ImageFilter
+from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
 KIT = ROOT / "kit"
@@ -217,10 +217,16 @@ def fetch_images(row, work):
         raw = work / f"raw{i}"
         raw.write_bytes(r.content)
         im = Image.open(raw).convert("RGB")
-        if im.width < 1800:  # upscale small AI images so zooming and cropping stay sharp
-            f = 1800 / im.width
+        if im.width < 2160:  # upscale small AI images so zooming and cropping stay sharp
+            f = 2160 / im.width
             im = im.resize((round(im.width * f), round(im.height * f)), Image.LANCZOS)
-            im = im.filter(ImageFilter.UnsharpMask(radius=1.4, percent=70, threshold=2))
+        # enhance: gentle denoise, local contrast, colour, sharpening (keeps the look natural)
+        im = im.filter(ImageFilter.MedianFilter(3)) if im.width * im.height < 6_000_000 else im
+        im = ImageOps.autocontrast(im, cutoff=0.4)
+        im = ImageEnhance.Contrast(im).enhance(1.06)
+        im = ImageEnhance.Color(im).enhance(1.08)
+        im = im.filter(ImageFilter.UnsharpMask(radius=2.0, percent=60, threshold=2))
+        im = im.filter(ImageFilter.UnsharpMask(radius=0.8, percent=45, threshold=2))
         im.thumbnail((2600, 4000))
         dst = work / f"img{i}.jpg"
         im.save(dst, "JPEG", quality=96, subsampling=0)

@@ -46,8 +46,12 @@ body{font-family:'NST','CT',sans-serif;color:#fff;position:relative}
 #grain{position:absolute;inset:0;z-index:8;pointer-events:none;opacity:.10;mix-blend-mode:overlay}
 .sticker{position:absolute;left:0;top:360px;max-width:940px;z-index:22;background:var(--yellow);color:var(--navy);font:800 46px/1.3 'NST','CT';padding:16px 34px 10px 30px;border-radius:0 24px 24px 0;box-shadow:0 10px 30px rgba(0,0,0,.45);opacity:0}
 .sticker b{color:#C4100F}
-#cap{position:absolute;left:40px;right:40px;top:1150px;height:190px;z-index:25;display:flex;align-items:center;justify-content:center;text-align:center}
-.ph{position:absolute;left:0;right:0;font:800 78px/1.25 'CT','NST';color:#fff;opacity:0;-webkit-text-stroke:12px #000;paint-order:stroke fill;text-shadow:0 8px 24px rgba(0,0,0,.6)}
+#cap{position:absolute;left:40px;right:40px;top:1110px;height:310px;z-index:25;text-align:center;background:linear-gradient(90deg,rgba(6,19,47,.93),rgba(6,19,47,.82));border-left:16px solid var(--accent);border-radius:8px 30px 30px 8px;box-shadow:0 14px 40px rgba(0,0,0,.5);opacity:0}
+.ph{position:absolute;left:34px;right:30px;top:50%;transform:translateY(-50%);font:800 70px/1.3 'CT','NST';color:#fff;opacity:0;text-shadow:0 4px 14px rgba(0,0,0,.7)}
+#tick{position:absolute;left:0;right:0;top:1446px;height:96px;z-index:26;display:flex;overflow:hidden;background:rgba(6,19,47,.95);border-top:6px solid var(--accent)}
+#tick .lab{flex:none;background:var(--red);padding:12px 34px 0;font:900 46px/1.5 'CT','NST';color:#fff}
+#tick .trk{position:relative;flex:1;overflow:hidden}
+#tick .txt{position:absolute;left:0;top:10px;white-space:nowrap;font:700 44px/1.5 'NST','CT';color:#fff}
 .ph span.on{color:var(--yellow)}
 #end{position:absolute;inset:0;z-index:40;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;text-align:center;background:rgba(4,10,28,.55)}
 #end img{width:330px;height:330px;border-radius:50%;box-shadow:0 14px 50px rgba(0,0,0,.6)}
@@ -135,10 +139,11 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
         spans = "".join(f'<span id="w{gi}_{k}">{E(w[0])}</span> ' for k, w in enumerate(g["words"]))
         cap_html += f'<div class="ph" id="g{gi}">{spans}</div>'
     hook = spec.get("hook") or ["", ""]
+    tick = E("  •  ".join(x for x in [hook[0], hook[1], spec.get("location", "")] if x)) + "  •  "
     data = json.dumps({"shots": shots, "sents": [{"a": s["a"], "b": s["b"], "fact": bool(s.get("fact"))} for s in sents],
                        "caps": [{"a": g["a"], "b": g["b"], "w": [[x[1], x[2]] for x in g["words"]]} for g in caps],
                        "hook_end": hook_end, "end_t": end_t, "total": total, "n": len(spec["images"])})
-    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>
+    return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body style="--accent:{acc}">
 <svg width="0" height="0" style="position:absolute"><filter id="wob" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence id="tb" type="fractalNoise" baseFrequency="0.006 0.010" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/></filter>
 <filter id="gr" x="0" y="0" width="100%" height="100%"><feTurbulence id="gt" type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="1"/><feColorMatrix type="saturate" values="0"/></filter></svg>
 <div id="stage">{imgs}</div><div id="dust">{dust}</div><div id="sweep"></div><svg id="grain" width="1080" height="1920"><rect width="1080" height="1920" filter="url(#gr)"/></svg><div id="shade"></div><div id="vig"></div><div id="flash"></div>
@@ -150,6 +155,7 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
 <div id="hook"><div class="h1">{E(hook[0])}</div><div class="h2">{E(hook[1])}</div></div>
 {stick}
 <div id="cap">{cap_html}</div>
+<div id="tick"><div class="lab">செய்தி</div><div class="trk"><div class="txt" id="ttxt"><span id="cyc">{tick}</span>{tick}{tick}{tick}</div></div></div>
 <div id="end"><img src="{logo}"><div class="e1">நம்ம நாமக்கல் செய்திகள்</div><div class="e2">FOLLOW @namakkal.360</div><div class="e3">{E(spec.get('location',''))}</div></div>
 <script>
 const D={data};
@@ -166,16 +172,14 @@ window.renderAt=function(t){{
   const z=active.z0+(active.z1-active.z0)*pe;
   const punch=1+0.05*Math.max(0,1-k/0.18);
   // handheld camera: layered slow noise (shake grows a little on the cut)
-  const sh=1+0.8*Math.max(0,1-k/0.5);
+  const sh=0.45+0.5*Math.max(0,1-k/0.5);
   const hx=(5*Math.sin(t*1.3)+2.6*Math.sin(t*2.9+1)+1.2*Math.sin(t*7.1))*sh, hy=(4.2*Math.sin(t*1.1+2)+2.2*Math.sin(t*3.3)+1.0*Math.sin(t*6.3+1))*sh, hr=0.32*Math.sin(t*0.9)+0.12*Math.sin(t*2.3);
   el.style.transformOrigin=(active.fx*100)+'% '+(active.fy*100)+'%';
   el.style.transform='translate('+(active.px*(pe-0.5)+hx)+'px,'+(active.py*(pe-0.5)+hy)+'px) rotate('+hr+'deg) scale('+(z*punch*1.025)+')';
   // living air: slow ripple of the picture (heat / wind / water shimmer)
-  document.getElementById('tb').setAttribute('baseFrequency',(0.006+0.0012*Math.sin(t*0.8))+' '+(0.010+0.0015*Math.cos(t*0.6)));
-  document.getElementById('tb').setAttribute('seed',''+(3+Math.floor(t*2)%5));
-  el.style.filter='url(#wob)';
+  el.style.filter='none';
   const wb=(k<0.14&&active.a>0)?(6*(1-k/0.14)):0;
-  if(wb+blurEnd>0)el.style.filter='url(#wob) blur('+(wb+blurEnd*22)+'px)';
+  if(wb+blurEnd>0)el.style.filter='blur('+(wb+blurEnd*22)+'px)';
   document.querySelectorAll('.dp').forEach(d=>{{const sd=+d.dataset.s,v=+d.dataset.v;d.style.transform='translate('+(30*Math.sin(t*0.5*v+sd))+'px,'+(-(t*40*v)%1900)+'px)';d.style.opacity=0.18+0.18*Math.sin(t*1.2*v+sd);}});
   document.getElementById('sweep').style.transform='translateX('+(((t*90)%2600)-900)+'px)';
   document.getElementById('gt').setAttribute('seed',''+Math.floor(t*24));
@@ -196,6 +200,10 @@ window.renderAt=function(t){{
     st.style.opacity=(t>=a&&t<b)?cl(p*2)*(1-out):0;
     st.style.transform='translateX('+((1-Math.min(1,p))*-900)+'px)';
   }});
+  document.getElementById('cap').style.opacity=(t<D.end_t)?1:0;
+  document.getElementById('tick').style.opacity=(t<D.end_t)?1:0;
+  const cy=document.getElementById('cyc').offsetWidth||1;
+  document.getElementById('ttxt').style.transform='translateX('+(-((t*150)%cy))+'px)';
   // captions
   D.caps.forEach((g,gi)=>{{
     const ge=document.getElementById('g'+gi);
@@ -207,6 +215,12 @@ window.renderAt=function(t){{
   e.style.opacity=ease(cl((t-D.end_t)/0.3));
 }};
 const CUTMAX=2.4;
+function fitEl(el,maxH,min){{let fs=parseFloat(getComputedStyle(el).fontSize);let n=0;while((el.scrollWidth>el.clientWidth+1||el.offsetHeight>maxH)&&fs>min&&n++<60){{fs-=2;el.style.fontSize=fs+'px';}}}}
+window.fitAll=function(){{
+  document.querySelectorAll('.ph').forEach(e=>fitEl(e,250,36));
+  document.querySelectorAll('.sticker').forEach(e=>fitEl(e,190,28));
+  fitEl(document.querySelector('#hook .h1'),230,44); fitEl(document.querySelector('#hook .h2'),125,44);
+}};
 </script></body></html>"""
 
 
@@ -288,6 +302,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
         pg.goto(page.resolve().as_uri())
         pg.wait_for_function("document.fonts.status==='loaded'")
         pg.evaluate("document.fonts.ready")
+        pg.evaluate("fitAll()")
         for f in range(nframes):
             pg.evaluate(f"renderAt({f / FPS})")
             enc.stdin.write(pg.screenshot(type="jpeg", quality=96))
@@ -303,8 +318,9 @@ def main(spec_path, out_mp4, page_key="namakkal"):
             pg = b.new_page(viewport={"width": W, "height": H})
             pg.goto(page.resolve().as_uri())
             pg.wait_for_function("document.fonts.status==='loaded'")
+            pg.evaluate("fitAll()")
             pg.evaluate("renderAt(0.9)")
-            pg.evaluate("document.getElementById('cap').style.display='none';document.getElementById('prog').style.display='none';document.getElementById('hook').style.opacity=1;")
+            pg.evaluate("document.getElementById('cap').style.display='none';document.getElementById('tick').style.display='none';document.getElementById('prog').style.display='none';document.getElementById('hook').style.opacity=1;")
             pg.screenshot(path=str(Path(out_mp4).with_name(Path(out_mp4).stem + "_cover.jpg")), type="jpeg", quality=95)
             b.close()
     except Exception as e:
