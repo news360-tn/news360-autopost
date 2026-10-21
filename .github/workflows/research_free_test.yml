@@ -1,0 +1,32 @@
+name: research-free-test
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "article URLs, space separated"
+        required: true
+permissions:
+  contents: write
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install requests
+      - name: Run free-model test (does not touch the live sheet)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python research_free/run.py ${{ github.event.inputs.urls }}
+      - name: Commit results
+        if: always()
+        run: |
+          git config user.name "news360-bot"; git config user.email "bot@users.noreply.github.com"
+          git add -f research_free/out || true
+          git commit -m "free-model test output" || echo none
+          git pull --rebase origin main || true
+          git push || true
