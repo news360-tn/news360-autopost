@@ -177,8 +177,22 @@ def check_text(row, spec):
     return problems
 
 
+def _digits_in_spec(spec):
+    """numbers/times/dates shown as digits (10 மணி, 11ஆம் தேதி), never as Tamil words"""
+    sys.path.insert(0, str(REEL))
+    from digits import to_digits
+    for k in ("hl1", "hl2", "cat", "loc"):
+        if spec.get(k):
+            spec[k] = to_digits(spec[k])
+    for sl in spec.get("slides", []):
+        sl["title"] = to_digits(sl.get("title", ""))
+        sl["lines"] = [to_digits(x) for x in sl.get("lines", [])]
+
+
 def final_caption(row):
-    cap = (row.get("caption") or "").strip()
+    sys.path.insert(0, str(REEL))
+    from digits import to_digits
+    cap = to_digits((row.get("caption") or "").strip())
     if TAG not in cap:
         cap += " " + TAG
     if CONFIG.get("ai_label", True) and "AI" not in cap.split("#")[0][-300:]:
@@ -396,6 +410,7 @@ def run_story(row):
     import verify
     sid = row["story_id"]
     spec = json.loads(row["slides_spec"])
+    _digits_in_spec(spec)
     spec["date"] = tamil_date_today()  # date shown on poster/reel = actual posting date (IST)
     global LOC_ID
     LOC_ID = pick_location(row, spec)
