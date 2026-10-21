@@ -67,6 +67,7 @@ function doPost(e) {
     if (body.action === 'posted') return json_(posted_(body));
     if (body.action === 'error') return json_(error_(body));
     if (body.action === 'addStories') return json_(addStories_(body));
+    if (body.action === 'reoffer') return json_(reoffer_(body));
     return json_({ ok: false, error: 'unknown action ' + body.action });
   } catch (err) {
     return json_({ ok: false, error: String(err) });
@@ -469,12 +470,11 @@ function addStories_(b) {
   var no = nextStoryNo_(sh);
   var now = new Date();
   var batch = 'B' + Utilities.formatDate(now, 'Asia/Kolkata', 'yyyyMMdd-HHmm');
-  var rows = [], lines = [], md = [], total = 0, summary = [];
+  var rows = [], items = [];
   stories.forEach(function (st) {
     no++;
     var id = 'RN-' + no;
     var prompts = String(st.prompts || '').split(/\n-{3,}\n/).filter(function (x) { return x.trim(); });
-    total += prompts.length;
     var row = new Array(NCOLS).fill('');
     row[C.story_id - 1] = id;
     row[C.researched - 1] = "'" + nowIst_();
@@ -491,23 +491,66 @@ function addStories_(b) {
     row[C.notes - 1] = nowIst_() + ' ' + (st.note || 'free-model draft');
     row[C.batch - 1] = batch; row[C.prompts - 1] = prompts.join('\n---\n');
     rows.push(row);
-    lines.push(id + ' | ' + st.tamil_headline + ' | ' + prompts.length + ' images | ' + st.post_to + ' | ' + st.importance + ' | post: ' + (st.post_time || 'right after your reply'));
-    summary.push('| ' + id + ' | ' + st.tamil_headline + ' | ' + st.english_headline + ' | ' + prompts.length + ' |');
-    md.push('## STORY ' + id + ' - ' + st.tamil_headline + ' (' + st.english_headline + ') - ' + prompts.length + ' images');
-    prompts.forEach(function (pr, k) { md.push('### FILE: ' + id + '_' + (k + 1) + '.png\n' + pr.trim() + '\n'); });
+    items.push({ id: id, ta: st.tamil_headline, en: st.english_headline, post_to: st.post_to, importance: st.importance, post_time: st.post_time, prompts: prompts });
   });
   sh.getRange(sh.getLastRow() + 1, 1, rows.length, NCOLS).setValues(rows);
-  var head = '# NEWS360 IMAGE PROMPTS - ' + batch + '\n## INSTRUCTIONS FOR CHATGPT (copy this whole file into ChatGPT, then follow it)\n' +
-    'You are an image generator. Create EVERY image listed below, one by one, in this same chat so the style stays consistent. Total images: ' + total +
-    '. For each image: use the exact prompt, tall vertical 9:16 portrait (1080x1920 or larger), highest resolution, ultra-sharp, photorealistic, no text/letters/numbers/logos in the image. ' +
-    'Name each image exactly as its FILE name (for example RN-26_1.png). When all images are done, if you can run code, put all the images in ONE zip file named ' + batch +
-    '.zip and give me the download link; if you cannot make a zip, list the file names in order so I can download the images and zip them myself. Do not skip any image. Do not change the prompts.\n' +
-    '## SUMMARY\n| Story ID | Tamil headline | English headline | Images |\n|---|---|---|---|\n' + summary.join('\n') + '\n\n';
+  sendPromptEmail_(batch, items);
+  return { ok: true, added: rows.length, batch: batch, first: 'RN-' + (no - rows.length + 1) };
+}
+
+
+var PROMPT_RULES = 'READ THIS FIRST - STRICT RULES (follow every one):\n' +
+  '1. Make EACH image as its OWN separate single image: one prompt = one image generation = one file. Generate them one after another, never together.\n' +
+  '2. NEVER make a collage, grid, contact sheet, storyboard, multi-panel, split-screen or "all scenes in one picture". Every image shows exactly ONE scene filling the whole frame.\n' +
+  '3. Every image is a single full-frame tall vertical 9:16 portrait, 1080x1920 or larger, highest resolution, ultra-sharp, photorealistic, no text, letters, numbers or logos.\n' +
+  '4. Do NOT crop, resize, compress, sharpen or edit the images after creating them. Use the original generated image files.\n' +
+  '5. Name each file exactly as its FILE name below (for example RN-26_1.png).\n' +
+  '6. At the end, if you can run code: put ALL the separate original image files into ONE zip file (store them as they are, no re-compression, no folders) named BATCH.zip and give me a downloadable link to that zip. If you cannot make a zip, list every file so I can download each one.\n' +
+  '7. Do not skip any image and do not change the prompts.\n';
+
+/** items: [{id, ta, en, post_to, importance, post_time, prompts[]}] -> ONE .md file in Drive + ONE email */
+function sendPromptEmail_(batch, items) {
+  var total = 0, lines = [], md = [], summary = [];
+  items.forEach(function (it) {
+    total += it.prompts.length;
+    lines.push(it.id + ' | ' + it.ta + ' | ' + it.prompts.length + ' images | ' + it.post_to + ' | ' + it.importance + ' | post: ' + (it.post_time || 'right after your reply'));
+    summary.push('| ' + it.id + ' | ' + it.ta + ' | ' + it.en + ' | ' + it.prompts.length + ' |');
+    md.push('## STORY ' + it.id + ' - ' + it.ta + ' (' + it.en + ') - ' + it.prompts.length + ' images');
+    it.prompts.forEach(function (pr, k) { md.push('### FILE: ' + it.id + '_' + (k + 1) + '.png\nCreate this as ONE separate single image (not a collage):\n' + pr.trim() + '\n'); });
+  });
+  var head = '# NEWS360 IMAGE PROMPTS - ' + batch + '\n## INSTRUCTIONS FOR CHATGPT (copy this whole file into ChatGPT, then follow it)\nYou are an image generator. Total separate images to create: ' + total + '.\n' +
+    PROMPT_RULES.replace('BATCH.zip', batch + '.zip') + '## SUMMARY\n| Story ID | Tamil headline | English headline | Images |\n|---|---|---|---|\n' + summary.join('\n') + '\n\n';
   var file = DriveApp.getFolderById(ROOT_FOLDER_ID).createFile(batch + '_ChatGPT_Image_Prompts.md', head + md.join('\n'), MimeType.PLAIN_TEXT);
   var body = 'I am waiting for your images. Nothing will be posted until you reply to this email with the zip.\n\n' +
     'IMAGE PROMPT FILE (open, download, paste into ChatGPT): ' + file.getUrl() + '\n\nTHIS CHECK:\n' + lines.join('\n') + '\nTotal images: ' + total +
-    '\n\nHOW TO REPLY:\n(1) Give the .md file to ChatGPT.\n(2) ChatGPT makes all images (names like RN-26_1.png); put them in ONE zip.\n(3) REPLY to this email with the zip attached.\n(4) Leave the reply text empty.\n(5) Reply from ' + OWNER_EMAIL +
+    '\n\nIMPORTANT: ChatGPT must make EACH image separately (no collage) and keep the original files - the new file says so.\n\nHOW TO REPLY:\n(1) Give the .md file to ChatGPT.\n(2) ChatGPT makes all images one by one (names like RN-26_1.png) and puts them in ONE zip.\n(3) REPLY to this email with the zip attached.\n(4) Leave the reply text empty.\n(5) Reply from ' + OWNER_EMAIL +
     ' - the post is built and published about 20-40 minutes after your reply, the same day.\n\nDetails, captions and sources: ' + SHEET_LINK;
-  GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 IMAGES NEEDED] ' + batch + ' - ' + stories.length + ' stories - ' + total + ' images', body);
-  return { ok: true, added: rows.length, batch: batch, first: 'RN-' + (no - rows.length + 1) };
+  GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 IMAGES NEEDED] ' + batch + ' - ' + items.length + ' stories - ' + total + ' images', body);
+}
+
+/** body: {ids:["RN-24",...]} Stories that are NOT posted yet go back to "Awaiting images" under ONE new batch, with ONE new email + prompt file. */
+function reoffer_(b) {
+  var sh = sheet_();
+  var want = {};
+  (b.ids || []).forEach(function (x) { want[x] = true; });
+  var last = sh.getLastRow();
+  var data = sh.getRange(2, 1, last - 1, NCOLS).getValues();
+  var batch = 'B' + Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyyMMdd-HHmm');
+  var items = [];
+  for (var i = 0; i < data.length; i++) {
+    var r = rowObj_(data[i], i + 2);
+    if (!want[r.story_id]) continue;
+    if (r.namakkal_link || r.reel_link) continue;           // already posted: never touch
+    var prompts = String(r.prompts || '').split(/\n-{3,}\n/).filter(function (x) { return x.trim(); });
+    if (!prompts.length) continue;
+    sh.getRange(r.row, C.post_status).setValue('Awaiting images');
+    sh.getRange(r.row, C.images).setValue('');
+    sh.getRange(r.row, C.batch).setValue(batch);
+    sh.getRange(r.row, C.researched).setValue("'" + nowIst_());
+    appendNote_(sh, r.row, r.notes, nowIst_() + ' new images requested (batch ' + batch + ')');
+    items.push({ id: r.story_id, ta: r.headline_ta, en: r.headline_en, post_to: r.post_to, importance: r.importance, post_time: 'right after your reply', prompts: prompts });
+  }
+  if (!items.length) return { ok: true, offered: 0 };
+  sendPromptEmail_(batch, items);
+  return { ok: true, offered: items.length, batch: batch };
 }
