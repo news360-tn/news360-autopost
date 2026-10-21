@@ -22,14 +22,14 @@ jobs:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
-          mkdir -p research_free/out
-          python -u research_free/run.py ${{ github.event.inputs.urls }} > research_free/out/run.log 2>&1 || echo "exit $?" >> research_free/out/run.log
-          tail -5 research_free/out/run.log
+          mkdir -p research_free/results
+          python -u research_free/run.py ${{ github.event.inputs.urls }} > research_free/results/run.log 2>&1 || echo "exit $?" >> research_free/results/run.log
+          tail -5 research_free/results/run.log
       - name: Commit results
         if: always()
         run: |
           git config user.name "news360-bot"; git config user.email "bot@users.noreply.github.com"
-          git add -f research_free/out || true
+          git add -f research_free/results
           git commit -m "free-model test output" || echo none
-          git pull --rebase origin main || true
-          git push || true
+          git pull --rebase --autostash origin main
+          git push

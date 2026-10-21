@@ -1,4 +1,4 @@
-"""Test runner. python research_free/run.py URL [URL...]   -> writes research_free/out/<n>.json (+ report). Never touches the live Sheet."""
+"""Test runner. python research_free/run.py URL [URL...]   -> writes research_free/results/<n>.json (+ report). Never touches the live Sheet."""
 import json, sys, datetime
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
@@ -41,9 +41,9 @@ def main(urls):
         except Exception as e:
             rep.append(f"{n}. FAILED {u}: {type(e).__name__}: {str(e)[:300]}")
             continue
-        (HERE / "out" / f"{n}.json").write_text(json.dumps({"url": u, "article": art, "model": model, "attempts": att, "problems": errors, "draft": d}, ensure_ascii=False, indent=1), encoding="utf-8")
+        (HERE / "results" / f"{n}.json").write_text(json.dumps({"url": u, "article": art, "model": model, "attempts": att, "problems": errors, "draft": d}, ensure_ascii=False, indent=1), encoding="utf-8")
         rep.append(f"{n}. {art['title'][:70]} | {model} | attempts {att} | problems {len(errors)}")
-    (HERE / "out" / "report.txt").write_text("\n".join(rep) + "\n\n" + "\n".join(llm.LOG), encoding="utf-8")
+    (HERE / "results" / "report.txt").write_text("\n".join(rep) + "\n\n" + "\n".join(llm.LOG), encoding="utf-8")
     print("\n".join(rep))
 
 
