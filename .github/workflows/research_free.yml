@@ -1,8 +1,8 @@
 name: research-free
-# every 3 hours (IST 06:17, 09:17 ... 21:17). Scheduled runs only work once the file research_free/ENABLED exists.
+# every 3 hours, IST 09:00, 12:00, 15:00, 18:00, 21:00. Scheduled runs only work once the file research_free/ENABLED exists.
 on:
   schedule:
-    - cron: "47 0,3,6,9,12,15 * * *"
+    - cron: "30 3,6,9,12,15 * * *"
   workflow_dispatch:
     inputs:
       dry:
