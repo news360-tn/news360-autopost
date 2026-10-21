@@ -9,7 +9,7 @@ import llm, sources, run
 
 IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 BRIDGE_URL, BRIDGE_KEY = os.environ.get("BRIDGE_URL", ""), os.environ.get("BRIDGE_KEY", "")
-MAX_STORIES = int(os.environ.get("MAX_STORIES", "5"))
+MAX_STORIES = int(os.environ.get("MAX_STORIES", "8"))
 DRY = "--dry" in sys.argv
 DEADLINE = time.time() + int(os.environ.get("BUDGET_MIN", "22")) * 60
 llm.DEADLINE[0] = DEADLINE
@@ -25,6 +25,34 @@ def bridge(action, **kw):
     r = requests.get(BRIDGE_URL, params={"action": action, "key": BRIDGE_KEY, **kw}, timeout=120)
     r.raise_for_status()
     return r.json()
+
+
+# what Namakkal readers care about most (higher = picked first, so it is never missed)
+INTEREST = [
+    (10, ("மின்தடை", "மின் தடை", "மின்நிறுத்த", "மின் நிறுத்த", "மின் வெட்டு", "மின்வெட்டு", "மின் விநியோகம் நிறுத்தம்")),
+    (9, ("மழை", "வானிலை", "புயல்", "வெள்ளம்", "வெப்பம்", "பள்ளி விடுமுறை", "விடுமுறை")),
+    (9, ("முட்டை விலை", "விலை", "காய்கறி", "தக்காளி", "கறிக்கோழி", "மஞ்சள்", "உழவர் சந்தை", "சந்தை")),
+    (8, ("வேலைவாய்ப்பு", "வேலை வாய்ப்பு", "முகாம்", "தேர்வு", "ஆட்சேர்ப்பு", "பணியிடம்")),
+    (7, ("பள்ளி", "கல்லூரி", "மாணவ", "தேர்வு முடிவு", "உதவித்தொகை", "சேர்க்கை")),
+    (7, ("ரேஷன்", "மகளிர் உரிமை", "ஓய்வூதியம்", "திட்டம்", "மானியம்", "ஆட்சியர்", "அறிவிப்பு", "சிறப்பு முகாம்")),
+    (6, ("பேருந்து", "சாலை", "போக்குவரத்து", "ரயில்", "பாலம்", "போக்குவரத்து மாற்றம்")),
+    (6, ("குடிநீர்", "கொசு", "குப்பை", "சாக்கடை", "பாதாளச் சாக்கடை", "தண்ணீர்")),
+    (5, ("திருவிழா", "கோவில்", "தேர்", "கொல்லிமலை", "சுற்றுலா")),
+    (4, ("விபத்து", "மீட்பு", "தீ விபத்து", "கைது")),
+]
+
+
+def interest(art):
+    t = art.get("title", "") + " " + art.get("text", "")[:600]
+    head = art.get("title", "")
+    best = 2
+    for score, keys in INTEREST:
+        for k in keys:
+            if k in head:
+                best = max(best, score + 1)
+            elif k in t:
+                best = max(best, score)
+    return best
 
 
 def fresh(published):
@@ -58,14 +86,19 @@ def main():
     today = datetime.datetime.now(IST).strftime("%A %d %B %Y")
     out, log = [], []
     arts = []
-    for u in sources.candidate_links(20):
-        if len(arts) >= MAX_STORIES + 2:
-            break
-        if u in seen_src:
-            continue
+    arts = []
+    links = [u for u in sources.candidate_links(40) if u not in seen_src]
+    from concurrent.futures import ThreadPoolExecutor as _TPE
+
+    def _fetch(u):
         try:
-            art = sources.article(u)
+            return u, sources.article(u), None
         except Exception as e:
+            return u, None, e
+    with _TPE(max_workers=6) as ex0:
+        fetched = list(ex0.map(_fetch, links))
+    for u, art, e in fetched:
+        if e is not None:
             log.append(f"fetch failed {u}: {e}")
             continue
         if not fresh(art["published"]) or len(art["text"]) < 150:
@@ -74,7 +107,10 @@ def main():
         if any(difflib.SequenceMatcher(None, r.get("headline_ta", ""), art["title"]).ratio() > 0.72 for r in recent):
             log.append(f"skip (already filed) {art['title'][:50]}")
             continue
+        art["interest"] = interest(art)
         arts.append(art)
+    arts.sort(key=lambda a: -a["interest"])            # stable: site order (newest first) inside the same score
+    log.append("picked by interest: " + "; ".join(f"{a['interest']}:{a['title'][:30]}" for a in arts[:MAX_STORIES]))
     arts = arts[:MAX_STORIES]
 
     def work(art):
