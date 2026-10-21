@@ -268,7 +268,7 @@ function processReplies() {
     var p = props_();
     var done = JSON.parse(p.getProperty('DONE_MSGS') || '[]');
     var allowed = allowedSenders_();
-    var threads = GmailApp.search('subject:"NEWS360 IMAGES NEEDED" newer_than:5d', 0, 20);
+    var threads = GmailApp.search('subject:"NEWS360 IMAGES" newer_than:5d', 0, 30);
     threads.forEach(function (th) {
       var m = th.getFirstMessageSubject().match(/B\d{8}-\d{4}/);
       if (!m) return;
