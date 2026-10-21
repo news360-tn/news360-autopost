@@ -210,6 +210,23 @@ const CUTMAX=2.4;
 </script></body></html>"""
 
 
+OUTRO_EN = "Follow Namakkal Three Sixty for more local news."
+
+
+def english_outro(work, idx):
+    """The brand line is spoken in clear Indian English (Tamil TTS cannot say English words well). Falls back to the Tamil line on any error."""
+    try:
+        mp3 = work / "outro_en.mp3"
+        subprocess.run([sys.executable, "-m", "edge_tts", "--voice", "en-IN-NeerjaNeural", "--rate=+0%", "--text", OUTRO_EN, "--write-media", str(mp3)], check=True, timeout=60)
+        out = work / f"line{idx}.wav"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af",
+                        "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,"
+                        "highpass=f=80,acompressor=threshold=0.12:ratio=3:attack=5:release=80,loudnorm=I=-16:TP=-1.5", "-ar", "22050", "-ac", "1", str(out)], check=True)
+        print("outro spoken in English")
+    except Exception as e:
+        print("English outro failed, keeping the Tamil line:", e)
+
+
 def main(spec_path, out_mp4, page_key="namakkal"):
     R.PAGE = R.PAGES[page_key]; R.LOGO = R.KIT / R.PAGE["logo"]
     spec = json.loads(Path(spec_path).read_text())
@@ -224,6 +241,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     if voice_file:
         raise SystemExit("VOICE_FILE not supported in reel3 yet")
     subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "tts.py"), str(work / "lines.json"), str(work), spec.get("voice", "female")], check=True)
+    english_outro(work, len(texts) - 1)
     speech = sum(wav_dur(work / f"line{i}.wav") for i in range(len(texts)))
     room = 29.0 - lead - 0.5 - gap * (len(texts) - 1)
     if room > 0 and speech > room:
