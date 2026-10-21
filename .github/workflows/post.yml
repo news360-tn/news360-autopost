@@ -41,11 +41,13 @@ jobs:
         run: |
           if [ "$PAUSED" = "true" ] || [ -z "$BRIDGE_URL" ]; then
             echo "ready=0" >> "$GITHUB_OUTPUT"
-            echo "Paused or setup not finished."
+            echo "Paused or setup not finished. PAUSED=[$PAUSED] BRIDGE_URL_set=[${BRIDGE_URL:+yes}]" | tee .last_check
           else
             pip install -q requests==2.32.5 pillow==11.3.0
-            python poster/post.py check
+            python poster/post.py check 2>&1 | tee .last_check
           fi
+          git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
+          git add -f .last_check && git commit -qm "check log" && git pull -q --rebase && git push -q || true
       - name: Keep the schedule alive (daily heartbeat)
         if: github.event_name == 'schedule' && env.BRIDGE_URL != ''
         run: |
