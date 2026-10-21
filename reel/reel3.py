@@ -210,6 +210,8 @@ const CUTMAX=2.4;
 </script></body></html>"""
 
 
+from digits import to_digits  # display-only: numbers as digits, 360
+
 OUTRO_EN = "Follow Namakkal Three Sixty for more local news."
 
 
@@ -233,6 +235,8 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     work = Path(out_mp4).with_suffix("")
     work = work.parent / (work.name + "_work"); work.mkdir(parents=True, exist_ok=True)
     sents = spec["sentences"]
+    for _s in sents:
+        _s["fact"] = to_digits(_s.get("fact", ""))
     outro = spec["outro"]
     texts = [s["say"] for s in sents] + [outro["say"]]
     gap, lead = 0.18, 0.08
@@ -265,7 +269,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     # captions: words timed inside each sentence, phrases of up to 3 words
     caps = []
     for i, s in enumerate(sents):
-        wt = word_times(s["say"], starts[i], ends[i])
+        wt = word_times(to_digits(s["say"]), starts[i], ends[i])  # show digits, speak words
         for g in phrases(wt):
             caps.append({"a": g[0][1], "b": g[-1][2], "words": g})
     snaps = [w[1] for g in caps for w in g["words"]]
