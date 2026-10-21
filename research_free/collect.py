@@ -1,6 +1,6 @@
 """Every-3-hours collector (free models). Fetch Namakkal news -> write posts -> validate -> send to the Apps Script bridge
 (Sheet rows + ONE prompt file + ONE email). Usage: python research_free/collect.py [--dry]"""
-import datetime, difflib, json, os, re, sys
+import datetime, difflib, json, os, re, sys, time
 from pathlib import Path
 import requests
 HERE = Path(__file__).resolve().parent
@@ -11,6 +11,7 @@ IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 BRIDGE_URL, BRIDGE_KEY = os.environ.get("BRIDGE_URL", ""), os.environ.get("BRIDGE_KEY", "")
 MAX_STORIES = int(os.environ.get("MAX_STORIES", "5"))
 DRY = "--dry" in sys.argv
+DEADLINE = time.time() + int(os.environ.get("BUDGET_MIN", "22")) * 60
 
 TEMPLATE = ("Ultra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), "
             "4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. {scene} "
@@ -56,7 +57,7 @@ def main():
     today = datetime.datetime.now(IST).strftime("%A %d %B %Y")
     out, log = [], []
     for u in sources.candidate_links(20):
-        if len(out) >= MAX_STORIES:
+        if len(out) >= MAX_STORIES or time.time() > DEADLINE:
             break
         if u in seen_src:
             continue
@@ -71,6 +72,7 @@ def main():
         if any(difflib.SequenceMatcher(None, r.get("headline_ta", ""), art["title"]).ratio() > 0.72 for r in recent):
             log.append(f"skip (already filed) {art['title'][:50]}")
             continue
+        print(f"[{int(time.time()-DEADLINE+int(os.environ.get('BUDGET_MIN','22'))*60)}s] writing: {art['title'][:60]}", flush=True)
         try:
             d, model, errors, att = run.write(art, today)
         except Exception as e:

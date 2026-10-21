@@ -36,7 +36,7 @@ def _gemini(model, system, user, key):
         headers={"x-goog-api-key": key, "Content-Type": "application/json"},
         json={"systemInstruction": {"parts": [{"text": system}]},
               "contents": [{"role": "user", "parts": [{"text": user}]}],
-              "generationConfig": {"temperature": 0.3, "responseMimeType": "application/json"}}, timeout=180)
+              "generationConfig": {"temperature": 0.3, "responseMimeType": "application/json"}}, timeout=100)
     if r.status_code != 200:
         raise RuntimeError(f"gemini {model} {r.status_code}: {r.text[:200]}")
     return r.json()["candidates"][0]["content"]["parts"][0]["text"]
@@ -46,7 +46,7 @@ def _groq(model, system, user, key):
     r = requests.post("https://api.groq.com/openai/v1/chat/completions",
                       headers={"Authorization": f"Bearer {key}"},
                       json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
-                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=180)
+                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=100)
     if r.status_code != 200:
         raise RuntimeError(f"groq {model} {r.status_code}: {r.text[:200]}")
     return r.json()["choices"][0]["message"]["content"]
@@ -61,7 +61,7 @@ def _nvidia(model, system, user, key):
                       headers={"Authorization": f"Bearer {key}"},
                       json={"model": model, "temperature": 0.3, "max_tokens": 4096,
                             "messages": [{"role": "system", "content": system + "\nReturn ONLY the JSON object."},
-                                         {"role": "user", "content": user}]}, timeout=240)
+                                         {"role": "user", "content": user}]}, timeout=120)
     if r.status_code != 200:
         raise RuntimeError(f"nvidia {model} {r.status_code}: {r.text[:200]}")
     return r.json()["choices"][0]["message"]["content"]
@@ -91,7 +91,7 @@ def _openrouter(model, system, user, key):
     r = requests.post("https://openrouter.ai/api/v1/chat/completions",
                       headers={"Authorization": f"Bearer {key}"},
                       json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
-                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=240)
+                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=120)
     if r.status_code != 200:
         raise RuntimeError(f"openrouter {model} {r.status_code}: {r.text[:200]}")
     return r.json()["choices"][0]["message"]["content"]
