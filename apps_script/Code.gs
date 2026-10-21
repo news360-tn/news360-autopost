@@ -308,6 +308,38 @@ function imageBlobs_(msg) {
   return out;
 }
 
+/** Gmail turns a big attachment (over 25 MB) into a Google Drive link instead of an attachment. Read zip/image files linked in what you typed (not in the quoted original). */
+function driveBlobs_(msg, report) {
+  var html = String(msg.getBody());
+  var q = html.search(/class="gmail_quote/);
+  var typed = q >= 0 ? html.slice(0, q) : html;
+  var ids = [], m, re = /drive\.google\.com\/file\/d\/([\w-]+)/g;
+  while ((m = re.exec(typed))) if (ids.indexOf(m[1]) < 0) ids.push(m[1]);
+  var out = [];
+  ids.forEach(function (id) {
+    try {
+      var f = DriveApp.getFileById(id);
+      var n = String(f.getName()).toLowerCase();
+      var b = f.getBlob();
+      var list = (n.slice(-4) === '.zip' || String(b.getContentType()).indexOf('zip') >= 0) ? Utilities.unzip(b) : [b];
+      list.forEach(function (x) {
+        var bn = String(x.getName());
+        if (/(^|\/)\.|__MACOSX/.test(bn)) return;
+        if (/\.(png|jpe?g|webp)$/i.test(bn)) out.push(x);
+      });
+    } catch (err) {
+      report.push('Could not read the Drive file ' + id + ': ' + err + ' (if it is very large, send the images as 2-3 smaller zips, up to 40 MB each)');
+    }
+  });
+  return out;
+}
+
+/** Run once from the editor if a reply was read before this fix: lets processReplies read the recent replies again. */
+function reprocessRecent() {
+  props_().deleteProperty('DONE_MSGS');
+  processReplies();
+}
+
 function naturalKey_(name) {
   return String(name).replace(/\d+/g, function (d) { return ('00000000' + d).slice(-8); }).toLowerCase();
 }
@@ -344,7 +376,7 @@ function handleReply_(msg, batchId) {
     return true;
   });
 
-  var blobs = imageBlobs_(msg);
+  var blobs = imageBlobs_(msg).concat(driveBlobs_(msg, report));
   if (blobs.length && rows.length) {
     var byStory = {};
     var unnamed = [];
