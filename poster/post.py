@@ -459,6 +459,8 @@ def main():
         n = 1 if pick(rows) else 0
     if mode == "check":
         log(f"{len(rows)} stories in the queue, ready to post: {n}")
+        if rows:
+            log("  keys:", sorted(rows[0].keys()))
         for r in rows:
             log("  ", r.get("story_id"), "review=", repr(r.get("review")), "images=", len(r.get("images") or ""),
                 "spec=", len(r.get("slides_spec") or ""), "links=", repr(r.get("namakkal_link")), repr(r.get("reel_link")),
