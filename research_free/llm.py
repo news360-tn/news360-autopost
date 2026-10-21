@@ -97,11 +97,29 @@ def _openrouter(model, system, user, key):
     return r.json()["choices"][0]["message"]["content"]
 
 
+def gemini_models(key):
+    """ask the API which flash models exist for this key (names change often); newest first, lite last"""
+    try:
+        r = requests.get("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200", headers={"x-goog-api-key": key}, timeout=60)
+        r.raise_for_status()
+        names = [m["name"].split("/")[-1] for m in r.json().get("models", []) if "generateContent" in m.get("supportedGenerationMethods", [])]
+        fl = [n for n in names if "flash" in n and not any(x in n for x in ("image", "tts", "live", "audio", "preview-", "exp", "thinking", "embedding", "robotics", "computer"))]
+        def ver(n):
+            m = re.search(r"(\d+(?:\.\d+)?)", n)
+            return float(m.group(1)) if m else 0
+        fl.sort(key=lambda n: ("lite" in n, -ver(n)))
+        _log("gemini models: " + ", ".join(fl[:6]))
+        return fl[:3] or GEMINI_MODELS
+    except Exception as e:
+        _log(f"gemini model list failed: {e}")
+        return GEMINI_MODELS
+
+
 def chain():
     out = []
     g, q, o = os.environ.get("GEMINI_API_KEY"), os.environ.get("GROQ_API_KEY"), os.environ.get("OPENROUTER_API_KEY")
     if g:
-        out += [("gemini", m, _gemini, g) for m in GEMINI_MODELS]
+        out += [("gemini", m, _gemini, g) for m in gemini_models(g)]
     if q:
         out += [("groq", m, _groq, q) for m in GROQ_MODELS]
     n = os.environ.get("NVIDIA_API_KEY")
