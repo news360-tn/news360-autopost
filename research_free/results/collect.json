@@ -1,0 +1,154 @@
+{
+ "log": [],
+ "llm": [
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
+  "ok groq/openai/gpt-oss-120b",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
+  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
+  "fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw",
+  "fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"g",
+  "ok openrouter/minimax/minimax-m3.1-flash:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok openrouter/minimax/minimax-m3.1-flash:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok openrouter/minimax/minimax-m3.1-flash:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok openrouter/minimax/minimax-m3.1-flash:free"
+ ],
+ "stories": [
+  {
+   "tamil_headline": "வேப்பநத்தத்தில் குழந்தைகள் ‘அ, ஆ’ எழுத்தினர்; 100-க்கும் மேற்பட்ட பெற்றோர் பங்கேற்பு",
+   "english_headline": "Namakkal Veppanthattam children write 'A' and 'Aa'; over 100 parents watch Arisuvadi Start event",
+   "category": "Education",
+   "location": "Namakkal Veppanthattam and Idappatti, with events also in Salem, Tamil Nadu",
+   "importance": "Medium",
+   "post_to": "Namakkal 360 + Rasipuram 360 (collab)",
+   "slides_spec": {
+    "v": 3,
+    "cat": "கல்வி விழா",
+    "loc": "நாமக்கல் வேப்பநத்தம்",
+    "hl1": "குழந்தைகள் ‘அ, ஆ’ எழுத்துத் தொடங்கினர்",
+    "hl2": "100-க்கும் மேற்பட்ட பெற்றோர்",
+    "slides": [
+     {
+      "title": "நிகழ்ச்சி நேற்று",
+      "lines": [
+       "நேற்று வேப்பநத்தம், இடைப்பாடி, சேலத்தில் நிகழ்ச்சிகள்",
+       "பிரபலங்கள் பிஞ்சு விரல்களைப் பிடித்து ‘அ, ஆ’ எழுத வைத்தனர்",
+       "அவர்களை கல்விக் கோவிலுக்குள் அடியெடுத்தனர்"
+      ]
+     },
+     {
+      "title": "பெற்றோர் பங்கேற்பு",
+      "lines": [
+       "100-க்கும் மேற்பட்ட பெற்றோர் விழாவை மகிழ்ச்சியுடன் கண்டனர்",
+       "பெற்றோர் பள்ளியில் குழந்தைகளைச் சேர்த்தனர்",
+       "பள்ளி தாளாளர், அரசு அதிகாரிகள் விழாவைத் தொடங்கி வைத்தனர்"
+      ]
+     },
+     {
+      "title": "பரிசுகள் உடனே",
+      "lines": [
+       "எல்லா குழந்தைகளுக்கும் <b>1,000 ரூபாய்</b> மதிப்புப் பரிசு",
+       "அதில் ஸ்கூல் பேக் உள்பட சிறப்பு பரிசுகள் வழங்கப்பட்டன",
+       "புகைப்படத்துடன் கூடிய சான்றிதழ்கள் வழங்கப்பட்டன"
+      ]
+     },
+     {
+      "title": "நிகழ்ச்சி விரிவு",
+      "lines": [
+       "சேலமில் ஐந்தாறு ஆண்டுகளாக நிகழ்ச்சி நடத்தப்பட்டது",
+       "தற்போது நாமக்கல் வரை விரிவுபடுத்தப்பட்டுள்ளது",
+       "வரும் விஜயதசமி அன்று கல்வி, கலை வெற்றியடையும் என நம்பிக்கை"
+      ]
+     }
+    ]
+   },
+   "reel_script": "நாமக்கல் வேப்பநத்தத்தில் நேற்று நடந்த அரிச்சுவடி ஆரம்ப நிகழ்ச்சியில் குழந்தைகள் கல்வி கோவில்ல அ, ஆ எழுத்துத் தொடங்கினர். சேலம், இடைப்பாடி, நாமக்கல் ஆகிய இடங்களில் இந்த நிகழ்ச்சிகள் நடத்தப்பட்டன. நூற்றுக்கும் மேற்பட்ட பெற்றோர், பிரபலங்கள் குழந்தைகளுக்கு அ, ஆ எழுத வைத்ததை மகிழ்ச்சியுடன் கண்டனர். ஆயிரம் ரூபாய் மதிப்பிலான பரிசுகளும் புகைப்படத்துடன் கூடிய சான்றிதழ்களும் வழங்கப்பட்டன. பள்ளி தாளாளர், அரசு அதிகாரிகள் விழாவைத் தொடங்கி வைத்தனர். சேலமில் ஐந்தாறு ஆண்டுகளாக நடந்த இந்நிகழ்ச்சி, தற்போது நாமக்கல் வரை விரிவடைந்துள்ளது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🎓 வேப்பநத்தத்தில் குழந்தைகள் ‘அ, ஆ’ எழுத்துத் தொடங்கினர்\n\nநேற்று வேப்பநத்தம் நேஷனல் பப்ளிக் பள்ளியில் ‘அரிச்சுவடி ஆரம்பம்’ நடந்தது.\nசேலம், இடைப்பாடி, நாமக்கல் வேப்பநத்தத்தில் இந்நிகழ்ச்சிகள் நடத்தப்பட்டன.\nநூற்றுக்கும் மேற்பட்ட பெற்றோர், பிரபலங்களின் கைகளால் குழந்தைகள் ‘அ, ஆ’ எழுதுவதை மகிழ்ச்சியுடன் கண்டனர்.\nபெற்றோர் குழந்தைகளைப் பள்ளியில் சேர்த்து, கல்வியைத் தொடங்கினர்.\nஅனைத்துக் குழந்தைகளுக்கும் ஆயிரம் ரூபாய் மதிப்பிலான பரிசுகளும் ஸ்கூல் பேக்கும் வழங்கப்பட்டன.\nபள்ளி தாளாளர், அரசு அதிகாரிகள் விழாவைத் தொடங்கி வைத்தனர்.\n\n📍 நாமக்கல் வேப்பநத்தம் | நேற்று\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 #Rasipuram #RasipuramNews #ராசிபுரம் #Rasipuram360 #Veppanthattam #வேப்பநத்தம் #Education #கல்வி #SchoolAdmission #பள்ளிசேர்ப்பு #ArisuvadiStart",
+   "prompts": "Ultra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A daytime school courtyard in Veppanthattam, Tamil Nadu, with children seated at low tables and parents standing behind them, all seen from behind; trays of sand and a modest school building fill the scene. Soft daylight, warm natural colours and a calm festive mood continue across the series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. Children seen from behind trace their first two letter forms with their fingertips in shallow sand trays while adults guide their hands at a low table. Same soft daylight, warm natural colours and calm festive mood across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A large school hall with rows of parents standing behind children and civic leaders at the front, everyone viewed from behind or far away, as more than a hundred parents watch the learning ritual. Same soft daylight, warm natural colours and calm festive mood across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A distribution table with plain school backpacks, prizes and closed certificate folders; children and adults seen from behind receive the items. Same soft daylight, warm natural colours and calm festive mood across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. The Veppanthattam school campus with families leaving through the gate, children carrying school bags, and a few cars and autos near the modest school building. Same soft daylight, warm natural colours and calm festive mood across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/mornings-start-with-a-scorpion-bite-with-a-fingertip-of-kolakalam-ana-aavanna-written-by-kizhals/4354887",
+   "published": "2026-10-21T05:19:00+05:30",
+   "verification": "FREE-MODEL DRAFT (openrouter/minimax/minimax-m3.1-flash:free) - not checked by Claude yet",
+   "note": "free-model draft openrouter/minimax/minimax-m3.1-flash:free, 3 attempt(s), 0 validator problem(s)",
+   "post_time": "right after your reply, same day"
+  },
+  {
+   "tamil_headline": "ஆயுத பூஜை, சரஸ்வதி பூஜைக்கு 80 டன் காய்கறி விற்பனை; 16,068 பொதுமக்கள்",
+   "english_headline": "80 tonnes of cauliflower sold for Ayudha and Saraswathi Pooja at Kottai Main Road farmers market; 16,068 shoppers",
+   "category": "Business & Prices",
+   "location": "Kottai Main Road farmers market, Namakkal district",
+   "importance": "Medium",
+   "post_to": "Namakkal 360",
+   "slides_spec": {
+    "v": 3,
+    "cat": "உழவர் சந்தை",
+    "loc": "கோட்டை மெயின் சாலை",
+    "hl1": "ஆயுத, சரஸ்வதி பூஜை காய்கறி விற்பனை",
+    "hl2": "80 டன் காய்கறி விற்பனை",
+    "slides": [
+     {
+      "title": "எங்கே விற்பனை?",
+      "lines": [
+       "அக்டோபரில் கோட்டை மெயின் சாலை <b>உழவர் சந்தை</b>",
+       "ஆயுத, சரஸ்வதி பூஜைக்கு <b>80 டன்</b> காய்கறி விற்பனை",
+       "<b>287 விவசாயிகள்</b> காய்கறியைக் கொண்டுவந்தார்கள்"
+      ]
+     },
+     {
+      "title": "விற்பனை விவரம்",
+      "lines": [
+       "<b>64,585 கிலோ</b> காய்கறி, <b>15,635 கிலோ</b> பழங்கள்",
+       "<b>16,068</b> பொதுமக்கள் வாங்கி சென்றனர்",
+       "மொத்த விற்பனை <b>42 லட்சத்து 50,640 ரூபாய்</b>"
+      ]
+     },
+     {
+      "title": "காய்கறி விலைகள்",
+      "lines": [
+       "தக்காளி கிலோ <b>36 ரூபாய்</b> | கத்தரி <b>28 ரூபாய்</b>",
+       "வெண்டை <b>42 ரூபாய்</b> | புடலங்காய் <b>44 ரூபாய்</b>",
+       "பாகற்காய் <b>60 ரூபாய்</b> | பீர்க்கங்காய் <b>70 ரூபாய்</b>"
+      ]
+     },
+     {
+      "title": "மற்ற காய்கறிகள்",
+      "lines": [
+       "முருங்கைக்காய் <b>70</b> | சின்ன வெங்காயம் <b>84</b>",
+       "பெரிய வெங்காயம் <b>54</b> | கிலோ விலைகள்",
+       "தேவையோர் உழவர் சந்தையில் காய்கறி வாங்கலாம்"
+      ]
+     }
+    ]
+   },
+   "reel_script": "ஆயுத பூஜை, சரஸ்வதி பூஜைக்கு எம்பது டன் காய்கறி விற்பனை கோட்டை மெயின் சாலையிலுள்ள உழவர் சந்தையில் நடந்தது. இருநூற்று எழுபத்து ஏழு விவசாயிகள் காய்கறியை விற்பனைக்குக் கொண்டுவந்தார்கள். அறுபத்து நான்காயிரத்து ஐந்து மூத்த எண்பது கிலோ காய்கறியும், பதினைந்து ஆயிரத்து அறுநூற்று முப்பதைந்து கிலோ பழங்களும் விற்கப்பட்டன. பதினாறு ஆயிரத்து அறுபதைந்து பொதுமக்கள் வாங்கினர். மொத்த விற்பனை மதிப்பு நால்பத்து இரண்டு லட்சத்து ஐம்பதாயிரத்து அறுநூற்று நாற்பது ரூபாய். தக்காளி கிலோ முப்பதைந்து ரூபாய், கத்தரி இருபத்து எட்டு ரூபாய், வெண்டை நாற்பத்து இரண்டு ரூபாய். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🥬 ஆயுத பூஜை, சரஸ்வதி பூஜைக்கு 80 டன் காய்கறி விற்பனை\n\nகோட்டை மெயின் சாலை உழவர் சந்தையில் 287 விவசாயிகள் காய்கறி கொண்டுவந்தார்கள்.\n64,585 கிலோ காய்கறி, 15,635 கிலோ பழங்கள்; 16,068 பொதுமக்கள் வாங்கினர்.\nமொத்த மதிப்பு 42 லட்சத்து 50,640 ரூபாய்.\nகிலோ விலை: தக்காளி 36; கத்தரி 28; வெண்டை 42; புடலங்காய் 44 ரூபாய்.\nகிலோ விலை: பீர்க்கங்காய் 70; பாகற்காய் 60; முருங்கைக்காய் 70; சின்ன வெங்காயம் 84; பெரிய வெங்காயம் 54 ரூபாய்.\nதேவையோர் காய்கறியைச் சந்தையில் வாங்கலாம்.\n\n📍 கோட்டை மெயின் சாலை, உழவர் சந்தை | அக்டோபர்\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 #Kottai #கோட்டை #UzhavarMarket #உழவர்சந்தை #Vegetables #காய்கறி #MarketNews #விலை #Pooja #பூஜை",
+   "prompts": "Ultra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. Wide daytime view of the Kottai Main Road farmers market in Namakkal district, Tamil Nadu, vegetable stalls piled with fresh cauliflower and onions, farmers and shoppers seen only from behind or far away, green awnings and coconut trees in the background. Same bright natural daylight and warm green-earthy colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. Farmers in a Tamil Nadu farmers market arranging fresh cauliflower in large baskets and sacks beside weighing scales, seen from behind and far away, more produce stalls visible in the background. Same bright natural daylight and warm green-earthy colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A busy produce section with cauliflower, onions, tomatoes, brinjal and gourds arranged in orderly baskets, shoppers carrying vegetables seen from behind, wide market aisle in Namakkal district. Same bright natural daylight and warm green-earthy colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. Close view of tomatoes, brinjal, red onions, cluster beans, bitter gourd, drumstick and moringa neatly displayed in separate market baskets, with a weighing scale at the edge. Same bright natural daylight and warm green-earthy colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. Wide closing view of shoppers and farmers moving through the Kottai Main Road farmers market with baskets of vegetables, rows of produce stalls and coconut trees beyond. Same bright natural daylight and warm green-earthy colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/ayudha-puja-saraswati-puja-80-tonnes-of-vegetables-sold/4354893",
+   "published": "2026-10-21T05:22:00+05:30",
+   "verification": "FREE-MODEL DRAFT (openrouter/minimax/minimax-m3.1-flash:free) - not checked by Claude yet",
+   "note": "free-model draft openrouter/minimax/minimax-m3.1-flash:free, 2 attempt(s), 0 validator problem(s)",
+   "post_time": "right after your reply, same day"
+  }
+ ]
+}
