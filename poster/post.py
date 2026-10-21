@@ -339,12 +339,26 @@ LOC_ID = ""   # Instagram location (place) id for the story being posted; set in
 
 
 def pick_location(row, spec):
-    """Instagram place id from config.json "locations" (keyword -> id); the first keyword found in the story location wins."""
-    text = " ".join([spec.get("loc", ""), row.get("location", ""), row.get("headline_ta", "")]).lower()
+    """Instagram place id from config.json "locations" (keyword -> id).
+    The place named FIRST in the Tamil headline wins, then the English headline, then the story's location fields;
+    the district-wide 'namakkal' tags are used only when no town, temple or hill is named."""
     locs = CONFIG.get("locations") or {}
-    for key, pid in locs.items():
-        if key != "default" and str(pid).strip().isdigit() and key.lower() in text:
-            return str(pid).strip()
+    generic = {"namakkal", "நாமக்கல்"}
+    fields = [row.get("headline_ta", ""), row.get("headline_en", ""), spec.get("loc", ""), row.get("location", "")]
+    for specific_only in (True, False):
+        for f in fields:
+            low = (f or "").lower()
+            best = None
+            for key, pid in locs.items():
+                if key == "default" or not str(pid).strip().isdigit():
+                    continue
+                if specific_only and key in generic:
+                    continue
+                i = low.find(key.lower())
+                if i >= 0 and (best is None or (i, -len(key)) < best[0]):
+                    best = ((i, -len(key)), str(pid).strip())
+            if best:
+                return best[1]
     d = str(locs.get("default", "")).strip()
     return d if d.isdigit() else ""
 
