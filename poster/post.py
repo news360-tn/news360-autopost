@@ -361,9 +361,19 @@ def publish_carousel(token, urls, caption, collab):
     return mid, ig("GET", mid, token, fields="permalink").get("permalink", ""), collab_ok, why
 
 
-def publish_reel(token, video_url, caption, collab):
+def publish_reel(token, video_url, caption, collab, cover_url=""):
     uid, _ = ig_account(token)
-    cid, collab_ok, why = create_with_collab(uid, token, dict(media_type="REELS", video_url=video_url, caption=caption, share_to_feed="true"), collab)
+    prm = dict(media_type="REELS", video_url=video_url, caption=caption, share_to_feed="true")
+    if cover_url:
+        prm["cover_url"] = cover_url   # chosen cover photo (sharp frame with the hook headline)
+    try:
+        cid, collab_ok, why = create_with_collab(uid, token, prm, collab)
+    except RuntimeError as e:
+        if not cover_url:
+            raise
+        log("reel refused with the cover, posting with Instagram's own cover:", e)
+        prm.pop("cover_url", None)
+        cid, collab_ok, why = create_with_collab(uid, token, prm, collab)
     wait_ready(cid, token, 15)
     mid = ig("POST", f"{uid}/media_publish", token, creation_id=cid)["id"]
     return mid, ig("GET", mid, token, fields="permalink").get("permalink", ""), collab_ok, why
@@ -394,6 +404,7 @@ def run_story(row):
     images = fetch_images(row, work)
     need_carousel, need_reel = not row.get("namakkal_link"), not row.get("reel_link")
     jpgs = mp4 = None
+    reel_cover = None
     voice_file = None
     rs = None
     checks = []
@@ -423,6 +434,12 @@ def run_story(row):
             if probs:
                 return fail(row, "reel", "Reel check failed: " + "; ".join(probs))
             checks.append("reel 1080x1920, 10-30 s, voice present and fully pronounceable")
+            try:  # cover photo: sharp frame 0.9 s in (photo + hook headline + brand), 9:16
+                cover = work / "reel_cover.jpg"
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", "0.9", "-i", str(mp4), "-frames:v", "1", "-q:v", "2", str(cover)], check=True)
+                reel_cover = cover
+            except Exception as e:
+                log("cover frame failed, Instagram will pick one:", e)
     except subprocess.CalledProcessError as e:
         return fail(row, "carousel", f"Build failed ({e.cmd[1].split('/')[-1]}, exit {e.returncode})")
     except Exception as e:
@@ -460,7 +477,12 @@ def run_story(row):
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab, "checks": note})
             else:
                 token = bridge_get("token", page=PAGE)["token"]
-                mid, link, collab_ok, why = publish_reel(token, url, caption, collab)
+                cover_url = ""
+                try:
+                    cover_url = upload(reel_cover, "image") if reel_cover else ""
+                except Exception as e:
+                    log("cover upload failed:", e)
+                mid, link, collab_ok, why = publish_reel(token, url, caption, collab, cover_url)
                 log("reel posted", sid, link)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "permalink": link, "media_id": mid,
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab_ok, "checks": note})
