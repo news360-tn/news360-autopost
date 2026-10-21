@@ -115,13 +115,29 @@ def gemini_models(key):
         return GEMINI_MODELS
 
 
+def groq_models(key):
+    try:
+        r = requests.get("https://api.groq.com/openai/v1/models", headers={"Authorization": f"Bearer {key}"}, timeout=40)
+        r.raise_for_status()
+        ids = [m["id"] for m in r.json().get("data", []) if not any(x in m["id"] for x in ("whisper", "guard", "tts", "orpheus", "playai", "embed", "distil"))]
+        ids.sort(key=lambda i: min([k for k, p in enumerate(("llama-3.3", "llama-4", "gpt-oss-120b", "qwen", "kimi", "llama")) if p in i] or [99]))
+        _log("groq models: " + ", ".join(ids[:5]))
+        return ids[:2] or GROQ_MODELS
+    except Exception as e:
+        _log(f"groq model list failed: {e}")
+        return GROQ_MODELS
+
+
+PREFERRED = [None]
+
+
 def chain():
     out = []
     g, q, o = os.environ.get("GEMINI_API_KEY"), os.environ.get("GROQ_API_KEY"), os.environ.get("OPENROUTER_API_KEY")
     if g:
         out += [("gemini", m, _gemini, g) for m in gemini_models(g)]
     if q:
-        out += [("groq", m, _groq, q) for m in GROQ_MODELS]
+        out += [("groq", m, _groq, q) for m in groq_models(q)]
     n = os.environ.get("NVIDIA_API_KEY")
     if n:
         out += [("nvidia", m, _nvidia, n) for m in NVIDIA_MODELS]
@@ -134,17 +150,25 @@ def chain():
 
 
 def ask_json(system, user, tries_per_model=1):
-    """returns (data, model_name). Falls through the free models until one returns valid JSON."""
+    """returns (data, model_name). Starts with the model that worked last time; retries a busy (503/429) model once after a pause."""
     last = None
-    for provider, model, fn, key in chain():
-        for _ in range(tries_per_model):
+    ch = chain()
+    if PREFERRED[0]:
+        ch.sort(key=lambda c: 0 if (c[0], c[1]) == PREFERRED[0] else 1)
+    for provider, model, fn, key in ch:
+        for k in range(2):
             try:
                 text = fn(model, system, user, key)
                 data = _json_from(text)
                 _log(f"ok {provider}/{model}")
+                PREFERRED[0] = (provider, model)
                 return data, f"{provider}/{model}"
             except Exception as e:
                 last = e
-                _log(f"fail {provider}/{model}: {str(e)[:160]}")
-                time.sleep(2)
+                msg = str(e)
+                _log(f"fail {provider}/{model}: {msg[:120]}")
+                if k == 0 and (" 503" in msg or " 429" in msg) and provider != "openrouter":
+                    time.sleep(20)
+                    continue
+                break
     raise RuntimeError(f"no free model answered: {last}")
