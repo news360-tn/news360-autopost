@@ -500,7 +500,9 @@ function addStories_(b) {
 
 
 var PROMPT_RULES = 'READ THIS FIRST - STRICT RULES (follow every one):\n' +
-  '1. Make EACH image as its OWN separate single image: one prompt = one image generation = one file. Generate them one after another, never together.\n' +
+  '0. Do NOT put several scenes into one picture. The images in the last attempt came out as collages of 3-5 vertical strips - that is WRONG and unusable.\n' +
+  '1. Make EACH image as its OWN separate single image: one prompt = one image generation = one file. Do ONE image generation per prompt, one after another. Never combine prompts. If you are about to merge two prompts into one picture, STOP and make them separately.\n' +
+  '1b. Every image is ONE continuous photograph taken with ONE camera from ONE angle: no panels, no strips, no tiles, no borders, no split frames, no inset pictures, no captions or labels written on the image.\n' +
   '2. NEVER make a collage, grid, contact sheet, storyboard, multi-panel, split-screen or "all scenes in one picture". Every image shows exactly ONE scene filling the whole frame.\n' +
   '3. Every image is a single full-frame tall vertical 9:16 portrait, 1080x1920 or larger, highest resolution, ultra-sharp, photorealistic, no text, letters, numbers or logos.\n' +
   '4. Do NOT crop, resize, compress, sharpen or edit the images after creating them. Use the original generated image files.\n' +
@@ -523,7 +525,7 @@ function sendPromptEmail_(batch, items) {
   var file = DriveApp.getFolderById(ROOT_FOLDER_ID).createFile(batch + '_ChatGPT_Image_Prompts.md', head + md.join('\n'), MimeType.PLAIN_TEXT);
   var body = 'I am waiting for your images. Nothing will be posted until you reply to this email with the zip.\n\n' +
     'IMAGE PROMPT FILE (open, download, paste into ChatGPT): ' + file.getUrl() + '\n\nTHIS CHECK:\n' + lines.join('\n') + '\nTotal images: ' + total +
-    '\n\nIMPORTANT: ChatGPT must make EACH image separately (no collage) and keep the original files - the new file says so.\n\nHOW TO REPLY:\n(1) Give the .md file to ChatGPT.\n(2) ChatGPT makes all images one by one (names like RN-26_1.png) and puts them in ONE zip.\n(3) REPLY to this email with the zip attached.\n(4) Leave the reply text empty.\n(5) Reply from ' + OWNER_EMAIL +
+    '\n\nIMPORTANT: ChatGPT must make EACH image separately (no collage, no strips) and keep the original files - the new file says so. If ChatGPT still makes a collage, send it this message: "Wrong. Delete the collage. Make ONLY image RN-xx_1 as one single full-frame photograph, nothing else. Then wait." and continue one image at a time.\n\nHOW TO REPLY:\n(1) Give the .md file to ChatGPT.\n(2) ChatGPT makes all images one by one (names like RN-26_1.png) and puts them in ONE zip.\n(3) REPLY to this email with the zip attached.\n(4) Leave the reply text empty.\n(5) Reply from ' + OWNER_EMAIL +
     ' - the post is built and published about 20-40 minutes after your reply, the same day.\n\nDetails, captions and sources: ' + SHEET_LINK;
   GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 IMAGES NEEDED] ' + batch + ' - ' + items.length + ' stories - ' + total + ' images', body);
 }
