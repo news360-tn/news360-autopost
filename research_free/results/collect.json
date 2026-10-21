@@ -2,395 +2,87 @@
  "log": [],
  "llm": [
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
   "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
   "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {\"error\":{\"message\":\"Failed to validate JSON. Please adjust your prompt. See 'failed_gener",
-  "ok groq/qwen/qwen3.8-27b",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "ok groq/openai/gpt-oss-120b",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw",
-  "fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"g",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "ok groq/openai/gpt-oss-120b",
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw",
-  "fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"g",
   "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "ok groq/qwen/qwen3.8-27b",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "ok gemini/gemini-3.6-flash",
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {\"error\":{\"message\":\"Failed to validate JSON. Please adjust your prompt. See 'failed_gener",
-  "ok groq/qwen/qwen3.8-27b",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
   "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {\"error\":{\"message\":\"Failed to generate JSON. Please adjust your prompt. See 'failed_gener",
   "fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw",
-  "fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"g",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok openrouter/minimax/minimax-m3.1-flash:free"
+  "ok openrouter/google/gemma-4-31b-it:free"
  ],
  "stories": [
   {
-   "tamil_headline": "அரிச்சுவடி ஆரம்ப விழா: 100க்கும் மேற்பட்ட பெற்றோர், குழந்தைகளுக்குப் பரிசுகள்",
-   "english_headline": "Arichuvadi start ceremony in Namakkal, Idappadi and Salem: over 100 parents join children in writing ‘A’ and ‘Aa’",
-   "category": "Education",
-   "location": "Veppanthattam in Namakkal, Idappadi and Salem, Tamil Nadu",
+   "tamil_headline": "நாமக்கல் நகரில் வடிகால் வசதி இன்றி தேங்கும் மழைநீர்: மக்கள் அவதி",
+   "english_headline": "Rainwater stagnation in Namakkal town due to lack of drainage; residents struggle",
+   "category": "Civic Issues",
+   "location": "Namakkal town, Namakkal district",
    "importance": "Medium",
    "post_to": "Namakkal 360",
    "slides_spec": {
     "v": 3,
-    "cat": "கல்வி விழா",
-    "loc": "நாமக்கல், இடைப்பாடி, சேலம்",
-    "hl1": "அரிச்சுவடி ஆரம்ப விழா நடந்தது",
-    "hl2": "100க்கும் மேற்பட்ட பெற்றோர்",
+    "cat": "நகராட்சிப் பிரச்சனை",
+    "loc": "நாமக்கல் நகர்",
+    "hl1": "நாமக்கல்லில் தேங்கும் மழைநீர்",
+    "hl2": "வடிகால் வசதி இல்லை",
     "slides": [
      {
-      "title": "அரிச்சுவடி விழா",
+      "title": "மழை பாதிப்பு",
       "lines": [
-       "நேற்று நாமக்கல் வேப்பநத்தத்தில் அரிச்சுவடி விழா நடந்தது",
-       "விழாவில் <b>100க்கும் மேற்பட்ட</b> பெற்றோர் பங்கேற்றார்கள்",
-       "கல்வி கோவிலுக்குள் அடியெடுத்து வைத்தார்கள்"
+       "நாமக்கல் நகரில் <b>3 நாட்களாக</b> மழை",
+       "குட்டை மேல தெரு, கோட்டைச்சாலை பகுதிகளில் நீர் தேக்கம்",
+       "பரமத்தி சாலைப் பகுதியிலும் மழைநீர் தேங்கியுள்ளது"
       ]
      },
      {
-      "title": "நடந்த இடங்கள்",
+      "title": "மோகனூர் சாலை",
       "lines": [
-       "சேலம், இடைப்பாடி, நாமக்கல் நிகழ்ச்சிகள் நடந்தன",
-       "சேலம்: சாய் சக்தி மெட்ரிக்; இடைப்பாடி: யுனிவர்சல்",
-       "நாமக்கல்: வேப்பநத்தம் நேஷனல் பப்ளிக் பள்ளி"
+       "சாலையின் இருபக்கமும் வடிகால் வசதி இல்லை",
+       "சாலை தாழ்வாக இருப்பதால் நீர் வெளியே செல்ல வழி இல்லை",
+       "இங்குள்ள குடியிருப்பினர் கடும் அவதிக்குள்ளாகின்றனர்"
       ]
      },
-     {
-      "title": "பரிசுகள்",
-      "lines": [
-       "அனைத்துக் குழந்தைகளுக்கும் <b>1,000 ரூபாய்</b> பரிசுகள்",
-       "ஸ்கூல் பேக் உள்பட சிறப்புப் பரிசுகள்",
-       "புகைப்படத்துடன் சான்றிதழங்கள் உடனடி வழங்கப்பட்டன"
-      ]
-     },
-     {
-      "title": "கல்வி நோக்கம்",
-      "lines": [
-       "நவராத்திரி முடிவில் விஜயதசமி அன்று கல்வி தொடங்கும் நம்பிக்கை",
-       "ஐந்து ஆண்டுகள் சேலத்தில் நடந்து நாமக்கல் வரை விரிந்தது",
-       "மாவட்ட ஆசிரியர் கல்வி, பயிற்சி முதல்வர் விழாவைத் தொடங்கினார்"
-      ]
-     }
-    ]
-   },
-   "reel_script": "நேற்று சேலம், இடைப்பாடி, நாமக்கல் பகுதிகளில் அரிச்சுவடி ஆரம்பம் விழா நடந்தது. குழந்தைகளின் விரல்களைப் பிடித்து, அ, ஆ எழுத வைக்கும் வழக்கம் இந்த விழாவின் முக்கியம். நாமக்கல் வேப்பநத்தத்தில் நூறு பேருக்கு மேற்பட்ட பெற்றோர் பங்கேற்றார்கள். அனைத்து குழந்தைகளுக்கும் ஸ்கூல் பேக் உள்பட ஆயிரம் ரூபாய் மதிப்புச் சிறப்புப் பரிசுகள் கொடுக்கப்பட்டன. புகைப்படத்துடன் கூடிய சான்றிதழங்களும் உடனுக்குடன் வழங்கப்பட்டன. இந்த நிகழ்ச்சி ஐந்து ஆண்டுகளாக சேலத்தில் தொடங்கி, இப்போது நாமக்கல் வரை விரிவடைந்துள்ளது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🎓 அரிச்சுவடி ஆரம்ப விழாவில் குழந்தைகளுக்குப் பரிசுகள்\n\nநேற்று சேலம், இடைப்பாடி, நாமக்கல் பள்ளிகளில் விழா நடந்தது.\nநாமக்கல் வேப்பநத்தத்தில் 100க்கும் மேற்பட்ட பெற்றோர் பங்கேற்றார்கள்.\nமாவட்ட ஆசிரியர் கல்வி மற்றும் பயிற்சி நிறுவன முதல்வர் விழாவைத் தொடங்கினார்.\nபெற்றோர் பள்ளியில் சேர்க்கும் வழக்கம்; குழந்தைகளின் விரல்களால் ‘அ’, ‘ஆ’ எழுதி கல்வி கோவிலுக்கு அடியெடுத்தார்கள்.\nஅனைத்துக் குழந்தைகளுக்கும் ஸ்கூல் பேக் உள்பட 1,000 ரூபாய் பரிசுகளும், புகைப்படச் சான்றிதழங்களும் வழங்கப்பட்டன.\nஇந்த நிகழ்ச்சி ஐந்து ஆண்டுகளாக சேலத்தில் தொடங்கி, தற்போது நாமக்கல் வரை விரிவடைந்துள்ளது.\n\n📍 நாமக்கல், இடைப்பாடி, சேலம் | 21 அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 #Salem #SalemNews #சேலம் #Idappadi #இடைப்பாடி #Veppanthattam #வேப்பநத்தம் #Education #கல்வி #பள்ளிவிழா",
-   "prompts": "Ultra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A wide early-morning view of a modest Tamil Nadu school courtyard in Namakkal, families and children gathered from behind and far away, a small decorated learning pavilion with a brass lamp and fresh flowers, clean walkways and palm trees under a pale clear sky, soft golden morning light and a warm festive colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A close-up of an adult's hand gently guiding a child's finger dipped in coloured pigment over a plain learning surface, only hands visible, soft golden morning light and the same warm festive colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A school hall in Idappadi with parents and children seated on mats, all seen from behind and far away, a small lamp and floral arrangement at the front, soft golden morning light and the same warm festive colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A close-up of a school backpack, a wrapped prize item, and a plain certificate folder with a small photo insert on a wooden table, fresh flowers and a brass lamp softly blurred behind, no visible lettering, same soft golden morning light and warm festive colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A wide view of a school courtyard in Salem with families gathered around a small learning pavilion, children holding backpacks and certificate folders, everyone seen from behind, soft golden morning light and the same warm festive colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/mornings-start-with-a-scorpion-bite-with-a-fingertip-of-kolakalam-ana-aavanna-written-by-kizhals/4354887",
-   "published": "2026-10-21T05:19:00+05:30",
-   "verification": "FREE-MODEL DRAFT (openrouter/minimax/minimax-m3.1-flash:free) - not checked by Claude yet; validator problems: numbers not found in the article: 21",
-   "note": "free-model draft openrouter/minimax/minimax-m3.1-flash:free, 3 attempt(s), 1 validator problem(s)",
-   "post_time": "right after your reply, same day"
-  },
-  {
-   "tamil_headline": "கோட்டை மெயின் சாலை உழவர் சந்தையில் 80 டன் காய்கறி விற்பனை; மொத்த வருவாய் 42 லட்சத்து 50,640 ரூபாய்",
-   "english_headline": "Kottai Main Road farmers' market records 80-tonne vegetable sale; 16,068 buyers spend Rs 42,50,640",
-   "category": "Business & Prices",
-   "location": "Kottai Main Road, Namakkal",
-   "importance": "Medium",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "உழவர் சந்தை",
-    "loc": "கோட்டை மெயின் சாலை",
-    "hl1": "கோட்டை மெயின் சாலையில் 80 டன் விற்பனை",
-    "hl2": "42 லட்சத்து 50,640 ரூபாய்",
-    "slides": [
-     {
-      "title": "உழவர் சந்தை",
-      "lines": [
-       "கோட்டை மெயின் சாலையில் உழவர் சந்தை",
-       "ஆயுத பூஜை, சரஸ்வதி பூஜை நேரத்தில் செயல்பட்டு வருகிறது",
-       "மொத்தம் <b>80 டன்</b> காய்கறி விற்பனை"
-      ]
-     },
-     {
-      "title": "விற்பனை விவரம்",
-      "lines": [
-       "<b>287</b> விவசாயிகள் காய்கறிகளைக் கொண்டுவந்தார்கள்",
-       "<b>64,585</b> கிலோ காய்கறி, <b>15,635</b> கிலோ பழங்கள்",
-       "<b>16,068</b> பொதுமக்கள் விற்பனை செய்தனர்"
-      ]
-     },
-     {
-      "title": "விலைகளும் வருவாய்",
-      "lines": [
-       "மொத்த விற்பனை <b>42 லட்சத்து 50,640 ரூபாய்</b>",
-       "ஒரு கிலோ: தக்காளி <b>36</b> | கத்தரி <b>28</b> ரூபாய்",
-       "ஒரு கிலோ: வெண்டை <b>42</b> | புடலங்காய் <b>44</b> ரூபாய்"
-      ]
-     },
-     {
-      "title": "ஒரு கிலோ விலைகள்",
-      "lines": [
-       "ஒரு கிலோ: பீர்க்கங்காய் <b>70</b>, பாகற்காய் <b>60</b> ரூபாய்",
-       "முருங்கைக்காய் <b>70</b>, சின்ன வெங்காயம் <b>84</b> ரூபாய்",
-       "பெரிய வெங்காயம் <b>54</b> ரூபாய்"
-      ]
-     }
-    ]
-   },
-   "reel_script": "நாமக்கல் கோட்டை மெயின் சாலையில் உழவர் சந்தையில் அறுபது டன் காய்கறி விற்பனை நடைபெறுகிறது. இந்தச் சந்தை ஆயுத பூஜை, சரஸ்வதி பூஜை நேரத்தில் நடைபெறுகிறது. இருபத்தி எட்டு பேர் விவசாயிகள் தக்காளி, கத்தரி, வெண்டை போன்ற காய்கறிகளைக் கொண்டுவந்தார்கள். அறுபது நாலாறு ஆயிரத்து ஐந்து பூன்று கிலோ காய்கறி, பதினைந்து ஆயிரத்து அறுநூற்றது கிலோ பழங்கள் விற்பனையாகின. பதினாறு ஆயிரத்து அறுபது எட்டு பொதுமக்கள் பொருட்களை வாங்கினர். மொத்த விற்பனை அறுபது இரண்டு லட்சத்து ஐம்பது ஆயிரத்து அறுநூற்றது ரூபாய். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🥕 கோட்டை மெயின் சாலையில் 80 டன் காய்கறி விற்பனை\n\nஆயுத பூஜை, சரஸ்வதி பூஜை நேரத்தில் உழவர் சந்தை செயல்பட்டு வருகிறது.\n287 விவசாயிகள் காய்கறிகளைக் கொண்டுவந்தார்கள்.\n64,585 கிலோ காய்கறி, 15,635 கிலோ பழங்கள் விற்பனையாகின.\n16,068 பொதுமக்கள் வாங்கினர்; மொத்த விற்பனை 42 லட்சத்து 50,640 ரூபாய்.\nஒரு கிலோக்கு: தக்காளி 36, கத்தரி 28, வெண்டை 42, புடலங்காய் 44 ரூபாய்.\nபீர்க்கங்காய் 70, பாகற்காய் 60, முருங்கைக்காய் 70, சின்ன வெங்காயம் 84, பெரிய வெங்காயம் 54 ரூபாய்.\n\n📍 கோட்டை மெயின் சாலை, நாமக்கல் | ஆயுத பூஜை, சரஸ்வதி பூஜை நேரத்தில்\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 #Kottai #KottaiMainRoad #உழவர்சந்தை #காய்கறிவிற்பனை #விலைகள் #FarmersMarket #VegetableMarket #NamakkalMarket #ஆயுதபூஜை #சரஸ்வதிபூஜை",
-   "prompts": "Ultra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A wide daytime view of an open-air farmers' market along Kottai Main Road in Namakkal, Tamil Nadu, with colorful vegetable and fruit stalls under cloth canopies, baskets, weighing scales, scooters, and shoppers seen from behind and far away in clear daylight. Same warm daylight and natural green-orange colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. Farmers seen from behind unloading crates and sacks of produce beside a small delivery vehicle at the roadside market, with a metal weighing scale and stacked baskets nearby, clear daytime light. Same warm daylight and natural green-orange colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A close overhead view of tomatoes, carrots, brinjal, assorted green gourds and red onions arranged in baskets beside a traditional balance scale and coins, with only a seller's hands visible, clear daytime light. Same warm daylight and natural green-orange colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. Shoppers seen from behind selecting vegetables at a stall while a vendor weighs produce on a metal scale, colorful fruit baskets and a bicycle nearby, clear daytime light. Same warm daylight and natural green-orange colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A wide closing view down Kottai Main Road showing the market continuing beside small roadside shops, produce crates, parked scooters and a few shoppers from behind, clear daytime light. Same warm daylight and natural green-orange colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/ayudha-puja-saraswati-puja-80-tonnes-of-vegetables-sold/4354893",
-   "published": "2026-10-21T05:22:00+05:30",
-   "verification": "FREE-MODEL DRAFT (openrouter/minimax/minimax-m3.1-flash:free) - not checked by Claude yet",
-   "note": "free-model draft openrouter/minimax/minimax-m3.1-flash:free, 2 attempt(s), 0 validator problem(s)",
-   "post_time": "right after your reply, same day"
-  },
-  {
-   "tamil_headline": "திருச்செங்கோடு மாரியம்மன் கோவிலில் 50 ஆண்டுகளாக இல்லாத தெப்ப திருவிழா",
-   "english_headline": "Thiruchengode Mariamman temple: Teppa Thiruvila held after 50 years",
-   "category": "Temples & Events",
-   "location": "Thiruchengode, Namakkal district",
-   "importance": "Medium",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "தெப்ப திருவிழா",
-    "loc": "திருச்செங்கோடு",
-    "hl1": "திருச்செங்கோடு மாரியம்மன் கோவில்",
-    "hl2": "50 ஆண்டுகளாக இல்லாத தெப்பம்",
-    "slides": [
-     {
-      "title": "தெப்ப திருவிழா",
-      "lines": [
-       "திருச்செங்கோடு மாரியம்மன் கோவிலில் <b>தெப்ப திருவிழா</b> நடந்தது",
-       "பூப்பல்லக்கில் தெப்பம் அமைக்கப்பட்டது",
-       "திரளான பக்தர்கள் கலந்து கொண்டனர்"
-      ]
-     },
-     {
-      "title": "50 ஆண்டுகளாக இல்லை",
-      "lines": [
-       "<b>50 ஆண்டுகளாக</b> நடக்காமல் இருந்த தெப்ப தேர் திருவிழா",
-       "கடந்த <b>2023</b> ஆம் ஆண்டில் முதல் முறையாக நடந்தது",
-       "இந்த ஆண்டும் மீண்டும் நடந்துள்ளது"
-      ]
-     },
-     {
-      "title": "துவக்கம்",
-      "lines": [
-       "நலத்துறை அமைச்சர் <b>அருண்ராஜ்</b> துவக்கி வைத்தார்",
-       "பெரிய மாரியம்மன் கோவில், சின்ன மாரியம்மன் கோவில் பகுதிகளில்",
-       "மணிக்கு (மணிக்கு) பக்தர்கள் கூட்டம்"
-      ]
-     }
-    ]
-   },
-   "reel_script": "திருச்செங்கோடு மக்களே, மாரியம்மன் கோவிலில் 50 ஆண்டுகளாக இல்லாத தெப்ப திருவிழா நடந்து முடிச்சு. கடந்த இருபத்தி மூன்றாம் ஆண்டுல முதல் முறையா நடந்த இந்தத் திருவிழா, இன்னைக்கையும் மீண்டும் நடந்துச்சு. நலத்துறை அமைச்சர் அருண்ராஜ் துவக்கி வைச்சார். பூப்பல்லக்கில் அமைக்கப்பட்ட தெப்பத்தை பார்த்து திரளான பக்தர்கள் மகிழ்ச்சி அடைஞ்சாங்க. பெரிய மாரியம்மன் கோவில், சின்ன மாரியம்மன் கோவில் பகுதிகளில் இது நடந்தது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🛶 திருச்செங்கோடு மாரியம்மன் கோவிலில் 50 ஆண்டுகளாக இல்லாத தெப்ப திருவிழா\n\nதிருச்செங்கோடு மாரியம்மன் கோவிலில் 50 ஆண்டுகளாக நடக்காமல் இருந்த தெப்ப தேர் திருவிழா, கடந்த 2023 ஆம் ஆண்டில் முதல் முறையாக நடந்தது.\nஇந்த ஆண்டும் மீண்டும் நடந்தது.\n🙏 நலத்துறை அமைச்சர் அருண்ராஜ் துவக்கி வைத்தார்.\n🛶 பூப்பல்லக்கில் தெப்பம் அமைக்கப்பட்டது.\n👥 திரளான பக்தர்கள் கலந்து கொண்டு மகிழ்ச்சி அடைந்தனர்.\n\n📍 திருச்செங்கோடு, நாமக்கல் மாவட்டம் | 21 அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 #Thiruchengode #திருச்செங்கோடு #MariammanTemple #மாரியம்மன் #TempleFestival #தெப்பதிருவிழா #TamilNaduTemples",
-   "prompts": "Ultra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A wide view of a traditional Tamil Nadu temple festival in Thiruchengode, Namakkal district, with a colorful flower-covered boat (teppam) on a decorated platform, people in traditional dress seen from behind, festive lights and garlands, daytime with clear sky. Same warm festive daylight and vibrant color grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A close-up of a flower-covered boat (teppam) on a decorated platform in a Tamil Nadu temple courtyard, marigold and jasmine flowers, oil lamps, people in traditional dress seen from behind, festive atmosphere. Same warm festive daylight and vibrant color grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A temple courtyard in Thiruchengode with a decorated platform, flower garlands, oil lamps, and a crowd of devotees in traditional dress seen from behind, festive lights, daytime. Same warm festive daylight and vibrant color grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A wide view of a Tamil Nadu temple festival in Thiruchengode, with a colorful flower-covered boat (teppam) on a decorated platform, people in traditional dress seen from behind, festive lights and garlands, daytime with clear sky. Same warm festive daylight and vibrant color grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/-mariamman-temple-raft-festival/4354889",
-   "published": "2026-10-21T05:20:00+05:30",
-   "verification": "FREE-MODEL DRAFT (groq/qwen/qwen3.8-27b) - not checked by Claude yet; validator problems: reel_script must have no digits or English letters (write numbers as Tamil words); numbers not found in the article: 21",
-   "note": "free-model draft groq/qwen/qwen3.8-27b, 3 attempt(s), 2 validator problem(s)",
-   "post_time": "right after your reply, same day"
-  },
-  {
-   "tamil_headline": "புதுச்சத்திர அச்சப்பன் கோவிலில் ‘பேய் விரட்டும்’ விநோதம்",
-   "english_headline": "Achappan temple in Pavithiram celebrates the special 'Peyi Vattum' ritual on Vijayadashami",
-   "category": "Temples & Events",
-   "location": "Pavithiram village near Erumbatti, Namakkal district",
-   "importance": "Medium",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "கோவில் விழா",
-    "loc": "புதுச்சத்திரம்",
-    "hl1": "புதுச்சத்திரத்தில் ‘பேய் விரட்டும்’ நிகழ்வு",
-    "hl2": "நூற்றாண்டு பழமையான கோவில்",
-    "slides": [
-     {
-      "title": "அச்சப்பன் கோவில்",
-      "lines": [
-       "எருமப்பட்டியை அடுத்த <b>புதுச்சத்திரம்</b> கிராமம்",
-       "நூற்றாண்டு பழமையான <b>அச்சப்பன் கோவில்</b>",
-       "விஜயதசமியன்று ஆண்டுதோறும் விழா நடக்கிறது"
-      ]
-     },
-     {
-      "title": "பங்கேற்பவர்கள்",
-      "lines": [
-       "விஜயதசமி விழாவில் சிறப்பாக <b>‘பேய் விரட்டும்’</b> நிகழ்வு",
-       "குழந்தை வரம் வேண்டும் பெண்கள் பங்கேற்பர்",
-       "திருமணமாகாத ஆண்கள், பெண்கள் உள்ளிட்டோர் பங்கேற்பர்"
-      ]
-     },
-     {
-      "title": "சாட்டையடி நிகழ்வு",
-      "lines": [
-       "கோவில் பூசாரி, கோமாளி வேடமிட்ட நபர் சாட்டையடி வழிக்கின்றனர்",
-       "பங்கேற்கும் பெண்கள் வளாகத்தில் கைகளை மேலே கூப்பி அமர்ந்திருப்பர்",
-       "மக்கள், தீய சக்தி வெளியேறும் என நம்பிக்கை"
-      ]
-     },
-     {
-      "title": "நேற்று விழா",
-      "lines": [
-       "நேற்று <b>நூற்றுக்கணக்கான</b> ஆண், பெண் பக்தர்கள் பங்கேற்றனர்",
-       "பின்னர் தலையில் தேங்காய் உடைக்கும் நிகழ்ச்சி நடந்தது",
-       "குழந்தை பாக்கியம் உள்ளிட்ட வேண்டுதல் நிறைவேறும் என நம்புகிறார்கள்"
-      ]
-     }
-    ]
-   },
-   "reel_script": "எருமப்பட்டியை அடுத்த புதுச்சத்திரம் கிராமத்திலுள்ள நூற்றாண்டு பழமையான அச்சப்பன் கோவிலில், விஜயதசமியன்று ‘பேய் விரட்டும்’ விநோதம் நடந்தது. குழந்தை வரம் வேண்டும் பெண்கள், திருமணமாகாத ஆண்கள், பெண்கள் உள்ளிட்டோர் பங்கேற்றன. பங்கேற்கும் பெண்கள் வளாகத்தில் கைகளை மேலே கூப்பி மண்டியிட்டு அமர்ந்திருந்தார்கள். கோவில் பூசாரியும் கோமாளி வேடமிட்ட நபரும் அவர்களைச் சாட்டையால் அடித்தார்கள். மக்கள், தீய சக்தி வெளியேறி குழந்தை பாக்கியம் உள்ளிட்ட வேண்டுதல் நிறைவேறும் என நம்புகிறார்கள். நேற்று நூற்றுக்கணக்கான ஆண், பெண் பக்தர்கள் சாட்டையடி வாங்கினர். பின்னர் தலையில் தேங்காய் உடைக்கும் நிகழ்ச்சி நடந்தது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🪔 புதுச்சத்திரம் அச்சப்பன் கோவிலில் ‘பேய் விரட்டும்’ விநோதம்\n\nநாமக்கல் மாவட்டம் எருமப்பட்டியை அடுத்த புதுச்சத்திரம் கிராமத்தில், நூற்றாண்டு பழமையான அச்சப்பன் கோவில் உள்ளது.\nவிஜயதசமியன்று ஆண்டுதோறும் நடக்கும் விழாவில் ‘பேய் விரட்டும்’ நிகழ்வு சிறப்பாக நடக்கிறது.\nகுழந்தை வரம் வேண்டும் பெண்கள், திருமணமாகாத ஆண்கள், பெண்கள் உள்ளிட்டோர் பங்கேற்கிறார்கள்.\nபங்கேற்கும் பெண்கள் வளாகத்தில் கைகளை மேலே கூப்பி மண்டியிட்டு அமர்ந்து சாட்டையடி வாங்குகிறார்கள்.\nநேற்று நூற்றுக்கணக்கான ஆண், பெண் பக்தர்கள் பங்கேற்று, பின்னர் தலையில் தேங்காய் உடைக்கும் நிகழ்ச்சி நடந்தது.\nமக்கள், சாட்டையடி பெற்றால் தீய சக்தி வெளியேறி, குழந்தை பாக்கியம் உள்ளிட்ட வேண்டுதல் நிறைவேறும் என நம்புகிறார்கள்.\n\n📍 புதுச்சத்திரம், நாமக்கல் மாவட்டம் | நேற்று (விஜயதசமி விழா)\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 #Pavithiram #புதுச்சத்திரம் #Erumbatti #எருமப்பட்டி #AchappanTemple #TempleFestival #Vijayadashami #பேய்விரட்டும் #NamakkalTemple #TamilNaduTemple",
-   "prompts": "Ultra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A wide exterior view of a century-old South Indian village temple near Erumbatti in Namakkal district, stone steps, granite columns, brass oil lamps and a small courtyard, a few devotees seen from behind in the distance, soft daylight, calm pale sky and the same warm earthy saffron-and-blue colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. Temple courtyard with a group of devotees seated on mats, seen entirely from behind, arms raised above their heads in a traditional ritual posture, no faces visible, soft daylight and the same warm earthy saffron-and-blue colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A distant, non-graphic view of a temple priest and a traditionally dressed ritual attendant holding simple wooden sticks beside seated participants, everyone seen from behind or far away, soft daylight and the same warm earthy saffron-and-blue colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A large crowd of male and female devotees gathered in the temple courtyard, all seen from behind or far away, simple traditional clothing and a calm ceremonial atmosphere, soft daylight and the same warm earthy saffron-and-blue colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A non-graphic view of hands holding a whole coconut above a seated participant's head from behind, the temple courtyard softly visible in the background, soft daylight and the same warm earthy saffron-and-blue colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/strange-incident-of-demon-being-chased-away-with-a-whip/4354957",
-   "published": "2026-10-21T08:11:00+05:30",
-   "verification": "FREE-MODEL DRAFT (openrouter/minimax/minimax-m3.1-flash:free) - not checked by Claude yet; validator problems: hl1 longer than 40 characters; slide 3 line 2 longer than 60 characters; slide 4 line 3 longer than 60 characters",
-   "note": "free-model draft openrouter/minimax/minimax-m3.1-flash:free, 3 attempt(s), 3 validator problem(s)",
-   "post_time": "right after your reply, same day"
-  },
-  {
-   "tamil_headline": "பிரிட்டிஷ் கால குதிரைச் சாலை சீரமைப்பால் 46 கி.மீ. பயணத் தூரம் குறையலாம்: மலைவாழ் மக்கள் எதிர்பார்ப்பு",
-   "english_headline": "Hill residents seek upgrade of British-era Kuthira Road that could cut travel distance by 46 km",
-   "category": "Roads & Transport",
-   "location": "Selur Nadu, Thinnanur Nadu and Devanur Nadu areas in Kolimalai taluk, Namakkal district",
-   "importance": "High",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "சாலை மேம்பாடு",
-    "loc": "கொல்லிமலை மலைப்பகுதிகள்",
-    "hl1": "பிரிட்டிஷ் கால குதிரைச் சாலை சீரமைப்பு",
-    "hl2": "46 கி.மீ. பயணத் தூரம் குறைவு",
-    "slides": [
      {
       "title": "கோரிக்கை",
       "lines": [
-       "மலைவாழ் மக்கள் குதிரைச் சாலை சீரமைப்பைக் கோரினர்",
-       "மாவட்டத் தலைநகரை <b>34 கி.மீ.</b> தூரத்தில் எட்டலாம் என்று எதிர்பார்ப்பு",
-       "சாலை சீரமைப்பால் பயணத் தூரம் <b>46 கி.மீ.</b> குறையலாம்"
-      ]
-     },
-     {
-      "title": "மலைவாழ் மக்கள்",
-      "lines": [
-       "கொல்லிமலை: சேலூர் நாடு, தின்னனூர் நாடு, தேவனூர் நாடு",
-       "<b>4,000</b>க்கும் மேற்பட்ட குடும்பங்கள், <b>15,000</b>க்கும் அதிகமான மக்கள் வசிக்கின்றனர்",
-       "சமவெளி பகுதிக்குச் செல்ல <b>4 மணி</b> நேரம் பயணம் தேவை"
-      ]
-     },
-     {
-      "title": "பயணச் சிரமம்",
-      "lines": [
-       "மாவட்டத் தலைநகரை வர <b>90 கி.மீ.</b> பயணம் செய்ய வேண்டும்",
-       "பஸ்கள் குறிப்பிட்ட நேரங்களில் மட்டுமே இயக்கப்படுகின்றன",
-       "நீண்ட பயணத்தால் அதிக வாடகை செலவு ஏற்படுகிறது"
-      ]
-     },
-     {
-      "title": "மாற்று பாதை",
-      "lines": [
-       "மணப்பாறை சந்தையிலிருந்து மேற்படி குதிரைச் சாலை <b>2 கி.மீ.</b>",
-       "குழிப்பட்டி–எருமப்பட்டி வழி நாமக்கலுக்குப் பிரிட்டிஷ் காலத்தில் பயன்பட்டது",
-       "மாவட்ட நிர்வாகம் சாலை மேம்பாட்டிற்கு நடவடிக்கை எடுக்க வேண்டும்"
+       "தாழ்வான தார்ச்சாலையை சீரமைக்கக் கோரிக்கை",
+       "மாவட்ட நிர்வாகம் உரிய நடவடிக்கை எடுக்க வேண்டும்",
+       "மக்களின் சிரமத்தைப் போக்க நடவடிக்கை அவசியம்"
       ]
      }
     ]
    },
-   "reel_script": "குதிரைச் சாலை சீரமைப்பால் பயணத் தூரம் ஆறு கிலோமீட்டர் குறையலாம் என்று கொல்லிமலை மலைவாழ் மக்கள் கோரிக்கை விடுத்துள்ளனர். சேலூர் நாடு, தின்னனூர் நாடு, தேவனூர் நாடு பகுதிகளில் நான்காயிரத்துக்கும் மேற்பட்ட குடும்பங்களில் பதினைந்தாயிரத்துக்கும் மேற்பட்ட மக்கள் வசிக்கின்றனர். சமவெளி பகுதிக்குச் செல்ல நான்கு மணி நேரம் பயணம் ஏற்படுகிறது. மாவட்டத் தலைநகரை அடைய ஒண்பது கிலோமீட்டர் பயணம் தேவையாக இருக்கிறது. பஸ்கள் குறிப்பிட்ட நேரங்களில் மட்டுமே இயங்குவதால் நீண்ட பயணம் சிரமமாகிறது; மாவட்ட நிர்வாகம் நடவடிக்கை எடுக்க வேண்டும். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🛣️ குதிரைச் சாலை சீரமைப்பால் 46 கி.மீ. பயணம் குறையலாம்\n\nகொல்லிமலை மலைவாழ் மக்கள் பிரிட்டிஷ் கால குதிரைச் சாலை சீரமைப்பைக் கோரினர்.\nசேலூர் நாடு, தின்னனூர் நாடு, தேவனூர் நாடு பகுதிகளில் 4,000க்கும் மேற்பட்ட குடும்பங்கள், 15,000க்கும் அதிகமான மக்கள் வசிக்கின்றனர்.\nசமவெளி பகுதிக்குச் செல்ல 4 மணி நேரம் பயணம்; மாவட்டத் தலைநகரை வர 90 கி.மீ. தூரம்.\nபஸ்கள் குறிப்பிட்ட நேரங்களில் மட்டுமே இயக்கப்படுவதால் நீண்ட பயணம் சிரமம்; அதிக வாடகை செலவும் ஏற்படுகிறது.\nமணப்பாறை சந்தையிலிருந்து மேற்படி குதிரைச் சாலை 2 கி.மீ.; தலைநகரை 34 கி.மீ. தூரத்தில் எட்டலாம் என்று எதிர்பார்ப்பு.\nசேலூர் நாடு குழிப்பட்டி முதல் எருமப்பட்டி வழியாக நாமக்கலுக்குப் பிரிட்டிஷ் காலத்தில் பயன்பட்ட பாதையை மீண்டும் பயன்படுத்த மாவட்ட நிர்வாகம் நடவடிக்கை எடுக்க வேண்டும்.\n\n📍 கொல்லிமலை மலைப்பகுதிகள், நாமக்கல் மாவட்டம் | 21 அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 #NamakkalDistrict #Kolimalai #கொல்லிமலை #சேலூர்நாடு #தின்னனூர்நாடு #தேவனூர்நாடு #KuthiraRoad #குதிரைச்சாலை #HillResidents #RoadDevelopment #PublicTransport",
-   "prompts": "Ultra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A wide late-morning view of a narrow old stone-paved road winding through dry hills and scrub on the edge of Kolimalai in Namakkal district, Tamil Nadu, a few distant villagers seen only from behind, low hills and scattered trees in the background. Same warm late-morning daylight and earthy brown-green colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A hillside village lane in Selur Nadu with modest houses among rocks and scrub, residents waiting near the roadside as a village bus arrives, all people seen from behind or far away. Same warm late-morning daylight and earthy brown-green colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A long winding road over the hills with one bus and a small goods vehicle moving slowly, a broad valley and distant plains visible beyond, no close-up people. Same warm late-morning daylight and earthy brown-green colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. An older narrow rural route running between paddy fields near Kulpatti and Erumbatti, a cyclist seen from behind and scattered trees lining the road. Same warm late-morning daylight and earthy brown-green colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nUltra-sharp photorealistic documentary-style news photo, tall vertical 9:16 portrait (1080x1920 or larger, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. Road-improvement activity on the narrow hillside route, local workers seen from behind clearing loose stones and measuring the road with simple tools, dry hills and green fields in the distance. Same warm late-morning daylight and earthy brown-green colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/46--would-be-reduced-if-the-british-era-horse-drawn-road-is-repaired-expectation-of-the-tribal-people/4354905",
-   "published": "2026-10-21T05:28:00+05:30",
-   "verification": "FREE-MODEL DRAFT (openrouter/minimax/minimax-m3.1-flash:free) - not checked by Claude yet; validator problems: slide 1 line 2 longer than 60 characters; slide 2 line 2 longer than 60 characters; slide 4 line 2 longer than 60 characters; slide 4 line 3 longer than 60 characters; numbers not found in the article: 21",
-   "note": "free-model draft openrouter/minimax/minimax-m3.1-flash:free, 3 attempt(s), 5 validator problem(s)",
+   "reel_script": "நாமக்கல் நகர்ல கடந்த மூணு நாட்களா மழை பெய்துட்டு இருக்கு. இதனால குட்டை மேல தெரு, கோட்டைச்சாலை, பரமத்தி சாலைன்னு பல இடங்கள்ல மழைநீர் தேங்கி நிக்குது. குறிப்பா மோகனூர் சாலை தாழ்வா இருக்குறதாலும், அங்க சரியான சாக்கடை வடிகால் வசதி இல்லாததாலும் மக்கள் ரொம்ப அவதிப்படுறாங்க. அந்தத் தார்ச்சாலையை சீரமைக்க மாவட்ட நிர்வாகம் நடவடிக்கை எடுக்கணும்னு மக்கள் கேட்டுக்கிறாங்க. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🌧️ நாமக்கல் நகரில் வடிகால் வசதி இன்றி தேங்கும் மழைநீர்\n\nநாமக்கல் நகர் பகுதியில் கடந்த 3 நாட்களாகத் தொடர்ந்து மழை பெய்து வருகிறது.\n📍 பாதிப்பு: குட்டை மேல தெரு, கோட்டைச்சாலை மற்றும் பரமத்தி சாலை பகுதிகளில் மழைநீர் தேங்கியுள்ளது.\n⚠️ மோகனூர் சாலையில் போதிய சாக்கடை வடிகால் வசதி இல்லாததாலும், சாலை தாழ்வாக இருப்பதாலும் மழைநீர் வெளியே செல்ல வழியின்றி குடியிருப்பினர் கடும் அவதிக்குள்ளாகின்றனர்.\n🛠️ தாழ்வாக உள்ள தார்ச்சாலையை சீரமைக்க மாவட்ட நிர்வாகம் உரிய நடவடிக்கை எடுக்க வேண்டும் என கோரிக்கை எழுந்துள்ளது.\n\n📍 நாமக்கல் நகர் | 21 அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 #CivicIssues #RainWater #DrainageProblem #NamakkalTown #மழைநீர் #நகராட்சி #நாமக்கல்நகரம்",
+   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A wide shot of a waterlogged street in Namakkal town during a rainy day, grey overcast sky, water reflecting the surroundings, a few vehicles passing through the water. Same muted grey and blue colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A close-up of rainwater stagnating on a residential street in Namakkal, showing the lack of drainage gutters along the side of the road, wet concrete walls. Same muted grey and blue colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A view of Mohanur road in Namakkal town, showing a low-lying asphalt road covered in rainwater, people walking carefully on the edges, seen from behind. Same muted grey and blue colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), 4K photographic clarity, crisp fine detail, natural lighting, no blur, no plastic or over-smoothed look. A street scene in Namakkal town with water collected in potholes and along the road edges, cloudy weather, a few distant figures with umbrellas. Same muted grey and blue colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/rainwater-stagnation-due-to-lack-of-drainage/4354903",
+   "published": "2026-10-21T05:27:00+05:30",
+   "verification": "FREE-MODEL DRAFT (openrouter/google/gemma-4-31b-it:free) - not checked by Claude yet; validator problems: numbers not found in the article: 21",
+   "note": "free-model draft openrouter/google/gemma-4-31b-it:free, 3 attempt(s), 1 validator problem(s)",
    "post_time": "right after your reply, same day"
   }
  ]
