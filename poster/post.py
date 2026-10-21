@@ -131,6 +131,14 @@ def pick(rows):
 
 
 # ---------------------------------------------------------------- checks before posting
+TAMIL_MONTHS = ["ஜனவரி", "பிப்ரவரி", "மார்ச்", "ஏப்ரல்", "மே", "ஜூன்", "ஜூலை", "ஆகஸ்ட்", "செப்டம்பர்", "அக்டோபர்", "நவம்பர்", "டிசம்பர்"]
+
+
+def tamil_date_today():
+    d = datetime.now(IST)
+    return f"{d.day} {TAMIL_MONTHS[d.month - 1]} {d.year}"
+
+
 def all_text(row, spec):
     parts = [row.get("caption") or "", row.get("reel_script") or "", spec.get("hl1", ""), spec.get("hl2", ""), spec.get("cat", ""), spec.get("loc", "")]
     for s in spec.get("slides", []):
@@ -337,6 +345,7 @@ def run_story(row):
     import verify
     sid = row["story_id"]
     spec = json.loads(row["slides_spec"])
+    spec["date"] = tamil_date_today()  # date shown on poster/reel = actual posting date (IST)
     problems = check_text(row, spec) + verify.check_news(row)
     if problems:
         return fail(row, "carousel", "Checks failed: " + "; ".join(problems))
