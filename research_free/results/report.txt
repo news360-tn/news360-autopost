@@ -1,25 +1,19 @@
-1. FAILED https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/egg-price-hikes/4354897: RuntimeError: no free model answered: gemini gemini-2.0-flash 404: {
-  "error": {
-    "code": 404,
-    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvemen
-2. FAILED https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/call-for-early-conclusion-of-wage-negotiations/4354095: RuntimeError: no free model answered: gemini gemini-2.0-flash 404: {
-  "error": {
-    "code": 404,
-    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code to use models/gemini-3.8-flash for the latest features and improvemen
+1. முட்டை விலை உயர்வு | gemini/gemini-3.7-flash | attempts 1 | problems 0
+2. சம்பள உயர்வு பேச்சுவார்த்தை விரைவாக முடிக்க கோரிக்கை | gemini/gemini-3.8-flash | attempts 3 | problems 0
 
-fail gemini/gemini-2.5-flash: gemini gemini-2.5-flash 403: {
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
   "error": {
-    "code": 403,
-    "message": "Gemini API has not been used in project 241794389692 before or it is disabled. Enab
-fail gemini/gemini-2.0-flash: gemini gemini-2.0-flash 404: {
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temp
+ok gemini/gemini-3.7-flash
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+ok gemini/gemini-3.8-flash
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
   "error": {
-    "code": 404,
-    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code 
-fail gemini/gemini-2.5-flash: gemini gemini-2.5-flash 404: {
-  "error": {
-    "code": 404,
-    "message": "This model models/gemini-2.5-flash is no longer available to new users. Please upda
-fail gemini/gemini-2.0-flash: gemini gemini-2.0-flash 404: {
-  "error": {
-    "code": 404,
-    "message": "This model models/gemini-2.0-flash is no longer available. Please update your code 
+    "code": 503,
+    "message": "This model is currently experiencing high demand. Spikes in demand are usually temp
+ok gemini/gemini-3.7-flash
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+ok gemini/gemini-3.8-flash
