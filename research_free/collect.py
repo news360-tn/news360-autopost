@@ -43,7 +43,15 @@ def is_dup(art, d, recent):
 
 
 def main():
-    recent = bridge("recent")["rows"] if BRIDGE_URL else []
+    recent = []
+    if BRIDGE_URL:
+        rr = bridge("recent")
+        if rr.get("ok"):
+            recent = rr["rows"]
+        elif DRY:
+            print("bridge 'recent' not available yet (Apps Script not updated):", rr)
+        else:
+            raise SystemExit(f"bridge 'recent' failed: {rr}")
     seen_src = {r.get("source") for r in recent}
     today = datetime.datetime.now(IST).strftime("%A %d %B %Y")
     out, log = [], []

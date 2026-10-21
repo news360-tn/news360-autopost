@@ -44,7 +44,7 @@ jobs:
         if: always() && steps.sw.outputs.go == 'yes'
         run: |
           git config user.name "news360-bot"; git config user.email "bot@users.noreply.github.com"
-          git add -f research_free/results/collect.log research_free/results/collect.json || true
+          git add -f research_free/results
           git commit -m "free collector log" || echo none
           git pull --rebase --autostash origin main || true
           git push || true
