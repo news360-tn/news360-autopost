@@ -425,6 +425,40 @@ def publish_reel(token, video_url, caption, collab, cover_url=""):
     return mid, ig("GET", mid, token, fields="permalink").get("permalink", ""), collab_ok, why
 
 
+def publish_story(token, media_url, kind):
+    """Instagram Story (image or video) on the same account. Never raises: a story problem must not undo the post."""
+    try:
+        if not CONFIG.get("post_stories", True):
+            return ""
+        uid, _ = ig_account(token)
+        prm = dict(media_type="STORIES")
+        prm["video_url" if kind == "video" else "image_url"] = media_url
+        cid = ig("POST", f"{uid}/media", token, **prm)["id"]
+        wait_ready(cid, token, 10)
+        mid = ig("POST", f"{uid}/media_publish", token, creation_id=cid)["id"]
+        log("story posted", kind, mid)
+        return mid
+    except Exception as e:
+        log("story not posted (post itself is fine):", e)
+        return ""
+
+
+def story_image(jpg, dst):
+    """9:16 story frame from a carousel slide: slide centred on a blurred, darkened copy of itself"""
+    im = Image.open(jpg).convert("RGB")
+    bg = im.resize((1080, 1920), Image.LANCZOS).filter(ImageFilter.GaussianBlur(40))
+    bg = ImageEnhance.Brightness(bg).enhance(0.55)
+    w = 1080
+    h = round(im.height * w / im.width)
+    if h > 1920:
+        h = 1920
+        w = round(im.width * h / im.height)
+    fg = im.resize((w, h), Image.LANCZOS)
+    bg.paste(fg, ((1080 - w) // 2, (1920 - h) // 2))
+    bg.save(dst, "JPEG", quality=94)
+    return dst
+
+
 # ---------------------------------------------------------------- main flows
 def fail(row, kind, msg):
     log("NOT POSTED -", row["story_id"], msg)
@@ -520,6 +554,10 @@ def run_story(row):
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "permalink": link, "media_id": mid,
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab_ok, "checks": note})
                 done.append(("carousel", link))
+                try:
+                    publish_story(token, upload(story_image(jpgs[0], work / "story_cover.jpg"), "image"), "image")
+                except Exception as e:
+                    log("story image not made (post itself is fine):", e)
         except Exception as e:
             log("ERROR carousel", sid, e)
             bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "carousel", "error": str(e)[:900]})
@@ -539,6 +577,7 @@ def run_story(row):
                     log("cover upload failed:", e)
                 mid, link, collab_ok, why = publish_reel(token, url, caption, collab, cover_url)
                 log("reel posted", sid, link)
+                publish_story(token, url, "video")
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "permalink": link, "media_id": mid,
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab_ok, "checks": note})
                 done.append(("reel", link))
