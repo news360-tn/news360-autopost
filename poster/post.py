@@ -121,12 +121,18 @@ def in_post_window():
     return False
 
 
-def pick(rows):
+def pick_all(rows):
+    """every ready story (urgent first, then the rest oldest first)"""
     c = [r for r in rows if ready(r)]
     if not in_post_window():
         # outside the best-time windows only urgent items go out (high importance or power shutdowns)
         c = [r for r in c if is_shutdown(r) or (r.get("importance") or "").strip() == "High"]
     c.sort(key=lambda r: (IMPORTANCE.get((r.get("importance") or "").strip(), 1), -age_hours(r)))
+    return c
+
+
+def pick(rows):
+    c = pick_all(rows)
     return c[0] if c else None
 
 
@@ -515,7 +521,7 @@ def main():
         rows = []
     else:
         rows = bridge_get("queue")["rows"]
-        n = 1 if pick(rows) else 0
+        n = len(pick_all(rows))
     if mode == "check":
         log(f"{len(rows)} stories in the queue, ready to post: {n}")
         if rows:
@@ -527,9 +533,12 @@ def main():
         out = os.environ.get("GITHUB_OUTPUT")
         if out:
             with open(out, "a") as f:
-                f.write(f"ready={n}\n")
+                ids = [r["story_id"] for r in pick_all(rows)][:12] if n else []
+                f.write(f"ready={1 if n else 0}\n")
+                f.write("matrix=" + json.dumps({"story": ids}) + "\n")
         return
-    row = pick(rows)
+    want = sys.argv[2] if len(sys.argv) > 2 else ""
+    row = next((r for r in pick_all(rows) if r.get("story_id") == want), None) if want else pick(rows)
     if not row:
         log("no story with images is waiting")
         return
