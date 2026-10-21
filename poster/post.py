@@ -35,7 +35,7 @@ PAGE = "namakkal"
 LOGO = KIT / "logo_namakkal.png"
 TAG = "#Namakkal360"
 IMPORTANCE = {"High": 0, "Medium": 1, "Low": 2}
-MAX_AGE_H = 36
+MAX_AGE_H = 48
 AI_LINE = "📌 படங்கள் செய்தியை விளக்க AI மூலம் உருவாக்கப்பட்ட பிரதிநிதித்துவப் படங்கள்."
 
 # news outlets must never appear on a post, a slide or in a reel
