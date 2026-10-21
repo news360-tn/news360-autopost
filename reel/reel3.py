@@ -349,7 +349,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
             pg.wait_for_function("document.fonts.status==='loaded'")
             pg.evaluate("fitAll()")
             pg.evaluate("renderAt(0.9)")
-            pg.evaluate("document.getElementById('cap').style.display='none';document.getElementById('tick').style.display='none';document.getElementById('prog').style.display='none';document.getElementById('hook').style.opacity=1;")
+            pg.evaluate("document.getElementById('cap').style.display='none';document.getElementById('tick').style.display='none';document.getElementById('big').style.display='none';document.getElementById('bigu').style.display='none';document.getElementById('prog').style.display='none';document.getElementById('hook').style.opacity=1;")
             pg.screenshot(path=str(Path(out_mp4).with_name(Path(out_mp4).stem + "_cover.jpg")), type="jpeg", quality=95)
             b.close()
     except Exception as e:
