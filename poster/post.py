@@ -274,14 +274,22 @@ def reel_spec(row, spec, images):
         sentences = sentences[:-1]
     sentences.append(STD)
     body, last = sentences[:-1], sentences[-1]
-    facts = []
-    for sl in spec.get("slides", []):
-        for ln in sl.get("lines", [])[:1]:
-            facts.append(ln)
-    sents = []
+    # an on-screen fact is shown ONLY while the sentence it matches is spoken (matched by shared word stems);
+    # the old code cycled slide lines in order, so the chip often showed a different fact than the voice said.
+    def _stems(t):
+        return {w[:4] for w in re.findall(r"[\u0B80-\u0BFF]{4,}", re.sub(r"<[^>]+>", "", t))}
+    pool = [re.sub(r"<[^>]+>", "", ln) for sl in spec.get("slides", []) for ln in sl.get("lines", [])]
+    used, sents = set(), []
     for i, sent in enumerate(body):
-        fact = facts[(i - 1) % len(facts)] if (i >= 1 and facts) else ""
-        sents.append({"say": sent, "caption": sent, "fact": fact})
+        best, bs = "", 1
+        st = _stems(sent)
+        for j, ln in enumerate(pool):
+            sc = len(st & _stems(ln))
+            if j not in used and sc > bs and len(ln) <= 48:
+                best, bs, bj = ln, sc, j
+        if best and i >= 1:
+            used.add(bj)
+        sents.append({"say": sent, "caption": sent, "fact": best if i >= 1 else ""})
     hook = [(spec.get("hl1") or "").strip(), (spec.get("hl2") or "").strip()]
     return {"v": 3, "story": row["story_id"], "date": spec["date"], "cat": (spec.get("cat") or "").strip(),
             "location": (spec.get("loc") or "நாமக்கல்")[:30], "voice": "male", "hook": hook,

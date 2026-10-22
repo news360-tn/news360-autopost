@@ -49,7 +49,7 @@ body{font-family:'NST','CT',sans-serif;color:#fff;position:relative}
 .sticker{position:absolute;left:0;top:360px;max-width:940px;z-index:22;background:var(--yellow);color:var(--navy);font:800 46px/1.3 'NST','CT';padding:16px 34px 10px 30px;border-radius:0 24px 24px 0;box-shadow:0 10px 30px rgba(0,0,0,.45);opacity:0}
 .sticker b{color:#C4100F}
 #cap{position:absolute;left:40px;right:40px;top:1110px;height:310px;z-index:25;text-align:center;background:linear-gradient(90deg,rgba(6,19,47,.93),rgba(6,19,47,.82));border-left:16px solid var(--accent);border-radius:8px 30px 30px 8px;box-shadow:0 14px 40px rgba(0,0,0,.5);opacity:0}
-.ph{position:absolute;left:52px;right:46px;top:50%;transform:translateY(-50%);font:800 70px/1.3 'CT','NST';color:#fff;opacity:0;text-shadow:0 4px 14px rgba(0,0,0,.7)}
+.ph{position:absolute;left:52px;right:46px;top:50%;transform:translateY(-50%);font:800 62px/1.35 'CT','NST';color:#fff;opacity:0;text-shadow:0 4px 14px rgba(0,0,0,.7)}
 #tick{position:absolute;left:0;right:0;top:1446px;height:96px;z-index:26;display:flex;overflow:hidden;background:rgba(6,19,47,.95);border-top:6px solid var(--accent)}
 #tick .lab{flex:none;background:var(--red);padding:12px 34px 0;font:900 46px/1.5 'CT','NST';color:#fff}
 #tick .trk{position:relative;flex:1;overflow:hidden}
@@ -91,7 +91,7 @@ def word_times(text, s, e):
     return out
 
 
-def phrases(words, n=3):
+def phrases(words, n=6):
     """groups of up to 3 words, breaking after a comma/full stop"""
     out, cur = [], []
     for w in words:
@@ -144,7 +144,7 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
         cap_html += f'<div class="ph" id="g{gi}">{spans}</div>'
     hook = spec.get("hook") or ["", ""]
     big = None
-    for src in [hook[1], hook[0]] + [x.get("fact", "") for x in sents]:
+    for src in []:  # big-number pop-up removed: a giant number with no context confused viewers
         m_ = re.search(r"(\d[\d,]*(?:\.\d+)?)\s*([^\d\s,.:;•]{0,14})", src or "")
         if m_:
             big = {"n": m_.group(1), "u": m_.group(2)}
