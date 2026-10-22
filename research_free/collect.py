@@ -192,7 +192,7 @@ def main():
             if not fresh(art["published"]):
                 n["status"], stt["s"] = "old", "old"
                 continue
-            if any(difflib.SequenceMatcher(None, r.get("headline_ta", ""), art["title"]).ratio() > 0.72 for r in recent):
+            if any(difflib.SequenceMatcher(None, r.get("headline_ta", ""), art["title"]).ratio() > 0.55 for r in recent):
                 n["status"], stt["s"] = "already filed", "dup"
                 continue
             art["interest"] = interest(art)
@@ -211,6 +211,14 @@ def main():
             recent.append({"headline_ta": story["tamil_headline"], "source": art["url"]})
             n["status"], n["story"], stt["s"] = "filed", story["tamil_headline"], "filed"
             done[area] += 1
+            for a in ("R", "N"):    # same event from another outlet / wording: never write it a second time
+                keep = []
+                for q in queues[a]:
+                    if difflib.SequenceMatcher(None, q["title"], art["title"]).ratio() > 0.5:
+                        q["status"] = "duplicate of a story filed this round"
+                    else:
+                        keep.append(q)
+                queues[a] = keep
         if not progressed:
             break
     log.append(f"filed: {done['R']} Rasipuram + {done['N']} Namakkal (targets {MAX_RASIPURAM} + {MAX_NAMAKKAL})")
@@ -249,7 +257,7 @@ def main():
         r = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": out}), timeout=180)
         print("bridge:", r.status_code, r.text[:300])
         r.raise_for_status()
-    elif not out and not DRY:
+    elif not out and not DRY and os.environ.get("NO_NEWS_EMAIL", "") in ("1", "true", "yes"):
         # tell the owner why there is no email with prompts this time (never fails the run)
         try:
             why = "\n".join("- " + x[:170] for x in log if not x.startswith("source ")) or "- no new story this round"
