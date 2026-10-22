@@ -10,6 +10,7 @@ import llm, sources, run, allnews
 IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 BRIDGE_URL, BRIDGE_KEY = os.environ.get("BRIDGE_URL", ""), os.environ.get("BRIDGE_KEY", "")
 MAX_RASIPURAM = int(os.environ.get("MAX_RASIPURAM", "5"))     # Rasipuram page: up to 5 stories per round
+CAROUSEL_EVERY = int(os.environ.get("CAROUSEL_EVERY", "5"))   # 1 carousel (best story) per 5 stories, all others reel only
 MAX_NAMAKKAL = int(os.environ.get("MAX_NAMAKKAL", "6"))       # Namakkal page: up to 6 other district stories per round
 ARCHIVE = HERE / "archive"
 DRY = "--dry" in sys.argv
@@ -207,6 +208,7 @@ def main():
                 log.append(f"NOT filed ({area}) {art['title'][:50]}: {why}")
                 continue
             story["post_to"] = "Namakkal 360 + Rasipuram 360 (collab)" if area == "R" else "Namakkal 360"
+            story["_area"], story["_score"] = area, n["score"]
             out.append(story)
             recent.append({"headline_ta": story["tamil_headline"], "source": art["url"]})
             n["status"], n["story"], stt["s"] = "filed", story["tamil_headline"], "filed"
@@ -221,6 +223,15 @@ def main():
                 queues[a] = keep
         if not progressed:
             break
+    # reels carry the reach; a carousel only for the most promising story in every CAROUSEL_EVERY (High importance always gets one)
+    for a in ("R", "N"):
+        grp = sorted([x for x in out if x.get("_area") == a], key=lambda x: -x["_score"])
+        top = max(1, -(-len(grp) // CAROUSEL_EVERY)) if grp else 0
+        for i, x in enumerate(grp):
+            x["slides_spec"]["carousel"] = i < top or str(x.get("importance", "")).strip() == "High"
+    for x in out:
+        x.pop("_area", None); x.pop("_score", None)
+    log.append(f"carousel for {sum(1 for x in out if x['slides_spec'].get('carousel'))} of {len(out)} stories, the rest reel only")
     log.append(f"filed: {done['R']} Rasipuram + {done['N']} Namakkal (targets {MAX_RASIPURAM} + {MAX_NAMAKKAL})")
     for n in news:
         if n["status"] == "collected":

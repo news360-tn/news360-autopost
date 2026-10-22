@@ -92,12 +92,22 @@ def is_shutdown(row):
     return "மின் தடை" in (row.get("category") or "") or "shutdown" in (row.get("category") or "").lower()
 
 
+def spec_has_carousel(row):
+    """stories written in the reel-first plan carry "carousel": false in slides_spec when only a reel is wanted (older stories: both)"""
+    try:
+        return json.loads(row.get("slides_spec") or "{}").get("carousel", True) is not False
+    except Exception:
+        return True
+
+
 def ready(row):
     if (row.get("review") or "").strip().lower() == "hold":
         return False
     if not row.get("images") or not row.get("slides_spec"):
         return False
     if row.get("namakkal_link") and row.get("reel_link"):
+        return False
+    if row.get("reel_link") and not spec_has_carousel(row):      # reel-only story: the reel is all it needs
         return False
     return age_hours(row) <= MAX_AGE_H * (2 if is_shutdown(row) else 1)
 
@@ -557,7 +567,7 @@ def run_story(row):
     if cached:
         log("prebuilt carousel + reel found - publishing without rebuilding")
     images = [] if cached else fetch_images(row, work)
-    need_carousel, need_reel = not row.get("namakkal_link"), not row.get("reel_link")
+    need_carousel, need_reel = not row.get("namakkal_link") and spec.get("carousel", True) is not False, not row.get("reel_link")
     jpgs = mp4 = None
     reel_cover = None
     voice_file = None
@@ -622,7 +632,7 @@ def run_story(row):
                     media["cover"] = upload(reel_cover, "image") if reel_cover else ""
                 except Exception as e:
                     log("cover upload failed:", e)
-            if media["carousel"] and media["reel"]:
+            if media["reel"] and (media["carousel"] or spec.get("carousel", True) is False):
                 save_cache(sid, key, media, checks)
         except Exception as e:
             return fail(row, "carousel", f"Upload failed: {e}")
