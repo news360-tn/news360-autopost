@@ -9,6 +9,10 @@ on:
         description: "Test only (build + upload, do not post to Instagram)"
         type: boolean
         default: true
+      prebuild:
+        description: "Prebuild only: make every waiting carousel + reel now and keep them ready; nothing is posted (set dry_run to false). The next posting run publishes them at once."
+        type: boolean
+        default: false
 
 concurrency:
   group: news360-post
@@ -23,6 +27,7 @@ env:
   CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
   CLOUDINARY_PRESET: ${{ secrets.CLOUDINARY_PRESET }}
   DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
+  PREBUILD: ${{ github.event_name == 'workflow_dispatch' && inputs.prebuild && '1' || '' }}
   PAUSED: ${{ vars.PAUSED }}
 
 jobs:
@@ -103,3 +108,11 @@ jobs:
           cd kit && npm install --no-audit --no-fund
       - name: Build and post the carousel and the reel
         run: python poster/post.py run ${{ matrix.story }}
+      - name: Keep the finished files (so a retry or the next run does not rebuild)
+        if: always()
+        run: |
+          git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
+          if [ -n "$(ls poster/prebuilt 2>/dev/null)" ]; then
+            git add -f poster/prebuilt && git commit -qm "prebuilt ${{ matrix.story }}" || exit 0
+            for i in 1 2 3 4 5; do git pull -q --rebase && git push -q && break; sleep 5; done
+          fi

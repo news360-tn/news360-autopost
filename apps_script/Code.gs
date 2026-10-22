@@ -498,7 +498,14 @@ function nextStoryNo_(sh) {
 function addStories_(b) {
   var sh = sheet_();
   var stories = b.stories || [];
-  if (!stories.length) return { ok: true, added: 0 };
+  if (!stories.length) {
+    if (b.no_news) {
+      GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360] No new news this round - ' + nowIst_(),
+        'The news check ran at ' + nowIst_() + ' IST and found nothing new to post.\n\n' + String(b.no_news) +
+        '\n\nYou do not need to send any images now. The next check is in about 3 hours.\n\nSheet: ' + SHEET_LINK);
+    }
+    return { ok: true, added: 0 };
+  }
   var no = nextStoryNo_(sh);
   var now = new Date();
   var batch = 'B' + Utilities.formatDate(now, 'Asia/Kolkata', 'yyyyMMdd-HHmm');

@@ -29,6 +29,8 @@ CLOUD = os.environ.get("CLOUDINARY_CLOUD", "")
 PRESET = os.environ.get("CLOUDINARY_PRESET", "")
 START = time.time()
 DRY = os.environ.get("DRY_RUN", "") in ("1", "true", "yes")
+PREBUILD = os.environ.get("PREBUILD", "") in ("1", "true", "yes")   # build + upload only; the posting run then publishes at once
+CACHE = ROOT / "poster" / "prebuilt"
 IG_HOST = "https://graph.instagram.com"
 IG_VER = os.environ.get("IG_API_VERSION", "")
 
@@ -317,6 +319,30 @@ def upload(path, kind):
     return r.json()["secure_url"]
 
 
+def cache_key(row, spec, caption):
+    import hashlib
+    raw = json.dumps([row.get("reel_script"), row.get("slides_spec"), caption, row.get("images"), spec.get("date"), row.get("post_to")], ensure_ascii=False)
+    return hashlib.sha1(raw.encode()).hexdigest()[:16]
+
+
+def load_cache(sid, key):
+    try:
+        d = json.loads((CACHE / f"{sid}.json").read_text(encoding="utf-8"))
+        if d.get("key") == key and d.get("carousel") and d.get("reel"):
+            return d
+    except Exception:
+        pass
+    return None
+
+
+def save_cache(sid, key, media, checks):
+    try:
+        CACHE.mkdir(parents=True, exist_ok=True)
+        (CACHE / f"{sid}.json").write_text(json.dumps(dict(media, key=key, checks=checks), ensure_ascii=False), encoding="utf-8")
+    except Exception as e:
+        log("cache not saved:", e)
+
+
 def ig_url(path):
     return f"{IG_HOST}/{IG_VER + '/' if IG_VER else ''}{path}"
 
@@ -526,7 +552,11 @@ def run_story(row):
     collab = "rasipuram" in (row.get("post_to") or "").lower()
     caption = final_caption(row)
     work = OUT / sid
-    images = fetch_images(row, work)
+    key = cache_key(row, spec, caption)
+    cached = None if PREBUILD else load_cache(sid, key)
+    if cached:
+        log("prebuilt carousel + reel found - publishing without rebuilding")
+    images = [] if cached else fetch_images(row, work)
     need_carousel, need_reel = not row.get("namakkal_link"), not row.get("reel_link")
     jpgs = mp4 = None
     reel_cover = None
@@ -535,41 +565,70 @@ def run_story(row):
     checks = []
 
     # 1. build everything (nothing is published yet)
-    try:
-        if need_reel:
-            rs = reel_spec(row, spec, images)
-        probs = verify.check_texts(spec, [sc.get("caption", "") for sc in (rs or {}).get("scenes", [])])
-        if probs:
-            return fail(row, "carousel", "Tamil text check failed: " + "; ".join(probs))
-        checks.append("Tamil text and fonts OK")
-        if need_carousel:
-            jpgs = render_carousel(row, spec, work)
-            checks.append(f"{len(jpgs)} slides rendered, no clipped text")
-        if need_reel:
-            try:
-                v = bridge_get("voice", story=sid)
-                if v.get("found"):
-                    voice_file = work / f"voice{v.get('ext', '.m4a')}"
-                    voice_file.write_bytes(base64.b64decode(v["data"]))
-                    log("using recorded human voice", v.get("name"))
-            except Exception as e:
-                log("voice lookup failed, using the voice model:", e)
-            mp4 = render_reel(row, spec, images, work, voice_file)
-            probs = verify.check_reel(mp4, [x["say"] for x in rs["sentences"]] + [rs["outro"]["say"]])
+    if cached:
+        checks = list(cached.get('checks') or [])
+    else:
+        try:
+            if need_reel:
+                rs = reel_spec(row, spec, images)
+            probs = verify.check_texts(spec, [sc.get("caption", "") for sc in (rs or {}).get("scenes", [])])
             if probs:
-                return fail(row, "reel", "Reel check failed: " + "; ".join(probs))
-            checks.append("reel 1080x1920, 10-30 s, voice present and fully pronounceable")
-            cov = mp4.with_name(mp4.stem + "_cover.jpg")
-            reel_cover = cov if cov.exists() else None
-            if not reel_cover:
-                log("no cover image made, Instagram will pick a frame")
-    except subprocess.CalledProcessError as e:
-        return fail(row, "carousel", f"Build failed ({e.cmd[1].split('/')[-1]}, exit {e.returncode})")
-    except Exception as e:
-        return fail(row, "carousel", f"Build failed: {e}")
+                return fail(row, "carousel", "Tamil text check failed: " + "; ".join(probs))
+            checks.append("Tamil text and fonts OK")
+            if need_carousel:
+                jpgs = render_carousel(row, spec, work)
+                checks.append(f"{len(jpgs)} slides rendered, no clipped text")
+            if need_reel:
+                try:
+                    v = bridge_get("voice", story=sid)
+                    if v.get("found"):
+                        voice_file = work / f"voice{v.get('ext', '.m4a')}"
+                        voice_file.write_bytes(base64.b64decode(v["data"]))
+                        log("using recorded human voice", v.get("name"))
+                except Exception as e:
+                    log("voice lookup failed, using the voice model:", e)
+                mp4 = render_reel(row, spec, images, work, voice_file)
+                probs = verify.check_reel(mp4, [x["say"] for x in rs["sentences"]] + [rs["outro"]["say"]])
+                if probs:
+                    return fail(row, "reel", "Reel check failed: " + "; ".join(probs))
+                checks.append("reel 1080x1920, 10-30 s, voice present and fully pronounceable")
+                cov = mp4.with_name(mp4.stem + "_cover.jpg")
+                reel_cover = cov if cov.exists() else None
+                if not reel_cover:
+                    log("no cover image made, Instagram will pick a frame")
+        except subprocess.CalledProcessError as e:
+            return fail(row, "carousel", f"Build failed ({e.cmd[1].split('/')[-1]}, exit {e.returncode})")
+        except Exception as e:
+            return fail(row, "carousel", f"Build failed: {e}")
     checks.append("news marked verified: " + (row.get("verification") or "")[:60])
     note = "; ".join(checks)
     log("all checks passed:", note)
+
+    # 1b. upload the finished files once and remember the links (a later run, or a retry after an Instagram error, publishes at once)
+    if cached:
+        media = cached
+    else:
+        media = {"carousel": [], "reel": "", "cover": "", "story": ""}
+        try:
+            if need_carousel and jpgs:
+                media["carousel"] = [upload(j, "image") for j in jpgs]
+                try:
+                    media["story"] = upload(story_image(jpgs[0], work / "story_cover.jpg"), "image")
+                except Exception as e:
+                    log("story image not made (post itself is fine):", e)
+            if need_reel and mp4:
+                media["reel"] = upload(mp4, "video")
+                try:
+                    media["cover"] = upload(reel_cover, "image") if reel_cover else ""
+                except Exception as e:
+                    log("cover upload failed:", e)
+            if media["carousel"] and media["reel"]:
+                save_cache(sid, key, media, checks)
+        except Exception as e:
+            return fail(row, "carousel", f"Upload failed: {e}")
+    if PREBUILD:
+        log("PREBUILT (not posted):", sid, "carousel", len(media["carousel"]), "slides, reel", bool(media["reel"]))
+        return [("prebuilt", sid)]
 
     # stagger: stories of one run are published SLOT_MIN minutes apart (account reach is better than a burst of posts)
     try:
@@ -586,7 +645,7 @@ def run_story(row):
     voice = "recorded" if voice_file else "voice model"
     if need_carousel:
         try:
-            urls = [upload(j, "image") for j in jpgs]
+            urls = media["carousel"]
             if DRY:
                 log("DRY RUN carousel - not publishing", urls)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "dry_run": True, "permalink": "",
@@ -600,7 +659,8 @@ def run_story(row):
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab_ok, "checks": note})
                 done.append(("carousel", link))
                 try:
-                    publish_story(token, upload(story_image(jpgs[0], work / "story_cover.jpg"), "image"), "image")
+                    if media.get("story"):
+                        publish_story(token, media["story"], "image")
                 except Exception as e:
                     log("story image not made (post itself is fine):", e)
         except Exception as e:
@@ -608,18 +668,14 @@ def run_story(row):
             bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "carousel", "error": str(e)[:900]})
     if need_reel:
         try:
-            url = upload(mp4, "video")
+            url = media["reel"]
             if DRY:
                 log("DRY RUN reel - not publishing", url)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "dry_run": True, "permalink": "",
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab, "checks": note})
             else:
                 token = bridge_get("token", page=PAGE)["token"]
-                cover_url = ""
-                try:
-                    cover_url = upload(reel_cover, "image") if reel_cover else ""
-                except Exception as e:
-                    log("cover upload failed:", e)
+                cover_url = media.get("cover") or ""
                 mid, link, collab_ok, why = publish_reel(token, url, caption, collab, cover_url)
                 log("reel posted", sid, link)
                 first_comment(token, mid, sid, 1)
@@ -669,9 +725,14 @@ def main():
         out = os.environ.get("GITHUB_OUTPUT")
         if out:
             with open(out, "a") as f:
-                ids = [r["story_id"] for r in pick_all(rows)][:3] if n else []   # 3 stories per run, 25 min apart
-                f.write(f"ready={1 if n else 0}\n")
-                f.write("matrix=" + json.dumps({"include": [{"story": i, "slot": k * 25} for k, i in enumerate(ids)]}) + "\n")
+                if PREBUILD:   # prebuild: every waiting story, built at once, nothing published
+                    ids = [r["story_id"] for r in pick_all(rows)] if n else []
+                    f.write(f"ready={1 if n else 0}\n")
+                    f.write("matrix=" + json.dumps({"include": [{"story": i, "slot": 0} for i in ids]}) + "\n")
+                else:
+                    ids = [r["story_id"] for r in pick_all(rows)][:3] if n else []   # 3 stories per run, 25 min apart
+                    f.write(f"ready={1 if n else 0}\n")
+                    f.write("matrix=" + json.dumps({"include": [{"story": i, "slot": k * 25} for k, i in enumerate(ids)]}) + "\n")
         return
     want = sys.argv[2] if len(sys.argv) > 2 else ""
     row = next((r for r in pick_all(rows) if r.get("story_id") == want), None) if want else pick(rows)

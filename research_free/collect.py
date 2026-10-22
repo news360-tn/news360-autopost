@@ -158,6 +158,13 @@ def main():
         r = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": out}), timeout=180)
         print("bridge:", r.status_code, r.text[:300])
         r.raise_for_status()
+    elif not out and not DRY:
+        # tell the owner why there is no email with prompts this time (never fails the run)
+        try:
+            why = "\n".join("- " + x[:170] for x in log if not x.startswith("picked by")) or "- the news list had no new story"
+            requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": [], "no_news": why[:1500]}), timeout=120)
+        except Exception as e:
+            print("no-news email not sent:", e)
 
 
 if __name__ == "__main__":
