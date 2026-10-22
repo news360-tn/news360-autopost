@@ -35,6 +35,7 @@ IG_HOST = "https://graph.instagram.com"
 IG_VER = os.environ.get("IG_API_VERSION", "")
 
 PAGE = "namakkal"
+ALL_ROWS = []      # every row of the queue (set in main) - used to spot the same news posted before
 LOGO = KIT / "logo_namakkal.png"
 TAG = "#Namakkal360"
 IMPORTANCE = {"High": 0, "Medium": 1, "Low": 2}
@@ -117,6 +118,26 @@ def spec_has_carousel(row):
         return True
 
 
+_SKIPPED = set()
+
+
+def skip_reason(row):
+    """'' = fine to post. Otherwise why this story must not go out: its announced date has passed (power cut, job fair, 'today' news ...),
+    or the same news was already posted under another story id."""
+    import difflib, freshness
+    why = freshness.stale_reason(row.get("headline_ta") or "", row.get("headline_en") or "", row.get("category") or "", row.get("published") or "")
+    if why:
+        return "stale: " + why
+    for o in ALL_ROWS:
+        went_out = o.get("rasipuram_link") or o.get("namakkal_link") or o.get("reel_link") or str(o.get("post_status") or "").lower().startswith(("posted", "partly"))
+        if o.get("story_id") == row.get("story_id") or not went_out:
+            continue
+        if (difflib.SequenceMatcher(None, o.get("headline_ta") or "", row.get("headline_ta") or "").ratio() > 0.62
+                or difflib.SequenceMatcher(None, (o.get("headline_en") or "").lower(), (row.get("headline_en") or "").lower()).ratio() > 0.65):
+            return f"duplicate of {o.get('story_id')}"
+    return ""
+
+
 def ready(row):
     if (row.get("review") or "").strip().lower() == "hold":
         return False
@@ -124,6 +145,12 @@ def ready(row):
         return False
     pg = pages_of(row)
     if all(page_done(row, p) for p in pg):
+        return False
+    why = skip_reason(row)
+    if why:
+        if row.get("story_id") not in _SKIPPED:
+            _SKIPPED.add(row.get("story_id"))
+            log("SKIP", row.get("story_id"), why)
         return False
     # a story that already went out on one page is only carried over to its other page while it is still fresh (same day);
     # an older one is never posted again later (stale news, e.g. yesterday's power cut)
@@ -763,6 +790,12 @@ def main():
         rows = []
     else:
         rows = bridge_get("queue")["rows"]
+        global ALL_ROWS
+        ALL_ROWS = list(rows)
+        try:      # recent rows of the Sheet (already posted ones included) so the same news is never posted twice
+            ALL_ROWS += [r for r in bridge_get("recent").get("rows", []) if r.get("story_id") not in {x.get("story_id") for x in rows}]
+        except Exception as e:
+            log("recent rows not available (duplicate check uses the queue only):", e)
         n = len(pick_all(rows))
     if mode == "check":
         log(f"{len(rows)} stories in the queue, ready to post: {n}")

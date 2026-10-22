@@ -115,6 +115,14 @@ def file_story(art, res, errors_log, recent):
     hard = [e for e in errors if any(h in e for h in HARD)]
     if hard:
         return None, "would be wrong/unclear: " + "; ".join(hard)[:150]
+    try:
+        sys.path.insert(0, str(HERE.parent / "poster"))
+        import freshness
+        why = freshness.stale_reason(d.get("tamil_headline", ""), d.get("english_headline", ""), d.get("category", ""), art.get("published", ""))
+        if why:
+            return None, "stale: " + why
+    except ImportError:
+        pass
     if is_dup(art, d, recent):
         return None, "duplicate after write"
     prompts = "\n---\n".join(TEMPLATE.format(scene=s.strip()) for s in d["scenes"])
