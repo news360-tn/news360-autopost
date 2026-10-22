@@ -53,7 +53,7 @@ jobs:
             python poster/post.py check 2>&1 | tee .last_check
           fi
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
-          if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ]; then git add -f .last_check && git commit -qm "check log" && git pull -q --rebase && git push -q || true; fi
+          if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then git add -f .last_check && git commit -qm "check log" && git pull -q --rebase && git push -q || true; fi
       - name: Keep the schedule alive (daily heartbeat)
         if: github.event_name == 'schedule' && env.BRIDGE_URL != ''
         run: |
