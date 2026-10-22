@@ -1,24 +1,22 @@
-writing: ஜேடர்பாளையம் சாலையில் தேங்கும் மழைநீரால் பள்ளி மாணவர்கள் அவதwriting: மாணவர்களின் லேப்டாப் திருட்டு
-
-writing: போனஸ் கேட்டு டாஸ்மாக் சுமை பணியாளர் ஆர்ப்பாட்டம்
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+writing: ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்கள் அட்டகாசம் போலீஸ் பாதுகாப்ப
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.8-flash
+attempt 1 gemini/gemini-3.8-flash: 4 problems
+  slide 3 title longer than 18 characters
+  numbers not found in the article: 22
+  not grounded: place word 'வேலூர்' is not in the article
+  not grounded: location 'வேலூர்' is not in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
     "code": 429,
@@ -43,70 +41,48 @@ fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
+    "code": 503,
+    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 ok groq/qwen/qwen3.8-27b
-attempt 1 groq/qwen/qwen3.8-27b: 4 problems
-  hl1 longer than 40 characters
-  hl2 longer than 28 characters
-  slide 2 title longer than 18 characters
+attempt 2 groq/qwen/qwen3.8-27b: 9 problems
+  slide 1 line 1 longer than 60 characters
+  slide 2 line 2 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
   numbers not found in the article: 22
+  stray Tamil sign 'ா' after 'ு' in «ப.வேலுார் »
+  stray Tamil sign 'ா' after 'ு' in «ப.வேலுார் »
+  stray Tamil sign 'ா' after 'ு' in «ப.வேலுார் »
+  stray Tamil sign 'ா' after 'ு' in «ப.வேலுார் »
+  stray Tamil sign 'ா' after 'ு' in «ப.வேலுார்,»
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"g
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"g
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
@@ -126,187 +102,22 @@ fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"g
-ok openrouter/recursive/flint-v1.0:free
-attempt 1 openrouter/recursive/flint-v1.0:free: 2 problems
-  hl1 longer than 40 characters
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok openrouter/recursive/flint-v1.0:free
-attempt 1 openrouter/recursive/flint-v1.0:free: 1 problems
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok openrouter/recursive/flint-v1.0:free
-attempt 2 openrouter/recursive/flint-v1.0:free: 1 problems
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok openrouter/recursive/flint-v1.0:free
-attempt 2 openrouter/recursive/flint-v1.0:free: 0 problems
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok openrouter/recursive/flint-v1.0:free
-attempt 2 openrouter/recursive/flint-v1.0:free: 2 problems
-  slide 3 line 2 longer than 60 characters
-  numbers not found in the article: 1000
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok openrouter/recursive/flint-v1.0:free
-attempt 3 openrouter/recursive/flint-v1.0:free: 0 problems
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok openrouter/recursive/flint-v1.0:free
-proofread by openrouter/recursive/flint-v1.0:free: 0 problems
-writing: கிணற்றில் விழுந்த மான் மீட்பு
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok openrouter/recursive/flint-v1.0:free
-attempt 3 openrouter/recursive/flint-v1.0:free: 1 problems
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok openrouter/recursive/flint-v1.0:free
-proofread by openrouter/recursive/flint-v1.0:free: 0 problems
-writing: பெருமாள் கோவிலின் படிக்கட்டு இடித்து அகற்றம் சேதப்படுத்தியவர
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok openrouter/recursive/flint-v1.0:free
-attempt 1 openrouter/recursive/flint-v1.0:free: 3 problems
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+ok groq/openai/gpt-oss-120b
+attempt 3 groq/openai/gpt-oss-120b: 3 problems
   missing key: reel_script
   missing key: caption
   missing key: scenes
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok openrouter/recursive/flint-v1.0:free
-proofread by openrouter/recursive/flint-v1.0:free: 1 problems
-writing: நித்திய சுமங்கலி மாரியம்மன் கோவிலில் பூச்சாட்டு விழா
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok openrouter/recursive/flint-v1.0:free
-attempt 1 openrouter/recursive/flint-v1.0:free: 2 problems
-  hl2 longer than 28 characters
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok openrouter/recursive/flint-v1.0:free
-attempt 2 openrouter/recursive/flint-v1.0:free: 1 problems
-  numbers not found in the article: 21, 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail openrouter/recursive/flint-v1.0:free: Expecting value: line 1 column 1 (char 0)
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-ok groq/qwen/qwen3.8-27b
-attempt 2 groq/qwen/qwen3.8-27b: 2 problems
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  numbers not found in the article: 22, 6
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"g
-ok openrouter/recursive/flint-v1.0:free
-attempt 3 openrouter/recursive/flint-v1.0:free: 2 problems
-  slide 1 title longer than 18 characters
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok openrouter/recursive/flint-v1.0:free
-attempt 1 openrouter/recursive/flint-v1.0:free: 1 problems
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok openrouter/recursive/flint-v1.0:free
-proofread by openrouter/recursive/flint-v1.0:free: 2 problems
-writing: தொழிலாளியை தாக்கியவர் கைது
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok openrouter/recursive/flint-v1.0:free
-attempt 3 openrouter/recursive/flint-v1.0:free: 1 problems
-  hl2 longer than 28 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok openrouter/recursive/flint-v1.0:free
-attempt 2 openrouter/recursive/flint-v1.0:free: 0 problems
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok openrouter/recursive/flint-v1.0:free
-attempt 1 openrouter/recursive/flint-v1.0:free: 1 problems
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok openrouter/recursive/flint-v1.0:free
-proofread by openrouter/recursive/flint-v1.0:free: 1 problems
-writing: ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்கள் அட்டகாசம் போலீஸ் பாதுகாப்ப
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok openrouter/recursive/flint-v1.0:free
-proofread by openrouter/recursive/flint-v1.0:free: 0 problems
-ok openrouter/recursive/flint-v1.0:free
-attempt 1 openrouter/recursive/flint-v1.0:free: 1 problems
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok openrouter/recursive/flint-v1.0:free
-attempt 2 openrouter/recursive/flint-v1.0:free: 0 problems
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: time budget used up; last error: None
-links on the news list: 8, not yet filed: 8
-picked by interest: 10:ஜேடர்பாளையம் சாலையில் தேங்கும்; 9:மாணவர்களின் லேப்டாப் திருட்டு; 6:போனஸ் கேட்டு டாஸ்மாக் சுமை பணி; 6:கிணற்றில் விழுந்த மான் மீட்பு; 5:பெருமாள் கோவிலின் படிக்கட்டு இ; 5:நித்திய சுமங்கலி மாரியம்மன் கோ; 5:தொழிலாளியை தாக்கியவர் கைது; 2:ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்
-all free models failed for ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்கள் அட்டகாசம் போலீஸ்: time budget used up; last error: None 
-stories: 7
-bridge: 200 {"ok":true,"added":7,"batch":"B20261022-1026","first":"RN-41"}
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+ok groq/openai/gpt-oss-120b
+proofread by groq/openai/gpt-oss-120b: 3 problems
+links on the news list: 8, not yet filed: 1
+picked by interest: 2:ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்
+bad draft skipped for ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்கள் அட்டகாசம் போலீஸ்: 'scenes' 
+stories: 0
