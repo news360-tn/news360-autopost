@@ -66,11 +66,17 @@ def fresh(published):
     return d >= (datetime.datetime.now(IST).date() - datetime.timedelta(days=1))
 
 
+def _fr():
+    sys.path.insert(0, str(HERE.parent / "poster"))
+    import freshness
+    return freshness
+
+
 def is_dup(art, d, recent):
     for r in recent:
         if r.get("source") and r["source"] == art["url"]:
             return True
-        if difflib.SequenceMatcher(None, r.get("headline_ta", ""), (d or {}).get("tamil_headline", art["title"])).ratio() > 0.72:
+        if _fr().similar(r.get("headline_ta", ""), (d or {}).get("tamil_headline", art["title"]), 0.72, r.get("researched")):
             return True
     return False
 
@@ -157,7 +163,7 @@ def main():
         for n in news:
             if r.get("source") and (r["source"] == n["url"] or r["source"] in n["alts"]):
                 n["status"] = "already filed"
-            elif n["title"] and difflib.SequenceMatcher(None, r.get("headline_ta", ""), n["title"]).ratio() > 0.6:
+            elif n["title"] and _fr().similar(r.get("headline_ta", ""), n["title"], 0.6, r.get("researched")):
                 n["status"] = "already filed"
     for n in news:
         st = state.get(n["key"], {})
@@ -208,7 +214,7 @@ def main():
             if not fresh(art["published"]):
                 n["status"], stt["s"] = "old", "old"
                 continue
-            if any(difflib.SequenceMatcher(None, r.get("headline_ta", ""), art["title"]).ratio() > 0.55 for r in recent):
+            if any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched")) for r in recent):
                 n["status"], stt["s"] = "already filed", "dup"
                 continue
             art["interest"] = interest(art)

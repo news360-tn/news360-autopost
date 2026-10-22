@@ -72,3 +72,23 @@ def stale_reason(headline_ta, headline_en, category, published, today=None):
         if SHUT.search(text) and pub < today and not TOMORROW.search(text):
             return f"power-cut notice from {pub:%d %b} with no date"
     return ""
+
+
+# ---- repeating topics (daily egg price, gold rate, fuel price ...): the same headline every day is NEW news each day
+RECUR = re.compile(r"முட்டை\s*(விலை|கொள்முதல்)|egg\s*(price|rate)|தங்கம்\s*விலை|gold\s*(rate|price)|பெட்ரோல்\s*விலை|டீசல்\s*விலை|petrol|diesel", re.I)
+
+
+def recurring(text):
+    return bool(RECUR.search(text or ""))
+
+
+def similar(a, b, thr, other_filed=None, today=None):
+    """True when headline a and b are the same news. A repeating-price topic (e.g. today's egg price) counts as the same
+    only when the other story was filed the same day - tomorrow's price is a new post."""
+    import difflib
+    if not a or not b or difflib.SequenceMatcher(None, a, b).ratio() <= thr:
+        return False
+    if recurring(a) or recurring(b):
+        today = today or datetime.datetime.now(IST).date()
+        return pub_date(other_filed) == today
+    return True
