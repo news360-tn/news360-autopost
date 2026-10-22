@@ -128,7 +128,12 @@ def main():
         if isinstance(res, Exception):
             log.append(f"all free models failed for {art['title'][:50]}: {res}")
             continue
-        d, model, errors, att = res
+        try:
+            d, model, errors, att = res
+            d["scenes"], d["tamil_headline"]
+        except Exception as e:
+            log.append(f"bad draft skipped for {art['title'][:50]}: {e}")
+            continue
         if is_dup(art, d, recent):
             log.append(f"skip (duplicate after write) {art['title'][:50]}")
             continue

@@ -19,15 +19,32 @@ def prompt(art, today, errors=None):
     return u
 
 
+def _obj(d):
+    """some free models wrap the answer in a list; accept [ {...} ], reject anything that is not an object"""
+    if isinstance(d, list) and d and isinstance(d[0], dict):
+        d = d[0]
+    if not isinstance(d, dict):
+        raise ValueError("model answer was not a JSON object")
+    return d
+
+
 def write(art, today):
     errors, best = None, None
     for attempt in range(1, 4):
         d, model = llm.ask_json(SYSTEM, prompt(art, today, errors))
+        try:
+            d = _obj(d)
+        except ValueError as e:
+            errors = [str(e)]
+            print(f"attempt {attempt} {model}: {e}")
+            continue
         errors = validate(d, art["text"] + " " + art["title"])
         print(f"attempt {attempt} {model}: {len(errors)} problems", *errors, sep="\n  ")
         best = (d, model, errors, attempt)
         if not errors:
             break
+    if best is None:
+        raise RuntimeError("no usable answer from the free models")
     return proofread(best, art)
 
 
@@ -44,6 +61,7 @@ def proofread(best, art):
     d, model, errors, att = best
     try:
         fixed, m2 = llm.ask_json(PROOF, json.dumps(d, ensure_ascii=False))
+        fixed = _obj(fixed)
         e2 = validate(fixed, art["text"] + " " + art["title"])
         if len(e2) <= len(errors) and set(fixed) >= set(d):
             print(f"proofread by {m2}: {len(e2)} problems")
