@@ -1,6 +1,15 @@
 writing: ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்கள் அட்டகாசம் போலீஸ் பாதுகாப்ப
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.8-flash
+attempt 1 gemini/gemini-3.8-flash: 5 problems
+  hl2 longer than 28 characters
+  numbers not found in the article: 22
+  not grounded: place word 'வேலூர்' is not in the article
+  not grounded: location 'பரமத்தி' is not in the article
+  not grounded: location 'வேலூர்' is not in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
   "error": {
     "code": 503,
@@ -10,114 +19,28 @@ fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
     "code": 503,
     "message": "This model is currently experiencing high d
 ok gemini/gemini-3.8-flash
-attempt 1 gemini/gemini-3.8-flash: 4 problems
-  slide 3 title longer than 18 characters
-  numbers not found in the article: 22
-  not grounded: place word 'வேலூர்' is not in the article
-  not grounded: location 'வேலூர்' is not in the article
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-ok groq/qwen/qwen3.8-27b
-attempt 2 groq/qwen/qwen3.8-27b: 9 problems
-  slide 1 line 1 longer than 60 characters
-  slide 2 line 2 longer than 60 characters
-  slide 3 line 2 longer than 60 characters
-  numbers not found in the article: 22
+attempt 2 gemini/gemini-3.8-flash: 6 problems
   stray Tamil sign 'ா' after 'ு' in «ப.வேலுார் »
   stray Tamil sign 'ா' after 'ு' in «ப.வேலுார் »
   stray Tamil sign 'ா' after 'ு' in «ப.வேலுார் »
+  stray Tamil sign 'ா' after 'ு' in «ப.வேலுாரில»
   stray Tamil sign 'ா' after 'ு' in «ப.வேலுார் »
   stray Tamil sign 'ா' after 'ு' in «ப.வேலுார்,»
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-ok groq/openai/gpt-oss-120b
-attempt 3 groq/openai/gpt-oss-120b: 3 problems
-  missing key: reel_script
-  missing key: caption
-  missing key: scenes
+ok gemini/gemini-3.8-flash
+attempt 3 gemini/gemini-3.8-flash: 6 problems
+  slide 1 title longer than 18 characters
+  slide 3 title longer than 18 characters
+  numbers not found in the article: 22
+  not grounded: place word 'வேலூர்' is not in the article
+  not grounded: location 'பரமத்தி' is not in the article
+  not grounded: location 'வேலூர்' is not in the article
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-ok groq/openai/gpt-oss-120b
-proofread by groq/openai/gpt-oss-120b: 3 problems
+ok gemini/gemini-3.8-flash
+proofread by gemini/gemini-3.8-flash: 4 problems
 links on the news list: 8, not yet filed: 1
 picked by interest: 2:ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்
-bad draft skipped for ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்கள் அட்டகாசம் போலீஸ்: 'scenes' 
+NOT filed (would be wrong/unclear), retried next run: ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்கள் அட்டகாசம் போலீஸ்: numbers not found in the article: 22; not grounded: place word 'வேலூர்' is not in the article; not grounded: location 'பரமத்தி' is not in the article; not grounded: location 'வேலூர்' is not in the art 
 stories: 0
