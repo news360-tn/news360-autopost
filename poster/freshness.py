@@ -55,7 +55,8 @@ def stale_reason(headline_ta, headline_en, category, published, today=None):
     """'' when the story is still current, else why it must not be posted"""
     today = today or datetime.datetime.now(IST).date()
     text = f"{headline_ta} {headline_en} {category}"
-    if not TRIGGER.search(text):
+    price = bool(RECUR.search(text))
+    if not TRIGGER.search(text) and not price:
         return ""
     pub = pub_date(published)
     ds = dates_in(f"{headline_ta} {headline_en}", today.year)
@@ -65,6 +66,8 @@ def stale_reason(headline_ta, headline_en, category, published, today=None):
             return f"announced date {max(ds):%d %b} has passed"
         return ""
     if pub:
+        if price and pub < today:           # a daily price is only news on the day it applies to
+            return f"price news from {pub:%d %b}, not today"
         if TODAY.search(text) and pub < today:
             return f"says 'today' but was published {pub:%d %b}"
         if TOMORROW.search(text) and pub + datetime.timedelta(days=1) < today:
