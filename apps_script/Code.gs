@@ -67,6 +67,7 @@ function doPost(e) {
     if (body.action === 'posted') return json_(posted_(body));
     if (body.action === 'error') return json_(error_(body));
     if (body.action === 'addStories') return json_(addStories_(body));
+    if (body.action === 'archiveNews') return json_(archiveNews_(body));
     if (body.action === 'reoffer') return json_(reoffer_(body));
     return json_({ ok: false, error: 'unknown action ' + body.action });
   } catch (err) {
@@ -495,6 +496,27 @@ function nextStoryNo_(sh) {
 
 /** body: {stories:[{tamil_headline,english_headline,category,location,importance,post_to,slides_spec,reel_script,caption,prompts,source,published,verification,note,post_time}]}
  *  Appends one row per story (status "Awaiting images"), writes ONE prompt file to Drive and sends ONE short email. */
+// Every news item found (all outlets, all pages) goes into the tab "All News" so the owner can analyse it. One row per URL; status is updated.
+function archiveNews_(b) {
+  var ss = SpreadsheetApp.openById(SHEET_ID);
+  var sh = ss.getSheetByName('All News');
+  var head = ['Collected (IST)', 'Outlets', 'Area', 'URL', 'Title', 'Published', 'Outlets count', 'Score', 'Status', 'Story headline'];
+  if (!sh) { sh = ss.insertSheet('All News'); sh.appendRow(head); sh.setFrozenRows(1); }
+  var last = sh.getLastRow(), idx = {};
+  if (last > 1) sh.getRange(2, 4, last - 1, 1).getValues().forEach(function (r, i) { idx[r[0]] = i + 2; });
+  var add = [], rows = b.rows || [];
+  rows.forEach(function (r) {
+    if (idx[r.url]) {
+      sh.getRange(idx[r.url], 7, 1, 4).setValues([[r.mentions, r.score, r.status, r.story || '']]);
+    } else {
+      add.push([nowIst_(), r.source, r.area, r.url, r.title, "'" + (r.published || ''), r.mentions, r.score, r.status, r.story || '']);
+      idx[r.url] = -1;
+    }
+  });
+  if (add.length) sh.getRange(sh.getLastRow() + 1, 1, add.length, head.length).setValues(add);
+  return { ok: true, added: add.length, updated: rows.length - add.length };
+}
+
 function addStories_(b) {
   var sh = sheet_();
   var stories = b.stories || [];

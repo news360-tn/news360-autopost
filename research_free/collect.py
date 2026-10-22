@@ -5,11 +5,13 @@ from pathlib import Path
 import requests
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-import llm, sources, run
+import llm, sources, run, allnews
 
 IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 BRIDGE_URL, BRIDGE_KEY = os.environ.get("BRIDGE_URL", ""), os.environ.get("BRIDGE_KEY", "")
-MAX_STORIES = int(os.environ.get("MAX_STORIES", "6"))
+MAX_RASIPURAM = int(os.environ.get("MAX_RASIPURAM", "5"))     # Rasipuram page: up to 5 stories per round
+MAX_NAMAKKAL = int(os.environ.get("MAX_NAMAKKAL", "6"))       # Namakkal page: up to 6 other district stories per round
+ARCHIVE = HERE / "archive"
 DRY = "--dry" in sys.argv
 DEADLINE = time.time() + int(os.environ.get("BUDGET_MIN", "22")) * 60
 llm.DEADLINE[0] = DEADLINE
@@ -72,6 +74,57 @@ def is_dup(art, d, recent):
     return False
 
 
+def score(n):
+    """how likely readers are to open / share it: topic interest + how many outlets carry it + how fresh it is"""
+    s = interest({"title": n.get("title", ""), "text": n.get("snippet", "")})
+    m = n.get("mentions", 1)
+    s += 2 if m >= 3 else (1 if m == 2 else 0)
+    try:
+        age_h = (datetime.datetime.now(IST) - datetime.datetime.fromisoformat(n["published"])).total_seconds() / 3600
+        s += 1 if age_h < 6 else 0
+    except Exception:
+        pass
+    return s
+
+
+def load_state():
+    try:
+        st = json.loads((ARCHIVE / "state.json").read_text(encoding="utf-8"))
+    except Exception:
+        st = {}
+    cut = (datetime.datetime.now(IST) - datetime.timedelta(days=5)).isoformat()
+    return {k: v for k, v in st.items() if v.get("t", "") >= cut}
+
+
+def save_state(st):
+    ARCHIVE.mkdir(exist_ok=True)
+    (ARCHIVE / "state.json").write_text(json.dumps(st, ensure_ascii=False), encoding="utf-8")
+
+
+def file_story(art, res, errors_log, recent):
+    """quality gate for one written story; returns the story dict, or (None, reason)"""
+    if isinstance(res, Exception):
+        return None, f"all free models failed: {str(res)[:80]}"
+    try:
+        d, model, errors, att = res
+        d["scenes"], d["tamil_headline"]
+    except Exception as e:
+        return None, f"bad draft: {e}"
+    HARD = ("not grounded", "numbers not found", "fact-check", "source/outlet", "not a JSON", "missing key")
+    hard = [e for e in errors if any(h in e for h in HARD)]
+    if hard:
+        return None, "would be wrong/unclear: " + "; ".join(hard)[:150]
+    if is_dup(art, d, recent):
+        return None, "duplicate after write"
+    prompts = "\n---\n".join(TEMPLATE.format(scene=s.strip()) for s in d["scenes"])
+    ver = f"FREE-MODEL DRAFT ({model}) - not checked by Claude yet" + (f"; validator problems: {'; '.join(errors)}" if errors else "")
+    return {"tamil_headline": d["tamil_headline"], "english_headline": d["english_headline"], "category": d["category"], "location": d["location"],
+            "importance": d["importance"], "post_to": d["post_to"], "slides_spec": d["slides_spec"], "reel_script": d["reel_script"],
+            "caption": d["caption"], "prompts": prompts, "source": art["url"], "published": art["published"], "verification": ver,
+            "note": f"free-model draft {model}, {att} attempt(s), {len(errors)} validator problem(s)",
+            "post_time": "right after your reply, same day"}, ""
+
+
 def main():
     recent = []
     if BRIDGE_URL:
@@ -85,72 +138,110 @@ def main():
     seen_src = {r.get("source") for r in recent}
     today = datetime.datetime.now(IST).strftime("%A %d %B %Y")
     out, log = [], []
-    arts = []
-    arts = []
-    all_links = sources.candidate_links(40)
-    links = [u for u in all_links if u not in seen_src]
-    log.append(f"links on the news list: {len(all_links)}, not yet filed: {len(links)}")
-    from concurrent.futures import ThreadPoolExecutor as _TPE
-
-    def _fetch(u):
+    state = load_state()
+    news = allnews.collect(log)                                   # EVERY item from every source
+    for n in news:
+        n["score"] = score(n)
+        n["status"] = "collected"
+        n["story"] = ""
+    for r in recent:   # already posted/filed earlier: never write them twice
+        for n in news:
+            if r.get("source") and (r["source"] == n["url"] or r["source"] in n["alts"]):
+                n["status"] = "already filed"
+            elif n["title"] and difflib.SequenceMatcher(None, r.get("headline_ta", ""), n["title"]).ratio() > 0.6:
+                n["status"] = "already filed"
+    for n in news:
+        st = state.get(n["key"], {})
+        if st.get("s") in ("filed", "dup", "notext", "old") or st.get("n", 0) >= 3:
+            n["status"] = n["status"] if n["status"] != "collected" else "checked earlier: " + st.get("s", "failed")
+    queues = {"R": [], "N": []}
+    for n in sorted(news, key=lambda x: -x["score"]):
+        if n["status"] == "collected" and fresh(n["published"]):
+            queues[n["area"]].append(n)
+        elif n["status"] == "collected":
+            n["status"] = "old"
+    log.append(f"to write: {len(queues['R'])} Rasipuram + {len(queues['N'])} other district candidates (max {MAX_RASIPURAM} + {MAX_NAMAKKAL} stories)")
+    target, done, tried = {"R": MAX_RASIPURAM, "N": MAX_NAMAKKAL}, {"R": 0, "N": 0}, {"R": 0, "N": 0}
+    tries_cap = {"R": MAX_RASIPURAM * 3, "N": MAX_NAMAKKAL * 3}
+    while time.time() < DEADLINE - 120:
+        progressed = False
+        for area in ("R", "N"):
+            if done[area] >= target[area] or not queues[area] or tried[area] >= tries_cap[area]:
+                continue
+            n = queues[area].pop(0)
+            progressed = True
+            tried[area] += 1
+            stt = state.setdefault(n["key"], {"n": 0})
+            stt["n"] = stt.get("n", 0) + 1
+            stt["t"] = datetime.datetime.now(IST).isoformat()
+            try:
+                url = allnews.resolve(n["url"])
+                art = allnews.article_any(url)
+                art["url"] = url
+                art["title"] = art.get("title") or n["title"]
+                art["published"] = art.get("published") or n["published"]
+            except Exception as e:
+                n["status"] = f"could not open the article: {str(e)[:60]}"
+                continue
+            if url in seen_src or any(r.get("source") == url for r in recent):
+                n["status"], stt["s"] = "already filed", "dup"
+                continue
+            if len(art["text"]) < 150:
+                n["status"], stt["s"] = "article text too short / blocked", "notext"
+                continue
+            if not fresh(art["published"]):
+                n["status"], stt["s"] = "old", "old"
+                continue
+            if any(difflib.SequenceMatcher(None, r.get("headline_ta", ""), art["title"]).ratio() > 0.72 for r in recent):
+                n["status"], stt["s"] = "already filed", "dup"
+                continue
+            art["interest"] = interest(art)
+            print(f"writing [{area}]: {art['title'][:60]}", flush=True)
+            try:
+                res = run.write(art, today)
+            except Exception as e:
+                res = e
+            story, why = file_story(art, res, log, recent)
+            if not story:
+                n["status"] = "not filed: " + why
+                log.append(f"NOT filed ({area}) {art['title'][:50]}: {why}")
+                continue
+            story["post_to"] = "Namakkal 360 + Rasipuram 360 (collab)" if area == "R" else "Namakkal 360"
+            out.append(story)
+            recent.append({"headline_ta": story["tamil_headline"], "source": art["url"]})
+            n["status"], n["story"], stt["s"] = "filed", story["tamil_headline"], "filed"
+            done[area] += 1
+        if not progressed:
+            break
+    log.append(f"filed: {done['R']} Rasipuram + {done['N']} Namakkal (targets {MAX_RASIPURAM} + {MAX_NAMAKKAL})")
+    for n in news:
+        if n["status"] == "collected":
+            n["status"] = "collected (not in this round's top)"
+    # --- the full list of every news item, for the owner to analyse (Sheet tab "All News" + a CSV in the repository)
+    rows = [{"source": ", ".join(n["outlets"])[:80], "area": "Rasipuram" if n["area"] == "R" else "Namakkal district", "url": n["url"], "title": n["title"],
+             "published": n["published"][:16].replace("T", " "), "mentions": n["mentions"], "score": n["score"], "status": n["status"], "story": n["story"]} for n in news]
+    try:
+        import csv
+        ARCHIVE.mkdir(exist_ok=True)
+        f = ARCHIVE / (datetime.datetime.now(IST).strftime("%Y-%m") + ".csv")
+        new = not f.exists()
+        with open(f, "a", encoding="utf-8", newline="") as fh:
+            w = csv.writer(fh)
+            if new:
+                w.writerow(["collected_ist", "source", "area", "url", "title", "published", "mentions", "score", "status", "story"])
+            stamp = datetime.datetime.now(IST).strftime("%Y-%m-%d %H:%M")
+            for r in rows:
+                w.writerow([stamp, r["source"], r["area"], r["url"], r["title"], r["published"], r["mentions"], r["score"], r["status"], r["story"]])
+        save_state(state)
+    except Exception as e:
+        log.append(f"archive file not written: {e}")
+    if BRIDGE_URL and not DRY and rows:
         try:
-            return u, sources.article(u), None
+            for i in range(0, len(rows), 60):
+                rr = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "archiveNews", "rows": rows[i:i + 60]}), timeout=180)
+                log.append(f"All News sheet: {rr.text[:100]}")
         except Exception as e:
-            return u, None, e
-    with _TPE(max_workers=6) as ex0:
-        fetched = list(ex0.map(_fetch, links))
-    for u, art, e in fetched:
-        if e is not None:
-            log.append(f"fetch failed {u}: {e}")
-            continue
-        if not fresh(art["published"]) or len(art["text"]) < 150:
-            log.append(f"skip (old/short) {art['title'][:50]}")
-            continue
-        if any(difflib.SequenceMatcher(None, r.get("headline_ta", ""), art["title"]).ratio() > 0.72 for r in recent):
-            log.append(f"skip (already filed) {art['title'][:50]}")
-            continue
-        art["interest"] = interest(art)
-        arts.append(art)
-    arts.sort(key=lambda a: -a["interest"])            # stable: site order (newest first) inside the same score
-    log.append("picked by interest: " + "; ".join(f"{a['interest']}:{a['title'][:30]}" for a in arts[:MAX_STORIES]))
-    arts = arts[:MAX_STORIES]
-
-    def work(art):
-        print(f"writing: {art['title'][:60]}", flush=True)
-        try:
-            return art, run.write(art, today)
-        except Exception as e:
-            return art, e
-    from concurrent.futures import ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=1) as ex:
-        results = list(ex.map(work, arts))
-    for art, res in results:
-        if isinstance(res, Exception):
-            log.append(f"all free models failed for {art['title'][:50]}: {res}")
-            continue
-        try:
-            d, model, errors, att = res
-            d["scenes"], d["tamil_headline"]
-        except Exception as e:
-            log.append(f"bad draft skipped for {art['title'][:50]}: {e}")
-            continue
-        HARD = ("not grounded", "numbers not found", "fact-check", "source/outlet", "not a JSON", "missing key")
-        hard = [e for e in errors if any(h in e for h in HARD)]
-        if hard:
-            log.append(f"NOT filed (would be wrong/unclear), retried next run: {art['title'][:50]}: {'; '.join(hard)[:200]}")
-            continue
-        if is_dup(art, d, recent):
-            log.append(f"skip (duplicate after write) {art['title'][:50]}")
-            continue
-        scenes = d["scenes"]
-        prompts = "\n---\n".join(TEMPLATE.format(scene=s.strip()) for s in scenes)
-        ver = f"FREE-MODEL DRAFT ({model}) - not checked by Claude yet" + (f"; validator problems: {'; '.join(errors)}" if errors else "")
-        out.append({"tamil_headline": d["tamil_headline"], "english_headline": d["english_headline"], "category": d["category"], "location": d["location"],
-                    "importance": d["importance"], "post_to": d["post_to"], "slides_spec": d["slides_spec"], "reel_script": d["reel_script"],
-                    "caption": d["caption"], "prompts": prompts, "source": art["url"], "published": art["published"], "verification": ver,
-                    "note": f"free-model draft {model}, {att} attempt(s), {len(errors)} validator problem(s)",
-                    "post_time": "right after your reply, same day"})
-        recent.append({"headline_ta": d["tamil_headline"], "source": art["url"]})
+            log.append(f"All News sheet not updated: {e}")
     Path(HERE / "results").mkdir(exist_ok=True)
     (HERE / "results" / "collect.json").write_text(json.dumps({"log": log, "llm": llm.LOG, "stories": out}, ensure_ascii=False, indent=1), encoding="utf-8")
     print("\n".join(log), f"\nstories: {len(out)}")
@@ -161,7 +252,7 @@ def main():
     elif not out and not DRY:
         # tell the owner why there is no email with prompts this time (never fails the run)
         try:
-            why = "\n".join("- " + x[:170] for x in log if not x.startswith("picked by")) or "- the news list had no new story"
+            why = "\n".join("- " + x[:170] for x in log if not x.startswith("source ")) or "- no new story this round"
             requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": [], "no_news": why[:1500]}), timeout=120)
         except Exception as e:
             print("no-news email not sent:", e)
