@@ -210,7 +210,7 @@ def main():
                 n["status"] = "not filed: " + why
                 log.append(f"NOT filed ({area}) {art['title'][:50]}: {why}")
                 continue
-            story["post_to"] = "Namakkal 360 + Rasipuram 360 (collab)" if area == "R" else "Namakkal 360"
+            story["post_to"] = "Rasipuram 360 + Namakkal 360 (collab)" if area == "R" else "Namakkal 360"
             story["_area"], story["_score"] = area, n["score"]
             out.append(story)
             recent.append({"headline_ta": story["tamil_headline"], "source": art["url"]})

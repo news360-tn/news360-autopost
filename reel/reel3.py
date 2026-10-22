@@ -276,6 +276,9 @@ def english_outro(work, idx):
 
 def main(spec_path, out_mp4, page_key="namakkal"):
     R.PAGE = R.PAGES[page_key]; R.LOGO = R.KIT / R.PAGE["logo"]
+    global OUTRO_EN
+    if page_key == "rasipuram":
+        OUTRO_EN = "Follow Rasipuram Three Sixty for more local news."
     spec = json.loads(Path(spec_path).read_text())
     work = Path(out_mp4).with_suffix("")
     work = work.parent / (work.name + "_work"); work.mkdir(parents=True, exist_ok=True)

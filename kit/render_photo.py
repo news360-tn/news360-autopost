@@ -8,7 +8,7 @@ spec (v3):
 images_dir holds img1.jpg, img2.jpg ... (img1 = cover, img2.. = detail slides, in order).
 Output: <story>_slide1_cover.png ... + the follow slide last. The logo is added afterwards (overlay_logo_v2.py).
 """
-import json, os, re, sys, html
+import os, json, re, sys, html
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
@@ -97,7 +97,7 @@ def page(inner, light=False):
 <body><div class="layer" style="z-index:1">{inner}</div><script>{FIT}</script></body></html>"""
 
 def follow_slide(date):
-    ex = json.loads((HERE / "example_slides_namakkal.json").read_text())
+    ex = json.loads((HERE / f"example_slides_{os.environ.get('PAGE_KEY', 'namakkal')}.json").read_text())
     h = ex["slides"][-1]["html"]
     h = re.sub(r'(<i data-ic="calendar-days"></i>)[^<]+(</div>)', lambda m: m.group(1) + date + m.group(2), h, count=1)
     # shares and saves push a post further than likes: ask for them on the last slide

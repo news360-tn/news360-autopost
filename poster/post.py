@@ -92,6 +92,16 @@ def is_shutdown(row):
     return "மின் தடை" in (row.get("category") or "") or "shutdown" in (row.get("category") or "").lower()
 
 
+def page_of(row):
+    """the Instagram page that posts this story: Rasipuram-area stories (post_to names Rasipuram) go out from Rasipuram 360 itself,
+    with Namakkal 360 invited as the collaborator; everything else from Namakkal 360."""
+    return "rasipuram" if "rasipuram" in (row.get("post_to") or "").lower() else "namakkal"
+
+
+def carousel_done(row):
+    return bool(row.get("rasipuram_link") or row.get("namakkal_link"))
+
+
 def spec_has_carousel(row):
     """stories written in the reel-first plan carry "carousel": false in slides_spec when only a reel is wanted (older stories: both)"""
     try:
@@ -105,7 +115,7 @@ def ready(row):
         return False
     if not row.get("images") or not row.get("slides_spec"):
         return False
-    if row.get("namakkal_link") and row.get("reel_link"):
+    if carousel_done(row) and row.get("reel_link"):
         return False
     if row.get("reel_link") and not spec_has_carousel(row):      # reel-only story: the reel is all it needs
         return False
@@ -281,7 +291,7 @@ def reel_spec(row, spec, images):
     if len(sentences) < 3:
         raise RuntimeError(f"{row['story_id']}: reel script needs at least 3 sentences")
     # every reel ends with the same follow line (spoken in English by the system)
-    STD = "மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்."
+    STD = "மேலும் செய்திகளுக்கு " + ("இராசிபுரம்" if PAGE == "rasipuram" else "நாமக்கல்") + " த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்."
     if "பின்தொடரு" in sentences[-1] or "Follow" in sentences[-1]:
         sentences = sentences[:-1]
     sentences.append(STD)
@@ -331,7 +341,7 @@ def upload(path, kind):
 
 def cache_key(row, spec, caption):
     import hashlib
-    raw = json.dumps([row.get("reel_script"), row.get("slides_spec"), caption, row.get("images"), spec.get("date"), row.get("post_to")], ensure_ascii=False)
+    raw = json.dumps([row.get("reel_script"), row.get("slides_spec"), caption, row.get("images"), spec.get("date"), row.get("post_to")] + (["rasipuram"] if PAGE == "rasipuram" else []), ensure_ascii=False)
     return hashlib.sha1(raw.encode()).hexdigest()[:16]
 
 
@@ -559,7 +569,19 @@ def run_story(row):
     problems = check_text(row, spec) + verify.check_news(row)
     if problems:
         return fail(row, "carousel", "Checks failed: " + "; ".join(problems))
-    collab = "rasipuram" in (row.get("post_to") or "").lower()
+    global PAGE, LOGO, TAG
+    PAGE = page_of(row)
+    LOGO = KIT / f"logo_{PAGE}.png"
+    TAG = "#Rasipuram360" if PAGE == "rasipuram" else "#Namakkal360"
+    os.environ["PAGE_KEY"] = PAGE
+    post_to_l = (row.get("post_to") or "").lower()
+    collab = "rasipuram" in post_to_l and "namakkal" in post_to_l      # the other page is invited on the post
+    if collab and PAGE == "rasipuram":
+        try:
+            CONFIG["collab_username"] = ig_account(bridge_get("token", page="namakkal")["token"])[1] or ""
+        except Exception as e:
+            log("collaborator (Namakkal 360 username) not found, posting without the invite:", e)
+            collab = False
     caption = final_caption(row)
     work = OUT / sid
     key = cache_key(row, spec, caption)
@@ -567,7 +589,7 @@ def run_story(row):
     if cached:
         log("prebuilt carousel + reel found - publishing without rebuilding")
     images = [] if cached else fetch_images(row, work)
-    need_carousel, need_reel = not row.get("namakkal_link") and spec.get("carousel", True) is not False, not row.get("reel_link")
+    need_carousel, need_reel = not carousel_done(row) and spec.get("carousel", True) is not False, not row.get("reel_link")
     jpgs = mp4 = None
     reel_cover = None
     voice_file = None
@@ -662,7 +684,7 @@ def run_story(row):
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab, "checks": note})
             else:
                 token = bridge_get("token", page=PAGE)["token"]
-                mid, link, collab_ok, why = publish_carousel(token, urls, caption, collab, (row.get('headline_en') or '')[:200] + ' - Namakkal 360 news')
+                mid, link, collab_ok, why = publish_carousel(token, urls, caption, collab, (row.get('headline_en') or '')[:200] + (' - Rasipuram 360 news' if PAGE == 'rasipuram' else ' - Namakkal 360 news'))
                 log("carousel posted", sid, link)
                 first_comment(token, mid, sid, 0)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "permalink": link, "media_id": mid,

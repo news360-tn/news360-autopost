@@ -98,7 +98,7 @@ function queue_() {
     if (st !== 'queued' && st !== 'partly posted' && st !== 'posted') continue;
     if (r.review.toLowerCase() === 'hold') continue;
     var pagesLeft = targets_(r.post_to).filter(function (p) { return !r[p + '_link']; }).length;
-    if (carouselOff_(r)) pagesLeft = 0;                    // reel-only story (slides_spec "carousel": false)
+    if (carouselOff_(r) || r.rasipuram_link || r.namakkal_link) pagesLeft = 0;   // reel-only story, or the carousel is already posted on either page
     var reelLeft = !r.reel_link;
     if (pagesLeft === 0 && !reelLeft) continue;
     out.push(r);
@@ -176,7 +176,7 @@ function posted_(b) {
   if (b.kind === 'reel') {
     var prev = r.reel_link ? r.reel_link + '\n' : '';
     sh.getRange(b.row, C.reel_link).setValue(prev + label + ': ' + b.permalink);
-    if (r.namakkal_link || carouselOff_(r)) sh.getRange(b.row, C.post_status).setValue('Posted');
+    if (r.namakkal_link || r.rasipuram_link || carouselOff_(r)) sh.getRange(b.row, C.post_status).setValue('Posted');
   } else {
     sh.getRange(b.row, PAGE_COL[b.page]).setValue(b.permalink);
     r[b.page + '_link'] = b.permalink;
