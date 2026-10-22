@@ -255,6 +255,8 @@ window.fitAll=function(){{
 
 from digits import to_digits  # display-only: numbers as digits, 360
 
+PAUSE = 0.8      # quiet beat + soft chime between the end of the news and the "follow" line
+CHIME_T = 0.0
 OUTRO_EN = "Follow Namakkal Three Sixty for more local news."
 
 
@@ -290,7 +292,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "tts.py"), str(work / "lines.json"), str(work), spec.get("voice", "female")], check=True)
     english_outro(work, len(texts) - 1)
     speech = sum(wav_dur(work / f"line{i}.wav") for i in range(len(texts)))
-    room = 26.0 - lead - 0.5 - gap * (len(texts) - 1)
+    room = 26.0 - lead - 0.5 - gap * (len(texts) - 1) - (PAUSE - gap)
     if room > 0 and speech > room:
         factor = min(1.1, speech / room)
         for i in range(len(texts)):
@@ -301,8 +303,10 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     starts, ends, t = [], [], lead
     for i in range(len(texts)):
         d = wav_dur(work / f"line{i}.wav")
-        starts.append(round(t, 3)); ends.append(round(t + d, 3)); t += d + gap
-    end_t = starts[-1] - 0.05            # follow-us line is spoken over the ending card
+        starts.append(round(t, 3)); ends.append(round(t + d, 3)); t += d + (PAUSE if i == len(texts) - 2 else gap)
+    global CHIME_T
+    CHIME_T = round(ends[-2] + 0.12, 3)
+    end_t = CHIME_T                      # ending card + chime come in together, then a short beat, then the follow-us line
     total = round(max(ends[-1] + 0.6, end_t + 1.6), 3)
     if total > 30.5:
         print(f"WARNING: reel is {total:.1f}s (>30s)")
@@ -370,6 +374,12 @@ def build_audio(work, starts, shots, sents, total):
             d = int((s["a"] + 0.1) * 1000)
             parts.append(f"sine=f=880:d=0.12,afade=t=out:st=0.04:d=0.08,volume=0.5,adelay={d}|{d}[w{k}]")
             labels.append(f"[w{k}]"); k += 1
+    d = int(CHIME_T * 1000)       # soft two-note chime as the news ends and the ending card appears
+    parts.append(f"sine=f=784:d=0.55,afade=t=in:d=0.02,afade=t=out:st=0.05:d=0.5,volume=1.4,adelay={d}|{d}[w{k}]")
+    labels.append(f"[w{k}]"); k += 1
+    d2 = d + 140
+    parts.append(f"sine=f=1175:d=0.5,afade=t=in:d=0.02,afade=t=out:st=0.05:d=0.45,volume=1.1,adelay={d2}|{d2}[w{k}]")
+    labels.append(f"[w{k}]"); k += 1
     if not labels:
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(work / "voice.wav"), "-af", "volume=1.9,alimiter=limit=0.8:level=0",
                         "-ar", "44100", str(work / "mix.wav")], check=True)
