@@ -10,6 +10,7 @@ import requests
 GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash"]
 GROQ_MODELS = ["llama-3.3-70b-versatile"]
 OR_PREFER = ["gemma", "llama-3.3", "qwen", "deepseek", "mistral", "gpt-oss"]
+OR_BLOCK = ["flint", "recursive", "lite", "tiny", "mini", "1b", "3b", "7b", "8b"]   # weak models write broken Tamil
 LOG = []
 
 
@@ -81,6 +82,7 @@ def openrouter_free_models(key):
             pr = m.get("pricing", {})
             if m["id"].endswith(":free") and float(pr.get("prompt", 1)) == 0 and float(pr.get("completion", 1)) == 0:
                 out.append(m["id"])
+        out = [i for i in out if any(p in i for p in OR_PREFER) and not any(b in i for b in OR_BLOCK)]   # only known-good families
         out.sort(key=lambda i: min([k for k, p in enumerate(OR_PREFER) if p in i] or [99]))
         _or_free = out
     return _or_free
@@ -157,7 +159,7 @@ def ask_json(system, user, tries_per_model=1):
     if PREFERRED[0]:
         ch.sort(key=lambda c: 0 if (c[0], c[1]) == PREFERRED[0] else 1)
     for provider, model, fn, key in ch:
-        for k in range(2):
+        for k in range(3):
             if DEADLINE[0] and time.time() > DEADLINE[0]:
                 raise RuntimeError(f"time budget used up; last error: {last}")
             try:
@@ -170,8 +172,8 @@ def ask_json(system, user, tries_per_model=1):
                 last = e
                 msg = str(e)
                 _log(f"fail {provider}/{model}: {msg[:120]}")
-                if k == 0 and (" 503" in msg or " 429" in msg) and provider != "openrouter":
-                    time.sleep(12)
+                if k < 2 and (" 503" in msg or " 429" in msg) and provider != "openrouter":
+                    time.sleep(20 + 20 * k)      # per-minute free limits reset quickly; wait instead of falling to a weaker model
                     continue
                 break
     raise RuntimeError(f"no free model answered: {last}")

@@ -39,6 +39,8 @@ def write(art, today):
             print(f"attempt {attempt} {model}: {e}")
             continue
         errors = validate(d, art["text"] + " " + art["title"])
+        if not errors:
+            errors = factcheck(d, art)
         print(f"attempt {attempt} {model}: {len(errors)} problems", *errors, sep="\n  ")
         best = (d, model, errors, attempt)
         if not errors:
@@ -46,6 +48,28 @@ def write(art, today):
     if best is None:
         raise RuntimeError("no usable answer from the free models")
     return proofread(best, art)
+
+
+CHECK = """You are a strict fact-checker for a Tamil local-news page. You get an ARTICLE and a DRAFT (JSON with Tamil text).
+Check EVERY claim in the draft's tamil_headline, reel_script, slides_spec and caption against the ARTICLE.
+Report a problem for each of these: a place, person role, number, amount, date, time or cause that is NOT in the article or differs from it; an invented detail; a sentence that is ungrammatical or has no clear meaning in Tamil; two different facts mixed into one sentence; an important fact of the article (who did what, where, result such as an arrest) that is missing from the reel_script.
+Return ONLY JSON: {"ok": true or false, "problems": ["short English description of each problem"]}. ok is true ONLY when the problems list is empty."""
+
+
+def factcheck(d, art):
+    """independent second call: compares the draft with the article. Returns a list of problems."""
+    try:
+        r, m = llm.ask_json(CHECK, "ARTICLE:\n" + art["title"] + "\n" + art["text"][:6000] + "\n\nDRAFT:\n" + json.dumps(
+            {k: d.get(k) for k in ("tamil_headline", "reel_script", "slides_spec", "caption")}, ensure_ascii=False))
+        r = _obj(r)
+        probs = [str(x) for x in (r.get("problems") or [])]
+        if r.get("ok") is False and not probs:
+            probs = ["fact-checker rejected the draft"]
+        print(f"factcheck by {m}: {len(probs)} problems", *probs, sep="\n  ")
+        return ["fact-check: " + x for x in probs]
+    except Exception as e:
+        print("factcheck unavailable:", e)
+        return ["fact-check: could not be run"]
 
 
 PROOF = """You are a senior Tamil news editor and proofreader for the Instagram page "நாமக்கல் 360".
@@ -63,6 +87,8 @@ def proofread(best, art):
         fixed, m2 = llm.ask_json(PROOF, json.dumps(d, ensure_ascii=False))
         fixed = _obj(fixed)
         e2 = validate(fixed, art["text"] + " " + art["title"])
+        if not e2 and not errors:
+            e2 = factcheck(fixed, art)
         if len(e2) <= len(errors) and set(fixed) >= set(d):
             print(f"proofread by {m2}: {len(e2)} problems")
             return fixed, model + " + proofread " + m2, e2, att

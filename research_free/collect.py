@@ -9,7 +9,7 @@ import llm, sources, run
 
 IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 BRIDGE_URL, BRIDGE_KEY = os.environ.get("BRIDGE_URL", ""), os.environ.get("BRIDGE_KEY", "")
-MAX_STORIES = int(os.environ.get("MAX_STORIES", "8"))
+MAX_STORIES = int(os.environ.get("MAX_STORIES", "6"))
 DRY = "--dry" in sys.argv
 DEADLINE = time.time() + int(os.environ.get("BUDGET_MIN", "22")) * 60
 llm.DEADLINE[0] = DEADLINE
@@ -122,7 +122,7 @@ def main():
         except Exception as e:
             return art, e
     from concurrent.futures import ThreadPoolExecutor
-    with ThreadPoolExecutor(max_workers=3) as ex:
+    with ThreadPoolExecutor(max_workers=1) as ex:
         results = list(ex.map(work, arts))
     for art, res in results:
         if isinstance(res, Exception):
@@ -133,6 +133,11 @@ def main():
             d["scenes"], d["tamil_headline"]
         except Exception as e:
             log.append(f"bad draft skipped for {art['title'][:50]}: {e}")
+            continue
+        HARD = ("not grounded", "numbers not found", "fact-check", "source/outlet", "not a JSON", "missing key")
+        hard = [e for e in errors if any(h in e for h in HARD)]
+        if hard:
+            log.append(f"NOT filed (would be wrong/unclear), retried next run: {art['title'][:50]}: {'; '.join(hard)[:200]}")
             continue
         if is_dup(art, d, recent):
             log.append(f"skip (duplicate after write) {art['title'][:50]}")

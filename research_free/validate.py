@@ -21,6 +21,41 @@ def _digits_in(text):
     return set(re.findall(r"\d+", text or ""))
 
 
+def _tamil_words(t):
+    return [w for w in re.findall(r"[\u0B80-\u0BFF]+", t or "") if len(w) >= 4]
+
+
+def _stem(w):
+    return w[:4]
+
+
+def grounding_problems(d, article):
+    """a draft built from the article re-uses the article's words. Invented places/garbled words do not appear in it."""
+    art_words = _tamil_words(article)
+    stems = {_stem(w) for w in art_words}
+    out = []
+    # 1) the place named in the headline / location must be in the article
+    for fld in ("tamil_headline",):
+        for w in _tamil_words(d.get(fld, ""))[:3]:
+            if re.search(r"(ூர்|புரம்|பாளையம்|பட்டி|பேட்டை|கோடு|மலை|நகர்|பாளை|ம்பட்டி)", w) and _stem(w) not in stems:
+                out.append(f"not grounded: place word '{w}' is not in the article")
+    loc = (d.get("slides_spec") or {}).get("loc", "")
+    for w in _tamil_words(loc):
+        if _stem(w) not in stems and w not in ("மாவட்டம்", "நாமக்கல்"):
+            out.append(f"not grounded: location '{w}' is not in the article")
+    # 2) most words of the reel script and slides must come from the article
+    body = LAST
+    rs = (d.get("reel_script") or "").replace(body, "")
+    sl = " ".join(l for s_ in (d.get("slides_spec") or {}).get("slides", []) for l in s_.get("lines", []))
+    words = _tamil_words(rs + " " + _tags(sl))
+    if words:
+        miss = [w for w in words if _stem(w) not in stems]
+        ratio = 1 - len(miss) / len(words)
+        if ratio < 0.5:
+            out.append(f"not grounded: only {int(ratio*100)}% of the words come from the article (e.g. {', '.join(miss[:5])}); use the article's own words and facts")
+    return out
+
+
 def validate(d, article, today_digits=("2026",)):
     p = []
     if not isinstance(d, dict):
@@ -83,6 +118,7 @@ def validate(d, article, today_digits=("2026",)):
     stray = sorted(n for n in _digits_in(text) if n not in src and len(n) > 0 and n not in ("0", "360"))
     if stray:
         p.append("numbers not found in the article: " + ", ".join(stray[:6]))
+    p += grounding_problems(d, article)
     try:
         from verify import tamil_sequence_problems
         for t in [d["tamil_headline"], rs, _tags(cap)]:
