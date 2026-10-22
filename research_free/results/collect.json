@@ -1,260 +1,516 @@
 {
  "log": [
-  "picked by interest: 10:புரட்டாசி முடிந்ததால் நுகர்வு ; 6:கொல்லிமலையில் 3 நாள் மாநில அளவ; 2:குயிலி நினைவு தினம் அனுசரிப்பு; 2:கள் தடை நியாயமானது என நிரூபித்",
-  "all free models failed for கள் தடை நியாயமானது என நிரூபித்தால் எம்.பி.,க்களுக்: time budget used up; last error: None"
+  "links on the news list: 8, not yet filed: 8",
+  "picked by interest: 10:ஜேடர்பாளையம் சாலையில் தேங்கும்; 9:மாணவர்களின் லேப்டாப் திருட்டு; 6:போனஸ் கேட்டு டாஸ்மாக் சுமை பணி; 6:கிணற்றில் விழுந்த மான் மீட்பு; 5:பெருமாள் கோவிலின் படிக்கட்டு இ; 5:நித்திய சுமங்கலி மாரியம்மன் கோ; 5:தொழிலாளியை தாக்கியவர் கைது; 2:ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்",
+  "all free models failed for ப.வேலுார் ஜி.ஹெச்.,ல் குடிமகன்கள் அட்டகாசம் போலீஸ்: time budget used up; last error: None"
  ],
  "llm": [
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "ok groq/openai/gpt-oss-120b",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "ok groq/qwen/qwen3.8-27b",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
+  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
+  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {\"error\":{\"message\":\"Failed to validate JSON. Please adjust your prompt. See 'failed_gener",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
+  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
+  "ok groq/qwen/qwen3.8-27b",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
   "fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw",
   "fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"g",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
+  "fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw",
+  "fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"g",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {\"error\":{\"message\":\"Failed to validate JSON. Please adjust your prompt. See 'failed_gener",
   "fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw",
   "fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"g",
-  "fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)",
-  "ok groq/qwen/qwen3.8-27b",
+  "ok openrouter/recursive/flint-v1.0:free",
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "fail openrouter/recursive/flint-v1.0:free: Expecting value: line 1 column 1 (char 0)",
   "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {\"error\":{\"message\":\"Request too large for model `openai/gpt-oss-120b` in organization `or",
+  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {\"error\":{\"message\":\"Failed to validate JSON. Please adjust your prompt. See 'failed_gener",
+  "ok groq/qwen/qwen3.8-27b",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {\"error\":{\"message\":\"Failed to validate JSON. Please adjust your prompt. See 'failed_gener",
   "fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw",
   "fail openrouter/google/gemma-4-31b-it:free: openrouter google/gemma-4-31b-it:free 429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"g",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
+  "ok openrouter/recursive/flint-v1.0:free",
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
+  "ok openrouter/recursive/flint-v1.0:free",
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok openrouter/minimax/minimax-m3.1-flash:free",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "ok openrouter/recursive/flint-v1.0:free",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok openrouter/recursive/flint-v1.0:free",
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b"
  ],
  "stories": [
   {
-   "tamil_headline": "புரட்டாசி முடிந்ததால் முட்டை நுகர்வு அதிகரிப்பு: 2 நாளில் கொள்முதல் விலை 20 காசு உயர்வு",
-   "english_headline": "Namakkal egg procurement price rises 20 paise in two days to 570 paise as consumption increases after Putharti",
-   "category": "Business & Prices",
-   "location": "Namakkal mandal, Namakkal district",
-   "importance": "Medium",
+   "tamil_headline": "ஜேடர்பாளையம் சாலை வெள்ளம்: பள்ளி மாணவர்கள் அவதி",
+   "english_headline": "Jetharpathy street flood strands school children in Namakkal",
+   "category": "Civic Issues",
+   "location": "Jetharpathy street, Namakkal, Namakkal district",
+   "importance": "High",
    "post_to": "Namakkal 360",
    "slides_spec": {
     "v": 3,
-    "cat": "முட்டை விலை",
-    "loc": "நாமக்கல் மண்டலம்",
-    "hl1": "புரட்டாசி முடிந்ததால் முட்டை விலை உயர்வு",
-    "hl2": "2 நாளில் 20 காசு உயர்வு",
+    "cat": "மழை வெள்ளம்",
+    "loc": "ஜேடர்பாளையம்",
+    "hl1": "ஜேடர்பாளையம் வெள்ளம்: பள்ளி அவதி",
+    "hl2": "பள்ளி மாணவர்கள் அவதி",
     "slides": [
      {
-      "title": "உயர்வு காரணம்",
+      "title": "மழைநீர் வெள்ளம்",
       "lines": [
-       "புரட்டாசி முடிந்ததால் முட்டை நுகர்வு அதிகரித்தது",
-       "நாமக்கல் மண்டலத்தில் <b>2 நாளில் 20 காசு</b> உயர்வு",
-       "புதிய கொள்முதல் விலை <b>570 காசு</b>"
+       "ஜேடர்பாளையம் சாலை தேங்கியது",
+       "மழைநீர் குளம்போல் தேங்கி விடுகிறது",
+       "பாதசாரிகள், வாகன ஓட்டிகள் கடும் சிரமம்"
       ]
      },
      {
-      "title": "நிர்ணயம்",
+      "title": "பள்ளி அவதி",
       "lines": [
-       "அக். 21-ல் கூட்டத்தில் முட்டை விலை <b>10 காசு</b> உயர்வு",
-       "தேசிய முட்டை ஒருங்கிணைப்புக் கூட்டம் விலையை நிர்ணயித்தது",
-       "மண்டலத்தில் <b>1,000க்கும் மேற்பட்ட</b> கோழிப்பண்ணைகள்"
+       "அரசு, தனியார் பள்ளிகளுக்கு மாணவர்கள் தேங்கினர்",
+       "கடந்து செல்ல முடியாமல் அவதிக்குள்ளானர்கள்",
+       "இதுவரை எந்த நடவடிக்கையும் இல்லை"
       ]
      },
      {
-      "title": "உற்பத்தியும் விலை",
+      "title": "சாலை நிலை",
       "lines": [
-       "நாமக்கலில் தினசரி <b>7 கோடி</b> முட்டைகள் உற்பத்தி",
-       "ஜூலை 23: <b>680 காசு</b> - வரலாற்றின் உச்ச விலை",
-       "ஆகஸ்ட் 21: <b>520 காசு</b>; செப்டம்பர் 25: <b>540 காசு</b>"
-      ]
-     },
-     {
-      "title": "விலை வரலாறு",
-      "lines": [
-       "கடந்த 13-ல் <b>550 காசு</b> - 17 நாட்கள் நிலையான விலை",
-       "நேற்று முன்தினம் <b>560 காசு</b>; நேற்று <b>570 காசு</b>",
-       "முட்டை வாங்குபவர்கள் புதிய விலையை அறியவும்"
+       "ஜேடர்பாளையம் போலீஸ் நிலையம் அருகே சாலை",
+       "முக்கிய சாலையாக உள்ளது",
+       "வெளியேற வழியின்றி குட்டைபோல் தேங்கியது"
       ]
      }
     ]
    },
-   "reel_script": "நாமக்கலில் முட்டை கொள்முதல் விலை இரண்டு நாளில் இருபது காசு உயர்ந்துள்ளது. புரட்டாசி விரதம் முடிந்ததால் முட்டை நுகர்வு அதிகரித்தது. நேற்று கொள்முதல் விலை ஐந்து நூற்றொண்டு எழுபது காசாக நிர்ணயிக்கப்பட்டது. இதை மண்டல தேசிய முட்டை ஒருங்கிணைப்புக் கூட்டம் தீர்மானித்தது. வாங்குபவர்கள் புதிய விலையை கவனத்தில் கொள்ள வேண்டும். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🥚 நாமக்கலில் முட்டை கொள்முதல் விலை 2 நாளில் 20 காசு உயர்வு — இப்போது 570 காசு\n\nபுரட்டாசி விரதம் முடிந்ததால் முட்டை நுகர்வு அதிகரித்தது.\nஅக். 21-ல் நடந்த மண்டல தேசிய முட்டை ஒருங்கிணைப்புக் கூட்டத்தில் விலை 10 காசு உயர்த்தி 570 காசாக நிர்ணயிக்கப்பட்டது.\nமுன்னர் 560 காசாக இருந்த விலை இப்போது 570 காசு; 2 நாளில் மொத்தம் 20 காசு உயர்வு.\nமுட்டை வாங்குபவர்கள் புதிய விலையை கவனிக்கவும்.\nஉங்கள் பகுதியில் முட்டை விலை எவ்வளவு? கமெண்டில் சொல்லுங்கள்.\n\n📍 நாமக்கல், நாமக்கல் மாவட்டம் | 21 அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #NamakkalNews #நாமக்கல் #Namakkal360 #NamakkalMandal #முட்டைவிலை",
-   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A wide morning view of an egg wholesale market in Namakkal mandal, Tamil Nadu, with long tables filled by stacked egg trays, workers seen only from behind and far away, delivery scooters and market sheds in the background under a clear pale sky. Soft warm early-morning light and an earthy cream-and-blue colour grade continue across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Interior of a large layer poultry shed near Namakkal, with hens moving around nesting boxes while a worker seen from behind collects eggs into trays, green fields visible through the open sides. Soft warm early-morning light and an earthy cream-and-blue colour grade continue across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. An egg collection and weighing area in Namakkal, with full trays stacked beside cardboard egg boxes and a hand trolley, workers visible only in the distance under a clear pale sky. Soft warm early-morning light and an earthy cream-and-blue colour grade continue across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A small neighbourhood Putharti puja space in Namakkal after the festival, with banana leaves, flowers, a brass lamp and neatly arranged offerings in a Tamil Nadu home courtyard, with no people in view. Soft warm early-morning light and an earthy cream-and-blue colour grade continue across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. An egg shop counter in Namakkal town, with eggs being weighed and packed into a carry bag, customers seen only from behind, steel shop shelves and daylight at the entrance. Soft warm early-morning light and an earthy cream-and-blue colour grade continue across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/egg-prices-rise-by-20-paise-in-2-days-as-consumption-increases-due-to-end-of-puratasi/4355672",
-   "published": "2026-10-21T21:26:57+05:30",
-   "verification": "FREE-MODEL DRAFT (openrouter/minimax/minimax-m3.1-flash:free) - not checked by Claude yet; validator problems: numbers not found in the article: 7",
-   "note": "free-model draft openrouter/minimax/minimax-m3.1-flash:free, 3 attempt(s), 1 validator problem(s)",
+   "reel_script": "ஜேடர்பாளையம் சாலை வெள்ளமாக இருக்கிறது. இன்று மழைநீர் குளம்போல் தேங்கி விடுகிறது. இதனால் ஜேடர்பாளையம் போலீஸ் நிலையம் அருகே சாலை முக்கியமாக தேங்கியது. இதையடுத்து அரசு, தனியார் பள்ளிகளுக்கு மாணவர்கள் தேங்கினர்; மழைநீரை கடந்து செல்ல முடியாமல் அவதிக்குள்ளார்கள். இந்நிலையில் இதுவரை எந்த நடவடிக்கையும் எடுக்கப்படவில்லை. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🌧️ ஜேடர்பாளையம் சாலை வெள்ளம்: பள்ளி மாணவர்கள் அவதி\n\nஜேடர்பாளையம் சாலையில் மழைநீர் குளம்போல் தேங்கியது.\nஜேடர்பாளையம் போலீஸ் நிலையம் அருகே சாலை முக்கியமாக தேங்கியது.\nஅரசு, தனியார் பள்ளிகளுக்கு மாணவர்கள் தேங்கினர்; மழைநீரை கடந்து செல்ல முடியாமல் அவதிக்குள்ளார்கள்.\nஇதுவரை எந்த நடவடிக்கையும் இல்லை.\nஉங்கள் பகுதியில் இதே நிலையா? கமெண்டில் சொல்லுங்கள்\n\n📍 ஜேடர்பாளையம் சாலை, நாமக்கல் | அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #Jetharpathy #மழை #NamakkalNews",
+   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Wide flooded Jetharpathy street in Namakkal during heavy rain, rainwater pooled on the road like a lake, parked two-wheelers and auto, overcast sky, people walking from behind with umbrellas. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Jetharpathy police station area road blocked by rainwater, police vehicle at side, water flowing on main road, waiting vehicle, overcast light. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Flooded access road near government and private schools in Namakkal, school children and parents waiting from behind, water level rising, overcast sky. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Low-lying Jetharpathy street after rain, water standing, empty road, Tamil Nadu town buildings, calm overcast light, no people in foreground. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/school-students-suffer-as-rainwater-stagnates-on-jederpalayam-road/4355875",
+   "published": "2026-10-22T06:31:00+05:30",
+   "verification": "FREE-MODEL DRAFT (openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free) - not checked by Claude yet",
+   "note": "free-model draft openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free, 2 attempt(s), 0 validator problem(s)",
    "post_time": "right after your reply, same day"
   },
   {
-   "tamil_headline": "கொல்லிமலையில் 3 நாள் மாநில அளவிலான திரிசாரணர், திரிசாரணியர் சமாகம்",
-   "english_headline": "Three-day state-level Tirisaranar-Tirisaraniyar Samagam held at Killimalai",
-   "category": "Temples & Events",
-   "location": "Killimalai, Namakkal district",
+   "tamil_headline": "மாணவர்களின் லேப்டாப் திருட்டு: நான்கு லேப்டாப், 1.75 லட்சம் ரூபாய்",
+   "english_headline": "Students' locker theft: four lockers, valuables worth 1.75 lakh targeted",
+   "category": "Crime & Safety",
+   "location": "Namakkal district area, Tamil Nadu",
    "importance": "Medium",
    "post_to": "Namakkal 360",
    "slides_spec": {
     "v": 3,
-    "cat": "திரிசாரணர் சமாகம்",
-    "loc": "கொல்லிமலை",
-    "hl1": "கொல்லிமலையில் 3 நாள் மாநில சங்கம்",
-    "hl2": "திரிசாரணர் சமாகம் நடந்தது",
+    "cat": "லேப்டாப் திருட்டு",
+    "loc": "நாமக்கல்",
+    "hl1": "மாணவர் லேப்டாப் திருட்டு",
+    "hl2": "நான்கு லேப்டாப், 1.75 லட்சம்",
     "slides": [
      {
-      "title": "சங்க விவரம்",
+      "title": "திருட்டு",
       "lines": [
-       "கொல்லிமலையில் <b>3 நாள்</b> மாநில அளவிலான சங்கம் நடந்தது",
-       "திரிசாரணர், திரிசாரணியர் சமாகம்",
-       "செயலாளர் முத்தமிழ் பாண்டியன் தலைமை வகித்தார்"
+       "மாணவர் லேப்டாப் திருட்டு",
+       "நான்கு லேப்டாப், <b>1.75 லட்சம்</b> ரூபாய்",
+       "வழக்குப்பதிவு செய்தனர்"
       ]
      },
      {
-      "title": "நிகழ்ச்சிகள்",
+      "title": "எங்கு?",
       "lines": [
-       "சங்கத்தில் பொருளாதாரம், மேம்பாடு நடந்தன",
-       "நவீன வேளாண், பாரம்பரிய ஆடை அலங்கார கண்காட்சி நடந்தன",
-       "கிராமிய நடனம், தானியங்களை கொண்டு சமைத்தல் நடந்தன"
+       "புகார்படி",
+       "திருச்செங்கோடு ரூரல்",
+       "சொந்த ஊர்"
       ]
      },
      {
-      "title": "சிறப்பு விழா",
+      "title": "எப்போது?",
       "lines": [
-       "சங்கத்தில் நெகிழி நிகழ்ச்சி நடந்தது",
-       "தீயணைப்பு, மீட்பு பணிகள் துறை விழாவும் நடந்தன",
-       "நாமக்கல் மாவட்ட முதன்மைக் கல்வி அலுவலர் விழாவில் இருந்தனர்"
+       "நேற்று முன்தினம் இரவு",
+       "காலையில் எழுந்து பார்த்தபோது",
+       "விடுமுறைக்குப் பின் அறைக்கு திரும்பினர்"
       ]
      }
     ]
    },
-   "reel_script": "கொல்லிமலையில் மூன்று நாள் மாநில அளவிலான திரிசாரணர், திரிசாரணியர் சமாகம் நடந்தது. பொருளாதாரம், மேம்பாடு, நவீன வேளாண், பாரம்பரிய ஆடை அலங்கார கண்காட்சி நடந்தன. கிராமிய நடனமும் தானியங்களை கொண்டு சமைத்தலும் இடம்பெற்றன. நெகிழி நிகழ்ச்சியும் தீயணைப்பு, மீட்பு பணிகள் துறை விழாவும் நடந்தன. செயலாளர் முத்தமிழ் பாண்டியன் தலைமை வகித்தார். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🎪 கொல்லிமலையில் மாநில அளவில் 3 நாள் திரிசாரணர், திரிசாரணியர் சமாகம் நடந்தது\n\nபொருளாதாரம், மேம்பாடு, நவீன வேளாண் நிகழ்ச்சிகள் நடந்தன.\nபாரம்பரிய ஆடை அலங்கார கண்காட்சியும் கிராமிய நடனமும் நடந்தன.\nதானியங்களை கொண்டு சமைத்தல், நெகிழி நிகழ்ச்சி நடந்தன.\nதீயணைப்பு, மீட்பு பணிகள் துறை விழாவில் நாமக்கல் மாவட்ட முதன்மைக் கல்வி அலுவலர் இருந்தனர்.\nசெயலாளர் முத்தமிழ் பாண்டியன் நிகழ்ச்சிக்குத் தலைமை வகித்தார்.\nஇந்த உள்ளூர் செய்தியை Save செய்து வைத்துக்கொள்ங்கள்.\n\n📍 கொல்லிமலை, நாமக்கல் | தேதி விவரம் இன்னும் தெரியவரவில்லை\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #NamakkalNews #நாமக்கல் #Killimalai #திரிசாரணர் #Namakkal360",
-   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A wide daytime view of the Tirisaranar-Tirisaraniyar Samagam grounds in Killimalai, Namakkal district, Tamil Nadu, with a large audience seen from behind, a decorated community stage, and displays of folded traditional saris and ornate jewellery under white canopies. Same warm clear daylight and festive red-gold colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Inside the same Killimalai event hall, visitors seen from behind move between economic development stalls, modern farm tools, seed trays and crop samples arranged on tables. Same warm clear daylight and festive red-gold colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. On the main stage in Killimalai, folk dancers in colourful village attire perform a rural dance, seen from behind and far away; large iron cooking pots and trays of grains sit in a nearby cooking demonstration area. Same warm clear daylight and festive red-gold colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A ceremonial award area inside the Killimalai community venue, with a plaque and floral decoration, while fire and rescue department personnel stand near a fire-service vehicle, all seen from behind and far away. Same warm clear daylight and festive red-gold colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/3-day-state-level-trisaranar-trisaraniar-samagam-sangamam-at-kollimalai/4354901",
-   "published": "2026-10-21T05:26:00+05:30",
-   "verification": "FREE-MODEL DRAFT (openrouter/minimax/minimax-m3.1-flash:free) - not checked by Claude yet",
-   "note": "free-model draft openrouter/minimax/minimax-m3.1-flash:free, 3 attempt(s), 0 validator problem(s)",
+   "reel_script": "இன்று நாமக்கல்லில் மாணவர் லேப்டாப் திருட்டு நடந்தது. இதனால் நான்கு லேப்டாப் மதிப்புள்ள பொருட்கள் தாக்கப்பட்டன. இதையடுத்து உடனே விடுமுறை முடிந்து நேற்று முன்தினம் இரவு அறைக்கு திரும்பினர். இந்நிலையில் காலையில் எழுந்து பார்த்தபோது வழக்குப்பதிவு செய்தனர். இந்த சம்பவம் அனைவரையும் உறுத்தியது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🔒 நாமக்கல்லில் மாணவர் லேப்டாப் திருட்டு - நான்கு லேப்டாப், 1.75 லட்சம்\n\nவிடுமுறையால் அறை பூட்டி சொந்த ஊருக்கு சென்றனர்.\nபின் விடுமுறை முடிந்து நேற்று முன்தினம் இரவு அறைக்கு திரும்பினர்.\nகாலையில் எழுந்து பார்த்தபோது நான்கு லேப்டாப், 1.75 லட்சம் ரூபாய் மதிப்புள்ள லேப்டாப் திருடியவர்களை வழக்குப்பதிவு செய்தனர்.\n\nஉங்கள் வீட்டில் லேப்டாப் இருந்ததா? கமெண்டில் சொல்லுங்கள்.\n\nநாமக்கல் மாணவர் லேப்டாப் திருட்டு இன்று | நாமக்கல் செய்தி\n\n📍 நாமக்கல் | அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #புகார்படி #திருட்டு #NamakkalNews",
+   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A closed metal school locker in a Tamil Nadu school corridor in Namakkal, morning sunlight, metal door with small window, students seen from behind walking in the corridor, Tamil Nadu style school building. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A Tamil Nadu village home room with a closed wooden locker in early morning light, person seen from behind leaving the room, simple rural Tamil Nadu setting. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A Tamil Nadu village home entrance with a closed metal locker on the wall in early morning light, person seen from behind going out, rural Tamil Nadu setting. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A Tamil Nadu school corridor with closed metal lockers on the wall in morning light, a student locker detail, no people, calm Tamil Nadu school setting. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/students-laptop-stolen/4355886",
+   "published": "2026-10-22T06:37:00+05:30",
+   "verification": "FREE-MODEL DRAFT (openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free) - not checked by Claude yet",
+   "note": "free-model draft openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free, 3 attempt(s), 0 validator problem(s)",
    "post_time": "right after your reply, same day"
   },
   {
-   "tamil_headline": "வீரத்தாய் குயிலி நினைவு தினம்: ராசிபுரத்தில் வீரவணக்கம்",
-   "english_headline": "Kuzhali memorial event held in Rasipuram with floral tribute to freedom fighters",
-   "category": "Temples & Events",
-   "location": "Rasipuram town, Namakkal district",
+   "tamil_headline": "டோஸ்மாகோ கேட்டு சுமைப் பணியாளர் ஆர்ப்பாட்டம்",
+   "english_headline": "Dosmaco labour protest over alcohol sales at container depot",
+   "category": "Government & Services",
+   "location": "G. Krishnapuram Dosmaco Container Depot, Namakkal district",
+   "importance": "Medium",
+   "post_to": "Namakkal 360",
+   "slides_spec": {
+    "v": 3,
+    "cat": "தொழிலாளர் ஆர்ப்பாட்டம்",
+    "loc": "கிருஷ்ணாபுரம்",
+    "hl1": "டோஸ்மாகோ சுமைப் பணியாளர் ஆர்ப்பாட்டம்",
+    "hl2": "மது பேரம் பத்து ரூபாய்",
+    "slides": [
+     {
+      "title": "ஆர்ப்பாட்டம்",
+      "lines": [
+       "2026-10-22 அக்டோபர்",
+       "டோஸ்மாகோ குடோன் முன் ஆர்ப்பாட்டம்",
+       "சிஐடியு தலைவர் கோரிக்கை பேசினார்"
+      ]
+     },
+     {
+      "title": "எங்கு?",
+      "lines": [
+       "கிருஷ்ணாபுரம் டோஸ்மாகோ குடோன் முன்",
+       "டோஸ்மாகோ குடோன் டெபோட்",
+       "நாமக்கல் மாவட்டம்"
+      ]
+     },
+     {
+      "title": "கோரிக்கைகள்",
+      "lines": [
+       "மதுபான பெட்டிகளை கடை வாசலில் இறக்கி வைக்க",
+       "பெட்டி ஒன்றுக்கு <b>பத்து ரூபாய்</b> வழங்க வேண்டும்",
+       "கடைக்குள் அட்டிக்கூலியாக <b>ஐந்து ரூபாய்</b> வழங்க வேண்டும்"
+      ]
+     },
+     {
+      "title": "சம்பளம்",
+      "lines": [
+       "டிரைவர்களுக்கு நாள் ஒன்றுக்கு <b>1,000 ரூ</b> சம்பளம்",
+       "குழியுமான சாலைகளில் பாட்டில்களுக்கு சுமை வேண்டும்",
+       "அனைவருக்கும் அடையான அட்டை வழங்க வேண்டும்"
+      ]
+     }
+    ]
+   },
+   "reel_script": "கிருஷ்ணாபுரம் டோஸ்மாகோ குடோன் முன் மது பேரம் பதில் வந்தது. இதனால் சுமைப்பணி தொழிலாளர் சங்கம் ஆர்ப்பாட்டம் நடத்தியது. இந்நிலையில் மாநில துணை தலைவர் கோரிக்கை பேசினார். இதையடுத்து பெட்டி ஒன்றுக்கு பத்து ரூபாய் அட்டிக்கூலியாக ஐந்து ரூபாய் வழங்க வேண்டும். மேலும் டிரைவர்களுக்கு நாள் ஒன்பது ஆயிரம் ரூபாய் சம்பளம். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "டோஸ்மாகோ குடோனில் மது பேரம் பத்து ரூபாய் வேண்டும் 🥳\n\nகிருஷ்ணாபுரம் டோஸ்மாகோ குடோன் முன் சுமைப்பணி தொழிலாளர் சங்கம் ஆர்ப்பாட்டம் நடத்தியது.\n\nமதுபான பெட்டிகளை கடை வாசலில் இறக்கி வைக்க வேண்டும். பெட்டி ஒன்றுக்கு பத்து ரூபாய், அட்டிக்கூலியாக ஐந்து ரூபாய் வழங்க வேண்டும். டிரைவர்களுக்கு நாள் ஒன்றுக்கு ஆயிரம் ரூபாய் சம்பளம் வேண்டும்.\n\nஉங்கள் பகுதியில் இதே நிலையா? கமெண்டில் சொல்லுங்கள்.\n\nநாமக்கல் டோஸ்மாகோ தொழிலாளர் ஆர்ப்பாட்டம் | நாமக்கல் செய்தி\n\n📍 கிருஷ்ணாபுரம், நாமக்கல் | 22 அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #கிருஷ்ணாபுரம் #ஆர்ப்பாட்டம் #NamakkalNews",
+   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Wide view of the Dosmaco container depot near G. Krishnapuram in Namakkal district, rows of shipping containers and trucks, Tamil Nadu countryside behind, bright daylight. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Labour protest gathering at the Dosmaco container depot, crowd of workers and organisers, seen from behind and far away, containers behind them, overcast sky. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Close view of beer bottles packed in cartons inside the Dosmaco depot, stacked boxes, depot setting, daylight. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Tamil Nadu labour union representative speaking at the Dosmaco depot protest, microphone and crowd, seen from behind and far away, containers behind. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Liquor shop entrance near the Dosmaco depot with beer boxes to be kept on shelf, people from behind and far away, daytime. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/tasmac-load-worker-stages-protest-demanding-bonus/4355887",
+   "published": "2026-10-22T06:37:00+05:30",
+   "verification": "FREE-MODEL DRAFT (openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free) - not checked by Claude yet; validator problems: numbers not found in the article: 22",
+   "note": "free-model draft openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free, 3 attempt(s), 1 validator problem(s)",
+   "post_time": "right after your reply, same day"
+  },
+  {
+   "tamil_headline": "கிணற்றில் விழுந்த மான் மீட்பு",
+   "english_headline": "Deer rescued from well in Rasipuram",
+   "category": "Civic Issues",
+   "location": "Rasipuram, Namakkal district",
    "importance": "Medium",
    "post_to": "Namakkal 360 + Rasipuram 360 (collab)",
    "slides_spec": {
     "v": 3,
-    "cat": "நினைவு தினம்",
+    "cat": "மான் மீட்பு",
     "loc": "ராசிபுரம்",
-    "hl1": "ராசிபுரத்தில் குயிலி நினைவு விழா",
-    "hl2": "வீராங்கனைகளுக்கு மலர் துயவ்",
+    "hl1": "ராசிபுரம்: கிணற்றில் விழுந்த மான்",
+    "hl2": "நேற்று தண்ணீர் தேடி வந்தது",
     "slides": [
      {
-      "title": "நினைவு தினம்",
+      "title": "கிணற்றில் விழுந்த மான்",
       "lines": [
-       "<b>நேற்று</b> ராசிபுரத்தில் குயிலி நினைவு தினம் நடைபெற்றது",
-       "பல்வேறு அமைப்புகள் சார்பில் நினைவு தினம் கொண்டாடப்பட்டது",
-       "ஆண்டுதோறும் இந்நிகழ்ச்சி நடைபெறுகிறது"
+       "நேற்று தண்ணீர் தேடி வந்தது",
+       "எதிர்பாராதவிதமாக கிணற்றில் விழுந்தது",
+       "உள்ளூர் மக்கள் தீயணைப்பு நிலையத்திற்கு தகவல் தந்தனர்"
       ]
      },
      {
-      "title": "வீரத்தாய் குயிலி",
+      "title": "மான் மீட்பு",
       "lines": [
-       "<b>முதல் பெண்</b> தற்கொலைப் படைத் தளபதியாக விளங்கியவர்",
-       "இந்திய விடுதலை போராட்ட வரலாற்றின் வீரத்தாய்",
-       "அவரது தியாகத்தை ஆண்டுதோறும் போற்றுகின்றனர்"
+       "வீரர்கள் ஒரு மணி நேரம் போராடி",
+       "கிணற்றில் தத்தளித்த புள்ளிமானை",
+       "மீட்பு நடந்தது"
       ]
      },
      {
-      "title": "நிகழ்ச்சி",
+      "title": "என்ன மாற்றம்?",
       "lines": [
-       "<b>தமிழ் புலிகள் கட்சி</b> சார்பில் நிகழ்ச்சி நடைபெற்றது",
-       "மாவட்ட செயலாளர் நிகழ்ச்சிக்கு தலைமை வகித்தார்",
-       "மாவட்ட, ஒன்றிய அளவிலான பொறுப்பாளர்கள் பங்கேற்றனர்"
-      ]
-     },
-     {
-      "title": "வீரவணக்கம்",
-      "lines": [
-       "சுதந்திர போராட்ட வீராங்கனை அலங்கரித்து வைக்கப்பட்டிருந்தது",
-       "குயிலியின் உருவப் படத்திற்கு <b>மலர் துயவிடப்பட்டது</b>",
-       "வீரவணக்கம் செய்யப்பட்டது"
+       "விவரம் இன்னும் தெரியவரவில்லை",
+       "ராசிபுரம் தீயணைப்பு நிலையம்",
+       "மக்களுக்கு எச்சரிக்கை இல்லை"
       ]
      }
     ]
    },
-   "reel_script": "ராசிபுரத்தில் நேற்று வீரத்தாய் குயிலியின் நினைவு தினத்தைக் கொண்டு சிறப்பு நிகழ்ச்சி நடைபெற்றது. இந்திய விடுதலை போராட்ட வரலாற்றில் முதல் பெண் தற்கொலைப் படைத் தளபதியாக விளங்கிய அவரது தியாகத்தை பல அமைப்புகள் ஆண்டுதோறும் போற்றுகின்றன. தமிழ் புலிகள் கட்சியின் சார்பில் நடைபெற்ற இந்நிகழ்ச்சியில் மாவட்ட, ஒன்றிய அளவிலான பொறுப்பாளர்கள் பங்கேற்றனர். அலங்கரித்த வீராங்கனையும் குயிலியின் உருவப் படத்தையும் காணப்படுத்தி மலர் துயவிட்டு வீரவணக்கம் செய்யப்பட்டது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🪷 ராசிபுரத்தில் வீரத்தாய் குயிலி நினைவு தினம்: சுதந்திர வீராங்கனைகளுக்கு மலர் துயவ்\n\nநேற்று ராசிபுரத்தில் வீரத்தாய் குயிலியின் நினைவு தினம் கொண்டாடப்பட்டது.\nஇவர் இந்திய விடுதலை போராட்ட வரலாற்றில் முதல் பெண் தற்கொலைப் படைத் தளபதியாக விளங்கியவர்.\nதமிழ் புலிகள் கட்சியின் சார்பில் நிகழ்ச்சி நடைபெற்றது.\nமாவட்ட செயலாளர் தலைமை வகித்தார்; மாவட்ட, ஒன்றிய அளவிலான பொறுப்பாளர்கள் பங்கேற்றனர்.\nசுதந்திர போராட்ட வீராங்கனை அலங்கரித்து, குயிலியின் உருவப் படத்திற்கு மலர் துயவிடப்பட்டது.\nகுயிலியின் வரலாற்றை அறிந்திருந்தீங்களா? கமெண்டில் சொல்லுங்கள்.\n\n📍 ராசிபுரம், நாமக்கல் மாவட்டம் | நேற்று\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal #நாமக்கல் #Rasipuram #Rasipuram360 #வீரத்தாய்குயிலி",
-   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A respectful memorial display at the Rasipuram town event, with framed portraits of Indian independence fighters arranged on a covered table, including a portrait representing Veerthai Kuzhali with facial details indistinct, flower garlands and bouquets placed in front, a few attendees seen from behind at a distance, soft even daylight, warm muted beige-green colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Close view of a garlanded framed portrait representing Veerthai Kuzhali on the memorial table, facial detail softly indistinct, fresh flower garlands and a bouquet in the foreground, attendees blurred in the far background, same soft even daylight and warm muted beige-green colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Close view of additional framed portraits of Indian independence fighters arranged in a row, flower garlands placed around the frames, no readable writing or logos, a respectful tribute display in a Rasipuram civic setting, same soft even daylight and warm muted beige-green colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Tamil Tigers district organiser and local officials, all seen from behind or far away, standing around the framed portrait display while one person places a bouquet at the tribute table, other participants watching quietly, same soft even daylight and warm muted beige-green colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Wide closing view of the memorial display in Rasipuram, bouquets and flower garlands spread before the framed portraits, attendees seen from behind as they move around the venue, a solemn community tribute atmosphere, same soft even daylight and warm muted beige-green colour grade across this series. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/commemoration-of-quillies-death/4354900",
-   "published": "2026-10-21T05:26:00+05:30",
-   "verification": "FREE-MODEL DRAFT (openrouter/minimax/minimax-m3.1-flash:free) - not checked by Claude yet",
-   "note": "free-model draft openrouter/minimax/minimax-m3.1-flash:free, 2 attempt(s), 0 validator problem(s)",
+   "reel_script": "ராசிபுரத்தில் கிணற்றில் விழுந்த மான் மீட்பு நடந்தது. இதனால் உள்ளூர் மக்கள் தீயணைப்பு நிலையத்திற்கு தகவல் தந்தனர். இதையடுத்து வீரர்கள் ஒரு மணி நேரம் போராடி கிணற்றில் தத்தளித்த மான் மீட்க முயன்றனர். இந்நிலையில் ராசிபுரம் தீயணைப்பு நிலையம் மக்களுக்கு எச்சரிக்கை இல்லை. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🥕 ராசிபுரம்: கிணற்றில் விழுந்த மான் மீட்பு\n\nநேற்று தண்ணீர் தேடி வந்தது.\nவீரர்கள் ஒரு மணி நேரம் போராடி கிணற்றில் தத்தளித்த புள்ளிமானை மீட்க முயன்றனர்.\nராசிபுரம் தீயணைப்பு நிலையம் தகவல் தந்தது.\nவிவரம் இன்னும் தெரியவரவில்லை.\n\nராசிபுரம் மான் மீட்பு | நாமக்கல் செய்தி\n\n📍 ராசிபுரம், நாமக்கல் | அக்டோபர் 22, 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #ராசிபுரம் #மான் #Rasipuram",
+   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A deep rural stone well in a green field near Rasipuram, Namakkal district, Tamil Nadu, overcast sky, tall coconut trees and paddy field in background, no people. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Rasipuram fire station in Namakkal district, red fire engine and firefighters in safety gear, seen from behind far away, village road in background. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A rural well area near Rasipuram with coconut trees and field, cloudy sky, wide shot of the well surroundings, no people. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. A wide rural rescue scene near Rasipuram, fire and rescue team vehicles, people seen from behind far away, well area in background, overcast light. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/deer-that-fell-into-a-well-rescued/4355883",
+   "published": "2026-10-22T06:35:00+05:30",
+   "verification": "FREE-MODEL DRAFT (openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free) - not checked by Claude yet; validator problems: slide 1 title longer than 18 characters; numbers not found in the article: 22",
+   "note": "free-model draft openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free, 3 attempt(s), 2 validator problem(s)",
+   "post_time": "right after your reply, same day"
+  },
+  {
+   "tamil_headline": "பெருமாள் கோவிலின் படிக்கட்டு இடித்து அகற்றம் சேதப்படுத்தியவர்கள் மீது நடவடிக்கை எடுக்கப்படுமா?",
+   "english_headline": "Perumal Koil hill: those who damaged ancient stone steps face action",
+   "category": "Civic Issues",
+   "location": "Rasipuram: Kundru hill area, Namakkal district",
+   "importance": "High",
+   "post_to": "Namakkal 360",
+   "slides_spec": {
+    "v": 3,
+    "cat": "கோவில் பாதுகாப்பு",
+    "loc": "ராசிபுரம்: குன்றில் மலைப்பாதை",
+    "hl1": "பெருமாள் கோவில் படிக்கட்டு இடித்தது",
+    "hl2": "150 ஆண்டு பாரம்பரியம் படிக்கட்டு",
+    "slides": [
+     {
+      "title": "படிக்கட்டு இடி",
+      "lines": [
+       "பெருமாள் கோவில் படிக்கட்டு இடித்தது",
+       "150 ஆண்டு பாரம்பரியம் படிக்கட்டு",
+       "ராசிபுரம்: குன்றில் மலைப்பாதை"
+      ]
+     },
+     {
+      "title": "எது பாதித்தது?",
+      "lines": [
+       "91 ஏக்கர் அரசு புறம்போக்கு மலை",
+       "ஸ்ரீதேவி பூதேவி கோவில்",
+       "ஆயிரக்கணக்கான பக்தர்கள் வந்தனர்"
+      ]
+     },
+     {
+      "title": "என்ன நடந்தது?",
+      "lines": [
+       "வனத்துறை அனுமதி இல்லை",
+       "படிக்கட்டு இயந்திரம் உடைத்தது",
+       "மரங்கள் எரித்தனர்"
+      ]
+     },
+     {
+      "title": "என்ன செய்வது?",
+      "lines": [
+       "நடவடிக்கை எடுக்க வேண்டும்",
+       "நீர்வழித்தடங்களை சீரமைக்க வேண்டும்",
+       "கோரிக்கை முதல்வருக்கு அனுப்பப்பட்டது"
+      ]
+     }
+    ]
+   },
+   "reel_script": "ராசிபுரம் குன்றில் பெருமாள் கோவில் படிக்கட்டு இடித்தது. இதனால் வனத்துறை அனுமதி இல்லாமல் மரங்களை எரித்தனர். இந்நிலையில் நூற்று ஆண்டுகள் பழமையான பாரம்பரியம் பாதிக்கப்பட்டது. இதையடுத்து உடனே அரசு திட்டமாக நடவடிக்கை எடுக்க வேண்டும். ஸ்ரீதேவி பூதேவி கோவில் ஆயிரக்கணக்கான பக்தர்கள் வந்தனர். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "⛰️ பெருமாள் கோவில் படிக்கட்டு இடித்தது: ராசிபுரம் குன்றில்\n\nராசிபுரம்: குன்றில் வரலாற்று சிறப்புமிக்க பெருமாள் கோவில் மலைப்பாதை படிக்கட்டு இடித்தது.\n91 ஏக்கர் அரசு புறம்போக்கு மலை; ஸ்ரீதேவி பூதேவி கோவில்.\nஆயிரக்கணக்கான பக்தர்கள் வந்தனர்; வனத்துறை அனுமதி இல்லை.\nநடவடிக்கை எடுக்க வேண்டும்; நீர்வழித்தடங்களை சீரமைக்க வேண்டும்.\nஉங்கள் பகுதியில் இதே நிலையா? கமெண்டில் சொல்லுங்கள்.\n\nபெருமாள் கோவில் படிக்கட்டு இடித்தது | நாமக்கல் செய்தி\n\n📍 ராசிபுரம்: குன்றி, நாமக்கல் மாவட்டம் | அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #குன்றி #கோவில் #Rasipuram",
+   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Wide view of the historic Perumal Koil temple hill and ancient stone steps at Rasipuram: Kundru, Tamil Nadu, early morning mist over the forested hill, stone steps leading up the slope, no people, same soft morning light and green-grey colour grade. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Close view of the ancient stone steps and rocky hill at Perumal Koil, Tamil Nadu, cloudy sky, forest vegetation, no people, same soft morning light and green-grey colour grade. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Devotees walking on the traditional path to Perumal Koil temple at Rasipuram: Kundru, Tamil Nadu, early morning, seen from behind and far away, forest, same soft morning light and green-grey colour grade. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Forest officials and district staff at the affected hill area near Perumal Koil, Tamil Nadu, cloudy, vehicles at base, seen from behind and far away, same soft morning light and green-grey colour grade. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Forest hillside at Perumal Koil showing rocky terrain and water source, Tamil Nadu, cloudy, no people, same soft morning light and green-grey colour grade. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/perumal-will-action-be-taken-against-those-responsible-for-the-demolition-and-damage-to-the-staircase-of-the-temple/4355871",
+   "published": "2026-10-22T06:28:00+05:30",
+   "verification": "FREE-MODEL DRAFT (openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free) - not checked by Claude yet; validator problems: hl2 longer than 28 characters",
+   "note": "free-model draft openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free, 3 attempt(s), 1 validator problem(s)",
+   "post_time": "right after your reply, same day"
+  },
+  {
+   "tamil_headline": "நித்திய சுமங்கலி மாரியம்மன் கோவிலில் பூச்சாட்டு விழா",
+   "english_headline": "Niththiy Sumangai Marimarignan temple Aippasi Ther festival begins with flower offering",
+   "category": "Temples & Events",
+   "location": "Rasipuram temple, Rasipuram, Namakkal district",
+   "importance": "Medium",
+   "post_to": "Namakkal 360 + Rasipuram 360 (collab)",
+   "slides_spec": {
+    "v": 3,
+    "cat": "தேர் திருவிழா",
+    "loc": "ராசிபுரம்",
+    "hl1": "ராசிபுரம் கோவில் பூச்சாட்டு விழா",
+    "hl2": "ஐப்பசி தேர் திருவிழா",
+    "slides": [
+     {
+      "title": "விழா தொடங்கியது",
+      "lines": [
+       "ராசிபுரம் நித்திய சுமங்கலி மாரியம்மன் கோவில்",
+       "ஐப்பசி தேர் திருவிழா",
+       "இன்று பூச்சாட்டுதல் தொடங்கியது"
+      ]
+     },
+     {
+      "title": "மேளம் பூஜை",
+      "lines": [
+       "மேளதாளம் முழங்க அம்மனுக்கு பூஜை",
+       "கோவில் அருள்பாலித்தது",
+       "பக்தர்கள் பூக்கள் வழங்கி வழிபட்டனர்"
+      ]
+     },
+     {
+      "title": "வழக்கம்",
+      "lines": [
+       "நடப்பாண்டு தேர் திருவிழா",
+       "நடத்தப்படுவது வழக்கமாகும்",
+       "விவரம் இன்னும் தெரியவரவில்லை"
+      ]
+     }
+    ]
+   },
+   "reel_script": "ராசிபுரம் கோவிலில் நித்திய சுமங்கலி மாரியம்மன் கோவில் பூச்சாட்டு விழா இப்போது தொடங்கியது. இந்நிலையில் ஐப்பசி தேர் திருவிழா ராசிபுரம் கோவிலில் நடைபெறுகிறது. இதனால் மேளதாளம் முழங்க அம்மனுக்கு கோவிலில் பூஜை செய்யப்பட்டது. பக்தர்கள் பூக்கள் வழங்கி அம்மனை இன்று கோவிலில் வழிபட்டனர். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🌺 ராசிபுரம் கோவிலில் பூச்சாட்டு விழா: ஐப்பசி தேர் திருவிழா\n\nராசிபுரம் நித்திய சுமங்கலி மாரியம்மன் கோவில்.\nஐப்பசி தேர் திருவிழா இன்று தொடங்கியது.\nமேளதாளம் முழங்க அம்மனுக்கு பூஜை செய்யப்பட்டது.\nகோவில் அருள்பாலித்தது, பக்தர்கள் பூக்கள் வழங்கி வழிபட்டனர்.\n\nஉங்கள் பகுதியில் இதே நிலையா? கமெண்டில் சொல்லுங்கள்\n\nராசிபுரம் ஐப்பசி தேர் திருவிழா இன்று | நாமக்கல் செய்தி\n\n📍 ராசிபுரம், நாமக்கல் | அக்டோபர்\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #ராசிபுரம் #தேர் #Rasipuram",
+   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Wide view of the Rasipuram temple festival at Niththiy Sumangai Marimarignan temple, devotees carrying flowers, seen from behind, cloudy morning light in Namakkal district. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Flower offering ritual at the temple during Aippasi Ther festival, garlands and flowers, temple tower in background, morning light. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Drum beat during the Aippasi Ther festival at Rasipuram temple, musicians playing, devotees watching from behind, morning light. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Temple courtyard during the flower festival at Rasipuram, flower decorated temple entrance, devotees from behind, soft morning light. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/floral-ceremony-at-eternal-sumangali-mariamman-temple/4355881",
+   "published": "2026-10-22T06:34:00+05:30",
+   "verification": "FREE-MODEL DRAFT (openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free) - not checked by Claude yet",
+   "note": "free-model draft openrouter/recursive/flint-v1.0:free + proofread openrouter/recursive/flint-v1.0:free, 2 attempt(s), 0 validator problem(s)",
+   "post_time": "right after your reply, same day"
+  },
+  {
+   "tamil_headline": "மோகனூரில் இரண்டு பேர் மோதிக்கப்பட்டனர் - பத்தானில் மோதல்",
+   "english_headline": "Two men clash in Mohanur; one injured in attack over money",
+   "category": "Crime & Safety",
+   "location": "Mohanur area, Tamil Nadu",
+   "importance": "High",
+   "post_to": "Namakkal 360",
+   "slides_spec": {
+    "v": 3,
+    "cat": "குற்ற வழக்கு",
+    "loc": "மோகனூர்",
+    "hl1": "மோகனூரில் இரண்டு பேர் மோதிக்கப்பட்டனர்",
+    "hl2": "பத்தானில் மோதல்",
+    "slides": [
+     {
+      "title": "மோதல்",
+      "lines": [
+       "மோகனூரில் இரண்டு பேர் மோதிக்கப்பட்டனர்",
+       "பத்தானில் அவர்கள் இரண்டும் பேசிக்கொண்டனர்",
+       "ஒருவருக்கு பணம் இல்லை என்று கூறியது"
+      ]
+     },
+     {
+      "title": "காயம்",
+      "lines": [
+       "அவர் காயம் ஏற்பட்டார்",
+       "அரசு மருத்துவமனைக்கு சிகிச்சை அனுப்பினர்",
+       "சிகிச்சை நடந்தது"
+      ]
+     },
+     {
+      "title": "புகார்",
+      "lines": [
+       "புகார் அளித்தனர்",
+       "விவரம் இன்னும் தெரியவரவில்லை"
+      ]
+     },
+     {
+      "title": "எங்கு",
+      "lines": [
+       "மோகனூர் பகுதி",
+       "இரண்டு பேர் மோதிக்கப்பட்டனர்",
+       "பத்தானில் நடந்தது"
+      ]
+     }
+    ]
+   },
+   "reel_script": "மோகனூரில் இரண்டு பேர் மோதிக்கப்பட்டனர். பத்தானில் அவர்கள் இரண்டும் பேசிக்கொண்டனர். ஒருவருக்கு அவர் தனது பணம் இல்லை என்று கூறியது. அரசு மருத்துவமனைக்கு அவருக்கு முதன்மை மருத்துவ சிகிச்சை உடனே அனுப்பினர். காயம் ஏற்பட்டு உடனே அவருக்கு முழு மருத்துவ சிகிச்சை நடந்தது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🔪 மோகனூரில் இரண்டு பேர் மோதிக்கப்பட்டனர் - இன்றைய செய்தி\n\n📍 மோகனூர் பகுதியில் இரண்டு பேர் மோதிக்கப்பட்டனர்.\n📅 19 அக்டோபர்: இரண்டு பேர் பேசிக்கொண்டனர்.\n💰 பணம் இல்லை என்று கூறியது.\n🏥 அரசு மருத்துவமனைக்கு சிகிச்சை அனுப்பினர்.\n⚖️ காயம் ஏற்பட்டு சிகிச்சை நடந்தது.\n\nஉங்கள் பகுதியில் இதே நிலையா? கமெண்டில் சொல்லுங்கள்.\n\nMohanur news today | two injured in clash\n\n📍 Mohanur | 19 October 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #Mohanur #குற்றவா #NamakkalNews",
+   "prompts": "ONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Police car with flashing blue lights on a quiet Mohanur street at night, yellow crime scene tape, empty road, no people, cinematic. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Police station entrance in Mohanur at night, officers seen from behind far away, street light, calm. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Government hospital in Mohanur, ambulance parked outside, empty corridor, dim emergency light. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Empty police station corridor in Mohanur at night, closed doors, dim light, no people. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.\n---\nONE single continuous photograph from one camera angle (not a collage, grid, strips or panels). Ultra-sharp photorealistic documentary-style news photo, tall vertical portrait (9:16 if possible, highest resolution), MAXIMUM CLARITY: 4K, tack-sharp focus across the whole frame, deep depth of field, shot like a professional full-frame camera with a 35mm lens at f/8, crisp fine detail and edges, clean noise-free image, balanced high dynamic range, natural lighting; no blur, no soft focus, no motion blur, no haze, no painterly, plastic or over-smoothed AI look. Police vehicle parked near Mohanur hospital at night, lights off, reflective markings, calm. Natural colours, realistic light, sharp detail, modern news-photography look. STRICT: no text, letters, numbers, signboard writing, logos or watermarks anywhere in the image; no recognisable real person, politician or celebrity face (show people only from behind, far away or blurred); no blood, injuries or dead bodies. Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/employee-attacked-arrested/4355885",
+   "published": "2026-10-22T06:37:00+05:30",
+   "verification": "FREE-MODEL DRAFT (openrouter/recursive/flint-v1.0:free) - not checked by Claude yet",
+   "note": "free-model draft openrouter/recursive/flint-v1.0:free, 2 attempt(s), 0 validator problem(s)",
    "post_time": "right after your reply, same day"
   }
  ]
