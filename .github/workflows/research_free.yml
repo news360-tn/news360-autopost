@@ -38,7 +38,12 @@ jobs:
         run: |
           mkdir -p research_free/results
           FLAG=""; [ "${{ github.event.inputs.dry }}" = "true" ] && FLAG="--dry"
-          python -u research_free/collect.py $FLAG > research_free/results/collect.log 2>&1 || echo "exit $?" >> research_free/results/collect.log
+          for TRY in 1 2; do
+            python -u research_free/collect.py $FLAG > research_free/results/collect.log 2>&1 && break
+            echo "exit $? (try $TRY)" >> research_free/results/collect.log
+            cp research_free/results/collect.log research_free/results/collect_failed.log
+            sleep 60
+          done
           tail -15 research_free/results/collect.log
       - name: Save log
         if: always() && steps.sw.outputs.go == 'yes'
@@ -48,3 +53,7 @@ jobs:
           git commit -m "free collector log" || echo none
           git pull --rebase --autostash origin main || true
           git push || true
+      - name: Fail loudly if the collector crashed (GitHub then emails the repo owner)
+        if: steps.sw.outputs.go == 'yes'
+        run: |
+          if grep -q "Traceback" research_free/results/collect.log; then echo "collector crashed twice"; exit 1; fi
