@@ -20,6 +20,13 @@ RASIPURAM = ["ராசிபுரம்", "நாமகிரிப்பே�
 # searches that cover the whole district (every taluk and big town)
 QUERIES = ["நாமக்கல்", "ராசிபுரம்", "திருச்செங்கோடு", "பரமத்தி வேலூர்", "குமாரபாளையம்", "பள்ளிபாளையம்", "சேந்தமங்கலம்", "கொல்லிமலை",
            "மோகனூர்", "நாமகிரிப்பேட்டை", "வெண்ணந்தூர்", "எருமப்பட்டி", "நாமக்கல் மாவட்டம்", "நாமக்கல் முட்டை விலை"]
+# every outlet is also searched on its own (so a channel like News7 Tamil or NDTV Tamil is never missed)
+SITES = {"நியூஸ்7 தமிழ்": "news7tamil.live", "என்டிடிவி தமிழ்": "ndtv.com/tamil", "மாலைமலர்": "maalaimalar.com", "தினத்தந்தி": "dailythanthi.com",
+         "தினமணி": "dinamani.com", "இந்து தமிழ்": "hindutamil.in", "தினகரன்": "dinakaran.com", "புதிய தலைமுறை": "puthiyathalaimurai.com",
+         "நியூஸ்18 தமிழ்": "news18.com", "விகடன்": "vikatan.com", "பாலிமர்": "polimernews.com", "சமயம் தமிழ்": "tamil.samayam.com",
+         "தினமலர்": "dinamalar.com", "DT Next": "dtnext.in", "ஜீ தமிழ்": "zeenews.india.com", "ABP நாடு": "tamil.abplive.com",
+         "Oneindia தமிழ்": "tamil.oneindia.com", "நக்கீரன்": "nakkheeran.in", "தினபூமி": "dinaboomi.com", "தமிழ் முரசு": "tamilmurasu.com.sg"}
+SITE_QUERIES = ["நாமக்கல்", "ராசிபுரம்", "திருச்செங்கோடு"]
 OUTLET_WORDS = ["தினமலர்", "தினத்தந்தி", "தினமணி", "மாலைமலர்", "தினகரன்", "இந்து தமிழ்", "தி இந்து", "புதிய தலைமுறை", "நியூஸ்18", "நியூஸ் 18",
                 "விகடன்", "ஏபிபி", "சமயம்", "polimer", "பாலிமர்", "தந்தி டிவி", "ஜீ தமிழ்", "நக்கீரன்", "டைம்ஸ்"]
 
@@ -114,6 +121,10 @@ def collect(log):
     for q in QUERIES:
         add(from_google, q, label=f"google '{q}'")
         add(from_bing, q, label=f"bing '{q}'")
+    for name, dom in SITES.items():
+        for q in SITE_QUERIES:
+            add(from_google, f"{q} site:{dom}", label=f"google {name} '{q}'")
+            add(from_bing, f"{q} site:{dom}", label=f"bing {name} '{q}'")
     try:
         for cfg in json.loads((HERE / "sources.json").read_text(encoding="utf-8")):
             add(from_listing, cfg, label=cfg["name"])
