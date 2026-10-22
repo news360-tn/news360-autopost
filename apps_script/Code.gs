@@ -84,7 +84,20 @@ function rowObj_(values, rowNum) {
   return o;
 }
 /** Only நாமக்கல் 360 posts. Rasipuram stories add இராசிபுரம் 360 as a collaborator instead of a second post. */
-function targets_(postTo) { return ['namakkal']; }
+function targets_(postTo) {
+  var t = String(postTo || '').toLowerCase(), out = [];
+  if (t.indexOf('namakkal') >= 0) out.push('namakkal');
+  if (t.indexOf('rasipuram') >= 0) out.push('rasipuram');
+  return out.length ? out : ['namakkal'];
+}
+// true when every page named in post_to has its carousel (unless reel-only) and its reel
+function allDone_(r) {
+  return targets_(r.post_to).every(function (p) {
+    var car = carouselOff_(r) || !!r[p + '_link'];
+    var reel = String(r.reel_link || '').indexOf(PAGE_LABEL[p]) >= 0;
+    return car && reel;
+  });
+}
 function queue_() {
   var sh = sheet_();
   var last = sh.getLastRow();
@@ -97,10 +110,7 @@ function queue_() {
     if (!r.story_id || !r.slides_spec || !r.images) continue;
     if (st !== 'queued' && st !== 'partly posted' && st !== 'posted') continue;
     if (r.review.toLowerCase() === 'hold') continue;
-    var pagesLeft = targets_(r.post_to).filter(function (p) { return !r[p + '_link']; }).length;
-    if (carouselOff_(r) || r.rasipuram_link || r.namakkal_link) pagesLeft = 0;   // reel-only story, or the carousel is already posted on either page
-    var reelLeft = !r.reel_link;
-    if (pagesLeft === 0 && !reelLeft) continue;
+    if (allDone_(r)) continue;
     out.push(r);
   }
   return out;
@@ -176,11 +186,12 @@ function posted_(b) {
   if (b.kind === 'reel') {
     var prev = r.reel_link ? r.reel_link + '\n' : '';
     sh.getRange(b.row, C.reel_link).setValue(prev + label + ': ' + b.permalink);
-    if (r.namakkal_link || r.rasipuram_link || carouselOff_(r)) sh.getRange(b.row, C.post_status).setValue('Posted');
+    r.reel_link = prev + label + ': ' + b.permalink;
+    sh.getRange(b.row, C.post_status).setValue(allDone_(r) ? 'Posted' : 'Partly posted');
   } else {
     sh.getRange(b.row, PAGE_COL[b.page]).setValue(b.permalink);
     r[b.page + '_link'] = b.permalink;
-    sh.getRange(b.row, C.post_status).setValue(r.reel_link ? 'Posted' : 'Partly posted');
+    sh.getRange(b.row, C.post_status).setValue(allDone_(r) ? 'Posted' : 'Partly posted');
   }
   sh.getRange(b.row, C.posted_at).setValue("'" + time);
   appendNote_(sh, b.row, r.notes, time + ' ' + kindLabel + ' posted to ' + label);

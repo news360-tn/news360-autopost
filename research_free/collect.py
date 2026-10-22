@@ -166,6 +166,10 @@ def main():
     if os.environ.get("WRITE_STORIES", "1") == "0":      # archive-only round: collect and store everything, write nothing, send no email
         target = {"R": 0, "N": 0}
         log.append("archive-only round: no stories written")
+    # Namakkal 360 = top news of the whole district (Rasipuram included), Rasipuram 360 = Rasipuram only; each page posts on its own.
+    # A Rasipuram story that is among the district's top MAX_NAMAKKAL by score also goes to Namakkal 360 (and uses one of its slots).
+    all_sc = sorted([x["score"] for a_ in ("R", "N") for x in queues[a_]], reverse=True)
+    district_cut = all_sc[MAX_NAMAKKAL - 1] if len(all_sc) >= MAX_NAMAKKAL else (all_sc[-1] if all_sc else 0)
     tries_cap = {"R": MAX_RASIPURAM * 3, "N": MAX_NAMAKKAL * 3}
     while time.time() < DEADLINE - 120:
         progressed = False
@@ -210,7 +214,10 @@ def main():
                 n["status"] = "not filed: " + why
                 log.append(f"NOT filed ({area}) {art['title'][:50]}: {why}")
                 continue
-            story["post_to"] = "Rasipuram 360" if area == "R" else "Namakkal 360"
+            both = area == "R" and n["score"] >= district_cut
+            story["post_to"] = ("Rasipuram 360 + Namakkal 360" if both else "Rasipuram 360") if area == "R" else "Namakkal 360"
+            if both:
+                target["N"] = max(0, target["N"] - 1)
             story["_area"], story["_score"] = area, n["score"]
             out.append(story)
             recent.append({"headline_ta": story["tamil_headline"], "source": art["url"]})

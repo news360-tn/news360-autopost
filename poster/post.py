@@ -92,14 +92,21 @@ def is_shutdown(row):
     return "மின் தடை" in (row.get("category") or "") or "shutdown" in (row.get("category") or "").lower()
 
 
-def page_of(row):
-    """the Instagram page that posts this story: Rasipuram-area stories (post_to names Rasipuram) go out from Rasipuram 360 itself,
-    with Namakkal 360 invited as the collaborator; everything else from Namakkal 360."""
-    return "rasipuram" if "rasipuram" in (row.get("post_to") or "").lower() else "namakkal"
+LABEL = {"rasipuram": "இராசிபுரம் 360", "namakkal": "நாமக்கல் 360"}
 
 
-def carousel_done(row):
-    return bool(row.get("rasipuram_link") or row.get("namakkal_link"))
+def pages_of(row):
+    """the pages that post this story, each on its own (no collaboration): Namakkal 360 = top news of the whole district (Rasipuram
+    included), Rasipuram 360 = Rasipuram news only. post_to names them; a story can go to both, as two separate posts."""
+    t = (row.get("post_to") or "").lower()
+    pg = [p for p in ("namakkal", "rasipuram") if p in t]
+    return pg or ["namakkal"]
+
+
+def page_done(row, page):
+    car_ok = bool(row.get(page + "_link")) or not spec_has_carousel(row)
+    reel_ok = LABEL[page] in (row.get("reel_link") or "")
+    return car_ok and reel_ok
 
 
 def spec_has_carousel(row):
@@ -115,9 +122,7 @@ def ready(row):
         return False
     if not row.get("images") or not row.get("slides_spec"):
         return False
-    if carousel_done(row) and row.get("reel_link"):
-        return False
-    if row.get("reel_link") and not spec_has_carousel(row):      # reel-only story: the reel is all it needs
+    if all(page_done(row, p) for p in pages_of(row)):
         return False
     return age_hours(row) <= MAX_AGE_H * (2 if is_shutdown(row) else 1)
 
@@ -345,9 +350,14 @@ def cache_key(row, spec, caption):
     return hashlib.sha1(raw.encode()).hexdigest()[:16]
 
 
+def cache_path(sid, page=None):
+    page = page or PAGE
+    return CACHE / (f"{sid}.json" if page == "namakkal" else f"{sid}_{page}.json")
+
+
 def load_cache(sid, key):
     try:
-        d = json.loads((CACHE / f"{sid}.json").read_text(encoding="utf-8"))
+        d = json.loads(cache_path(sid).read_text(encoding="utf-8"))
         if d.get("key") == key and d.get("reel") and (d.get("carousel") or d.get("reel_only")):
             return d
     except Exception:
@@ -358,7 +368,7 @@ def load_cache(sid, key):
 def save_cache(sid, key, media, checks):
     try:
         CACHE.mkdir(parents=True, exist_ok=True)
-        (CACHE / f"{sid}.json").write_text(json.dumps(dict(media, key=key, checks=checks, reel_only=not media.get("carousel")), ensure_ascii=False), encoding="utf-8")
+        cache_path(sid).write_text(json.dumps(dict(media, key=key, checks=checks, reel_only=not media.get("carousel")), ensure_ascii=False), encoding="utf-8")
     except Exception as e:
         log("cache not saved:", e)
 
@@ -556,6 +566,16 @@ def fail(row, kind, msg):
 
 
 def run_story(row):
+    """every page named in post_to gets its own carousel + reel (own logo and follow line), one page after the other"""
+    done = []
+    for pg in pages_of(row):
+        if page_done(row, pg):
+            continue
+        done += run_story_page(row, pg) or []
+    return done
+
+
+def run_story_page(row, page):
     """Build the carousel and the reel, run every check, and only then publish (carousel first, then reel)."""
     import verify
     sid = row["story_id"]
@@ -570,7 +590,7 @@ def run_story(row):
     if problems:
         return fail(row, "carousel", "Checks failed: " + "; ".join(problems))
     global PAGE, LOGO, TAG
-    PAGE = page_of(row)
+    PAGE = page
     LOGO = KIT / f"logo_{PAGE}.png"
     TAG = "#Rasipuram360" if PAGE == "rasipuram" else "#Namakkal360"
     os.environ["PAGE_KEY"] = PAGE
@@ -582,7 +602,7 @@ def run_story(row):
     if cached:
         log("prebuilt carousel + reel found - publishing without rebuilding")
     images = [] if cached else fetch_images(row, work)
-    need_carousel, need_reel = not carousel_done(row) and spec.get("carousel", True) is not False, not row.get("reel_link")
+    need_carousel, need_reel = not row.get(PAGE + "_link") and spec.get("carousel", True) is not False, LABEL[PAGE] not in (row.get("reel_link") or "")
     jpgs = mp4 = None
     reel_cover = None
     voice_file = None
@@ -745,7 +765,7 @@ def main():
             log("  keys:", sorted(rows[0].keys()))
         for r in rows:
             log("  ", r.get("story_id"), "review=", repr(r.get("review")), "images=", len(r.get("images") or ""),
-                "spec=", len(r.get("slides_spec") or ""), "links=", repr(r.get("namakkal_link")), repr(r.get("reel_link")),
+                "spec=", len(r.get("slides_spec") or ""), "pages=", pages_of(r), "links=", repr(r.get("namakkal_link")), repr(r.get("rasipuram_link")), repr(r.get("reel_link")),
                 "age_h=", round(age_hours(r), 1), "ready=", ready(r), "window=", in_post_window())
         out = os.environ.get("GITHUB_OUTPUT")
         if out:
@@ -759,7 +779,7 @@ def main():
                     inc = [{"story": i, "slot": k * 25, "prebuild": ""} for k, i in enumerate(ids)]
                     if not in_post_window():   # outside the best-time windows: make the carousel/reel ahead, so they go out the moment the window opens
                         urgent = set(ids)
-                        pre = [r["story_id"] for r in rows if ready(r) and r["story_id"] not in urgent and not (CACHE / f"{r['story_id']}.json").exists()][:3]
+                        pre = [r["story_id"] for r in rows if ready(r) and r["story_id"] not in urgent and not all(cache_path(r["story_id"], p).exists() for p in pages_of(r) if not page_done(r, p))][:3]
                         inc += [{"story": i, "slot": 0, "prebuild": "1"} for i in pre]
                         if pre:
                             log("prebuilding ahead of the next window:", pre)
