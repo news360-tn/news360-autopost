@@ -574,14 +574,7 @@ def run_story(row):
     LOGO = KIT / f"logo_{PAGE}.png"
     TAG = "#Rasipuram360" if PAGE == "rasipuram" else "#Namakkal360"
     os.environ["PAGE_KEY"] = PAGE
-    post_to_l = (row.get("post_to") or "").lower()
-    collab = "rasipuram" in post_to_l and "namakkal" in post_to_l      # the other page is invited on the post
-    if collab and PAGE == "rasipuram":
-        try:
-            CONFIG["collab_username"] = ig_account(bridge_get("token", page="namakkal")["token"])[1] or ""
-        except Exception as e:
-            log("collaborator (Namakkal 360 username) not found, posting without the invite:", e)
-            collab = False
+    collab = False      # no collaboration: every page posts its own news separately (Rasipuram 360 = Rasipuram only, Namakkal 360 = the rest of the district)
     caption = final_caption(row)
     work = OUT / sid
     key = cache_key(row, spec, caption)
