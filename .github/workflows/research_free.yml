@@ -1,8 +1,10 @@
 name: research-free
-# every 3 hours, IST 09:00, 12:00, 15:00, 18:00, 21:00. Scheduled runs only work once the file research_free/ENABLED exists.
+# every 3 hours. Story-writing rounds (they email the image prompts) run 1 hour before each best-time posting window:
+# IST 04:30, 10:30, 16:30. The other rounds (IST 07:30, 13:30, 19:30, 22:30) only collect and store all news - no email.
 on:
   schedule:
-    - cron: "30 0,3,6,9,12,15 * * *"
+    - cron: "0 23,5,11 * * *"
+    - cron: "0 2,8,14,17 * * *"
   workflow_dispatch:
     inputs:
       dry:
@@ -36,6 +38,7 @@ jobs:
           BRIDGE_URL: ${{ secrets.BRIDGE_URL }}
           BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
           BUDGET_MIN: "55"
+          WRITE_STORIES: ${{ github.event.schedule == '0 2,8,14,17 * * *' && '0' || '1' }}
         run: |
           mkdir -p research_free/results
           FLAG=""; [ "${{ github.event.inputs.dry }}" = "true" ] && FLAG="--dry"

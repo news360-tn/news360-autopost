@@ -338,7 +338,7 @@ def cache_key(row, spec, caption):
 def load_cache(sid, key):
     try:
         d = json.loads((CACHE / f"{sid}.json").read_text(encoding="utf-8"))
-        if d.get("key") == key and d.get("carousel") and d.get("reel"):
+        if d.get("key") == key and d.get("reel") and (d.get("carousel") or d.get("reel_only")):
             return d
     except Exception:
         pass
@@ -348,7 +348,7 @@ def load_cache(sid, key):
 def save_cache(sid, key, media, checks):
     try:
         CACHE.mkdir(parents=True, exist_ok=True)
-        (CACHE / f"{sid}.json").write_text(json.dumps(dict(media, key=key, checks=checks), ensure_ascii=False), encoding="utf-8")
+        (CACHE / f"{sid}.json").write_text(json.dumps(dict(media, key=key, checks=checks, reel_only=not media.get("carousel")), ensure_ascii=False), encoding="utf-8")
     except Exception as e:
         log("cache not saved:", e)
 
@@ -741,11 +741,18 @@ def main():
                     f.write("matrix=" + json.dumps({"include": [{"story": i, "slot": 0} for i in ids]}) + "\n")
                 else:
                     ids = [r["story_id"] for r in pick_all(rows)][:3] if n else []   # 3 stories per run, 25 min apart
-                    f.write(f"ready={1 if n else 0}\n")
-                    f.write("matrix=" + json.dumps({"include": [{"story": i, "slot": k * 25} for k, i in enumerate(ids)]}) + "\n")
+                    inc = [{"story": i, "slot": k * 25, "prebuild": ""} for k, i in enumerate(ids)]
+                    if not in_post_window():   # outside the best-time windows: make the carousel/reel ahead, so they go out the moment the window opens
+                        urgent = set(ids)
+                        pre = [r["story_id"] for r in rows if ready(r) and r["story_id"] not in urgent and not (CACHE / f"{r['story_id']}.json").exists()][:3]
+                        inc += [{"story": i, "slot": 0, "prebuild": "1"} for i in pre]
+                        if pre:
+                            log("prebuilding ahead of the next window:", pre)
+                    f.write(f"ready={1 if inc else 0}\n")
+                    f.write("matrix=" + json.dumps({"include": inc}) + "\n")
         return
     want = sys.argv[2] if len(sys.argv) > 2 else ""
-    row = next((r for r in pick_all(rows) if r.get("story_id") == want), None) if want else pick(rows)
+    row = next((r for r in (rows if PREBUILD else pick_all(rows)) if r.get("story_id") == want and (not PREBUILD or ready(r))), None) if want else pick(rows)
     if not row:
         log("no story with images is waiting")
         return

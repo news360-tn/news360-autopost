@@ -163,6 +163,9 @@ def main():
             n["status"] = "old"
     log.append(f"to write: {len(queues['R'])} Rasipuram + {len(queues['N'])} other district candidates (max {MAX_RASIPURAM} + {MAX_NAMAKKAL} stories)")
     target, done, tried = {"R": MAX_RASIPURAM, "N": MAX_NAMAKKAL}, {"R": 0, "N": 0}, {"R": 0, "N": 0}
+    if os.environ.get("WRITE_STORIES", "1") == "0":      # archive-only round: collect and store everything, write nothing, send no email
+        target = {"R": 0, "N": 0}
+        log.append("archive-only round: no stories written")
     tries_cap = {"R": MAX_RASIPURAM * 3, "N": MAX_NAMAKKAL * 3}
     while time.time() < DEADLINE - 120:
         progressed = False

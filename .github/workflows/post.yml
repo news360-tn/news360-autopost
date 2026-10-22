@@ -76,6 +76,7 @@ jobs:
     env:
       TA_MODEL: ${{ github.workspace }}/reel/models/ta
       SLOT_MIN: ${{ matrix.slot }}
+      PREBUILD: ${{ matrix.prebuild || (github.event_name == 'workflow_dispatch' && inputs.prebuild && '1' || '') }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
