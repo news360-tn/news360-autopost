@@ -122,7 +122,12 @@ def ready(row):
         return False
     if not row.get("images") or not row.get("slides_spec"):
         return False
-    if all(page_done(row, p) for p in pages_of(row)):
+    pg = pages_of(row)
+    if all(page_done(row, p) for p in pg):
+        return False
+    # a story that already went out on one page is only carried over to its other page while it is still fresh (same day);
+    # an older one is never posted again later (stale news, e.g. yesterday's power cut)
+    if any(page_done(row, p) or row.get(p + "_link") for p in pg) and age_hours(row) > 20:
         return False
     return age_hours(row) <= MAX_AGE_H * (2 if is_shutdown(row) else 1)
 
