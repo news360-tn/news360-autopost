@@ -156,7 +156,7 @@ def ready(row):
     # an older one is never posted again later (stale news, e.g. yesterday's power cut)
     if any(page_done(row, p) or row.get(p + "_link") for p in pg) and age_hours(row) > 20:
         return False
-    return age_hours(row) <= MAX_AGE_H * (2 if is_shutdown(row) else 1)
+    return True      # a story with its images is never dropped for age or time of day: it posts as soon as its set has started
 
 
 def _starts():
