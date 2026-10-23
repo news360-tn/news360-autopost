@@ -212,7 +212,7 @@ function posted_(b) {
       appendNote_(sh, b.row, sh.getRange(b.row, C.notes).getValue(), 'Doc update failed: ' + err);
     }
   }
-  if (props_().getProperty('NOTIFY_ALL') === '1') GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 POSTED] ' + label + ' ' + kindLabel + ' – ' + r.headline_ta,
+  GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 POSTED] ' + label + ' ' + kindLabel + ' – ' + r.headline_ta,
     emailBody_(r, b, label, kindLabel, time, false));
   props_().deleteProperty('ERR_' + b.row + '_' + b.page + '_' + b.kind);
   return { ok: true };
@@ -425,7 +425,7 @@ function handleReply_(msg, batchId) {
   } else if (!report.length && rows.length) {
     return; // e.g. the original email itself: nothing to do
   }
-  if (report.length && props_().getProperty('NOTIFY_ALL') === '1') {
+  if (report.length) {
     GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 IMAGES RECEIVED] ' + batchId,
       report.join('\n') + '\n\nSheet: ' + SHEET_LINK);
   }
