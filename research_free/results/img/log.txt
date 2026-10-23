@@ -1,4 +1,7 @@
-imagegen: cloudflare black-forest-labs/flux-1-schnell 400: {"errors":[{"message":"AiError: Bad input: Error: Additional or unevaluated properties '/seed' at '/' not allowed (1ea48d35-93b8-480a-ba9b-383c019e6191)","code":5006}],"su
-imagegen: HTTPSConnectionPool(host='api.cloudflare.com', port=443): Read timed out. (read timeout=100)
-saved research_free/results/img/t1.jpg 126606 bytes {'bytedance/stable-diffusion-xl-lightning': 1}
-research_free/results/img/t1.jpg (768, 1344)
+saved research_free/results/img/t1.jpg 542478 bytes {'black-forest-labs/flux-1-schnell': 1}
+ok black-forest-labs/flux-1-schnell 351009
+FAIL stabilityai/stable-diffusion-xl-base-1.0 HTTPSConnectionPool(host='api.cloudflare.com', port=443): Read timed out. (read timeout=100)
+ok bytedance/stable-diffusion-xl-lightning 111421
+research_free/results/img/flux-1-schnell.jpg (1024, 1024)
+research_free/results/img/t1.jpg (1024, 1024)
+research_free/results/img/stable-diffusion-xl-lightning.jpg (768, 1344)
