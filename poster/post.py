@@ -677,11 +677,49 @@ def limit_reached(page):
     return LIMIT[page]
 
 
+IG_RECENT = {}   # page -> [(iso time, caption)] of the page's latest Instagram posts
+
+
+def ig_recent(page):
+    """last ~50 posts of the page read from Instagram itself (the sheet can miss posts made by hand or by an older run)"""
+    if page in IG_RECENT:
+        return IG_RECENT[page]
+    IG_RECENT[page] = []
+    if DRY:
+        return []
+    try:
+        token = bridge_get("token", page=page)["token"]
+        uid, _ = ig_account(token)
+        d = ig("GET", f"{uid}/media", token, fields="caption,timestamp", limit=50)
+        IG_RECENT[page] = [(m.get("timestamp") or "", m.get("caption") or "") for m in d.get("data") or []]
+        log(f"instagram duplicate check {page}: {len(IG_RECENT[page])} recent posts read")
+    except Exception as e:
+        log("instagram duplicate check unavailable (posting goes on):", e)
+    return IG_RECENT[page]
+
+
+def ig_duplicate(row, page):
+    """the story id/time of a recent Instagram post of this page that is the same news, else ''"""
+    import freshness
+    ta, en = (row.get("headline_ta") or "").strip(), (row.get("headline_en") or "").strip().lower()
+    for ts, cap in ig_recent(page):
+        head = cap.strip().split("\n")[0]
+        if ta and freshness.similar(head[:len(ta) + 8], ta, 0.62, ts):
+            return ts
+        if en and freshness.similar(cap.strip()[:len(en) + 8].lower(), en, 0.65, ts):
+            return ts
+    return ""
+
+
 def run_story(row):
     """every page named in post_to gets its own carousel + reel (own logo and follow line), one page after the other"""
     done = []
     for pg in pages_of(row):
         if page_done(row, pg):
+            continue
+        dup = "" if (row.get(pg + "_link") or row.get("reel_link")) else ig_duplicate(row, pg)   # own earlier half-post is not a duplicate
+        if dup:
+            log("SKIP instagram duplicate:", row.get("story_id"), pg, "already posted", dup)
             continue
         if limit_reached(pg):
             log("LIMIT: 24-hour Instagram post limit reached for", pg, "- ", row.get("story_id"), "waits")
