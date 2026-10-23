@@ -16,7 +16,7 @@ jobs:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
         run: |
           mkdir -p research_free/results/img
-          python -u research_free/imagegen.py research_free/results/img/t1.jpg > research_free/results/img/log.txt 2>&1 || echo "exit $?" >> research_free/results/img/log.txt
+          timeout 400 python -u research_free/imagegen.py research_free/results/img/t1.jpg > research_free/results/img/log.txt 2>&1 || echo "exit $?" >> research_free/results/img/log.txt
           python - >> research_free/results/img/log.txt 2>&1 <<'PY'
           from PIL import Image
           import glob

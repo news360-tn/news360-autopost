@@ -1,6 +1,6 @@
 """Every-3-hours collector (free models). Fetch Namakkal news -> write posts -> validate -> send to the Apps Script bridge
 (Sheet rows + ONE prompt file + ONE email). Usage: python research_free/collect.py [--dry]"""
-import datetime, difflib, json, os, re, sys, time
+import datetime, difflib, json, os, random, re, sys, time
 from pathlib import Path
 import requests
 HERE = Path(__file__).resolve().parent
@@ -20,6 +20,7 @@ CAROUSEL_EVERY = int(os.environ.get("CAROUSEL_EVERY", "5"))   # 1 carousel (best
 MAX_NAMAKKAL = int(os.environ.get("MAX_NAMAKKAL", "0") or 0) or SET_NEWS       # Namakkal page: district news, same count per round
 ARCHIVE = HERE / "archive"
 DRY = "--dry" in sys.argv
+IMG_BUDGET = int(os.environ.get("IMG_BUDGET_MIN", "22")) * 60     # minutes spent on automatic images per send
 DEADLINE = time.time() + int(os.environ.get("BUDGET_MIN", "22")) * 60
 llm.DEADLINE[0] = DEADLINE
 
@@ -127,11 +128,67 @@ def assign_carousel(group):
             x["slides_spec"]["carousel"] = (i < top or str(x.get("importance", "")).strip() == "High") and os.environ.get("CAROUSEL_ON", "0") == "1"      # reels only for now
 
 
+STYLE = ("Scroll-stopping, emotionally engaging, high-impact news photograph: one clear strong focal subject, dramatic natural light "
+         "(golden hour, soft morning mist or storm-light as fits the story), rich saturated yet natural colours, cinematic composition with "
+         "depth, professional photojournalism look, ultra-sharp, realistic textures. ")
+
+
+def _upload_image(data):
+    cloud, preset = os.environ.get("CLOUDINARY_CLOUD"), os.environ.get("CLOUDINARY_PRESET")
+    if not cloud or not preset:
+        raise RuntimeError("Cloudinary secrets missing")
+    r = requests.post(f"https://api.cloudinary.com/v1_1/{cloud}/image/upload", data={"upload_preset": preset, "folder": "news360"},
+                      files={"file": ("img.jpg", data)}, timeout=300)
+    r.raise_for_status()
+    return r.json()["secure_url"]
+
+
+def make_images(group, log=None):
+    """AUTO images: every scene prompt -> NVIDIA image API -> Cloudinary. A story gets story["images"] only when ALL its images were made;
+    the bridge then queues it for posting at once and leaves it out of the images-needed email. Any failure -> the e-mail flow as before."""
+    if os.environ.get("AUTO_IMAGES", "1") == "0" or not os.environ.get("NVIDIA_API_KEY") or DRY:
+        return
+    try:
+        import imagegen
+    except Exception as e:
+        print("imagegen import failed:", e)
+        return
+    from concurrent.futures import ThreadPoolExecutor
+    t0 = time.time()
+    for st in group:
+        if time.time() - t0 > IMG_BUDGET:
+            msg = "image budget used up: the remaining stories go to the images-needed email"
+            print(msg); log is not None and log.append(msg)
+            break
+        prompts = [p.strip() for p in str(st.get("prompts", "")).split("\n---\n") if p.strip()]
+        if not prompts:
+            continue
+        sid = st.get("english_headline", "")[:40]
+        try:
+            def one(ip):
+                i, pr = ip
+                data = imagegen.generate((STYLE + pr)[:1800], seed=random.randint(1, 10**6))
+                return _upload_image(data)
+            with ThreadPoolExecutor(max_workers=2) as ex:
+                urls = list(ex.map(one, list(enumerate(prompts))))
+            st["images"] = urls
+            print(f"images made: {len(urls)} for '{sid}'")
+        except Exception as e:
+            print(f"images NOT made for '{sid}': {str(e)[:200]}")
+            if log is not None:
+                log.append(f"auto images failed for '{sid}': {str(e)[:120]} -> images-needed email")
+            if "all image models failed" in str(e):
+                break          # no image model works right now (credits/limit): do not waste time on the other stories
+    if log is not None:
+        log.append(f"auto images: {sum(1 for x in group if x.get('images'))} of {len(group)} stories ({imagegen.USED})")
+
+
 def send_batch(group, log=None):
     """write these stories to the Sheet and send ONE images-needed email for them; returns True when the bridge accepted them"""
     if not group or not BRIDGE_URL or DRY:
         return False
     assign_carousel(group)
+    make_images(group, log)           # free AI image API; stories whose images could not all be made stay on the images-needed email
     clean = [{k: v for k, v in x.items() if not k.startswith("_")} for x in group]
     try:
         r = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": clean}), timeout=180)

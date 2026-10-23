@@ -547,7 +547,7 @@ function addStories_(b) {
   var no = nextStoryNo_(sh);
   var now = new Date();
   var batch = 'B' + Utilities.formatDate(now, 'Asia/Kolkata', 'yyyyMMdd-HHmm');
-  var rows = [], items = [];
+  var rows = [], items = [], auto = 0;
   stories.forEach(function (st) {
     no++;
     var id = 'RN-' + no;
@@ -567,12 +567,20 @@ function addStories_(b) {
     row[C.post_status - 1] = 'Awaiting images';
     row[C.notes - 1] = nowIst_() + ' ' + (st.note || 'free-model draft');
     row[C.batch - 1] = batch; row[C.prompts - 1] = prompts.join('\n---\n');
+    // the research job already made ALL images with the free AI image API: queue the story for posting, no email needed for it
+    var made = (st.images && st.images.length >= prompts.length && prompts.length) ? st.images : null;
+    if (made) {
+      row[C.images - 1] = JSON.stringify(made);
+      row[C.post_status - 1] = 'Queued';
+      row[C.notes - 1] += ' | ' + made.length + ' images made automatically (free AI image API)';
+      auto++;
+    }
     rows.push(row);
-    items.push({ id: id, ta: st.tamil_headline, en: st.english_headline, post_to: st.post_to, importance: st.importance, post_time: st.post_time, prompts: prompts });
+    if (!made) items.push({ id: id, ta: st.tamil_headline, en: st.english_headline, post_to: st.post_to, importance: st.importance, post_time: st.post_time, prompts: prompts });
   });
   sh.getRange(sh.getLastRow() + 1, 1, rows.length, NCOLS).setValues(rows);
-  sendPromptEmail_(batch, items);
-  return { ok: true, added: rows.length, batch: batch, first: 'RN-' + (no - rows.length + 1) };
+  if (items.length) sendPromptEmail_(batch, items);
+  return { ok: true, added: rows.length, auto_queued: auto, emailed: items.length, batch: batch, first: 'RN-' + (no - rows.length + 1) };
 }
 
 

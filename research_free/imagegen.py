@@ -15,7 +15,7 @@ USED = {}
 
 
 def _one(model, body, key):
-    r = requests.post(GEN + model, json=body, timeout=240,
+    r = requests.post(GEN + model, json=body, timeout=100,
                       headers={"Authorization": "Bearer " + key, "Accept": "application/json"})
     if r.status_code != 200:
         raise RuntimeError(f"{model} {r.status_code}: {r.text[:300]}")
@@ -43,8 +43,10 @@ def generate(prompt, seed=0, key=None):
             except Exception as e:
                 last = e
                 m = str(e)
+                if "Timeout" in type(e).__name__ or "timed out" in m:
+                    m += " 504 timeout"
                 print("imagegen:", m[:220], file=sys.stderr)
-                if any(c in m for c in (" 401", " 403", " 404", " 422")):
+                if any(c in m for c in (" 401", " 403", " 404", " 422", " 504")):
                     DEAD.add(model)
                     break
                 if any(c in m for c in (" 402", " 429")):
