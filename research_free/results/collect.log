@@ -1,4 +1,4 @@
-writing [N]: பூக்கழிவுகளிலிருந்து சாம்பிராணி தயாரிக்கும் திட்டம் தொடக்கம்
+writing [R]: இரு இடங்களில் சாலை விபத்து விவசாயி பலி; மூதாட்டி படுகாயம்
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
@@ -19,9 +19,6 @@ fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
     "code": 429,
     "message": "You exceeded your current quota, please che
 switching away from gemini/gemini-3.7-flash for 10 min
-ok gemini/gemini-3.6-flash
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
@@ -35,130 +32,543 @@ fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"
 fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
 switching away from mistral/mistral-small-latest for 10 min
 ok mistral/open-mistral-nemo
-factcheck by mistral/open-mistral-nemo: 29 problems
-  தமிழ் தலைப்பு: 'நாமக்கல் மாநகராட்சி' என்ற இடம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத இடம்.
-  தமிழ் தலைப்பு: 'நாமக்கல்' என்ற இடம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத இடம்.
-  தமிழ் தலைப்பு: 'புதிய திட்டம்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத வார்த்தை.
-  தமிழ் தலைப்பு: 'தொடக்கம்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத வார்த்தை.
-  தமிழ் தலைப்பு: 'கப்' என்ற வார்த்தை மட்டும் குறிப்பிடப்பட்டுள்ளது, ஆனால் ஆக்கத்தில் 'கப் சாம்பிராணி' என்ற முழு வார்த்தை மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  தமிழ் தலைப்பு: 'நாமக்கல்' என்ற இடம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத இடம்.
-  வீடியோ ஸ்கிரிப்ட்: 'மகளிர் குழு' என்ற வார்த்தை மட்டும் குறிப்பிடப்பட்டுள்ளது, ஆனால் ஆக்கத்தில் 'அம்மன் மகளிர் குழு' என்ற முழு பெயர் குறிப்பிடப்பட்டுள்ளது.
-  வீடியோ ஸ்கிரிப்ட்: 'விவசாயிகள் சங்கம்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் 'பாரதிய கிசான் சங்கம்' என்ற முழு பெயர் குறிப்பிடப்பட்டுள்ளது.
-  வீடியோ ஸ்கிரிப்ட்: 'கழிவு பூக்கள் மூலம் சாம்பிராணி உற்பத்தி' என்ற வாக்கியம் தவறாக அமைந்துள்ளது. ஆக்கத்தில் 'கோவில்களில் அகற்றப்படும் பூக்கள் மற்றும் பூ மார்க்கெட்டில் சேகரிக்கப்படும் பூக்கள் மூலம்' என்ற வாக்கியம் மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  வீடியோ ஸ்கிரிப்ட்: 'மகளிர் குழுவுக்கு புதிய வாழ்வாதாரம்' என்ற வாக்கியம் ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  வீடியோ ஸ்கிரிப்ட்: 'மாநகராட்சி கமிஷனர் தலைமையில் துவக்கம்' என்ற வாக்கியம் ஆக்கத்தில் குறிப்பிடப்படவில்லை. மாறாக, 'மாநகராட்சி கமிஷனர் செல்வ பாலாஜி தலைமை வகித்தார்' என்ற வாக்கியம் மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  வீடியோ ஸ்லைட்ஸ்: 'புதிய திட்டம்' என்ற தலைப்பு தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  வீடியோ ஸ்லைட்ஸ்: 'மூலிகை தோட்டம்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  வீடியோ ஸ்லைட்ஸ்: 'நாமக்கல்லில் நேற்று முறைப்படி தொடக்கம்' என்ற வாக்கியம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை. மாறாக, 'குழுக் கட்டடத்தில் நடந்த நிழ்ச்சிக்கு' என்ற வாக்கியம் மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  வீடியோ ஸ்லைட்ஸ்: 'பூ மார்க்கெட்டில் சேகரிக்கப்படும் கழிவுகள்' என்ற வாக்கியம் தவறாக அமைந்துள்ளது. ஆக்கத்தில் 'பூ மார்க்கெட்டில் சேகரிக்கப்படும் பூக்கள்' என்ற வாக்கியம் மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  வீடியோ ஸ்லைட்ஸ்: 'கழிவு பூக்கள் மூலம் சாம்பிராணி உற்பத்தி' என்ற வாக்கியம் தவறாக அமைந்துள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  வீடியோ ஸ்லைட்ஸ்: 'மகளிர் குழுவுக்கு புதிய வாழ்வாதாரம்' என்ற வாக்கியம் ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  வீடியோ ஸ்லைட்ஸ்: 'மாநகராட்சி கமிஷனர் தலைமையில் துவக்கம்' என்ற வாக்கியம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  வீடியோ ஸ்லைட்ஸ்: 'நாமக்கல்' என்ற இடம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத இடம்.
-  வீடியோ ஸ்லைட்ஸ்: 'குழுக் கட்டடத்தில் நடந்த நிழ்ச்சிக்கு' என்ற விவரம் தவறாக சேர்க்கப்படவில்லை. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  விவரணை: 'நாமக்கல் மாநகராட்சி' என்ற இடம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத இடம்.
-  விவரணை: 'மகளிர் குழு' என்ற வார்த்தை மட்டும் குறிப்பிடப்பட்டுள்ளது, ஆனால் ஆக்கத்தில் 'அம்மன் மகளிர் குழு' என்ற முழு பெயர் குறிப்பிடப்பட்டுள்ளது.
-  விவரணை: 'விவசாயிகள் சங்கம்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் 'பாரதிய கிசான் சங்கம்' என்ற முழு பெயர் குறிப்பிடப்பட்டுள்ளது.
-  விவரணை: 'கழிவு பூக்கள்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் 'பூக்கள்' என்ற வார்த்தை மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  விவரணை: 'மகளிர் குழுவுக்கு புதிய வாழ்வாதாரம்' என்ற வாக்கியம் ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  விவரணை: 'மாநகராட்சி கமிஷனர் தலைமையில் துவக்கம்' என்ற வாக்கியம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  விவரணை: 'நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்' என்ற வாக்கியம் ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  விவரணை: '23 அக்டோபர் 2026' என்ற தேதி தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத தேதி.
-  விவரணை: 'Namakkal flower waste to cup sambrani project' என்ற ஆங்கில விவரம் ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-attempt 1 gemini/gemini-3.6-flash: 29 problems
-  fact-check: தமிழ் தலைப்பு: 'நாமக்கல் மாநகராட்சி' என்ற இடம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத இடம்.
-  fact-check: தமிழ் தலைப்பு: 'நாமக்கல்' என்ற இடம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத இடம்.
-  fact-check: தமிழ் தலைப்பு: 'புதிய திட்டம்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத வார்த்தை.
-  fact-check: தமிழ் தலைப்பு: 'தொடக்கம்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத வார்த்தை.
-  fact-check: தமிழ் தலைப்பு: 'கப்' என்ற வார்த்தை மட்டும் குறிப்பிடப்பட்டுள்ளது, ஆனால் ஆக்கத்தில் 'கப் சாம்பிராணி' என்ற முழு வார்த்தை மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  fact-check: தமிழ் தலைப்பு: 'நாமக்கல்' என்ற இடம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத இடம்.
-  fact-check: வீடியோ ஸ்கிரிப்ட்: 'மகளிர் குழு' என்ற வார்த்தை மட்டும் குறிப்பிடப்பட்டுள்ளது, ஆனால் ஆக்கத்தில் 'அம்மன் மகளிர் குழு' என்ற முழு பெயர் குறிப்பிடப்பட்டுள்ளது.
-  fact-check: வீடியோ ஸ்கிரிப்ட்: 'விவசாயிகள் சங்கம்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் 'பாரதிய கிசான் சங்கம்' என்ற முழு பெயர் குறிப்பிடப்பட்டுள்ளது.
-  fact-check: வீடியோ ஸ்கிரிப்ட்: 'கழிவு பூக்கள் மூலம் சாம்பிராணி உற்பத்தி' என்ற வாக்கியம் தவறாக அமைந்துள்ளது. ஆக்கத்தில் 'கோவில்களில் அகற்றப்படும் பூக்கள் மற்றும் பூ மார்க்கெட்டில் சேகரிக்கப்படும் பூக்கள் மூலம்' என்ற வாக்கியம் மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  fact-check: வீடியோ ஸ்கிரிப்ட்: 'மகளிர் குழுவுக்கு புதிய வாழ்வாதாரம்' என்ற வாக்கியம் ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  fact-check: வீடியோ ஸ்கிரிப்ட்: 'மாநகராட்சி கமிஷனர் தலைமையில் துவக்கம்' என்ற வாக்கியம் ஆக்கத்தில் குறிப்பிடப்படவில்லை. மாறாக, 'மாநகராட்சி கமிஷனர் செல்வ பாலாஜி தலைமை வகித்தார்' என்ற வாக்கியம் மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  fact-check: வீடியோ ஸ்லைட்ஸ்: 'புதிய திட்டம்' என்ற தலைப்பு தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  fact-check: வீடியோ ஸ்லைட்ஸ்: 'மூலிகை தோட்டம்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  fact-check: வீடியோ ஸ்லைட்ஸ்: 'நாமக்கல்லில் நேற்று முறைப்படி தொடக்கம்' என்ற வாக்கியம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை. மாறாக, 'குழுக் கட்டடத்தில் நடந்த நிழ்ச்சிக்கு' என்ற வாக்கியம் மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  fact-check: வீடியோ ஸ்லைட்ஸ்: 'பூ மார்க்கெட்டில் சேகரிக்கப்படும் கழிவுகள்' என்ற வாக்கியம் தவறாக அமைந்துள்ளது. ஆக்கத்தில் 'பூ மார்க்கெட்டில் சேகரிக்கப்படும் பூக்கள்' என்ற வாக்கியம் மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  fact-check: வீடியோ ஸ்லைட்ஸ்: 'கழிவு பூக்கள் மூலம் சாம்பிராணி உற்பத்தி' என்ற வாக்கியம் தவறாக அமைந்துள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  fact-check: வீடியோ ஸ்லைட்ஸ்: 'மகளிர் குழுவுக்கு புதிய வாழ்வாதாரம்' என்ற வாக்கியம் ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  fact-check: வீடியோ ஸ்லைட்ஸ்: 'மாநகராட்சி கமிஷனர் தலைமையில் துவக்கம்' என்ற வாக்கியம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  fact-check: வீடியோ ஸ்லைட்ஸ்: 'நாமக்கல்' என்ற இடம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத இடம்.
-  fact-check: வீடியோ ஸ்லைட்ஸ்: 'குழுக் கட்டடத்தில் நடந்த நிழ்ச்சிக்கு' என்ற விவரம் தவறாக சேர்க்கப்படவில்லை. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  fact-check: விவரணை: 'நாமக்கல் மாநகராட்சி' என்ற இடம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத இடம்.
-  fact-check: விவரணை: 'மகளிர் குழு' என்ற வார்த்தை மட்டும் குறிப்பிடப்பட்டுள்ளது, ஆனால் ஆக்கத்தில் 'அம்மன் மகளிர் குழு' என்ற முழு பெயர் குறிப்பிடப்பட்டுள்ளது.
-  fact-check: விவரணை: 'விவசாயிகள் சங்கம்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் 'பாரதிய கிசான் சங்கம்' என்ற முழு பெயர் குறிப்பிடப்பட்டுள்ளது.
-  fact-check: விவரணை: 'கழிவு பூக்கள்' என்ற வார்த்தை தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் 'பூக்கள்' என்ற வார்த்தை மட்டுமே குறிப்பிடப்பட்டுள்ளது.
-  fact-check: விவரணை: 'மகளிர் குழுவுக்கு புதிய வாழ்வாதாரம்' என்ற வாக்கியம் ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  fact-check: விவரணை: 'மாநகராட்சி கமிஷனர் தலைமையில் துவக்கம்' என்ற வாக்கியம் தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  fact-check: விவரணை: 'நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்' என்ற வாக்கியம் ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-  fact-check: விவரணை: '23 அக்டோபர் 2026' என்ற தேதி தவறாக சேர்க்கப்பட்டுள்ளது. ஆக்கத்தில் குறிப்பிடப்படாத தேதி.
-  fact-check: விவரணை: 'Namakkal flower waste to cup sambrani project' என்ற ஆங்கில விவரம் ஆக்கத்தில் குறிப்பிடப்படவில்லை.
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 2 mistral/open-mistral-nemo: 4 problems
+attempt 1 mistral/open-mistral-nemo: 3 problems
   slides_spec.v must be 3
-  hl2 longer than 28 characters
-  slide 3 title longer than 18 characters
+  hl1 longer than 40 characters
+  scenes must be 5 (slides + 1), got 4
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 2 mistral/open-mistral-nemo: 3 problems
+  hl1 longer than 40 characters
+  scenes must be 4 (slides + 1), got 5
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 3 mistral/open-mistral-nemo: 2 problems
+  hl1 longer than 40 characters
   scenes must be 5 (slides + 1), got 4
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok mistral/open-mistral-nemo
-attempt 3 mistral/open-mistral-nemo: 3 problems
-  hl2 longer than 28 characters
-  slide 3 must have 2-3 lines
-  scenes must be 4 (slides + 1), got 5
+proofread rejected (6 problems)
+  hl1 longer than 40 characters
+  slide 3 line 1 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
+  slide 4 line 1 longer than 60 characters
+  scenes must be 5 (slides + 1), got 4
+  post_to must start with 'Namakkal 360'
+writing [N]: பூக்கழிவுகளிலிருந்து சாம்பிராணி தயாரிக்கும் திட்டம் தொடக்கம்
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 ok mistral/open-mistral-nemo
-proofread rejected (4 problems)
-  hl2 longer than 28 characters
-  slide 3 must have 2-3 lines
-  scenes must be 4 (slides + 1), got 5
+attempt 1 mistral/open-mistral-nemo: 3 problems
+  hl1 longer than 40 characters
+  slide 2 must have 2-3 lines
+  slide 3 title longer than 18 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+factcheck by mistral/open-mistral-nemo: 15 problems
+  Invented detail: 'நாமக்கல் நகரத்தில்' is not mentioned in the article; location is not specified.
+  Invented detail: '23 அக்டோபர் 2026' is not mentioned in the article; no date is provided.
+  Invented detail: 'குழுக் கட்டடத்தில் தொடக்க நிழ்ச்சி நடந்தது' is not explicitly stated in the article; only 'குழுக் கட்டடத்தில் நடந்த நிழ்ச்சிக்கு' is mentioned.
+  Invented detail: 'மாநகராட்சி உதவியுடன் திட்டம்' is not explicitly stated as a joint announcement; it's implied but not stated as an 'அறிவித்தன' (announcement).
+  Invented detail: 'மூலிகை தோட்டம் அமைத்தல்' is not mentioned in the article as a part of the 'கப்' சாம்பிராணி தயாரிக்கும் திட்டம்.
+  Invented detail: 'கோவில்களில் அகற்றப்படும் பூக்கள்' is mentioned in the article but not included in the slides_spec under 'முக்கிய நோக்கம்'.
+  Invented detail: 'இத்திட்டம் உங்கள் பகுதியிலும் விரிவடையுமா?' is speculative and not part of the article.
+  Invented detail: 'கமெண்டில் சொல்லுங்கள்' is not part of the article.
+  Invented detail: 'பூ மார்க்கெட்டில் சேகரிக்கப்படும் பூக்கள் மற்றும் கோவில்களில் அகற்றப்படும் பூக்கள் பயன்படுத்தப்படும்' is mentioned in the article but not explicitly stated in the reel_script.
+  Missing fact: The article mentions 'மாநகராட்சி கமிஷனர் செல்வ பாலாஜி' attended the event, but this is not included in the reel_script or slides_spec.
+  Missing fact: The article mentions 'நபார்டு தலைமை மத்திய மேலாளர் சுபாஷ்' and 'பாரதிய கிசான் சங்க மாநில இளைஞரணி தலைவர் கோவிலில்கள்' were present, but these details are missing in the draft.
+  Missing fact: The article mentions 'துப்புரவு அலுவலர் திருமூர்த்தி' and 'அம்மன் மகளிர் குழுத் தலைவர் ரம்யா' were present, but these details are missing in the draft.
+  Unclear meaning: 'கப்' is used inconsistently without explanation in the draft. The article does not clarify what 'கப்' stands for.
+  Grammatical issue: 'பூ மார்க்கெட்டில் சேகரிக்கப்படும் பூக்கள் மற்றும் கோவில்களில் அகற்றப்படும் பூக்கள் மூலம் பொருளாதார சுழற்சியை உருவாக்குவது இத்திட்டத்தின் முக்கிய நோக்கம்' is grammatically correct but the slides_spec mixes two different facts ('பூ மார்க்கெட்டில் சேகரிக்கப்படும் பூக்கள்' and 'பொருளாதார சுழற்சியை உருவாக்குதல்') into one line without clarity.
+  Invented detail: 'Follow செய்யுங்கள்' and hashtags (#Namakkal360, etc.) are not part of the article.
+attempt 2 mistral/open-mistral-nemo: 15 problems
+  fact-check: Invented detail: 'நாமக்கல் நகரத்தில்' is not mentioned in the article; location is not specified.
+  fact-check: Invented detail: '23 அக்டோபர் 2026' is not mentioned in the article; no date is provided.
+  fact-check: Invented detail: 'குழுக் கட்டடத்தில் தொடக்க நிழ்ச்சி நடந்தது' is not explicitly stated in the article; only 'குழுக் கட்டடத்தில் நடந்த நிழ்ச்சிக்கு' is mentioned.
+  fact-check: Invented detail: 'மாநகராட்சி உதவியுடன் திட்டம்' is not explicitly stated as a joint announcement; it's implied but not stated as an 'அறிவித்தன' (announcement).
+  fact-check: Invented detail: 'மூலிகை தோட்டம் அமைத்தல்' is not mentioned in the article as a part of the 'கப்' சாம்பிராணி தயாரிக்கும் திட்டம்.
+  fact-check: Invented detail: 'கோவில்களில் அகற்றப்படும் பூக்கள்' is mentioned in the article but not included in the slides_spec under 'முக்கிய நோக்கம்'.
+  fact-check: Invented detail: 'இத்திட்டம் உங்கள் பகுதியிலும் விரிவடையுமா?' is speculative and not part of the article.
+  fact-check: Invented detail: 'கமெண்டில் சொல்லுங்கள்' is not part of the article.
+  fact-check: Invented detail: 'பூ மார்க்கெட்டில் சேகரிக்கப்படும் பூக்கள் மற்றும் கோவில்களில் அகற்றப்படும் பூக்கள் பயன்படுத்தப்படும்' is mentioned in the article but not explicitly stated in the reel_script.
+  fact-check: Missing fact: The article mentions 'மாநகராட்சி கமிஷனர் செல்வ பாலாஜி' attended the event, but this is not included in the reel_script or slides_spec.
+  fact-check: Missing fact: The article mentions 'நபார்டு தலைமை மத்திய மேலாளர் சுபாஷ்' and 'பாரதிய கிசான் சங்க மாநில இளைஞரணி தலைவர் கோவிலில்கள்' were present, but these details are missing in the draft.
+  fact-check: Missing fact: The article mentions 'துப்புரவு அலுவலர் திருமூர்த்தி' and 'அம்மன் மகளிர் குழுத் தலைவர் ரம்யா' were present, but these details are missing in the draft.
+  fact-check: Unclear meaning: 'கப்' is used inconsistently without explanation in the draft. The article does not clarify what 'கப்' stands for.
+  fact-check: Grammatical issue: 'பூ மார்க்கெட்டில் சேகரிக்கப்படும் பூக்கள் மற்றும் கோவில்களில் அகற்றப்படும் பூக்கள் மூலம் பொருளாதார சுழற்சியை உருவாக்குவது இத்திட்டத்தின் முக்கிய நோக்கம்' is grammatically correct but the slides_spec mixes two different facts ('பூ மார்க்கெட்டில் சேகரிக்கப்படும் பூக்கள்' and 'பொருளாதார சுழற்சியை உருவாக்குதல்') into one line without clarity.
+  fact-check: Invented detail: 'Follow செய்யுங்கள்' and hashtags (#Namakkal360, etc.) are not part of the article.
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 3 mistral/open-mistral-nemo: 3 problems
+  slide 1 line 1 longer than 60 characters
+  slide 1 line 2 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+proofread rejected (5 problems)
+  slide 1 line 1 longer than 60 characters
+  slide 1 line 2 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
+  caption must contain the exact follow line
   post_to must start with 'Namakkal 360'
 writing [N]: முதல்வர் கோப்பை மாநில கபடி போட்டி: நாமக்கல் மாவட்ட அணி வெற்ற
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok mistral/open-mistral-nemo
 attempt 1 mistral/open-mistral-nemo: 4 problems
   slides_spec.v must be 3
-  slide 1 line 1 longer than 60 characters
-  slide 4 line 1 longer than 60 characters
+  scenes must be 5 (slides + 1), got 4
   reel_script must have no digits or English letters (write numbers as Tamil words)
+  stray Tamil sign 'ா' after 'ு' in « கல்லுாரி
+»
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 2 mistral/open-mistral-nemo: 5 problems
+  slide 1 line 1 longer than 60 characters
+  scenes must be 4 (slides + 1), got 5
+  stray Tamil sign 'ா' after 'ு' in « கல்லுாரிய»
+  stray Tamil sign 'ா' after 'ு' in « கல்லுாரிய»
+  stray Tamil sign 'ா' after 'ு' in «
+கல்லுாரி »
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 3 mistral/open-mistral-nemo: 4 problems
+  slides_spec.v must be 3
+  scenes must be 5 (slides + 1), got 4
+  stray Tamil sign 'ா' after 'ு' in « கல்லுாரிய»
+  stray Tamil sign 'ா' after 'ு' in « கல்லுாரிய»
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+proofread rejected (7 problems)
+  slides_spec.v must be 3
+  slide 2 title longer than 18 characters
+  slide 4 title longer than 18 characters
+  scenes must be 5 (slides + 1), got 4
+  post_to must start with 'Namakkal 360'
+  stray Tamil sign 'ா' after 'ு' in « கல்லுாரிய»
+  stray Tamil sign 'ா' after 'ு' in « கல்லுாரிய»
+writing [R]: ராசிபுரம் ஏரி ஆக்கிரமிப்பில் ஒப்படைக்கப்படும் 24 ஏக்கர்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+attempt 1 mistral/open-mistral-nemo: 4 problems
+  slides_spec.v must be 3
+  hl2 longer than 28 characters
+  slide 1 line 1 longer than 60 characters
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 2 mistral/open-mistral-nemo: 4 problems
+  hl2 longer than 28 characters
+  slide 1 line 1 longer than 60 characters
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+  stray Tamil sign 'ா' after 'ு' in «ுகிறதுா? க»
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+attempt 3 mistral/open-mistral-nemo: 4 problems
+  slides_spec.v must be 3
+  hl2 longer than 28 characters
+  slide 1 line 1 longer than 60 characters
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+proofread rejected (9 problems)
+  slides_spec.v must be 3
+  hl2 longer than 28 characters
+  slide 1 line 1 longer than 60 characters
+  slide 2 line 1 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+  slide 4 line 2 longer than 60 characters
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+  importance must be High, Medium or Low
+  post_to must start with 'Namakkal 360'
+writing [N]: வேதாகம கணபதி ஆலய கும்பாபிஷேக விழா
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+attempt 1 mistral/open-mistral-nemo: 2 problems
+  slides_spec.v must be 3
+  hl2 longer than 28 characters
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok mistral/open-mistral-nemo
 attempt 2 mistral/open-mistral-nemo: 2 problems
+  hl2 longer than 28 characters
+  slide 3 line 1 longer than 60 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+attempt 3 mistral/open-mistral-nemo: 2 problems
+  slides_spec.v must be 3
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+proofread rejected (5 problems)
+  slides_spec.v must be 3
+  slide 2 line 1 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
+  post_to must start with 'Namakkal 360'
+writing [N]: நாமக்கல்லுக்கு வரத்தான 2,600 டன் மக்காச்சோளம்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 1 mistral/open-mistral-nemo: 3 problems
+  slides_spec.v must be 3
+  slide 4 title longer than 18 characters
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 2 mistral/open-mistral-nemo: 2 problems
   slide 2 title longer than 18 characters
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+factcheck by mistral/open-mistral-nemo: 14 problems
+  In `tamil_headline`, the article mentions 'மக்காச்சோளம், அரிசி உள்ளிட்ட உணவு பொருட்களும்' but the draft headline only includes 'மக்காச்சோளம்' alone, omitting other food items.
+  In `reel_script`, the number of wagons is incorrectly stated as 'நான்கு பத்து வேகன்கள்' (42) instead of '42 வேகன்கள்' (exact number from the article). Also, the sentence 'இதில் ஒரு ஆயிரம் பத்து கோழிப்பண்ணைகளுக்கு தேவையான தீவனமாகப் பயன்படுத்தப்படும்' is incorrect as the article states '1,000க்கும் மேற்பட்ட கோழிப்பண்ணைகள்' (more than 1,000), not 'ஒரு ஆயிரம் பத்து' (1,100).
+  In `reel_script`, the phrase 'கோழித்தீவன அரவை நிறுவனத்திற்கு அனுப்பப்படும்' is misleading because the article states it is 'கோழித்தீவன அரவை' (a processing unit, not a company) and the final destination is not explicitly mentioned as a company.
+  In `reel_script`, the date '23 அக்டோபர் 2026' is incorrect and not mentioned in the article.
+  In `slides_spec`, slide 1 line 2 ('அரிசி போன்ற உணவு பொருட்களும்') is not part of the headline or primary focus of the article, which only mentions 'மக்காச்சோளம்' explicitly in the headline context.
+  In `slides_spec`, slide 1 line 3 ('கோழித்தீவனத்திற்கானது') is vague and does not specify the quantity or exact purpose as in the article.
+  In `slides_spec`, slide 2 line 1 ('சிக்கியாலாவில் இருந்து') is correct but the context of 'மக்காச்சோளம்' is missing in the title 'எந்த பொருள்?'.
+  In `slides_spec`, slide 2 line 2 ('<b>42</b> வேகன்கள் கொண்ட ரயில்') is correct but the title 'எப்படி வருகிறது?' should include the quantity of corn (2,600 டன்) for clarity.
+  In `slides_spec`, slide 3 line 1 ('நாமக்கல் மாவட்ட கோழிப்பண்ணைகளுக்கு') is correct but the line '1,000க்கும் மேற்பட்ட பண்ணைகள்' should be clarified with the exact purpose (treatment as feed).
+  In `slides_spec`, slide 3 line 3 ('தீவன அரவை நிறுவனத்திற்கு') is incorrect as it is not a company but a processing unit.
+  In `caption`, the date '23 அக்டோபர் 2026' is incorrect and not mentioned in the article.
+  In `caption`, the phrase 'உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள்' and '#Namakkal360' are not relevant to the fact-checking of the article content.
+  In `caption`, the sentence 'இதில் ஒரு ஆயிரம் பத்து கோழிப்பண்ணைகளுக்கு தேவையான தீவனமாகப் பயன்படுத்தப்படும்' incorrectly states 'ஒரு ஆயிரம் பத்து' (1,100) instead of '1,000க்கும் மேற்பட்ட' (more than 1,000).
+  The caption includes '🌽 சிக்கியாலாவில் இருந்து நாமக்கல்லுக்கு 2,600 டன் மக்காச்சோளம் வருகிறது!' which is grammatically correct but does not include the additional food items mentioned in the article.
+attempt 3 mistral/open-mistral-nemo: 14 problems
+  fact-check: In `tamil_headline`, the article mentions 'மக்காச்சோளம், அரிசி உள்ளிட்ட உணவு பொருட்களும்' but the draft headline only includes 'மக்காச்சோளம்' alone, omitting other food items.
+  fact-check: In `reel_script`, the number of wagons is incorrectly stated as 'நான்கு பத்து வேகன்கள்' (42) instead of '42 வேகன்கள்' (exact number from the article). Also, the sentence 'இதில் ஒரு ஆயிரம் பத்து கோழிப்பண்ணைகளுக்கு தேவையான தீவனமாகப் பயன்படுத்தப்படும்' is incorrect as the article states '1,000க்கும் மேற்பட்ட கோழிப்பண்ணைகள்' (more than 1,000), not 'ஒரு ஆயிரம் பத்து' (1,100).
+  fact-check: In `reel_script`, the phrase 'கோழித்தீவன அரவை நிறுவனத்திற்கு அனுப்பப்படும்' is misleading because the article states it is 'கோழித்தீவன அரவை' (a processing unit, not a company) and the final destination is not explicitly mentioned as a company.
+  fact-check: In `reel_script`, the date '23 அக்டோபர் 2026' is incorrect and not mentioned in the article.
+  fact-check: In `slides_spec`, slide 1 line 2 ('அரிசி போன்ற உணவு பொருட்களும்') is not part of the headline or primary focus of the article, which only mentions 'மக்காச்சோளம்' explicitly in the headline context.
+  fact-check: In `slides_spec`, slide 1 line 3 ('கோழித்தீவனத்திற்கானது') is vague and does not specify the quantity or exact purpose as in the article.
+  fact-check: In `slides_spec`, slide 2 line 1 ('சிக்கியாலாவில் இருந்து') is correct but the context of 'மக்காச்சோளம்' is missing in the title 'எந்த பொருள்?'.
+  fact-check: In `slides_spec`, slide 2 line 2 ('<b>42</b> வேகன்கள் கொண்ட ரயில்') is correct but the title 'எப்படி வருகிறது?' should include the quantity of corn (2,600 டன்) for clarity.
+  fact-check: In `slides_spec`, slide 3 line 1 ('நாமக்கல் மாவட்ட கோழிப்பண்ணைகளுக்கு') is correct but the line '1,000க்கும் மேற்பட்ட பண்ணைகள்' should be clarified with the exact purpose (treatment as feed).
+  fact-check: In `slides_spec`, slide 3 line 3 ('தீவன அரவை நிறுவனத்திற்கு') is incorrect as it is not a company but a processing unit.
+  fact-check: In `caption`, the date '23 அக்டோபர் 2026' is incorrect and not mentioned in the article.
+  fact-check: In `caption`, the phrase 'உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள்' and '#Namakkal360' are not relevant to the fact-checking of the article content.
+  fact-check: In `caption`, the sentence 'இதில் ஒரு ஆயிரம் பத்து கோழிப்பண்ணைகளுக்கு தேவையான தீவனமாகப் பயன்படுத்தப்படும்' incorrectly states 'ஒரு ஆயிரம் பத்து' (1,100) instead of '1,000க்கும் மேற்பட்ட' (more than 1,000).
+  fact-check: The caption includes '🌽 சிக்கியாலாவில் இருந்து நாமக்கல்லுக்கு 2,600 டன் மக்காச்சோளம் வருகிறது!' which is grammatically correct but does not include the additional food items mentioned in the article.
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+proofread by mistral/open-mistral-nemo: 2 problems
+writing [N]: பள்ளிப்பாளையத்தில் கலர் வேட்டி உற்பத்தி பணி விறுவிறுப்பு
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 1 mistral/open-mistral-nemo: 3 problems
+  slides_spec.v must be 3
+  slide 1 must have 2-3 lines
+  scenes must be 5 (slides + 1), got 4
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+attempt 2 mistral/open-mistral-nemo: 1 problems
   scenes must be 4 (slides + 1), got 5
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok mistral/open-mistral-nemo
-attempt 3 mistral/open-mistral-nemo: 5 problems
+attempt 3 mistral/open-mistral-nemo: 2 problems
   slides_spec.v must be 3
   scenes must be 5 (slides + 1), got 4
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  stray Tamil sign 'ா' after 'ு' in « கல்லுாரி »
-  stray Tamil sign 'ா' after 'ு' in « கல்லுாரி »
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 ok mistral/open-mistral-nemo
 proofread rejected (6 problems)
   slides_spec.v must be 3
-  slide 3 line 3 longer than 60 characters
+  slide 1 line 1 longer than 60 characters
+  slide 2 line 1 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+  slide 4 line 1 longer than 60 characters
   scenes must be 5 (slides + 1), got 4
+writing [N]: ஓடை புறம்போக்கு நிலத்தில் ஆக்கிரமிப்பு அகற்றம்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 1 mistral/open-mistral-nemo: 6 problems
+  slides_spec.v must be 3
+  hl2 longer than 28 characters
+  slide 2 title longer than 18 characters
+  slide 3 title longer than 18 characters
+  scenes must be 5 (slides + 1), got 4
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+attempt 2 mistral/open-mistral-nemo: 4 problems
+  hl2 longer than 28 characters
+  slide 2 title longer than 18 characters
+  slide 3 title longer than 18 characters
+  scenes must be 4 (slides + 1), got 5
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 3 mistral/open-mistral-nemo: 4 problems
+  hl2 longer than 28 characters
+  slide 2 title longer than 18 characters
+  slide 3 title longer than 18 characters
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+proofread rejected (7 problems)
+  hl2 longer than 28 characters
+  slide 1 line 1 longer than 60 characters
+  slide 2 title longer than 18 characters
+  slide 3 title longer than 18 characters
+  slide 3 line 1 longer than 60 characters
+  reel_script must have no digits or English letters (write numbers as Tamil words)
   post_to must start with 'Namakkal 360'
-  stray Tamil sign 'ா' after 'ு' in « கல்லுாரி »
-  stray Tamil sign 'ா' after 'ு' in « கல்லுாரி »
-writing [N]: நாமக்கல்லுக்கு வரத்தான 2,600 டன் மக்காச்சோளம்
+writing [N]: ஓட்டுச்சாவடி சீரமைப்பு   குறித்து ஆய்வு கூட்டம்
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok mistral/open-mistral-nemo
 attempt 1 mistral/open-mistral-nemo: 3 problems
   slides_spec.v must be 3
+  hl2 longer than 28 characters
   reel_script must have no digits or English letters (write numbers as Tamil words)
-  numbers not found in the article: 6
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 2 mistral/open-mistral-nemo: 5 problems
+  hl2 longer than 28 characters
+  slide 2 line 1 longer than 60 characters
+  slide 2 line 2 longer than 60 characters
+  slide 2 line 3 longer than 60 characters
+  slide 3 must have 2-3 lines
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+attempt 3 mistral/open-mistral-nemo: 2 problems
+  slides_spec.v must be 3
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+proofread rejected (6 problems)
+  slides_spec.v must be 3
+  slide 1 must have 2-3 lines
+  slide 1 line 1 longer than 60 characters
+  slide 2 line 1 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+  post_to must start with 'Namakkal 360'
+writing [N]: சூதாட்டம் ஆடிய 6 பேருக்கு காப்பு: ரூ.11,600 பறிமுதல்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 1 mistral/open-mistral-nemo: 2 problems
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+  reel_script has 29 words; need 38-55 (short, fast reel)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 2 mistral/open-mistral-nemo: 4 problems
+  slides_spec.v must be 3
+  hl1 longer than 40 characters
+  scenes must be 5 (slides + 1), got 4
+  not grounded: only 47% of the words come from the article (e.g. பேரை, இன்று, காலை, இருபத்திமூன்று, நிமிடங்களில்); use the article's own words and facts
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok mistral/open-mistral-nemo
+attempt 3 mistral/open-mistral-nemo: 4 problems
+  hl1 longer than 40 characters
+  slide 2 line 2 longer than 60 characters
+  scenes must be 4 (slides + 1), got 5
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok mistral/open-mistral-nemo
+proofread by mistral/open-mistral-nemo: 4 problems
+source dinamalar list: 8 items
+source google 'நாமக்கல்': 60 items
+source bing 'நாமக்கல்': 12 items
+source google 'ராசிபுரம்': 8 items
+source bing 'ராசிபுரம்': 12 items
+source google 'திருச்செங்கோடு': 4 items
+source bing 'திருச்செங்கோடு': 12 items
+source google 'பரமத்தி வேலூர்': 1 items
+source bing 'பரமத்தி வேலூர்': 11 items
+source google 'குமாரபாளையம்': 3 items
+source bing 'குமாரபாளையம்': 12 items
+source google 'பள்ளிபாளையம்': 2 items
+source bing 'பள்ளிபாளையம்': 9 items
+source google 'சேந்தமங்கலம்': 1 items
+source bing 'சேந்தமங்கலம்': 12 items
+source google 'கொல்லிமலை': 3 items
+source bing 'கொல்லிமலை': 12 items
+source google 'மோகனூர்': 0 items
+source bing 'மோகனூர்': 5 items
+source google 'நாமகிரிப்பேட்டை': 2 items
+source bing 'நாமகிரிப்பேட்டை': 3 items
+source google 'வெண்ணந்தூர்': 0 items
+source bing 'வெண்ணந்தூர்': 2 items
+source google 'எருமப்பட்டி': 2 items
+source bing 'எருமப்பட்டி': 6 items
+source google 'நாமக்கல் மாவட்டம்': 24 items
+source bing 'நாமக்கல் மாவட்டம்': 12 items
+source google 'நாமக்கல் முட்டை விலை': 7 items
+source bing 'நாமக்கல் முட்டை விலை': 11 items
+source google நியூஸ்7 தமிழ் 'நாமக்கல்': 7 items
+source bing நியூஸ்7 தமிழ் 'நாமக்கல்': 8 items
+source google நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
+source bing நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
+source google நியூஸ்7 தமிழ் 'திருச்செங்கோடு': 0 items
+source bing நியூஸ்7 தமிழ் 'திருச்செங்கோடு': 0 items
+source google என்டிடிவி தமிழ் 'நாமக்கல்': 0 items
+source bing என்டிடிவி தமிழ் 'நாமக்கல்': 0 items
+source google என்டிடிவி தமிழ் 'ராசிபுரம்': 0 items
+source bing என்டிடிவி தமிழ் 'ராசிபுரம்': 0 items
+source google என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
+source bing என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
+source google மாலைமலர் 'நாமக்கல்': 15 items
+source bing மாலைமலர் 'நாமக்கல்': 12 items
+source google மாலைமலர் 'ராசிபுரம்': 1 items
+source bing மாலைமலர் 'ராசிபுரம்': 2 items
+source google மாலைமலர் 'திருச்செங்கோடு': 0 items
+source bing மாலைமலர் 'திருச்செங்கோடு': 1 items
+source google தினத்தந்தி 'நாமக்கல்': 12 items
+source bing தினத்தந்தி 'நாமக்கல்': 12 items
+source google தினத்தந்தி 'ராசிபுரம்': 1 items
+source bing தினத்தந்தி 'ராசிபுரம்': 0 items
+source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
+source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
+source google தினமணி 'நாமக்கல்': 31 items
+source bing தினமணி 'நாமக்கல்': 12 items
+source google தினமணி 'ராசிபுரம்': 4 items
+source bing தினமணி 'ராசிபுரம்': 5 items
+source google தினமணி 'திருச்செங்கோடு': 3 items
+source bing தினமணி 'திருச்செங்கோடு': 6 items
+source google இந்து தமிழ் 'நாமக்கல்': 3 items
+source bing இந்து தமிழ் 'நாமக்கல்': 12 items
+source google இந்து தமிழ் 'ராசிபுரம்': 0 items
+source bing இந்து தமிழ் 'ராசிபுரம்': 0 items
+source google இந்து தமிழ் 'திருச்செங்கோடு': 0 items
+source bing இந்து தமிழ் 'திருச்செங்கோடு': 0 items
+source google தினகரன் 'நாமக்கல்': 100 items
+source bing தினகரன் 'நாமக்கல்': 12 items
+source google தினகரன் 'ராசிபுரம்': 3 items
+source bing தினகரன் 'ராசிபுரம்': 1 items
+source google தினகரன் 'திருச்செங்கோடு': 0 items
+source bing தினகரன் 'திருச்செங்கோடு': 5 items
+source google புதிய தலைமுறை 'நாமக்கல்': 2 items
+source bing புதிய தலைமுறை 'நாமக்கல்': 5 items
+source google புதிய தலைமுறை 'ராசிபுரம்': 0 items
+source bing புதிய தலைமுறை 'ராசிபுரம்': 0 items
+source google புதிய தலைமுறை 'திருச்செங்கோடு': 0 items
+source bing புதிய தலைமுறை 'திருச்செங்கோடு': 1 items
+source google நியூஸ்18 தமிழ் 'நாமக்கல்': 100 items
+source bing நியூஸ்18 தமிழ் 'நாமக்கல்': 10 items
+source google நியூஸ்18 தமிழ் 'ராசிபுரம்': 1 items
+source bing நியூஸ்18 தமிழ் 'ராசிபுரம்': 5 items
+source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 1 items
+source bing நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 1 items
+source google விகடன் 'நாமக்கல்': 1 items
+source bing விகடன் 'நாமக்கல்': 11 items
+source google விகடன் 'ராசிபுரம்': 2 items
+source bing விகடன் 'ராசிபுரம்': 0 items
+source google விகடன் 'திருச்செங்கோடு': 0 items
+source bing விகடன் 'திருச்செங்கோடு': 0 items
+source google பாலிமர் 'நாமக்கல்': 2 items
+source bing பாலிமர் 'நாமக்கல்': 7 items
+source google பாலிமர் 'ராசிபுரம்': 0 items
+source bing பாலிமர் 'ராசிபுரம்': 0 items
+source google பாலிமர் 'திருச்செங்கோடு': 0 items
+source bing பாலிமர் 'திருச்செங்கோடு': 0 items
+source google சமயம் தமிழ் 'நாமக்கல்': 4 items
+source bing சமயம் தமிழ் 'நாமக்கல்': 11 items
+source google சமயம் தமிழ் 'ராசிபுரம்': 0 items
+source bing சமயம் தமிழ் 'ராசிபுரம்': 9 items
+source google சமயம் தமிழ் 'திருச்செங்கோடு': 0 items
+source bing சமயம் தமிழ் 'திருச்செங்கோடு': 9 items
+source google தினமலர் 'நாமக்கல்': 100 items
+source bing தினமலர் 'நாமக்கல்': 12 items
+source google தினமலர் 'ராசிபுரம்': 19 items
+source bing தினமலர் 'ராசிபுரம்': 12 items
+source google தினமலர் 'திருச்செங்கோடு': 6 items
+source bing தினமலர் 'திருச்செங்கோடு': 12 items
+source google DT Next 'நாமக்கல்': 0 items
+source bing DT Next 'நாமக்கல்': 0 items
+source google DT Next 'ராசிபுரம்': 0 items
+source bing DT Next 'ராசிபுரம்': 0 items
+source google DT Next 'திருச்செங்கோடு': 0 items
+source bing DT Next 'திருச்செங்கோடு': 0 items
+source google ஜீ தமிழ் 'நாமக்கல்': 0 items
+source bing ஜீ தமிழ் 'நாமக்கல்': 0 items
+source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
+source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
+source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
+source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
+source google ABP நாடு 'நாமக்கல்': 10 items
+source bing ABP நாடு 'நாமக்கல்': 12 items
+source google ABP நாடு 'ராசிபுரம்': 0 items
+source bing ABP நாடு 'ராசிபுரம்': 0 items
+source google ABP நாடு 'திருச்செங்கோடு': 0 items
+source bing ABP நாடு 'திருச்செங்கோடு': 0 items
+source google Oneindia தமிழ் 'நாமக்கல்': 9 items
+source bing Oneindia தமிழ் 'நாமக்கல்': 12 items
+source google Oneindia தமிழ் 'ராசிபுரம்': 1 items
+source bing Oneindia தமிழ் 'ராசிபுரம்': 9 items
+source google Oneindia தமிழ் 'திருச்செங்கோடு': 0 items
+source bing Oneindia தமிழ் 'திருச்செங்கோடு': 8 items
+source google நக்கீரன் 'நாமக்கல்': 0 items
+source bing நக்கீரன் 'நாமக்கல்': 0 items
+source google நக்கீரன் 'ராசிபுரம்': 0 items
+source bing நக்கீரன் 'ராசிபுரம்': 0 items
+source google நக்கீரன் 'திருச்செங்கோடு': 0 items
+source bing நக்கீரன் 'திருச்செங்கோடு': 0 items
+source google தினபூமி 'நாமக்கல்': 0 items
+source bing தினபூமி 'நாமக்கல்': 0 items
+source google தினபூமி 'ராசிபுரம்': 0 items
+source bing தினபூமி 'ராசிபுரம்': 0 items
+source google தினபூமி 'திருச்செங்கோடு': 0 items
+source bing தினபூமி 'திருச்செங்கோடு': 0 items
+source google தமிழ் முரசு 'நாமக்கல்': 0 items
+source bing தமிழ் முரசு 'நாமக்கல்': 0 items
+source google தமிழ் முரசு 'ராசிபுரம்': 0 items
+source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
+source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
+source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
+all sources: 930 items -> 511 different news (19 Rasipuram)
+Rasipuram short of news: 0 items from nearby places added to its list
+to write: 3 Rasipuram + 8 other district candidates (max 12 + 12 stories)
+carousel for 0 of 10 stories, the rest reel only
+filed: 2 Rasipuram + 8 Namakkal (targets 12 + 12)
+All News sheet: {"ok":true,"added":4,"updated":56}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":11,"updated":49}
+All News sheet: {"ok":true,"added":4,"updated":56}
+All News sheet: {"ok":true,"added":2,"updated":58}
+All News sheet: {"ok":true,"added":7,"updated":53}
+All News sheet: {"ok":true,"added":0,"updated":31} 
+stories: 10
+bridge: 200 {"ok":true,"added":10,"batch":"B20261023-0905","first":"RN-53"}
