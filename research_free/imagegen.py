@@ -29,7 +29,7 @@ def _one(model, body, key):
 
 CF = "https://api.cloudflare.com/client/v4/accounts/{}/ai/run/@cf/"
 CF_MODELS = [
-    ("black-forest-labs/flux-1-schnell", lambda p, s: {"prompt": p, "steps": 8, "seed": s}),
+    ("black-forest-labs/flux-1-schnell", lambda p, s: {"prompt": p, "steps": 8}),
     ("stabilityai/stable-diffusion-xl-base-1.0", lambda p, s: {"prompt": p, "negative_prompt": "text, letters, watermark, logo, collage, blurry, cartoon", "width": 768, "height": 1344, "num_steps": 20, "guidance": 7.5, "seed": s}),
     ("bytedance/stable-diffusion-xl-lightning", lambda p, s: {"prompt": p, "width": 768, "height": 1344, "num_steps": 8, "seed": s}),
 ]
