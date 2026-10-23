@@ -48,8 +48,18 @@ OUTSIDE_WORDS = ["தமிழகத்தில்", "தமிழ்நாட�
                  "தமிழக", "இந்தியா", "பிரதமர்", "முதல்வர் ஸ்டாலின்", "விஜய்", "டெல்லி", "கேரளா", "கர்நாடக", "Chennai", "Tamil Nadu"]
 
 
+# these headlines are never Namakkal-district news, even when Namakkal is one name in a long list
+ALWAYS_OUTSIDE = ["மாவட்டங்களில்", "மாவட்டங்களுக்கு", "மாவட்டங்கள்", "தமிழகத்தில்", "தமிழ்நாட்டில்", "தமிழகம் முழுவதும்", "மாநிலம் முழுவதும்",
+                  "மத்தியப் பிரதேச", "மத்திய பிரதேச", "ராஜ்யசபா", "மாநிலங்களவை", "பிரதமர்", "இடைத்தேர்தல்", "தேர்தல் ஆணையம்", "உச்ச நீதிமன்றம்"]
+# weather forecasts / alerts are not local reporting
+WEATHER_FORECAST = ["மழை எச்சரிக்கை", "மஞ்சள் எச்சரிக்கை", "ஆரஞ்சு எச்சரிக்கை", "சிவப்பு எச்சரிக்கை", "வானிலை", "ரெட் அலர்ட்", "ஆரஞ்சு அலர்ட்", "மஞ்சள் அலர்ட்", "மழைக்கு வாய்ப்பு", "மழை பெய்ய வாய்ப்பு",
+                    "கனமழை பெய்யும்", "கனமழைக்கு வாய்ப்பு", "காற்றழுத்த", "புயல் உருவாக", "வளிமண்டல", "பள்ளிகளுக்கு விடுமுறை"]
+
+
 def outside_district(text):
-    """True when the headline names no Namakkal-district place but does name a state-wide / other-district one"""
+    """True when the headline is not Namakkal-district news: state-wide / other-district / national, or a weather forecast"""
+    if any(w in text for w in ALWAYS_OUTSIDE) or any(w in text for w in WEATHER_FORECAST):
+        return True
     if any(w in text for w in NAMAKKAL_WORDS):
         return False
     return any(w in text for w in OUTSIDE_WORDS)
