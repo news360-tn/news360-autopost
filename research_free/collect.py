@@ -146,7 +146,7 @@ def _upload_image(data):
 def make_images(group, log=None):
     """AUTO images: every scene prompt -> NVIDIA image API -> Cloudinary. A story gets story["images"] only when ALL its images were made;
     the bridge then queues it for posting at once and leaves it out of the images-needed email. Any failure -> the e-mail flow as before."""
-    if os.environ.get("AUTO_IMAGES", "1") == "0" or not (os.environ.get("NVIDIA_API_KEY") or os.environ.get("CLOUDFLARE_API_TOKEN")) or DRY:
+    if os.environ.get("AUTO_IMAGES", "0") != "1" or not (os.environ.get("NVIDIA_API_KEY") or os.environ.get("CLOUDFLARE_API_TOKEN")) or DRY:
         return
     try:
         import imagegen
