@@ -646,7 +646,7 @@ def still_needed(sid, page, kind):
     return LABEL[page] not in (r.get("reel_link") or "")
 
 
-SOFT_CAP = int(os.environ.get("DAILY_CAP", "40"))     # owner: from the 40th post of the last 24 h only main / important (High) news is posted
+SOFT_CAP = int(os.environ.get("DAILY_CAP", "90"))     # owner: no small daily limit - everything available is posted; Instagram allows 100 API posts per 24 h, so only from the 90th post only High news goes out (last 10 kept in reserve)
 USED = {}
 
 

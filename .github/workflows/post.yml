@@ -84,7 +84,6 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      DAILY_CAP: "60"   # TEMPORARY (23 Oct): deleted posts still count in the 24 h quota; back to 40 on 24 Oct
       PREBUILD: ${{ matrix.prebuild || (github.event_name == 'workflow_dispatch' && inputs.prebuild && '1' || '') }}
     steps:
       - uses: actions/checkout@v4
