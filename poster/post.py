@@ -745,6 +745,9 @@ def run_story_page(row, page):
     if LOC_ID:
         log("location tag:", LOC_ID)
     problems = check_text(row, spec) + verify.check_news(row)
+    if not problems and not DRY:
+        import factgate
+        problems = factgate.check(row)      # source article vs spoken script (second, independent check right before posting)
     if problems:
         return fail(row, "carousel", "Checks failed: " + "; ".join(problems))
     global PAGE, LOGO, TAG
