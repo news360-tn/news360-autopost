@@ -135,10 +135,15 @@ DEAD = {}   # (provider, model) -> time until which it is skipped
 DEADLINE = [None]   # unix time after which no more model calls are made
 
 
-MISTRAL_MODELS = ["mistral-large-latest", "mistral-small-latest"]
+MISTRAL_MODELS = ["mistral-small-latest", "open-mistral-nemo"]
+
+
+_LAST_MISTRAL = [0.0]
 
 
 def _mistral(model, system, user, key):
+    time.sleep(max(0.0, 1.6 - (time.time() - _LAST_MISTRAL[0])))     # the free tier allows about one request per second
+    _LAST_MISTRAL[0] = time.time()
     r = requests.post("https://api.mistral.ai/v1/chat/completions", headers={"Authorization": f"Bearer {key}"},
                       json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
                             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=90)
@@ -191,6 +196,10 @@ def ask_json(system, user, tries_per_model=1):
                 msg = str(e)
                 _log(f"fail {provider}/{model}: {msg[:120]}")
                 low = msg.lower()
+                if any(c in msg for c in (" 401", " 403", " 404")):
+                    DEAD[(provider, model)] = time.time() + 6 * 3600     # not allowed on this key/plan: never try it again this round
+                    _log(f"not available on this plan: {provider}/{model}")
+                    break
                 if " 429" in msg and ("perday" in low or "per day" in low or "daily" in low or "limit: 0" in low or "tokens per day" in low):
                     DEAD[(provider, model)] = time.time() + 6 * 3600      # daily quota is gone: skip it for the rest of the round
                     _log(f"dead for this round: {provider}/{model}")
