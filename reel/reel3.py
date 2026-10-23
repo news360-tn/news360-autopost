@@ -399,6 +399,9 @@ def build_audio(work, starts, shots, sents, total):
 def add_music(work, total):
     """quiet background bed under the voice (ducks while the voice speaks). Own tracks in reel/music/ are used if present, otherwise an
     original generated bed. Any failure keeps the reel without music."""
+    if os.environ.get("REEL_MUSIC") != "1":      # owner (23 Oct): no background music at all (set REEL_MUSIC=1 to bring it back)
+        print("background music off")
+        return
     try:
         mix = work / "mix.wav"
         here = Path(__file__).resolve().parent
