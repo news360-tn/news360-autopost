@@ -114,6 +114,7 @@ def save_state(st):
     (ARCHIVE / "state.json").write_text(json.dumps(st, ensure_ascii=False), encoding="utf-8")
 
 
+PRIORITY_ONLY = [False]
 EARLY_N = int(os.environ.get("EARLY_EMAIL_AFTER", "0"))   # the first email (images needed) goes out as soon as this many stories are written
 
 
@@ -218,8 +219,14 @@ def main():
     log.append(f"to write: {len(queues['R'])} Rasipuram + {len(queues['N'])} other district candidates (max {MAX_RASIPURAM} + {MAX_NAMAKKAL} stories)")
     target, done, tried = {"R": MAX_RASIPURAM, "N": MAX_NAMAKKAL}, {"R": 0, "N": 0}, {"R": 0, "N": 0}
     if os.environ.get("WRITE_STORIES", "1") == "0":      # archive-only round: collect and store everything, write nothing, send no email
-        target = {"R": 0, "N": 0}
-        log.append("archive-only round: no stories written")
+        # priority scan: only a really urgent local story (accident / death / fire / blast / murder / flood / power shutdown, or reported by 3+
+        # outlets) is written between the three normal rounds; if the writer rates it High it is filed and its images-needed email goes at once
+        PRIO = ("பலி", "உயிரிழ", "விபத்து", "வெடி", "கொலை", "தீப்பிடி", "தீ விபத்து", "மின்தடை", "மின் தடை", "வெள்ளம்", "தற்கொலை", "கைது")
+        target = {"R": 1, "N": 2}
+        for a_ in ("R", "N"):
+            queues[a_] = [q for q in queues[a_] if q["mentions"] >= 3 or any(w in q["title"] for w in PRIO)][:4]
+        PRIORITY_ONLY[0] = True
+        log.append("archive round: priority scan only (urgent local news, if any)")
     # Namakkal 360 = top news of the whole district (Rasipuram included), Rasipuram 360 = Rasipuram only; each page posts on its own.
     # A Rasipuram story that is among the district's top MAX_NAMAKKAL by score also goes to Namakkal 360 (and uses one of its slots).
     all_sc = sorted([x["score"] for a_ in ("R", "N") for x in queues[a_]], reverse=True)
@@ -267,6 +274,10 @@ def main():
             if not story:
                 n["status"] = "not filed: " + why
                 log.append(f"NOT filed ({area}) {art['title'][:50]}: {why}")
+                continue
+            if PRIORITY_ONLY[0] and str(story.get("importance", "")).strip() != "High":
+                n["status"] = "checked: not urgent, left for the next normal round"
+                log.append(f"not urgent ({area}) {art['title'][:50]}")
                 continue
             both = area == "R" and n["score"] >= district_cut
             story["post_to"] = ("Rasipuram 360 + Namakkal 360" if both else "Rasipuram 360") if area == "R" else "Namakkal 360"
