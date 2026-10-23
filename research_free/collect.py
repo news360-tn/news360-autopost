@@ -128,9 +128,9 @@ def assign_carousel(group):
             x["slides_spec"]["carousel"] = (i < top or str(x.get("importance", "")).strip() == "High") and os.environ.get("CAROUSEL_ON", "0") == "1"      # reels only for now
 
 
-STYLE = ("Scroll-stopping, emotionally engaging, high-impact news photograph: one clear strong focal subject, dramatic natural light "
+STYLE = ("Square image, the main subject exactly in the centre with empty space around it so a tall centre crop keeps it. Scroll-stopping, emotionally engaging, high-impact news photograph: one clear strong focal subject, dramatic natural light "
          "(golden hour, soft morning mist or storm-light as fits the story), rich saturated yet natural colours, cinematic composition with "
-         "depth, professional photojournalism look, ultra-sharp, realistic textures. ")
+         "depth, professional photojournalism look, ultra-sharp, realistic textures. No vehicle number plates, no signboards, no writing on any object. ")
 
 
 def _upload_image(data):

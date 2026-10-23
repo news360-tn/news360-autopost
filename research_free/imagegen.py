@@ -30,8 +30,6 @@ def _one(model, body, key):
 CF = "https://api.cloudflare.com/client/v4/accounts/{}/ai/run/@cf/"
 CF_MODELS = [
     ("black-forest-labs/flux-1-schnell", lambda p, s: {"prompt": p, "steps": 8}),
-    ("stabilityai/stable-diffusion-xl-base-1.0", lambda p, s: {"prompt": p, "negative_prompt": "text, letters, watermark, logo, collage, blurry, cartoon", "width": 768, "height": 1344, "num_steps": 20, "guidance": 7.5, "seed": s}),
-    ("bytedance/stable-diffusion-xl-lightning", lambda p, s: {"prompt": p, "width": 768, "height": 1344, "num_steps": 8, "seed": s}),
 ]
 
 
@@ -48,7 +46,26 @@ def _cf(model, body, token, acct):
     return base64.b64decode(b64)
 
 
+def to_story_size(data):
+    """FLUX answers a 1024x1024 square: cut the centre 9:16 column and enlarge it to 1152x2048 (the poster crops/enhances again later)"""
+    from io import BytesIO
+    from PIL import Image
+    im = Image.open(BytesIO(data)).convert("RGB")
+    w, h = im.size
+    if w / h > 0.5625:
+        nw = round(h * 9 / 16)
+        im = im.crop(((w - nw) // 2, 0, (w - nw) // 2 + nw, h))
+    im = im.resize((1152, 2048), Image.LANCZOS)
+    out = BytesIO()
+    im.save(out, "JPEG", quality=95, subsampling=0)
+    return out.getvalue()
+
+
 def generate(prompt, seed=0, key=None):
+    return to_story_size(_generate(prompt, seed, key))
+
+
+def _generate(prompt, seed=0, key=None):
     """Cloudflare Workers AI first (free daily allowance), NVIDIA second."""
     tok, acct = os.environ.get("CLOUDFLARE_API_TOKEN"), os.environ.get("CLOUDFLARE_ACCOUNT_ID")
     last = None
