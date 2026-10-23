@@ -303,6 +303,14 @@ def main():
                 queues[a] = keep
         if not progressed:
             break
+    # Rasipuram has too little fresh news of its own: its page also gets the top Namakkal stories (as its own separate posts)
+    short = MAX_RASIPURAM - done["R"]
+    if short > 0 and not PRIORITY_ONLY[0]:
+        extra = sorted([x for x in out[sent_n[0]:] if x.get("_area") == "N" and "Rasipuram" not in x["post_to"]], key=lambda x: -x["_score"])[:short]
+        for x in extra:
+            x["post_to"] = "Namakkal 360 + Rasipuram 360"
+        if extra:
+            log.append(f"Rasipuram short of news ({done['R']} of {MAX_RASIPURAM}): {len(extra)} Namakkal stories also go to the Rasipuram page")
     rest = out[sent_n[0]:]
     assign_carousel(rest)
     log.append(f"carousel for {sum(1 for x in out if x['slides_spec'].get('carousel'))} of {len(out)} stories, the rest reel only")
