@@ -272,6 +272,31 @@ def file_story(art, res, errors_log, recent):
             "post_time": "right after your reply, same day"}, ""
 
 
+def instagram_recent(log=None):
+    """headlines of what both Instagram pages ALREADY show (last 50 posts each), as sheet-like rows, so nothing already posted is written or posted again"""
+    rows = []
+    try:
+        sys.path.insert(0, str(HERE.parent / "poster"))
+        import post
+        for page in ("rasipuram", "namakkal"):
+            try:
+                tok = post.bridge_get("token", page=page)["token"]
+                uid, _ = post.ig_account(tok)
+                for m in post.ig("GET", f"{uid}/media", tok, fields="caption,timestamp", limit=50).get("data", []):
+                    head = re.sub(r"^[^\w]+", "", (m.get("caption") or "").strip().split("\n")[0]).strip()
+                    if head:
+                        rows.append({"story_id": "IG-" + page, "headline_ta": head, "headline_en": "", "researched": m.get("timestamp"), "source": "", "post_status": "posted"})
+            except Exception as e:
+                if log is not None:
+                    log.append(f"instagram check {page} failed: {str(e)[:120]}")
+    except Exception as e:
+        if log is not None:
+            log.append(f"instagram check unavailable: {str(e)[:120]}")
+    if log is not None:
+        log.append(f"instagram check: {len(rows)} recent posts read from both pages")
+    return rows
+
+
 def main():
     recent = []
     if BRIDGE_URL:
@@ -283,12 +308,16 @@ def main():
         else:
             raise SystemExit(f"bridge 'recent' failed: {rr}")
     seen_src = {r.get("source") for r in recent}
+    ig_log = []
+    if BRIDGE_URL and not DRY:
+        recent += instagram_recent(ig_log)
     today = datetime.datetime.now(IST).strftime("%A %d %B %Y")
     out, log = [], []
     sent_n = [0]      # stories already sent in the early email
     state = load_state()
     REOFFER[:] = pending_ids()
     log.append(f"earlier stories still waiting for images: {REOFFER}")
+    log += ig_log
     news = allnews.collect(log)                                   # EVERY item from every source
     for n in news:
         n["score"] = score(n)
