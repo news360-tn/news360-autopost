@@ -27,7 +27,52 @@ def _one(model, body, key):
     return base64.b64decode(b64)
 
 
+CF = "https://api.cloudflare.com/client/v4/accounts/{}/ai/run/@cf/"
+CF_MODELS = [
+    ("black-forest-labs/flux-1-schnell", lambda p, s: {"prompt": p, "steps": 8, "seed": s}),
+    ("stabilityai/stable-diffusion-xl-base-1.0", lambda p, s: {"prompt": p, "negative_prompt": "text, letters, watermark, logo, collage, blurry, cartoon", "width": 768, "height": 1344, "num_steps": 20, "guidance": 7.5, "seed": s}),
+    ("bytedance/stable-diffusion-xl-lightning", lambda p, s: {"prompt": p, "width": 768, "height": 1344, "num_steps": 8, "seed": s}),
+]
+
+
+def _cf(model, body, token, acct):
+    r = requests.post(CF.format(acct) + model, json=body, timeout=100, headers={"Authorization": "Bearer " + token})
+    if r.status_code != 200:
+        raise RuntimeError(f"cloudflare {model} {r.status_code}: {r.text[:300]}")
+    if r.headers.get("content-type", "").startswith("image/"):
+        return r.content
+    j = r.json()
+    b64 = (j.get("result") or {}).get("image")
+    if not b64:
+        raise RuntimeError(f"cloudflare {model} no image: {str(j)[:200]}")
+    return base64.b64decode(b64)
+
+
 def generate(prompt, seed=0, key=None):
+    """Cloudflare Workers AI first (free daily allowance), NVIDIA second."""
+    tok, acct = os.environ.get("CLOUDFLARE_API_TOKEN"), os.environ.get("CLOUDFLARE_ACCOUNT_ID")
+    last = None
+    if tok and acct:
+        for model, build in CF_MODELS:
+            if model in DEAD:
+                continue
+            try:
+                img = _cf(model, build(prompt, seed), tok, acct)
+                USED[model] = USED.get(model, 0) + 1
+                return img
+            except Exception as e:
+                last = e
+                m = str(e)
+                print("imagegen:", m[:220], file=sys.stderr)
+                if any(c in m for c in (" 401", " 403", " 404", " 400", " 422", "no image")) or "Timeout" in type(e).__name__:
+                    DEAD.add(model)
+    try:
+        return generate_nvidia(prompt, seed, key)
+    except Exception as e:
+        raise RuntimeError(f"all image models failed: {last or ''} | {e}")
+
+
+def generate_nvidia(prompt, seed=0, key=None):
     key = key or os.environ.get("NVIDIA_API_KEY")
     if not key:
         raise RuntimeError("NVIDIA_API_KEY missing")

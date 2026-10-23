@@ -41,6 +41,8 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           BRIDGE_URL: ${{ secrets.BRIDGE_URL }}
           BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
+          CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
+          CLOUDINARY_PRESET: ${{ secrets.CLOUDINARY_PRESET }}
           BUDGET_MIN: "55"
           WRITE_STORIES: ${{ github.event.schedule == '0 2,8,14,17 * * *' && '0' || '1' }}
         run: |
