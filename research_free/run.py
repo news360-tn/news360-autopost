@@ -28,9 +28,12 @@ def _obj(d):
     return d
 
 
+MAX_ATTEMPTS = 10      # owner: a wrong draft is rewritten up to 10 times (with the exact problems listed) before the story is dropped; the round time budget still applies
+
+
 def write(art, today):
     errors, best = None, None
-    for attempt in range(1, 4):
+    for attempt in range(1, MAX_ATTEMPTS + 1):
         d, model = llm.ask_json(SYSTEM, prompt(art, today, errors))
         try:
             d = _obj(d)
@@ -42,7 +45,8 @@ def write(art, today):
         if not errors:
             errors = factcheck(d, art)
         print(f"attempt {attempt} {model}: {len(errors)} problems", *errors, sep="\n  ")
-        best = (d, model, errors, attempt)
+        if best is None or len(errors) <= len(best[2]):      # keep the draft with the fewest problems
+            best = (d, model, errors, attempt)
         if not errors:
             break
     if best is None:
