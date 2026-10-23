@@ -49,7 +49,13 @@ def words(n):
         parts.append(("" if thou == 1 else _mult(_below_1000(thou)) + " ") + ("ஆயிரத்து" if n else "ஆயிரம்"))
     if n:
         parts.append(_below_1000(n))
-    return " ".join(p for p in parts if p).strip()
+    out = " ".join(p for p in parts if p).strip()
+    for a, b in _AYIRAM:      # இரண்டு ஆயிரம் -> இரண்டாயிரம் (the form a news reader says)
+        out = re.sub(a + r" ஆயிர", b + "ாயிர", out)
+    return out
+
+
+_AYIRAM = [("பன்னிரண்டு", "பன்னிரண்ட"), ("இரண்டு", "இரண்ட"), ("மூன்று", "மூவ"), ("நான்கு", "நால"), ("ஐந்து", "ஐய"), ("ஏழு", "ஏழ"), ("எட்டு", "எட்ட"), ("ஒன்பது", "ஒன்பத"), ("பத்து", "பத்த"), ("ஆறு", "ஆற")]
 
 
 ORD = re.compile(r"(\d[\d,]*)\s*(ஆம்|ம்)(?![ெ-௔ா-ௌ])")
@@ -59,6 +65,7 @@ NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
 def speak_numbers(t):
     """replace every number in a Tamil sentence by its Tamil words (12ம் -> பன்னிரண்டாம், 11,600 -> பதினோராயிரத்து அறுநூறு style)"""
     t = re.sub(r"<[^>]+>", "", t)                       # stray html (<b>56</b>)
+    t = re.sub(r"(?:₹|ரூ\.?)\s*(\d[\d,]*(?:\.\d+)?)\s*(லட்சம்|ஆயிரம்|கோடி)", r"\1 \2 ரூபாய்", t)      # ரூ.9 லட்சம் -> 9 லட்சம் ரூபாய்
     t = re.sub(r"(?:₹|ரூ\.?)\s*(\d[\d,]*(?:\.\d+)?)", r"\1 ரூபாய்", t)      # ரூ.11,600 -> 11,600 ரூபாய்
     t = t.replace("%", " சதவீதம்")
 

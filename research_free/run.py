@@ -1,5 +1,5 @@
 """Test runner. python research_free/run.py URL [URL...]   -> writes research_free/results/<n>.json (+ report). Never touches the live Sheet."""
-import json, sys, datetime
+import json, sys, sys, datetime
 from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
@@ -35,7 +35,11 @@ def _norm(x, key=""):
     """full place names everywhere (ப.வேலூர் -> பரமத்தி வேலூர்); spoken role/abbreviation words in the reel script"""
     import names
     if isinstance(x, str):
-        return names.spoken(x) if key == "reel_script" else names.full_places(x)
+        if key == "reel_script":       # digits -> correct Tamil number words (deterministic: free models write number words badly)
+            sys.path.insert(0, str(HERE.parent / "reel"))
+            from tamilnum import speak_numbers
+            return speak_numbers(names.spoken(x))
+        return names.full_places(x)
     if isinstance(x, list):
         return [_norm(i, key) for i in x]
     if isinstance(x, dict):
