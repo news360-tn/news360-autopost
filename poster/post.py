@@ -199,13 +199,16 @@ def set_started(row, now=None):
     if not starts or f is None:
         return True
     now = now or datetime.now(timezone(timedelta(hours=5, minutes=30)))
-    lo = f - timedelta(minutes=90)
-    for day in (0, 1):
+    # the set of a story = the latest start time that is not later than 2 h after it was filed (a round that runs late still belongs to the set
+    # whose start has already passed, so its stories post as soon as their images are in; a round before a start waits for that start)
+    hi = f + timedelta(minutes=120)
+    best = None
+    for day in (-1, 0):
         for st in starts:
-            cand = datetime(lo.year, lo.month, lo.day, st // 60, st % 60, tzinfo=lo.tzinfo) + timedelta(days=day)
-            if cand >= lo:
-                return now >= cand
-    return True
+            cand = datetime(hi.year, hi.month, hi.day, st // 60, st % 60, tzinfo=hi.tzinfo) + timedelta(days=day)
+            if cand <= hi and (best is None or cand > best):
+                best = cand
+    return True if best is None else now >= best
 
 
 def is_urgent(row):
