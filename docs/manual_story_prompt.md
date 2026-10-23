@@ -38,3 +38,12 @@ Rules: no newspaper/TV/website names or links in any text field except "source";
 NEWS:
 <paste the news text or link here>
 ```
+
+
+---
+# READY REEL (video + caption already made) - post as it is
+E-mail to nammarasipuram2805@gmail.com, subject `NEWS360 REEL`, attach ONE zip containing ONE `.md` (the caption) and ONE video (`.mp4`).
+Optional first line of the .md: `PAGE: namakkal` (default) | `PAGE: rasipuram` | `PAGE: both`.
+Within ~5 minutes: **[NEWS360 REEL RECEIVED]** ADDED RN-xx (or DUPLICATE / the problem). Just before posting, the page's recent Instagram captions
+are read: if the same news is already there it is NOT posted (the Sheet row says so). Otherwise the video is posted exactly as it is, with your caption
+(standard rule: max 5 hashtags, #Namakkal360 / #Rasipuram360 added, AI line).

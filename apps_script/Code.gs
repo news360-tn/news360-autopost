@@ -288,6 +288,9 @@ function processReplies() {
     try { processManual_(p, done, allowed); } catch (err0) {
       GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 PROBLEM] Manual story intake failed', String(err0));
     }
+    try { processReadyReels_(p, allowed); } catch (err1) {
+      GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 PROBLEM] Ready-reel intake failed', String(err1));
+    }
     done = JSON.parse(p.getProperty('DONE_MSGS') || '[]');
     var threads = GmailApp.search('subject:"NEWS360 IMAGES" newer_than:5d', 0, 30);
     threads.forEach(function (th) {
@@ -453,6 +456,102 @@ function manualOne_(msg) {
     report.push('ADDED ' + id + ' - ' + label + ': ' + urls.length + ' images. Reel + carousel will be made and posted automatically in about 20-40 minutes (Instagram duplicate check and fact check run first).');
   });
   if (rows.length) sh.getRange(sh.getLastRow() + 1, 1, rows.length, NCOLS).setValues(rows);
+  return report;
+}
+
+// ------------------------------------------------------------------ READY REEL (video + caption already made, sent by e-mail)
+// Subject contains  NEWS360 REEL . Attach ONE zip (or the files directly) holding ONE .md/.txt (the caption) and ONE video (.mp4/.mov).
+// First lines of the .md may be settings:  PAGE: namakkal | rasipuram | both   (default namakkal). Nothing is rebuilt: the video is posted as it is,
+// with the caption (standard hashtag/AI-line rules), but ONLY if the same news is not already on the Instagram page (checked right before posting).
+function allFiles_(msg, report) {
+  var out = [];
+  function add(b) {
+    var bn = String(b.getName());
+    if (/(^|\/)\.|__MACOSX/.test(bn)) return;
+    out.push(b);
+  }
+  msg.getAttachments({ includeInlineImages: false, includeAttachments: true }).forEach(function (a) {
+    var n = String(a.getName()).toLowerCase();
+    if (n.slice(-4) === '.zip' || String(a.getContentType()).indexOf('zip') >= 0) Utilities.unzip(a).forEach(add); else add(a);
+  });
+  var html = String(msg.getBody()), q = html.search(/class="gmail_quote/);
+  var typed = q >= 0 ? html.slice(0, q) : html, ids = [], m, re = /drive\.google\.com\/file\/d\/([\w-]+)/g;
+  while ((m = re.exec(typed))) if (ids.indexOf(m[1]) < 0) ids.push(m[1]);
+  ids.forEach(function (id) {
+    try {
+      var b = DriveApp.getFileById(id).getBlob(), n = String(b.getName()).toLowerCase();
+      if (n.slice(-4) === '.zip' || String(b.getContentType()).indexOf('zip') >= 0) Utilities.unzip(b).forEach(add); else add(b);
+    } catch (err) { report.push('Could not read the Drive file ' + id + ': ' + err); }
+  });
+  return out;
+}
+
+function uploadVideo_(blob, story) {
+  var res = UrlFetchApp.fetch('https://api.cloudinary.com/v1_1/' + CLOUD_NAME + '/video/upload', {
+    method: 'post', muteHttpExceptions: true,
+    payload: { file: blob, upload_preset: UPLOAD_PRESET, folder: 'news360/ready/' + story, resource_type: 'video' }
+  });
+  var d = JSON.parse(res.getContentText());
+  if (!d.secure_url) throw new Error('Video upload failed for ' + story + ': ' + res.getContentText().slice(0, 300));
+  return d.secure_url;
+}
+
+function processReadyReels_(p, allowed) {
+  var done = JSON.parse(p.getProperty('DONE_MSGS') || '[]');
+  GmailApp.search('subject:"NEWS360 REEL" newer_than:3d', 0, 20).forEach(function (th) {
+    th.getMessages().forEach(function (msg) {
+      var id = msg.getId();
+      if (done.indexOf(id) >= 0) return;
+      var from = String(msg.getFrom()).replace(/^.*<|>.*$/g, '').trim().toLowerCase();
+      if (allowed.indexOf(from) < 0 || !/NEWS360 REEL/i.test(msg.getSubject())) return;
+      done.push(id);
+      p.setProperty('DONE_MSGS', JSON.stringify(done.slice(-200)));
+      var report = [];
+      try { report = readyOne_(msg); } catch (err) { report = ['Could not process the e-mail: ' + err]; }
+      GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 REEL RECEIVED] ' + msg.getSubject().replace(/^(re|fwd?):\s*/i, ''),
+        report.join('\n') + '\n\nSheet: ' + SHEET_LINK);
+    });
+  });
+}
+
+function readyOne_(msg) {
+  var report = [], sh = sheet_();
+  var files = allFiles_(msg, report);
+  var txt = files.filter(function (b) { return /\.(md|txt|markdown)$/i.test(b.getName()); });
+  var vid = files.filter(function (b) { return /\.(mp4|mov|m4v)$/i.test(b.getName()); });
+  if (txt.length !== 1) return report.concat(['NOT ADDED: the zip must contain exactly ONE .md file (caption), found ' + txt.length]);
+  if (vid.length !== 1) return report.concat(['NOT ADDED: the zip must contain exactly ONE video (.mp4), found ' + vid.length]);
+  var lines = txt[0].getDataAsString('UTF-8').replace(/^﻿/, '').replace(/\r/g, '').split('\n');
+  var page = 'namakkal';
+  while (lines.length && /^\s*(page|post_to)\s*:/i.test(lines[0])) {
+    var v = lines.shift().split(':')[1].toLowerCase();
+    page = /both|\+/.test(v) ? 'both' : (/rasipuram/.test(v) ? 'rasipuram' : 'namakkal');
+  }
+  var cap = lines.map(function (l) { return l.replace(/^\s*#{1,6}\s+(?=\S)/, '').replace(/\*\*|__/g, ''); }).join('\n').trim();
+  if (cap.length < 40) return report.concat(['NOT ADDED: the caption is empty or too short']);
+  var head = (cap.split('\n').filter(function (l) { return l.trim(); })[0] || '').trim();
+  // duplicate inside the Sheet (any earlier story, posted or queued)
+  var dup = null;
+  recent_().forEach(function (r) { if (!dup && (overlap_(head, r.headline_ta) >= 0.65 || overlap_(cap.slice(0, 200), r.headline_ta) >= 0.65)) dup = r; });
+  if (dup) return report.concat(['NOT ADDED: DUPLICATE of ' + dup.story_id + ' (' + dup.post_status + '): ' + dup.headline_ta]);
+  var no = nextStoryNo_(sh) + 1, id = 'RN-' + no;
+  var url = uploadVideo_(vid[0], id);
+  var row = new Array(NCOLS).fill('');
+  var to = page === 'both' ? 'Namakkal 360 + Rasipuram 360' : (page === 'rasipuram' ? 'Rasipuram 360' : 'Namakkal 360');
+  row[C.story_id - 1] = id;
+  row[C.researched - 1] = "'" + nowIst_(); row[C.published - 1] = "'" + nowIst_();
+  row[C.headline_ta - 1] = head; row[C.headline_en - 1] = '';
+  row[C.category - 1] = 'Ready reel'; row[C.location - 1] = ''; row[C.importance - 1] = 'Medium';
+  row[C.verification - 1] = 'READY REEL - made and approved by the owner';
+  row[C.caption - 1] = cap; row[C.email_sent - 1] = 'Manual';
+  row[C.review - 1] = 'Auto'; row[C.post_to - 1] = to; row[C.reel - 1] = 'Yes';
+  row[C.slides_spec - 1] = JSON.stringify({ v: 3, ready_reel: true, carousel: false });
+  row[C.post_status - 1] = 'Queued';
+  row[C.notes - 1] = nowIst_() + ' ready reel by e-mail (video ' + Math.round(vid[0].getBytes().length / 1048576 * 10) / 10 + ' MB)';
+  row[C.batch - 1] = 'READY-' + Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyyMMdd-HHmm');
+  row[C.images - 1] = JSON.stringify([url]);
+  sh.getRange(sh.getLastRow() + 1, 1, 1, NCOLS).setValues([row]);
+  report.push('ADDED ' + id + ' for ' + to + ': "' + head.slice(0, 60) + '". Right before posting the Instagram page captions are checked: if the same news is already there it is NOT posted. Otherwise the reel is posted as it is within about 20-40 minutes.');
   return report;
 }
 

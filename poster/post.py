@@ -711,6 +711,14 @@ def ig_duplicate(row, page):
             return ts
         if en and freshness.similar(cap.strip()[:len(en) + 8].lower(), en, 0.65, ts):
             return ts
+        # the whole caption of this story against the page's recent captions (stems of the first 40 words): same news worded differently
+        mine = (row.get("caption") or "").strip()
+        if len(mine) > 80 and len(cap.strip()) > 80:
+            def stems(t):
+                return {w[:5] for w in re.findall(r"[\u0B80-\u0BFF]{3,}", t)[:40]}
+            a, b = stems(mine), stems(cap)
+            if a and b and len(a & b) / min(len(a), len(b)) >= 0.7:
+                return ts
     return ""
 
 
@@ -734,6 +742,48 @@ def run_story(row):
     return done
 
 
+def run_ready_reel(row, page):
+    """a reel video + caption made by the owner: post it as it is (after the Instagram duplicate check in run_story). No rebuild, no voice."""
+    global PAGE, LOGO, TAG
+    PAGE = page
+    LOGO = KIT / f"logo_{PAGE}.png"
+    TAG = "#Rasipuram360" if PAGE == "rasipuram" else "#Namakkal360"
+    sid = row["story_id"]
+    if PREBUILD:
+        return []
+    if LABEL[page] in (row.get("reel_link") or ""):
+        return []
+    try:
+        url = json.loads(row["images"])[0]
+        caption = final_caption(row)
+        if DRY:
+            log("DRY RUN ready reel - not publishing", sid, url)
+            bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "dry_run": True, "permalink": "", "media_urls": [url],
+                                   "caption": caption, "voice": "ready-made", "collab": False, "checks": "ready reel"})
+            return []
+        if not still_needed(sid, PAGE, "reel"):
+            log("ready reel no longer needed (sheet changed) - not publishing", sid, PAGE)
+            return []
+        token = bridge_get("token", page=PAGE)["token"]
+        mid, link, collab_ok, why = publish_reel(token, url, caption, False, "")
+        log("ready reel posted", sid, link)
+        try:
+            publish_story(token, url, "video")
+        except Exception as e:
+            log("story not made (post itself is fine):", e)
+        bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "permalink": link, "media_id": mid, "media_urls": [url],
+                               "caption": caption, "voice": "ready-made", "collab": False, "checks": "ready reel posted as received; Instagram duplicate check passed"})
+        return [("reel", link)]
+    except Exception as e:
+        if is_limit_error(e):
+            LIMIT[PAGE] = True
+            log("LIMIT: Instagram post limit hit while posting ready reel", sid, "- waits, not a failure")
+        else:
+            log("ERROR ready reel", sid, e)
+            bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "reel", "error": str(e)[:900]})
+    return []
+
+
 def run_story_page(row, page):
     """Build the carousel and the reel, run every check, and only then publish (carousel first, then reel)."""
     import verify
@@ -744,6 +794,8 @@ def run_story_page(row, page):
     row["caption"] = names.full_places(row.get("caption") or "")
     row["slides_spec"] = names.full_places(row["slides_spec"])
     spec = json.loads(row["slides_spec"])
+    if spec.get("ready_reel"):
+        return run_ready_reel(row, page)
     _digits_in_spec(spec)
     spec["date"] = tamil_date_today()  # date shown on poster/reel = actual posting date (IST)
     global LOC_ID
