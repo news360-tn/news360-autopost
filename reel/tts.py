@@ -20,6 +20,9 @@ def fix_config():
         cfg.write_text(json.dumps(c, ensure_ascii=False, indent=1))
 
 def clean(t):
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    from tamilnum import speak_numbers
+    t = speak_numbers(t)          # whole numbers in Tamil words (was: every digit read separately, "56" -> "ஐந்து ஆறு")
     t = re.sub(r"\d", lambda m: ONES[int(m.group())] or "பூஜ்ஜியம்", t)
     t = t.replace("—", ", ").replace("–", ", ").replace("!", ".").replace("?", ".")
     allowed = set(" ,.0ஃஅஆஇஈஉஊஎஏஐஒஓஔகஙசஜஞடணதநனபமயரறலளழவஷஸஹாிீுூெேைொோௌ்ௗ!¡'(),-.:;¿?")
