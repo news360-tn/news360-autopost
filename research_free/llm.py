@@ -165,6 +165,20 @@ def _ghmodels(model, system, user, key):
     return r.json()["choices"][0]["message"]["content"]
 
 
+CF_MODELS = ["@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/mistralai/mistral-small-3.1-24b-instruct"]
+
+
+def _cloudflare(model, system, user, key):
+    acct = os.environ.get("CLOUDFLARE_ACCOUNT_ID", "")
+    r = requests.post(f"https://api.cloudflare.com/client/v4/accounts/{acct}/ai/v1/chat/completions",
+                      headers={"Authorization": f"Bearer {key}"},
+                      json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"}, "max_tokens": 4096,
+                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=90)
+    if r.status_code != 200:
+        raise RuntimeError(f"cloudflare {model} {r.status_code}: {r.text[:700]}")
+    return r.json()["choices"][0]["message"]["content"]
+
+
 def chain():
     out = []
     g, q, o = os.environ.get("GEMINI_API_KEY"), os.environ.get("GROQ_API_KEY"), os.environ.get("OPENROUTER_API_KEY")
@@ -178,6 +192,9 @@ def chain():
         out += [("ghmodels", m, _ghmodels, gk) for m in GHM_MODELS]
     if q:
         out += [("groq", m, _groq, q) for m in groq_models(q)]
+    ck = os.environ.get("CLOUDFLARE_API_TOKEN")
+    if ck and os.environ.get("CLOUDFLARE_ACCOUNT_ID"):
+        out += [("cloudflare", m, _cloudflare, ck) for m in CF_MODELS]
     n = os.environ.get("NVIDIA_API_KEY")
     if n:
         out += [("nvidia", m, _nvidia, n) for m in NVIDIA_MODELS]
