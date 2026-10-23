@@ -1,0 +1,351 @@
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.8-flash for 10 min
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.7-flash for 10 min
+ok gemini/gemini-3.6-flash
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  slide 3 title longer than 18 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash
+attempt 2 gemini/gemini-3.6-flash: 1 problems
+  stray Tamil sign 'ா' after 'ு' in «் புதுார் »
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.6-flash for 10 min
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/nvidia/llama-3.1-nemotron-70b-instruct: nvidia nvidia/llama-3.1-nemotron-70b-instruct 404: {"status":404,"title":"Not Found","detail":"Function '9b96341b-9791-4
+not available on this plan: nvidia/nvidia/llama-3.1-nemotron-70b-instruct
+fail nvidia/meta/llama-3.1-405b-instruct: nvidia meta/llama-3.1-405b-instruct 404: 404 page not found
+
+not available on this plan: nvidia/meta/llama-3.1-405b-instruct
+fail nvidia/deepseek-ai/deepseek-v3.1: nvidia deepseek-ai/deepseek-v3.1 404: 404 page not found
+
+not available on this plan: nvidia/deepseek-ai/deepseek-v3.1
+fail nvidia/mistralai/mistral-large-2-instruct: nvidia mistralai/mistral-large-2-instruct 404: {"status":404,"title":"Not Found","detail":"Function '7fadd4de-e22a-48e4-
+not available on this plan: nvidia/mistralai/mistral-large-2-instruct
+fail nvidia/qwen/qwen2.5-72b-instruct: nvidia qwen/qwen2.5-72b-instruct 404: 404 page not found
+
+not available on this plan: nvidia/qwen/qwen2.5-72b-instruct
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/qwen/qwen3.8-27b
+attempt 3 groq/qwen/qwen3.8-27b: 1 problems
+  not grounded: location 'பேக்குறிச்சி' is not in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 4 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 22 words; need 38-55 (short, fast reel)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 5 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 2 problems
+  slide 2 title longer than 18 characters
+  reel_script has 28 words; need 38-55 (short, fast reel)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 6 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  slide 2 title longer than 18 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 7 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 2 problems
+  slide 2 title longer than 18 characters
+  reel_script has 30 words; need 38-55 (short, fast reel)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 8 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 3 problems
+  slide 2 title longer than 18 characters
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+  reel_script has 31 words; need 38-55 (short, fast reel)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 9 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  slide 2 title longer than 18 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 10 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  slide 2 title longer than 18 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+proofread rejected (2 problems)
+  slide 2 title longer than 18 characters
+  post_to must start with 'Namakkal 360'
+RN-53 REJECTED ['slide 2 title longer than 18 characters']
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 1 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  slide 1 line 3 longer than 60 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+factcheck by cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 5 problems
+  Location 'நாமக்கல்' is not mentioned in the article
+  Date '23 அக்டோபர் 2026' is not mentioned in the article
+  The article does not mention the name of the location where the project is being implemented
+  The reel_script and caption mention 'நாமக்கல்' as the location, but it is not present in the article
+  The caption mentions '23 அக்டோபர் 2026' as the date, but it is not present in the article
+attempt 2 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 5 problems
+  fact-check: Location 'நாமக்கல்' is not mentioned in the article
+  fact-check: Date '23 அக்டோபர் 2026' is not mentioned in the article
+  fact-check: The article does not mention the name of the location where the project is being implemented
+  fact-check: The reel_script and caption mention 'நாமக்கல்' as the location, but it is not present in the article
+  fact-check: The caption mentions '23 அக்டோபர் 2026' as the date, but it is not present in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 3 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 4 problems
+  slide 1 line 3 longer than 60 characters
+  reel_script has 27 words; need 38-55 (short, fast reel)
+  not grounded: location 'விவரம்' is not in the article
+  not grounded: location 'இன்னும்' is not in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 4 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 29 words; need 38-55 (short, fast reel)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 5 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 2 problems
+  slide 1 line 3 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 6 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 22 words; need 38-55 (short, fast reel)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 7 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 2 problems
+  slide 1 line 3 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 8 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 2 problems
+  slide 2 title longer than 18 characters
+  reel_script has 21 words; need 38-55 (short, fast reel)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 9 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  slide 1 line 3 longer than 60 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+factcheck by cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 3 problems
+  Location 'நாமக்கல்' is mentioned in the draft but not in the article
+  Date '23 அக்டோபர் 2026' is mentioned in the draft but not in the article
+  The article does not mention the location where the project is being implemented, but the draft mentions 'நாமக்கல்'
+attempt 10 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 3 problems
+  fact-check: Location 'நாமக்கல்' is mentioned in the draft but not in the article
+  fact-check: Date '23 அக்டோபர் 2026' is mentioned in the draft but not in the article
+  fact-check: The article does not mention the location where the project is being implemented, but the draft mentions 'நாமக்கல்'
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+proofread rejected (2 problems)
+  slide 1 line 3 longer than 60 characters
+  post_to must start with 'Namakkal 360'
+RN-54 REJECTED ['slide 1 line 3 longer than 60 characters']
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+attempt 1 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 3 problems
+  missing key: reel_script
+  missing key: caption
+  missing key: scenes
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
+dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.8-flash for 10 min
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.7-flash for 10 min
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.6-flash for 10 min
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/qwen/qwen3.8-27b
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+ok groq/openai/gpt-oss-120b
+factcheck by groq/openai/gpt-oss-120b: 3 problems
+  Caption adds a specific date (23 October 2026) that is not mentioned in the article
+  Caption incorrectly states the location as “Thindukkal, Namakkal district”, which is not supported by the article
+  Reel script omits the important fact that the competition was a state‑level kabaddi tournament for school girls
+attempt 2 groq/qwen/qwen3.8-27b: 3 problems
+  fact-check: Caption adds a specific date (23 October 2026) that is not mentioned in the article
+  fact-check: Caption incorrectly states the location as “Thindukkal, Namakkal district”, which is not supported by the article
+  fact-check: Reel script omits the important fact that the competition was a state‑level kabaddi tournament for school girls
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
+dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+RN-55 FAILED no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+RN-56 FAILED no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+RN-57 FAILED no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+RN-58 FAILED no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+RN-60 FAILED no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+RN-61 FAILED no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+RN-62 FAILED no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
