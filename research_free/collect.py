@@ -108,7 +108,7 @@ def save_state(st):
     (ARCHIVE / "state.json").write_text(json.dumps(st, ensure_ascii=False), encoding="utf-8")
 
 
-EARLY_N = int(os.environ.get("EARLY_EMAIL_AFTER", "4"))   # the first email (images needed) goes out as soon as this many stories are written
+EARLY_N = int(os.environ.get("EARLY_EMAIL_AFTER", "5"))   # the first email (images needed) goes out as soon as this many stories are written
 
 
 def assign_carousel(group):
