@@ -31,6 +31,18 @@ def prompt(art, today, errors=None):
     return u
 
 
+def _norm(x, key=""):
+    """full place names everywhere (ப.வேலூர் -> பரமத்தி வேலூர்); spoken role/abbreviation words in the reel script"""
+    import names
+    if isinstance(x, str):
+        return names.spoken(x) if key == "reel_script" else names.full_places(x)
+    if isinstance(x, list):
+        return [_norm(i, key) for i in x]
+    if isinstance(x, dict):
+        return {k: _norm(v, k) for k, v in x.items()}
+    return x
+
+
 def _obj(d):
     """some free models wrap the answer in a list; accept [ {...} ], reject anything that is not an object"""
     if isinstance(d, list) and d and isinstance(d[0], dict):
@@ -54,7 +66,7 @@ def write(art, today):
                 raise
             break
         try:
-            d = _obj(d)
+            d = _norm(_obj(d))
         except ValueError as e:
             errors = [str(e)]
             print(f"attempt {attempt} {model}: {e}")
@@ -72,7 +84,7 @@ def write(art, today):
         for k in range(2):
             try:
                 d, model = llm.ask_claude(SYSTEM, prompt(art, today, errs), max_tokens=5000)
-                d = _obj(d)
+                d = _norm(_obj(d))
             except Exception as e:
                 print("claude rewrite failed:", str(e)[:150])
                 break

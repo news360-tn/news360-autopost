@@ -738,6 +738,11 @@ def run_story_page(row, page):
     """Build the carousel and the reel, run every check, and only then publish (carousel first, then reel)."""
     import verify
     sid = row["story_id"]
+    sys.path.insert(0, str(ROOT / "research_free"))
+    import names      # full place names + spoken words for the voice, also for stories written earlier
+    row["reel_script"] = names.spoken(row.get("reel_script") or "")
+    row["caption"] = names.full_places(row.get("caption") or "")
+    row["slides_spec"] = names.full_places(row["slides_spec"])
     spec = json.loads(row["slides_spec"])
     _digits_in_spec(spec)
     spec["date"] = tamil_date_today()  # date shown on poster/reel = actual posting date (IST)
