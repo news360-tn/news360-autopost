@@ -643,6 +643,10 @@ def still_needed(sid, page, kind):
     return LABEL[page] not in (r.get("reel_link") or "")
 
 
+SOFT_CAP = int(os.environ.get("DAILY_CAP", "40"))     # owner: from the 40th post of the last 24 h only main / important (High) news is posted
+USED = {}
+
+
 LIMIT = {}      # page -> True once Instagram's 24-hour publishing limit (50 posts per account) is reached
 
 
@@ -665,6 +669,7 @@ def limit_reached(page):
         d = ig("GET", f"{uid}/content_publishing_limit", token, fields="quota_usage,config")
         row = (d.get("data") or [{}])[0]
         used, total = int(row.get("quota_usage", 0)), int((row.get("config") or {}).get("quota_total", 50) or 50)
+        USED[page] = used
         log(f"publishing quota {page}: {used}/{total}")
         LIMIT[page] = used >= total
     except Exception as e:
@@ -680,6 +685,9 @@ def run_story(row):
             continue
         if limit_reached(pg):
             log("LIMIT: 24-hour Instagram post limit reached for", pg, "- ", row.get("story_id"), "waits")
+            continue
+        if limit_reached(pg) is False and USED.get(pg, 0) >= SOFT_CAP and not is_urgent(row):
+            log(f"CAP: {pg} already has {USED[pg]} posts in 24 h (cap {SOFT_CAP}) - only important news now,", row.get("story_id"), "waits")
             continue
         done += run_story_page(row, pg) or []
     return done

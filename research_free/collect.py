@@ -193,20 +193,25 @@ def pending_ids(max_hours=24):
         print("pending list not available:", e)
         return []
     out, now = [], datetime.datetime.now(IST)
+    TODAY[0] = 0
     mon = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
     for r in rows:
-        if str(r.get("post_status", "")).strip() != "Awaiting images":
-            continue
         m = re.search(r"(\d{1,2}) (\w{3}) (\d{4}), (\d{1,2}):(\d{2})", str(r.get("researched", "")))
         if not m or m.group(2).lower() not in mon:
             continue
         t = datetime.datetime(int(m.group(3)), mon.index(m.group(2).lower()) + 1, int(m.group(1)), int(m.group(4)), int(m.group(5)), tzinfo=IST)
+        if t.date() == now.date() and not str(r.get("post_status", "")).lower().startswith("skipped"):
+            TODAY[0] += 1          # stories written today (each one is one reel per page it goes to)
+        if str(r.get("post_status", "")).strip() != "Awaiting images":
+            continue
         if (now - t).total_seconds() <= max_hours * 3600:
             out.append(r["story_id"])
     return out
 
 
 REOFFER = []
+TODAY = [0]
+DAILY_CAP = int(os.environ.get("DAILY_CAP", "40"))      # owner: after 40 posts in a day only the main / important news is written and posted
 
 
 def send_batch(group, log=None):
@@ -312,7 +317,9 @@ def main():
     log.append("candidate filter: " + ", ".join(f"{k.split(':')[0][:40]}={v}" for k, v in Counter(n["status"] for n in news).most_common()))
     log.append(f"to write: {len(queues['R'])} Rasipuram + {len(queues['N'])} other district candidates (max {MAX_RASIPURAM} + {MAX_NAMAKKAL} stories)")
     target, done, tried = {"R": MAX_RASIPURAM, "N": MAX_NAMAKKAL}, {"R": 0, "N": 0}, {"R": 0, "N": 0}
-    if os.environ.get("WRITE_STORIES", "1") == "0":      # archive-only round: collect and store everything, write nothing, send no email
+    if TODAY[0] >= DAILY_CAP:
+        log.append(f"daily cap: {TODAY[0]} stories already written today (cap {DAILY_CAP}) - only main / important news is written now")
+    if os.environ.get("WRITE_STORIES", "1") == "0" or TODAY[0] >= DAILY_CAP:      # archive-only round: collect and store everything, write nothing, send no email
         # priority scan: only a really urgent local story (accident / death / fire / blast / murder / flood / power shutdown, or reported by 3+
         # outlets) is written between the three normal rounds; if the writer rates it High it is filed and its images-needed email goes at once
         PRIO = ("பலி", "உயிரிழ", "விபத்து", "வெடி", "கொலை", "தீப்பிடி", "தீ விபத்து", "மின்தடை", "மின் தடை", "வெள்ளம்", "தற்கொலை", "கைது")

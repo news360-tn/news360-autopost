@@ -1,9 +1,9 @@
 name: research-free
-# every 3 hours (IST 05:30, 08:30, 11:30, 14:30, 17:30, 20:30; often a little late). Every round collects, writes the new stories
+# every 4 hours, around the clock (IST 05:30, 09:30, 13:30, 17:30, 21:30, 01:30; often a little late). Every round collects, writes the new stories
 # (quality-checked) and sends ONE images-needed e-mail - only when there is news. Stories still waiting for images from an earlier round are listed again in it.
 on:
   schedule:
-    - cron: "0 0,3,6,9,12,15 * * *"
+    - cron: "0 */4 * * *"
   workflow_dispatch:
     inputs:
       dry:
