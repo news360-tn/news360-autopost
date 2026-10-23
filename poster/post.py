@@ -903,8 +903,8 @@ def main():
                     f.write(f"ready={1 if n else 0}\n")
                     f.write("matrix=" + json.dumps({"include": [{"story": i, "slot": 0} for i in ids]}) + "\n")
                 else:
-                    ids = [r["story_id"] for r in pick_all(rows)][:3] if n else []   # 3 stories per run, 25 min apart
-                    inc = [{"story": i, "slot": k * 25, "prebuild": ""} for k, i in enumerate(ids)]
+                    ids = [r["story_id"] for r in pick_all(rows)][:6] if n else []   # 6 stories per run, 6 min apart (was 3 per run, 25 min apart: far too slow for 24 stories per round)
+                    inc = [{"story": i, "slot": k * 6, "prebuild": ""} for k, i in enumerate(ids)]
                     # stories whose set has not started yet: make the carousel/reel ahead, so they go out the moment it starts
                     urgent = set(ids)
                     pre = [r["story_id"] for r in rows if ready(r) and r["story_id"] not in urgent and not set_started(r) and not all(cache_path(r["story_id"], p).exists() for p in pages_of(r) if not page_done(r, p))][:3]
