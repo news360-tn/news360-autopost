@@ -73,7 +73,7 @@ def main():
         for t, v in by.items():
             if t != "other" and len(v) >= MIN_PER_TOPIC:
                 m = statistics.median(v)
-                tw[t] = round(max(-1.0, min(2.0, (m - 1.0) * 2)), 2)      # +2 = clearly above, -1 = clearly below the page median (clamped)
+                tw[t] = round(max(-0.5, min(1.5, (m - 1.0) * 2)), 2)      # +1.5 max, -0.5 min: public-service news (weather, power cuts) is never buried the page median (clamped)
         out["topic_weight"] = tw
         hours = {}
         for h in rows:
