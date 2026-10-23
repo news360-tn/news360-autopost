@@ -168,6 +168,8 @@ def file_story(art, res, errors_log, recent):
         pass
     if is_dup(art, d, recent):
         return None, "duplicate after write"
+    if isinstance(d.get("slides_spec"), dict):
+        d["slides_spec"]["v"] = 3          # the poster only reads format v3; a model writing v4 made RN-48 unpostable
     prompts = "\n---\n".join(TEMPLATE.format(scene=s.strip()) for s in d["scenes"])
     ver = f"FREE-MODEL DRAFT ({model}) - not checked by Claude yet" + (f"; validator problems: {'; '.join(errors)}" if errors else "")
     return {"tamil_headline": d["tamil_headline"], "english_headline": d["english_headline"], "category": d["category"], "location": d["location"],
