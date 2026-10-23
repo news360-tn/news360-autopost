@@ -10,9 +10,8 @@ import llm, sources, run, allnews
 IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 BRIDGE_URL, BRIDGE_KEY = os.environ.get("BRIDGE_URL", ""), os.environ.get("BRIDGE_KEY", "")
 def _slot_count():
-    """stories per round: morning round 12, afternoon round 8, evening round 12 (rounds run ~04:30, 10:30, 16:30 IST, often late)"""
-    h = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).hour
-    return 8 if 8 <= h < 14 else 12
+    """stories per round: 12 in the morning, afternoon and evening rounds (rounds run ~04:30, 10:30, 16:30 IST, often late)"""
+    return 12
 
 
 SET_NEWS = int(os.environ.get("SET_NEWS_COUNT", "0") or 0) or _slot_count()
@@ -124,7 +123,7 @@ def assign_carousel(group):
         grp = sorted([x for x in group if x.get("_area") == a], key=lambda x: -x["_score"])
         top = max(1, -(-len(grp) // CAROUSEL_EVERY)) if grp else 0
         for i, x in enumerate(grp):
-            x["slides_spec"]["carousel"] = i < top or str(x.get("importance", "")).strip() == "High"
+            x["slides_spec"]["carousel"] = (i < top or str(x.get("importance", "")).strip() == "High") and os.environ.get("CAROUSEL_ON", "0") == "1"      # reels only for now
 
 
 def send_batch(group, log=None):

@@ -112,6 +112,8 @@ def page_done(row, page):
 
 def spec_has_carousel(row):
     """stories written in the reel-first plan carry "carousel": false in slides_spec when only a reel is wanted (older stories: both)"""
+    if CONFIG.get("carousel") is False:      # reels only for now (config.json "carousel": false); the poster/carousel comes back when the owner says so
+        return False
     try:
         return json.loads(row.get("slides_spec") or "{}").get("carousel", True) is not False
     except Exception:
@@ -125,7 +127,9 @@ def skip_reason(row):
     """'' = fine to post. Otherwise why this story must not go out: its announced date has passed (power cut, job fair, 'today' news ...),
     or the same news was already posted under another story id."""
     import difflib, freshness
-    why = freshness.stale_reason(row.get("headline_ta") or "", row.get("headline_en") or "", row.get("category") or "", row.get("published") or "")
+    f = filed_at(row)
+    same_day = bool(f and f.date() == datetime.now(IST).date())      # filed today: it goes out today, whatever the clock says
+    why = "" if same_day else freshness.stale_reason(row.get("headline_ta") or "", row.get("headline_en") or "", row.get("category") or "", row.get("published") or "")
     if why:
         return "stale: " + why
     for o in ALL_ROWS:
@@ -673,7 +677,7 @@ def run_story_page(row, page):
     if cached:
         log("prebuilt carousel + reel found - publishing without rebuilding")
     images = [] if cached else fetch_images(row, work)
-    need_carousel, need_reel = not row.get(PAGE + "_link") and spec.get("carousel", True) is not False, LABEL[PAGE] not in (row.get("reel_link") or "")
+    need_carousel, need_reel = not row.get(PAGE + "_link") and spec.get("carousel", True) is not False and CONFIG.get("carousel") is not False, LABEL[PAGE] not in (row.get("reel_link") or "")
     jpgs = mp4 = None
     reel_cover = None
     voice_file = None
