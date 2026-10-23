@@ -14,6 +14,13 @@ IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 def prompt(art, today, errors=None):
     shots = "\n\n".join(f"EXAMPLE ARTICLE:\n{e['article']}\nEXAMPLE OUTPUT:\n{json.dumps(e['output'], ensure_ascii=False)}" for e in EX)
     u = f"{shots}\n\nTODAY (IST): {today}\n\nNOW WRITE THE OUTPUT FOR THIS ARTICLE (facts only from this text):\nHEADLINE: {art['title']}\nPUBLISHED: {art['published']}\nARTICLE:\n{art['text'][:6000]}"
+    try:
+        import learned
+        h = learned.hints()
+        if h:
+            u += "\n\nLEARNED FROM OUR INSTAGRAM INSIGHTS (style only; facts still only from the article):\n" + h
+    except Exception:
+        pass
     if errors:
         u += "\n\nYOUR PREVIOUS ANSWER HAD THESE PROBLEMS. Fix all of them and return the full JSON again:\n- " + "\n- ".join(errors)
     return u

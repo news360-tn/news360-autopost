@@ -94,6 +94,11 @@ def score(n):
     m = n.get("mentions", 1)
     s += 2 if m >= 3 else (1 if m == 2 else 0)
     try:
+        import learned
+        s += learned.boost(n.get("title", ""))        # topics our own Instagram insights show people watch / save / share
+    except Exception:
+        pass
+    try:
         age_h = (datetime.datetime.now(IST) - datetime.datetime.fromisoformat(n["published"])).total_seconds() / 3600
         s += 1 if age_h < 6 else 0
     except Exception:
