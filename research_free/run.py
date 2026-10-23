@@ -86,14 +86,20 @@ def write(art, today):
 CHECK = """You are a strict fact-checker for a Tamil local-news page. You get an ARTICLE and a DRAFT (JSON with Tamil text).
 Check EVERY claim in the draft's tamil_headline, reel_script, slides_spec and caption against the ARTICLE.
 Report a problem for each of these: a place, person role, number, amount, date, time or cause that is NOT in the article or differs from it; an invented detail; a sentence that is ungrammatical or has no clear meaning in Tamil; two different facts mixed into one sentence; an important fact of the article (who did what, where, result such as an arrest) that is missing from the reel_script.
+NOT problems: the caption footer (the 📍 place | posting-date line, the Follow line, hashtags), the fixed closing sentence of reel_script that tells viewers to follow the "நாமக்கல் த்ரீ சிக்ஸ்டி" page, and wording choices such as மூதாட்டி for an elderly woman. The posting date is today's date, not a claim from the article.
 Return ONLY JSON: {"ok": true or false, "problems": ["short English description of each problem"]}. ok is true ONLY when the problems list is empty."""
+
+
+def _cap_body(cap):
+    """caption without footer lines (📍 place | posting date, Follow line, hashtags): they are not claims from the article"""
+    return "\n".join(l for l in str(cap or "").split("\n") if not (l.strip().startswith(("\U0001F4CD", "#")) or "Follow" in l)).strip()
 
 
 def factcheck(d, art):
     """independent second call: compares the draft with the article. Claude first when ANTHROPIC_API_KEY is set, else the free chain.
     Returns a list of problems."""
     user = "ARTICLE:\n" + art["title"] + "\n" + art["text"][:6000] + "\n\nDRAFT:\n" + json.dumps(
-        {k: d.get(k) for k in ("tamil_headline", "reel_script", "slides_spec", "caption")}, ensure_ascii=False)
+        {k: (_cap_body(d.get(k)) if k == "caption" else d.get(k)) for k in ("tamil_headline", "reel_script", "slides_spec", "caption")}, ensure_ascii=False)
     try:
         r = None
         if llm.claude_available():

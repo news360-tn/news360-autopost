@@ -382,6 +382,9 @@ def main():
                 url = allnews.resolve(n["url"])
                 art = allnews.article_any(url)
                 art["url"] = url
+                for k in ("text", "title"):      # some outlets type ூ as ு+ா (ப.வேலுார்): normalise so the writer copies the correct spelling
+                    if art.get(k):
+                        art[k] = art[k].replace("\u0bc1\u0bbe", "\u0bc2")
                 art["title"] = art.get("title") or n["title"]
                 art["published"] = art.get("published") or n["published"]
             except Exception as e:

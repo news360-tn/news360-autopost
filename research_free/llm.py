@@ -53,7 +53,7 @@ def _groq(model, system, user, key):
     return r.json()["choices"][0]["message"]["content"]
 
 
-NVIDIA_MODELS = ["meta/llama-3.3-70b-instruct", "nvidia/llama-3.1-nemotron-70b-instruct", "meta/llama-3.1-405b-instruct", "deepseek-ai/deepseek-v3.1", "mistralai/mistral-large-2-instruct", "qwen/qwen2.5-72b-instruct", "meta/llama-3.1-70b-instruct", "mistralai/mixtral-8x22b-instruct-v0.1"]
+NVIDIA_MODELS = []     # every NIM model we tried now answers 404/410 (gone / not on this plan): skipped so rounds do not lose minutes on them
 
 
 def _nvidia(model, system, user, key):
@@ -267,7 +267,7 @@ def ask_claude(system, user, max_tokens=4000):
     CLAUDE_CALLS[0] += 1
     r = requests.post("https://api.anthropic.com/v1/messages",
                       headers={"x-api-key": os.environ["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01", "content-type": "application/json"},
-                      json={"model": model, "max_tokens": max_tokens, "temperature": 0, "system": system,
+                      json={"model": model, "max_tokens": max_tokens, "system": system,
                             "messages": [{"role": "user", "content": user}]}, timeout=120)
     if r.status_code >= 400:
         raise RuntimeError(f"anthropic {r.status_code} {r.text[:200]}")
