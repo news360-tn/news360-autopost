@@ -212,7 +212,7 @@ def file_story(art, res, errors_log, recent):
     except Exception as e:
         return None, f"bad draft: {e}"
     HARD = ("not grounded", "numbers not found", "fact-check", "source/outlet", "not a JSON", "missing key")
-    hard = [e for e in errors if any(h in e for h in HARD)]
+    hard = list(errors)      # owner rule (23 Oct): NO story with any remaining validator problem is posted - wrong numbers/words/layout all reject it
     if hard:
         return None, "would be wrong/unclear: " + "; ".join(hard)[:150]
     try:
