@@ -53,7 +53,7 @@ def _groq(model, system, user, key):
     return r.json()["choices"][0]["message"]["content"]
 
 
-NVIDIA_MODELS = ["meta/llama-3.3-70b-instruct", "qwen/qwen2.5-72b-instruct", "meta/llama-3.1-70b-instruct"]
+NVIDIA_MODELS = ["meta/llama-3.3-70b-instruct", "nvidia/llama-3.1-nemotron-70b-instruct", "meta/llama-3.1-405b-instruct", "deepseek-ai/deepseek-v3.1", "mistralai/mistral-large-2-instruct", "qwen/qwen2.5-72b-instruct", "meta/llama-3.1-70b-instruct", "mistralai/mixtral-8x22b-instruct-v0.1"]
 
 
 def _nvidia(model, system, user, key):
@@ -184,9 +184,9 @@ def chain():
     g, q, o = os.environ.get("GEMINI_API_KEY"), os.environ.get("GROQ_API_KEY"), os.environ.get("OPENROUTER_API_KEY")
     if g:
         out += [("gemini", m, _gemini, g) for m in gemini_models(g)]
-    mk = os.environ.get("MISTRAL_API_KEY")
-    if mk:
-        out += [("mistral", m, _mistral, mk) for m in MISTRAL_MODELS]
+    n = os.environ.get("NVIDIA_API_KEY")
+    if n:
+        out += [("nvidia", m, _nvidia, n) for m in NVIDIA_MODELS]
     gk = os.environ.get("GH_MODELS_TOKEN")
     if gk:
         out += [("ghmodels", m, _ghmodels, gk) for m in GHM_MODELS]
@@ -195,9 +195,9 @@ def chain():
     ck = os.environ.get("CLOUDFLARE_API_TOKEN")
     if ck and os.environ.get("CLOUDFLARE_ACCOUNT_ID"):
         out += [("cloudflare", m, _cloudflare, ck) for m in CF_MODELS]
-    n = os.environ.get("NVIDIA_API_KEY")
-    if n:
-        out += [("nvidia", m, _nvidia, n) for m in NVIDIA_MODELS]
+    mk = os.environ.get("MISTRAL_API_KEY")
+    if mk:  # small Mistral models are the weakest (break the format rules) -> tried last
+        out += [("mistral", m, _mistral, mk) for m in MISTRAL_MODELS]
     if o:
         try:
             out += [("openrouter", m, _openrouter, o) for m in openrouter_free_models(o)[:8]]

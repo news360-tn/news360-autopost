@@ -223,6 +223,8 @@ def main():
         near = [q for q in queues["N"] if q["key"] not in have and any(w in q["title"] for w in allnews.RASI_NEAR)]
         queues["R"] += near[:MAX_RASIPURAM - len(queues["R"])]
         log.append(f"Rasipuram short of news: {len(near[:MAX_RASIPURAM])} items from nearby places added to its list")
+    from collections import Counter
+    log.append("candidate filter: " + ", ".join(f"{k.split(':')[0][:40]}={v}" for k, v in Counter(n["status"] for n in news).most_common()))
     log.append(f"to write: {len(queues['R'])} Rasipuram + {len(queues['N'])} other district candidates (max {MAX_RASIPURAM} + {MAX_NAMAKKAL} stories)")
     target, done, tried = {"R": MAX_RASIPURAM, "N": MAX_NAMAKKAL}, {"R": 0, "N": 0}, {"R": 0, "N": 0}
     if os.environ.get("WRITE_STORIES", "1") == "0":      # archive-only round: collect and store everything, write nothing, send no email
