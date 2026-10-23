@@ -579,7 +579,7 @@ FIRST_COMMENTS = [
 def first_comment(token, media_id, sid, k=0):
     """the page's own first comment (a question / share prompt, no hashtags) to start the conversation. Never raises."""
     try:
-        if not CONFIG.get("first_comment", True) or not media_id:
+        if not CONFIG.get("first_comment", False) or not media_id:
             return
         msg = FIRST_COMMENTS[(sum(map(ord, sid)) + k) % len(FIRST_COMMENTS)]
         ig("POST", f"{media_id}/comments", token, message=msg)
