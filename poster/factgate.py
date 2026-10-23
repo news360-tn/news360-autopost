@@ -7,6 +7,17 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "research_free"))
 SOFT = ("missing", "misses", "omit", "not mentioned in the draft", "could not be run")      # an omission is not a false statement: never blocks
 
 
+def _body(cap):
+    """caption without the footer (the 📍 place | posting-date line, follow line, hashtags): the posting date is not a claim from the article"""
+    keep = []
+    for ln in (cap or "").split("\n"):
+        t = ln.strip()
+        if t.startswith("\U0001F4CD") or t.startswith("#") or "Follow" in t:
+            continue
+        keep.append(ln)
+    return "\n".join(keep).strip()
+
+
 def check(row):
     url = (row.get("source") or "").strip()
     if not url.startswith("http") or not os.environ.get("ANTHROPIC_API_KEY") and not os.environ.get("NVIDIA_API_KEY") and not os.environ.get("GEMINI_API_KEY") and not os.environ.get("OPENROUTER_API_KEY"):
@@ -20,7 +31,7 @@ def check(row):
             print("factgate: article text not available - not blocking")
             return []
         d = {"tamil_headline": row.get("headline_ta", ""), "reel_script": row.get("reel_script", ""),
-             "slides_spec": json.loads(row["slides_spec"]) if row.get("slides_spec") else "", "caption": row.get("caption", "")}
+             "slides_spec": json.loads(row["slides_spec"]) if row.get("slides_spec") else "", "caption": _body(row.get("caption", ""))}
         probs = run.factcheck(d, {"title": title or row.get("headline_ta", ""), "text": text})
         return [p for p in probs if not any(w in p.lower() for w in SOFT)]
     except Exception as e:
