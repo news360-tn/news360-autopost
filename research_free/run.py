@@ -46,7 +46,13 @@ MAX_ATTEMPTS = 10      # owner: a wrong draft is rewritten up to 10 times (with 
 def write(art, today):
     errors, best = None, None
     for attempt in range(1, MAX_ATTEMPTS + 1):
-        d, model = llm.ask_json(SYSTEM, prompt(art, today, errors))
+        try:
+            d, model = llm.ask_json(SYSTEM, prompt(art, today, errors))
+        except Exception as e:      # every free model is busy / out of quota: do not give up, Claude (if the key is set) writes it below
+            print("free models unavailable:", str(e)[:120])
+            if not llm.claude_available():
+                raise
+            break
         try:
             d = _obj(d)
         except ValueError as e:
