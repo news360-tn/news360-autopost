@@ -1,342 +1,3 @@
-writing [R]: இரு இடங்களில் சாலை விபத்து விவசாயி பலி; மூதாட்டி படுகாயம்
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-switching away from gemini/gemini-3.8-flash for 10 min
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-switching away from gemini/gemini-3.7-flash for 10 min
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-switching away from gemini/gemini-3.6-flash for 10 min
-fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-switching away from mistral/mistral-small-latest for 10 min
-ok mistral/open-mistral-nemo
-attempt 1 mistral/open-mistral-nemo: 3 problems
-  slides_spec.v must be 3
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  numbers not found in the article: 22, 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 2 mistral/open-mistral-nemo: 3 problems
-  hl1 longer than 40 characters
-  scenes must be 4 (slides + 1), got 5
-  numbers not found in the article: 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 3 mistral/open-mistral-nemo: 5 problems
-  slides_spec.v must be 3
-  hl1 longer than 40 characters
-  scenes must be 5 (slides + 1), got 4
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  numbers not found in the article: 19, 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-proofread rejected (7 problems)
-  slides_spec.v must be 3
-  hl1 longer than 40 characters
-  slide 4 line 1 longer than 60 characters
-  slide 4 line 2 longer than 60 characters
-  scenes must be 5 (slides + 1), got 4
-  post_to must start with 'Namakkal 360'
-  numbers not found in the article: 23
-writing [R]: ராசிபுரம் ஏரி ஆக்கிரமிப்பில் ஒப்படைக்கப்படும் 24 ஏக்கர்
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 1 mistral/open-mistral-nemo: 6 problems
-  slides_spec.v must be 3
-  hl2 longer than 28 characters
-  slide 1 must have 2-3 lines
-  slide 3 line 1 longer than 60 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  numbers not found in the article: 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 2 mistral/open-mistral-nemo: 2 problems
-  hl2 longer than 28 characters
-  numbers not found in the article: 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 3 mistral/open-mistral-nemo: 4 problems
-  hl2 longer than 28 characters
-  slide 1 line 1 longer than 60 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  numbers not found in the article: 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-proofread rejected (5 problems)
-  hl2 longer than 28 characters
-  slide 1 line 1 longer than 60 characters
-  importance must be High, Medium or Low
-  post_to must start with 'Namakkal 360'
-  numbers not found in the article: 23
-writing [N]: Rain Alert: 5 மாவட்டங்களின் பள்ளிகளுக்கு விடுமுறை; உங்க ஊரில
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 1 mistral/open-mistral-nemo: 2 problems
-  slides_spec.v must be 3
-  slide 2 line 1 longer than 60 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 2 mistral/open-mistral-nemo: 2 problems
-  slide 1 line 2 longer than 60 characters
-  numbers not found in the article: 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 3 mistral/open-mistral-nemo: 3 problems
-  slides_spec.v must be 3
-  slide 2 line 1 longer than 60 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-proofread rejected (4 problems)
-  slides_spec.v must be 3
-  slide 2 line 1 longer than 60 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  post_to must start with 'Namakkal 360'
-writing [N]: TN Weather News: விடாது கொட்டும் மழை - 29 மாவட்டங்களுக்கு கன
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 1 mistral/open-mistral-nemo: 7 problems
-  slides_spec.v must be 3
-  hl2 longer than 28 characters
-  slide 1 line 1 longer than 60 characters
-  slide 2 line 1 longer than 60 characters
-  slide 2 line 2 longer than 60 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  reel_script has 64 words; need 38-55 (short, fast reel)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 2 mistral/open-mistral-nemo: 5 problems
-  hl2 longer than 28 characters
-  slide 1 line 1 longer than 60 characters
-  slide 2 line 1 longer than 60 characters
-  slide 3 title longer than 18 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 3 mistral/open-mistral-nemo: 3 problems
-  slides_spec.v must be 3
-  slide 3 title longer than 18 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-proofread rejected (10 problems)
-  slides_spec.v must be 3
-  hl1 longer than 40 characters
-  slide 1 line 3 longer than 60 characters
-  slide 2 line 1 longer than 60 characters
-  slide 3 title longer than 18 characters
-  slide 3 line 1 longer than 60 characters
-  slide 4 line 2 longer than 60 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  importance must be High, Medium or Low
-  post_to must start with 'Namakkal 360'
-writing [N]: ப.வேலுாரில் 11 மி.மீ., மழை
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 1 mistral/open-mistral-nemo: 4 problems
-  scenes must be 4 (slides + 1), got 5
-  numbers not found in the article: 23
-  not grounded: place word 'வேலூர்' is not in the article
-  not grounded: location 'வேலூர்' is not in the article
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 2 mistral/open-mistral-nemo: 5 problems
-  slides must have 3 or 4 items
-  scenes must be 3 (slides + 1), got 4
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  numbers not found in the article: 22, 23
-  not grounded: location 'வேலூர்' is not in the article
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 3 mistral/open-mistral-nemo: 5 problems
-  scenes must be 4 (slides + 1), got 3
-  reel_script has 30 words; need 38-55 (short, fast reel)
-  numbers not found in the article: 23
-  not grounded: place word 'வேலூர்' is not in the article
-  not grounded: location 'வேலூர்' is not in the article
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-proofread rejected (6 problems)
-  scenes must be 4 (slides + 1), got 3
-  importance must be High, Medium or Low
-  post_to must start with 'Namakkal 360'
-  numbers not found in the article: 23
-  not grounded: place word 'வேலூர்' is not in the article
-  not grounded: location 'வேலூர்' is not in the article
-writing [N]: திருச்செங்கோடு மாணவா்கள் விடுதியில் மடிக்கணினிகள், கைப்பேசிக
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 1 mistral/open-mistral-nemo: 17 problems
-  slides_spec.v must be 3
-  hl2 longer than 28 characters
-  slide 3 title longer than 18 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  numbers not found in the article: 22
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign 'ா' after 'ா' in « தனியாா் க»
-  stray Tamil sign '்' after 'ா' in «தனியாா் கல»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in «ின்றனா். ம»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign 'ா' after 'ா' in « தனியாா் க»
-  stray Tamil sign '்' after 'ா' in «தனியாா் கல»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in «ின்றனா்.
-📍»
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 2 mistral/open-mistral-nemo: 2 problems
-  hl2 longer than 28 characters
-  numbers not found in the article: 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 3 mistral/open-mistral-nemo: 15 problems
-  slide 2 title longer than 18 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-  numbers not found in the article: 23
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign 'ா' after 'ா' in « தனியாா் க»
-  stray Tamil sign '்' after 'ா' in «தனியாா் கல»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in «ின்றனா். ம»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign 'ா' after 'ா' in « தனியாா் க»
-  stray Tamil sign '்' after 'ா' in «தனியாா் கல»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in «ின்றனா்.
-உ»
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-proofread rejected (16 problems)
-  hl1 longer than 40 characters
-  slide 2 title longer than 18 characters
-  post_to must start with 'Namakkal 360'
-  numbers not found in the article: 23
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign 'ா' after 'ா' in « தனியாா் க»
-  stray Tamil sign '்' after 'ா' in «தனியாா் கல»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in «ின்றனா். ம»
-  stray Tamil sign 'ா' after 'ா' in « தனியாா் க»
-  stray Tamil sign '்' after 'ா' in «தனியாா் கல»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in « மாணவா்கள்»
-  stray Tamil sign '்' after 'ா' in «ின்றனா்.
-
-»
-writing [N]: 25-ல் அன்னாபிஷேகம், பவுர்ணமி! பர்வதமலைக்கு செல்ல பிளானா? வனத
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 1 mistral/open-mistral-nemo: 4 problems
-  slides_spec.v must be 3
-  hl2 longer than 28 characters
-  scenes must be 5 (slides + 1), got 4
-  numbers not found in the article: 23, 26
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 2 mistral/open-mistral-nemo: 4 problems
-  hl2 longer than 28 characters
-  slide 3 title longer than 18 characters
-  scenes must be 4 (slides + 1), got 5
-  numbers not found in the article: 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 3 mistral/open-mistral-nemo: 2 problems
-  slide 3 title longer than 18 characters
-  numbers not found in the article: 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-proofread rejected (4 problems)
-  slide 1 line 1 longer than 60 characters
-  slide 3 title longer than 18 characters
-  importance must be High, Medium or Low
-  post_to must start with 'Namakkal 360'
-writing [N]: எல்.முருகன் ராஜினாமா எதிரொலி.! ம.பி.யில் இடைத்தேர்தல்.. முக்
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 1 mistral/open-mistral-nemo: 2 problems
-  slides_spec.v must be 3
-  slide 4 title longer than 18 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok mistral/open-mistral-nemo
-attempt 2 mistral/open-mistral-nemo: 2 problems
-  slide 3 title longer than 18 characters
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-attempt 3 mistral/open-mistral-nemo: 1 problems
-  slide 3 title longer than 18 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok mistral/open-mistral-nemo
-proofread rejected (9 problems)
-  hl2 longer than 28 characters
-  slide 1 must have 2-3 lines
-  slide 1 line 1 longer than 60 characters
-  slide 2 must have 2-3 lines
-  slide 2 line 1 longer than 60 characters
-  slide 3 title longer than 18 characters
-  slide 3 must have 2-3 lines
-  slide 3 line 1 longer than 60 characters
-  post_to must start with 'Namakkal 360'
 source dinamalar list: 8 items
 source google 'நாமக்கல்': 59 items
 source bing 'நாமக்கல்': 12 items
@@ -344,7 +5,7 @@ source google 'ராசிபுரம்': 9 items
 source bing 'ராசிபுரம்': 12 items
 source google 'திருச்செங்கோடு': 4 items
 source bing 'திருச்செங்கோடு': 12 items
-source google 'பரமத்தி வேலூர்': 0 items
+source google 'பரமத்தி வேலூர்': 1 items
 source bing 'பரமத்தி வேலூர்': 11 items
 source google 'குமாரபாளையம்': 3 items
 source bing 'குமாரபாளையம்': 12 items
@@ -362,7 +23,7 @@ source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 2 items
 source google 'எருமப்பட்டி': 3 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 51 items
+source google 'நாமக்கல் மாவட்டம்': 24 items
 source bing 'நாமக்கல் மாவட்டம்': 12 items
 source google 'நாமக்கல் முட்டை விலை': 7 items
 source bing 'நாமக்கல் முட்டை விலை': 11 items
@@ -418,7 +79,7 @@ source google நியூஸ்18 தமிழ் 'நாமக்கல்': 1
 source bing நியூஸ்18 தமிழ் 'நாமக்கல்': 10 items
 source google நியூஸ்18 தமிழ் 'ராசிபுரம்': 1 items
 source bing நியூஸ்18 தமிழ் 'ராசிபுரம்': 5 items
-source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 3 items
+source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 2 items
 source bing நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 1 items
 source google விகடன் 'நாமக்கல்': 1 items
 source bing விகடன் 'நாமக்கல்': 11 items
@@ -440,9 +101,9 @@ source google சமயம் தமிழ் 'திருச்செங்க
 source bing சமயம் தமிழ் 'திருச்செங்கோடு': 9 items
 source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
-source google தினமலர் 'ராசிபுரம்': 17 items
+source google தினமலர் 'ராசிபுரம்': 18 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
-source google தினமலர் 'திருச்செங்கோடு': 5 items
+source google தினமலர் 'திருச்செங்கோடு': 6 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
 source google DT Next 'நாமக்கல்': 0 items
 source bing DT Next 'நாமக்கல்': 0 items
@@ -456,7 +117,7 @@ source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்': 9 items
+source google ABP நாடு 'நாமக்கல்': 8 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
@@ -486,24 +147,18 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 956 items -> 517 different news (19 Rasipuram)
-to write: 2 Rasipuram + 146 other district candidates (max 5 + 6 stories)
-NOT filed (R) இரு இடங்களில் சாலை விபத்து விவசாயி பலி; மூதாட்டி ப: would be wrong/unclear: numbers not found in the article: 19, 23
-NOT filed (R) ராசிபுரம் ஏரி ஆக்கிரமிப்பில் ஒப்படைக்கப்படும் 24 ஏ: would be wrong/unclear: numbers not found in the article: 23
-NOT filed (N) Rain Alert: 5 மாவட்டங்களின் பள்ளிகளுக்கு விடுமுறை;: stale: says 'today' but was published 22 Oct
-NOT filed (N) ப.வேலுாரில் 11 மி.மீ., மழை: would be wrong/unclear: numbers not found in the article: 23; not grounded: place word 'வேலூர்' is not in the article; not grounded: location 'வேலூர்' is not in the article
-NOT filed (N) திருச்செங்கோடு மாணவா்கள் விடுதியில் மடிக்கணினிகள்,: would be wrong/unclear: numbers not found in the article: 23
-NOT filed (N) 25-ல் அன்னாபிஷேகம், பவுர்ணமி! பர்வதமலைக்கு செல்ல ப: would be wrong/unclear: numbers not found in the article: 23
-carousel for 1 of 2 stories, the rest reel only
-filed: 0 Rasipuram + 2 Namakkal (targets 5 + 6)
-All News sheet: {"ok":true,"added":1,"updated":59}
-All News sheet: {"ok":true,"added":1,"updated":59}
-All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":1,"updated":59}
+all sources: 930 items -> 520 different news (18 Rasipuram)
+to write: 1 Rasipuram + 141 other district candidates (max 5 + 6 stories)
+archive-only round: no stories written
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 5 + 6)
 All News sheet: {"ok":true,"added":1,"updated":59}
 All News sheet: {"ok":true,"added":2,"updated":58}
-All News sheet: {"ok":true,"added":3,"updated":57}
-All News sheet: {"ok":true,"added":23,"updated":37}
-All News sheet: {"ok":true,"added":0,"updated":37} 
-stories: 2
-bridge: 200 {"ok":true,"added":2,"batch":"B20261023-0747","first":"RN-51"}
+All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":27,"updated":33}
+All News sheet: {"ok":true,"added":1,"updated":39} 
+stories: 0
