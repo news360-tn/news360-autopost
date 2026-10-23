@@ -23,11 +23,16 @@ def _json_from(text):
     text = (text or "").strip()
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text, flags=re.S)
     try:
-        return json.loads(text)
+        return json.loads(text, strict=False)
     except Exception:
-        m = re.search(r"\{.*\}", text, flags=re.S)
-        if m:
-            return json.loads(m.group(0))
+        i = text.find("{")
+        if i >= 0:
+            try:
+                return json.JSONDecoder(strict=False).raw_decode(text[i:])[0]
+            except Exception:
+                m = re.search(r"\{.*\}", text, flags=re.S)
+                if m:
+                    return json.loads(m.group(0), strict=False)
         raise
 
 
@@ -271,6 +276,11 @@ def ask_claude(system, user, max_tokens=4000):
                             "messages": [{"role": "user", "content": user}]}, timeout=120)
     if r.status_code >= 400:
         raise RuntimeError(f"anthropic {r.status_code} {r.text[:200]}")
-    text = "".join(b.get("text", "") for b in r.json().get("content", []))
+    j = r.json()
+    text = "".join(b.get("text", "") for b in j.get("content", []) if b.get("type", "text") == "text")
     _log(f"ok anthropic/{model}")
-    return _json_from(text), f"anthropic/{model}"
+    try:
+        return _json_from(text), f"anthropic/{model}"
+    except Exception as e:
+        print(f"claude answer not JSON ({e}); stop_reason={j.get('stop_reason')} blocks={[b.get('type') for b in j.get('content', [])]} usage={j.get('usage')} head={text[:200]!r}")
+        raise
