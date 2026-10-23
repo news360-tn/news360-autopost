@@ -638,6 +638,8 @@ def still_needed(sid, page, kind):
         return False
     if (r.get("review") or "").strip().lower() == "hold":
         return False
+    if str(r.get("post_status") or "").strip().lower().startswith(("skipped", "expired")):
+        return False
     if kind == "carousel":
         return not r.get(page + "_link")
     return LABEL[page] not in (r.get("reel_link") or "")
