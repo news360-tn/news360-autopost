@@ -28,3 +28,9 @@ Switches: scheduled posting only happens when a file named `LIVE` exists in the 
 1. Open the Apps Script project, replace the code with `apps_script/Code.gs`, save.
 2. Run the function `setup` once (asks for Gmail permission; creates the 5-minute reply trigger and the weekly token refresh).
 3. Deploy -> Manage deployments -> pencil -> Version: New version -> Deploy (the web app URL stays the same).
+
+
+## Pause automatic collecting / send your own stories
+Actions -> **collect-switch** -> Run workflow -> `pause` or `start` (only the automatic collecting/writing; posting continues).
+While paused, e-mail a story (subject `NEWS360 STORY`, JSON in the body, images attached) - see `docs/manual_story_prompt.md`.
+Posting always runs the Instagram recent-captions duplicate check and the source fact gate first.

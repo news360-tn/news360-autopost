@@ -285,6 +285,10 @@ function processReplies() {
     var p = props_();
     var done = JSON.parse(p.getProperty('DONE_MSGS') || '[]');
     var allowed = allowedSenders_();
+    try { processManual_(p, done, allowed); } catch (err0) {
+      GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 PROBLEM] Manual story intake failed', String(err0));
+    }
+    done = JSON.parse(p.getProperty('DONE_MSGS') || '[]');
     var threads = GmailApp.search('subject:"NEWS360 IMAGES" newer_than:5d', 0, 30);
     threads.forEach(function (th) {
       var m = th.getFirstMessageSubject().match(/B\d{8}-\d{4}/);
@@ -304,6 +308,152 @@ function processReplies() {
   } finally {
     lock.releaseLock();
   }
+}
+
+// ------------------------------------------------------------------ MANUAL STORIES (written elsewhere, e.g. with another Claude account, sent by e-mail)
+// E-mail subject must contain  NEWS360 STORY . Body (or a .json/.txt attachment) = the story JSON, attachments = the images (png/jpg/zip).
+// One story per e-mail: all images belong to it. Several stories in one e-mail ({"stories":[...]}): name the images S1_1.png, S1_2.png, S2_1.png ...
+// The story is checked, duplicates are refused, the images are uploaded and the story is QUEUED: posting (with the Instagram duplicate check and the fact gate) is automatic.
+var MANUAL_LAST = 'மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.';
+var MANUAL_FOLLOW = 'உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏';
+
+function stripTags_(t) { return String(t || '').replace(/<[^>]+>/g, ''); }
+
+function tokens_(t) {
+  var out = {};
+  String(t || '').toLowerCase().replace(/[^஀-௿a-z0-9 ]/g, ' ').split(/\s+/).forEach(function (w) { if (w.length >= 3) out[w.slice(0, 5)] = 1; });
+  return out;
+}
+function overlap_(a, b) {
+  var ta = tokens_(a), tb = tokens_(b), n = 0, na = Object.keys(ta).length, nb = Object.keys(tb).length;
+  Object.keys(ta).forEach(function (k) { if (tb[k]) n++; });
+  return (na && nb) ? n / Math.min(na, nb) : 0;
+}
+
+function manualProblems_(st, recent) {
+  var p = [];
+  ['tamil_headline', 'english_headline', 'category', 'location', 'importance', 'post_to', 'slides_spec', 'reel_script', 'caption'].forEach(function (k) {
+    if (!st[k]) p.push('missing field: ' + k);
+  });
+  if (p.length) return p;
+  var sp = typeof st.slides_spec === 'string' ? JSON.parse(st.slides_spec) : st.slides_spec;
+  st.slides_spec = sp;
+  var sl = sp.slides || [];
+  if (sp.v !== 3) p.push('slides_spec.v must be 3');
+  if (sl.length < 3 || sl.length > 4) p.push('slides must be 3 or 4');
+  if (String(sp.hl1 || '').length > 40) p.push('hl1 longer than 40 characters');
+  if (String(sp.hl2 || '').length > 28) p.push('hl2 longer than 28 characters');
+  sl.forEach(function (s, i) {
+    if (stripTags_(s.title).length > 18) p.push('slide ' + (i + 1) + ' title longer than 18 characters');
+    var ln = s.lines || [];
+    if (ln.length < 2 || ln.length > 3) p.push('slide ' + (i + 1) + ' must have 2-3 lines');
+    ln.forEach(function (l, j) { if (stripTags_(l).length > 60) p.push('slide ' + (i + 1) + ' line ' + (j + 1) + ' longer than 60 characters'); });
+  });
+  if (['High', 'Medium', 'Low'].indexOf(st.importance) < 0) p.push('importance must be High, Medium or Low');
+  if (!/^Namakkal 360/.test(st.post_to)) p.push("post_to must start with 'Namakkal 360' (e.g. 'Namakkal 360 + Rasipuram 360 (collab)')");
+  var rs = String(st.reel_script).trim();
+  if (rs.indexOf(MANUAL_LAST) < 0) rs = rs.replace(/\s+$/, '') + ' ' + MANUAL_LAST;   // fixed closing line is added if missing
+  st.reel_script = rs;
+  if (/[0-9A-Za-z]/.test(rs.replace(MANUAL_LAST, ''))) p.push('reel_script must have no digits or English letters (write numbers in Tamil words)');
+  var wc = rs.split(/\s+/).length;
+  if (wc < 32 || wc > 62) p.push('reel_script has ' + wc + ' words, need 32-62');
+  var cap = String(st.caption);
+  if (cap.indexOf(MANUAL_FOLLOW) < 0) cap = cap.replace(/\s+$/, '') + '\n\n' + MANUAL_FOLLOW;
+  st.caption = cap;
+  var tags = cap.match(/#\S+/g) || [];
+  if (tags.length < 3 || tags.length > 5) p.push('caption needs 3-5 hashtags, has ' + tags.length);
+  if (/தினமலர்|தினத்தந்தி|தினமணி|மாலைமலர்|தினகரன்|இந்து தமிழ்|ஆதாரம்|source:|https?:|www\./i.test(JSON.stringify(st).replace(/"source":"[^"]*"/, ''))) p.push('an outlet name or link appears in the text (remove it; put the link only in the "source" field)');
+  // duplicate: same news already in the Sheet (any status) or posted earlier
+  recent.forEach(function (r) {
+    if (overlap_(st.tamil_headline, r.headline_ta) >= 0.65 || (st.source && r.source && String(st.source).trim() === String(r.source).trim())) {
+      p.push('DUPLICATE of ' + r.story_id + ' (' + r.post_status + '): ' + r.headline_ta);
+    }
+  });
+  return p;
+}
+
+function jsonFromText_(t) {
+  t = String(t || '').replace(/```(json)?/gi, '');
+  var a = t.search(/[\[{]/);
+  if (a < 0) throw new Error('no JSON found in the e-mail');
+  var open = t.charAt(a), close = open === '{' ? '}' : ']';
+  var b = t.lastIndexOf(close);
+  return JSON.parse(t.slice(a, b + 1));
+}
+
+function processManual_(p, done, allowed) {
+  var threads = GmailApp.search('subject:"NEWS360 STORY" newer_than:3d', 0, 20);
+  threads.forEach(function (th) {
+    th.getMessages().forEach(function (msg) {
+      var id = msg.getId();
+      if (done.indexOf(id) >= 0) return;
+      var from = String(msg.getFrom()).replace(/^.*<|>.*$/g, '').trim().toLowerCase();
+      if (allowed.indexOf(from) < 0) return;
+      if (!/NEWS360 STORY/i.test(msg.getSubject())) return;
+      done.push(id);
+      p.setProperty('DONE_MSGS', JSON.stringify(done.slice(-200)));
+      var report = [];
+      try { report = manualOne_(msg); } catch (err) { report = ['Could not read the e-mail: ' + err]; }
+      GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 STORY RECEIVED] ' + msg.getSubject().replace(/^(re|fwd?):\s*/i, ''),
+        report.join('\n') + '\n\nSheet: ' + SHEET_LINK);
+    });
+  });
+}
+
+function manualOne_(msg) {
+  var sh = sheet_(), report = [];
+  // JSON: body first, else a .json/.txt attachment
+  var data;
+  var body = String(msg.getPlainBody()).replace(/\r/g, '');
+  try { data = jsonFromText_(body); } catch (e1) {
+    var found = null;
+    msg.getAttachments({ includeInlineImages: false, includeAttachments: true }).forEach(function (a) {
+      if (!found && /\.(json|txt)$/i.test(a.getName())) { try { found = jsonFromText_(a.getDataAsString('UTF-8')); } catch (e2) { } }
+    });
+    if (!found) throw new Error('the story JSON was not found or is not valid JSON (' + e1 + ')');
+    data = found;
+  }
+  var stories = Array.isArray(data) ? data : (data.stories || [data]);
+  var blobs = imageBlobs_(msg).concat(driveBlobs_(msg, report));
+  blobs.sort(function (a, b) { return naturalKey_(a.getName()) < naturalKey_(b.getName()) ? -1 : 1; });
+  var recent = recent_();
+  var no = nextStoryNo_(sh), rows = [];
+  stories.forEach(function (st, idx) {
+    var label = 'Story ' + (idx + 1) + ' (' + String(st.tamil_headline || '').slice(0, 40) + ')';
+    var probs;
+    try { probs = manualProblems_(st, recent); } catch (e3) { probs = ['unreadable story: ' + e3]; }
+    var mine;
+    if (stories.length === 1) mine = blobs.slice();
+    else mine = blobs.filter(function (b) { var m = String(b.getName()).match(/(?:^|[^A-Za-z])S(\d+)[_\-. ]/i); return m && +m[1] === idx + 1; });
+    mine = mine.slice(0, 10);
+    if (mine.length < MIN_IMAGES) probs.push('only ' + mine.length + ' image(s) found, at least ' + MIN_IMAGES + ' needed (4 for a 3-slide story is ideal)');
+    if (probs.length) { report.push('NOT ADDED - ' + label + ':\n  - ' + probs.join('\n  - ')); return; }
+    no++;
+    var id = 'RN-' + no;
+    var urls = mine.map(function (b) { return uploadImage_(b, id); });
+    var row = new Array(NCOLS).fill('');
+    row[C.story_id - 1] = id;
+    row[C.researched - 1] = "'" + nowIst_();
+    row[C.published - 1] = "'" + (st.published || nowIst_());
+    row[C.headline_ta - 1] = st.tamil_headline; row[C.headline_en - 1] = st.english_headline;
+    row[C.category - 1] = st.category; row[C.location - 1] = st.location; row[C.importance - 1] = st.importance;
+    row[C.verification - 1] = st.verification || 'MANUAL - written by the owner/friend, checked by the fact gate before posting';
+    row[C.source - 1] = st.source || '';
+    row[C.caption - 1] = st.caption; row[C.email_sent - 1] = 'Manual';
+    row[C.review - 1] = 'Auto'; row[C.post_to - 1] = st.post_to; row[C.reel - 1] = 'Yes';
+    row[C.reel_script - 1] = st.reel_script;
+    row[C.slides_spec - 1] = JSON.stringify(st.slides_spec);
+    row[C.post_status - 1] = 'Queued';
+    row[C.notes - 1] = nowIst_() + ' manual story by e-mail, ' + urls.length + ' images received';
+    row[C.batch - 1] = 'MANUAL-' + Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyyMMdd-HHmm');
+    row[C.prompts - 1] = urls.map(function (u, k) { return '(manual image ' + (k + 1) + ')'; }).join('\n---\n');
+    row[C.images - 1] = JSON.stringify(urls);
+    rows.push(row);
+    recent.push({ story_id: id, headline_ta: st.tamil_headline, source: st.source || '', post_status: 'Queued' });
+    report.push('ADDED ' + id + ' - ' + label + ': ' + urls.length + ' images. Reel + carousel will be made and posted automatically in about 20-40 minutes (Instagram duplicate check and fact check run first).');
+  });
+  if (rows.length) sh.getRange(sh.getLastRow() + 1, 1, rows.length, NCOLS).setValues(rows);
+  return report;
 }
 
 function allowedSenders_() {
