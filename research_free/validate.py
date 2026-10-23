@@ -18,7 +18,19 @@ def _tags(t):
 
 
 def _digits_in(text):
-    return set(re.findall(r"\d+", text or ""))
+    t = text or ""
+    # "2,600" counts as 2600 as well
+    return set(re.findall(r"\d+", t)) | set(re.findall(r"\d+", re.sub(r"(?<=\d),(?=\d{2,3}\b)", "", t)))
+
+
+def _calendar_digits():
+    """today's / yesterday's / tomorrow's day, the month number and the year (IST): a story written today may name them"""
+    import datetime as _dt
+    now = _dt.datetime.now(_dt.timezone(_dt.timedelta(hours=5, minutes=30)))
+    out = {str(now.year), str(now.month)}
+    for k in (-2, -1, 0, 1, 2):
+        out.add(str((now + _dt.timedelta(days=k)).day))
+    return out
 
 
 def _tamil_words(t):
@@ -113,7 +125,7 @@ def validate(d, article, today_digits=("2026",)):
     if re.search(r"AI (image|generated)|AI பிரதிநிதித்துவ", blob, re.I):
         p.append("no AI-image notes allowed")
     # every number must come from the article
-    src = _digits_in(article) | set(today_digits) | {"1", "2", "3", "4", "5"}
+    src = _digits_in(article) | set(today_digits) | _calendar_digits() | {"1", "2", "3", "4", "5"}
     text = " ".join([d["tamil_headline"], d["english_headline"], _tags(json.dumps(sp, ensure_ascii=False)), cap.split("#")[0]])
     stray = sorted(n for n in _digits_in(text) if n not in src and len(n) > 0 and n not in ("0", "360"))
     if stray:
