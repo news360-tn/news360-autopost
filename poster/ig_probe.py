@@ -26,6 +26,11 @@ for page in ("rasipuram", "namakkal"):
                 except Exception as e:
                     r["insights"][met] = "ERR " + str(e)[:160]
         try:
+            q = post.ig("GET", f"{uid}/content_publishing_limit", tok, fields="quota_usage,config")
+            r["publishing_quota"] = (q.get("data") or [{}])[0]
+        except Exception as e:
+            r["publishing_quota"] = "ERR " + str(e)[:160]
+        try:
             d = post.ig("GET", f"{uid}/insights", tok, metric="reach", period="day")
             r["account_reach"] = (d.get("data") or [{}])[0].get("values")
         except Exception as e:
