@@ -135,7 +135,7 @@ DEAD = {}   # (provider, model) -> time until which it is skipped
 DEADLINE = [None]   # unix time after which no more model calls are made
 
 
-MISTRAL_MODELS = ["mistral-small-latest", "open-mistral-nemo"]
+MISTRAL_MODELS = ["mistral-small-latest"]   # open-mistral-nemo removed: 9 of 9 stories it wrote on 23 Oct had 1-7 format/number errors
 
 
 _LAST_MISTRAL = [0.0]
