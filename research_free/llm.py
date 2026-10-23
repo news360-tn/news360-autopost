@@ -270,7 +270,12 @@ def ask_claude(system, user, max_tokens=4000):
         raise RuntimeError("claude not available")
     model = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-5-5")
     CLAUDE_CALLS[0] += 1
-    body = {"model": model, "max_tokens": max_tokens, "system": system, "messages": [{"role": "user", "content": user}],
+    sysb, usr = system, user
+    cut = user.find("\n\nTODAY (IST):")
+    if cut > 500:      # the rules + the few-shot examples are identical for every story: send them as a cached block (cache reads cost ~10%)
+        sysb = [{"type": "text", "text": system}, {"type": "text", "text": user[:cut], "cache_control": {"type": "ephemeral"}}]
+        usr = user[cut:].lstrip()
+    body = {"model": model, "max_tokens": max_tokens, "system": sysb, "messages": [{"role": "user", "content": usr}],
             "thinking": {"type": "disabled"}}      # thinking tokens ate the whole answer budget (stop_reason=max_tokens, empty JSON) and cost money
     hdr = {"x-api-key": os.environ["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01", "content-type": "application/json"}
     r = requests.post("https://api.anthropic.com/v1/messages", headers=hdr, json=body, timeout=120)

@@ -85,7 +85,7 @@ def write(art, today):
             break
     if (best is None or best[2]) and llm.claude_available():       # free models could not give a clean draft: let Claude rewrite it (max 2 tries)
         errs = best[2] if best else None
-        for k in range(2):
+        for k in range(3):
             try:
                 d, model = llm.ask_claude(SYSTEM, prompt(art, today, errs), max_tokens=5000)
                 d = _norm(_obj(d))
