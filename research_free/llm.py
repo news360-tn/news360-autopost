@@ -270,10 +270,13 @@ def ask_claude(system, user, max_tokens=4000):
         raise RuntimeError("claude not available")
     model = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-5-5")
     CLAUDE_CALLS[0] += 1
-    r = requests.post("https://api.anthropic.com/v1/messages",
-                      headers={"x-api-key": os.environ["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01", "content-type": "application/json"},
-                      json={"model": model, "max_tokens": max_tokens, "system": system,
-                            "messages": [{"role": "user", "content": user}]}, timeout=120)
+    body = {"model": model, "max_tokens": max_tokens, "system": system, "messages": [{"role": "user", "content": user}],
+            "thinking": {"type": "disabled"}}      # thinking tokens ate the whole answer budget (stop_reason=max_tokens, empty JSON) and cost money
+    hdr = {"x-api-key": os.environ["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01", "content-type": "application/json"}
+    r = requests.post("https://api.anthropic.com/v1/messages", headers=hdr, json=body, timeout=120)
+    if r.status_code == 400 and "thinking" in r.text.lower():
+        body.pop("thinking"); body["max_tokens"] = max(max_tokens, 12000)
+        r = requests.post("https://api.anthropic.com/v1/messages", headers=hdr, json=body, timeout=120)
     if r.status_code >= 400:
         raise RuntimeError(f"anthropic {r.status_code} {r.text[:200]}")
     j = r.json()
