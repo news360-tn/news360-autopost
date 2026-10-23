@@ -1,20 +1,20 @@
-writing [N]: 5 மாதங்களில் பயன்பாட்டுக்கு வரும் நாமக்கல் சுற்றுவட்டச் சாலை
+writing [N]: பாம்பன் கடற்கரைக்கு படகில் வந்த இலங்கையை சேர்ந்த 3 பேர் கைது
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.8-flash
 fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.7-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
@@ -35,67 +35,35 @@ switching away from mistral/mistral-small-latest for 10 min
 fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
 free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  slide 1 line 1 longer than 60 characters
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  scenes must be 5 (slides + 1), got 4
+  not grounded: location 'ராமநாதபுரம்' is not in the article
 ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.8-flash
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-ok groq/openai/gpt-oss-120b
-factcheck by groq/openai/gpt-oss-120b: 0 problems
-claude rewrite 2 anthropic/claude-haiku-5-5: 0 problems
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-ok groq/qwen/qwen3.8-27b
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-ok groq/qwen/qwen3.8-27b
-factcheck by groq/qwen/qwen3.8-27b: 2 problems
-  Slide 1, Line 3 claims the road works are 'almost completed' (கிட்டத்தட்ட நிறைவு) in Namakkal city, which is an invented summary not supported by the article; the article specifies that only the railway bridge section is pending while other sections are at 80-90%.
-  Slide 2, Line 3 states the work towards Karur National Highway is 80% complete, but the article states the work from the completed sections (up to Thiruchchi road) towards Karur via Lathuvadi/Vallipuram is 80% complete, implying the 80% figure applies to the specific stretch being built, not the entire route to Karur which includes the pending bridge.
-proofread rejected (2 problems)
-  fact-check: Slide 1, Line 3 claims the road works are 'almost completed' (கிட்டத்தட்ட நிறைவு) in Namakkal city, which is an invented summary not supported by the article; the article specifies that only the railway bridge section is pending while other sections are at 80-90%.
-  fact-check: Slide 2, Line 3 states the work towards Karur National Highway is 80% complete, but the article states the work from the completed sections (up to Thiruchchi road) towards Karur via Lathuvadi/Vallipuram is 80% complete, implying the 80% figure applies to the specific stretch being built, not the entire route to Karur which includes the pending bridge.
-writing [N]: பாம்பன் கடற்கரைக்கு படகில் வந்த இலங்கையை சேர்ந்த 3 பேர் கைது
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
 fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
 fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  slide 3 line 1 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  slide 3 line 1 longer than 60 characters
+dead for this round: groq/openai/gpt-oss-120b
+ok groq/qwen/qwen3.8-27b
+factcheck by groq/qwen/qwen3.8-27b: 2 problems
+  Slide 2 claims that the three arrested Sri Lankans are from Kandy, Trincomalee, and Batticaloa, but the article states that only two (Mohamed Khan and Mohamed Ashik) are from Trincomalee and Batticaloa respectively; the third (Darshan) is from Kandy but was not arrested (he is the one who arranged the trip and was in Namakkal).
+  Slide 2 states 'Darshan, who lived in Namakkal district, is one of them' (referring to the arrested group), which is factually incorrect as Darshan was not among the four people arrested on the beach; he was the contact person residing in Namakkal who arranged the transport.
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  fact-check: Slide 2 claims that the three arrested Sri Lankans are from Kandy, Trincomalee, and Batticaloa, but the article states that only two (Mohamed Khan and Mohamed Ashik) are from Trincomalee and Batticaloa respectively; the third (Darshan) is from Kandy but was not arrested (he is the one who arranged the trip and was in Namakkal).
+  fact-check: Slide 2 states 'Darshan, who lived in Namakkal district, is one of them' (referring to the arrested group), which is factually incorrect as Darshan was not among the four people arrested on the beach; he was the contact person residing in Namakkal who arranged the transport.
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
   scenes must be 5 (slides + 1), got 4
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok groq/qwen/qwen3.8-27b
 proofread by groq/qwen/qwen3.8-27b: 1 problems
-earlier stories still waiting for images: []
+earlier stories still waiting for images: ['RN-64']
 instagram check: 65 recent posts read from both pages
 source dinamalar list: 8 items
-source google 'நாமக்கல்': 64 items
+source google 'நாமக்கல்': 36 items
 source bing 'நாமக்கல்': 12 items
 source google 'ராசிபுரம்': 8 items
 source bing 'ராசிபுரம்': 12 items
@@ -119,7 +87,7 @@ source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 2 items
 source google 'எருமப்பட்டி': 2 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 47 items
+source google 'நாமக்கல் மாவட்டம்': 46 items
 source bing 'நாமக்கல் மாவட்டம்': 12 items
 source google 'நாமக்கல் முட்டை விலை': 5 items
 source bing 'நாமக்கல் முட்டை விலை': 11 items
@@ -135,19 +103,19 @@ source google என்டிடிவி தமிழ் 'ராசிபுர
 source bing என்டிடிவி தமிழ் 'ராசிபுரம்': 0 items
 source google என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
 source bing என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
-source google மாலைமலர் 'நாமக்கல்': 17 items
+source google மாலைமலர் 'நாமக்கல்': 18 items
 source bing மாலைமலர் 'நாமக்கல்': 12 items
 source google மாலைமலர் 'ராசிபுரம்': 1 items
 source bing மாலைமலர் 'ராசிபுரம்': 2 items
 source google மாலைமலர் 'திருச்செங்கோடு': 0 items
 source bing மாலைமலர் 'திருச்செங்கோடு': 1 items
-source google தினத்தந்தி 'நாமக்கல்': 9 items
+source google தினத்தந்தி 'நாமக்கல்': 10 items
 source bing தினத்தந்தி 'நாமக்கல்': 12 items
 source google தினத்தந்தி 'ராசிபுரம்': 2 items
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
 source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்': 29 items
+source google தினமணி 'நாமக்கல்': 28 items
 source bing தினமணி 'நாமக்கல்': 12 items
 source google தினமணி 'ராசிபுரம்': 3 items
 source bing தினமணி 'ராசிபுரம்': 5 items
@@ -197,7 +165,7 @@ source google சமயம் தமிழ் 'திருச்செங்க
 source bing சமயம் தமிழ் 'திருச்செங்கோடு': 9 items
 source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
-source google தினமலர் 'ராசிபுரம்': 18 items
+source google தினமலர் 'ராசிபுரம்': 20 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
 source google தினமலர் 'திருச்செங்கோடு': 10 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
@@ -243,21 +211,21 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 960 items -> 513 different news (20 Rasipuram)
+all sources: 934 items -> 510 different news (19 Rasipuram)
 Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: not Namakkal district news (state-wide /=129, old=121, checked earlier=117, collected=79, already filed=39, checked earlier=24, checked earlier=2, checked earlier=1, checked earlier=1
-to write: 0 Rasipuram + 79 other district candidates (max 12 + 12 stories)
+candidate filter: not Namakkal district news (state-wide /=133, checked earlier=124, old=119, collected=61, already filed=41, checked earlier=26, checked earlier=4, checked earlier=1, checked earlier=1
+to write: 0 Rasipuram + 61 other district candidates (max 12 + 12 stories)
 NOT filed (N) பாம்பன் கடற்கரைக்கு படகில் வந்த இலங்கையை சேர்ந்த 3: would be wrong/unclear: scenes must be 5 (slides + 1), got 4
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 12 + 12)
-All News sheet: {"ok":true,"added":2,"updated":58}
-All News sheet: {"ok":true,"added":6,"updated":54}
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 12 + 12)
 All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":4,"updated":56}
-All News sheet: {"ok":true,"added":3,"updated":57}
-All News sheet: {"ok":true,"added":4,"updated":56}
-All News sheet: {"ok":true,"added":7,"updated":53}
-All News sheet: {"ok":true,"added":5,"updated":55}
-All News sheet: {"ok":true,"added":0,"updated":33} 
-stories: 1
-bridge: 200 {"ok":true,"added":1,"auto_queued":0,"emailed":1,"reoffered":0,"batch":"B20261023-2140","first":"RN-64"}
+All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":14,"updated":46}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":1,"updated":29} 
+stories: 0
+reoffer: 200 {"ok":true,"offered":1,"batch":"B20261023-2205"}
