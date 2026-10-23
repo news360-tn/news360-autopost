@@ -646,7 +646,7 @@ def still_needed(sid, page, kind):
     return LABEL[page] not in (r.get("reel_link") or "")
 
 
-SOFT_CAP = int(os.environ.get("DAILY_CAP", "90"))     # owner: no small daily limit - everything available is posted; Instagram allows 100 API posts per 24 h, so only from the 90th post only High news goes out (last 10 kept in reserve)
+SOFT_CAP = int(os.environ.get("DAILY_CAP", "40"))     # Instagram stops each page at 50 API posts per 24 h (its quota API says 100 but Namakkal 360 stopped at 50): everything is posted until 40, the last 10 are kept for High news
 USED = {}
 
 
