@@ -11,9 +11,14 @@ EX = json.loads((HERE / "examples.json").read_text(encoding="utf-8"))
 IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 
 
+EXTRA = [""]      # extra instruction for one run (e.g. rewrite.py: the exact number of images that already exist)
+
+
 def prompt(art, today, errors=None):
     shots = "\n\n".join(f"EXAMPLE ARTICLE:\n{e['article']}\nEXAMPLE OUTPUT:\n{json.dumps(e['output'], ensure_ascii=False)}" for e in EX)
     u = f"{shots}\n\nTODAY (IST): {today}\n\nNOW WRITE THE OUTPUT FOR THIS ARTICLE (facts only from this text):\nHEADLINE: {art['title']}\nPUBLISHED: {art['published']}\nARTICLE:\n{art['text'][:6000]}"
+    if EXTRA[0]:
+        u += "\n\n" + EXTRA[0]
     try:
         import learned
         h = learned.hints()
