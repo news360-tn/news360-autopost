@@ -331,7 +331,7 @@ def main():
                 n["status"] = "already filed"
     for n in news:
         st = state.get(n["key"], {})
-        if st.get("s") in ("filed", "dup", "notext", "old") or st.get("n", 0) >= 3:
+        if st.get("s") in ("filed", "dup", "notext", "old", "notdistrict") or st.get("n", 0) >= 3:
             n["status"] = n["status"] if n["status"] != "collected" else "checked earlier: " + st.get("s", "failed")
     queues = {"R": [], "N": []}
     for n in sorted(news, key=lambda x: -x["score"]):
@@ -395,6 +395,9 @@ def main():
                 continue
             if not fresh(art["published"]):
                 n["status"], stt["s"] = "old", "old"
+                continue
+            if not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:1500])) and n.get("via", "") != "dinamalar-list":
+                n["status"], stt["s"] = "not Namakkal district news (article names no Namakkal place)", "notdistrict"
                 continue
             if any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched")) for r in recent):
                 n["status"], stt["s"] = "already filed", "dup"

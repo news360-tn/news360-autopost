@@ -60,18 +60,30 @@ WEATHER_FORECAST = ["மழை எச்சரிக்கை", "மஞ்சள
 RASI_NEAR = ["சேந்தமங்கலம்", "எருமப்பட்டி", "புதுச்சத்திரம்", "பட்டணம்", "ஆர்.புதுப்பட்டி", "முள்ளுக்குறிச்சி", "மோகனூர்", "ஆத்தூர்", "கொல்லிமலை"]
 
 
+# Tamil joins a place name to its ending (சேந்தமங்கலம் -> சேந்தமங்கலத்தில், திருச்செங்கோடு -> திருச்செங்கோட்டில்), so match the stems too
+PLACE_STEMS = [w[:-1] if w.endswith("ம்") else w for w in NAMAKKAL_WORDS if not w.isascii()] + [
+    "திருச்செங்கோட்", "ராசிபுரத்", "குமாரபாளையத்", "பள்ளிபாளையத்", "ப.வேலூ", "ப.வேலு", "பொத்தனூ", "பொத்தனு", "தும்மங்குறிச்சி", "பேளுக்குறிச்சி",
+    "தலைமலை", "கபிலக்குறிச்சி", "அணியாபுரம்", "ஆண்டகளூர்", "பிள்ளாநல்லுார்", "பரமத்தி", "சீராப்பள்ளி", "மல்லசமுத்திர", "நாமகிரிப்பேட்", "வெண்ணந்துார்"]
+
+
+def has_place(text):
+    return any(w in (text or "") for w in PLACE_STEMS) or any(w in (text or "") for w in NAMAKKAL_WORDS if w.isascii())
+
+
 def outside_district(text, via=""):
-    """True when the headline is NOT Namakkal-district news. A headline is kept only if it names a Namakkal-district place (or is the
-    Namakkal egg-price news, or comes from a Namakkal-only listing); state-wide / multi-district / national news and weather forecasts are dropped."""
+    """True when the headline is clearly NOT Namakkal-district news: state-wide / multi-district / national news, weather forecasts, or a headline
+    that names another place and none of ours. A headline that names no place at all is KEPT (many local reports omit it) - the article itself
+    is checked for a Namakkal place before anything is written (collect.py)."""
+    text = text or ""
     if any(w in text for w in ALWAYS_OUTSIDE) or any(w in text for w in WEATHER_FORECAST):
         return True
-    if any(w in text for w in NAMAKKAL_WORDS):
+    if has_place(text):
         return False
     if via == "dinamalar-list":
         return False
     if "முட்டை" in text and any(w in text for w in ("விலை", "கொள்முதல்")):
         return False          # Namakkal is the egg-price centre; the daily rate is local news
-    return True
+    return any(w in text for w in OUTSIDE_WORDS)
 
 
 def area_of(text, default="N"):
