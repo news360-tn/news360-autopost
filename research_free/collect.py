@@ -108,6 +108,36 @@ def save_state(st):
     (ARCHIVE / "state.json").write_text(json.dumps(st, ensure_ascii=False), encoding="utf-8")
 
 
+EARLY_N = int(os.environ.get("EARLY_EMAIL_AFTER", "4"))   # the first email (images needed) goes out as soon as this many stories are written
+
+
+def assign_carousel(group):
+    """reels carry the reach; a carousel only for the most promising story in every CAROUSEL_EVERY per area (High importance always gets one)"""
+    for a in ("R", "N"):
+        grp = sorted([x for x in group if x.get("_area") == a], key=lambda x: -x["_score"])
+        top = max(1, -(-len(grp) // CAROUSEL_EVERY)) if grp else 0
+        for i, x in enumerate(grp):
+            x["slides_spec"]["carousel"] = i < top or str(x.get("importance", "")).strip() == "High"
+
+
+def send_batch(group, log=None):
+    """write these stories to the Sheet and send ONE images-needed email for them; returns True when the bridge accepted them"""
+    if not group or not BRIDGE_URL or DRY:
+        return False
+    assign_carousel(group)
+    clean = [{k: v for k, v in x.items() if not k.startswith("_")} for x in group]
+    try:
+        r = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": clean}), timeout=180)
+        print("bridge:", r.status_code, r.text[:300])
+        r.raise_for_status()
+        return True
+    except Exception as e:
+        print("bridge failed:", e)
+        if log is not None:
+            log.append(f"addStories failed: {e}")
+        return False
+
+
 def file_story(art, res, errors_log, recent):
     """quality gate for one written story; returns the story dict, or (None, reason)"""
     if isinstance(res, Exception):
@@ -153,6 +183,7 @@ def main():
     seen_src = {r.get("source") for r in recent}
     today = datetime.datetime.now(IST).strftime("%A %d %B %Y")
     out, log = [], []
+    sent_n = [0]      # stories already sent in the early email
     state = load_state()
     news = allnews.collect(log)                                   # EVERY item from every source
     for n in news:
@@ -234,6 +265,9 @@ def main():
                 target["N"] = max(0, target["N"] - 1)
             story["_area"], story["_score"] = area, n["score"]
             out.append(story)
+            if not sent_n[0] and len(out) >= EARLY_N and send_batch(out, log):
+                sent_n[0] = len(out)
+                log.append(f"early email: first {sent_n[0]} stories sent, the rest follow in a second email")
             recent.append({"headline_ta": story["tamil_headline"], "source": art["url"]})
             n["status"], n["story"], stt["s"] = "filed", story["tamil_headline"], "filed"
             done[area] += 1
@@ -247,14 +281,8 @@ def main():
                 queues[a] = keep
         if not progressed:
             break
-    # reels carry the reach; a carousel only for the most promising story in every CAROUSEL_EVERY (High importance always gets one)
-    for a in ("R", "N"):
-        grp = sorted([x for x in out if x.get("_area") == a], key=lambda x: -x["_score"])
-        top = max(1, -(-len(grp) // CAROUSEL_EVERY)) if grp else 0
-        for i, x in enumerate(grp):
-            x["slides_spec"]["carousel"] = i < top or str(x.get("importance", "")).strip() == "High"
-    for x in out:
-        x.pop("_area", None); x.pop("_score", None)
+    rest = out[sent_n[0]:]
+    assign_carousel(rest)
     log.append(f"carousel for {sum(1 for x in out if x['slides_spec'].get('carousel'))} of {len(out)} stories, the rest reel only")
     log.append(f"filed: {done['R']} Rasipuram + {done['N']} Namakkal (targets {MAX_RASIPURAM} + {MAX_NAMAKKAL})")
     for n in news:
@@ -288,10 +316,9 @@ def main():
     Path(HERE / "results").mkdir(exist_ok=True)
     (HERE / "results" / "collect.json").write_text(json.dumps({"log": log, "llm": llm.LOG, "stories": out}, ensure_ascii=False, indent=1), encoding="utf-8")
     print("\n".join(log), f"\nstories: {len(out)}")
-    if out and not DRY:
-        r = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": out}), timeout=180)
-        print("bridge:", r.status_code, r.text[:300])
-        r.raise_for_status()
+    if rest and not DRY:
+        if not send_batch(rest, log):
+            raise RuntimeError("addStories failed for the final batch")
     elif not out and not DRY and os.environ.get("NO_NEWS_EMAIL", "") in ("1", "true", "yes"):
         # tell the owner why there is no email with prompts this time (never fails the run)
         try:
