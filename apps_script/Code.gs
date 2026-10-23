@@ -579,8 +579,10 @@ function addStories_(b) {
     if (!made) items.push({ id: id, ta: st.tamil_headline, en: st.english_headline, post_to: st.post_to, importance: st.importance, post_time: st.post_time, prompts: prompts });
   });
   sh.getRange(sh.getLastRow() + 1, 1, rows.length, NCOLS).setValues(rows);
+  var again = reofferItems_(b.reoffer_ids, batch);       // stories of earlier rounds that still wait for images go into the same e-mail
+  items = again.concat(items);
   if (items.length) sendPromptEmail_(batch, items);
-  return { ok: true, added: rows.length, auto_queued: auto, emailed: items.length, batch: batch, first: 'RN-' + (no - rows.length + 1) };
+  return { ok: true, added: rows.length, auto_queued: auto, emailed: items.length, reoffered: again.length, batch: batch, first: 'RN-' + (no - rows.length + 1) };
 }
 
 
@@ -615,14 +617,14 @@ function sendPromptEmail_(batch, items) {
   GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 IMAGES NEEDED] ' + batch + ' - ' + items.length + ' stories - ' + total + ' images', body);
 }
 
-/** body: {ids:["RN-24",...]} Stories that are NOT posted yet go back to "Awaiting images" under ONE new batch, with ONE new email + prompt file. */
-function reoffer_(b) {
+/** Puts the given stories (not posted yet) back to "Awaiting images" under the batch id and returns the e-mail items for them. */
+function reofferItems_(ids, batch) {
   var sh = sheet_();
   var want = {};
-  (b.ids || []).forEach(function (x) { want[x] = true; });
+  (ids || []).forEach(function (x) { want[x] = true; });
   var last = sh.getLastRow();
+  if (last < 2) return [];
   var data = sh.getRange(2, 1, last - 1, NCOLS).getValues();
-  var batch = 'B' + Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyyMMdd-HHmm');
   var items = [];
   for (var i = 0; i < data.length; i++) {
     var r = rowObj_(data[i], i + 2);
@@ -633,10 +635,16 @@ function reoffer_(b) {
     sh.getRange(r.row, C.post_status).setValue('Awaiting images');
     sh.getRange(r.row, C.images).setValue('');
     sh.getRange(r.row, C.batch).setValue(batch);
-    sh.getRange(r.row, C.researched).setValue("'" + nowIst_());
-    appendNote_(sh, r.row, r.notes, nowIst_() + ' new images requested (batch ' + batch + ')');
+    appendNote_(sh, r.row, r.notes, nowIst_() + ' images asked again (batch ' + batch + ')');
     items.push({ id: r.story_id, ta: r.headline_ta, en: r.headline_en, post_to: r.post_to, importance: r.importance, post_time: 'right after your reply', prompts: prompts });
   }
+  return items;
+}
+
+/** body: {ids:["RN-24",...]} Stories that are NOT posted yet go back to "Awaiting images" under ONE new batch, with ONE new email + prompt file. */
+function reoffer_(b) {
+  var batch = 'B' + Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyyMMdd-HHmm');
+  var items = reofferItems_(b.ids, batch);
   if (!items.length) return { ok: true, offered: 0 };
   sendPromptEmail_(batch, items);
   return { ok: true, offered: items.length, batch: batch };

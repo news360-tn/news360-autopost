@@ -1,10 +1,9 @@
 name: research-free
-# every 3 hours. Story-writing rounds (they email the image prompts) run 1 hour before each best-time posting window:
-# IST 04:30, 10:30, 16:30. The other rounds (IST 07:30, 13:30, 19:30, 22:30) only collect and store all news - no email.
+# every 3 hours (IST 05:30, 08:30, 11:30, 14:30, 17:30, 20:30; often a little late). Every round collects, writes the new stories
+# (quality-checked) and sends ONE images-needed e-mail - only when there is news. Stories still waiting for images from an earlier round are listed again in it.
 on:
   schedule:
-    - cron: "0 23,5,11 * * *"
-    - cron: "0 2,8,14,17 * * *"
+    - cron: "0 0,3,6,9,12,15 * * *"
   workflow_dispatch:
     inputs:
       dry:
@@ -44,7 +43,7 @@ jobs:
           CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
           CLOUDINARY_PRESET: ${{ secrets.CLOUDINARY_PRESET }}
           BUDGET_MIN: "55"
-          WRITE_STORIES: ${{ github.event.schedule == '0 2,8,14,17 * * *' && '0' || '1' }}
+          WRITE_STORIES: '1'
         run: |
           mkdir -p research_free/results
           FLAG=""; [ "${{ github.event.inputs.dry }}" = "true" ] && FLAG="--dry"

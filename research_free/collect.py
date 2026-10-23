@@ -183,6 +183,32 @@ def make_images(group, log=None):
         log.append(f"auto images: {sum(1 for x in group if x.get('images'))} of {len(group)} stories ({imagegen.USED})")
 
 
+def pending_ids(max_hours=24):
+    """stories of earlier rounds still waiting for the owner's images (not older than a day): they are listed again in this round's e-mail"""
+    if not BRIDGE_URL or DRY:
+        return []
+    try:
+        rows = bridge("recent").get("rows", [])
+    except Exception as e:
+        print("pending list not available:", e)
+        return []
+    out, now = [], datetime.datetime.now(IST)
+    mon = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+    for r in rows:
+        if str(r.get("post_status", "")).strip() != "Awaiting images":
+            continue
+        m = re.search(r"(\d{1,2}) (\w{3}) (\d{4}), (\d{1,2}):(\d{2})", str(r.get("researched", "")))
+        if not m or m.group(2).lower() not in mon:
+            continue
+        t = datetime.datetime(int(m.group(3)), mon.index(m.group(2).lower()) + 1, int(m.group(1)), int(m.group(4)), int(m.group(5)), tzinfo=IST)
+        if (now - t).total_seconds() <= max_hours * 3600:
+            out.append(r["story_id"])
+    return out
+
+
+REOFFER = []
+
+
 def send_batch(group, log=None):
     """write these stories to the Sheet and send ONE images-needed email for them; returns True when the bridge accepted them"""
     if not group or not BRIDGE_URL or DRY:
@@ -191,7 +217,7 @@ def send_batch(group, log=None):
     make_images(group, log)           # free AI image API; stories whose images could not all be made stay on the images-needed email
     clean = [{k: v for k, v in x.items() if not k.startswith("_")} for x in group]
     try:
-        r = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": clean}), timeout=180)
+        r = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": clean, "reoffer_ids": REOFFER}), timeout=180)
         print("bridge:", r.status_code, r.text[:300])
         r.raise_for_status()
         return True
@@ -251,6 +277,8 @@ def main():
     out, log = [], []
     sent_n = [0]      # stories already sent in the early email
     state = load_state()
+    REOFFER[:] = pending_ids()
+    log.append(f"earlier stories still waiting for images: {REOFFER}")
     news = allnews.collect(log)                                   # EVERY item from every source
     for n in news:
         n["score"] = score(n)
@@ -405,6 +433,12 @@ def main():
     if rest and not DRY:
         if not send_batch(rest, log):
             raise RuntimeError("addStories failed for the final batch")
+    elif not out and REOFFER and not DRY:
+        try:      # no new story, but earlier stories still wait for images: ask for those again
+            rr = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "reoffer", "ids": REOFFER}), timeout=180)
+            print("reoffer:", rr.status_code, rr.text[:200])
+        except Exception as e:
+            print("reoffer failed:", e)
     elif not out and not DRY and os.environ.get("NO_NEWS_EMAIL", "") in ("1", "true", "yes"):
         # tell the owner why there is no email with prompts this time (never fails the run)
         try:

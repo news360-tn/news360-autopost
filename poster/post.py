@@ -191,7 +191,7 @@ def set_started(row, now=None):
     """Every story belongs to the posting set (morning / afternoon / evening) it was written for: the first start time that is not
     earlier than 90 min before it was filed. From that start time on it posts as soon as it is ready - a late image reply is posted at
     once, it never waits for (or is pushed into) the next set. Manual runs ignore this."""
-    if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
+    if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch" or True:     # owner (23 Oct): no fixed posting times - a story posts the moment its images are in
         return True
     from datetime import datetime, timedelta, timezone
     starts = _starts()
