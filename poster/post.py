@@ -284,6 +284,7 @@ def final_caption(row):
     sys.path.insert(0, str(REEL))
     from digits import to_digits
     cap = to_digits((row.get("caption") or "").strip())
+    cap = "\n".join(l for l in cap.split("\n") if "கமெண்டி" not in l)      # owner: never ask people to comment
     # Instagram allows at most 5 hashtags: keep #Namakkal360 + the first 4 others, as ONE line at the end
     tags, seen = [], set()
     for t in [TAG] + re.findall(r"#[^\s#]+", cap):
