@@ -209,7 +209,7 @@ def main():
             n["status"] = n["status"] if n["status"] != "collected" else "checked earlier: " + st.get("s", "failed")
     queues = {"R": [], "N": []}
     for n in sorted(news, key=lambda x: -x["score"]):
-        if n["status"] == "collected" and n["area"] == "N" and allnews.outside_district(n["title"]):
+        if n["status"] == "collected" and n["area"] == "N" and allnews.outside_district(n["title"], n.get("via", "")):
             n["status"] = "not Namakkal district news (state-wide / other district)"
             continue
         if n["status"] == "collected" and fresh(n["published"]):

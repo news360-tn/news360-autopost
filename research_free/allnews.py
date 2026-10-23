@@ -56,13 +56,18 @@ WEATHER_FORECAST = ["மழை எச்சரிக்கை", "மஞ்சள
                     "கனமழை பெய்யும்", "கனமழைக்கு வாய்ப்பு", "காற்றழுத்த", "புயல் உருவாக", "வளிமண்டல", "பள்ளிகளுக்கு விடுமுறை"]
 
 
-def outside_district(text):
-    """True when the headline is not Namakkal-district news: state-wide / other-district / national, or a weather forecast"""
+def outside_district(text, via=""):
+    """True when the headline is NOT Namakkal-district news. A headline is kept only if it names a Namakkal-district place (or is the
+    Namakkal egg-price news, or comes from a Namakkal-only listing); state-wide / multi-district / national news and weather forecasts are dropped."""
     if any(w in text for w in ALWAYS_OUTSIDE) or any(w in text for w in WEATHER_FORECAST):
         return True
     if any(w in text for w in NAMAKKAL_WORDS):
         return False
-    return any(w in text for w in OUTSIDE_WORDS)
+    if via == "dinamalar-list":
+        return False
+    if "முட்டை" in text and any(w in text for w in ("விலை", "கொள்முதல்")):
+        return False          # Namakkal is the egg-price centre; the daily rate is local news
+    return True
 
 
 def area_of(text, default="N"):
