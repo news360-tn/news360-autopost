@@ -248,3 +248,29 @@ def ask_json(system, user, tries_per_model=1):
                     continue
                 break
     raise RuntimeError(f"no free model answered: {last}")
+
+
+# ---- Claude (paid, optional): used only to FACT-CHECK drafts and, if the free models cannot produce a clean draft, to rewrite it. Needs ANTHROPIC_API_KEY.
+CLAUDE_CALLS = [0]
+CLAUDE_MAX = int(os.environ.get("CLAUDE_MAX_CALLS", "150"))       # cost guard per run
+
+
+def claude_available():
+    return bool(os.environ.get("ANTHROPIC_API_KEY")) and CLAUDE_CALLS[0] < CLAUDE_MAX
+
+
+def ask_claude(system, user, max_tokens=4000):
+    """returns (data, model_name); raises when the key is missing, the budget guard is hit or the API fails (the caller then falls back to the free chain)"""
+    if not claude_available():
+        raise RuntimeError("claude not available")
+    model = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-5-5")
+    CLAUDE_CALLS[0] += 1
+    r = requests.post("https://api.anthropic.com/v1/messages",
+                      headers={"x-api-key": os.environ["ANTHROPIC_API_KEY"], "anthropic-version": "2023-06-01", "content-type": "application/json"},
+                      json={"model": model, "max_tokens": max_tokens, "temperature": 0, "system": system,
+                            "messages": [{"role": "user", "content": user}]}, timeout=120)
+    if r.status_code >= 400:
+        raise RuntimeError(f"anthropic {r.status_code} {r.text[:200]}")
+    text = "".join(b.get("text", "") for b in r.json().get("content", []))
+    _log(f"ok anthropic/{model}")
+    return _json_from(text), f"anthropic/{model}"

@@ -56,8 +56,25 @@ def write(art, today):
             best = (d, model, errors, attempt)
         if not errors:
             break
+    if (best is None or best[2]) and llm.claude_available():       # free models could not give a clean draft: let Claude rewrite it (max 2 tries)
+        errs = best[2] if best else None
+        for k in range(2):
+            try:
+                d, model = llm.ask_claude(SYSTEM, prompt(art, today, errs), max_tokens=5000)
+                d = _obj(d)
+            except Exception as e:
+                print("claude rewrite failed:", str(e)[:150])
+                break
+            errs = validate(d, art["text"] + " " + art["title"])
+            if not errs:
+                errs = factcheck(d, art)
+            print(f"claude rewrite {k + 1} {model}: {len(errs)} problems", *errs, sep="\n  ")
+            if best is None or len(errs) <= len(best[2]):
+                best = (d, model, errs, MAX_ATTEMPTS + k + 1)
+            if not errs:
+                break
     if best is None:
-        raise RuntimeError("no usable answer from the free models")
+        raise RuntimeError("no usable answer from the models")
     return proofread(best, art)
 
 
@@ -68,10 +85,19 @@ Return ONLY JSON: {"ok": true or false, "problems": ["short English description 
 
 
 def factcheck(d, art):
-    """independent second call: compares the draft with the article. Returns a list of problems."""
+    """independent second call: compares the draft with the article. Claude first when ANTHROPIC_API_KEY is set, else the free chain.
+    Returns a list of problems."""
+    user = "ARTICLE:\n" + art["title"] + "\n" + art["text"][:6000] + "\n\nDRAFT:\n" + json.dumps(
+        {k: d.get(k) for k in ("tamil_headline", "reel_script", "slides_spec", "caption")}, ensure_ascii=False)
     try:
-        r, m = llm.ask_json(CHECK, "ARTICLE:\n" + art["title"] + "\n" + art["text"][:6000] + "\n\nDRAFT:\n" + json.dumps(
-            {k: d.get(k) for k in ("tamil_headline", "reel_script", "slides_spec", "caption")}, ensure_ascii=False))
+        r = None
+        if llm.claude_available():
+            try:
+                r, m = llm.ask_claude(CHECK, user)
+            except Exception as e:
+                print("claude fact-check failed, using the free chain:", str(e)[:120])
+        if r is None:
+            r, m = llm.ask_json(CHECK, user)
         r = _obj(r)
         probs = [str(x) for x in (r.get("problems") or [])]
         if r.get("ok") is False and not probs:

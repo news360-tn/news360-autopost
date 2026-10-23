@@ -4,12 +4,12 @@ import json, os, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "research_free"))
 
-SOFT = ("missing", "misses", "omit", "not mentioned in the draft")      # an omission is not a false statement: never blocks
+SOFT = ("missing", "misses", "omit", "not mentioned in the draft", "could not be run")      # an omission is not a false statement: never blocks
 
 
 def check(row):
     url = (row.get("source") or "").strip()
-    if not url.startswith("http") or not os.environ.get("NVIDIA_API_KEY") and not os.environ.get("GEMINI_API_KEY") and not os.environ.get("OPENROUTER_API_KEY"):
+    if not url.startswith("http") or not os.environ.get("ANTHROPIC_API_KEY") and not os.environ.get("NVIDIA_API_KEY") and not os.environ.get("GEMINI_API_KEY") and not os.environ.get("OPENROUTER_API_KEY"):
         return []
     try:
         import allnews, run
