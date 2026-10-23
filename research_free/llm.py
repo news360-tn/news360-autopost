@@ -131,7 +131,7 @@ def groq_models(key):
 
 
 PREFERRED = [None]
-DEAD = set()
+DEAD = {}   # (provider, model) -> time until which it is skipped
 DEADLINE = [None]   # unix time after which no more model calls are made
 
 
@@ -147,7 +147,7 @@ def chain():
         out += [("nvidia", m, _nvidia, n) for m in NVIDIA_MODELS]
     if o:
         try:
-            out += [("openrouter", m, _openrouter, o) for m in openrouter_free_models(o)[:4]]
+            out += [("openrouter", m, _openrouter, o) for m in openrouter_free_models(o)[:8]]
         except Exception as e:
             _log(f"openrouter model list failed: {e}")
     return out
@@ -160,7 +160,7 @@ def ask_json(system, user, tries_per_model=1):
     if PREFERRED[0]:
         ch.sort(key=lambda c: 0 if (c[0], c[1]) == PREFERRED[0] else 1)
     for provider, model, fn, key in ch:
-        if (provider, model) in DEAD:
+        if DEAD.get((provider, model), 0) > time.time():
             continue
         for k in range(3):
             if DEADLINE[0] and time.time() > DEADLINE[0]:
@@ -177,10 +177,14 @@ def ask_json(system, user, tries_per_model=1):
                 _log(f"fail {provider}/{model}: {msg[:120]}")
                 low = msg.lower()
                 if " 429" in msg and ("perday" in low or "per day" in low or "daily" in low or "limit: 0" in low or "tokens per day" in low):
-                    DEAD.add((provider, model))      # daily quota is gone: do not waste the round waiting on it
+                    DEAD[(provider, model)] = time.time() + 6 * 3600      # daily quota is gone: skip it for the rest of the round
                     _log(f"dead for this round: {provider}/{model}")
                     break
                 if " 413" in msg or "request too large" in low:
+                    break
+                if k >= 1 and (" 429" in msg or " 503" in msg):
+                    DEAD[(provider, model)] = time.time() + 600     # still limited after a retry: switch to the next model for 10 min
+                    _log(f"switching away from {provider}/{model} for 10 min")
                     break
                 if k < 2 and (" 503" in msg or " 429" in msg) and provider != "openrouter":
                     time.sleep(15 + 15 * k)      # per-minute free limits reset quickly; wait instead of falling to a weaker model
