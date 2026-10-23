@@ -135,11 +135,26 @@ DEAD = {}   # (provider, model) -> time until which it is skipped
 DEADLINE = [None]   # unix time after which no more model calls are made
 
 
+MISTRAL_MODELS = ["mistral-large-latest", "mistral-small-latest"]
+
+
+def _mistral(model, system, user, key):
+    r = requests.post("https://api.mistral.ai/v1/chat/completions", headers={"Authorization": f"Bearer {key}"},
+                      json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
+                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=90)
+    if r.status_code != 200:
+        raise RuntimeError(f"mistral {model} {r.status_code}: {r.text[:700]}")
+    return r.json()["choices"][0]["message"]["content"]
+
+
 def chain():
     out = []
     g, q, o = os.environ.get("GEMINI_API_KEY"), os.environ.get("GROQ_API_KEY"), os.environ.get("OPENROUTER_API_KEY")
     if g:
         out += [("gemini", m, _gemini, g) for m in gemini_models(g)]
+    mk = os.environ.get("MISTRAL_API_KEY")
+    if mk:
+        out += [("mistral", m, _mistral, mk) for m in MISTRAL_MODELS]
     if q:
         out += [("groq", m, _groq, q) for m in groq_models(q)]
     n = os.environ.get("NVIDIA_API_KEY")
