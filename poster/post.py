@@ -643,11 +643,43 @@ def still_needed(sid, page, kind):
     return LABEL[page] not in (r.get("reel_link") or "")
 
 
+LIMIT = {}      # page -> True once Instagram's 24-hour publishing limit (50 posts per account) is reached
+
+
+def is_limit_error(e):
+    t = str(e).lower()
+    return "2207042" in t or "publish limit" in t or "publishing limit" in t or "maximum number of" in t and "posts" in t
+
+
+def limit_reached(page):
+    """True when this page already used its 50 API posts of the last 24 h. The only reason a prepared story is held back (it is posted later,
+    nothing is marked failed)."""
+    if page in LIMIT:
+        return LIMIT[page]
+    LIMIT[page] = False
+    if DRY:
+        return False
+    try:
+        token = bridge_get("token", page=page)["token"]
+        uid, _ = ig_account(token)
+        d = ig("GET", f"{uid}/content_publishing_limit", token, fields="quota_usage,config")
+        row = (d.get("data") or [{}])[0]
+        used, total = int(row.get("quota_usage", 0)), int((row.get("config") or {}).get("quota_total", 50) or 50)
+        log(f"publishing quota {page}: {used}/{total}")
+        LIMIT[page] = used >= total
+    except Exception as e:
+        log("quota check failed (posting goes on):", e)
+    return LIMIT[page]
+
+
 def run_story(row):
     """every page named in post_to gets its own carousel + reel (own logo and follow line), one page after the other"""
     done = []
     for pg in pages_of(row):
         if page_done(row, pg):
+            continue
+        if limit_reached(pg):
+            log("LIMIT: 24-hour Instagram post limit reached for", pg, "- ", row.get("story_id"), "waits")
             continue
         done += run_story_page(row, pg) or []
     return done
@@ -789,8 +821,12 @@ def run_story_page(row, page):
                 except Exception as e:
                     log("story image not made (post itself is fine):", e)
         except Exception as e:
-            log("ERROR carousel", sid, e)
-            bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "carousel", "error": str(e)[:900]})
+            if is_limit_error(e):
+                LIMIT[PAGE] = True
+                log("LIMIT: Instagram post limit hit while posting carousel", sid, "- waits, not a failure")
+            else:
+                log("ERROR carousel", sid, e)
+                bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "carousel", "error": str(e)[:900]})
     if need_reel:
         try:
             url = media["reel"]
@@ -811,8 +847,12 @@ def run_story_page(row, page):
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab_ok, "checks": note})
                 done.append(("reel", link))
         except Exception as e:
-            log("ERROR reel", sid, e)
-            bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "reel", "error": str(e)[:900]})
+            if is_limit_error(e):
+                LIMIT[PAGE] = True
+                log("LIMIT: Instagram post limit hit while posting reel", sid, "- waits, not a failure")
+            else:
+                log("ERROR reel", sid, e)
+                bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "reel", "error": str(e)[:900]})
     return done
 
 
