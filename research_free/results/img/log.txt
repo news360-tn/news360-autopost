@@ -1,1 +1,11 @@
-imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=240)
+imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=100) 504 timeout
+imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=100) 504 timeout
+imagegen: stabilityai/stable-diffusion-3-medium 404: {"status":404,"title":"Not Found","detail":"Function '1a89a4d9-bbf6-432c-95ca-4ab78fb02f28': Not found for account 'FquS_Ff0EmnZa2hqoRNoeBVRl923Sx13Li2fKm8Bqp8'"}
+Traceback (most recent call last):
+  File "/home/runner/work/news360-autopost/news360-autopost/research_free/imagegen.py", line 62, in <module>
+    data = generate(sys.argv[2] if len(sys.argv) > 2 else "Photorealistic news photo, tall vertical, a rural road in Namakkal, Tamil Nadu at dawn, police jeep parked, mist, sharp detail")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/news360-autopost/news360-autopost/research_free/imagegen.py", line 57, in generate
+    raise RuntimeError(f"all image models failed: {last}")
+RuntimeError: all image models failed: stabilityai/stable-diffusion-3-medium 404: {"status":404,"title":"Not Found","detail":"Function '1a89a4d9-bbf6-432c-95ca-4ab78fb02f28': Not found for account 'FquS_Ff0EmnZa2hqoRNoeBVRl923Sx13Li2fKm8Bqp8'"}
+exit 1
