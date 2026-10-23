@@ -9,9 +9,16 @@ import llm, sources, run, allnews
 
 IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 BRIDGE_URL, BRIDGE_KEY = os.environ.get("BRIDGE_URL", ""), os.environ.get("BRIDGE_KEY", "")
-MAX_RASIPURAM = int(os.environ.get("MAX_RASIPURAM", "5"))     # Rasipuram page: up to 5 stories per round
+def _slot_count():
+    """stories per round: morning round 12, afternoon round 8, evening round 12 (rounds run ~04:30, 10:30, 16:30 IST, often late)"""
+    h = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).hour
+    return 8 if 8 <= h < 14 else 12
+
+
+SET_NEWS = int(os.environ.get("SET_NEWS_COUNT", "0") or 0) or _slot_count()
+MAX_RASIPURAM = int(os.environ.get("MAX_RASIPURAM", "0") or 0) or SET_NEWS     # Rasipuram page: the same count per round, as far as local news exists
 CAROUSEL_EVERY = int(os.environ.get("CAROUSEL_EVERY", "5"))   # 1 carousel (best story) per 5 stories, all others reel only
-MAX_NAMAKKAL = int(os.environ.get("MAX_NAMAKKAL", "6"))       # Namakkal page: up to 6 other district stories per round
+MAX_NAMAKKAL = int(os.environ.get("MAX_NAMAKKAL", "0") or 0) or SET_NEWS       # Namakkal page: district news, same count per round
 ARCHIVE = HERE / "archive"
 DRY = "--dry" in sys.argv
 DEADLINE = time.time() + int(os.environ.get("BUDGET_MIN", "22")) * 60
@@ -108,7 +115,7 @@ def save_state(st):
     (ARCHIVE / "state.json").write_text(json.dumps(st, ensure_ascii=False), encoding="utf-8")
 
 
-EARLY_N = int(os.environ.get("EARLY_EMAIL_AFTER", "5"))   # the first email (images needed) goes out as soon as this many stories are written
+EARLY_N = int(os.environ.get("EARLY_EMAIL_AFTER", "0"))   # the first email (images needed) goes out as soon as this many stories are written
 
 
 def assign_carousel(group):
@@ -268,7 +275,7 @@ def main():
                 target["N"] = max(0, target["N"] - 1)
             story["_area"], story["_score"] = area, n["score"]
             out.append(story)
-            if not sent_n[0] and len(out) >= EARLY_N and send_batch(out, log):
+            if EARLY_N and not sent_n[0] and len(out) >= EARLY_N and send_batch(out, log):
                 sent_n[0] = len(out)
                 log.append(f"early email: first {sent_n[0]} stories sent, the rest follow in a second email")
             recent.append({"headline_ta": story["tamil_headline"], "source": art["url"]})
