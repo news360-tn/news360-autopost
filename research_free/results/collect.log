@@ -1,19 +1,15 @@
 writing [R]: கார் மோதி தூக்கிவீசப்பட்ட மூதாட்டி - அதிர்ச்சி காட்சி
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
@@ -25,15 +21,7 @@ fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
-ok gemini/gemini-3.6-flash
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
@@ -45,35 +33,105 @@ fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 ok groq/openai/gpt-oss-120b
-factcheck by groq/openai/gpt-oss-120b: 1 problems
-  Unclear/incomplete Tamil sentence in slides_spec line 2: "படுகாயமடைந்த அவர் தனியார் மருத்துவமனையில் அனுமதி" lacks a verb and is grammatically incorrect
-attempt 2 gemini/gemini-3.6-flash: 1 problems
-  fact-check: Unclear/incomplete Tamil sentence in slides_spec line 2: "படுகாயமடைந்த அவர் தனியார் மருத்துவமனையில் அனுமதி" lacks a verb and is grammatically incorrect
+attempt 1 groq/openai/gpt-oss-120b: 3 problems
+  missing key: reel_script
+  missing key: caption
+  missing key: scenes
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+ok groq/qwen/qwen3.8-27b
+attempt 2 groq/qwen/qwen3.8-27b: 1 problems
+  numbers not found in the article: 22
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+ok groq/openai/gpt-oss-120b
+attempt 3 groq/openai/gpt-oss-120b: 3 problems
+  missing key: reel_script
+  missing key: caption
+  missing key: scenes
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
@@ -115,64 +173,17 @@ fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
     "code": 429,
     "message": "You exceeded your current quota, please che
 ok groq/qwen/qwen3.8-27b
-attempt 3 groq/qwen/qwen3.8-27b: 1 problems
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-proofread skipped: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate
+proofread by groq/qwen/qwen3.8-27b: 1 problems
 writing [N]: நாமக்கல் மண்டலத்தில் 2 நாட்களில் முட்டை விலை 20 காசுகள் உயர்
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 ok groq/qwen/qwen3.8-27b
-attempt 1 groq/qwen/qwen3.8-27b: 2 problems
-  reel_script must have no digits or English letters (write numbers as Tamil words)
+attempt 1 groq/qwen/qwen3.8-27b: 1 problems
   numbers not found in the article: 23
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
@@ -214,7 +225,7 @@ fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message"
 fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
 writing [N]: 17 மாவட்டங்களில் பெரிய சம்பவம்! வானிலை ஆய்வு மையம் கொடுத்த எ
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
@@ -296,17 +307,65 @@ fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
     "message": "You exceeded your current quota, please che
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
 fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-writing [N]: தொடர் கனமழை: தென் மாவட்டங்களில் இன்று பள்ளிகளுக்கு விடுமுறை 
+writing [N]: தமிழகத்தில் மழை ஆட்டம் ஆரம்பம்! 17 மாவட்டங்களுக்கு எச்சரிக்க
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok groq/qwen/qwen3.8-27b
 attempt 1 groq/qwen/qwen3.8-27b: 1 problems
+  numbers not found in the article: 8, 9
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+writing [N]: தொடர் கனமழை: தென் மாவட்டங்களில் இன்று பள்ளிகளுக்கு விடுமுறை 
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok groq/qwen/qwen3.8-27b
+attempt 1 groq/qwen/qwen3.8-27b: 4 problems
+  hl2 longer than 28 characters
+  slide 1 line 2 longer than 60 characters
+  slide 1 line 3 longer than 60 characters
   numbers not found in the article: 23
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
@@ -350,94 +409,6 @@ writing [N]: முட்டை விலை ரூ. 5.70-ஆக நீடிப
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-ok groq/qwen/qwen3.8-27b
-attempt 1 groq/qwen/qwen3.8-27b: 1 problems
-  numbers not found in the article: 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-ok groq/qwen/qwen3.8-27b
-attempt 2 groq/qwen/qwen3.8-27b: 1 problems
-  numbers not found in the article: 23
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-ok groq/qwen/qwen3.8-27b
-attempt 3 groq/qwen/qwen3.8-27b: 1 problems
-  numbers not found in the article: 22
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-ok groq/qwen/qwen3.8-27b
-proofread by groq/qwen/qwen3.8-27b: 1 problems
-writing [N]: தமிழகத்தில் மழை ஆட்டம் ஆரம்பம்! 17 மாவட்டங்களுக்கு எச்சரிக்க
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-writing [N]: அடுத்த 2 மணி நேரம் உஷார்! திருவண்ணாமலை டூ கன்னியாகுமரி வரை..
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b
-attempt 1 groq/qwen/qwen3.8-27b: 2 problems
-  hl2 longer than 28 characters
-  slide 3 line 2 longer than 60 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-ok groq/qwen/qwen3.8-27b
-attempt 2 groq/qwen/qwen3.8-27b: 2 problems
-  slide 3 line 1 longer than 60 characters
-  numbers not found in the article: 8, 9
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
     "code": 429,
@@ -479,8 +450,6 @@ fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4
 writing [N]: காற்றழுத்தத் தாழ்வுப் பகுதிகள்.. 6 மாவட்டங்களுக்கு மிக கனமழை
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
@@ -524,8 +493,6 @@ writing [N]: இன்று சென்னைக்கு ‘மஞ்சள�
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
     "code": 429,
@@ -566,9 +533,7 @@ fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message"
 fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
 writing [N]: தமிழகத்தில் வருகிற 28-ந்தேதி வரை கனமழைக்கு வாய்ப்பு...
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
@@ -590,12 +555,212 @@ fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+ok groq/openai/gpt-oss-120b
+attempt 1 groq/openai/gpt-oss-120b: 4 problems
+  slide 2 title longer than 18 characters
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+  reel_script has 79 words; need 38-55 (short, fast reel)
+  numbers not found in the article: 23
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+writing [N]: தொடரும் கனமழை.. எந்தெந்த மாவட்டங்களுக்கு என்ன அலெர்ட்?
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+ok groq/qwen/qwen3.8-27b
+attempt 1 groq/qwen/qwen3.8-27b: 1 problems
+  slide 1 line 1 longer than 60 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+ok groq/qwen/qwen3.8-27b
+attempt 2 groq/qwen/qwen3.8-27b: 1 problems
+  slide 3 title longer than 18 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+writing [N]: புயல் உருவாக வாய்ப்பு.. மழைநேரத்தில் என்ன செய்யவேண்டும்? செய
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
 source dinamalar list: 8 items
-source google 'நாமக்கல்': 63 items
+source google 'நாமக்கல்': 60 items
 source bing 'நாமக்கல்': 12 items
 source google 'ராசிபுரம்': 9 items
 source bing 'ராசிபுரம்': 12 items
-source google 'திருச்செங்கோடு': 5 items
+source google 'திருச்செங்கோடு': 4 items
 source bing 'திருச்செங்கோடு': 12 items
 source google 'பரமத்தி வேலூர்': 0 items
 source bing 'பரமத்தி வேலூர்': 11 items
@@ -605,19 +770,19 @@ source google 'பள்ளிபாளையம்': 2 items
 source bing 'பள்ளிபாளையம்': 9 items
 source google 'சேந்தமங்கலம்': 1 items
 source bing 'சேந்தமங்கலம்': 12 items
-source google 'கொல்லிமலை': 5 items
-source bing 'கொல்லிமலை': 11 items
+source google 'கொல்லிமலை': 3 items
+source bing 'கொல்லிமலை': 12 items
 source google 'மோகனூர்': 0 items
-source bing 'மோகனூர்': 5 items
+source bing 'மோகனூர்': 4 items
 source google 'நாமகிரிப்பேட்டை': 2 items
 source bing 'நாமகிரிப்பேட்டை': 3 items
 source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 2 items
 source google 'எருமப்பட்டி': 3 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 54 items
+source google 'நாமக்கல் மாவட்டம்': 25 items
 source bing 'நாமக்கல் மாவட்டம்': 12 items
-source google 'நாமக்கல் முட்டை விலை': 8 items
+source google 'நாமக்கல் முட்டை விலை': 7 items
 source bing 'நாமக்கல் முட்டை விலை': 11 items
 source google நியூஸ்7 தமிழ் 'நாமக்கல்': 7 items
 source bing நியூஸ்7 தமிழ் 'நாமக்கல்': 9 items
@@ -657,7 +822,7 @@ source google இந்து தமிழ் 'திருச்செங்க
 source bing இந்து தமிழ் 'திருச்செங்கோடு': 0 items
 source google தினகரன் 'நாமக்கல்': 100 items
 source bing தினகரன் 'நாமக்கல்': 12 items
-source google தினகரன் 'ராசிபுரம்': 5 items
+source google தினகரன் 'ராசிபுரம்': 3 items
 source bing தினகரன் 'ராசிபுரம்': 1 items
 source google தினகரன் 'திருச்செங்கோடு': 0 items
 source bing தினகரன் 'திருச்செங்கோடு': 5 items
@@ -693,9 +858,9 @@ source google சமயம் தமிழ் 'திருச்செங்க
 source bing சமயம் தமிழ் 'திருச்செங்கோடு': 9 items
 source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
-source google தினமலர் 'ராசிபுரம்': 22 items
+source google தினமலர் 'ராசிபுரம்': 18 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
-source google தினமலர் 'திருச்செங்கோடு': 8 items
+source google தினமலர் 'திருச்செங்கோடு': 6 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
 source google DT Next 'நாமக்கல்': 0 items
 source bing DT Next 'நாமக்கல்': 0 items
@@ -709,7 +874,7 @@ source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்': 10 items
+source google ABP நாடு 'நாமக்கல்': 11 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
@@ -739,30 +904,29 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 982 items -> 515 different news (17 Rasipuram)
-to write: 1 Rasipuram + 168 other district candidates (max 5 + 6 stories)
-NOT filed (R) கார் மோதி தூக்கிவீசப்பட்ட மூதாட்டி - அதிர்ச்சி காட: would be wrong/unclear: numbers not found in the article: 22
+all sources: 939 items -> 511 different news (17 Rasipuram)
+to write: 1 Rasipuram + 176 other district candidates (max 5 + 6 stories)
+NOT filed (R) கார் மோதி தூக்கிவீசப்பட்ட மூதாட்டி - அதிர்ச்சி காட: bad draft: 'scenes'
 NOT filed (N) நாமக்கல் மண்டலத்தில் 2 நாட்களில் முட்டை விலை 20 கா: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
 NOT filed (N) 17 மாவட்டங்களில் பெரிய சம்பவம்! வானிலை ஆய்வு மையம்: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
 NOT filed (N) தமிழகத்தில் இன்று எங்கெல்லாம் மழைக்கு வாய்ப்பு.. ம: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
-NOT filed (N) தொடர் கனமழை: தென் மாவட்டங்களில் இன்று பள்ளிகளுக்கு: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
-NOT filed (N) முட்டை விலை ரூ. 5.70-ஆக நீடிப்பு: would be wrong/unclear: numbers not found in the article: 22
 NOT filed (N) தமிழகத்தில் மழை ஆட்டம் ஆரம்பம்! 17 மாவட்டங்களுக்கு: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
-NOT filed (N) அடுத்த 2 மணி நேரம் உஷார்! திருவண்ணாமலை டூ கன்னியாக: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
+NOT filed (N) தொடர் கனமழை: தென் மாவட்டங்களில் இன்று பள்ளிகளுக்கு: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
+NOT filed (N) முட்டை விலை ரூ. 5.70-ஆக நீடிப்பு: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
 NOT filed (N) காற்றழுத்தத் தாழ்வுப் பகுதிகள்.. 6 மாவட்டங்களுக்கு: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
 NOT filed (N) இன்று சென்னைக்கு ‘மஞ்சள்’ எச்சரிக்கை: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
-NOT filed (N) தமிழகத்தில் வருகிற 28-ந்தேதி வரை கனமழைக்கு வாய்ப்ப: all free models failed: time budget used up; last error: gemini gemini-3.7-flash 429: {
-  "error": {
-   
+NOT filed (N) தமிழகத்தில் வருகிற 28-ந்தேதி வரை கனமழைக்கு வாய்ப்ப: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
+NOT filed (N) தொடரும் கனமழை.. எந்தெந்த மாவட்டங்களுக்கு என்ன அலெர: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
+NOT filed (N) புயல் உருவாக வாய்ப்பு.. மழைநேரத்தில் என்ன செய்யவேண: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 5 + 6)
-All News sheet: {"ok":true,"added":16,"updated":44}
-All News sheet: {"ok":true,"added":5,"updated":55}
-All News sheet: {"ok":true,"added":4,"updated":56}
-All News sheet: {"ok":true,"added":9,"updated":51}
-All News sheet: {"ok":true,"added":15,"updated":45}
-All News sheet: {"ok":true,"added":16,"updated":44}
-All News sheet: {"ok":true,"added":13,"updated":47}
-All News sheet: {"ok":true,"added":15,"updated":45}
-All News sheet: {"ok":true,"added":2,"updated":33} 
+All News sheet: {"ok":true,"added":3,"updated":57}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":3,"updated":57}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":3,"updated":57}
+All News sheet: {"ok":true,"added":2,"updated":58}
+All News sheet: {"ok":true,"added":2,"updated":58}
+All News sheet: {"ok":true,"added":11,"updated":49}
+All News sheet: {"ok":true,"added":1,"updated":30} 
 stories: 0
