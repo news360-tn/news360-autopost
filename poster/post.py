@@ -159,34 +159,58 @@ def ready(row):
     return age_hours(row) <= MAX_AGE_H * (2 if is_shutdown(row) else 1)
 
 
-def in_post_window():
-    """Best-time posting: scheduled runs publish only inside the IST windows in config.json (manual runs ignore this)."""
-    if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
-        return True
+def _starts():
+    """the three daily posting start times (IST minutes after midnight) from config.json post_windows_ist ("06:30-09:30" -> 06:30)"""
     try:
         cfg = json.loads((Path(__file__).parent / "config.json").read_text())
     except Exception:
         cfg = {}
-    wins = cfg.get("post_windows_ist") or []
-    if not wins:
+    out = []
+    for w in cfg.get("post_windows_ist") or []:
+        a = w.split("-")[0]
+        out.append(int(a[:2]) * 60 + int(a[3:5]))
+    return sorted(out)
+
+
+def filed_at(row):
+    """IST datetime the story was filed ('22 Oct 2026, 10:26' in the researched column), or None"""
+    import re as _re
+    from datetime import datetime, timedelta, timezone
+    m = _re.search(r"(\d{1,2})\s+([A-Za-z]{3})[a-z]*\s+(\d{4}),?\s+(\d{1,2}):(\d{2})", str(row.get("researched") or ""))
+    if not m:
+        return None
+    mon = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"].index(m.group(2).lower()) + 1
+    return datetime(int(m.group(3)), mon, int(m.group(1)), int(m.group(4)), int(m.group(5)), tzinfo=timezone(timedelta(hours=5, minutes=30)))
+
+
+def set_started(row, now=None):
+    """Every story belongs to the posting set (morning / afternoon / evening) it was written for: the first start time that is not
+    earlier than 90 min before it was filed. From that start time on it posts as soon as it is ready - a late image reply is posted at
+    once, it never waits for (or is pushed into) the next set. Manual runs ignore this."""
+    if os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch":
         return True
     from datetime import datetime, timedelta, timezone
-    now = datetime.now(timezone(timedelta(hours=5, minutes=30)))
-    m = now.hour * 60 + now.minute
-    for w in wins:
-        a, b = w.split("-")
-        am = int(a[:2]) * 60 + int(a[3:]); bm = int(b[:2]) * 60 + int(b[3:])
-        if am <= m <= bm:
-            return True
-    return False
+    starts = _starts()
+    f = filed_at(row)
+    if not starts or f is None:
+        return True
+    now = now or datetime.now(timezone(timedelta(hours=5, minutes=30)))
+    lo = f - timedelta(minutes=90)
+    for day in (0, 1):
+        for st in starts:
+            cand = datetime(lo.year, lo.month, lo.day, st // 60, st % 60, tzinfo=lo.tzinfo) + timedelta(days=day)
+            if cand >= lo:
+                return now >= cand
+    return True
+
+
+def is_urgent(row):
+    return is_shutdown(row) or (row.get("importance") or "").strip() == "High"
 
 
 def pick_all(rows):
-    """every ready story (urgent first, then the rest oldest first)"""
-    c = [r for r in rows if ready(r)]
-    if not in_post_window():
-        # outside the best-time windows only urgent items go out (high importance or power shutdowns)
-        c = [r for r in c if is_shutdown(r) or (r.get("importance") or "").strip() == "High"]
+    """every ready story whose set has started (urgent ones always), urgent first, then the rest oldest first"""
+    c = [r for r in rows if ready(r) and (set_started(r) or is_urgent(r))]
     c.sort(key=lambda r: (IMPORTANCE.get((r.get("importance") or "").strip(), 1), -age_hours(r)))
     return c
 
@@ -804,7 +828,7 @@ def main():
         for r in rows:
             log("  ", r.get("story_id"), "review=", repr(r.get("review")), "images=", len(r.get("images") or ""),
                 "spec=", len(r.get("slides_spec") or ""), "pages=", pages_of(r), "links=", repr(r.get("namakkal_link")), repr(r.get("rasipuram_link")), repr(r.get("reel_link")),
-                "age_h=", round(age_hours(r), 1), "ready=", ready(r), "window=", in_post_window())
+                "age_h=", round(age_hours(r), 1), "ready=", ready(r), "set_started=", set_started(r))
         out = os.environ.get("GITHUB_OUTPUT")
         if out:
             with open(out, "a") as f:
@@ -815,12 +839,12 @@ def main():
                 else:
                     ids = [r["story_id"] for r in pick_all(rows)][:3] if n else []   # 3 stories per run, 25 min apart
                     inc = [{"story": i, "slot": k * 25, "prebuild": ""} for k, i in enumerate(ids)]
-                    if not in_post_window():   # outside the best-time windows: make the carousel/reel ahead, so they go out the moment the window opens
-                        urgent = set(ids)
-                        pre = [r["story_id"] for r in rows if ready(r) and r["story_id"] not in urgent and not all(cache_path(r["story_id"], p).exists() for p in pages_of(r) if not page_done(r, p))][:3]
-                        inc += [{"story": i, "slot": 0, "prebuild": "1"} for i in pre]
-                        if pre:
-                            log("prebuilding ahead of the next window:", pre)
+                    # stories whose set has not started yet: make the carousel/reel ahead, so they go out the moment it starts
+                    urgent = set(ids)
+                    pre = [r["story_id"] for r in rows if ready(r) and r["story_id"] not in urgent and not set_started(r) and not all(cache_path(r["story_id"], p).exists() for p in pages_of(r) if not page_done(r, p))][:3]
+                    inc += [{"story": i, "slot": 0, "prebuild": "1"} for i in pre]
+                    if pre:
+                        log("prebuilding ahead of the set start:", pre)
                     f.write(f"ready={1 if inc else 0}\n")
                     f.write("matrix=" + json.dumps({"include": inc}) + "\n")
         return
