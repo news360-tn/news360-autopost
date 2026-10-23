@@ -152,6 +152,19 @@ def _mistral(model, system, user, key):
     return r.json()["choices"][0]["message"]["content"]
 
 
+GHM_MODELS = ["openai/gpt-4.1", "openai/gpt-4o", "meta/llama-3.3-70b-instruct"]
+
+
+def _ghmodels(model, system, user, key):
+    r = requests.post("https://models.github.ai/inference/chat/completions",
+                      headers={"Authorization": f"Bearer {key}", "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"},
+                      json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
+                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=90)
+    if r.status_code != 200:
+        raise RuntimeError(f"ghmodels {model} {r.status_code}: {r.text[:700]}")
+    return r.json()["choices"][0]["message"]["content"]
+
+
 def chain():
     out = []
     g, q, o = os.environ.get("GEMINI_API_KEY"), os.environ.get("GROQ_API_KEY"), os.environ.get("OPENROUTER_API_KEY")
@@ -160,6 +173,9 @@ def chain():
     mk = os.environ.get("MISTRAL_API_KEY")
     if mk:
         out += [("mistral", m, _mistral, mk) for m in MISTRAL_MODELS]
+    gk = os.environ.get("GH_MODELS_TOKEN")
+    if gk:
+        out += [("ghmodels", m, _ghmodels, gk) for m in GHM_MODELS]
     if q:
         out += [("groq", m, _groq, q) for m in groq_models(q)]
     n = os.environ.get("NVIDIA_API_KEY")
