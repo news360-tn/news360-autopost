@@ -39,7 +39,7 @@ def _gemini(model, system, user, key):
               "contents": [{"role": "user", "parts": [{"text": user}]}],
               "generationConfig": {"temperature": 0.3, "responseMimeType": "application/json"}}, timeout=60)
     if r.status_code != 200:
-        raise RuntimeError(f"gemini {model} {r.status_code}: {r.text[:200]}")
+        raise RuntimeError(f"gemini {model} {r.status_code}: {r.text[:700]}")
     return r.json()["candidates"][0]["content"]["parts"][0]["text"]
 
 
@@ -49,7 +49,7 @@ def _groq(model, system, user, key):
                       json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
                             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=60)
     if r.status_code != 200:
-        raise RuntimeError(f"groq {model} {r.status_code}: {r.text[:200]}")
+        raise RuntimeError(f"groq {model} {r.status_code}: {r.text[:700]}")
     return r.json()["choices"][0]["message"]["content"]
 
 
@@ -64,7 +64,7 @@ def _nvidia(model, system, user, key):
                             "messages": [{"role": "system", "content": system + "\nReturn ONLY the JSON object."},
                                          {"role": "user", "content": user}]}, timeout=70)
     if r.status_code != 200:
-        raise RuntimeError(f"nvidia {model} {r.status_code}: {r.text[:200]}")
+        raise RuntimeError(f"nvidia {model} {r.status_code}: {r.text[:700]}")
     return r.json()["choices"][0]["message"]["content"]
 
 
@@ -95,7 +95,7 @@ def _openrouter(model, system, user, key):
                       json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
                             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=70)
     if r.status_code != 200:
-        raise RuntimeError(f"openrouter {model} {r.status_code}: {r.text[:200]}")
+        raise RuntimeError(f"openrouter {model} {r.status_code}: {r.text[:700]}")
     return r.json()["choices"][0]["message"]["content"]
 
 
@@ -131,6 +131,7 @@ def groq_models(key):
 
 
 PREFERRED = [None]
+DEAD = set()
 DEADLINE = [None]   # unix time after which no more model calls are made
 
 
@@ -159,6 +160,8 @@ def ask_json(system, user, tries_per_model=1):
     if PREFERRED[0]:
         ch.sort(key=lambda c: 0 if (c[0], c[1]) == PREFERRED[0] else 1)
     for provider, model, fn, key in ch:
+        if (provider, model) in DEAD:
+            continue
         for k in range(3):
             if DEADLINE[0] and time.time() > DEADLINE[0]:
                 raise RuntimeError(f"time budget used up; last error: {last}")
@@ -172,8 +175,15 @@ def ask_json(system, user, tries_per_model=1):
                 last = e
                 msg = str(e)
                 _log(f"fail {provider}/{model}: {msg[:120]}")
+                low = msg.lower()
+                if " 429" in msg and ("perday" in low or "per day" in low or "daily" in low or "limit: 0" in low or "tokens per day" in low):
+                    DEAD.add((provider, model))      # daily quota is gone: do not waste the round waiting on it
+                    _log(f"dead for this round: {provider}/{model}")
+                    break
+                if " 413" in msg or "request too large" in low:
+                    break
                 if k < 2 and (" 503" in msg or " 429" in msg) and provider != "openrouter":
-                    time.sleep(20 + 20 * k)      # per-minute free limits reset quickly; wait instead of falling to a weaker model
+                    time.sleep(15 + 15 * k)      # per-minute free limits reset quickly; wait instead of falling to a weaker model
                     continue
                 break
     raise RuntimeError(f"no free model answered: {last}")
