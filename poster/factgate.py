@@ -49,10 +49,13 @@ def confirm(probs, title, text):
     If the second opinion cannot run, keep all problems (never post on doubt)."""
     try:
         import llm
-        if not llm.claude_available():
-            return probs
         user = "ARTICLE:\n" + title + "\n" + text[:6000] + "\n\nPROBLEMS:\n" + "\n".join(f"{i+1}. {p}" for i, p in enumerate(probs))
-        r, m = llm.ask_claude(CONFIRM, user, max_tokens=1500)
+        try:
+            r, m = llm.ask_json(CONFIRM, user)          # free models first; Claude only when they are not available
+        except Exception:
+            if not llm.claude_available():
+                return probs
+            r, m = llm.ask_claude(CONFIRM, user, max_tokens=1500)
         res = r.get("results") if isinstance(r, dict) else None
         if not res:
             return probs
