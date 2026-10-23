@@ -1,16 +1,20 @@
 writing [N]: 5 மாதங்களில் பயன்பாட்டுக்கு வரும் நாமக்கல் சுற்றுவட்டச் சாலை
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
 fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.7-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
@@ -19,34 +23,23 @@ dead for this round: gemini/gemini-3.6-flash
 fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
 fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
 fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
 dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
 fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
 dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
 fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-fail mistral/mistral-small-latest: mistral mistral-small-latest 503: upstream connect error or disconnect/reset before headers. reset reason: remote connec
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
 switching away from mistral/mistral-small-latest for 10 min
 fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
 free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
   slide 1 line 1 longer than 60 characters
-  slide 2 line 3 longer than 60 characters
-  slide 3 line 2 longer than 60 characters
-  slide 4 line 2 longer than 60 characters
-  scenes must be 5 (slides + 1), got 4
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  hl2 longer than 28 characters
-  slide 4 title longer than 18 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  slide 4 title longer than 18 characters
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
     "code": 429,
@@ -55,153 +48,54 @@ dead for this round: gemini/gemini-3.8-flash
 fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
 fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
 fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-ok groq/qwen/qwen3.8-27b
-proofread by groq/qwen/qwen3.8-27b: 1 problems
-writing [N]: கலெக்டர் ஆபீசில் தர்ணா போராட்டம் - Dinakaran
+ok groq/openai/gpt-oss-120b
+factcheck by groq/openai/gpt-oss-120b: 0 problems
+claude rewrite 2 anthropic/claude-haiku-5-5: 0 problems
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
 fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
 fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
 fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  hl2 longer than 28 characters
-  slide 1 line 2 longer than 60 characters
-  slide 3 line 2 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  scenes must be 4 (slides + 1), got 5
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  scenes must be 5 (slides + 1), got 4
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok groq/qwen/qwen3.8-27b
-proofread by groq/qwen/qwen3.8-27b: 1 problems
-writing [N]: தனியாா் தொழிற்பயிற்சி நிலையங்கள் புதிய தொழிற்பிரிவுகளுக்கு வ
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  slide 1 title longer than 18 characters
-  slide 2 title longer than 18 characters
-ok anthropic/claude-haiku-5-5
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The reel_script and slides_spec describe 'இடமாற்றம், திறப்பு, மூடுதல்' etc. as applications, which is roughly consistent, but the reel_script says 'கூடுதல் அலகுகள் உருவாக்குதல் போன்றவற்றுக்கும்' and omits the article's 'மூடுதல்' and 'திறப்பு' items, a minor incompleteness.
-  The slides_spec line 'தகுதியுடைய நிறுவனங்கள் மட்டும் விண்ணப்பிக்கலாம்' adds the word 'மட்டும்' (only), which is an emphasis not stated in the article.
-  The headline 'தனியார் ஐடிஐ-களுக்கு ... அக். 31-க்குள் விண்ணப்பிக்கலாம்' and caption line 'நாமக்கல்லில் தனியார் ஐடிஐ-களுக்கு புதிய தொழிற்பிரிவுகளுக்கு' is ungrammatical/awkward: it mixes 'for private ITIs' with 'for new trades' in a way that is unclear and reads as two overlapping phrases.
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The reel_script and slides_spec describe 'இடமாற்றம், திறப்பு, மூடுதல்' etc. as applications, which is roughly consistent, but the reel_script says 'கூடுதல் அலகுகள் உருவாக்குதல் போன்றவற்றுக்கும்' and omits the article's 'மூடுதல்' and 'திறப்பு' items, a minor incompleteness.
-  fact-check: The slides_spec line 'தகுதியுடைய நிறுவனங்கள் மட்டும் விண்ணப்பிக்கலாம்' adds the word 'மட்டும்' (only), which is an emphasis not stated in the article.
-  fact-check: The headline 'தனியார் ஐடிஐ-களுக்கு ... அக். 31-க்குள் விண்ணப்பிக்கலாம்' and caption line 'நாமக்கல்லில் தனியார் ஐடிஐ-களுக்கு புதிய தொழிற்பிரிவுகளுக்கு' is ungrammatical/awkward: it mixes 'for private ITIs' with 'for new trades' in a way that is unclear and reads as two overlapping phrases.
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  hl2 longer than 28 characters
-  slide 2 title longer than 18 characters
-  slide 3 title longer than 18 characters
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b
-proofread by groq/qwen/qwen3.8-27b: 2 problems
-writing [N]: லாரி மீது பைக் மோதி வாலிபர் உயிரிழப்பு: இருவர் படுகாயம்
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  scenes must be 5 (slides + 1), got 4
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  hl1 longer than 40 characters
-  slide 2 line 1 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  reel_script says செந்தில்நாதன் was 'நாற்பது' (forty) years old in a sentence that reads as a mix-up; the article says he is 40 which is consistent, but the reel_script calls him a 'பைக்கில்' rider with a stray word 'நாற்பது பைக்கில்' that garbles the sentence so it has no clear meaning
-  reel_script says the truck was 'பழுது பார்க்கப்பட்டு நின்றிருந்தபோது' (being repaired while parked); the article says the driver and cleaner were repairing the lorry, but the article's sentence is cut off and the draft's cause is partly inferred rather than clearly stated
-  slides_spec 'யார் யார்' slide says செந்தில்நாதன் is from 'தொட்டியம் அருகே' but the article says he is from மகேந்திரமங்கலம் in தொட்டியம் (taluk), and the district name is missing from the article text, so the location detail is not directly verifiable
-  reel_script omits that the victims were taken to குளித்தலை அரசு மருத்துவமனை (Kulithalai government hospital), an important detail of the article about where the injured were admitted
-  caption and slides say லாரி டிரைவர் அறிவழகன், 45, and கிளீனர் ராகுல், 19, were injured, but the article says three people were seriously injured including செந்தில்நாதன், while the draft's reel_script also attributes 'படுகாயம்' to both without the article clearly stating the cleaner's and driver's condition beyond 'பலத்த காயம்'
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: reel_script says செந்தில்நாதன் was 'நாற்பது' (forty) years old in a sentence that reads as a mix-up; the article says he is 40 which is consistent, but the reel_script calls him a 'பைக்கில்' rider with a stray word 'நாற்பது பைக்கில்' that garbles the sentence so it has no clear meaning
-  fact-check: reel_script says the truck was 'பழுது பார்க்கப்பட்டு நின்றிருந்தபோது' (being repaired while parked); the article says the driver and cleaner were repairing the lorry, but the article's sentence is cut off and the draft's cause is partly inferred rather than clearly stated
-  fact-check: slides_spec 'யார் யார்' slide says செந்தில்நாதன் is from 'தொட்டியம் அருகே' but the article says he is from மகேந்திரமங்கலம் in தொட்டியம் (taluk), and the district name is missing from the article text, so the location detail is not directly verifiable
-  fact-check: reel_script omits that the victims were taken to குளித்தலை அரசு மருத்துவமனை (Kulithalai government hospital), an important detail of the article about where the injured were admitted
-  fact-check: caption and slides say லாரி டிரைவர் அறிவழகன், 45, and கிளீனர் ராகுல், 19, were injured, but the article says three people were seriously injured including செந்தில்நாதன், while the draft's reel_script also attributes 'படுகாயம்' to both without the article clearly stating the cleaner's and driver's condition beyond 'பலத்த காயம்'
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b
-proofread by groq/qwen/qwen3.8-27b: 1 problems
-writing [N]: ஆம்புலன்ஸ் கவிழ்ந்து விபத்தில் சிக்கியவர் பலி
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  slides must have 3 or 4 items
-  scenes must be 3 (slides + 1), got 4
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  scenes must be 4 (slides + 1), got 3
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  slide 2 line 2 longer than 60 characters
-  not grounded: only 49% of the words come from the article (e.g. என்பவர், உயிரிழந்தார், அவருக்கு, வயது, ஐம்பது); use the article's own words and facts
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok groq/qwen/qwen3.8-27b
-proofread by groq/qwen/qwen3.8-27b: 1 problems
-writing [N]: ஆன்லைன் மோசடி நபர்களிடம் எச்சரிக்கையுடன் இருக்க வேண்டும் - D
+factcheck by groq/qwen/qwen3.8-27b: 2 problems
+  Slide 1, Line 3 claims the road works are 'almost completed' (கிட்டத்தட்ட நிறைவு) in Namakkal city, which is an invented summary not supported by the article; the article specifies that only the railway bridge section is pending while other sections are at 80-90%.
+  Slide 2, Line 3 states the work towards Karur National Highway is 80% complete, but the article states the work from the completed sections (up to Thiruchchi road) towards Karur via Lathuvadi/Vallipuram is 80% complete, implying the 80% figure applies to the specific stretch being built, not the entire route to Karur which includes the pending bridge.
+proofread rejected (2 problems)
+  fact-check: Slide 1, Line 3 claims the road works are 'almost completed' (கிட்டத்தட்ட நிறைவு) in Namakkal city, which is an invented summary not supported by the article; the article specifies that only the railway bridge section is pending while other sections are at 80-90%.
+  fact-check: Slide 2, Line 3 states the work towards Karur National Highway is 80% complete, but the article states the work from the completed sections (up to Thiruchchi road) towards Karur via Lathuvadi/Vallipuram is 80% complete, implying the 80% figure applies to the specific stretch being built, not the entire route to Karur which includes the pending bridge.
+writing [N]: பாம்பன் கடற்கரைக்கு படகில் வந்த இலங்கையை சேர்ந்த 3 பேர் கைது
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
 fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
 fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
 fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
 free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  slide 1 line 2 longer than 60 characters
-  slide 3 line 3 longer than 60 characters
-  slide 4 line 1 longer than 60 characters
-  scenes must be 5 (slides + 1), got 4
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slide 3 line 1 longer than 60 characters
 ok anthropic/claude-haiku-5-5
 claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  hl1 longer than 40 characters
+  slide 3 line 1 longer than 60 characters
 ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  slide 3 title longer than 18 characters
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
   scenes must be 5 (slides + 1), got 4
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 ok groq/qwen/qwen3.8-27b
 proofread by groq/qwen/qwen3.8-27b: 1 problems
 earlier stories still waiting for images: []
 instagram check: 65 recent posts read from both pages
 source dinamalar list: 8 items
-source google 'நாமக்கல்': 34 items
+source google 'நாமக்கல்': 64 items
 source bing 'நாமக்கல்': 12 items
 source google 'ராசிபுரம்': 8 items
 source bing 'ராசிபுரம்': 12 items
@@ -217,7 +111,7 @@ source google 'சேந்தமங்கலம்': 1 items
 source bing 'சேந்தமங்கலம்': 12 items
 source google 'கொல்லிமலை': 2 items
 source bing 'கொல்லிமலை': 12 items
-source google 'மோகனூர்': 1 items
+source google 'மோகனூர்': 2 items
 source bing 'மோகனூர்': 5 items
 source google 'நாமகிரிப்பேட்டை': 2 items
 source bing 'நாமகிரிப்பேட்டை': 3 items
@@ -225,11 +119,11 @@ source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 2 items
 source google 'எருமப்பட்டி': 2 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 46 items
+source google 'நாமக்கல் மாவட்டம்': 47 items
 source bing 'நாமக்கல் மாவட்டம்': 12 items
 source google 'நாமக்கல் முட்டை விலை': 5 items
 source bing 'நாமக்கல் முட்டை விலை': 11 items
-source google நியூஸ்7 தமிழ் 'நாமக்கல்': 5 items
+source google நியூஸ்7 தமிழ் 'நாமக்கல்': 4 items
 source bing நியூஸ்7 தமிழ் 'நாமக்கல்': 8 items
 source google நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
 source bing நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
@@ -247,19 +141,19 @@ source google மாலைமலர் 'ராசிபுரம்': 1 items
 source bing மாலைமலர் 'ராசிபுரம்': 2 items
 source google மாலைமலர் 'திருச்செங்கோடு': 0 items
 source bing மாலைமலர் 'திருச்செங்கோடு': 1 items
-source google தினத்தந்தி 'நாமக்கல்': 10 items
+source google தினத்தந்தி 'நாமக்கல்': 9 items
 source bing தினத்தந்தி 'நாமக்கல்': 12 items
 source google தினத்தந்தி 'ராசிபுரம்': 2 items
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
 source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்': 28 items
+source google தினமணி 'நாமக்கல்': 29 items
 source bing தினமணி 'நாமக்கல்': 12 items
 source google தினமணி 'ராசிபுரம்': 3 items
 source bing தினமணி 'ராசிபுரம்': 5 items
 source google தினமணி 'திருச்செங்கோடு': 4 items
 source bing தினமணி 'திருச்செங்கோடு': 7 items
-source google இந்து தமிழ் 'நாமக்கல்': 3 items
+source google இந்து தமிழ் 'நாமக்கல்': 5 items
 source bing இந்து தமிழ் 'நாமக்கல்': 12 items
 source google இந்து தமிழ் 'ராசிபுரம்': 0 items
 source bing இந்து தமிழ் 'ராசிபுரம்': 0 items
@@ -268,10 +162,10 @@ source bing இந்து தமிழ் 'திருச்செங்க�
 source google தினகரன் 'நாமக்கல்': 100 items
 source bing தினகரன் 'நாமக்கல்': 12 items
 source google தினகரன் 'ராசிபுரம்': 3 items
-source bing தினகரன் 'ராசிபுரம்': 1 items
+source bing தினகரன் 'ராசிபுரம்': 2 items
 source google தினகரன் 'திருச்செங்கோடு': 0 items
 source bing தினகரன் 'திருச்செங்கோடு': 5 items
-source google புதிய தலைமுறை 'நாமக்கல்': 2 items
+source google புதிய தலைமுறை 'நாமக்கல்': 1 items
 source bing புதிய தலைமுறை 'நாமக்கல்': 5 items
 source google புதிய தலைமுறை 'ராசிபுரம்': 0 items
 source bing புதிய தலைமுறை 'ராசிபுரம்': 0 items
@@ -290,12 +184,12 @@ source bing விகடன் 'ராசிபுரம்': 0 items
 source google விகடன் 'திருச்செங்கோடு': 0 items
 source bing விகடன் 'திருச்செங்கோடு': 0 items
 source google பாலிமர் 'நாமக்கல்': 2 items
-source bing பாலிமர் 'நாமக்கல்': 8 items
+source bing பாலிமர் 'நாமக்கல்': 7 items
 source google பாலிமர் 'ராசிபுரம்': 0 items
 source bing பாலிமர் 'ராசிபுரம்': 0 items
 source google பாலிமர் 'திருச்செங்கோடு': 0 items
 source bing பாலிமர் 'திருச்செங்கோடு': 0 items
-source google சமயம் தமிழ் 'நாமக்கல்': 4 items
+source google சமயம் தமிழ் 'நாமக்கல்': 3 items
 source bing சமயம் தமிழ் 'நாமக்கல்': 11 items
 source google சமயம் தமிழ் 'ராசிபுரம்': 0 items
 source bing சமயம் தமிழ் 'ராசிபுரம்': 9 items
@@ -303,7 +197,7 @@ source google சமயம் தமிழ் 'திருச்செங்க
 source bing சமயம் தமிழ் 'திருச்செங்கோடு': 9 items
 source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
-source google தினமலர் 'ராசிபுரம்': 21 items
+source google தினமலர் 'ராசிபுரம்': 18 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
 source google தினமலர் 'திருச்செங்கோடு': 10 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
@@ -319,7 +213,7 @@ source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்': 12 items
+source google ABP நாடு 'நாமக்கல்': 11 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
@@ -343,31 +237,27 @@ source google தினபூமி 'ராசிபுரம்': 0 items
 source bing தினபூமி 'ராசிபுரம்': 0 items
 source google தினபூமி 'திருச்செங்கோடு': 0 items
 source bing தினபூமி 'திருச்செங்கோடு': 0 items
-source google தமிழ் முரசு 'நாமக்கல்': 0 items
+source google தமிழ் முரசு 'நாமக்கல்': 1 items
 source bing தமிழ் முரசு 'நாமக்கல்': 0 items
 source google தமிழ் முரசு 'ராசிபுரம்': 0 items
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 932 items -> 514 different news (19 Rasipuram)
+all sources: 960 items -> 513 different news (20 Rasipuram)
 Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: not Namakkal district news (state-wide /=128, old=117, checked earlier=103, collected=103, already filed=38, checked earlier=20, checked earlier=3, checked earlier=1, checked earlier=1
-to write: 0 Rasipuram + 103 other district candidates (max 12 + 12 stories)
-NOT filed (N) 5 மாதங்களில் பயன்பாட்டுக்கு வரும் நாமக்கல் சுற்றுவ: would be wrong/unclear: slide 4 title longer than 18 characters
-NOT filed (N) கலெக்டர் ஆபீசில் தர்ணா போராட்டம் - Dinakaran: would be wrong/unclear: scenes must be 5 (slides + 1), got 4
-NOT filed (N) தனியாா் தொழிற்பயிற்சி நிலையங்கள் புதிய தொழிற்பிரிவ: would be wrong/unclear: slide 1 title longer than 18 characters; slide 2 title longer than 18 characters
-NOT filed (N) லாரி மீது பைக் மோதி வாலிபர் உயிரிழப்பு: இருவர் படு: would be wrong/unclear: scenes must be 5 (slides + 1), got 4
-NOT filed (N) ஆம்புலன்ஸ் கவிழ்ந்து விபத்தில் சிக்கியவர் பலி: would be wrong/unclear: scenes must be 4 (slides + 1), got 3
-NOT filed (N) ஆன்லைன் மோசடி நபர்களிடம் எச்சரிக்கையுடன் இருக்க வே: would be wrong/unclear: hl1 longer than 40 characters
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 12 + 12)
-All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":0,"updated":60}
+candidate filter: not Namakkal district news (state-wide /=129, old=121, checked earlier=117, collected=79, already filed=39, checked earlier=24, checked earlier=2, checked earlier=1, checked earlier=1
+to write: 0 Rasipuram + 79 other district candidates (max 12 + 12 stories)
+NOT filed (N) பாம்பன் கடற்கரைக்கு படகில் வந்த இலங்கையை சேர்ந்த 3: would be wrong/unclear: scenes must be 5 (slides + 1), got 4
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 12 + 12)
 All News sheet: {"ok":true,"added":2,"updated":58}
+All News sheet: {"ok":true,"added":6,"updated":54}
+All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":4,"updated":56}
 All News sheet: {"ok":true,"added":3,"updated":57}
-All News sheet: {"ok":true,"added":18,"updated":42}
-All News sheet: {"ok":true,"added":0,"updated":34} 
-stories: 0
+All News sheet: {"ok":true,"added":4,"updated":56}
+All News sheet: {"ok":true,"added":7,"updated":53}
+All News sheet: {"ok":true,"added":5,"updated":55}
+All News sheet: {"ok":true,"added":0,"updated":33} 
+stories: 1
+bridge: 200 {"ok":true,"added":1,"auto_queued":0,"emailed":1,"reoffered":0,"batch":"B20261023-2140","first":"RN-64"}
