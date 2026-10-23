@@ -56,21 +56,14 @@ WEATHER_FORECAST = ["மழை எச்சரிக்கை", "மஞ்சள
                     "கனமழை பெய்யும்", "கனமழைக்கு வாய்ப்பு", "காற்றழுத்த", "புயல் உருவாக", "வளிமண்டல", "பள்ளிகளுக்கு விடுமுறை"]
 
 
-# Namakkal 360 = Namakkal city + the places near it. The bigger towns of the district are not covered (Rasipuram has its own page).
-NEAR_NAMAKKAL = ["நாமக்கல்", "மோகனூர்", "சேந்தமங்கலம்", "கொல்லிமலை", "வேலகவுண்டம்பட்டி", "எருமப்பட்டி", "நல்லிபாளையம்", "பிள்ளாநல்லூர்",
-                 "புதன்சந்தை", "மல்லசமுத்திரம்", "Namakkal", "Mohanur", "Sendamangalam", "Kolli"]
-FAR_NAMAKKAL = ["திருச்செங்கோடு", "குமாரபாளையம்", "பள்ளிபாளையம்", "பரமத்தி", "கபிலர்மலை", "பாண்டமங்கலம்", "ஜேடர்பாளையம்", "எலச்சிபாளையம்",
-                "Tiruchengode", "Kumarapalayam", "Pallipalayam", "Paramathi"]
+# places next to Rasipuram: used for the Rasipuram page only when Rasipuram town itself has less than a round's worth of news
+RASI_NEAR = ["சேந்தமங்கலம்", "எருமப்பட்டி", "புதுச்சத்திரம்", "பட்டணம்", "ஆர்.புதுப்பட்டி", "முள்ளுக்குறிச்சி", "மோகனூர்", "ஆத்தூர்", "கொல்லிமலை"]
 
 
 def outside_district(text, via=""):
     """True when the headline is NOT Namakkal-district news. A headline is kept only if it names a Namakkal-district place (or is the
     Namakkal egg-price news, or comes from a Namakkal-only listing); state-wide / multi-district / national news and weather forecasts are dropped."""
     if any(w in text for w in ALWAYS_OUTSIDE) or any(w in text for w in WEATHER_FORECAST):
-        return True
-    if any(w in text for w in NEAR_NAMAKKAL):
-        return False
-    if any(w in text for w in FAR_NAMAKKAL):
         return True
     if any(w in text for w in NAMAKKAL_WORDS):
         return False

@@ -218,6 +218,11 @@ def main():
             queues[n["area"]].append(n)
         elif n["status"] == "collected":
             n["status"] = "old"
+    if not PRIORITY_ONLY[0] and len(queues["R"]) < MAX_RASIPURAM:      # too little Rasipuram news: the Rasipuram page also takes news from the places next to it
+        have = {q["key"] for q in queues["R"]}
+        near = [q for q in queues["N"] if q["key"] not in have and any(w in q["title"] for w in allnews.RASI_NEAR)]
+        queues["R"] += near[:MAX_RASIPURAM - len(queues["R"])]
+        log.append(f"Rasipuram short of news: {len(near[:MAX_RASIPURAM])} items from nearby places added to its list")
     log.append(f"to write: {len(queues['R'])} Rasipuram + {len(queues['N'])} other district candidates (max {MAX_RASIPURAM} + {MAX_NAMAKKAL} stories)")
     target, done, tried = {"R": MAX_RASIPURAM, "N": MAX_NAMAKKAL}, {"R": 0, "N": 0}, {"R": 0, "N": 0}
     if os.environ.get("WRITE_STORIES", "1") == "0":      # archive-only round: collect and store everything, write nothing, send no email
@@ -303,14 +308,6 @@ def main():
                 queues[a] = keep
         if not progressed:
             break
-    # Rasipuram has too little fresh news of its own: its page also gets the top Namakkal stories (as its own separate posts)
-    short = MAX_RASIPURAM - done["R"]
-    if short > 0 and not PRIORITY_ONLY[0]:
-        extra = sorted([x for x in out[sent_n[0]:] if x.get("_area") == "N" and "Rasipuram" not in x["post_to"]], key=lambda x: -x["_score"])[:short]
-        for x in extra:
-            x["post_to"] = "Namakkal 360 + Rasipuram 360"
-        if extra:
-            log.append(f"Rasipuram short of news ({done['R']} of {MAX_RASIPURAM}): {len(extra)} Namakkal stories also go to the Rasipuram page")
     rest = out[sent_n[0]:]
     assign_carousel(rest)
     log.append(f"carousel for {sum(1 for x in out if x['slides_spec'].get('carousel'))} of {len(out)} stories, the rest reel only")
