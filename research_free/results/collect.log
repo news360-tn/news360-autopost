@@ -1,5 +1,179 @@
+writing [N]: ப.வேலுாரில் 11 மி.மீ., மழை
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+switching away from gemini/gemini-3.8-flash for 10 min
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+switching away from gemini/gemini-3.7-flash for 10 min
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash
+claude fact-check failed, using the free chain: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"`temperature` is deprecated for this mo
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/nvidia/llama-3.1-nemotron-70b-instruct: nvidia nvidia/llama-3.1-nemotron-70b-instruct 404: {"status":404,"title":"Not Found","detail":"Function '9b96341b-9791-4
+not available on this plan: nvidia/nvidia/llama-3.1-nemotron-70b-instruct
+fail nvidia/meta/llama-3.1-405b-instruct: nvidia meta/llama-3.1-405b-instruct 404: 404 page not found
+
+not available on this plan: nvidia/meta/llama-3.1-405b-instruct
+fail nvidia/deepseek-ai/deepseek-v3.1: nvidia deepseek-ai/deepseek-v3.1 404: 404 page not found
+
+not available on this plan: nvidia/deepseek-ai/deepseek-v3.1
+fail nvidia/mistralai/mistral-large-2-instruct: nvidia mistralai/mistral-large-2-instruct 404: {"status":404,"title":"Not Found","detail":"Function '7fadd4de-e22a-48e4-
+not available on this plan: nvidia/mistralai/mistral-large-2-instruct
+fail nvidia/qwen/qwen2.5-72b-instruct: nvidia qwen/qwen2.5-72b-instruct 404: 404 page not found
+
+not available on this plan: nvidia/qwen/qwen2.5-72b-instruct
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+ok groq/openai/gpt-oss-120b
+factcheck by groq/openai/gpt-oss-120b: 2 problems
+  Caption adds a specific date (23 October 2026) that is not in the article
+  Reel script promotes a “Namakkal three‑sixty” page, a detail not mentioned in the article
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  fact-check: Caption adds a specific date (23 October 2026) that is not in the article
+  fact-check: Reel script promotes a “Namakkal three‑sixty” page, a detail not mentioned in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+ok groq/qwen/qwen3.8-27b
+attempt 2 groq/qwen/qwen3.8-27b: 2 problems
+  reel_script must have no digits or English letters (write numbers as Tamil words)
+  stray Tamil sign 'ா' after 'ு' in «ப.வேலுாரில»
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+ok groq/openai/gpt-oss-120b
+attempt 3 groq/openai/gpt-oss-120b: 3 problems
+  missing key: reel_script
+  missing key: caption
+  missing key: scenes
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
+dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
+dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+writing [N]: 25-ல் அன்னாபிஷேகம், பவுர்ணமி! பர்வதமலைக்கு செல்ல பிளானா? வனத
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+writing [N]: கோமாளிக்கரை செல்லாண்டியம்மன் கோவில்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+writing [N]: சேலத்தில் ஆத்தூா் வழியாக பகல் நேரத்தில் பயணிகள் ரயில் இயக்க 
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+writing [N]: மனைவியை அடித்து துன்புறுத்தி
+கொலை மிரட்டல் விடுத்தவா் கைது
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+writing [N]: 5 மாதங்களில் பயன்பாட்டுக்கு வரும் நாமக்கல் சுற்றுவட்டச் சாலை
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
+writing [N]: கோவில் கருவறை வீடியோவை பதிவிட்ட யூ டியூபர் மீது புகார்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail nvidia/meta/llama-3.3-70b-instruct: nvidia meta/llama-3.3-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/meta/llama-3.1-70b-instruct: nvidia meta/llama-3.1-70b-instruct 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 'meta/llam
+fail nvidia/mistralai/mixtral-8x22b-instruct-v0.1: nvidia mistralai/mixtral-8x22b-instruct-v0.1 410: {"type":"about:blank","title":"Gone","status":410,"detail":"The model 
+fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
+fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
 earlier stories still waiting for images: []
-instagram check: 63 recent posts read from both pages
+instagram check: 65 recent posts read from both pages
 source dinamalar list: 8 items
 source google 'நாமக்கல்': 63 items
 source bing 'நாமக்கல்': 12 items
@@ -29,7 +203,7 @@ source google 'நாமக்கல் மாவட்டம்': 45 items
 source bing 'நாமக்கல் மாவட்டம்': 12 items
 source google 'நாமக்கல் முட்டை விலை': 6 items
 source bing 'நாமக்கல் முட்டை விலை': 11 items
-source google நியூஸ்7 தமிழ் 'நாமக்கல்': 7 items
+source google நியூஸ்7 தமிழ் 'நாமக்கல்': 6 items
 source bing நியூஸ்7 தமிழ் 'நாமக்கல்': 8 items
 source google நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
 source bing நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
@@ -41,7 +215,7 @@ source google என்டிடிவி தமிழ் 'ராசிபுர
 source bing என்டிடிவி தமிழ் 'ராசிபுரம்': 0 items
 source google என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
 source bing என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
-source google மாலைமலர் 'நாமக்கல்': 17 items
+source google மாலைமலர் 'நாமக்கல்': 16 items
 source bing மாலைமலர் 'நாமக்கல்': 12 items
 source google மாலைமலர் 'ராசிபுரம்': 1 items
 source bing மாலைமலர் 'ராசிபுரம்': 2 items
@@ -53,13 +227,13 @@ source google தினத்தந்தி 'ராசிபுரம்': 2 it
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
 source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்': 29 items
+source google தினமணி 'நாமக்கல்': 28 items
 source bing தினமணி 'நாமக்கல்': 12 items
 source google தினமணி 'ராசிபுரம்': 4 items
 source bing தினமணி 'ராசிபுரம்': 5 items
 source google தினமணி 'திருச்செங்கோடு': 4 items
 source bing தினமணி 'திருச்செங்கோடு': 7 items
-source google இந்து தமிழ் 'நாமக்கல்': 3 items
+source google இந்து தமிழ் 'நாமக்கல்': 4 items
 source bing இந்து தமிழ் 'நாமக்கல்': 12 items
 source google இந்து தமிழ் 'ராசிபுரம்': 0 items
 source bing இந்து தமிழ் 'ராசிபுரம்': 0 items
@@ -103,7 +277,7 @@ source google சமயம் தமிழ் 'திருச்செங்க
 source bing சமயம் தமிழ் 'திருச்செங்கோடு': 9 items
 source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
-source google தினமலர் 'ராசிபுரம்': 20 items
+source google தினமலர் 'ராசிபுரம்': 19 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
 source google தினமலர் 'திருச்செங்கோடு': 10 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
@@ -119,7 +293,7 @@ source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்': 12 items
+source google ABP நாடு 'நாமக்கல்': 11 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
@@ -149,19 +323,27 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 964 items -> 515 different news (19 Rasipuram)
+all sources: 960 items -> 508 different news (19 Rasipuram)
 Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: not Namakkal district news (state-wide /=423, already filed=38, old=23, checked earlier=20, checked earlier=10, checked earlier=1
-to write: 0 Rasipuram + 0 other district candidates (max 12 + 12 stories)
+candidate filter: collected=174, not Namakkal district news (state-wide /=134, old=132, already filed=37, checked earlier=19, checked earlier=10, checked earlier=1, checked earlier=1
+to write: 0 Rasipuram + 174 other district candidates (max 12 + 12 stories)
+NOT filed (N) ப.வேலுாரில் 11 மி.மீ., மழை: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
+NOT filed (N) 25-ல் அன்னாபிஷேகம், பவுர்ணமி! பர்வதமலைக்கு செல்ல ப: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
+NOT filed (N) கோமாளிக்கரை செல்லாண்டியம்மன் கோவில்: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
+NOT filed (N) சேலத்தில் ஆத்தூா் வழியாக பகல் நேரத்தில் பயணிகள் ரய: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
+NOT filed (N) மனைவியை அடித்து துன்புறுத்தி
+கொலை மிரட்டல் விடுத்த: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
+NOT filed (N) 5 மாதங்களில் பயன்பாட்டுக்கு வரும் நாமக்கல் சுற்றுவ: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
+NOT filed (N) கோவில் கருவறை வீடியோவை பதிவிட்ட யூ டியூபர் மீது பு: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 12 + 12)
-All News sheet: {"ok":true,"added":3,"updated":57}
-All News sheet: {"ok":true,"added":6,"updated":54}
-All News sheet: {"ok":true,"added":4,"updated":56}
 All News sheet: {"ok":true,"added":2,"updated":58}
-All News sheet: {"ok":true,"added":8,"updated":52}
-All News sheet: {"ok":true,"added":4,"updated":56}
-All News sheet: {"ok":true,"added":4,"updated":56}
-All News sheet: {"ok":true,"added":4,"updated":56}
-All News sheet: {"ok":true,"added":0,"updated":35} 
+All News sheet: {"ok":true,"added":3,"updated":57}
+All News sheet: {"ok":true,"added":3,"updated":57}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":3,"updated":57}
+All News sheet: {"ok":true,"added":3,"updated":57}
+All News sheet: {"ok":true,"added":3,"updated":57}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":1,"updated":27} 
 stories: 0
