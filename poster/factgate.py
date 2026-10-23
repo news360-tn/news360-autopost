@@ -4,7 +4,7 @@ import json, os, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "research_free"))
 
-SOFT = ("missing", "misses", "omit", "not mentioned in the draft", "could not be run")      # an omission is not a false statement: never blocks
+SOFT = ("promotional", "follow line", "த்ரீ சிக்ஸ்டி", "follow ", "page is not mentioned", "date of posting", "missing", "misses", "omit", "not mentioned in the draft", "could not be run")      # an omission is not a false statement: never blocks
 
 
 def _body(cap):
@@ -33,7 +33,36 @@ def check(row):
         d = {"tamil_headline": row.get("headline_ta", ""), "reel_script": row.get("reel_script", ""),
              "slides_spec": json.loads(row["slides_spec"]) if row.get("slides_spec") else "", "caption": _body(row.get("caption", ""))}
         probs = run.factcheck(d, {"title": title or row.get("headline_ta", ""), "text": text})
-        return [p for p in probs if not any(w in p.lower() for w in SOFT)]
+        probs = [p for p in probs if not any(w in p.lower() for w in SOFT)]
+        return confirm(probs, title, text) if probs else []
     except Exception as e:
         print("factgate unavailable - not blocking:", str(e)[:150])
         return []
+
+
+CONFIRM = """You are a strict senior news editor. A first checker listed possible factual problems in a draft; first checkers often misread. For EACH problem, find the exact sentence in the ARTICLE that proves it. The fixed closing line "மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்", the caption footer and hashtags are never problems. Wording choices (e.g. மூதாட்டி for an elderly woman) are not problems. Only a wrong name, number, place, date, cause or event that contradicts the article is real.
+Return ONLY JSON: {"results":[{"n":1,"real":true|false,"quote":"article sentence that proves it, or empty"}]}"""
+
+
+def confirm(probs, title, text):
+    """second, independent opinion: keep a problem only when the model can quote the article sentence that proves it.
+    If the second opinion cannot run, keep all problems (never post on doubt)."""
+    try:
+        import llm
+        if not llm.claude_available():
+            return probs
+        user = "ARTICLE:\n" + title + "\n" + text[:6000] + "\n\nPROBLEMS:\n" + "\n".join(f"{i+1}. {p}" for i, p in enumerate(probs))
+        r, m = llm.ask_claude(CONFIRM, user, max_tokens=1500)
+        res = r.get("results") if isinstance(r, dict) else None
+        if not res:
+            return probs
+        keep = []
+        for i, p in enumerate(probs):
+            x = next((y for y in res if y.get("n") == i + 1), None)
+            if x is None or (x.get("real") and (x.get("quote") or "").strip()):
+                keep.append(p)
+        print(f"factgate confirm by {m}: {len(probs)} flagged -> {len(keep)} confirmed")
+        return keep
+    except Exception as e:
+        print("factgate confirm unavailable - keeping the flags:", str(e)[:120])
+        return probs
