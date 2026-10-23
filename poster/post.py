@@ -621,6 +621,21 @@ def fail(row, kind, msg):
     bridge_post("error", {"row": row["row"], "page": PAGE, "kind": kind, "error": msg[:900]})
 
 
+def still_needed(sid, page, kind):
+    """last check right before publishing: the sheet may have changed while this slow job was building (row marked skipped / already posted)"""
+    try:
+        r = next((x for x in bridge_get("queue")["rows"] if x.get("story_id") == sid), None)
+    except Exception:
+        return True
+    if r is None:
+        return False
+    if (r.get("review") or "").strip().lower() == "hold":
+        return False
+    if kind == "carousel":
+        return not r.get(page + "_link")
+    return LABEL[page] not in (r.get("reel_link") or "")
+
+
 def run_story(row):
     """every page named in post_to gets its own carousel + reel (own logo and follow line), one page after the other"""
     done = []
@@ -751,6 +766,8 @@ def run_story_page(row, page):
                 log("DRY RUN carousel - not publishing", urls)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "dry_run": True, "permalink": "",
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab, "checks": note})
+            elif not still_needed(sid, PAGE, "carousel"):
+                log("carousel no longer needed (sheet changed) - not publishing", sid, PAGE)
             else:
                 token = bridge_get("token", page=PAGE)["token"]
                 mid, link, collab_ok, why = publish_carousel(token, urls, caption, collab, (row.get('headline_en') or '')[:200] + (' - Rasipuram 360 news' if PAGE == 'rasipuram' else ' - Namakkal 360 news'))
@@ -774,6 +791,8 @@ def run_story_page(row, page):
                 log("DRY RUN reel - not publishing", url)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "dry_run": True, "permalink": "",
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab, "checks": note})
+            elif not still_needed(sid, PAGE, "reel"):
+                log("reel no longer needed (sheet changed) - not publishing", sid, PAGE)
             else:
                 token = bridge_get("token", page=PAGE)["token"]
                 cover_url = media.get("cover") or ""
