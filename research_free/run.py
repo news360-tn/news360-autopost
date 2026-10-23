@@ -73,7 +73,7 @@ def write(art, today):
             continue
         errors = validate(d, art["text"] + " " + art["title"])
         if not errors:
-            errors = factcheck(d, art)
+            errors = factcheck(d, art, claude=False)      # free models check the many tries; Claude is paid, so it only sees the final draft
         print(f"attempt {attempt} {model}: {len(errors)} problems", *errors, sep="\n  ")
         if best is None or len(errors) <= len(best[2]):      # keep the draft with the fewest problems
             best = (d, model, errors, attempt)
@@ -96,6 +96,10 @@ def write(art, today):
                 best = (d, model, errs, MAX_ATTEMPTS + k + 1)
             if not errs:
                 break
+    if best is not None and not best[2] and llm.claude_available() and not best[1].startswith("anthropic"):
+        verdict = factcheck(best[0], art, claude=True)      # one Claude verification of the finished draft (the only paid check per story here)
+        if verdict:
+            best = (best[0], best[1], verdict, best[3])
     if best is None:
         raise RuntimeError("no usable answer from the models")
     return proofread(best, art)
@@ -113,14 +117,14 @@ def _cap_body(cap):
     return "\n".join(l for l in str(cap or "").split("\n") if not (l.strip().startswith(("\U0001F4CD", "#")) or "Follow" in l)).strip()
 
 
-def factcheck(d, art):
+def factcheck(d, art, claude=True):
     """independent second call: compares the draft with the article. Claude first when ANTHROPIC_API_KEY is set, else the free chain.
     Returns a list of problems."""
     user = "ARTICLE:\n" + art["title"] + "\n" + art["text"][:6000] + "\n\nDRAFT:\n" + json.dumps(
         {k: (_cap_body(d.get(k)) if k == "caption" else d.get(k)) for k in ("tamil_headline", "reel_script", "slides_spec", "caption")}, ensure_ascii=False)
     try:
         r = None
-        if llm.claude_available():
+        if claude and llm.claude_available():
             try:
                 r, m = llm.ask_claude(CHECK, user)
             except Exception as e:

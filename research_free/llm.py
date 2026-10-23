@@ -252,7 +252,7 @@ def ask_json(system, user, tries_per_model=1):
 
 # ---- Claude (paid, optional): used only to FACT-CHECK drafts and, if the free models cannot produce a clean draft, to rewrite it. Needs ANTHROPIC_API_KEY.
 CLAUDE_CALLS = [0]
-CLAUDE_MAX = int(os.environ.get("CLAUDE_MAX_CALLS", "150"))       # cost guard per run
+CLAUDE_MAX = int(os.environ.get("CLAUDE_MAX_CALLS", "40"))       # cost guard per run
 
 
 def claude_available():
