@@ -37,6 +37,24 @@ def _get(url, timeout=40, headers=None):
     return r
 
 
+# Namakkal district places (town / taluk / union / well-known villages). A story that names none of them AND names a state-wide or
+# another district's place is not Namakkal district news (e.g. "17 districts rain alert", "Chennai yellow alert").
+NAMAKKAL_WORDS = ["நாமக்கல்", "ராசிபுரம்", "திருச்செங்கோடு", "பரமத்தி", "குமாரபாளையம்", "பள்ளிபாளையம்", "சேந்தமங்கலம்", "கொல்லிமலை", "மோகனூர்",
+                  "நாமகிரிப்பேட்டை", "வெண்ணந்தூர்", "எருமப்பட்டி", "புதுச்சத்திரம்", "கபிலர்மலை", "பாண்டமங்கலம்", "ஜேடர்பாளையம்", "மல்லசமுத்திரம்",
+                  "எலச்சிபாளையம்", "வேலகவுண்டம்பட்டி", "நல்லிபாளையம்", "பிள்ளாநல்லூர்", "மெட்டாலா", "ஆயில்பட்டி", "சீராப்பள்ளி", "Namakkal", "Rasipuram",
+                  "Tiruchengode", "Kumarapalayam", "Paramathi", "Pallipalayam", "Mohanur", "Sendamangalam", "Kolli"]
+OUTSIDE_WORDS = ["தமிழகத்தில்", "தமிழ்நாட்டில்", "மாவட்டங்களில்", "மாவட்டங்களுக்கு", "மாவட்டங்கள்", "தென் மாவட்ட", "டெல்டா", "சென்னை", "மதுரை", "கோவை",
+                 "கோயம்புத்தூர்", "திருச்சி", "சேலம்", "ஈரோடு", "திருப்பூர்", "நெல்லை", "தூத்துக்குடி", "வேலூர்", "தஞ்சை", "கடலூர்", "காஞ்சிபுரம்", "புதுச்சேரி",
+                 "தமிழக", "இந்தியா", "பிரதமர்", "முதல்வர் ஸ்டாலின்", "விஜய்", "டெல்லி", "கேரளா", "கர்நாடக", "Chennai", "Tamil Nadu"]
+
+
+def outside_district(text):
+    """True when the headline names no Namakkal-district place but does name a state-wide / other-district one"""
+    if any(w in text for w in NAMAKKAL_WORDS):
+        return False
+    return any(w in text for w in OUTSIDE_WORDS)
+
+
 def area_of(text, default="N"):
     return "R" if any(k in text for k in RASIPURAM) else default
 
