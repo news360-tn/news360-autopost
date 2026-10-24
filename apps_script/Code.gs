@@ -500,10 +500,12 @@ function uploadVideo_(blob, story) {
 
 function processReadyReels_(p, allowed) {
   var done = JSON.parse(p.getProperty('DONE_MSGS') || '[]');
-  GmailApp.search('subject:"NEWS360 REEL" newer_than:3d', 0, 20).forEach(function (th) {
+  GmailApp.search('subject:"NEWS360 REEL" -subject:RECEIVED -subject:POSTED newer_than:3d', 0, 20).forEach(function (th) {
     th.getMessages().forEach(function (msg) {
       var id = msg.getId();
       if (done.indexOf(id) >= 0) return;
+      // our own status e-mails ([NEWS360 REEL RECEIVED], [NEWS360 POSTED] ...) also contain "NEWS360 REEL": never read them as reels (that made a loop)
+      if (/RECEIVED|POSTED|NEEDED|NOT ADDED|\[NEWS360/i.test(msg.getSubject())) return;
       var from = String(msg.getFrom()).replace(/^.*<|>.*$/g, '').trim().toLowerCase();
       if (allowed.indexOf(from) < 0 || !/NEWS360 REEL/i.test(msg.getSubject())) return;
       done.push(id);
