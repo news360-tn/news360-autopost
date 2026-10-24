@@ -158,7 +158,7 @@ def _mistral(model, system, user, key):
     return r.json()["choices"][0]["message"]["content"]
 
 
-GHM_MODELS = ["openai/gpt-4.1", "openai/gpt-4o", "meta/llama-3.3-70b-instruct"]
+GHM_MODELS = []   # removed: every model returned a non-JSON reply on every run (owner request 24 Oct)
 
 
 def _ghmodels(model, system, user, key):
@@ -204,7 +204,7 @@ def chain():
     mk = os.environ.get("MISTRAL_API_KEY")
     if mk:  # small Mistral models are the weakest (break the format rules) -> tried last
         out += [("mistral", m, _mistral, mk) for m in MISTRAL_MODELS]
-    if o:
+    if o and os.environ.get("OPENROUTER_ENABLE") == "1":   # removed from the chain (quota 429 on every run, owner request 24 Oct); set OPENROUTER_ENABLE=1 to use again
         try:
             out += [("openrouter", m, _openrouter, o) for m in openrouter_free_models(o)[:8]]
         except Exception as e:
