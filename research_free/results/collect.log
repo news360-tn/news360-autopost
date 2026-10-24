@@ -1,46 +1,28 @@
 writing [R]: கொல்லிமலை சாலையில் சாய்ந்த மரங்கள் அகற்றம்
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
 poor answer - skipped for 30 min: gemini/gemini-3.8-flash
 fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+dead for this round: gemini/gemini-3.7-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-switching away from gemini/gemini-3.7-flash for 10 min
-ok gemini/gemini-3.6-flash (15s)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+    "code": 503,
+    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
-ok groq/openai/gpt-oss-120b (4s)
-factcheck by groq/openai/gpt-oss-120b: 2 problems
-  Reel script says the tree fell (விழுந்தது) whereas article says the tree was only leaning (சாய்ந்தது)
-  Slides spec states the rain lasted exactly 1 hour, but article says it lasted more than one hour
-attempt 1 gemini/gemini-3.6-flash: 2 problems
-  fact-check: Reel script says the tree fell (விழுந்தது) whereas article says the tree was only leaning (சாய்ந்தது)
-  fact-check: Slides spec states the rain lasted exactly 1 hour, but article says it lasted more than one hour
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-ok groq/qwen/qwen3.8-27b (3s)
-attempt 2 groq/qwen/qwen3.8-27b: 1 problems
-  hl2 longer than 28 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
 dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
 fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
@@ -50,328 +32,202 @@ fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"
 switching away from mistral/mistral-small-latest for 10 min
 free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  slide 1 line 2 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  hl2 longer than 28 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  slide 1 line 2 longer than 60 characters
-  slide 2 title longer than 18 characters
-  slide 3 line 1 longer than 60 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1804. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
-
+claude answer not JSON (Expecting property name enclosed in double quotes: line 1 column 993 (char 992)); stop_reason=end_turn blocks=['text'] usage={'input_tokens': 1154, 'cache_creation_input_tokens': 10095, 'cache_read_input_tokens': 0, 'cache_creation': {'ephemeral_5m_input_tokens': 10095, 'ephemeral_1h_input_tokens': 0}, 'output_tokens': 2022, 'output_tokens_details': {'thinking_tokens': 0}, 'service_tier': 'standard', 'inference_geo': 'global', 'speed': 'standard'} head='{"tamil_headline": "கொல்லிமலை சாலையில் சாய்ந்த மரம் அகற்றம்: போக்குவரத்து மீண்டது", "english_headline": "Fallen tree cleared from Kolli Hills road after landslide; traffic restored", "category": "Road'
+claude rewrite failed: Expecting property name enclosed in double quotes: line 1 column 993 (char 992)
 writing [R]: ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர் ஆலோசனை
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (3s)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+free models unavailable: free models not efficient (11 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The article is truncated and does not clearly state that the meeting was held 'in' Rasipuram town or that all parties attended; the draft's claim that all recognized parties participated and the 'meeting held yesterday' timing rest partly on the cut-off text (article says 'நேற்று' so timing is supported, but the attendance claim 'அனைத்து கட்சியினர் கலந்துகொண்டனர்' is an inference from 'அங்கீகரிக்கப்பட்ட அனைத்து கூட்டம்' which is garbled)
-  reel_script states 'ஓட்டுச்சாவடிகள் பிரிக்கப்படுகின்றன' (polling stations are being split) as a settled fact, while the article only says a consultation on polling station division is underway; the draft presents discussion as completed action
-  The reel_script and slides claim the purpose is that voters should not travel long distances, but the article's quoted officer statement is cut off before the purpose is stated, so this purpose is not verifiable from the article as given
-  The slide line 'தேர்தல் பணிகள் முழுமையாக தொடங்கியுள்ளன' (election work has fully started) overstates the article, which only says election work has begun
-  The article is incomplete, so the outcome of the meeting (any decisions or arrests) cannot be confirmed, and the draft does not flag this gap
-attempt 1 groq/qwen/qwen3.8-27b: 5 problems
-  fact-check: The article is truncated and does not clearly state that the meeting was held 'in' Rasipuram town or that all parties attended; the draft's claim that all recognized parties participated and the 'meeting held yesterday' timing rest partly on the cut-off text (article says 'நேற்று' so timing is supported, but the attendance claim 'அனைத்து கட்சியினர் கலந்துகொண்டனர்' is an inference from 'அங்கீகரிக்கப்பட்ட அனைத்து கூட்டம்' which is garbled)
-  fact-check: reel_script states 'ஓட்டுச்சாவடிகள் பிரிக்கப்படுகின்றன' (polling stations are being split) as a settled fact, while the article only says a consultation on polling station division is underway; the draft presents discussion as completed action
-  fact-check: The reel_script and slides claim the purpose is that voters should not travel long distances, but the article's quoted officer statement is cut off before the purpose is stated, so this purpose is not verifiable from the article as given
-  fact-check: The slide line 'தேர்தல் பணிகள் முழுமையாக தொடங்கியுள்ளன' (election work has fully started) overstates the article, which only says election work has begun
-  fact-check: The article is incomplete, so the outcome of the meeting (any decisions or arrests) cannot be confirmed, and the draft does not flag this gap
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 6 problems
-  hl1 longer than 40 characters
-  slide 1 line 1 longer than 60 characters
-  slide 1 line 2 longer than 60 characters
-  slide 1 line 3 longer than 60 characters
-  slide 3 line 1 longer than 60 characters
-  scenes must be 4 (slides + 1), got 5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 51 words; need 70-130 (detailed reel, about 40-50 seconds)
 ok anthropic/claude-haiku-5-5
 claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  hl2 longer than 28 characters
+  reel_script has 60 words; need 70-130 (detailed reel, about 40-50 seconds)
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  hl2 longer than 28 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (2s)
-proofread by groq/qwen/qwen3.8-27b: 1 problems
+  reel_script has 59 words; need 70-130 (detailed reel, about 40-50 seconds)
+proofread skipped: free models not efficient (11 failures in a row): using Claude
 writing [R]: நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு விழா
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+free models unavailable: free models not efficient (11 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The article never states the city as Namakkal; the draft's headline, reel_script and slides_spec add 'நாமக்கல்' as the location (the article only gives the address 'திரு.வி.க., ரோடு, முனிசிபல் காலனி' and the head office is said to be in that area without naming the town).
-  The article says the chief guest is 'ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார்' but describes him only as attending; the draft says he 'கலந்துகொள்கிறார்', which is consistent, but the article also says the opening is presided over by Engineer Raja, Sudarvannan, Paranitharan and Baskar, and this important detail (who presides) is missing from the reel_script.
-  The article says the head office is at 'திரு.வி.க., ரோடு, முனிசிபல் காலனி' and the new branch is near a marriage hall; the draft's reel_script says the branch is on 'திரு.வி.க. ரோடு, முனிசிபல் காலனியில்' which conflates the head office location with the new branch location.
-  The article says the offer applies at the Rasipuram branch, but the draft's caption and reel_script present the offer as tied to the new branch opening, mixing the Rasipuram branch offer with the new branch event in one sentence.
+  The article gives the first branch's location as the Thiruvi.Ka. Road / Municipal Colony headquarters area and the new branch as near a marriage hall, but the draft's tamil_headline and reel_script name the place as Rasipuram (ராசிபுரம்) and caption says 'ராசிபுரத்தில்'. The article's text mentions 'ராசிபுரம் கிளையில' only in the offer sentence, so the new branch being in Rasipuram is supported, but the reel_script says the Rasipuram branch 'opens near marriage hall' which is consistent; however the caption's hashtag-free location is stated as a fact not clearly in the garbled article.
+  The reel_script says the Rajya Sabha MP 'opens' (திறந்து வைக்கிறார்) the branch; the article says the branch is to be opened by ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார, which matches, but the reel_script and caption say the MP opens it while the article's phrase is cut off, so the role of 'முன்னிலை' for Engineer Raja and others is attributed as presiding, which is consistent; no clear error here.
+  The article's offer is stated for 'ராசிபுரம் கிளையில' (at the Rasipuram branch) on 25 and 26 only; the draft's reel_script presents the offer without stating it is only at the Rasipuram branch, omitting that important scope detail.
+  The caption and slides state the Diwali sale runs from 27 to Nov 9 and give prices (480, 360, 400), but the article's Diwali sale is said to be 'வரும் 27 முதல், நவ., 9 வரை' with no clear statement of the month of the 27th; the draft asserts 'அக். 27' in the caption, an inferred month not stated in the article.
 claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The article never states the city as Namakkal; the draft's headline, reel_script and slides_spec add 'நாமக்கல்' as the location (the article only gives the address 'திரு.வி.க., ரோடு, முனிசிபல் காலனி' and the head office is said to be in that area without naming the town).
-  fact-check: The article says the chief guest is 'ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார்' but describes him only as attending; the draft says he 'கலந்துகொள்கிறார்', which is consistent, but the article also says the opening is presided over by Engineer Raja, Sudarvannan, Paranitharan and Baskar, and this important detail (who presides) is missing from the reel_script.
-  fact-check: The article says the head office is at 'திரு.வி.க., ரோடு, முனிசிபல் காலனி' and the new branch is near a marriage hall; the draft's reel_script says the branch is on 'திரு.வி.க. ரோடு, முனிசிபல் காலனியில்' which conflates the head office location with the new branch location.
-  fact-check: The article says the offer applies at the Rasipuram branch, but the draft's caption and reel_script present the offer as tied to the new branch opening, mixing the Rasipuram branch offer with the new branch event in one sentence.
+  fact-check: The article gives the first branch's location as the Thiruvi.Ka. Road / Municipal Colony headquarters area and the new branch as near a marriage hall, but the draft's tamil_headline and reel_script name the place as Rasipuram (ராசிபுரம்) and caption says 'ராசிபுரத்தில்'. The article's text mentions 'ராசிபுரம் கிளையில' only in the offer sentence, so the new branch being in Rasipuram is supported, but the reel_script says the Rasipuram branch 'opens near marriage hall' which is consistent; however the caption's hashtag-free location is stated as a fact not clearly in the garbled article.
+  fact-check: The reel_script says the Rajya Sabha MP 'opens' (திறந்து வைக்கிறார்) the branch; the article says the branch is to be opened by ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார, which matches, but the reel_script and caption say the MP opens it while the article's phrase is cut off, so the role of 'முன்னிலை' for Engineer Raja and others is attributed as presiding, which is consistent; no clear error here.
+  fact-check: The article's offer is stated for 'ராசிபுரம் கிளையில' (at the Rasipuram branch) on 25 and 26 only; the draft's reel_script presents the offer without stating it is only at the Rasipuram branch, omitting that important scope detail.
+  fact-check: The caption and slides state the Diwali sale runs from 27 to Nov 9 and give prices (480, 360, 400), but the article's Diwali sale is said to be 'வரும் 27 முதல், நவ., 9 வரை' with no clear statement of the month of the 27th; the draft asserts 'அக். 27' in the caption, an inferred month not stated in the article.
 ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The article never states the location as Rasipuram (ராசிபுரம்); it only says the Rasipuram branch offer exists, and the article's headline/branch location is not clearly the opening location. The opening location (திருமண மண்டபம் அருகே) is not tied to Rasipuram in the article, so the headline and reel_script claim the new branch opens in Rasipuram, which is not supported.
+  The article gives the opening time as 7:35 மணி, but the reel_script says 'ஏழு :முப்பத்து ஐந்து மணிக்கு' — acceptable, but the reel_script attributes the opening directly to ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார, while the article says he is the one who will open (புதிய கிளையை... ராஜேஸ்குமார்) — consistent; however the article lists ராஜா, சுடர்வண்ணன், பரணிதரன், பாஸ்கர் as 'முன்னிலை வகிக்கின்றனர்' and the draft's 'முன்னிலை' wording is fine.
+  The reel_script claim that the special sale runs 'இருபத்து ஏழு முதல் நவம்பர் ஒன்பது வரை' is supported, but the article's sale prices (கிலோ 480, ஸ்பெஷல் மிக்சர் 360, மினி ஜிலேபி 400) are omitted from the reel_script, which is an important missing fact.
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The article never states the location as Rasipuram (ராசிபுரம்); it only says the Rasipuram branch offer exists, and the article's headline/branch location is not clearly the opening location. The opening location (திருமண மண்டபம் அருகே) is not tied to Rasipuram in the article, so the headline and reel_script claim the new branch opens in Rasipuram, which is not supported.
+  fact-check: The article gives the opening time as 7:35 மணி, but the reel_script says 'ஏழு :முப்பத்து ஐந்து மணிக்கு' — acceptable, but the reel_script attributes the opening directly to ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார, while the article says he is the one who will open (புதிய கிளையை... ராஜேஸ்குமார்) — consistent; however the article lists ராஜா, சுடர்வண்ணன், பரணிதரன், பாஸ்கர் as 'முன்னிலை வகிக்கின்றனர்' and the draft's 'முன்னிலை' wording is fine.
+  fact-check: The reel_script claim that the special sale runs 'இருபத்து ஏழு முதல் நவம்பர் ஒன்பது வரை' is supported, but the article's sale prices (கிலோ 480, ஸ்பெஷல் மிக்சர் 360, மினி ஜிலேபி 400) are omitted from the reel_script, which is an important missing fact.
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The article says the new branch will be opened in the 'திருமண மண்டபம் அருகே' location but the reel_script and slides say it is 'Municipal Colony' headquarters; the article only states the headquarters is திரு.வி.க. ரோடு, முனிசிபல் காலனி — this is consistent, so no problem there; however the reel_script states the branch is 'நாளை காலை ஏழு :முப்பத்து ஐந்து மணிக்குத் திறக்கப்படுகிறது' while the article says the event starts at 7:35 — acceptable.
-  The reel_script states that the offer is 'ராசிபுரம் கிளையில் அக்டோபர் இருபத்து ஐந்து இருபத்து ஆறு' — the article gives dates 25 and 26 without naming the month explicitly; the month 'அக்டோபர்' is an inferred detail not stated in the article (the article only mentions Deepavali and 'நவ., 9' implying Oct/Nov context).
-  The reel_script omits the article's Deepavali sweets sale details (27 to Nov 9, prices of லட்டு, பாதுஷா, சோன்பப்டி, ஜிலேபி, ஸ்பெஷல் மிக்சர், மினி ஜிலேபி), which are important facts of the article.
-  The reel_script says the event is the opening of the 'புதிய கிளை' of the company, and that 'ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார் புதிய கிளையைத் திறந்து வைக்கிறார்' — the article states the MP is inaugurating the new branch, consistent; no issue. The 'புதிய கிளை' is said to be opened near 'திருமண மண்டபம்' — consistent.
-claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The article says the new branch will be opened in the 'திருமண மண்டபம் அருகே' location but the reel_script and slides say it is 'Municipal Colony' headquarters; the article only states the headquarters is திரு.வி.க. ரோடு, முனிசிபல் காலனி — this is consistent, so no problem there; however the reel_script states the branch is 'நாளை காலை ஏழு :முப்பத்து ஐந்து மணிக்குத் திறக்கப்படுகிறது' while the article says the event starts at 7:35 — acceptable.
-  fact-check: The reel_script states that the offer is 'ராசிபுரம் கிளையில் அக்டோபர் இருபத்து ஐந்து இருபத்து ஆறு' — the article gives dates 25 and 26 without naming the month explicitly; the month 'அக்டோபர்' is an inferred detail not stated in the article (the article only mentions Deepavali and 'நவ., 9' implying Oct/Nov context).
-  fact-check: The reel_script omits the article's Deepavali sweets sale details (27 to Nov 9, prices of லட்டு, பாதுஷா, சோன்பப்டி, ஜிலேபி, ஸ்பெஷல் மிக்சர், மினி ஜிலேபி), which are important facts of the article.
-  fact-check: The reel_script says the event is the opening of the 'புதிய கிளை' of the company, and that 'ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார் புதிய கிளையைத் திறந்து வைக்கிறார்' — the article states the MP is inaugurating the new branch, consistent; no issue. The 'புதிய கிளை' is said to be opened near 'திருமண மண்டபம்' — consistent.
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  scenes must be 5 (slides + 1), got 4
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1243. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
-
-writing [R]: இதே நாளில் அன்று: அக். 24
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  scenes must be 5 (slides + 1), got 4
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  hl1 longer than 40 characters
-  slide 2 line 1 longer than 60 characters
-  slide 2 line 2 longer than 60 characters
-  slide 2 line 3 longer than 60 characters
-  slide 4 line 2 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  slide 3 line 1 longer than 60 characters
-  scenes must be 5 (slides + 1), got 4
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1116. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
-
-writing [N]: மாணவியர் சாலை பாதுகாப்பு விழிப்புணர்வு
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  slide 3 line 3 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  slide 2 line 3 longer than 60 characters
-  slide 3 line 2 longer than 60 characters
-ok anthropic/claude-haiku-5-5
+  reel_script says the MP (ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார்) 'opens/inaugurates' the branch, but the article only says he is one of the people for whom the new branch will be opened (article is ambiguous/partially garbled: 'புதிய கிளையை, ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார்' — the verb is missing), so the claim that he 'திறந்து வைக்கிறார்' is an inference not clearly stated; the caption and slides repeat the same claim
+  reel_script and caption state the new branch is 'திருமண மண்டபம் அருகே' and the article says the branch opens near a marriage hall, which matches, but the article's 'தன் புதிய கிளையை' phrasing does not clearly say the new branch is located near the hall in the same sentence; minor, but 'இன்ஜினியர் ராஜா ... முன்னிலை வகிக்கின்றனர்' is described in the slides as 'முன்னிலை' while the article's roles are unspecified, acceptable
+  reel_script says the 25 and 26 offer is 'ராசிபுரம் கிளையில்' and the caption says the same, but the article's offer sentence is split by the separate 'ராசிபுரம் கிளையில்' line—consistent; however the reel_script omits the stated 'முக்கிய பிரமுகர்கள், தொழிலதிபர்கள், உறவினர்கள் நண்பர்கள் கலந்துகொள்கின்றனர்' detail as a separate fact is included only in slides, not the reel (not a strict error)
+  reel_script says 'லட்டு, பாதுஷா, சோன்பப்டி, ஜிலேபி கிலோ நானூற்று எண்பது ரூபாய்க்கும்' — the article's price list is ambiguous (ஒரு கிலோ, 480 applies to the group), consistent with the draft, but the sentence mixes the group price with the separate special mixer price in one line structure, creating a potentially unclear reading
 claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  hl2 longer than 28 characters
-  slide 2 line 2 longer than 60 characters
-  slide 3 line 1 longer than 60 characters
-  slide 3 line 2 longer than 60 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/qwen/qwen3.8-27b (2s)
-proofread by groq/qwen/qwen3.8-27b: 1 problems
-writing [N]: அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதுமக்கள் எதிர
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+  fact-check: reel_script says the MP (ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார்) 'opens/inaugurates' the branch, but the article only says he is one of the people for whom the new branch will be opened (article is ambiguous/partially garbled: 'புதிய கிளையை, ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார்' — the verb is missing), so the claim that he 'திறந்து வைக்கிறார்' is an inference not clearly stated; the caption and slides repeat the same claim
+  fact-check: reel_script and caption state the new branch is 'திருமண மண்டபம் அருகே' and the article says the branch opens near a marriage hall, which matches, but the article's 'தன் புதிய கிளையை' phrasing does not clearly say the new branch is located near the hall in the same sentence; minor, but 'இன்ஜினியர் ராஜா ... முன்னிலை வகிக்கின்றனர்' is described in the slides as 'முன்னிலை' while the article's roles are unspecified, acceptable
+  fact-check: reel_script says the 25 and 26 offer is 'ராசிபுரம் கிளையில்' and the caption says the same, but the article's offer sentence is split by the separate 'ராசிபுரம் கிளையில்' line—consistent; however the reel_script omits the stated 'முக்கிய பிரமுகர்கள், தொழிலதிபர்கள், உறவினர்கள் நண்பர்கள் கலந்துகொள்கின்றனர்' detail as a separate fact is included only in slides, not the reel (not a strict error)
+  fact-check: reel_script says 'லட்டு, பாதுஷா, சோன்பப்டி, ஜிலேபி கிலோ நானூற்று எண்பது ரூபாய்க்கும்' — the article's price list is ambiguous (ஒரு கிலோ, 480 applies to the group), consistent with the draft, but the sentence mixes the group price with the separate special mixer price in one line structure, creating a potentially unclear reading
+proofread skipped: free models not efficient (11 failures in a row): using Claude
+writing [N]: மாணவியர் சாலை பாதுகாப்பு விழிப்புணர்வு
+free models unavailable: free models not efficient (11 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  slide 2 line 3 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  hl2 longer than 28 characters
-  slide 1 line 2 longer than 60 characters
-  slide 1 line 3 longer than 60 characters
-  slide 2 line 1 longer than 60 characters
-  slide 2 line 2 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  hl2 longer than 28 characters
-  scenes must be 4 (slides + 1), got 5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1299. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
-
-writing [N]: பாம்பன் கடற்கரைக்கு படகில் வந்த இலங்கையை சேர்ந்த 3 பேர் கைது
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/qwen/qwen3.8-27b (1s)
-factcheck by groq/qwen/qwen3.8-27b: 4 problems
-  Headline claims 3 people were arrested, but the article states 4 people were arrested (Muthuraja + 3 Sri Lankans).
-  Reel script states 'Two Sri Lankans' (இலங்கையைச் சேர்ந்த இரண்டு பேர்) were involved in the London escape plot, but the article identifies three Sri Lankans (Darshan, Muhammad Khan, Muhammad Ashik) on the boat, and specifically mentions Khan and Ashik for the London plot, while Darshan was the one who arranged it. The script's phrasing is ambiguous and potentially inaccurate regarding the count of Sri Lankans involved in the specific plot vs total arrests.
-  Slide 2 states Darshan came to India in February, but the article specifies February 26th. While not strictly a contradiction, the draft omits the specific date which is a key detail in the article's timeline.
-  Slide 3 states the plan was to travel from Delhi (டெல்லியில் இருந்து செல்ல திட்டம்), which is correct, but the previous line says they were trying to escape to London. The article says they were trying to escape to London *from* Delhi using fake documents. The draft is acceptable here, but the headline's '3 people' error is the primary factual failure.
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: Headline claims 3 people were arrested, but the article states 4 people were arrested (Muthuraja + 3 Sri Lankans).
-  fact-check: Reel script states 'Two Sri Lankans' (இலங்கையைச் சேர்ந்த இரண்டு பேர்) were involved in the London escape plot, but the article identifies three Sri Lankans (Darshan, Muhammad Khan, Muhammad Ashik) on the boat, and specifically mentions Khan and Ashik for the London plot, while Darshan was the one who arranged it. The script's phrasing is ambiguous and potentially inaccurate regarding the count of Sri Lankans involved in the specific plot vs total arrests.
-  fact-check: Slide 2 states Darshan came to India in February, but the article specifies February 26th. While not strictly a contradiction, the draft omits the specific date which is a key detail in the article's timeline.
-  fact-check: Slide 3 states the plan was to travel from Delhi (டெல்லியில் இருந்து செல்ல திட்டம்), which is correct, but the previous line says they were trying to escape to London. The article says they were trying to escape to London *from* Delhi using fake documents. The draft is acceptable here, but the headline's '3 people' error is the primary factual failure.
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  Headline says 4 persons arrested 'இலங்கையை சேர்ந்த 3 பேர் உட்பட' which is consistent, but slides_spec hl1 and caption header are fine; however the reel_script says the 3 people were 'மற்ற மூவரில் இலங்கையைச் சேர்ந்த முகமது கான், முகமது ஆசிக் ஆகியோர்' – it omits Dharshan (also from Sri Lanka), so the Sri Lankan count is incomplete in the reel_script
-  Reel_script says the two Sri Lankans were going to flee to London 'in investigation' from Delhi – the article says they were to escape to London using fake passport/visa arranged in Delhi, but the reel_script omits that they tried to escape via a boat-based route and omits the ₹1 crore demand and ₹20 lakh advance paid to Ramesh, an important missing fact
-  Reel_script omits the key fact that the boat was carrying the Sri Lankans from the international sea border area and that the boat driver Muthuraja was paid ₹1.10 lakh to bring 2 people, which is in the slides but not in the reel
-  Caption says 'டெல்லியில் போலி பாஸ்போர்ட், விசா மூலம் லண்டன் தப்ப முயன்றதாக' attributing the fake passport plan to all arrested, while the article states only Mohammed Khan and Mohammed Asik were planning this – the caption wording is ambiguous/misattributed
-  Slide 'தப்ப முயற்சி' says 'போலி பாஸ்போர்ட், விசாவில் லண்டன் தப்ப முயன்றனர்' without specifying the two men, and the slide line 'இலங்கையிலிருந்து 2 பேரை அழைத்துவர ₹1.10 லட்சம் பேசப்பட்டது' merges Dharshan's arrangement with the fleeing plan, mixing two different facts into one slide
-claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: Headline says 4 persons arrested 'இலங்கையை சேர்ந்த 3 பேர் உட்பட' which is consistent, but slides_spec hl1 and caption header are fine; however the reel_script says the 3 people were 'மற்ற மூவரில் இலங்கையைச் சேர்ந்த முகமது கான், முகமது ஆசிக் ஆகியோர்' – it omits Dharshan (also from Sri Lanka), so the Sri Lankan count is incomplete in the reel_script
-  fact-check: Reel_script says the two Sri Lankans were going to flee to London 'in investigation' from Delhi – the article says they were to escape to London using fake passport/visa arranged in Delhi, but the reel_script omits that they tried to escape via a boat-based route and omits the ₹1 crore demand and ₹20 lakh advance paid to Ramesh, an important missing fact
-  fact-check: Reel_script omits the key fact that the boat was carrying the Sri Lankans from the international sea border area and that the boat driver Muthuraja was paid ₹1.10 lakh to bring 2 people, which is in the slides but not in the reel
-  fact-check: Caption says 'டெல்லியில் போலி பாஸ்போர்ட், விசா மூலம் லண்டன் தப்ப முயன்றதாக' attributing the fake passport plan to all arrested, while the article states only Mohammed Khan and Mohammed Asik were planning this – the caption wording is ambiguous/misattributed
-  fact-check: Slide 'தப்ப முயற்சி' says 'போலி பாஸ்போர்ட், விசாவில் லண்டன் தப்ப முயன்றனர்' without specifying the two men, and the slide line 'இலங்கையிலிருந்து 2 பேரை அழைத்துவர ₹1.10 லட்சம் பேசப்பட்டது' merges Dharshan's arrangement with the fleeing plan, mixing two different facts into one slide
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  slide 1 line 1 longer than 60 characters
-  slide 2 line 2 longer than 60 characters
-  slide 3 line 1 longer than 60 characters
-  scenes must be 5 (slides + 1), got 4
-  not grounded: location 'ராமநாதபுரம்' is not in the article
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (3s)
-proofread by groq/qwen/qwen3.8-27b: 0 problems
-writing [N]: மினி ஆட்டோ மோதி விவசாயி உயிரிழப்பு
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  slide 1 line 2 longer than 60 characters
-  not grounded: location 'பரமத்தி' is not in the article
+  reel_script has 57 words; need 70-130 (detailed reel, about 40-50 seconds)
 ok anthropic/claude-haiku-5-5
 claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  slide 1 line 2 longer than 60 characters
-  not grounded: location 'பரமத்தி' is not in the article
+  reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
+  not grounded: location 'கலைக்' is not in the article
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  slide 1 line 2 longer than 60 characters
-  not grounded: location 'பரமத்தி' is not in the article
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1299. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
-
+  reel_script has 61 words; need 70-130 (detailed reel, about 40-50 seconds)
+  not grounded: location 'கலைக்' is not in the article
+proofread skipped: free models not efficient (11 failures in a row): using Claude
+writing [R]: இதே நாளில் அன்று: அக். 24
+free models unavailable: free models not efficient (11 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 7 problems
+  Headline and reel_script say Rasipuram (நாமக்கல் மாவட்டம்/ராசிபுரம்) is his birthplace, but the article says he was born in Mysore, Karnataka; Rasipuram is only the family/surname origin (ராசிபுரம் கிருஷ்ணசுவாமி லட்சுமண்), so the 'born in Rasipuram' claim is an invented/incorrect place.
+  slides_spec 'loc' and 'cat' fields and hl1 'ராசிபுரம் மகன்' repeat the wrong claim that he is a son of Rasipuram town; the article gives Mysore as birthplace.
+  reel_script says the family was 'ராசிபுரம் மண்ணில் வேரூன்றிய' (rooted in Rasipuram soil), which is not stated in the article; the article only says the family originated from Tamil Nadu (தமிழகத்தை பூர்வீகமாக கொண்ட).
+  reel_script states the parents' names and that the family was Tamil-origin, but omits that he was the younger brother of writer R.K. Narayan, an important fact of the article.
+  Caption says 'ராசிபுரம் மண்ணில் பிறந்த' (born in Rasipuram soil), contradicting the article's birthplace of Mysore.
+  Caption and reel_script mention the 1984 Ramon Magsaysay award but omit the Philippines context; minor, but the 'Common Man' description claims he gained fame through 'காமன் மேன்' in the Times of India which is consistent; however the reel_script claims he 'became a famous cartoonist' in 'இந்தியாவின்' which is an unsupported embellishment is acceptable wording.
+  The article's death details (2015 January 26, age 93) are correct, but the reel_script omits the award-winning 'Ramon Magsaysay' country origin, which is minor.
+claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
+  fact-check: Headline and reel_script say Rasipuram (நாமக்கல் மாவட்டம்/ராசிபுரம்) is his birthplace, but the article says he was born in Mysore, Karnataka; Rasipuram is only the family/surname origin (ராசிபுரம் கிருஷ்ணசுவாமி லட்சுமண்), so the 'born in Rasipuram' claim is an invented/incorrect place.
+  fact-check: slides_spec 'loc' and 'cat' fields and hl1 'ராசிபுரம் மகன்' repeat the wrong claim that he is a son of Rasipuram town; the article gives Mysore as birthplace.
+  fact-check: reel_script says the family was 'ராசிபுரம் மண்ணில் வேரூன்றிய' (rooted in Rasipuram soil), which is not stated in the article; the article only says the family originated from Tamil Nadu (தமிழகத்தை பூர்வீகமாக கொண்ட).
+  fact-check: reel_script states the parents' names and that the family was Tamil-origin, but omits that he was the younger brother of writer R.K. Narayan, an important fact of the article.
+  fact-check: Caption says 'ராசிபுரம் மண்ணில் பிறந்த' (born in Rasipuram soil), contradicting the article's birthplace of Mysore.
+  fact-check: Caption and reel_script mention the 1984 Ramon Magsaysay award but omit the Philippines context; minor, but the 'Common Man' description claims he gained fame through 'காமன் மேன்' in the Times of India which is consistent; however the reel_script claims he 'became a famous cartoonist' in 'இந்தியாவின்' which is an unsupported embellishment is acceptable wording.
+  fact-check: The article's death details (2015 January 26, age 93) are correct, but the reel_script omits the award-winning 'Ramon Magsaysay' country origin, which is minor.
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 2 problems
+  reel_script says 'ஆயிரத்து தொள்ளாயிரத்து எழுபத்து மூன்று ல்' for the Padma Bhushan and the slides/caption are consistent, but the reel_script's 1984 and 2005 award lines omit the 'பத்ம' context only partially; more importantly, the reel_script states Lakshman was born 'in Rasipuram' context: it says 'ராசிபுரத்தில் பூர்வீகம் கொண்ட' which matches the article's ancestry claim, but the headline and slides_spec 'loc' field label him as from Rasipuram in a way that conflates birthplace with origin (article says born in Mysore, ancestry from Tamil Nadu; Rasipuram is only in the name)
+  The article does not state that Lakshman's family is from Rasipuram; it says the family is originally from Tamil Nadu and his name includes Rasipuram. The headline 'ராசிபுரம் ஆர்.கே.லட்சுமண்' and the 'loc' field 'ராசிபுரம்' imply a Rasipuram origin/location that is not stated in the article.
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  fact-check: reel_script says 'ஆயிரத்து தொள்ளாயிரத்து எழுபத்து மூன்று ல்' for the Padma Bhushan and the slides/caption are consistent, but the reel_script's 1984 and 2005 award lines omit the 'பத்ம' context only partially; more importantly, the reel_script states Lakshman was born 'in Rasipuram' context: it says 'ராசிபுரத்தில் பூர்வீகம் கொண்ட' which matches the article's ancestry claim, but the headline and slides_spec 'loc' field label him as from Rasipuram in a way that conflates birthplace with origin (article says born in Mysore, ancestry from Tamil Nadu; Rasipuram is only in the name)
+  fact-check: The article does not state that Lakshman's family is from Rasipuram; it says the family is originally from Tamil Nadu and his name includes Rasipuram. The headline 'ராசிபுரம் ஆர்.கே.லட்சுமண்' and the 'loc' field 'ராசிபுரம்' imply a Rasipuram origin/location that is not stated in the article.
+proofread skipped: free models not efficient (11 failures in a row): using Claude
+writing [N]: அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதுமக்கள் எதிர
+free models unavailable: free models not efficient (11 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+claude answer not JSON (Expecting ',' delimiter: line 1 column 3557 (char 3556)); stop_reason=end_turn blocks=['text'] usage={'input_tokens': 1122, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 10095, 'cache_creation': {'ephemeral_5m_input_tokens': 0, 'ephemeral_1h_input_tokens': 0}, 'output_tokens': 2295, 'output_tokens_details': {'thinking_tokens': 0}, 'service_tier': 'standard', 'inference_geo': 'global', 'speed': 'standard'} head='```json\n{"tamil_headline": "அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதுமக்கள் எதிர்ப்பு", "english_headline": "Villagers oppose drawing water from a public well for a government school", "catego'
+claude rewrite failed: Expecting ',' delimiter: line 1 column 3557 (char 3556)
 writing [N]: நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் துறையினா் சோ
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+free models unavailable: free models not efficient (11 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  hl1 longer than 40 characters
-  hl2 longer than 28 characters
-  slide 2 line 1 longer than 60 characters
-  scenes must be 5 (slides + 1), got 4
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
 ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 2 problems
+  The article states the raid covered 45 locations across Tamil Nadu (municipal and municipal corporation offices), but the draft omits this fact, which is an important point of the article and is missing from the reel_script.
+  The reel_script says the search was for money 'in the seats and files' (இருக்கைகளிலும் கோப்புகளிலும), which matches the article, but the slides_spec line 'இருக்கைகள், கோப்புகளிலும் கணக்கில் வராத பணம் தேடப்பட்டது' says the unaccounted money was searched in seats and files; this is consistent, but the caption/slide 'கைப்பேசியில் பணப் பரிவர்த்தனை நடந்ததா என ஆய்வு' is acceptable. No further invented details found.
 claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  hl2 longer than 28 characters
-  scenes must be 4 (slides + 1), got 5
+  fact-check: The article states the raid covered 45 locations across Tamil Nadu (municipal and municipal corporation offices), but the draft omits this fact, which is an important point of the article and is missing from the reel_script.
+  fact-check: The reel_script says the search was for money 'in the seats and files' (இருக்கைகளிலும் கோப்புகளிலும), which matches the article, but the slides_spec line 'இருக்கைகள், கோப்புகளிலும் கணக்கில் வராத பணம் தேடப்பட்டது' says the unaccounted money was searched in seats and files; this is consistent, but the caption/slide 'கைப்பேசியில் பணப் பரிவர்த்தனை நடந்ததா என ஆய்வு' is acceptable. No further invented details found.
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  slide 2 line 1 longer than 60 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (3s)
-proofread by groq/qwen/qwen3.8-27b: 1 problems
+  reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
+proofread skipped: free models not efficient (11 failures in a row): using Claude
 writing [N]: எம்.எல்.எச்.பி., பணியாளரை சி.எச்.ஓ., என பெயர் மாற்றியதை அங்க
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+free models unavailable: free models not efficient (11 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  not grounded: location 'தமிழ்நாடு' is not in the article
+  reel_script has 50 words; need 70-130 (detailed reel, about 40-50 seconds)
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
-  hl1 longer than 40 characters
-  slide 1 line 1 longer than 60 characters
-  slide 1 line 2 longer than 60 characters
-  slide 2 line 2 longer than 60 characters
-  slide 3 line 1 longer than 60 characters
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  slides must have 3 or 4 items
+  reel_script has 52 words; need 70-130 (detailed reel, about 40-50 seconds)
   not grounded: location 'தமிழ்நாடு' is not in the article
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  hl1 longer than 40 characters
+  reel_script has 51 words; need 70-130 (detailed reel, about 40-50 seconds)
   not grounded: location 'தமிழ்நாடு' is not in the article
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/qwen/qwen3.8-27b (2s)
-proofread by groq/qwen/qwen3.8-27b: 1 problems
+proofread skipped: free models not efficient (11 failures in a row): using Claude
 writing [N]: எஸ்.ஐ.ஆர்.,ஐ எதிர்த்து சி.ஐ.டி.யு., ஆர்ப்பாட்டம்
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+free models unavailable: free models not efficient (11 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 57 words; need 70-130 (detailed reel, about 40-50 seconds)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 60 words; need 70-130 (detailed reel, about 40-50 seconds)
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 50 words; need 70-130 (detailed reel, about 40-50 seconds)
+proofread skipped: free models not efficient (11 failures in a row): using Claude
+writing [N]: மேம்பாலம் வழியாக சென்ற தனியார் பஸ்சுக்கு அபராதம்
+free models unavailable: free models not efficient (11 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 51 words; need 70-130 (detailed reel, about 40-50 seconds)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 58 words; need 70-130 (detailed reel, about 40-50 seconds)
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 64 words; need 70-130 (detailed reel, about 40-50 seconds)
+proofread skipped: free models not efficient (11 failures in a row): using Claude
+writing [N]: ப.வேலூர் ஆலைகளில் சோதனை 14 டன் சர்க்கரை, வெல்லம் பறிமுதல்
+free models unavailable: free models not efficient (11 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  hl1 longer than 40 characters
-  slide 3 line 1 longer than 60 characters
-  slide 3 line 2 longer than 60 characters
+  slide 1 line 1 longer than 60 characters
+  reel_script has 61 words; need 70-130 (detailed reel, about 40-50 seconds)
+  not grounded: location 'பரமத்தி' is not in the article
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  slide 3 line 1 longer than 60 characters
-  slide 3 line 2 longer than 60 characters
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  hl1 longer than 40 characters
+  reel_script has 65 words; need 70-130 (detailed reel, about 40-50 seconds)
+  not grounded: location 'பரமத்தி' is not in the article
 ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  hl1 longer than 40 characters
-  slide 1 line 2 longer than 60 characters
-  slide 3 line 1 longer than 60 characters
-  slide 3 line 2 longer than 60 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (3s)
-proofread rejected (3 problems)
-  hl1 longer than 40 characters
-  slide 3 line 1 longer than 60 characters
-  slide 3 line 2 longer than 60 characters
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  reel_script has 63 words; need 70-130 (detailed reel, about 40-50 seconds)
+  not grounded: location 'பரமத்தி' is not in the article
+proofread skipped: free models not efficient (11 failures in a row): using Claude
+writing [N]: 'மைலோ' திரைப்படத்தின் பர்ஸ்ட் லுக் போஸ்டர் மற்றும் ப்ரோமோ வீ
+free models unavailable: free models not efficient (11 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 51 words; need 70-130 (detailed reel, about 40-50 seconds)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 67 words; need 70-130 (detailed reel, about 40-50 seconds)
+proofread skipped: free models not efficient (11 failures in a row): using Claude
 earlier stories still waiting for images: []
 source dinamalar list: 8 items
-source google 'நாமக்கல்': 60 items
+source google 'நாமக்கல்': 58 items
 source bing 'நாமக்கல்': 10 items
 source google 'ராசிபுரம்': 8 items
 source bing 'ராசிபுரம்': 12 items
@@ -395,11 +251,11 @@ source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 2 items
 source google 'எருமப்பட்டி': 0 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 48 items
+source google 'நாமக்கல் மாவட்டம்': 46 items
 source bing 'நாமக்கல் மாவட்டம்': 11 items
-source google 'நாமக்கல் முட்டை விலை': 3 items
+source google 'நாமக்கல் முட்டை விலை': 2 items
 source bing 'நாமக்கல் முட்டை விலை': 11 items
-source google நியூஸ்7 தமிழ் 'நாமக்கல்': 4 items
+source google நியூஸ்7 தமிழ் 'நாமக்கல்': 5 items
 source bing நியூஸ்7 தமிழ் 'நாமக்கல்': 8 items
 source google நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
 source bing நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
@@ -411,19 +267,19 @@ source google என்டிடிவி தமிழ் 'ராசிபுர
 source bing என்டிடிவி தமிழ் 'ராசிபுரம்': 0 items
 source google என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
 source bing என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
-source google மாலைமலர் 'நாமக்கல்': 15 items
+source google மாலைமலர் 'நாமக்கல்': 12 items
 source bing மாலைமலர் 'நாமக்கல்': 12 items
 source google மாலைமலர் 'ராசிபுரம்': 1 items
 source bing மாலைமலர் 'ராசிபுரம்': 2 items
 source google மாலைமலர் 'திருச்செங்கோடு': 0 items
 source bing மாலைமலர் 'திருச்செங்கோடு': 1 items
-source google தினத்தந்தி 'நாமக்கல்': 11 items
+source google தினத்தந்தி 'நாமக்கல்': 13 items
 source bing தினத்தந்தி 'நாமக்கல்': 12 items
 source google தினத்தந்தி 'ராசிபுரம்': 2 items
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
 source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்': 25 items
+source google தினமணி 'நாமக்கல்': 23 items
 source bing தினமணி 'நாமக்கல்': 12 items
 source google தினமணி 'ராசிபுரம்': 3 items
 source bing தினமணி 'ராசிபுரம்': 5 items
@@ -449,13 +305,13 @@ source google புதிய தலைமுறை 'திருச்செங
 source bing புதிய தலைமுறை 'திருச்செங்கோடு': 1 items
 source google நியூஸ்18 தமிழ் 'நாமக்கல்': 100 items
 source bing நியூஸ்18 தமிழ் 'நாமக்கல்': 10 items
-source google நியூஸ்18 தமிழ் 'ராசிபுரம்': 1 items
+source google நியூஸ்18 தமிழ் 'ராசிபுரம்': 0 items
 source bing நியூஸ்18 தமிழ் 'ராசிபுரம்': 3 items
-source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 4 items
+source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 3 items
 source bing நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 1 items
 source google விகடன் 'நாமக்கல்': 1 items
-source bing விகடன் 'நாமக்கல்': 10 items
-source google விகடன் 'ராசிபுரம்': 2 items
+source bing விகடன் 'நாமக்கல்': 12 items
+source google விகடன் 'ராசிபுரம்': 3 items
 source bing விகடன் 'ராசிபுரம்': 0 items
 source google விகடன் 'திருச்செங்கோடு': 0 items
 source bing விகடன் 'திருச்செங்கோடு': 0 items
@@ -489,19 +345,19 @@ source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்': 10 items
+source google ABP நாடு 'நாமக்கல்': 9 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
 source google ABP நாடு 'திருச்செங்கோடு': 0 items
 source bing ABP நாடு 'திருச்செங்கோடு': 0 items
-source google Oneindia தமிழ் 'நாமக்கல்': 12 items
+source google Oneindia தமிழ் 'நாமக்கல்': 11 items
 source bing Oneindia தமிழ் 'நாமக்கல்': 0 items
 source google Oneindia தமிழ் 'ராசிபுரம்': 0 items
 source bing Oneindia தமிழ் 'ராசிபுரம்': 0 items
 source google Oneindia தமிழ் 'திருச்செங்கோடு': 0 items
 source bing Oneindia தமிழ் 'திருச்செங்கோடு': 0 items
-source google நக்கீரன் 'நாமக்கல்': 1 items
+source google நக்கீரன் 'நாமக்கல்': 2 items
 source bing நக்கீரன் 'நாமக்கல்': 0 items
 source google நக்கீரன் 'ராசிபுரம்': 0 items
 source bing நக்கீரன் 'ராசிபுரம்': 0 items
@@ -519,20 +375,22 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 910 items -> 506 different news (20 Rasipuram)
+all sources: 903 items -> 505 different news (20 Rasipuram)
 Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: not Namakkal district news (state-wide /=139, old=138, checked earlier=122, collected=63, already filed=22, checked earlier=15, checked earlier=5, checked earlier=2
-to write: 5 Rasipuram + 58 other district candidates (max 12 + 12 stories)
-NOT filed (R) கொல்லிமலை சாலையில் சாய்ந்த மரங்கள் அகற்றம்: would be wrong/unclear: hl2 longer than 28 characters
-NOT filed (R) ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர்: would be wrong/unclear: hl2 longer than 28 characters
-NOT filed (R) நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு வ: would be wrong/unclear: scenes must be 5 (slides + 1), got 4
-NOT filed (R) இதே நாளில் அன்று: அக். 24: would be wrong/unclear: scenes must be 5 (slides + 1), got 4
-NOT filed (N) மாணவியர் சாலை பாதுகாப்பு விழிப்புணர்வு: would be wrong/unclear: slide 3 line 3 longer than 60 characters
-NOT filed (N) அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதும: would be wrong/unclear: slide 2 line 3 longer than 60 characters
-NOT filed (N) மினி ஆட்டோ மோதி விவசாயி உயிரிழப்பு: would be wrong/unclear: slide 1 line 2 longer than 60 characters; not grounded: location 'பரமத்தி' is not in the article
-NOT filed (N) நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் து: would be wrong/unclear: slide 2 line 1 longer than 60 characters
-NOT filed (N) எம்.எல்.எச்.பி., பணியாளரை சி.எச்.ஓ., என பெயர் மாற்: would be wrong/unclear: not grounded: location 'தமிழ்நாடு' is not in the article
-NOT filed (N) எஸ்.ஐ.ஆர்.,ஐ எதிர்த்து சி.ஐ.டி.யு., ஆர்ப்பாட்டம்: would be wrong/unclear: slide 3 line 1 longer than 60 characters; slide 3 line 2 longer than 60 characters
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 12 + 12) 
-stories: 1
+candidate filter: not Namakkal district news (state-wide /=147, checked earlier=137, old=136, collected=40, already filed=22, checked earlier=15, checked earlier=6, checked earlier=2
+to write: 4 Rasipuram + 36 other district candidates (max 12 + 12 stories)
+NOT filed (R) கொல்லிமலை சாலையில் சாய்ந்த மரங்கள் அகற்றம்: all free models failed: no usable answer from the models
+NOT filed (R) ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர்: would be wrong/unclear: reel_script has 59 words; need 70-130 (detailed reel, about 40-50 seconds)
+NOT filed (R) நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு வ: would be wrong/unclear: fact-check: The article never states the location as Rasipuram (ராசிபுரம்); it only says the Rasipuram branch offer exists, and the article's headline
+NOT filed (N) மாணவியர் சாலை பாதுகாப்பு விழிப்புணர்வு: would be wrong/unclear: reel_script has 57 words; need 70-130 (detailed reel, about 40-50 seconds)
+NOT filed (R) இதே நாளில் அன்று: அக். 24: would be wrong/unclear: reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
+NOT filed (N) அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதும: all free models failed: no usable answer from the models
+NOT filed (N) நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் து: would be wrong/unclear: reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
+NOT filed (N) எம்.எல்.எச்.பி., பணியாளரை சி.எச்.ஓ., என பெயர் மாற்: would be wrong/unclear: reel_script has 50 words; need 70-130 (detailed reel, about 40-50 seconds)
+NOT filed (N) எஸ்.ஐ.ஆர்.,ஐ எதிர்த்து சி.ஐ.டி.யு., ஆர்ப்பாட்டம்: would be wrong/unclear: reel_script has 50 words; need 70-130 (detailed reel, about 40-50 seconds)
+NOT filed (N) மேம்பாலம் வழியாக சென்ற தனியார் பஸ்சுக்கு அபராதம்: would be wrong/unclear: reel_script has 64 words; need 70-130 (detailed reel, about 40-50 seconds)
+NOT filed (N) ப.வேலூர் ஆலைகளில் சோதனை 14 டன் சர்க்கரை, வெல்லம் ப: would be wrong/unclear: reel_script has 63 words; need 70-130 (detailed reel, about 40-50 seconds); not grounded: location 'பரமத்தி' is not in the article
+NOT filed (N) 'மைலோ' திரைப்படத்தின் பர்ஸ்ட் லுக் போஸ்டர் மற்றும்: would be wrong/unclear: reel_script has 67 words; need 70-130 (detailed reel, about 40-50 seconds)
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 12 + 12) 
+stories: 0
