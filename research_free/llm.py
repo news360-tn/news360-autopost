@@ -212,7 +212,7 @@ def chain():
     return out
 
 
-CLAUDE_FIRST = os.environ.get("CLAUDE_FIRST", "1") == "1"      # 1 = Claude paid key does all writing and checks (set 0 to use free models first again)
+CLAUDE_FIRST = os.environ.get("CLAUDE_FIRST", "0") == "1"      # 0 (default) = free models first; Claude only when free models fail, are slow, or hit the limit. 1 = Claude for everything
 FREE_FAILS = [0]                                              # failures of free models in a row (slow, poor or refused answers)
 FREE_FAIL_LIMIT = int(os.environ.get("LLM_FREE_FAIL_LIMIT", "3"))
 
