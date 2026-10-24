@@ -1,40 +1,46 @@
 writing [R]: கொல்லிமலை சாலையில் சாய்ந்த மரங்கள் அகற்றம்
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.8-flash
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.8-flash
-factcheck by gemini/gemini-3.8-flash: 1 problems
-  In reel_script, 'ஒன்று மணி நேரத்திற்கும் மேலாக' is ungrammatical in Tamil; it should be 'ஒரு மணி நேரத்திற்கும் மேலாக'.
-attempt 1 gemini/gemini-3.8-flash: 1 problems
-  fact-check: In reel_script, 'ஒன்று மணி நேரத்திற்கும் மேலாக' is ungrammatical in Tamil; it should be 'ஒரு மணி நேரத்திற்கும் மேலாக'.
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.8-flash
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.8-flash
 fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.7-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+switching away from gemini/gemini-3.7-flash for 10 min
+ok gemini/gemini-3.6-flash (15s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
+ok groq/openai/gpt-oss-120b (4s)
+factcheck by groq/openai/gpt-oss-120b: 2 problems
+  Reel script says the tree fell (விழுந்தது) whereas article says the tree was only leaning (சாய்ந்தது)
+  Slides spec states the rain lasted exactly 1 hour, but article says it lasted more than one hour
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  fact-check: Reel script says the tree fell (விழுந்தது) whereas article says the tree was only leaning (சாய்ந்தது)
+  fact-check: Slides spec states the rain lasted exactly 1 hour, but article says it lasted more than one hour
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/qwen/qwen3.8-27b (3s)
+attempt 2 groq/qwen/qwen3.8-27b: 1 problems
+  hl2 longer than 28 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
 dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
 fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
@@ -42,649 +48,491 @@ dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
 fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
 fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
 switching away from mistral/mistral-small-latest for 10 min
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  hl2 longer than 28 characters
-  slide 2 line 1 longer than 60 characters
-  slide 2 line 2 longer than 60 characters
-  slide 3 line 2 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  slide 1 line 3 longer than 60 characters
-  slide 2 title longer than 18 characters
-  slide 2 line 2 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  hl2 longer than 28 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-ok groq/openai/gpt-oss-120b
-proofread by groq/openai/gpt-oss-120b: 1 problems
-writing [R]: கம்பம் நடும் விழா கோலாகலம்
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
 ok anthropic/claude-haiku-5-5
 claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  hl1 longer than 40 characters
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/openai/gpt-oss-120b
-factcheck by groq/openai/gpt-oss-120b: 2 problems
-  Location "நாமக்கல்" in slides_spec (loc) is not mentioned in the article
-  Caption claims the festival is in "நாமக்கல்லில்", which is not stated in the article
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  fact-check: Location "நாமக்கல்" in slides_spec (loc) is not mentioned in the article
-  fact-check: Caption claims the festival is in "நாமக்கல்லில்", which is not stated in the article
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/openai/gpt-oss-120b
-factcheck by groq/openai/gpt-oss-120b: 1 problems
-  Slide 3 states that there were night events at the temple after the procession, which is not mentioned in the article
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  fact-check: Slide 3 states that there were night events at the temple after the procession, which is not mentioned in the article
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/openai/gpt-oss-120b
-proofread rejected (3 problems)
-  missing key: reel_script
-  missing key: caption
-  missing key: scenes
-writing [N]: அக். 26 வரை வெளுக்கப்போகும் மிக கனமழை! உஷாராக இருக்க வேண்டிய
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  slide 2 line 1 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  hl2 longer than 28 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  hl2 longer than 28 characters
-  scenes must be 5 (slides + 1), got 4
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/openai/gpt-oss-120b
-proofread rejected (3 problems)
-  missing key: reel_script
-  missing key: caption
-  missing key: scenes
-writing [R]: ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர் ஆலோசனை
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-ok groq/qwen/qwen3.8-27b
-attempt 1 groq/qwen/qwen3.8-27b: 1 problems
-  slide 2 title longer than 18 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  slide 2 line 1 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-ok groq/openai/gpt-oss-120b
-factcheck by groq/openai/gpt-oss-120b: 3 problems
-  Reel script says arrangements for voters to vote without traveling long distances are already underway, which is not stated in the article
-  Slide 3 claims that details have not been fully released, a fact not mentioned in the article
-  The draft omits the article’s important fact that election work has already started
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: Reel script says arrangements for voters to vote without traveling long distances are already underway, which is not stated in the article
-  fact-check: Slide 3 claims that details have not been fully released, a fact not mentioned in the article
-  fact-check: The draft omits the article’s important fact that election work has already started
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  slide 1 line 3 longer than 60 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/openai/gpt-oss-120b
-proofread rejected (3 problems)
-  missing key: reel_script
-  missing key: caption
-  missing key: scenes
-writing [N]: மாணவியர் சாலை பாதுகாப்பு விழிப்புணர்வு
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  slide 2 line 2 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  hl2 longer than 28 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  slide 2 line 3 longer than 60 characters
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-proofread skipped: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
-writing [R]: நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு விழா
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 70 words; need 38-55 (short, fast reel)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  scenes must be 4 (slides + 1), got 5
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free fact-check unavailable, using Claude: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  Reel script says the opening is attended by MP Rajesh Kumar (ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார் கலந்துகொள்கிறார்); the article only says he will inaugurate the new branch (புதிய கிளையை ... ராஜேஸ்குமார்), which is not the same claim as attending as a participant, so this wording is inaccurate.
-  Reel script says the Rasipuram branch offer runs for 25 and 26 'ஆகிய இரண்டு நாட்களுக்கு' but the article's offer is tied to the 'ராசிபுரம் கிளையில்' branch while the article's text places the 25/26 offer context ambiguously; the reel also omits that the 'Rs 480/360/400' Diwali prices and the 27-to-Nov 9 sale period are not mentioned, which are important facts of the article missing from the reel_script.
-  Reel script omits the Diwali sale details (27 முதல் நவ. 9 வரை; லட்டு, பாதுஷா, சோன்பப்டி, ஜிலேபி at 480, Special Mixer 360, Mini Jilebi 400), which are important facts of the article.
-  Reel script omits the other named people in the event (இன்ஜினியர் ராஜா, சுடர்வண்ணன், பரணிதரன், பாஸ்கர்) who preside, which is an important fact of the article who-did-what.
-  Slide/caption states the date as 'அக். 25' for 'நாளை', an invented date not present in the article (the article gives only 'நாளை' and the offer dates 25, 26 without a month).
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: Reel script says the opening is attended by MP Rajesh Kumar (ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார் கலந்துகொள்கிறார்); the article only says he will inaugurate the new branch (புதிய கிளையை ... ராஜேஸ்குமார்), which is not the same claim as attending as a participant, so this wording is inaccurate.
-  fact-check: Reel script says the Rasipuram branch offer runs for 25 and 26 'ஆகிய இரண்டு நாட்களுக்கு' but the article's offer is tied to the 'ராசிபுரம் கிளையில்' branch while the article's text places the 25/26 offer context ambiguously; the reel also omits that the 'Rs 480/360/400' Diwali prices and the 27-to-Nov 9 sale period are not mentioned, which are important facts of the article missing from the reel_script.
-  fact-check: Reel script omits the Diwali sale details (27 முதல் நவ. 9 வரை; லட்டு, பாதுஷா, சோன்பப்டி, ஜிலேபி at 480, Special Mixer 360, Mini Jilebi 400), which are important facts of the article.
-  fact-check: Reel script omits the other named people in the event (இன்ஜினியர் ராஜா, சுடர்வண்ணன், பரணிதரன், பாஸ்கர்) who preside, which is an important fact of the article who-did-what.
-  fact-check: Slide/caption states the date as 'அக். 25' for 'நாளை', an invented date not present in the article (the article gives only 'நாளை' and the offer dates 25, 26 without a month).
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-proofread skipped: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
-writing [R]: இதே நாளில் அன்று: அக். 24
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  scenes must be 5 (slides + 1), got 4
-  reel_script has 64 words; need 38-55 (short, fast reel)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  slide 2 line 3 longer than 60 characters
-  scenes must be 4 (slides + 1), got 5
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free fact-check unavailable, using Claude: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The headline and slides say the family is from Rasipuram ('ராசிபுரத்தின் பூர்வீகக் குடும்பம்', 'ராசிபுரத்தின் ஆர்.கே.லட்சுமண்'), but the article only says the family is Tamil-origin (தமிழகத்தை பூர்வீகமாக கொண்ட) and that he was born in Mysore; it does not say the family is from Rasipuram. Rasipuram appears only as part of his full name (ராசிபுரம் கிருஷ்ணசுவாமி லட்சுமண்).
-  The reel_script says he was born in Mysore and in the same sentence says his family was from Rasipuram, which mixes place of birth and family origin; the article does not place the family's origin in Rasipuram.
-  The reel_script omits that he was a cartoonist of political events and common people's problems with humour and satire, and omits the 1947 start described as a full-time cartoonist job; the reel_script also does not mention that he was the younger brother of writer R.K. Narayan, an important fact.
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The headline and slides say the family is from Rasipuram ('ராசிபுரத்தின் பூர்வீகக் குடும்பம்', 'ராசிபுரத்தின் ஆர்.கே.லட்சுமண்'), but the article only says the family is Tamil-origin (தமிழகத்தை பூர்வீகமாக கொண்ட) and that he was born in Mysore; it does not say the family is from Rasipuram. Rasipuram appears only as part of his full name (ராசிபுரம் கிருஷ்ணசுவாமி லட்சுமண்).
-  fact-check: The reel_script says he was born in Mysore and in the same sentence says his family was from Rasipuram, which mixes place of birth and family origin; the article does not place the family's origin in Rasipuram.
-  fact-check: The reel_script omits that he was a cartoonist of political events and common people's problems with humour and satire, and omits the 1947 start described as a full-time cartoonist job; the reel_script also does not mention that he was the younger brother of writer R.K. Narayan, an important fact.
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-proofread skipped: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
-writing [N]: பாம்பன் கடற்கரைக்கு படகில் வந்த இலங்கையை சேர்ந்த 3 பேர் கைது
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  scenes must be 5 (slides + 1), got 4
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  slide 1 line 1 longer than 60 characters
-  slide 2 line 2 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free fact-check unavailable, using Claude: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 8 problems
-  tamil_headline and caption say '3 பேர்' (3 people) arrested, but the article says all 4 were arrested (the 4 people caught were all arrested/case registered); 'இலங்கையைச் சேர்ந்த 3 பேர்' misstates the count
-  reel_script says 'இலங்கையைச் சேர்ந்த மூன்று பேர் கைது செய்யப்பட்டுள்ளனர்' (three Sri Lankans arrested) which conflicts with the article's 4 people caught and the registered case against all 4
-  reel_script states 'இருபது லட்சம் ரூபாய் முன்பணம்' as a bare fact without the context that the ₹1 crore demand and ₹20 lakh advance were the detainees' own claim in investigation; the reel_script also omits the ₹1 crore demand, which is important context for the advance
-  slides_spec 'யார் இவர்கள்?' slide says 'இலங்கையைச் சேர்ந்த 3 பேர் கைது' repeating the wrong count of arrests, and omits the fact that the boat driver Muthuraja is from Rameswaram (it does mention him) while listing the Sri Lankan count incorrectly
-  slides_spec 'என்ன திட்டம்?' slide says '₹1 கோடி கேட்டு ₹20 லட்சம் முன்பணம் அனுப்பப்பட்டது' as a fact, while the article attributes this to statements made by the detained men; the source of the claim is not conveyed
-  slides_spec 'என்ன நடந்தது?' slide says the 4 were 'இலங்கையிலிருந்து வந்தவர்கள்' (came from Sri Lanka), but Muthuraja is from Rameswaram and was the boat operator, so not all four came from Sri Lanka
-  caption says 'படகை ஓட்டி வந்தவர் ராமேசுவரத்தைச் சேர்ந்த முத்துராஜா' which is correct, but the reel_script omits the key fact that the Sri Lankan Dharshan from Namakkal had arranged the boat trip and that the boat was unregistered/no registration number, an important cause detail
-  reel_script omits the key fact that the men were arrested at dawn after landing on the Pamban beach by boat from international waters and that the boat trip was arranged for pay of ₹1.10 lakh
-claude rewrite 3 anthropic/claude-haiku-5-5: 8 problems
-  fact-check: tamil_headline and caption say '3 பேர்' (3 people) arrested, but the article says all 4 were arrested (the 4 people caught were all arrested/case registered); 'இலங்கையைச் சேர்ந்த 3 பேர்' misstates the count
-  fact-check: reel_script says 'இலங்கையைச் சேர்ந்த மூன்று பேர் கைது செய்யப்பட்டுள்ளனர்' (three Sri Lankans arrested) which conflicts with the article's 4 people caught and the registered case against all 4
-  fact-check: reel_script states 'இருபது லட்சம் ரூபாய் முன்பணம்' as a bare fact without the context that the ₹1 crore demand and ₹20 lakh advance were the detainees' own claim in investigation; the reel_script also omits the ₹1 crore demand, which is important context for the advance
-  fact-check: slides_spec 'யார் இவர்கள்?' slide says 'இலங்கையைச் சேர்ந்த 3 பேர் கைது' repeating the wrong count of arrests, and omits the fact that the boat driver Muthuraja is from Rameswaram (it does mention him) while listing the Sri Lankan count incorrectly
-  fact-check: slides_spec 'என்ன திட்டம்?' slide says '₹1 கோடி கேட்டு ₹20 லட்சம் முன்பணம் அனுப்பப்பட்டது' as a fact, while the article attributes this to statements made by the detained men; the source of the claim is not conveyed
-  fact-check: slides_spec 'என்ன நடந்தது?' slide says the 4 were 'இலங்கையிலிருந்து வந்தவர்கள்' (came from Sri Lanka), but Muthuraja is from Rameswaram and was the boat operator, so not all four came from Sri Lanka
-  fact-check: caption says 'படகை ஓட்டி வந்தவர் ராமேசுவரத்தைச் சேர்ந்த முத்துராஜா' which is correct, but the reel_script omits the key fact that the Sri Lankan Dharshan from Namakkal had arranged the boat trip and that the boat was unregistered/no registration number, an important cause detail
-  fact-check: reel_script omits the key fact that the men were arrested at dawn after landing on the Pamban beach by boat from international waters and that the boat trip was arranged for pay of ₹1.10 lakh
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-proofread skipped: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
-writing [N]: வரை தொழில் அலுவலர் வீட்டுக்குள் வைத்து அடைப்பு
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  hl1 longer than 40 characters
-  slide 1 line 1 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude answer not JSON (Expecting value: line 1 column 1 (char 0)); stop_reason=end_turn blocks=['text'] usage={'input_tokens': 834, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 9420, 'cache_creation': {'ephemeral_5m_input_tokens': 0, 'ephemeral_1h_input_tokens': 0}, 'output_tokens': 315, 'output_tokens_details': {'thinking_tokens': 0}, 'service_tier': 'standard', 'inference_geo': 'global', 'speed': 'standard'} head='I can only write this from the article text, and the article here is badly garbled. Key facts (who, where, what exactly happened, the place, the reason for the lock-in, the outcome) are missing or unr'
-claude rewrite failed: Expecting value: line 1 column 1 (char 0)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-proofread skipped: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
-writing [N]: மினி ஆட்டோ மோதி விவசாயி உயிரிழப்பு
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
   slide 1 line 2 longer than 60 characters
-  not grounded: location 'பரமத்தி' is not in the article
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  hl2 longer than 28 characters
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
   slide 1 line 2 longer than 60 characters
   slide 2 title longer than 18 characters
   slide 3 line 1 longer than 60 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1804. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+writing [R]: ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர் ஆலோசனை
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok groq/qwen/qwen3.8-27b (3s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The article is truncated and does not clearly state that the meeting was held 'in' Rasipuram town or that all parties attended; the draft's claim that all recognized parties participated and the 'meeting held yesterday' timing rest partly on the cut-off text (article says 'நேற்று' so timing is supported, but the attendance claim 'அனைத்து கட்சியினர் கலந்துகொண்டனர்' is an inference from 'அங்கீகரிக்கப்பட்ட அனைத்து கூட்டம்' which is garbled)
+  reel_script states 'ஓட்டுச்சாவடிகள் பிரிக்கப்படுகின்றன' (polling stations are being split) as a settled fact, while the article only says a consultation on polling station division is underway; the draft presents discussion as completed action
+  The reel_script and slides claim the purpose is that voters should not travel long distances, but the article's quoted officer statement is cut off before the purpose is stated, so this purpose is not verifiable from the article as given
+  The slide line 'தேர்தல் பணிகள் முழுமையாக தொடங்கியுள்ளன' (election work has fully started) overstates the article, which only says election work has begun
+  The article is incomplete, so the outcome of the meeting (any decisions or arrests) cannot be confirmed, and the draft does not flag this gap
+attempt 1 groq/qwen/qwen3.8-27b: 5 problems
+  fact-check: The article is truncated and does not clearly state that the meeting was held 'in' Rasipuram town or that all parties attended; the draft's claim that all recognized parties participated and the 'meeting held yesterday' timing rest partly on the cut-off text (article says 'நேற்று' so timing is supported, but the attendance claim 'அனைத்து கட்சியினர் கலந்துகொண்டனர்' is an inference from 'அங்கீகரிக்கப்பட்ட அனைத்து கூட்டம்' which is garbled)
+  fact-check: reel_script states 'ஓட்டுச்சாவடிகள் பிரிக்கப்படுகின்றன' (polling stations are being split) as a settled fact, while the article only says a consultation on polling station division is underway; the draft presents discussion as completed action
+  fact-check: The reel_script and slides claim the purpose is that voters should not travel long distances, but the article's quoted officer statement is cut off before the purpose is stated, so this purpose is not verifiable from the article as given
+  fact-check: The slide line 'தேர்தல் பணிகள் முழுமையாக தொடங்கியுள்ளன' (election work has fully started) overstates the article, which only says election work has begun
+  fact-check: The article is incomplete, so the outcome of the meeting (any decisions or arrests) cannot be confirmed, and the draft does not flag this gap
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 6 problems
+  hl1 longer than 40 characters
+  slide 1 line 1 longer than 60 characters
+  slide 1 line 2 longer than 60 characters
+  slide 1 line 3 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+  scenes must be 4 (slides + 1), got 5
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  hl2 longer than 28 characters
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  hl2 longer than 28 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok groq/qwen/qwen3.8-27b (2s)
+proofread by groq/qwen/qwen3.8-27b: 1 problems
+writing [R]: நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு விழா
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The article never states the city as Namakkal; the draft's headline, reel_script and slides_spec add 'நாமக்கல்' as the location (the article only gives the address 'திரு.வி.க., ரோடு, முனிசிபல் காலனி' and the head office is said to be in that area without naming the town).
+  The article says the chief guest is 'ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார்' but describes him only as attending; the draft says he 'கலந்துகொள்கிறார்', which is consistent, but the article also says the opening is presided over by Engineer Raja, Sudarvannan, Paranitharan and Baskar, and this important detail (who presides) is missing from the reel_script.
+  The article says the head office is at 'திரு.வி.க., ரோடு, முனிசிபல் காலனி' and the new branch is near a marriage hall; the draft's reel_script says the branch is on 'திரு.வி.க. ரோடு, முனிசிபல் காலனியில்' which conflates the head office location with the new branch location.
+  The article says the offer applies at the Rasipuram branch, but the draft's caption and reel_script present the offer as tied to the new branch opening, mixing the Rasipuram branch offer with the new branch event in one sentence.
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The article never states the city as Namakkal; the draft's headline, reel_script and slides_spec add 'நாமக்கல்' as the location (the article only gives the address 'திரு.வி.க., ரோடு, முனிசிபல் காலனி' and the head office is said to be in that area without naming the town).
+  fact-check: The article says the chief guest is 'ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார்' but describes him only as attending; the draft says he 'கலந்துகொள்கிறார்', which is consistent, but the article also says the opening is presided over by Engineer Raja, Sudarvannan, Paranitharan and Baskar, and this important detail (who presides) is missing from the reel_script.
+  fact-check: The article says the head office is at 'திரு.வி.க., ரோடு, முனிசிபல் காலனி' and the new branch is near a marriage hall; the draft's reel_script says the branch is on 'திரு.வி.க. ரோடு, முனிசிபல் காலனியில்' which conflates the head office location with the new branch location.
+  fact-check: The article says the offer applies at the Rasipuram branch, but the draft's caption and reel_script present the offer as tied to the new branch opening, mixing the Rasipuram branch offer with the new branch event in one sentence.
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The article says the new branch will be opened in the 'திருமண மண்டபம் அருகே' location but the reel_script and slides say it is 'Municipal Colony' headquarters; the article only states the headquarters is திரு.வி.க. ரோடு, முனிசிபல் காலனி — this is consistent, so no problem there; however the reel_script states the branch is 'நாளை காலை ஏழு :முப்பத்து ஐந்து மணிக்குத் திறக்கப்படுகிறது' while the article says the event starts at 7:35 — acceptable.
+  The reel_script states that the offer is 'ராசிபுரம் கிளையில் அக்டோபர் இருபத்து ஐந்து இருபத்து ஆறு' — the article gives dates 25 and 26 without naming the month explicitly; the month 'அக்டோபர்' is an inferred detail not stated in the article (the article only mentions Deepavali and 'நவ., 9' implying Oct/Nov context).
+  The reel_script omits the article's Deepavali sweets sale details (27 to Nov 9, prices of லட்டு, பாதுஷா, சோன்பப்டி, ஜிலேபி, ஸ்பெஷல் மிக்சர், மினி ஜிலேபி), which are important facts of the article.
+  The reel_script says the event is the opening of the 'புதிய கிளை' of the company, and that 'ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார் புதிய கிளையைத் திறந்து வைக்கிறார்' — the article states the MP is inaugurating the new branch, consistent; no issue. The 'புதிய கிளை' is said to be opened near 'திருமண மண்டபம்' — consistent.
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The article says the new branch will be opened in the 'திருமண மண்டபம் அருகே' location but the reel_script and slides say it is 'Municipal Colony' headquarters; the article only states the headquarters is திரு.வி.க. ரோடு, முனிசிபல் காலனி — this is consistent, so no problem there; however the reel_script states the branch is 'நாளை காலை ஏழு :முப்பத்து ஐந்து மணிக்குத் திறக்கப்படுகிறது' while the article says the event starts at 7:35 — acceptable.
+  fact-check: The reel_script states that the offer is 'ராசிபுரம் கிளையில் அக்டோபர் இருபத்து ஐந்து இருபத்து ஆறு' — the article gives dates 25 and 26 without naming the month explicitly; the month 'அக்டோபர்' is an inferred detail not stated in the article (the article only mentions Deepavali and 'நவ., 9' implying Oct/Nov context).
+  fact-check: The reel_script omits the article's Deepavali sweets sale details (27 to Nov 9, prices of லட்டு, பாதுஷா, சோன்பப்டி, ஜிலேபி, ஸ்பெஷல் மிக்சர், மினி ஜிலேபி), which are important facts of the article.
+  fact-check: The reel_script says the event is the opening of the 'புதிய கிளை' of the company, and that 'ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார் புதிய கிளையைத் திறந்து வைக்கிறார்' — the article states the MP is inaugurating the new branch, consistent; no issue. The 'புதிய கிளை' is said to be opened near 'திருமண மண்டபம்' — consistent.
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  scenes must be 5 (slides + 1), got 4
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1243. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+writing [R]: இதே நாளில் அன்று: அக். 24
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  scenes must be 5 (slides + 1), got 4
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  hl1 longer than 40 characters
+  slide 2 line 1 longer than 60 characters
+  slide 2 line 2 longer than 60 characters
+  slide 2 line 3 longer than 60 characters
+  slide 4 line 2 longer than 60 characters
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  slide 3 line 1 longer than 60 characters
+  scenes must be 5 (slides + 1), got 4
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1116. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+writing [N]: மாணவியர் சாலை பாதுகாப்பு விழிப்புணர்வு
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slide 3 line 3 longer than 60 characters
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  slide 2 line 3 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
+  hl2 longer than 28 characters
+  slide 2 line 2 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok groq/qwen/qwen3.8-27b (2s)
+proofread by groq/qwen/qwen3.8-27b: 1 problems
+writing [N]: அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதுமக்கள் எதிர
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slide 2 line 3 longer than 60 characters
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  hl2 longer than 28 characters
+  slide 1 line 2 longer than 60 characters
+  slide 1 line 3 longer than 60 characters
+  slide 2 line 1 longer than 60 characters
+  slide 2 line 2 longer than 60 characters
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  hl2 longer than 28 characters
+  scenes must be 4 (slides + 1), got 5
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1299. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+writing [N]: பாம்பன் கடற்கரைக்கு படகில் வந்த இலங்கையை சேர்ந்த 3 பேர் கைது
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok groq/qwen/qwen3.8-27b (1s)
+factcheck by groq/qwen/qwen3.8-27b: 4 problems
+  Headline claims 3 people were arrested, but the article states 4 people were arrested (Muthuraja + 3 Sri Lankans).
+  Reel script states 'Two Sri Lankans' (இலங்கையைச் சேர்ந்த இரண்டு பேர்) were involved in the London escape plot, but the article identifies three Sri Lankans (Darshan, Muhammad Khan, Muhammad Ashik) on the boat, and specifically mentions Khan and Ashik for the London plot, while Darshan was the one who arranged it. The script's phrasing is ambiguous and potentially inaccurate regarding the count of Sri Lankans involved in the specific plot vs total arrests.
+  Slide 2 states Darshan came to India in February, but the article specifies February 26th. While not strictly a contradiction, the draft omits the specific date which is a key detail in the article's timeline.
+  Slide 3 states the plan was to travel from Delhi (டெல்லியில் இருந்து செல்ல திட்டம்), which is correct, but the previous line says they were trying to escape to London. The article says they were trying to escape to London *from* Delhi using fake documents. The draft is acceptable here, but the headline's '3 people' error is the primary factual failure.
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: Headline claims 3 people were arrested, but the article states 4 people were arrested (Muthuraja + 3 Sri Lankans).
+  fact-check: Reel script states 'Two Sri Lankans' (இலங்கையைச் சேர்ந்த இரண்டு பேர்) were involved in the London escape plot, but the article identifies three Sri Lankans (Darshan, Muhammad Khan, Muhammad Ashik) on the boat, and specifically mentions Khan and Ashik for the London plot, while Darshan was the one who arranged it. The script's phrasing is ambiguous and potentially inaccurate regarding the count of Sri Lankans involved in the specific plot vs total arrests.
+  fact-check: Slide 2 states Darshan came to India in February, but the article specifies February 26th. While not strictly a contradiction, the draft omits the specific date which is a key detail in the article's timeline.
+  fact-check: Slide 3 states the plan was to travel from Delhi (டெல்லியில் இருந்து செல்ல திட்டம்), which is correct, but the previous line says they were trying to escape to London. The article says they were trying to escape to London *from* Delhi using fake documents. The draft is acceptable here, but the headline's '3 people' error is the primary factual failure.
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  Headline says 4 persons arrested 'இலங்கையை சேர்ந்த 3 பேர் உட்பட' which is consistent, but slides_spec hl1 and caption header are fine; however the reel_script says the 3 people were 'மற்ற மூவரில் இலங்கையைச் சேர்ந்த முகமது கான், முகமது ஆசிக் ஆகியோர்' – it omits Dharshan (also from Sri Lanka), so the Sri Lankan count is incomplete in the reel_script
+  Reel_script says the two Sri Lankans were going to flee to London 'in investigation' from Delhi – the article says they were to escape to London using fake passport/visa arranged in Delhi, but the reel_script omits that they tried to escape via a boat-based route and omits the ₹1 crore demand and ₹20 lakh advance paid to Ramesh, an important missing fact
+  Reel_script omits the key fact that the boat was carrying the Sri Lankans from the international sea border area and that the boat driver Muthuraja was paid ₹1.10 lakh to bring 2 people, which is in the slides but not in the reel
+  Caption says 'டெல்லியில் போலி பாஸ்போர்ட், விசா மூலம் லண்டன் தப்ப முயன்றதாக' attributing the fake passport plan to all arrested, while the article states only Mohammed Khan and Mohammed Asik were planning this – the caption wording is ambiguous/misattributed
+  Slide 'தப்ப முயற்சி' says 'போலி பாஸ்போர்ட், விசாவில் லண்டன் தப்ப முயன்றனர்' without specifying the two men, and the slide line 'இலங்கையிலிருந்து 2 பேரை அழைத்துவர ₹1.10 லட்சம் பேசப்பட்டது' merges Dharshan's arrangement with the fleeing plan, mixing two different facts into one slide
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: Headline says 4 persons arrested 'இலங்கையை சேர்ந்த 3 பேர் உட்பட' which is consistent, but slides_spec hl1 and caption header are fine; however the reel_script says the 3 people were 'மற்ற மூவரில் இலங்கையைச் சேர்ந்த முகமது கான், முகமது ஆசிக் ஆகியோர்' – it omits Dharshan (also from Sri Lanka), so the Sri Lankan count is incomplete in the reel_script
+  fact-check: Reel_script says the two Sri Lankans were going to flee to London 'in investigation' from Delhi – the article says they were to escape to London using fake passport/visa arranged in Delhi, but the reel_script omits that they tried to escape via a boat-based route and omits the ₹1 crore demand and ₹20 lakh advance paid to Ramesh, an important missing fact
+  fact-check: Reel_script omits the key fact that the boat was carrying the Sri Lankans from the international sea border area and that the boat driver Muthuraja was paid ₹1.10 lakh to bring 2 people, which is in the slides but not in the reel
+  fact-check: Caption says 'டெல்லியில் போலி பாஸ்போர்ட், விசா மூலம் லண்டன் தப்ப முயன்றதாக' attributing the fake passport plan to all arrested, while the article states only Mohammed Khan and Mohammed Asik were planning this – the caption wording is ambiguous/misattributed
+  fact-check: Slide 'தப்ப முயற்சி' says 'போலி பாஸ்போர்ட், விசாவில் லண்டன் தப்ப முயன்றனர்' without specifying the two men, and the slide line 'இலங்கையிலிருந்து 2 பேரை அழைத்துவர ₹1.10 லட்சம் பேசப்பட்டது' merges Dharshan's arrangement with the fleeing plan, mixing two different facts into one slide
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  slide 1 line 1 longer than 60 characters
+  slide 2 line 2 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+  scenes must be 5 (slides + 1), got 4
+  not grounded: location 'ராமநாதபுரம்' is not in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok groq/qwen/qwen3.8-27b (3s)
+proofread by groq/qwen/qwen3.8-27b: 0 problems
+writing [N]: மினி ஆட்டோ மோதி விவசாயி உயிரிழப்பு
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  slide 1 line 2 longer than 60 characters
+  not grounded: location 'பரமத்தி' is not in the article
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  slide 1 line 2 longer than 60 characters
+  not grounded: location 'பரமத்தி' is not in the article
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  slide 1 line 2 longer than 60 characters
   not grounded: location 'பரமத்தி' is not in the article
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-proofread skipped: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
-writing [N]: எஸ்.ஐ.ஆர்.,ஐ எதிர்த்து சி.ஐ.டி.யு., ஆர்ப்பாட்டம்
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1299. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+writing [N]: நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் துறையினா் சோ
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  hl1 longer than 40 characters
+  hl2 longer than 28 characters
+  slide 2 line 1 longer than 60 characters
+  scenes must be 5 (slides + 1), got 4
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  hl2 longer than 28 characters
+  scenes must be 4 (slides + 1), got 5
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  slide 2 line 1 longer than 60 characters
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok groq/qwen/qwen3.8-27b (3s)
+proofread by groq/qwen/qwen3.8-27b: 1 problems
+writing [N]: எம்.எல்.எச்.பி., பணியாளரை சி.எச்.ஓ., என பெயர் மாற்றியதை அங்க
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  not grounded: location 'தமிழ்நாடு' is not in the article
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
+  hl1 longer than 40 characters
+  slide 1 line 1 longer than 60 characters
+  slide 1 line 2 longer than 60 characters
+  slide 2 line 2 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+  not grounded: location 'தமிழ்நாடு' is not in the article
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  hl1 longer than 40 characters
+  not grounded: location 'தமிழ்நாடு' is not in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok groq/qwen/qwen3.8-27b (2s)
+proofread by groq/qwen/qwen3.8-27b: 1 problems
+writing [N]: எஸ்.ஐ.ஆர்.,ஐ எதிர்த்து சி.ஐ.டி.யு., ஆர்ப்பாட்டம்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
 ok anthropic/claude-haiku-5-5
 claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
   hl1 longer than 40 characters
   slide 3 line 1 longer than 60 characters
   slide 3 line 2 longer than 60 characters
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  slide 1 line 2 longer than 60 characters
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  slide 3 line 1 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
 ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
   hl1 longer than 40 characters
+  slide 1 line 2 longer than 60 characters
   slide 3 line 1 longer than 60 characters
   slide 3 line 2 longer than 60 characters
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-proofread skipped: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
-writing [N]: மேம்பாலம் வழியாக சென்ற தனியார் பஸ்சுக்கு அபராதம்
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+ok groq/qwen/qwen3.8-27b (3s)
+proofread rejected (3 problems)
   hl1 longer than 40 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 7 problems
-  slides must have 3 or 4 items
-  hl1 longer than 40 characters
-  hl2 longer than 28 characters
-  slide 1 line 1 longer than 60 characters
-  slide 1 line 3 longer than 60 characters
-  slide 2 line 1 longer than 60 characters
-  slide 2 line 2 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  slides must have 3 or 4 items
-  hl1 longer than 40 characters
-  slide 2 title longer than 18 characters
-  scenes must be 3 (slides + 1), got 4
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-proofread skipped: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
-writing [N]: எம்.எல்.எச்.பி., பணியாளரை சி.எச்.ஓ., என பெயர் மாற்றியதை அங்க
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 6 problems
-  slides must have 3 or 4 items
-  hl1 longer than 40 characters
-  slide 1 line 1 longer than 60 characters
-  slide 1 line 3 longer than 60 characters
-  slide 2 line 1 longer than 60 characters
-  scenes must be 3 (slides + 1), got 4
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  scenes must be 4 (slides + 1), got 3
-  not grounded: location 'தமிழ்நாடு' is not in the article
-claude rewrite failed: claude not available
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-proofread skipped: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw":"google/gemma-4-26b-a4b-it:free is temporarily rate-limited upstream. Please retry shortly, or add your own key to accumulate your rate limits: https://openrouter.ai/settings/integrations","provider_name":"Google AI Studio","is_byok":false,"provider_error_code":"429","limit_source":"upstream_provider_shared_pool","remedy_hint":"Retry shortly, add your own provider key (https://openrouter.ai/settings/integrations), or route to another provider with provider routing: https://openrouter.ai/docs/features/provider-routing"}},"user_id":"user_3Kzh3Z7VRNj0JT2ffsZ7QR5fV5A"}
-writing [N]: ப.வேலூர் ஆலைகளில் சோதனை 14 டன் சர்க்கரை, வெல்லம் பறிமுதல்
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-writing [N]: சிமென்ட் பைப் தயாரிப்பு நிறுவனத்தில் திருட்டு புகார்
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-writing [N]: ஆம்புலன்ஸ் டிரைவருக்கு விழிப்புணர்வு
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
-writing [N]: நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் துறையினா் சோ
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail ghmodels/openai/gpt-4.1: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/openai/gpt-4o: Expecting value: line 1 column 1 (char 0)
-fail ghmodels/meta/llama-3.3-70b-instruct: Expecting value: line 1 column 1 (char 0)
-fail openrouter/google/gemma-4-26b-a4b-it:free: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","code":429,"metadata":{"raw
-free models unavailable: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":{"message":"Provider returned error","co
+  slide 3 line 1 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
 earlier stories still waiting for images: []
-instagram check: 65 recent posts read from both pages
 source dinamalar list: 8 items
-source google 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google 'நாமக்கல்': 60 items
 source bing 'நாமக்கல்': 10 items
-source google 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google 'ராசிபுரம்': 8 items
 source bing 'ராசிபுரம்': 12 items
-source google 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google 'திருச்செங்கோடு': 1 items
 source bing 'திருச்செங்கோடு': 12 items
-source google 'பரமத்தி வேலூர்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%AA%E0%AE%B0%E0%AE%AE%E0%AE%A4
+source google 'பரமத்தி வேலூர்': 1 items
 source bing 'பரமத்தி வேலூர்': 9 items
-source google 'குமாரபாளையம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%95%E0%AF%81%E0%AE%AE%E0%AE%BE
+source google 'குமாரபாளையம்': 2 items
 source bing 'குமாரபாளையம்': 11 items
-source google 'பள்ளிபாளையம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%AA%E0%AE%B3%E0%AF%8D%E0%AE%B3
+source google 'பள்ளிபாளையம்': 0 items
 source bing 'பள்ளிபாளையம்': 9 items
-source google 'சேந்தமங்கலம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%9A%E0%AF%87%E0%AE%A8%E0%AF%8D
+source google 'சேந்தமங்கலம்': 0 items
 source bing 'சேந்தமங்கலம்': 12 items
-source google 'கொல்லிமலை' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%95%E0%AF%8A%E0%AE%B2%E0%AF%8D
+source google 'கொல்லிமலை': 2 items
 source bing 'கொல்லிமலை': 10 items
-source google 'மோகனூர்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%AE%E0%AF%8B%E0%AE%95%E0%AE%A9
+source google 'மோகனூர்': 2 items
 source bing 'மோகனூர்': 5 items
-source google 'நாமகிரிப்பேட்டை' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google 'நாமகிரிப்பேட்டை': 0 items
 source bing 'நாமகிரிப்பேட்டை': 3 items
-source google 'வெண்ணந்தூர்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B5%E0%AF%86%E0%AE%A3%E0%AF%8D
+source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 2 items
-source google 'எருமப்பட்டி' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%8E%E0%AE%B0%E0%AF%81%E0%AE%AE
+source google 'எருமப்பட்டி': 0 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google 'நாமக்கல் மாவட்டம்': 48 items
 source bing 'நாமக்கல் மாவட்டம்': 11 items
-source google 'நாமக்கல் முட்டை விலை' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google 'நாமக்கல் முட்டை விலை': 3 items
 source bing 'நாமக்கல் முட்டை விலை': 11 items
-source google நியூஸ்7 தமிழ் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google நியூஸ்7 தமிழ் 'நாமக்கல்': 4 items
 source bing நியூஸ்7 தமிழ் 'நாமக்கல்': 8 items
-source google நியூஸ்7 தமிழ் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
 source bing நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
-source google நியூஸ்7 தமிழ் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google நியூஸ்7 தமிழ் 'திருச்செங்கோடு': 0 items
 source bing நியூஸ்7 தமிழ் 'திருச்செங்கோடு': 0 items
-source google என்டிடிவி தமிழ் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google என்டிடிவி தமிழ் 'நாமக்கல்': 0 items
 source bing என்டிடிவி தமிழ் 'நாமக்கல்': 0 items
-source google என்டிடிவி தமிழ் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google என்டிடிவி தமிழ் 'ராசிபுரம்': 0 items
 source bing என்டிடிவி தமிழ் 'ராசிபுரம்': 0 items
-source google என்டிடிவி தமிழ் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
 source bing என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
-source google மாலைமலர் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google மாலைமலர் 'நாமக்கல்': 15 items
 source bing மாலைமலர் 'நாமக்கல்': 12 items
-source google மாலைமலர் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google மாலைமலர் 'ராசிபுரம்': 1 items
 source bing மாலைமலர் 'ராசிபுரம்': 2 items
-source google மாலைமலர் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google மாலைமலர் 'திருச்செங்கோடு': 0 items
 source bing மாலைமலர் 'திருச்செங்கோடு': 1 items
-source google தினத்தந்தி 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google தினத்தந்தி 'நாமக்கல்': 11 items
 source bing தினத்தந்தி 'நாமக்கல்': 12 items
-source google தினத்தந்தி 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google தினத்தந்தி 'ராசிபுரம்': 2 items
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
-source google தினத்தந்தி 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google தினமணி 'நாமக்கல்': 25 items
 source bing தினமணி 'நாமக்கல்': 12 items
-source google தினமணி 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google தினமணி 'ராசிபுரம்': 3 items
 source bing தினமணி 'ராசிபுரம்': 5 items
-source google தினமணி 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google தினமணி 'திருச்செங்கோடு': 2 items
 source bing தினமணி 'திருச்செங்கோடு': 7 items
-source google இந்து தமிழ் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google இந்து தமிழ் 'நாமக்கல்': 8 items
 source bing இந்து தமிழ் 'நாமக்கல்': 12 items
-source google இந்து தமிழ் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google இந்து தமிழ் 'ராசிபுரம்': 0 items
 source bing இந்து தமிழ் 'ராசிபுரம்': 0 items
-source google இந்து தமிழ் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google இந்து தமிழ் 'திருச்செங்கோடு': 0 items
 source bing இந்து தமிழ் 'திருச்செங்கோடு': 0 items
-source google தினகரன் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google தினகரன் 'நாமக்கல்': 100 items
 source bing தினகரன் 'நாமக்கல்': 12 items
-source google தினகரன் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google தினகரன் 'ராசிபுரம்': 3 items
 source bing தினகரன் 'ராசிபுரம்': 2 items
-source google தினகரன் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google தினகரன் 'திருச்செங்கோடு': 0 items
 source bing தினகரன் 'திருச்செங்கோடு': 5 items
-source google புதிய தலைமுறை 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google புதிய தலைமுறை 'நாமக்கல்': 0 items
 source bing புதிய தலைமுறை 'நாமக்கல்': 5 items
-source google புதிய தலைமுறை 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google புதிய தலைமுறை 'ராசிபுரம்': 0 items
 source bing புதிய தலைமுறை 'ராசிபுரம்': 0 items
-source google புதிய தலைமுறை 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google புதிய தலைமுறை 'திருச்செங்கோடு': 0 items
 source bing புதிய தலைமுறை 'திருச்செங்கோடு': 1 items
-source google நியூஸ்18 தமிழ் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google நியூஸ்18 தமிழ் 'நாமக்கல்': 100 items
 source bing நியூஸ்18 தமிழ் 'நாமக்கல்': 10 items
-source google நியூஸ்18 தமிழ் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google நியூஸ்18 தமிழ் 'ராசிபுரம்': 1 items
 source bing நியூஸ்18 தமிழ் 'ராசிபுரம்': 3 items
-source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 4 items
 source bing நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 1 items
-source google விகடன் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
-source bing விகடன் 'நாமக்கல்': 11 items
-source google விகடன் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google விகடன் 'நாமக்கல்': 1 items
+source bing விகடன் 'நாமக்கல்': 10 items
+source google விகடன் 'ராசிபுரம்': 2 items
 source bing விகடன் 'ராசிபுரம்': 0 items
-source google விகடன் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google விகடன் 'திருச்செங்கோடு': 0 items
 source bing விகடன் 'திருச்செங்கோடு': 0 items
-source google பாலிமர் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google பாலிமர் 'நாமக்கல்': 2 items
 source bing பாலிமர் 'நாமக்கல்': 7 items
-source google பாலிமர் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google பாலிமர் 'ராசிபுரம்': 0 items
 source bing பாலிமர் 'ராசிபுரம்': 0 items
-source google பாலிமர் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google பாலிமர் 'திருச்செங்கோடு': 0 items
 source bing பாலிமர் 'திருச்செங்கோடு': 0 items
-source google சமயம் தமிழ் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google சமயம் தமிழ் 'நாமக்கல்': 3 items
 source bing சமயம் தமிழ் 'நாமக்கல்': 11 items
-source google சமயம் தமிழ் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
-source bing சமயம் தமிழ் 'ராசிபுரம்': 8 items
-source google சமயம் தமிழ் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
-source bing சமயம் தமிழ் 'திருச்செங்கோடு': 8 items
-source google தினமலர் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google சமயம் தமிழ் 'ராசிபுரம்': 0 items
+source bing சமயம் தமிழ் 'ராசிபுரம்': 9 items
+source google சமயம் தமிழ் 'திருச்செங்கோடு': 0 items
+source bing சமயம் தமிழ் 'திருச்செங்கோடு': 9 items
+source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
-source google தினமலர் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google தினமலர் 'ராசிபுரம்': 27 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
-source google தினமலர் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google தினமலர் 'திருச்செங்கோடு': 8 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
-source google DT Next 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google DT Next 'நாமக்கல்': 0 items
 source bing DT Next 'நாமக்கல்': 0 items
-source google DT Next 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google DT Next 'ராசிபுரம்': 0 items
 source bing DT Next 'ராசிபுரம்': 0 items
-source google DT Next 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google DT Next 'திருச்செங்கோடு': 0 items
 source bing DT Next 'திருச்செங்கோடு': 0 items
-source google ஜீ தமிழ் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google ஜீ தமிழ் 'நாமக்கல்': 0 items
 source bing ஜீ தமிழ் 'நாமக்கல்': 0 items
-source google ஜீ தமிழ் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
-source google ஜீ தமிழ் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google ABP நாடு 'நாமக்கல்': 10 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
-source google ABP நாடு 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
-source google ABP நாடு 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google ABP நாடு 'திருச்செங்கோடு': 0 items
 source bing ABP நாடு 'திருச்செங்கோடு': 0 items
-source google Oneindia தமிழ் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google Oneindia தமிழ் 'நாமக்கல்': 12 items
 source bing Oneindia தமிழ் 'நாமக்கல்': 0 items
-source google Oneindia தமிழ் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google Oneindia தமிழ் 'ராசிபுரம்': 0 items
 source bing Oneindia தமிழ் 'ராசிபுரம்': 0 items
-source google Oneindia தமிழ் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google Oneindia தமிழ் 'திருச்செங்கோடு': 0 items
 source bing Oneindia தமிழ் 'திருச்செங்கோடு': 0 items
-source google நக்கீரன் 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google நக்கீரன் 'நாமக்கல்': 1 items
 source bing நக்கீரன் 'நாமக்கல்': 0 items
-source google நக்கீரன் 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google நக்கீரன் 'ராசிபுரம்': 0 items
 source bing நக்கீரன் 'ராசிபுரம்': 0 items
-source google நக்கீரன் 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google நக்கீரன் 'திருச்செங்கோடு': 0 items
 source bing நக்கீரன் 'திருச்செங்கோடு': 0 items
-source google தினபூமி 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google தினபூமி 'நாமக்கல்': 0 items
 source bing தினபூமி 'நாமக்கல்': 0 items
-source google தினபூமி 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google தினபூமி 'ராசிபுரம்': 0 items
 source bing தினபூமி 'ராசிபுரம்': 0 items
-source google தினபூமி 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google தினபூமி 'திருச்செங்கோடு': 0 items
 source bing தினபூமி 'திருச்செங்கோடு': 0 items
-source google தமிழ் முரசு 'நாமக்கல்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95
+source google தமிழ் முரசு 'நாமக்கல்': 1 items
 source bing தமிழ் முரசு 'நாமக்கல்': 0 items
-source google தமிழ் முரசு 'ராசிபுரம்' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%B0%E0%AE%BE%E0%AE%9A%E0%AE%BF
+source google தமிழ் முரசு 'ராசிபுரம்': 0 items
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
-source google தமிழ் முரசு 'திருச்செங்கோடு' FAILED: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%E0%AE%A4%E0%AE%BF%E0%AE%B0%E0%AF%81
+source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 336 items -> 202 different news (20 Rasipuram)
+all sources: 910 items -> 506 different news (20 Rasipuram)
 Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: old=93, not Namakkal district news (state-wide /=61, collected=20, already filed=20, checked earlier=5, checked earlier=3
-to write: 5 Rasipuram + 15 other district candidates (max 12 + 12 stories)
+candidate filter: not Namakkal district news (state-wide /=139, old=138, checked earlier=122, collected=63, already filed=22, checked earlier=15, checked earlier=5, checked earlier=2
+to write: 5 Rasipuram + 58 other district candidates (max 12 + 12 stories)
 NOT filed (R) கொல்லிமலை சாலையில் சாய்ந்த மரங்கள் அகற்றம்: would be wrong/unclear: hl2 longer than 28 characters
-NOT filed (R) கம்பம் நடும் விழா கோலாகலம்: would be wrong/unclear: fact-check: Slide 3 states that there were night events at the temple after the procession, which is not mentioned in the article
-NOT filed (N) அக். 26 வரை வெளுக்கப்போகும் மிக கனமழை! உஷாராக இருக: would be wrong/unclear: hl2 longer than 28 characters
-NOT filed (R) ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர்: would be wrong/unclear: slide 1 line 3 longer than 60 characters
-NOT filed (N) மாணவியர் சாலை பாதுகாப்பு விழிப்புணர்வு: would be wrong/unclear: slide 2 line 3 longer than 60 characters
-NOT filed (R) நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு வ: would be wrong/unclear: scenes must be 4 (slides + 1), got 5
-NOT filed (R) இதே நாளில் அன்று: அக். 24: would be wrong/unclear: slide 2 line 3 longer than 60 characters; scenes must be 4 (slides + 1), got 5
-NOT filed (N) பாம்பன் கடற்கரைக்கு படகில் வந்த இலங்கையை சேர்ந்த 3: would be wrong/unclear: scenes must be 5 (slides + 1), got 4
-NOT filed (N) வரை தொழில் அலுவலர் வீட்டுக்குள் வைத்து அடைப்பு: would be wrong/unclear: hl1 longer than 40 characters; slide 1 line 1 longer than 60 characters
-NOT filed (N) மினி ஆட்டோ மோதி விவசாயி உயிரிழப்பு: would be wrong/unclear: not grounded: location 'பரமத்தி' is not in the article
-NOT filed (N) எஸ்.ஐ.ஆர்.,ஐ எதிர்த்து சி.ஐ.டி.யு., ஆர்ப்பாட்டம்: would be wrong/unclear: slide 1 line 2 longer than 60 characters
-NOT filed (N) மேம்பாலம் வழியாக சென்ற தனியார் பஸ்சுக்கு அபராதம்: would be wrong/unclear: hl1 longer than 40 characters
-NOT filed (N) எம்.எல்.எச்.பி., பணியாளரை சி.எச்.ஓ., என பெயர் மாற்: would be wrong/unclear: scenes must be 4 (slides + 1), got 3; not grounded: location 'தமிழ்நாடு' is not in the article
-NOT filed (N) ப.வேலூர் ஆலைகளில் சோதனை 14 டன் சர்க்கரை, வெல்லம் ப: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
-NOT filed (N) சிமென்ட் பைப் தயாரிப்பு நிறுவனத்தில் திருட்டு புகா: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
-NOT filed (N) ஆம்புலன்ஸ் டிரைவருக்கு விழிப்புணர்வு: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
-NOT filed (N) நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் து: all free models failed: no free model answered: openrouter google/gemma-4-26b-a4b-it:free 429: {"error":
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 12 + 12)
-All News sheet: {"ok":true,"added":12,"updated":48}
-All News sheet: {"ok":true,"added":6,"updated":54}
-All News sheet: {"ok":true,"added":4,"updated":56}
-All News sheet: {"ok":true,"added":1,"updated":21} 
-stories: 0
+NOT filed (R) ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர்: would be wrong/unclear: hl2 longer than 28 characters
+NOT filed (R) நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு வ: would be wrong/unclear: scenes must be 5 (slides + 1), got 4
+NOT filed (R) இதே நாளில் அன்று: அக். 24: would be wrong/unclear: scenes must be 5 (slides + 1), got 4
+NOT filed (N) மாணவியர் சாலை பாதுகாப்பு விழிப்புணர்வு: would be wrong/unclear: slide 3 line 3 longer than 60 characters
+NOT filed (N) அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதும: would be wrong/unclear: slide 2 line 3 longer than 60 characters
+NOT filed (N) மினி ஆட்டோ மோதி விவசாயி உயிரிழப்பு: would be wrong/unclear: slide 1 line 2 longer than 60 characters; not grounded: location 'பரமத்தி' is not in the article
+NOT filed (N) நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் து: would be wrong/unclear: slide 2 line 1 longer than 60 characters
+NOT filed (N) எம்.எல்.எச்.பி., பணியாளரை சி.எச்.ஓ., என பெயர் மாற்: would be wrong/unclear: not grounded: location 'தமிழ்நாடு' is not in the article
+NOT filed (N) எஸ்.ஐ.ஆர்.,ஐ எதிர்த்து சி.ஐ.டி.யு., ஆர்ப்பாட்டம்: would be wrong/unclear: slide 3 line 1 longer than 60 characters; slide 3 line 2 longer than 60 characters
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 12 + 12) 
+stories: 1
