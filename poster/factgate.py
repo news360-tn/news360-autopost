@@ -4,7 +4,7 @@ import json, os, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "research_free"))
 
-SOFT = ("promotional", "follow line", "த்ரீ சிக்ஸ்டி", "follow ", "page is not mentioned", "date of posting", "missing", "misses", "omit", "not mentioned in the draft", "could not be run")      # an omission is not a false statement: never blocks
+SOFT = ("caption mentions", "date '", "posting date", "promotional", "follow line", "த்ரீ சிக்ஸ்டி", "follow ", "page is not mentioned", "date of posting", "missing", "misses", "omit", "not mentioned in the draft", "could not be run")      # an omission is not a false statement: never blocks
 
 
 def _body(cap):
