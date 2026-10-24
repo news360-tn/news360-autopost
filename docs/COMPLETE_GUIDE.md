@@ -83,7 +83,7 @@ OUTPUT: ONE JSON object only (no explanation):
      "hl2": "headline line 2, max 28 characters",
      "slides": [ {"title": "max 18 characters", "lines": ["2 or 3 short lines, each max 60 characters"]} ]
    },
-   "reel_script": "38-55 Tamil words. NO digits and NO English letters (write numbers in Tamil words). Strong hook in the first sentence, no greeting. Short sentences. Cover who, what, when, where, why, how. Must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "reel_script": "85-120 Tamil words: 7-9 sentences giving every detail (hook, who, exact place, when, how, numbers, action, what next). NO digits and NO English letters (write numbers in Tamil words). Strong hook in the first sentence, no greeting. Short sentences. Cover who, what, when, where, why, how. Must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
    "caption": "emoji heading line, then 3-5 short fact lines, then a line: 📍 place | date, then exactly 5 hashtags on one line, last line: உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏",
    "prompts": ["image prompt for slide 1 (see Prompt 2 rules)", "...one per slide plus one extra for the opening scene"]
   }
@@ -149,7 +149,7 @@ Use this when you already have the reel video and the caption. Nothing is rebuil
      ```
      (`PAGE: namakkal` = default, `PAGE: rasipuram`, or `PAGE: both`.)
      Then the caption. Use max 5 hashtags. (`#Namakkal360` / `#Rasipuram360` and the AI line are added automatically.)
-   - `reel.mp4` – the video: **1080 x 1920 (9:16), 10 to 45 seconds, with voice**, not silent, not clipped (too loud).
+   - `reel.mp4` – the video: **1080 x 1920 (9:16), 10 to 60 seconds, with voice**, not silent, not clipped (too loud).
 2. Put both files in ONE zip, e.g. `RN_reel_2026-10-24.zip`. Only one `.md` and one video inside.
 3. Check the video yourself before sending (voice clear, Tamil words correct, the place and time are right, the end line is there).
 4. Send **one e-mail** to `nammarasipuram2805@gmail.com`
@@ -170,7 +170,7 @@ Large video (over 25 MB): put the zip in Google Drive, share it, and paste the l
 
 - Size 1080 x 1920, 9:16. Each image slides with a slow camera move, the headline and key facts appear as Tamil text on the picture, the logo and "AI" tag at the corner.
 - Voice: the existing Tamil voice model (Indic-TTS). The voice is not changed. The reel script is read exactly; numbers are spoken in Tamil words.
-- Length 20 to 45 seconds, ending with the fixed follow line.
+- Length 40 to 50 seconds (max 60), ending with the fixed follow line.
 - The system checks every built reel: size, duration, voice present, not silent, not clipped, and that the voice can pronounce every written word.
 - Ready reels (way C) get the technical checks (size, duration, voice present, not silent/clipped). The words are checked by you when you watch the video before sending.
 

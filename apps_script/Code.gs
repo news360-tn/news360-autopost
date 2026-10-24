@@ -361,7 +361,7 @@ function manualProblems_(st, recent) {
   st.reel_script = rs;
   if (/[0-9A-Za-z]/.test(rs.replace(MANUAL_LAST, ''))) p.push('reel_script must have no digits or English letters (write numbers in Tamil words)');
   var wc = rs.split(/\s+/).length;
-  if (wc < 32 || wc > 62) p.push('reel_script has ' + wc + ' words, need 32-62');
+  if (wc < 85 || wc > 120) p.push('reel_script has ' + wc + ' words, need 85-120 (detailed reel)');
   var cap = String(st.caption);
   if (cap.indexOf(MANUAL_FOLLOW) < 0) cap = cap.replace(/\s+$/, '') + '\n\n' + MANUAL_FOLLOW;
   st.caption = cap;

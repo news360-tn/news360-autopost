@@ -15,7 +15,7 @@ OUTPUT JSON KEYS
  "importance": "High | Medium | Low   (High: affects many people today: power shutdown in Rasipuram/Namakkal town, heavy rain alert, big public safety/service news)",
  "post_to": "Namakkal 360 + Rasipuram 360 (collab)  if the place is Rasipuram town or its taluk villages (Namagiripettai, Vennandur, Puduchatram, Pattanam, Mettala, Ayilpatti, Seerapalli, Singalandapuram, Andagalur Gate, Athanur, Mallasamudram, Kurukkapuram, Anaippalayam, Muthukalipatti, Kakkaveri, Vadugam etc.), otherwise  Namakkal 360",
  "slides_spec": {"v":3, "cat":"short Tamil tag e.g. மழை எச்சரிக்கை", "loc":"Tamil place", "hl1":"cover headline, max 40 characters, strong and clear", "hl2":"cover key fact in yellow, max 28 characters", "slides":[{"title":"Tamil title, max 18 characters","lines":["fact line 1","fact line 2","optional line 3"]}]},
- "reel_script": "professional Tamil news-reader script, 4-6 sentences, 38-55 words",
+ "reel_script": "detailed Tamil news-reader script, 7-9 sentences, 85-120 words (see REEL DETAIL below)",
  "caption": "Instagram caption",
  "scenes": ["English scene for image 1 (cover)", "scene for image 2", "..."]
 }
@@ -31,12 +31,12 @@ reel_script rules
 - PROFESSIONAL TAMIL NEWS-READER STYLE, as read by a television news anchor: formal, clear, neutral, grammatically correct written-standard Tamil (செய்தி வாசிப்பாளர் நடை). NO village slang or spoken contractions: write உள்ளது (not இருக்கு), இல்லை (not இல்ல), செய்யப்படும், தெரிவிக்கப்பட்டுள்ளது, கேட்டுக்கொள்ளப்படுகின்றனர், அறிவுறுத்தப்பட்டுள்ளது. No "மக்களே கவனிங்க" style addressing.
 - Easy to PRONOUNCE for a voice engine: complete words only. Expand every abbreviation (அக். -> அக்டோபர், கி.மீ. -> கிலோமீட்டர், ரூ. -> ரூபாய், டன் stays டன்). Avoid very long sentences (max 25 words each), avoid brackets, quotes and symbols. Keep sentences connected so the story flows: what happened -> where/when -> numbers/details -> what happens next or what people should do.
 - WHY PEOPLE FOLLOW US: a local page is followed for what happens in THEIR town and the villages and towns around it. So always say clearly the 5 W + 1 H: WHAT happened, WHERE (exact village/town, then the nearby town or taluk people know, e.g. "பரமத்தி வேலூர் அருகே பொத்தனூரில்"), WHEN (day / date / time), WHO (by role), WHY (cause or reason, only if the article gives it) and HOW (how it happened or how it will be done, only if the article gives it). A viewer must understand the whole story without reading the caption. Anything the article does not say is left out, never guessed.
-- KEEP VIEWERS WATCHING (retention): sentence 1 is the hook and states the most important or surprising fact in plain words in the first 3 seconds (a number, an amount, a result, a warning) - never start with a greeting, "இன்றைய செய்தி" or a place name alone. Keep sentences short (max 14-16 words) so the voice and the on-screen facts change every 3-4 seconds. Use ONE concrete number or detail per sentence. Put the detail people care about (what it means for them, what they should do, until when) before the end, and end with the result or next step, then the follow line. Total length stays 32-62 words (about 18-25 seconds): no padding.
+- KEEP VIEWERS WATCHING (retention): sentence 1 is the hook and states the most important or surprising fact in plain words in the first 3 seconds (a number, an amount, a result, a warning) - never start with a greeting, "இன்றைய செய்தி" or a place name alone. Keep sentences short (max 14-16 words) so the voice and the on-screen facts change every 3-4 seconds. Use ONE concrete number or detail per sentence. Put the detail people care about (what it means for them, what they should do, until when) before the end, and end with the result or next step, then the follow line. Total length is 85-120 words (about 40-50 seconds): full details, no padding.
 - CLEAR STORY ORDER (viewers must UNDERSTAND the news, not just hear it). Sentence 1 = WHAT happened + WHERE, in plain words (max 14 words), e.g. "பள்ளிப்பாளையத்தில் மின்சாரம் தாக்கி ஒருவர் உயிரிழந்தார்." Sentence 2 = WHO is involved (by role, not name) and WHEN. Sentences 3-4 = the 1-2 most important details or numbers (amounts, demands, how many, what was damaged or decided). Sentence 5 = the result or what happens next (arrest, action taken, demand, what people should do). Then the follow line. Each sentence states ONE fact, copied in meaning from the article. No filler such as "இந்த சம்பவம் அனைவரையும் உறுத்தியது", no vague words, no repeated facts.
 - NEVER mix two facts into one sentence, never change who did what to whom, never swap or guess a place, number, amount or time. Write every place by its FULL official name, never the short form news sites use: ப.வேலூர் / ப.வேலுார் = பரமத்தி வேலூர், கு.பாளையம் = குமாரபாளையம், பள்ளி.பாளையம் = பள்ளிப்பாளையம்; spell out ஆர்.டி.ஓ. = வருவாய் கோட்டாட்சியர், பி.டி.ஓ. = வட்டார வளர்ச்சி அலுவலர், டி.எஸ்.பி. = காவல் துணை கண்காணிப்பாளர், ஜி.ஹெச். = அரசு மருத்துவமனை (the voice engine mispronounces short forms and nearby viewers may not recognise them). Never change the place itself. If the article names an arrest, a complaint, an order or an official, the reel must say it. If you are not sure of a fact, leave it out.
 - No chains of connectors: use "இதனால்", "இந்நிலையில்", "இதையடுத்து" only when the article really shows that cause or sequence.
 - Write numbers, dates and times as DIGITS in reel_script (7 பேர், 2,600 டன், ரூ.9 லட்சம், 21ம் தேதி, காலை 9 மணி); the system turns them into correct spoken Tamil number words. Never write number words yourself. No English letters here.
-- 4-6 sentences, 38-55 words in total (the reel must stay short).
+- 7-9 sentences, 85-120 words in total (a detailed reel, about 40-50 seconds).
 - The LAST sentence is exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
 - No private individuals' names, no source names.
 
@@ -53,4 +53,16 @@ scenes rules
 BEFORE ANSWERING, re-read the article once and tick off every sentence of the reel_script and every slide line against it. Delete anything the article does not say. PROOFREAD:  Tamil spelling and sandhi, place names (ராசிபுரம், நாமகிரிப்பேட்டை, திருச்செங்கோடு, சேந்தமங்கலம், கொல்லிமலை, மல்லசமுத்திரம், புதுச்சத்திரம், பரமத்தி வேலூர், குமாரபாளையம், பள்ளிப்பாளையம், மோகனூர், எருமப்பட்டி, வெண்ணந்தூர்), and that every fact and number is in the article.
 
 
-HARD LIMITS (a draft that breaks one is thrown away - COUNT the characters of every field before answering): hl1 max 40, hl2 max 28, every slide title max 18, every slide line max 60, 3-4 slides, number of scenes = number of slides + 1, reel_script 32-62 words and it must not begin with a greeting or the page name.
+HARD LIMITS (a draft that breaks one is thrown away - COUNT the characters of every field before answering): hl1 max 40, hl2 max 28, every slide title max 18, every slide line max 60, 3-4 slides, number of scenes = number of slides + 1, reel_script 85-120 words and it must not begin with a greeting or the page name.
+
+REEL DETAIL (this overrides the shorter length given above): viewers asked for more detail. The reel_script must tell the WHOLE story from the article, in this order, one fact per sentence:
+1. Hook (sentence 1): WHAT happened + the key number or result, max 14 words.
+2. WHO: the people involved by role or name exactly as the article gives them (name only when the article names them).
+3. EXACT WHERE: the full place name, village or road, taluk and district exactly as the article says it.
+4. WHEN: the day, date and time as the article says it.
+5. HOW it happened: the sequence of events in plain words.
+6. NUMBERS: every amount, count, distance, duration or measure the article gives.
+7. ACTION: police, officials or the government - what they did, arrested, announced or ordered.
+8. WHAT NEXT: what residents should do, until when, or what is still pending.
+9. Then the fixed follow line.
+If the article does not give a part (for example no time), skip that sentence - never guess. Never repeat a fact.
