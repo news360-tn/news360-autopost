@@ -66,3 +66,10 @@ REEL DETAIL (this overrides the shorter length given above): viewers asked for m
 8. WHAT NEXT: what residents should do, until when, or what is still pending.
 9. Then the fixed follow line.
 If the article does not give a part (for example no time), skip that sentence - never guess. Never repeat a fact.
+
+EXACT PLACE AND WHO/HOW ON SCREEN (viewers want to know where and how it happened):
+- "loc" in slides_spec = the EXACT place as the article gives it: village / road / area + town, e.g. "பள்ளிப்பாளையம், குமாரபாளையம்" (max 30 characters). Never only the district name.
+- Slide 1 lines: WHAT happened and EXACT WHERE (the place again, full name).
+- Slide 2 lines: WHO was involved (role or name as in the article) and HOW it happened (the sequence in one line each).
+- Slide 3 lines: the NUMBERS (amounts, counts, times) and what authorities did or what residents should do.
+- Each of these lines is one complete fact copied from the article. If the article does not say where or how, do not invent it: use a short line saying the detail is not yet known ("விவரம் இன்னும் தெரியவரவில்லை").
