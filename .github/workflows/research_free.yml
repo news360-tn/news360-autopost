@@ -1,9 +1,9 @@
 name: research-free
-# every 4 hours, around the clock (IST 05:30, 09:30, 13:30, 17:30, 21:30, 01:30; often a little late). Every round collects, writes the new stories
+# ONCE A DAY (owner request): 08:30 IST (03:00 UTC). Can be a little late. Manual run: Actions -> research-free -> Run workflow. Every round collects, writes the new stories
 # (quality-checked) and sends ONE images-needed e-mail - only when there is news. Stories still waiting for images from an earlier round are listed again in it.
 on:
   schedule:
-    - cron: "0 */4 * * *"
+    - cron: "0 3 * * *"   # 08:30 IST, once a day
   workflow_dispatch:
     inputs:
       dry:
