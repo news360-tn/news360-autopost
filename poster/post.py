@@ -101,6 +101,8 @@ def pages_of(row):
     included), Rasipuram 360 = Rasipuram news only. post_to names them; a story can go to both, as two separate posts."""
     t = (row.get("post_to") or "").lower()
     pg = [p for p in ("namakkal", "rasipuram") if p in t]
+    if "rasipuram" in pg:
+        return ["rasipuram"]     # owner (24 Oct): Rasipuram news = ONE post with the Rasipuram brand, Namakkal 360 is invited as collaborator
     return pg or ["namakkal"]
 
 
@@ -509,6 +511,11 @@ def pick_location(row, spec):
     return d if d.isdigit() else ""
 
 
+def collab_user():
+    """the account invited as collaborator: Namakkal 360 on Rasipuram 360 posts"""
+    return CONFIG.get("collab_namakkal_username", "namakkal.360")
+
+
 def create_with_collab(uid, token, params, collab):
     """Create the media container with the location tag and the collaborator invite; if either is refused, retry without it (and say so)."""
     base = dict(params)
@@ -522,7 +529,7 @@ def create_with_collab(uid, token, params, collab):
         p = dict(base) if use_loc else dict(params)
         if collab:
             try:
-                return attempt(dict(collaborators=json.dumps([CONFIG["collab_username"]])), p), True, ("" if use_loc or not LOC_ID else "location refused")
+                return attempt(dict(collaborators=json.dumps([collab_user()])), p), True, ("" if use_loc or not LOC_ID else "location refused")
             except RuntimeError as e:
                 log("container refused with collaborator" + (" + location" if use_loc and LOC_ID else "") + ":", e)
                 try:
@@ -781,7 +788,7 @@ def run_ready_reel(row, page):
             log("ready reel no longer needed (sheet changed) - not publishing", sid, PAGE)
             return []
         token = bridge_get("token", page=PAGE)["token"]
-        mid, link, collab_ok, why = publish_reel(token, url, caption, False, "")
+        mid, link, collab_ok, why = publish_reel(token, url, caption, PAGE == "rasipuram", "")
         log("ready reel posted", sid, link)
         try:
             publish_story(token, url, "video")
@@ -829,7 +836,7 @@ def run_story_page(row, page):
     LOGO = KIT / f"logo_{PAGE}.png"
     TAG = "#Rasipuram360" if PAGE == "rasipuram" else "#Namakkal360"
     os.environ["PAGE_KEY"] = PAGE
-    collab = False      # no collaboration: every page posts its own news separately (Rasipuram 360 = Rasipuram only, Namakkal 360 = the rest of the district)
+    collab = (PAGE == "rasipuram")      # Rasipuram news: Rasipuram 360 post, Namakkal 360 invited as collaborator
     caption = final_caption(row)
     work = OUT / sid
     key = cache_key(row, spec, caption)
