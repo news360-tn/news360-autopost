@@ -998,9 +998,9 @@ function reoffer_(b) {
 }
 
 
-// Run once from the editor (Run → retryMessage_) to process an e-mail that was already handled before the fix.
+// Run once from the editor (Run → retryMessage) to process an e-mail that was already handled before the fix.
 // Used for the 19-zip e-mail sent 16:43 IST (its ZIPs were Drive links).
-function retryMessage_() {
+function retryMessage() {
   var msg = GmailApp.getMessageById('1a16d9dc32c804e7');
   var report = readyOne_(msg);
   GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 RETRY REPORT] 19 reels', report.join('\n') + '\n\nSheet: ' + SHEET_LINK);
