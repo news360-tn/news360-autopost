@@ -36,7 +36,7 @@ body{font-family:'NST','CT',sans-serif;color:#fff;position:relative}
 #brand .dt{display:flex;align-items:center;gap:10px;font:700 30px 'NST','CT';text-shadow:0 2px 8px rgba(0,0,0,.8)}
 #brand .dt .ic{font-size:26px;color:var(--yellow)}
 #logo{position:absolute;right:44px;top:50px;width:124px;height:124px;border-radius:50%;z-index:30;box-shadow:0 6px 22px rgba(0,0,0,.5)}
-#foot{position:absolute;left:0;bottom:0;width:1080px;height:auto;z-index:35;pointer-events:none}
+#foot{position:absolute;left:44px;bottom:28px;width:300px;height:auto;z-index:35;pointer-events:none;opacity:.92}
 #big{position:absolute;left:0;right:0;top:760px;z-index:21;text-align:center;opacity:0;font:900 230px/1.1 'CT','NST';color:var(--yellow);-webkit-text-stroke:16px #000;paint-order:stroke fill;text-shadow:0 12px 40px rgba(0,0,0,.6)}
 #bigu{position:absolute;left:0;right:0;top:1010px;z-index:21;text-align:center;opacity:0;font:900 70px/1.2 'CT','NST';color:#fff;-webkit-text-stroke:12px #000;paint-order:stroke fill}
 #hook{position:absolute;left:50px;right:50px;top:380px;z-index:20;text-align:center;opacity:0}
