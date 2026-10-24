@@ -36,6 +36,7 @@ body{font-family:'NST','CT',sans-serif;color:#fff;position:relative}
 #brand .dt{display:flex;align-items:center;gap:10px;font:700 30px 'NST','CT';text-shadow:0 2px 8px rgba(0,0,0,.8)}
 #brand .dt .ic{font-size:26px;color:var(--yellow)}
 #logo{position:absolute;right:44px;top:50px;width:124px;height:124px;border-radius:50%;z-index:30;box-shadow:0 6px 22px rgba(0,0,0,.5)}
+#foot{position:absolute;left:0;bottom:0;width:1080px;height:auto;z-index:35;pointer-events:none}
 #big{position:absolute;left:0;right:0;top:760px;z-index:21;text-align:center;opacity:0;font:900 230px/1.1 'CT','NST';color:var(--yellow);-webkit-text-stroke:16px #000;paint-order:stroke fill;text-shadow:0 12px 40px rgba(0,0,0,.6)}
 #bigu{position:absolute;left:0;right:0;top:1010px;z-index:21;text-align:center;opacity:0;font:900 70px/1.2 'CT','NST';color:#fff;-webkit-text-stroke:12px #000;paint-order:stroke fill}
 #hook{position:absolute;left:50px;right:50px;top:380px;z-index:20;text-align:center;opacity:0}
@@ -132,6 +133,8 @@ def plan_shots(n_img, content_end, snaps):
 
 def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
     logo = f"file://{R.KIT.resolve() / page['logo']}"
+    foot_key = "rasipuram" if "rasipuram" in page["logo"].lower() else "namakkal"
+    foot = f"file://{(Path(__file__).resolve().parent / 'assets' / ('footer_' + foot_key + '.png')).as_posix()}"
     imgs = "".join(f'<img class="pic" id="p{i}" src="file://{Path(p).resolve()}">' for i, p in enumerate(spec["images"]))
     acc = accent_for(spec.get("cat", ""))
     stick = "".join(f'<div class="sticker" id="k{i}">{s["fact"]}</div>' for i, s in enumerate(sents) if s.get("fact"))
@@ -162,6 +165,7 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
 <div class="pill" style="background:{acc}">{E(spec.get('cat',''))}</div>
 <div class="dt">{R.icon('calendar-days')}{E(spec['date'])}</div></div>
 <img id="logo" src="{logo}">
+<img id="foot" src="{foot}">
 <div id="big"></div><div id="bigu"></div>
 <div id="hook"><div class="h1">{E(hook[0])}</div><div class="h2">{E(hook[1])}</div></div>
 {stick}
