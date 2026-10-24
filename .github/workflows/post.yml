@@ -26,6 +26,9 @@ env:
   BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
   CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
   CLOUDINARY_PRESET: ${{ secrets.CLOUDINARY_PRESET }}
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
   DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
   PREBUILD: ${{ github.event_name == 'workflow_dispatch' && inputs.prebuild && '1' || '' }}
   PAUSED: ${{ vars.PAUSED }}

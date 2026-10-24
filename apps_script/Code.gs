@@ -27,7 +27,7 @@ var NCOLS = 31;
 var CLOUD_NAME = 'bgk9wm1u';
 var UPLOAD_PRESET = 'news360';
 var MIN_IMAGES = 3;
-var EXPIRE_HOURS = 3;   // owner request 24 Oct: a story without its images after 3 hours is closed (never posted without images)
+var EXPIRE_HOURS = 3;   // owner request 24 Oct: after 3 hours without the owner's images, automatic images are made and the story is posted
 var COLLAB_USERNAME = 'rasipuram.360';
 var PAGE_LABEL = { rasipuram: 'இராசிபுரம் 360', namakkal: 'நாமக்கல் 360' };
 var PAGE_COL = { rasipuram: C.rasipuram_link, namakkal: C.namakkal_link };
@@ -52,6 +52,7 @@ function doGet(e) {
     if (a === 'voice') return json_(voice_(e.parameter.story));
     if (a === 'recent') return json_({ ok: true, rows: recent_() });
     if (a === 'ping') return json_({ ok: true, time: nowIst_() });
+    if (a === 'autoPending') return json_({ ok: true, rows: autoPending_() });
     return json_({ ok: false, error: 'unknown action ' + a });
   } catch (err) {
     return json_({ ok: false, error: String(err) });
@@ -69,6 +70,7 @@ function doPost(e) {
     if (body.action === 'addStories') return json_(addStories_(body));
     if (body.action === 'archiveNews') return json_(archiveNews_(body));
     if (body.action === 'reoffer') return json_(reoffer_(body));
+    if (body.action === 'setImages') return json_(setImages_(body));
     return json_({ ok: false, error: 'unknown action ' + body.action });
   } catch (err) {
     return json_({ ok: false, error: String(err) });
@@ -555,6 +557,34 @@ function readyOne_(msg) {
   return report;
 }
 
+
+// ------------------------------------------------------------------ AUTOMATIC IMAGES (free AI models, made by the posting job)
+function autoPending_() {
+  var sh = sheet_(), last = sh.getLastRow();
+  if (last < 2) return [];
+  var out = [];
+  sh.getRange(2, 1, last - 1, NCOLS).getValues().forEach(function (v, i) {
+    var r = rowObj_(v, i + 2);
+    if (r.post_status === 'Auto images' && r.prompts) {
+      out.push({ row: r.row, story_id: r.story_id, prompts: String(r.prompts) });
+    }
+  });
+  return out;
+}
+
+function setImages_(b) {
+  var sh = sheet_();
+  var r = sh.getRange(b.row, 1).getValue();
+  if (String(r) !== String(b.story_id)) return { ok: false, error: 'row does not match ' + b.story_id };
+  var cur = sh.getRange(b.row, C.post_status).getValue();
+  if (cur !== 'Auto images') return { ok: true, skipped: 'status is ' + cur };
+  sh.getRange(b.row, C.images).setValue(JSON.stringify(b.images || []));
+  sh.getRange(b.row, C.post_status).setValue('Queued');
+  var note = nowIst_() + ' automatic images (free AI models) received: ' + (b.images || []).length;
+  sh.getRange(b.row, C.notes).setValue(String(sh.getRange(b.row, C.notes).getValue() || '') + ' | ' + note);
+  return { ok: true, queued: true };
+}
+
 function allowedSenders_() {
   var extra = String(props_().getProperty('ALLOWED_SENDERS') || '').split(',');
   return [OWNER_EMAIL.toLowerCase()].concat(extra.map(function (x) { return x.trim().toLowerCase(); }).filter(String));
@@ -618,7 +648,7 @@ function handleReply_(msg, batchId) {
   var rows = [];
   for (var i = 0; i < data.length; i++) {
     var r = rowObj_(data[i], i + 2);
-    if (r.batch === batchId && r.post_status === 'Awaiting images' && r.review.toLowerCase() !== 'hold') rows.push(r);
+    if (r.batch === batchId && (r.post_status === 'Awaiting images' || r.post_status === 'Auto images') && r.review.toLowerCase() !== 'hold') rows.push(r);
   }
   var report = [];
 
@@ -706,8 +736,9 @@ function expireOld_() {
     if (r.post_status !== 'Awaiting images') continue;
     var t = parseIst_(r.researched);
     if (t && (Date.now() - t.getTime()) / 3600000 > EXPIRE_HOURS) {
-      sh.getRange(r.row, C.post_status).setValue('Expired - no images');
-      appendNote_(sh, r.row, r.notes, nowIst_() + ' expired: no images within ' + EXPIRE_HOURS + ' hours');
+      // no images from the owner in time: the free AI image models make them now (the posting job does it)
+      sh.getRange(r.row, C.post_status).setValue('Auto images');
+      appendNote_(sh, r.row, r.notes, nowIst_() + ' no images from owner within ' + EXPIRE_HOURS + ' hours - automatic images will be made');
     }
   }
 }

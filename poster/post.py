@@ -988,12 +988,49 @@ def missing_setup():
     return False
 
 
+def auto_images():
+    """stories whose owner images did not come within 3 hours: the free AI image models make them (credit guard: at most 40 images per run)"""
+    pend = bridge_get("autoPending").get("rows", [])
+    if not pend:
+        return
+    sys.path.insert(0, str(ROOT / "research_free"))
+    import imagegen
+    cap = int(os.environ.get("IMG_MAX_PER_RUN", "40"))
+    made_total = 0
+    for r in pend:
+        prompts = [p.strip() for p in str(r.get("prompts", "")).split("\n---\n") if p.strip()]
+        if not prompts:
+            continue
+        if made_total + len(prompts) > cap:
+            log("auto images: credit cap reached for this run, the rest waits for the next run")
+            break
+        work = OUT / r["story_id"]
+        work.mkdir(parents=True, exist_ok=True)
+        try:
+            urls = []
+            for k, pr in enumerate(prompts, 1):
+                data = imagegen.generate(("Square image, the main subject exactly in the centre. " + pr)[:1800], seed=k + 7)
+                f = work / f"auto_{k}.jpg"
+                f.write_bytes(data)
+                urls.append(upload(f, "image"))
+            made_total += len(prompts)
+            bridge_post("setImages", {"row": r["row"], "story_id": r["story_id"], "images": urls})
+            log("automatic images queued:", r["story_id"], len(urls))
+        except Exception as e:
+            log("automatic images failed for", r["story_id"], str(e)[:200], "- will try again next run")
+
+
 def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else "run"
     if missing_setup() or not live_allowed():
         n = 0
         rows = []
     else:
+        try:
+            if not PREBUILD and not DRY:
+                auto_images()
+        except Exception as e:
+            log("automatic images step failed (posting goes on):", e)
         rows = bridge_get("queue")["rows"]
         global ALL_ROWS
         ALL_ROWS = list(rows)
