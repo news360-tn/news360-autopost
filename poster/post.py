@@ -142,6 +142,13 @@ def skip_reason(row):
     return ""
 
 
+def is_ready_reel(row):
+    try:
+        return bool(json.loads(row.get("slides_spec") or "{}").get("ready_reel"))
+    except Exception:
+        return False
+
+
 def ready(row):
     if (row.get("review") or "").strip().lower() == "hold":
         return False
@@ -150,7 +157,7 @@ def ready(row):
     pg = pages_of(row)
     if all(page_done(row, p) for p in pg):
         return False
-    why = skip_reason(row)
+    why = "" if is_ready_reel(row) else skip_reason(row)    # owner reels: posted as they are, no news checks
     if why:
         if row.get("story_id") not in _SKIPPED:
             _SKIPPED.add(row.get("story_id"))
@@ -763,12 +770,8 @@ def run_ready_reel(row, page):
     try:
         url = json.loads(row["images"])[0]
         import verify
-        probs = verify.check_reel(url, [])      # same technical checks as the built reels: 1080x1920, 10-45 s, voice present, not silent/clipped
-        if probs:
-            log("ready reel refused by the checks:", sid, probs)
-            bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "reel", "error": "Reel check failed: " + "; ".join(probs)})
-            return []
-        caption = final_caption(row)
+        # owner reels are posted as they are (owner decision, 24 Oct): no technical checks
+        caption = (row.get("caption") or "").strip()     # the .md caption exactly as the owner wrote it
         if DRY:
             log("DRY RUN ready reel - not publishing", sid, url)
             bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "dry_run": True, "permalink": "", "media_urls": [url],

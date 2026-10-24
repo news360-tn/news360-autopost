@@ -575,7 +575,7 @@ function addReel_(g, report) {
     defPage = /both|\+/.test(v) ? 'both' : (/rasipuram/.test(v) ? 'rasipuram' : 'namakkal');
   }
   var cap = lines.map(function (l) { return l.replace(/^\s*#{1,6}\s+(?=\S)/, '').replace(/\*\*|__/g, ''); }).join('\n').trim();
-  if (cap.length < 40) { report.push('NOT ADDED ' + g.name + ': the caption is empty or too short'); return; }
+  if (!cap) { report.push('NOT ADDED ' + g.name + ': the .md caption file is empty'); return; }
   var head = (cap.split('\n').filter(function (l) { return l.trim(); })[0] || '').trim();
   if (vids.length > 1) {
     var unnamed = vids.filter(function (b) { return !pageFromName_(b.getName()); });
@@ -995,4 +995,13 @@ function reoffer_(b) {
   if (!items.length) return { ok: true, offered: 0 };
   sendPromptEmail_(batch, items);
   return { ok: true, offered: items.length, batch: batch };
+}
+
+
+// Run once from the editor (Run → retryMessage_) to process an e-mail that was already handled before the fix.
+// Used for the 19-zip e-mail sent 16:43 IST (its ZIPs were Drive links).
+function retryMessage_() {
+  var msg = GmailApp.getMessageById('1a16d9dc32c804e7');
+  var report = readyOne_(msg);
+  GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 RETRY REPORT] 19 reels', report.join('\n') + '\n\nSheet: ' + SHEET_LINK);
 }
