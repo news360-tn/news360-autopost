@@ -20,7 +20,8 @@ CAROUSEL_EVERY = int(os.environ.get("CAROUSEL_EVERY", "5"))   # 1 carousel (best
 MAX_NAMAKKAL = int(os.environ.get("MAX_NAMAKKAL", "0") or 0) or SET_NEWS       # Namakkal page: district news, same count per round
 ARCHIVE = HERE / "archive"
 DRY = "--dry" in sys.argv
-IMG_BUDGET = int(os.environ.get("IMG_BUDGET_MIN", "22")) * 60     # minutes spent on automatic images per send
+IMG_BUDGET = int(os.environ.get("IMG_BUDGET_MIN", "22")) * 60
+IMG_MAX = int(os.environ.get("IMG_MAX_PER_RUN", "40"))     # credit guard: at most this many automatic images per run     # minutes spent on automatic images per send
 DEADLINE = time.time() + int(os.environ.get("BUDGET_MIN", "22")) * 60
 llm.DEADLINE[0] = DEADLINE
 
@@ -169,13 +170,22 @@ def make_images(group, log=None):
         if not prompts:
             continue
         sid = st.get("english_headline", "")[:40]
+        if IMG_MAX and sum(imagegen.USED.values()) + len(prompts) > IMG_MAX:
+            msg = f"image cap {IMG_MAX} per run reached (credit guard): the remaining stories go to the images-needed email"
+            print(msg); log is not None and log.append(msg)
+            break
         try:
             def one(ip):
                 i, pr = ip
                 data = imagegen.generate((STYLE + pr)[:1800], seed=random.randint(1, 10**6))
                 return _upload_image(data)
-            with ThreadPoolExecutor(max_workers=2) as ex:
-                urls = list(ex.map(one, list(enumerate(prompts))))
+            # credit guard: the first image is made alone; if it fails, the rest of this story is NOT attempted (no credits wasted on half a story)
+            first = one((0, prompts[0]))
+            rest = []
+            if len(prompts) > 1:
+                with ThreadPoolExecutor(max_workers=2) as ex:
+                    rest = list(ex.map(one, list(enumerate(prompts))[1:]))
+            urls = [first] + rest
             st["images"] = urls
             print(f"images made: {len(urls)} for '{sid}'")
         except Exception as e:
