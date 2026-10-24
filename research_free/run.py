@@ -4,7 +4,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import llm, sources
-from validate import validate
+from validate import autofix, validate
 
 SYSTEM = (HERE / "rules.md").read_text(encoding="utf-8")
 EX = json.loads((HERE / "examples.json").read_text(encoding="utf-8"))
@@ -70,7 +70,7 @@ def write(art, today):
                 raise
             break
         try:
-            d = _norm(_obj(d))
+            d = _norm(autofix(_obj(d)))
         except ValueError as e:
             errors = [str(e)]
             print(f"attempt {attempt} {model}: {e}")
@@ -88,7 +88,7 @@ def write(art, today):
         for k in range(3):
             try:
                 d, model = llm.ask_claude(SYSTEM, prompt(art, today, errs), max_tokens=5000)
-                d = _norm(_obj(d))
+                d = _norm(autofix(_obj(d)))
             except Exception as e:
                 print("claude rewrite failed:", str(e)[:150])
                 break

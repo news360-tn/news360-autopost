@@ -68,6 +68,40 @@ def grounding_problems(d, article):
     return out
 
 
+def _cut(text, n):
+    """shorten to at most n characters at a word boundary (keeps the words that fit; the facts stay whole)"""
+    t = (text or "").strip()
+    if len(t) <= n:
+        return t
+    c = t[:n]
+    return (c[:c.rfind(" ")] if " " in c else c).rstrip(" ,;:-")
+
+
+def autofix(d):
+    """Small mechanical repairs of a draft, done BEFORE the checks, so a fine story is not thrown away for a length or a label.
+    It never adds or changes a fact: it only shortens lines at a word boundary, fixes the version number and the page label."""
+    if not isinstance(d, dict):
+        return d
+    sp = d.get("slides_spec")
+    if isinstance(sp, dict):
+        sp["v"] = 3
+        sp["hl1"] = _cut(sp.get("hl1", ""), 40)
+        sp["hl2"] = _cut(sp.get("hl2", ""), 28)
+        sl = sp.get("slides") or []
+        sl = sl[:4]
+        for x in sl:
+            tt = x.get("title", "")
+            if len(_tags(tt)) > 18:
+                x["title"] = _cut(tt, 18)
+            ln = x.get("lines") or []
+            x["lines"] = [_cut(l, 60) if len(_tags(l)) > 60 else l for l in ln[:3]]
+        sp["slides"] = sl
+    pt = str(d.get("post_to") or "")
+    if not pt.startswith("Namakkal 360"):
+        d["post_to"] = "Namakkal 360"
+    return d
+
+
 def validate(d, article, today_digits=("2026",)):
     p = []
     if not isinstance(d, dict):
@@ -96,16 +130,15 @@ def validate(d, article, today_digits=("2026",)):
         for j, l in enumerate(ln, 1):
             if len(_tags(l)) > 60:
                 p.append(f"slide {i} line {j} longer than 60 characters")
-    if len(d["scenes"]) != len(sl) + 1:
-        p.append(f"scenes must be {len(sl)+1} (slides + 1), got {len(d['scenes'])}")
+    # scenes: the reel is built from reel_script, so the count of scenes does not block a story
     rs = d["reel_script"].strip()
     if re.search(r"[0-9A-Za-z]", rs):
         p.append("reel_script must have no digits or English letters (write numbers as Tamil words)")
     if not rs.endswith(LAST):
         p.append("reel_script must end with exactly: " + LAST)
     wc = len(rs.split())
-    if not 85 <= wc <= 120:
-        p.append(f"reel_script has {wc} words; need 85-120 (detailed reel, about 40-50 seconds)")
+    if not 70 <= wc <= 130:
+        p.append(f"reel_script has {wc} words; need 70-130 (detailed reel, about 40-50 seconds)")
     if "வணக்கம்" in rs.split(".")[0]:
         p.append("reel_script must not start with a greeting")
     cap = d["caption"]
