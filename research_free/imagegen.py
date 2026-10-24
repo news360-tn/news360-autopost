@@ -8,6 +8,7 @@ GEN = "https://ai.api.nvidia.com/v1/genai/"
 MODELS = [
     ("black-forest-labs/flux.1-dev", lambda p, s: {"prompt": p, "mode": "base", "cfg_scale": 3.5, "width": 768, "height": 1344, "seed": s, "steps": 40}),
     ("black-forest-labs/flux.1-schnell", lambda p, s: {"prompt": p, "width": 768, "height": 1344, "seed": s, "steps": 4}),
+    ("bytedance/stable-diffusion-xl-lightning", lambda p, s: {"prompt": p, "width": 768, "height": 1344, "seed": s, "steps": 4}),
     ("stabilityai/stable-diffusion-3-medium", lambda p, s: {"prompt": p, "aspect_ratio": "9:16", "seed": s, "steps": 40, "cfg_scale": 5, "negative_prompt": "text, letters, watermark, logo, collage, blurry"}),
 ]
 DEAD = set()

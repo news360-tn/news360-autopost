@@ -566,7 +566,7 @@ function autoPending_() {
   sh.getRange(2, 1, last - 1, NCOLS).getValues().forEach(function (v, i) {
     var r = rowObj_(v, i + 2);
     if (r.post_status === 'Auto images' && r.prompts) {
-      out.push({ row: r.row, story_id: r.story_id, prompts: String(r.prompts) });
+      out.push({ row: r.row, story_id: r.story_id, prompts: String(r.prompts), category: r.category, location: r.location, post_to: r.post_to, headline_ta: r.headline_ta });
     }
   });
   return out;
@@ -654,6 +654,8 @@ function handleReply_(msg, batchId) {
 
   // SKIP lines (only in what you typed, not in the quoted original)
   var body = String(msg.getPlainBody()).replace(/\r/g, '');
+  var storyM = String(msg.getSubject() || '').match(/RN-\d+/);
+  if (storyM) rows = rows.filter(function (r) { return r.story_id === storyM[0]; });
   // cut everything from the quoted original ("On <date> ... wrote:" which may wrap over two lines, "> " lines, "Original Message")
   var cut = body.search(/(^|\n)[ \t]*On [^\n]*(\n[^\n]*)?wrote:|(^|\n)[ \t]*>|(^|\n)[ \t]*-{2,}[ \t]*Original|(^|\n)[ \t]*From:/i);
   var typed = cut >= 0 ? body.slice(0, cut) : body;
@@ -673,6 +675,16 @@ function handleReply_(msg, batchId) {
   });
 
   var blobs = imageBlobs_(msg).concat(driveBlobs_(msg, report));
+  var noImg = /(not needed|without image|no image|no images|don'?t need images?)/i.test(typed);
+  if (noImg && !blobs.length && rows.length) {
+    rows.forEach(function (r) {
+      sh.getRange(r.row, C.images).setValue('["NOIMAGE"]');
+      sh.getRange(r.row, C.post_status).setValue('Queued');
+      appendNote_(sh, r.row, r.notes, nowIst_() + ' owner: no images - the reel is made without pictures (plain background)');
+      report.push(r.story_id + ': no images - the reel will be made without pictures and posted automatically');
+    });
+    rows = [];
+  }
   if (blobs.length && rows.length) {
     var byStory = {};
     var unnamed = [];
@@ -738,7 +750,7 @@ function expireOld_() {
     if (t && (Date.now() - t.getTime()) / 3600000 > EXPIRE_HOURS) {
       // no images from the owner in time: the free AI image models make them now (the posting job does it)
       sh.getRange(r.row, C.post_status).setValue('Auto images');
-      appendNote_(sh, r.row, r.notes, nowIst_() + ' no images from owner within ' + EXPIRE_HOURS + ' hours - automatic images will be made');
+      appendNote_(sh, r.row, r.notes, nowIst_() + ' no reply within ' + EXPIRE_HOURS + ' hours - free AI images are tried, otherwise the reel is made without pictures');
     }
   }
 }
@@ -778,7 +790,7 @@ function recent_() {
   var data = sh.getRange(from, 1, last - from + 1, NCOLS).getValues();
   return data.map(function (v, i) {
     var r = rowObj_(v, from + i);
-    return { story_id: r.story_id, researched: r.researched, headline_ta: r.headline_ta, headline_en: r.headline_en, source: r.source, post_status: r.post_status };
+    return { story_id: r.story_id, researched: r.researched, headline_ta: r.headline_ta, headline_en: r.headline_en, source: r.source, post_status: r.post_status, images: r.images, category: r.category, location: r.location, post_to: r.post_to };
   });
 }
 
@@ -861,7 +873,7 @@ function addStories_(b) {
   sh.getRange(sh.getLastRow() + 1, 1, rows.length, NCOLS).setValues(rows);
   var again = reofferItems_(b.reoffer_ids, batch);       // stories of earlier rounds that still wait for images go into the same e-mail
   items = again.concat(items);
-  if (items.length) sendPromptEmail_(batch, items);
+  items.forEach(function (it) { sendPromptEmail_(batch, [it]); });      // ONE e-mail per news
   return { ok: true, added: rows.length, auto_queued: auto, emailed: items.length, reoffered: again.length, batch: batch, first: 'RN-' + (no - rows.length + 1) };
 }
 
@@ -894,7 +906,8 @@ function sendPromptEmail_(batch, items) {
     'IMAGE PROMPT FILE (open, download, paste into ChatGPT): ' + file.getUrl() + '\n\nTHIS CHECK:\n' + lines.join('\n') + '\nTotal images: ' + total +
     '\n\nIMPORTANT: ChatGPT must make EACH image separately (no collage, no strips) and keep the original files - the new file says so. If ChatGPT still makes a collage, send it this message: "Wrong. Delete the collage. Make ONLY image RN-xx_1 as one single full-frame photograph, nothing else. Then wait." and continue one image at a time.\n\nHOW TO REPLY:\n(1) Give the .md file to ChatGPT.\n(2) ChatGPT makes all images one by one (names like RN-26_1.png) and puts them in zips of WHOLE stories, each zip under 24 MB (more zips if needed).\n(3) REPLY to this email once for EACH zip, with that zip attached.\n(4) Leave the reply text empty.\n(5) Reply from ' + OWNER_EMAIL +
     ' - the post is built and published about 20-40 minutes after your reply, the same day.\n\nDetails, captions and sources: ' + SHEET_LINK;
-  GmailApp.sendEmail(OWNER_EMAIL, '[NEWS360 IMAGES NEEDED] ' + batch + ' - ' + items.length + ' stories - ' + total + ' images', body);
+  var subj = items.length === 1 ? '[NEWS360 IMAGES NEEDED] ' + items[0].id + ' ' + batch + ' - ' + items[0].ta.slice(0, 50) : '[NEWS360 IMAGES NEEDED] ' + batch + ' - ' + items.length + ' stories - ' + total + ' images';
+  GmailApp.sendEmail(OWNER_EMAIL, subj, body);
 }
 
 /** Puts the given stories (not posted yet) back to "Awaiting images" under the batch id and returns the e-mail items for them. */

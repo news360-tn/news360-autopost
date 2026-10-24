@@ -149,6 +149,34 @@ def _upload_image(data):
     return r.json()["secure_url"]
 
 
+_RECENT_IMG = []
+
+
+def reuse_images(st, need):
+    """earlier posted stories' pictures that fit this news: same category and place first, then same category (partial match).
+    Returns `need` picture URLs, or [] when nothing suitable exists."""
+    if not _RECENT_IMG:
+        try:
+            _RECENT_IMG.extend(bridge("recent").get("rows", []))
+        except Exception as e:
+            print("recent pictures not available:", str(e)[:120]); _RECENT_IMG.append({})
+    cat, loc = (st.get("category") or "").strip(), (st.get("location") or "").strip()
+    best, best_score = None, 0
+    for r in _RECENT_IMG:
+        if not r.get("story_id") or not str(r.get("post_status", "")).lower().startswith(("posted", "partly")):
+            continue
+        try:
+            imgs = json.loads(r.get("images") or "[]")
+        except Exception:
+            continue
+        if len(imgs) < need or "NOIMAGE" in str(imgs):
+            continue
+        score = (2 if cat and r.get("category") == cat else 0) + (2 if loc and loc.split(",")[0].strip() and loc.split(",")[0].strip() in str(r.get("location", "")) else 0)
+        if score >= 2 and score > best_score:
+            best, best_score = imgs, score
+    return list(best[:need]) if best else []
+
+
 def make_images(group, log=None):
     """AUTO images: every scene prompt -> NVIDIA image API -> Cloudinary. A story gets story["images"] only when ALL its images were made;
     the bridge then queues it for posting at once and leaves it out of the images-needed email. Any failure -> the e-mail flow as before."""
@@ -174,6 +202,13 @@ def make_images(group, log=None):
             msg = f"image cap {IMG_MAX} per run reached (credit guard): the remaining stories go to the images-needed email"
             print(msg); log is not None and log.append(msg)
             break
+        reused = reuse_images(st, len(prompts))
+        if reused:
+            st["images"] = reused
+            print(f"earlier pictures reused for '{sid}'")
+            if log is not None:
+                log.append(f"earlier picture reused for '{sid}' (matching news)")
+            continue
         try:
             def one(ip):
                 i, pr = ip
@@ -192,6 +227,13 @@ def make_images(group, log=None):
             print(f"images NOT made for '{sid}': {str(e)[:200]}")
             if log is not None:
                 log.append(f"auto images failed for '{sid}': {str(e)[:120]} -> images-needed email")
+            # last check: earlier pictures again (a partial match is accepted); otherwise this story waits for the owner's e-mail
+            again = reuse_images(st, len(prompts))
+            if again:
+                st["images"] = again
+                if log is not None:
+                    log.append(f"earlier picture reused (second check) for '{sid}'")
+                continue
             if "all image models failed" in str(e):
                 break          # no image model works right now (credits/limit): do not waste time on the other stories
     if log is not None:

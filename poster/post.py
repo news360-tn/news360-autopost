@@ -310,6 +310,8 @@ def final_caption(row):
 def fetch_images(row, work):
     urls = json.loads(row["images"])
     work.mkdir(parents=True, exist_ok=True)
+    if urls and urls[0] == "NOIMAGE":
+        return plain_background(work, max(4, len(json.loads(row.get("slides_spec") or "{}").get("slides", [])) + 1))
     out = []
     for i, u in enumerate(urls, 1):
         r = requests.get(u, timeout=120)
@@ -988,8 +990,33 @@ def missing_setup():
     return False
 
 
+def _reuse_pick(r, need):
+    """earlier posted stories' pictures for this news: same category + place first, else same category (partial match)"""
+    try:
+        recent = bridge_get("recent").get("rows", [])
+    except Exception as e:
+        log("recent pictures not available:", e)
+        return []
+    best, bs = [], 0
+    for o in recent:
+        if o.get("story_id") == r.get("story_id") or not str(o.get("post_status", "")).lower().startswith(("posted", "partly")):
+            continue
+        try:
+            imgs = json.loads(o.get("images") or "[]")
+        except Exception:
+            continue
+        if len(imgs) < need or "NOIMAGE" in str(imgs):
+            continue
+        cat, loc = (r.get("category") or "").strip(), (r.get("location") or "").strip().split(",")[0].strip()
+        sc = (2 if cat and o.get("category") == cat else 0) + (2 if loc and loc in str(o.get("location", "")) else 0)
+        if sc >= 2 and sc > bs:
+            best, bs = imgs, sc
+    return best[:need]
+
+
 def auto_images():
-    """stories whose owner images did not come within 3 hours: the free AI image models make them (credit guard: at most 40 images per run)"""
+    """stories whose owner did not answer within 2 hours: earlier matching pictures first, then the free AI image models;
+    if neither works, the reel is made without pictures (setImages with NOIMAGE). Credit guard: at most 40 images per run."""
     pend = bridge_get("autoPending").get("rows", [])
     if not pend:
         return
@@ -1000,6 +1027,11 @@ def auto_images():
     for r in pend:
         prompts = [p.strip() for p in str(r.get("prompts", "")).split("\n---\n") if p.strip()]
         if not prompts:
+            continue
+        reused = _reuse_pick(r, len(prompts))
+        if reused:
+            bridge_post("setImages", {"row": r["row"], "story_id": r["story_id"], "images": reused})
+            log("earlier matching pictures used:", r["story_id"])
             continue
         if made_total + len(prompts) > cap:
             log("auto images: credit cap reached for this run, the rest waits for the next run")
@@ -1017,7 +1049,22 @@ def auto_images():
             bridge_post("setImages", {"row": r["row"], "story_id": r["story_id"], "images": urls})
             log("automatic images queued:", r["story_id"], len(urls))
         except Exception as e:
-            log("automatic images failed for", r["story_id"], str(e)[:200], "- will try again next run")
+            log("free image models failed for", r["story_id"], str(e)[:160], "- the reel is made without pictures")
+            bridge_post("setImages", {"row": r["row"], "story_id": r["story_id"], "images": ["NOIMAGE"]})
+
+
+def plain_background(work, n):
+    """a plain branded background for a reel made without pictures (one file, used for every scene)"""
+    from PIL import Image as _I, ImageDraw as _D
+    work.mkdir(parents=True, exist_ok=True)
+    im = _I.new("RGB", (1080, 1920), (14, 22, 36))
+    d = _D.Draw(im)
+    for y in range(1920):           # soft vertical gradient
+        t = y / 1920
+        d.line([(0, y), (1080, y)], fill=(int(14 + 20 * t), int(22 + 30 * t), int(36 + 40 * t)))
+    dst = work / "plain_bg.jpg"
+    im.save(dst, "JPEG", quality=95)
+    return [dst] * n
 
 
 def main():
