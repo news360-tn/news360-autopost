@@ -171,7 +171,7 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
 {stick}
 <div id="cap">{cap_html}</div>
 <div id="tick"><div class="lab" id="lab"><span id="pulse"></span>செய்தி</div><div class="trk"><div class="txt" id="ttxt"><span id="cyc">{tick}</span>{tick}{tick}{tick}</div></div></div>
-<div id="end"><img src="{logo}"><div class="e1">நம்ம நாமக்கல் செய்திகள்</div><div class="e2">FOLLOW @namakkal.360</div><div style="font:800 44px 'NST','CT';color:#fff;background:rgba(0,0,0,.35);padding:12px 30px 6px;border-radius:16px">📌 Save • தேவைப்படுவோருக்கு Share</div><div class="e3">{E(spec.get('location',''))}</div></div>
+<div id="end"><img src="{logo}"><div class="e1">{E(page['tagline'])}</div><div class="e2">FOLLOW @{page['handle']}</div><div style="font:800 44px 'NST','CT';color:#fff;background:rgba(0,0,0,.35);padding:12px 30px 6px;border-radius:16px">📌 Save • தேவைப்படுவோருக்கு Share</div><div class="e3">{E(spec.get('location',''))}</div></div>
 <script>
 const D={data};
 const cl=x=>Math.max(0,Math.min(1,x)), ease=x=>1-Math.pow(1-x,3), back=x=>{{const c=1.70158,c3=c+1;return 1+c3*Math.pow(x-1,3)+c*Math.pow(x-1,2)}};

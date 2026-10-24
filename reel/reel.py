@@ -17,9 +17,9 @@ NM = KIT / "node_modules"
 FS = NM / "@fontsource"
 ICONS = NM / "@fortawesome" / "fontawesome-free" / "svgs" / "solid"
 PAGES = {
-    "rasipuram": {"logo": "logo_rasipuram.png", "name": "இராசிபுரம் 360", "follow": "இராசிபுரம்<br>உள்ளூர் செய்திகளுக்கு",
+    "rasipuram": {"logo": "logo_rasipuram.png", "name": "இராசிபுரம் 360", "handle": "rasipuram.360", "tagline": "நம்ம இராசிபுரம் செய்திகள்", "follow": "இராசிபுரம்<br>உள்ளூர் செய்திகளுக்கு",
                   "ticker": "இராசிபுரம் 360  •  இராசிபுரம் • சுற்றுவட்டாரச் செய்திகள்  •  Follow செய்யுங்கள்"},
-    "namakkal": {"logo": "logo_namakkal.png", "name": "நாமக்கல் 360", "follow": "நாமக்கல் மாவட்டச்<br>செய்திகளுக்கு",
+    "namakkal": {"logo": "logo_namakkal.png", "name": "நாமக்கல் 360", "handle": "namakkal.360", "tagline": "நம்ம நாமக்கல் செய்திகள்", "follow": "நாமக்கல் மாவட்டச்<br>செய்திகளுக்கு",
                  "ticker": "நாமக்கல் 360  •  நாமக்கல் மாவட்டச் செய்திகள்  •  Follow செய்யுங்கள்"},
 }
 PAGE = PAGES["namakkal"]
