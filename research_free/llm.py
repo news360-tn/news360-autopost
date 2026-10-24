@@ -212,6 +212,7 @@ def chain():
     return out
 
 
+CLAUDE_FIRST = os.environ.get("CLAUDE_FIRST", "1") == "1"      # 1 = Claude paid key does all writing and checks (set 0 to use free models first again)
 FREE_FAILS = [0]                                              # failures of free models in a row (slow, poor or refused answers)
 FREE_FAIL_LIMIT = int(os.environ.get("LLM_FREE_FAIL_LIMIT", "3"))
 
@@ -219,6 +220,8 @@ FREE_FAIL_LIMIT = int(os.environ.get("LLM_FREE_FAIL_LIMIT", "3"))
 def ask_json(system, user, tries_per_model=1):
     """returns (data, model_name). Starts with the model that worked last time; retries a busy (503/429) model once after a pause.
     Owner rule: when the free models have failed FREE_FAIL_LIMIT times in a row, this raises at once, so the caller uses Claude (paid) straight away."""
+    if CLAUDE_FIRST and claude_available():      # owner decision 24 Oct: Claude (paid) for every writing/check call for one month, free models not used
+        raise RuntimeError("Claude first (owner setting): using Claude")
     if FREE_FAILS[0] >= FREE_FAIL_LIMIT and claude_available():
         raise RuntimeError(f"free models not efficient ({FREE_FAILS[0]} failures in a row): using Claude")
     last = None
@@ -277,7 +280,7 @@ def ask_json(system, user, tries_per_model=1):
 
 # ---- Claude (paid, optional): used only to FACT-CHECK drafts and, if the free models cannot produce a clean draft, to rewrite it. Needs ANTHROPIC_API_KEY.
 CLAUDE_CALLS = [0]
-CLAUDE_MAX = int(os.environ.get("CLAUDE_MAX_CALLS", "40"))       # cost guard per run
+CLAUDE_MAX = int(os.environ.get("CLAUDE_MAX_CALLS", "100000"))   # owner decision 24 Oct: no per-run limit; cost checked after one month       # cost guard per run
 
 
 def claude_available():
