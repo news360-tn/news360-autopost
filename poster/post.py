@@ -755,6 +755,12 @@ def run_ready_reel(row, page):
         return []
     try:
         url = json.loads(row["images"])[0]
+        import verify
+        probs = verify.check_reel(url, [])      # same technical checks as the built reels: 1080x1920, 10-45 s, voice present, not silent/clipped
+        if probs:
+            log("ready reel refused by the checks:", sid, probs)
+            bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "reel", "error": "Reel check failed: " + "; ".join(probs)})
+            return []
         caption = final_caption(row)
         if DRY:
             log("DRY RUN ready reel - not publishing", sid, url)

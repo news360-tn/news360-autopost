@@ -136,6 +136,7 @@ def groq_models(key):
 
 
 PREFERRED = [None]
+SLOW_SECS = int(os.environ.get('LLM_SLOW_SECS', '90'))   # a free model slower than this is skipped for 30 min
 DEAD = {}   # (provider, model) -> time until which it is skipped
 DEADLINE = [None]   # unix time after which no more model calls are made
 
@@ -223,10 +224,15 @@ def ask_json(system, user, tries_per_model=1):
         for k in range(3):
             if DEADLINE[0] and time.time() > DEADLINE[0]:
                 raise RuntimeError(f"time budget used up; last error: {last}")
+            t0 = time.time()
             try:
                 text = fn(model, system, user, key)
+                took = time.time() - t0
                 data = _json_from(text)
-                _log(f"ok {provider}/{model}")
+                if took > SLOW_SECS:      # answered, but far too slow: use another model for a while (checked again later)
+                    DEAD[(provider, model)] = time.time() + 1800
+                    _log(f"slow ({int(took)}s) - skipped for 30 min: {provider}/{model}")
+                _log(f"ok {provider}/{model} ({int(took)}s)")
                 PREFERRED[0] = (provider, model)
                 return data, f"{provider}/{model}"
             except Exception as e:
@@ -243,6 +249,11 @@ def ask_json(system, user, tries_per_model=1):
                     _log(f"dead for this round: {provider}/{model}")
                     break
                 if " 413" in msg or "request too large" in low:
+                    break
+                if not any(c in msg for c in (" 400", " 401", " 403", " 404", " 408", " 413", " 429", " 500", " 502", " 503", " 504")) and "time budget" not in low:
+                    # a poor / unreadable answer (not valid JSON, or an empty reply): this model is skipped for 30 min, the next one is tried
+                    DEAD[(provider, model)] = time.time() + 1800
+                    _log(f"poor answer - skipped for 30 min: {provider}/{model}")
                     break
                 if k >= 1 and (" 429" in msg or " 503" in msg):
                     DEAD[(provider, model)] = time.time() + 600     # still limited after a retry: switch to the next model for 10 min
