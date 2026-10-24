@@ -730,7 +730,12 @@ def run_story(row):
     for pg in pages_of(row):
         if page_done(row, pg):
             continue
-        dup = "" if (row.get(pg + "_link") or row.get("reel_link")) else ig_duplicate(row, pg)   # own earlier half-post is not a duplicate
+        try:
+            owner_reel = bool(json.loads(row.get("slides_spec") or "{}").get("ready_reel"))
+        except Exception:
+            owner_reel = False
+        # owner-made reels (e-mailed) are posted without the duplicate check (owner decision, 24 Oct); own earlier half-post is not a duplicate
+        dup = "" if (owner_reel or row.get(pg + "_link") or row.get("reel_link")) else ig_duplicate(row, pg)
         if dup:
             log("SKIP instagram duplicate:", row.get("story_id"), pg, "already posted", dup)
             continue
@@ -780,7 +785,7 @@ def run_ready_reel(row, page):
         except Exception as e:
             log("story not made (post itself is fine):", e)
         bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "permalink": link, "media_id": mid, "media_urls": [url],
-                               "caption": caption, "voice": "ready-made", "collab": False, "checks": "ready reel posted as received; Instagram duplicate check passed"})
+                               "caption": caption, "voice": "ready-made", "collab": False, "checks": "ready reel posted as received (owner verified; no duplicate check)"})
         return [("reel", link)]
     except Exception as e:
         if is_limit_error(e):

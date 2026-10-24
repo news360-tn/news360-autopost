@@ -532,10 +532,7 @@ function readyOne_(msg) {
   var cap = lines.map(function (l) { return l.replace(/^\s*#{1,6}\s+(?=\S)/, '').replace(/\*\*|__/g, ''); }).join('\n').trim();
   if (cap.length < 40) return report.concat(['NOT ADDED: the caption is empty or too short']);
   var head = (cap.split('\n').filter(function (l) { return l.trim(); })[0] || '').trim();
-  // duplicate inside the Sheet (any earlier story, posted or queued)
-  var dup = null;
-  recent_().forEach(function (r) { if (!dup && (overlap_(head, r.headline_ta) >= 0.65 || overlap_(cap.slice(0, 200), r.headline_ta) >= 0.65)) dup = r; });
-  if (dup) return report.concat(['NOT ADDED: DUPLICATE of ' + dup.story_id + ' (' + dup.post_status + '): ' + dup.headline_ta]);
+  // owner-verified reels: no duplicate check here (owner decision, 24 Oct) - posted as received
   var no = nextStoryNo_(sh) + 1, id = 'RN-' + no;
   var url = uploadVideo_(vid[0], id);
   var row = new Array(NCOLS).fill('');
