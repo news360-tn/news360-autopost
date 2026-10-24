@@ -198,7 +198,7 @@ def make_images(group, log=None):
         log.append(f"auto images: {sum(1 for x in group if x.get('images'))} of {len(group)} stories ({imagegen.USED})")
 
 
-def pending_ids(max_hours=3):
+def pending_ids(max_hours=2):
     """stories of earlier rounds still waiting for the owner's images (not older than a day): they are listed again in this round's e-mail"""
     if not BRIDGE_URL or DRY:
         return []
