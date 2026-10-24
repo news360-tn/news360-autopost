@@ -1,26 +1,34 @@
-writing [R]: கொல்லிமலை சாலையில் சாய்ந்த மரங்கள் அகற்றம்
+writing [R]: ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர் ஆலோசனை
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
 poor answer - skipped for 30 min: gemini/gemini-3.8-flash
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.7-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.7-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.7-flash
+ok gemini/gemini-3.6-flash (20s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
+ok groq/openai/gpt-oss-120b (5s)
+factcheck by groq/openai/gpt-oss-120b: 5 problems
+  Reel script adds the adjective “சிறப்பாக” describing the meeting, which is not mentioned in the article
+  Reel script adds “தீவிரமாக” describing the delay of delimitation work, not in the article
+  Reel script refers to “தேர்தல் பிரிவு அலுவலர்கள்” (plural) while the article mentions a single election officer Murugan
+  Slide 2 line “தேர்தல் பணிகள் தொடங்கப்பட்டதால் தொகுதி மறுசீரமைப்பு” misstates the article – the article says delimitation work is delayed, not that it started because election work began
+  Slide 3 line “தேர்தல் பிரிவு அலுவலர்கள் பணிகளை முடுக்கிவிட்டுள்ளனர்” conflicts with the article’s wording and uses plural officers, creating a factual mismatch
+attempt 1 gemini/gemini-3.6-flash: 5 problems
+  fact-check: Reel script adds the adjective “சிறப்பாக” describing the meeting, which is not mentioned in the article
+  fact-check: Reel script adds “தீவிரமாக” describing the delay of delimitation work, not in the article
+  fact-check: Reel script refers to “தேர்தல் பிரிவு அலுவலர்கள்” (plural) while the article mentions a single election officer Murugan
+  fact-check: Slide 2 line “தேர்தல் பணிகள் தொடங்கப்பட்டதால் தொகுதி மறுசீரமைப்பு” misstates the article – the article says delimitation work is delayed, not that it started because election work began
+  fact-check: Slide 3 line “தேர்தல் பிரிவு அலுவலர்கள் பணிகளை முடுக்கிவிட்டுள்ளனர்” conflicts with the article’s wording and uses plural officers, creating a factual mismatch
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
@@ -32,199 +40,286 @@ fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"
 switching away from mistral/mistral-small-latest for 10 min
 free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
 ok anthropic/claude-haiku-5-5
-claude answer not JSON (Expecting property name enclosed in double quotes: line 1 column 993 (char 992)); stop_reason=end_turn blocks=['text'] usage={'input_tokens': 1154, 'cache_creation_input_tokens': 10095, 'cache_read_input_tokens': 0, 'cache_creation': {'ephemeral_5m_input_tokens': 10095, 'ephemeral_1h_input_tokens': 0}, 'output_tokens': 2022, 'output_tokens_details': {'thinking_tokens': 0}, 'service_tier': 'standard', 'inference_geo': 'global', 'speed': 'standard'} head='{"tamil_headline": "கொல்லிமலை சாலையில் சாய்ந்த மரம் அகற்றம்: போக்குவரத்து மீண்டது", "english_headline": "Fallen tree cleared from Kolli Hills road after landslide; traffic restored", "category": "Road'
-claude rewrite failed: Expecting property name enclosed in double quotes: line 1 column 993 (char 992)
-writing [R]: ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர் ஆலோசனை
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 51 words; need 70-130 (detailed reel, about 40-50 seconds)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 60 words; need 70-130 (detailed reel, about 40-50 seconds)
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 59 words; need 70-130 (detailed reel, about 40-50 seconds)
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-writing [R]: நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு விழா
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The article gives the first branch's location as the Thiruvi.Ka. Road / Municipal Colony headquarters area and the new branch as near a marriage hall, but the draft's tamil_headline and reel_script name the place as Rasipuram (ராசிபுரம்) and caption says 'ராசிபுரத்தில்'. The article's text mentions 'ராசிபுரம் கிளையில' only in the offer sentence, so the new branch being in Rasipuram is supported, but the reel_script says the Rasipuram branch 'opens near marriage hall' which is consistent; however the caption's hashtag-free location is stated as a fact not clearly in the garbled article.
-  The reel_script says the Rajya Sabha MP 'opens' (திறந்து வைக்கிறார்) the branch; the article says the branch is to be opened by ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார, which matches, but the reel_script and caption say the MP opens it while the article's phrase is cut off, so the role of 'முன்னிலை' for Engineer Raja and others is attributed as presiding, which is consistent; no clear error here.
-  The article's offer is stated for 'ராசிபுரம் கிளையில' (at the Rasipuram branch) on 25 and 26 only; the draft's reel_script presents the offer without stating it is only at the Rasipuram branch, omitting that important scope detail.
-  The caption and slides state the Diwali sale runs from 27 to Nov 9 and give prices (480, 360, 400), but the article's Diwali sale is said to be 'வரும் 27 முதல், நவ., 9 வரை' with no clear statement of the month of the 27th; the draft asserts 'அக். 27' in the caption, an inferred month not stated in the article.
+  The article is truncated and does not clearly state that the meeting was held in Rasipuram or that all-party participants attended; the draft's specific claims (meeting held yesterday, chaired by election officer Murugan, all recognised parties took part) cannot be fully verified from the visible text
+  The article does not clearly state that the election officer said voters will be helped to vote without difficulty; the quote is partially visible and the draft's wording may go beyond it
+  The draft states 'விவரங்கள் இன்னும் முழுமையாக வெளியிடப்படவில்லை' (details not yet fully released), which is not supported by the visible article text
+  The draft says voters' 'long distance travel' is to be avoided as a discussed point, which is only partially visible in the article and may be overstated
 claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The article gives the first branch's location as the Thiruvi.Ka. Road / Municipal Colony headquarters area and the new branch as near a marriage hall, but the draft's tamil_headline and reel_script name the place as Rasipuram (ராசிபுரம்) and caption says 'ராசிபுரத்தில்'. The article's text mentions 'ராசிபுரம் கிளையில' only in the offer sentence, so the new branch being in Rasipuram is supported, but the reel_script says the Rasipuram branch 'opens near marriage hall' which is consistent; however the caption's hashtag-free location is stated as a fact not clearly in the garbled article.
-  fact-check: The reel_script says the Rajya Sabha MP 'opens' (திறந்து வைக்கிறார்) the branch; the article says the branch is to be opened by ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார, which matches, but the reel_script and caption say the MP opens it while the article's phrase is cut off, so the role of 'முன்னிலை' for Engineer Raja and others is attributed as presiding, which is consistent; no clear error here.
-  fact-check: The article's offer is stated for 'ராசிபுரம் கிளையில' (at the Rasipuram branch) on 25 and 26 only; the draft's reel_script presents the offer without stating it is only at the Rasipuram branch, omitting that important scope detail.
-  fact-check: The caption and slides state the Diwali sale runs from 27 to Nov 9 and give prices (480, 360, 400), but the article's Diwali sale is said to be 'வரும் 27 முதல், நவ., 9 வரை' with no clear statement of the month of the 27th; the draft asserts 'அக். 27' in the caption, an inferred month not stated in the article.
+  fact-check: The article is truncated and does not clearly state that the meeting was held in Rasipuram or that all-party participants attended; the draft's specific claims (meeting held yesterday, chaired by election officer Murugan, all recognised parties took part) cannot be fully verified from the visible text
+  fact-check: The article does not clearly state that the election officer said voters will be helped to vote without difficulty; the quote is partially visible and the draft's wording may go beyond it
+  fact-check: The draft states 'விவரங்கள் இன்னும் முழுமையாக வெளியிடப்படவில்லை' (details not yet fully released), which is not supported by the visible article text
+  fact-check: The draft says voters' 'long distance travel' is to be avoided as a discussed point, which is only partially visible in the article and may be overstated
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 43 words; need 50-130 (detailed reel, about 30-50 seconds)
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The article is truncated; the draft states the purpose as reducing voters' long-distance travel, and claims new polling stations are being created to address it, but the visible article only mentions creating polling stations and voters travelling long distances without stating the full purpose or outcome, so the claim 'புதிய ஓட்டுச்சாவடிகள் உருவாக்கப்படுகின்றன' to avoid long travel is not clearly supported
+  The officer's statement that arrangements will be made for voters to vote without difficulty is only partially visible in the article and cannot be verified against the truncated quote
+  The slide line 'மேலும் விவரங்கள் வெளியிடப்படவில்லை' (no further details released) and 'விவரம் இன்னும் தெரியவரவில்லை' (details not yet known) are claims not verifiable from the visible article text
+  The caption claims the officer 'தெரிவித்துள்ளார்' that arrangements will be made, which is a specific attribution not confirmed by the visible article
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The article is truncated; the draft states the purpose as reducing voters' long-distance travel, and claims new polling stations are being created to address it, but the visible article only mentions creating polling stations and voters travelling long distances without stating the full purpose or outcome, so the claim 'புதிய ஓட்டுச்சாவடிகள் உருவாக்கப்படுகின்றன' to avoid long travel is not clearly supported
+  fact-check: The officer's statement that arrangements will be made for voters to vote without difficulty is only partially visible in the article and cannot be verified against the truncated quote
+  fact-check: The slide line 'மேலும் விவரங்கள் வெளியிடப்படவில்லை' (no further details released) and 'விவரம் இன்னும் தெரியவரவில்லை' (details not yet known) are claims not verifiable from the visible article text
+  fact-check: The caption claims the officer 'தெரிவித்துள்ளார்' that arrangements will be made, which is a specific attribution not confirmed by the visible article
+proofread skipped: free models not efficient (7 failures in a row): using Claude
+writing [R]: நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு விழா
+free models unavailable: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 8 problems
+  The article never states the new branch is in Rasipuram; the location 'ராசிபுரம்' (Rasipuram) is inferred from the offer mentioning the Rasipuram branch, while the article names Thiruvi.Ka. Road / Municipal Colony as the headquarters area. The place of the new branch is not clearly supported.
+  The reel_script and caption say the opening is in Rasipuram at a location near a marriage hall, but the article only says 'திருமண மண்டபம் அருகே' without naming Rasipuram as the opening location.
+  The caption states the opening is on 'அக். 25' (October 25); the article gives no month and only says 'நாளை' (tomorrow) and the offer days 25, 26 without naming the month, so the date is an invented detail.
+  The reel_script and slides say 'அக்டோபர் இருபத்து ஐந்து' and the slides say 'அக். 25, 26'; the article does not name the month for the offer days, so the month is an invented detail.
+  The reel_script says Rajesh Kumar 'தொடங்கி வைக்கிறார்' (inaugurates); the article says the new branch is 'ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார்' in a sentence that is cut off, so the role is not fully confirmed, though this is minor.
+  The reel_script omits the Diwali sweets sale details (laddu, badusha, sonpapdi, jilebi at 480 rupees per kg, special mixture at 360, mini jilebi at 400, from the 27th to November 9), which are important facts of the article.
+  The reel_script and slides say 'முக்கிய பிரமுகர்கள், தொழிலதிபர்கள்' attend, but the article says 'முக்கிய பிரமுகர்கள், தொழிலதிபர்கள், உறவினர்கள் நண்பர்கள்' attend; the slides' 'யார் பங்கேற்பு' list is partially supported, but the reel's 'உள்ளிட்டோர்' phrasing mixes the 'முன்னிலை' (presiding) role with attendance.
+  The reel_script's time phrase 'ஏழு :முப்பத்து ஐந்து மணிக்கு' contains a stray space before the colon, making the Tamil time expression ungrammatical/unclear.
+claude rewrite 1 anthropic/claude-haiku-5-5: 8 problems
+  fact-check: The article never states the new branch is in Rasipuram; the location 'ராசிபுரம்' (Rasipuram) is inferred from the offer mentioning the Rasipuram branch, while the article names Thiruvi.Ka. Road / Municipal Colony as the headquarters area. The place of the new branch is not clearly supported.
+  fact-check: The reel_script and caption say the opening is in Rasipuram at a location near a marriage hall, but the article only says 'திருமண மண்டபம் அருகே' without naming Rasipuram as the opening location.
+  fact-check: The caption states the opening is on 'அக். 25' (October 25); the article gives no month and only says 'நாளை' (tomorrow) and the offer days 25, 26 without naming the month, so the date is an invented detail.
+  fact-check: The reel_script and slides say 'அக்டோபர் இருபத்து ஐந்து' and the slides say 'அக். 25, 26'; the article does not name the month for the offer days, so the month is an invented detail.
+  fact-check: The reel_script says Rajesh Kumar 'தொடங்கி வைக்கிறார்' (inaugurates); the article says the new branch is 'ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார்' in a sentence that is cut off, so the role is not fully confirmed, though this is minor.
+  fact-check: The reel_script omits the Diwali sweets sale details (laddu, badusha, sonpapdi, jilebi at 480 rupees per kg, special mixture at 360, mini jilebi at 400, from the 27th to November 9), which are important facts of the article.
+  fact-check: The reel_script and slides say 'முக்கிய பிரமுகர்கள், தொழிலதிபர்கள்' attend, but the article says 'முக்கிய பிரமுகர்கள், தொழிலதிபர்கள், உறவினர்கள் நண்பர்கள்' attend; the slides' 'யார் பங்கேற்பு' list is partially supported, but the reel's 'உள்ளிட்டோர்' phrasing mixes the 'முன்னிலை' (presiding) role with attendance.
+  fact-check: The reel_script's time phrase 'ஏழு :முப்பத்து ஐந்து மணிக்கு' contains a stray space before the colon, making the Tamil time expression ungrammatical/unclear.
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  not grounded: location 'சாலை' is not in the article
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The article says the branch is headed from Thiru.Vi.Ka. Road, Municipal Colony, but the draft's reel_script and slides_spec name Rasipuram as the location of the new branch; the article only mentions a Rasipuram branch in the offer section, so the opening location is not clearly supported.
+  The reel_script says the MP Rajeshkumar 'opens' (திறந்து வைக்கிறார்) the new branch, but the article only says the new branch is to be opened by the Rajya Sabha MP Rajeshkumar in the sense of an attending dignitary; this matches, but the caption/slides mention 'Rajya Sabha MP' while the article says 'ராஜ்ஜிய சபா எம்.பி.' which is consistent, so no problem here.
+  The caption states the opening is on 'அக். 25' (Oct 25), a specific date that is not stated in the article; the article only says 'நாளை' (tomorrow) and gives the offer dates 25 and 26 without naming the month of the opening.
+  The reel_script omits that the opening is attended by important personalities, businessmen, relatives and friends, which the article mentions; the slides include it but the reel_script does not.
+  The article says the Diwali sale runs from the 27th to Nov 9, and the reel_script says 'நவம்பர் ஒன்பது' which is consistent, but the article's ஸ்பெஷல் மிக்சர் and மினி ஜிலேபி prices are omitted from the reel_script (present only in slides), which is acceptable but the reel_script's ₹480 claim applies only to the listed sweets, which matches.
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The article says the branch is headed from Thiru.Vi.Ka. Road, Municipal Colony, but the draft's reel_script and slides_spec name Rasipuram as the location of the new branch; the article only mentions a Rasipuram branch in the offer section, so the opening location is not clearly supported.
+  fact-check: The reel_script says the MP Rajeshkumar 'opens' (திறந்து வைக்கிறார்) the new branch, but the article only says the new branch is to be opened by the Rajya Sabha MP Rajeshkumar in the sense of an attending dignitary; this matches, but the caption/slides mention 'Rajya Sabha MP' while the article says 'ராஜ்ஜிய சபா எம்.பி.' which is consistent, so no problem here.
+  fact-check: The caption states the opening is on 'அக். 25' (Oct 25), a specific date that is not stated in the article; the article only says 'நாளை' (tomorrow) and gives the offer dates 25 and 26 without naming the month of the opening.
+  fact-check: The reel_script omits that the opening is attended by important personalities, businessmen, relatives and friends, which the article mentions; the slides include it but the reel_script does not.
+  fact-check: The article says the Diwali sale runs from the 27th to Nov 9, and the reel_script says 'நவம்பர் ஒன்பது' which is consistent, but the article's ஸ்பெஷல் மிக்சர் and மினி ஜிலேபி prices are omitted from the reel_script (present only in slides), which is acceptable but the reel_script's ₹480 claim applies only to the listed sweets, which matches.
+proofread skipped: free models not efficient (7 failures in a row): using Claude
+writing [R]: இதே நாளில் அன்று: அக். 24
+free models unavailable: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The reel_script says the 'Common Man' character was made famous through the Times of India, but the article says it appeared in the 'You Said It' section — the section name is omitted and the two facts are mixed in one sentence.
+  The reel_script states the 1984 Ramon Magsaysay award as if it were a Tamil Nadu/Indian award context without the article's 'Philippines' detail; the country (Philippines) is missing from the reel_script and slides ('ராமன் மகசேசே' without naming the Philippines), an important detail of the article.
+  The reel_script omits the 1947 employer name (Free Press Journal, Mumbai) which the article gives as the start of his full-time career; it only says 'முழுநேர கேலிச்சித்திர ஓவியராக பணியைத் தொடங்கினார்' without the newspaper or city.
+  The 2005 Padma Vibhushan award is listed in the article but is omitted from the reel_script, an important fact missing from the script.
+  The reel_script's opening phrase 'இதே நாளில் பிறந்த நாள் காணும்' says he is celebrating his birthday today, while the article only says he was born on this date in 1921 (the claim of 'today' is a framing inference, not stated, though the date matches).
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The reel_script says the 'Common Man' character was made famous through the Times of India, but the article says it appeared in the 'You Said It' section — the section name is omitted and the two facts are mixed in one sentence.
+  fact-check: The reel_script states the 1984 Ramon Magsaysay award as if it were a Tamil Nadu/Indian award context without the article's 'Philippines' detail; the country (Philippines) is missing from the reel_script and slides ('ராமன் மகசேசே' without naming the Philippines), an important detail of the article.
+  fact-check: The reel_script omits the 1947 employer name (Free Press Journal, Mumbai) which the article gives as the start of his full-time career; it only says 'முழுநேர கேலிச்சித்திர ஓவியராக பணியைத் தொடங்கினார்' without the newspaper or city.
+  fact-check: The 2005 Padma Vibhushan award is listed in the article but is omitted from the reel_script, an important fact missing from the script.
+  fact-check: The reel_script's opening phrase 'இதே நாளில் பிறந்த நாள் காணும்' says he is celebrating his birthday today, while the article only says he was born on this date in 1921 (the claim of 'today' is a framing inference, not stated, though the date matches).
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  reel_script says 'Rasipuram origin' (ராசிபுரம் பூர்வீகத்தைக் கொண்ட) for the family; article says the family is originally from Tamil Nadu and Rasipuram appears only as part of his name — minor framing, but the headline/slides call Rasipuram his 'பூர்வீக' place, which the article does not state directly
+  reel_script says he was 'born on this same day in Mysore' and 'இதே நாளில்' is correct, but the slides_spec 'loc' field and hl1 use Rasipuram as his birthplace-style origin, which is not stated in the article
+  reel_script omits that he was a full-time cartoonist starting at Free Press Journal being his first job — it does mention it, so no issue; however reel_script omits the detail that he also covered political events and common people's problems with humour/satire, which is a key fact of his work
+  caption says 'ராமன் மகசேசே (1984)' without the Philippines reference, which is acceptable, but the slide line says '1921 அக்டோபர் 24 பிறப்பு' while the article gives the birth as 1921 on Oct 24 — consistent; no issue here
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: reel_script says 'Rasipuram origin' (ராசிபுரம் பூர்வீகத்தைக் கொண்ட) for the family; article says the family is originally from Tamil Nadu and Rasipuram appears only as part of his name — minor framing, but the headline/slides call Rasipuram his 'பூர்வீக' place, which the article does not state directly
+  fact-check: reel_script says he was 'born on this same day in Mysore' and 'இதே நாளில்' is correct, but the slides_spec 'loc' field and hl1 use Rasipuram as his birthplace-style origin, which is not stated in the article
+  fact-check: reel_script omits that he was a full-time cartoonist starting at Free Press Journal being his first job — it does mention it, so no issue; however reel_script omits the detail that he also covered political events and common people's problems with humour/satire, which is a key fact of his work
+  fact-check: caption says 'ராமன் மகசேசே (1984)' without the Philippines reference, which is acceptable, but the slide line says '1921 அக்டோபர் 24 பிறப்பு' while the article gives the birth as 1921 on Oct 24 — consistent; no issue here
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  source/outlet name or link appears: டைம்ஸ் ஆஃப் இந்தியா
+proofread skipped: free models not efficient (7 failures in a row): using Claude
+writing [N]: அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதுமக்கள் எதிர
+free models unavailable: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The article never states the location as Rasipuram (ராசிபுரம்); it only says the Rasipuram branch offer exists, and the article's headline/branch location is not clearly the opening location. The opening location (திருமண மண்டபம் அருகே) is not tied to Rasipuram in the article, so the headline and reel_script claim the new branch opens in Rasipuram, which is not supported.
-  The article gives the opening time as 7:35 மணி, but the reel_script says 'ஏழு :முப்பத்து ஐந்து மணிக்கு' — acceptable, but the reel_script attributes the opening directly to ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார, while the article says he is the one who will open (புதிய கிளையை... ராஜேஸ்குமார்) — consistent; however the article lists ராஜா, சுடர்வண்ணன், பரணிதரன், பாஸ்கர் as 'முன்னிலை வகிக்கின்றனர்' and the draft's 'முன்னிலை' wording is fine.
-  The reel_script claim that the special sale runs 'இருபத்து ஏழு முதல் நவம்பர் ஒன்பது வரை' is supported, but the article's sale prices (கிலோ 480, ஸ்பெஷல் மிக்சர் 360, மினி ஜிலேபி 400) are omitted from the reel_script, which is an important missing fact.
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The article never states the location as Rasipuram (ராசிபுரம்); it only says the Rasipuram branch offer exists, and the article's headline/branch location is not clearly the opening location. The opening location (திருமண மண்டபம் அருகே) is not tied to Rasipuram in the article, so the headline and reel_script claim the new branch opens in Rasipuram, which is not supported.
-  fact-check: The article gives the opening time as 7:35 மணி, but the reel_script says 'ஏழு :முப்பத்து ஐந்து மணிக்கு' — acceptable, but the reel_script attributes the opening directly to ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார, while the article says he is the one who will open (புதிய கிளையை... ராஜேஸ்குமார்) — consistent; however the article lists ராஜா, சுடர்வண்ணன், பரணிதரன், பாஸ்கர் as 'முன்னிலை வகிக்கின்றனர்' and the draft's 'முன்னிலை' wording is fine.
-  fact-check: The reel_script claim that the special sale runs 'இருபத்து ஏழு முதல் நவம்பர் ஒன்பது வரை' is supported, but the article's sale prices (கிலோ 480, ஸ்பெஷல் மிக்சர் 360, மினி ஜிலேபி 400) are omitted from the reel_script, which is an important missing fact.
+  The article mentions the school was given a temporary water supply arrangement? No — the article does not say whether the 'மாற்று ஏற்பாடு' (alternative arrangement) information is unavailable; the draft's claim that the alternative-arrangement details 'இன்னும் தெரியவரவில்லை' (not yet known) is not supported by the truncated article text
+  The article is truncated, so the draft's statement that 'அதிகாரிகளை முற்றுகையிட்டு வாக்குவாதம் நடந்தது' and the stated reasons for opposition are only partially verifiable; the draft's claim that the people 'கவலை தெரிவித்தனர்' about shortage is supported, but the slides' line 'பொதுமக்கள் குழாய் பதிக்கும் பள்ளம் தோண்டும் பணியை' is cut off and does not form a complete clear sentence
+  The reel_script says the public 'நிறுத்தினர்' the work and the slide says 'வாக்குவாதம் நடந்தது' – the article says they stopped the work and confronted officials in an argument, which matches, but the reel_script omits the detail that officials were confronted (முற்றுகையிட்டு), an important fact of who did what
+claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The article mentions the school was given a temporary water supply arrangement? No — the article does not say whether the 'மாற்று ஏற்பாடு' (alternative arrangement) information is unavailable; the draft's claim that the alternative-arrangement details 'இன்னும் தெரியவரவில்லை' (not yet known) is not supported by the truncated article text
+  fact-check: The article is truncated, so the draft's statement that 'அதிகாரிகளை முற்றுகையிட்டு வாக்குவாதம் நடந்தது' and the stated reasons for opposition are only partially verifiable; the draft's claim that the people 'கவலை தெரிவித்தனர்' about shortage is supported, but the slides' line 'பொதுமக்கள் குழாய் பதிக்கும் பள்ளம் தோண்டும் பணியை' is cut off and does not form a complete clear sentence
+  fact-check: The reel_script says the public 'நிறுத்தினர்' the work and the slide says 'வாக்குவாதம் நடந்தது' – the article says they stopped the work and confronted officials in an argument, which matches, but the reel_script omits the detail that officials were confronted (முற்றுகையிட்டு), an important fact of who did what
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The article says the Vennandur panchayat union officials and staff went to the temple area by JCB machine and the protesters opposed the work, but the draft's reel_script says the officials were "முற்றுகையிட்டு வாக்குவாதத்தில்" — this matches, however the article states the work was 'ஆரம்பக்கட்ட பணி' started by the 'ஊராட்சி நிர்வாகம்' and the draft's claim that the panchayat union officials/staff were surrounded is consistent; no clear problem remains in that sentence.
+  The draft's reel_script says the public 'நிறுத்திய' stopped the work and 'முற்றுகையிட்டு வாக்குவாதத்தில் ஈடுபட்டனர்' — the article supports this, but the article's text is truncated and does not explicitly state the outcome or the source of the 'குடிநீர் பற்றாக்குறை ஏற்படும்' concern beyond the residents' statement, which the draft presents as the residents' worry (acceptable).
+  The article is truncated before the mention of the alternative arrangement for the school; the draft's statement that the alternative arrangement details are not yet known is an inference not verifiable from the visible article text.
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The article says the Vennandur panchayat union officials and staff went to the temple area by JCB machine and the protesters opposed the work, but the draft's reel_script says the officials were "முற்றுகையிட்டு வாக்குவாதத்தில்" — this matches, however the article states the work was 'ஆரம்பக்கட்ட பணி' started by the 'ஊராட்சி நிர்வாகம்' and the draft's claim that the panchayat union officials/staff were surrounded is consistent; no clear problem remains in that sentence.
+  fact-check: The draft's reel_script says the public 'நிறுத்திய' stopped the work and 'முற்றுகையிட்டு வாக்குவாதத்தில் ஈடுபட்டனர்' — the article supports this, but the article's text is truncated and does not explicitly state the outcome or the source of the 'குடிநீர் பற்றாக்குறை ஏற்படும்' concern beyond the residents' statement, which the draft presents as the residents' worry (acceptable).
+  fact-check: The article is truncated before the mention of the alternative arrangement for the school; the draft's statement that the alternative arrangement details are not yet known is an inference not verifiable from the visible article text.
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 2 problems
+  The article does not say that the officials were 'with a JCB/Poclain machine' as a fact about the reel_script's wording 'பொக்லைன் இயந்திரத்துடன்' – this is supported, so no issue there; however the article says the residents' concern is that the extra motor would cause water shortage for villagers, which the draft states, so no issue.
+  The reel_script states the plan is 'to take water from the public well to the government school', but the article says the water is to be supplied to the school and that the area people are the ones objecting; the phrase 'பள்ளிக்கு மாற்று ஏற்பாடு' is an incomplete sentence in the article, so the draft's claim that 'the full details of the alternative arrangement for the school are not yet known' is an unsupported inference and the 'இரு தரப்பிலும் பேச்சுவார்த்தை நடைபெறுமா என்பது தெரியவில்லை' (whether talks will be held on both sides is unknown) in slides_spec is an invented detail not in the article
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  fact-check: The article does not say that the officials were 'with a JCB/Poclain machine' as a fact about the reel_script's wording 'பொக்லைன் இயந்திரத்துடன்' – this is supported, so no issue there; however the article says the residents' concern is that the extra motor would cause water shortage for villagers, which the draft states, so no issue.
+  fact-check: The reel_script states the plan is 'to take water from the public well to the government school', but the article says the water is to be supplied to the school and that the area people are the ones objecting; the phrase 'பள்ளிக்கு மாற்று ஏற்பாடு' is an incomplete sentence in the article, so the draft's claim that 'the full details of the alternative arrangement for the school are not yet known' is an unsupported inference and the 'இரு தரப்பிலும் பேச்சுவார்த்தை நடைபெறுமா என்பது தெரியவில்லை' (whether talks will be held on both sides is unknown) in slides_spec is an invented detail not in the article
+proofread skipped: free models not efficient (7 failures in a row): using Claude
+writing [N]: நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் துறையினா் சோ
+free models unavailable: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 4 problems
-  reel_script says the MP (ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார்) 'opens/inaugurates' the branch, but the article only says he is one of the people for whom the new branch will be opened (article is ambiguous/partially garbled: 'புதிய கிளையை, ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார்' — the verb is missing), so the claim that he 'திறந்து வைக்கிறார்' is an inference not clearly stated; the caption and slides repeat the same claim
-  reel_script and caption state the new branch is 'திருமண மண்டபம் அருகே' and the article says the branch opens near a marriage hall, which matches, but the article's 'தன் புதிய கிளையை' phrasing does not clearly say the new branch is located near the hall in the same sentence; minor, but 'இன்ஜினியர் ராஜா ... முன்னிலை வகிக்கின்றனர்' is described in the slides as 'முன்னிலை' while the article's roles are unspecified, acceptable
-  reel_script says the 25 and 26 offer is 'ராசிபுரம் கிளையில்' and the caption says the same, but the article's offer sentence is split by the separate 'ராசிபுரம் கிளையில்' line—consistent; however the reel_script omits the stated 'முக்கிய பிரமுகர்கள், தொழிலதிபர்கள், உறவினர்கள் நண்பர்கள் கலந்துகொள்கின்றனர்' detail as a separate fact is included only in slides, not the reel (not a strict error)
-  reel_script says 'லட்டு, பாதுஷா, சோன்பப்டி, ஜிலேபி கிலோ நானூற்று எண்பது ரூபாய்க்கும்' — the article's price list is ambiguous (ஒரு கிலோ, 480 applies to the group), consistent with the draft, but the sentence mixes the group price with the separate special mixer price in one line structure, creating a potentially unclear reading
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: reel_script says the MP (ராஜ்ஜிய சபா எம்.பி. ராஜேஸ்குமார்) 'opens/inaugurates' the branch, but the article only says he is one of the people for whom the new branch will be opened (article is ambiguous/partially garbled: 'புதிய கிளையை, ராஜ்ஜிய சபா எம்.பி., ராஜேஸ்குமார்' — the verb is missing), so the claim that he 'திறந்து வைக்கிறார்' is an inference not clearly stated; the caption and slides repeat the same claim
-  fact-check: reel_script and caption state the new branch is 'திருமண மண்டபம் அருகே' and the article says the branch opens near a marriage hall, which matches, but the article's 'தன் புதிய கிளையை' phrasing does not clearly say the new branch is located near the hall in the same sentence; minor, but 'இன்ஜினியர் ராஜா ... முன்னிலை வகிக்கின்றனர்' is described in the slides as 'முன்னிலை' while the article's roles are unspecified, acceptable
-  fact-check: reel_script says the 25 and 26 offer is 'ராசிபுரம் கிளையில்' and the caption says the same, but the article's offer sentence is split by the separate 'ராசிபுரம் கிளையில்' line—consistent; however the reel_script omits the stated 'முக்கிய பிரமுகர்கள், தொழிலதிபர்கள், உறவினர்கள் நண்பர்கள் கலந்துகொள்கின்றனர்' detail as a separate fact is included only in slides, not the reel (not a strict error)
-  fact-check: reel_script says 'லட்டு, பாதுஷா, சோன்பப்டி, ஜிலேபி கிலோ நானூற்று எண்பது ரூபாய்க்கும்' — the article's price list is ambiguous (ஒரு கிலோ, 480 applies to the group), consistent with the draft, but the sentence mixes the group price with the separate special mixer price in one line structure, creating a potentially unclear reading
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-writing [N]: மாணவியர் சாலை பாதுகாப்பு விழிப்புணர்வு
-free models unavailable: free models not efficient (11 failures in a row): using Claude
+  The slide 'விசாரணை நிலவரம்' says 'மேலும் விவரங்கள் வெளியிடப்படவில்லை' (no further details released) in the 'தமிழகம் முழுவதும்' slide; this is not stated in the article and is an invented detail.
+  The reel_script and slides say 'இதே போன்ற சோதனை' (similar raids) across Tamil Nadu, while the article only says the 45 locations were raided by the Anti-Corruption Department; 'similar' is an unsupported characterization, and the article does not say the statewide raids were the same operation.
+  The reel_script says 'மாநகராட்சி, நகராட்சி அலுவலகங்களும் சோதனைக்கு உட்பட்டன' in the slides, which is consistent, but the article says the 45 locations included municipal and town offices and the raid was 'திடீர்' - acceptable; however the reel_script omits that the raid was carried out by the Anti-Corruption Department's inspector and that officials' desks and files were examined, an important fact of who did what in the search.
+  The reel_script omits that the officers examined desks and files for unaccounted cash and cashless transactions, an important detail of what the search involved.
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The slide 'விசாரணை நிலவரம்' says 'மேலும் விவரங்கள் வெளியிடப்படவில்லை' (no further details released) in the 'தமிழகம் முழுவதும்' slide; this is not stated in the article and is an invented detail.
+  fact-check: The reel_script and slides say 'இதே போன்ற சோதனை' (similar raids) across Tamil Nadu, while the article only says the 45 locations were raided by the Anti-Corruption Department; 'similar' is an unsupported characterization, and the article does not say the statewide raids were the same operation.
+  fact-check: The reel_script says 'மாநகராட்சி, நகராட்சி அலுவலகங்களும் சோதனைக்கு உட்பட்டன' in the slides, which is consistent, but the article says the 45 locations included municipal and town offices and the raid was 'திடீர்' - acceptable; however the reel_script omits that the raid was carried out by the Anti-Corruption Department's inspector and that officials' desks and files were examined, an important fact of who did what in the search.
+  fact-check: The reel_script omits that the officers examined desks and files for unaccounted cash and cashless transactions, an important detail of what the search involved.
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 57 words; need 70-130 (detailed reel, about 40-50 seconds)
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
-  not grounded: location 'கலைக்' is not in the article
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  Slides and caption say the Tamil Nadu-wide raid happened at 45 places, but the article says the statewide raid covered 45 places including municipal and municipality offices; the slide wording 'மாநகராட்சி, நகராட்சி அலுவலகங்களும் சோதனைக்கு உட்பட்டன' is roughly consistent, but the caption's 'இதே நாளில்' is an added timing detail not stated in the article as the same day (article only says Friday)
+  reel_script says the raid is by 'லஞ்ச ஒழிப்புத் துறையினர்' while article says the raid was by police of the Anti-Corruption department — acceptable, but the reel_script omits the statewide raid at 45 places, an important fact of the article
+  reel_script and caption describe 'சோதனை நடத்தினர்' but the article says the raid started at 3 pm and 'வெள்ளிக்கிழமை திடீர் சோதனையில் ஈடுபட்டதுடன்' — the reel_script omits that the officers were inspecting employees' seats and files for cash, which is included; however the slides_spec line 'இருக்கைகள், கோப்புகளில் பணப் பரிவர்த்தனை சோதிக்கப்பட்டது' mixes two facts: it says cash transaction was checked in seats and files, while the article says the checks were for cash transactions on mobile phones and unaccounted cash in seats and files
+  caption wording 'கைப்பேசி, முகவரி விவரங்கள் சேகரிக்கப்பட்டன' under 'அலுவலகப் பிரிவு அலுவலர்கள், ஊழியர்களின்' is a grammatically unclear Tamil sentence (missing verb agreement / subject-object clarity)
+  caption's 'விரிவான தகவல் அறிய Share செய்யுங்கள்' is an invented call to action not in the article, though it is part of the caption promotional text rather than a factual claim
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: Slides and caption say the Tamil Nadu-wide raid happened at 45 places, but the article says the statewide raid covered 45 places including municipal and municipality offices; the slide wording 'மாநகராட்சி, நகராட்சி அலுவலகங்களும் சோதனைக்கு உட்பட்டன' is roughly consistent, but the caption's 'இதே நாளில்' is an added timing detail not stated in the article as the same day (article only says Friday)
+  fact-check: reel_script says the raid is by 'லஞ்ச ஒழிப்புத் துறையினர்' while article says the raid was by police of the Anti-Corruption department — acceptable, but the reel_script omits the statewide raid at 45 places, an important fact of the article
+  fact-check: reel_script and caption describe 'சோதனை நடத்தினர்' but the article says the raid started at 3 pm and 'வெள்ளிக்கிழமை திடீர் சோதனையில் ஈடுபட்டதுடன்' — the reel_script omits that the officers were inspecting employees' seats and files for cash, which is included; however the slides_spec line 'இருக்கைகள், கோப்புகளில் பணப் பரிவர்த்தனை சோதிக்கப்பட்டது' mixes two facts: it says cash transaction was checked in seats and files, while the article says the checks were for cash transactions on mobile phones and unaccounted cash in seats and files
+  fact-check: caption wording 'கைப்பேசி, முகவரி விவரங்கள் சேகரிக்கப்பட்டன' under 'அலுவலகப் பிரிவு அலுவலர்கள், ஊழியர்களின்' is a grammatically unclear Tamil sentence (missing verb agreement / subject-object clarity)
+  fact-check: caption's 'விரிவான தகவல் அறிய Share செய்யுங்கள்' is an invented call to action not in the article, though it is part of the caption promotional text rather than a factual claim
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  Reel script says the 45 locations were 'இதேபோல்' (similar) searches, which is an embellishment; the article only says the inspections covered 45 places across Tamil Nadu including corporation and municipal offices, not that they were identical.
+  The reel_script says 'சுமார் அறுபது ஊழியர்களிடம்' and the headline says '60 ஊழியர்களிடம்', but the article says 'மாநகராட்சியில் பணியாற்றும் சுமாா் 60 பேரிடம்' which is consistent; however the slide says the 60 people were questioned about 'யாரிடம் விசாரணை?' under the heading that officers were seated together, which is acceptable. No issue here.
+  The reel_script does not mention that the 45-place inspection included the Namakkal office itself as one of them only implicitly; more importantly, the slide 'சோதனையின் முடிவு' states 'இருக்கைகள், கோப்புகளில் கணக்கில் வராத பணம் தேடப்பட்டது' which is a reasonable paraphrase.
+  The caption line 'அதுவரை பணம் எதுவும் கைப்பற்றப்படவில்லை' is accurate, but the slide and caption attribute the 45-place inspections to 'லஞ்ச ஒழிப்புத் துறையினர்' while the article says 'லஞ்ச ஒழிப்புத் துறையினா்' – consistent, no problem.
+  Reel script states the inspection 'நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் துறையினர் திடீர் சோதனை நடத்தினர்' – accurate. Slide 1 says '10 போலீஸார்' accurate.
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: Reel script says the 45 locations were 'இதேபோல்' (similar) searches, which is an embellishment; the article only says the inspections covered 45 places across Tamil Nadu including corporation and municipal offices, not that they were identical.
+  fact-check: The reel_script says 'சுமார் அறுபது ஊழியர்களிடம்' and the headline says '60 ஊழியர்களிடம்', but the article says 'மாநகராட்சியில் பணியாற்றும் சுமாா் 60 பேரிடம்' which is consistent; however the slide says the 60 people were questioned about 'யாரிடம் விசாரணை?' under the heading that officers were seated together, which is acceptable. No issue here.
+  fact-check: The reel_script does not mention that the 45-place inspection included the Namakkal office itself as one of them only implicitly; more importantly, the slide 'சோதனையின் முடிவு' states 'இருக்கைகள், கோப்புகளில் கணக்கில் வராத பணம் தேடப்பட்டது' which is a reasonable paraphrase.
+  fact-check: The caption line 'அதுவரை பணம் எதுவும் கைப்பற்றப்படவில்லை' is accurate, but the slide and caption attribute the 45-place inspections to 'லஞ்ச ஒழிப்புத் துறையினர்' while the article says 'லஞ்ச ஒழிப்புத் துறையினா்' – consistent, no problem.
+  fact-check: Reel script states the inspection 'நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் துறையினர் திடீர் சோதனை நடத்தினர்' – accurate. Slide 1 says '10 போலீஸார்' accurate.
+proofread skipped: free models not efficient (7 failures in a row): using Claude
+writing [N]: மேம்பாலம் வழியாக சென்ற தனியார் பஸ்சுக்கு அபராதம்
+free models unavailable: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  Article says the buses went via the flyover ignoring the Palayam bus stand area, but the reel_script/caption claim the buses 'went directly on the flyover' — this is consistent, but the article states the fine was 'தலா' (each) for two buses; the draft's 'அபராதம் விதிக்கப்பட்டுள்ளது' is fine, however the slides claim 'இரண்டு பஸ்களுக்கும் தலா அபராதம்' which matches the article's wording only partially since the article's amount is cut off
+  Slide 3 claims 'விதியை மீறினால் மீண்டும் நடவடிக்கை இருக்கும்' (future action if rules are broken), an invented detail not in the article
+  Slide 2 claims 'பயணிகள் பஸ்சுக்காக காத்திருக்கும் நேரம் அதிகரித்தது' (waiting time increased), while the article only says passengers had to wait for the bus, and the reel_script says passengers 'suffered' (சிரமப்பட்டனர), which is an overstatement not in the article
+  Reel_script and caption state the flyover runs from Alampalayam to Onbathampadi, and the caption adds 'கீழ்ச் சாலையே வழி' as a general rule, which is a reasonable reading of the article but the reel_script's claim that the bus stand is reachable only via the road below is partly inferred
+  Reel_script says buses 'must' go via the bus stand, a rule that the article only implies, not explicitly states
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: Article says the buses went via the flyover ignoring the Palayam bus stand area, but the reel_script/caption claim the buses 'went directly on the flyover' — this is consistent, but the article states the fine was 'தலா' (each) for two buses; the draft's 'அபராதம் விதிக்கப்பட்டுள்ளது' is fine, however the slides claim 'இரண்டு பஸ்களுக்கும் தலா அபராதம்' which matches the article's wording only partially since the article's amount is cut off
+  fact-check: Slide 3 claims 'விதியை மீறினால் மீண்டும் நடவடிக்கை இருக்கும்' (future action if rules are broken), an invented detail not in the article
+  fact-check: Slide 2 claims 'பயணிகள் பஸ்சுக்காக காத்திருக்கும் நேரம் அதிகரித்தது' (waiting time increased), while the article only says passengers had to wait for the bus, and the reel_script says passengers 'suffered' (சிரமப்பட்டனர), which is an overstatement not in the article
+  fact-check: Reel_script and caption state the flyover runs from Alampalayam to Onbathampadi, and the caption adds 'கீழ்ச் சாலையே வழி' as a general rule, which is a reasonable reading of the article but the reel_script's claim that the bus stand is reachable only via the road below is partly inferred
+  fact-check: Reel_script says buses 'must' go via the bus stand, a rule that the article only implies, not explicitly states
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The article says the fine was imposed on two private buses, but the draft's 'ஒவ்வொரு பஸ்சுக்கும் தலா' (per bus) amount phrasing is cut off in the article; the draft says the fine amount is 'not fully published' in slide 3 while the reel script says the fine was 'imposed per bus' — the article does not state the amount, so 'தலா விதிக்கப்பட்டுள்ளது' is only partially supported (the article text is truncated at 'தலா,')
+  Slide 3 line 'பஸ்கள் பஸ் ஸ்டாண்ட் வழியாக செல்ல வேண்டும்' (buses must go via the bus stand) is an invented rule not stated in the article
+  Reel script says passengers 'suffered hardship' (சிரமத்துக்கு உள்ளாகினர்); the article only says passengers had to wait for buses, and the 'இதனால்' cause is truncated, so the stated consequence is an embellishment
+  Reel script omits the article's key fact of the cause sentence structure: that the bridge route is taken while the stand is bypassed as a result of the lower road being the only route to the stand, which the draft presents as a fact but the article's sentence is incomplete
+  Slide 2 line 'பஸ் ஸ்டாண்ட் செல்ல கீழே உள்ள சாலையே வழி' merges the bus-stand access claim with the bridge geography in a way that reads as two facts mixed together
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The article says the fine was imposed on two private buses, but the draft's 'ஒவ்வொரு பஸ்சுக்கும் தலா' (per bus) amount phrasing is cut off in the article; the draft says the fine amount is 'not fully published' in slide 3 while the reel script says the fine was 'imposed per bus' — the article does not state the amount, so 'தலா விதிக்கப்பட்டுள்ளது' is only partially supported (the article text is truncated at 'தலா,')
+  fact-check: Slide 3 line 'பஸ்கள் பஸ் ஸ்டாண்ட் வழியாக செல்ல வேண்டும்' (buses must go via the bus stand) is an invented rule not stated in the article
+  fact-check: Reel script says passengers 'suffered hardship' (சிரமத்துக்கு உள்ளாகினர்); the article only says passengers had to wait for buses, and the 'இதனால்' cause is truncated, so the stated consequence is an embellishment
+  fact-check: Reel script omits the article's key fact of the cause sentence structure: that the bridge route is taken while the stand is bypassed as a result of the lower road being the only route to the stand, which the draft presents as a fact but the article's sentence is incomplete
+  fact-check: Slide 2 line 'பஸ் ஸ்டாண்ட் செல்ல கீழே உள்ள சாலையே வழி' merges the bus-stand access claim with the bridge geography in a way that reads as two facts mixed together
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  reel_script has 61 words; need 70-130 (detailed reel, about 40-50 seconds)
-  not grounded: location 'கலைக்' is not in the article
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-writing [R]: இதே நாளில் அன்று: அக். 24
-free models unavailable: free models not efficient (11 failures in a row): using Claude
+  slides must have 3 or 4 items
+  reel_script has 49 words; need 50-130 (detailed reel, about 30-50 seconds)
+proofread skipped: free models not efficient (7 failures in a row): using Claude
+writing [N]: ப.வேலூர் ஆலைகளில் சோதனை 14 டன் சர்க்கரை, வெல்லம் பறிமுதல்
+free models unavailable: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  not grounded: location 'பரமத்தி' is not in the article
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  not grounded: location 'பரமத்தி' is not in the article
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  not grounded: location 'பரமத்தி' is not in the article
+proofread skipped: free models not efficient (7 failures in a row): using Claude
+writing [N]: 'மைலோ' திரைப்படத்தின் பர்ஸ்ட் லுக் போஸ்டர் மற்றும் ப்ரோமோ வீ
+free models unavailable: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 7 problems
-  Headline and reel_script say Rasipuram (நாமக்கல் மாவட்டம்/ராசிபுரம்) is his birthplace, but the article says he was born in Mysore, Karnataka; Rasipuram is only the family/surname origin (ராசிபுரம் கிருஷ்ணசுவாமி லட்சுமண்), so the 'born in Rasipuram' claim is an invented/incorrect place.
-  slides_spec 'loc' and 'cat' fields and hl1 'ராசிபுரம் மகன்' repeat the wrong claim that he is a son of Rasipuram town; the article gives Mysore as birthplace.
-  reel_script says the family was 'ராசிபுரம் மண்ணில் வேரூன்றிய' (rooted in Rasipuram soil), which is not stated in the article; the article only says the family originated from Tamil Nadu (தமிழகத்தை பூர்வீகமாக கொண்ட).
-  reel_script states the parents' names and that the family was Tamil-origin, but omits that he was the younger brother of writer R.K. Narayan, an important fact of the article.
-  Caption says 'ராசிபுரம் மண்ணில் பிறந்த' (born in Rasipuram soil), contradicting the article's birthplace of Mysore.
-  Caption and reel_script mention the 1984 Ramon Magsaysay award but omit the Philippines context; minor, but the 'Common Man' description claims he gained fame through 'காமன் மேன்' in the Times of India which is consistent; however the reel_script claims he 'became a famous cartoonist' in 'இந்தியாவின்' which is an unsupported embellishment is acceptable wording.
-  The article's death details (2015 January 26, age 93) are correct, but the reel_script omits the award-winning 'Ramon Magsaysay' country origin, which is minor.
+  reel_script says the shooting was done in Chennai, Ooty and Kollimalai, and the article lists more places (Mookar, Thiruvananthapuram, Malaysia); the list is incomplete but not wrong, however the script's wording 'உள்ளிட்ட இடங்களில்' is acceptable — no conflict found there
+  reel_script omits that the cast includes Ilavarasu and Munishkanth, and the producer's identity is missing from the script (only in slides_spec) — minor omission
+  slides_spec 'வெளியீட்டுத் தேதி இன்னும்' as hl2 is an ungrammatical/incomplete Tamil headline phrase with no clear meaning
+  slides_spec lists Mukein Rao as the lead but the article says the hero is Mukein Rao while the slide's 'நடிகர்கள்' section lists Thaeju Ashwini and others as 'நடிப்பு' — acceptable
+  slides_spec slide 'என்ன வெளியானது?' mixes the first-look poster, promo video and story theme into one unclear block, and the line 'செல்ல நாயை மையமாகக் கொண்ட மர்மக் கதை' is repeated across items
+  slides_spec slide 'படத்தின் கதை' lists 'இயக்கம்: கவின் மூர்த்தி' under the story heading, mixing two different facts (story and director) in one slide
+  reel_script states the film was shot 'நிறைவடைந்துள்ளது' correctly, but the caption says 'படத்தின் பர்ஸ்ட் லுக் வெளியீடு' as a headline while the article's headline is about first look poster and promo video together — consistent
 claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
-  fact-check: Headline and reel_script say Rasipuram (நாமக்கல் மாவட்டம்/ராசிபுரம்) is his birthplace, but the article says he was born in Mysore, Karnataka; Rasipuram is only the family/surname origin (ராசிபுரம் கிருஷ்ணசுவாமி லட்சுமண்), so the 'born in Rasipuram' claim is an invented/incorrect place.
-  fact-check: slides_spec 'loc' and 'cat' fields and hl1 'ராசிபுரம் மகன்' repeat the wrong claim that he is a son of Rasipuram town; the article gives Mysore as birthplace.
-  fact-check: reel_script says the family was 'ராசிபுரம் மண்ணில் வேரூன்றிய' (rooted in Rasipuram soil), which is not stated in the article; the article only says the family originated from Tamil Nadu (தமிழகத்தை பூர்வீகமாக கொண்ட).
-  fact-check: reel_script states the parents' names and that the family was Tamil-origin, but omits that he was the younger brother of writer R.K. Narayan, an important fact of the article.
-  fact-check: Caption says 'ராசிபுரம் மண்ணில் பிறந்த' (born in Rasipuram soil), contradicting the article's birthplace of Mysore.
-  fact-check: Caption and reel_script mention the 1984 Ramon Magsaysay award but omit the Philippines context; minor, but the 'Common Man' description claims he gained fame through 'காமன் மேன்' in the Times of India which is consistent; however the reel_script claims he 'became a famous cartoonist' in 'இந்தியாவின்' which is an unsupported embellishment is acceptable wording.
-  fact-check: The article's death details (2015 January 26, age 93) are correct, but the reel_script omits the award-winning 'Ramon Magsaysay' country origin, which is minor.
+  fact-check: reel_script says the shooting was done in Chennai, Ooty and Kollimalai, and the article lists more places (Mookar, Thiruvananthapuram, Malaysia); the list is incomplete but not wrong, however the script's wording 'உள்ளிட்ட இடங்களில்' is acceptable — no conflict found there
+  fact-check: reel_script omits that the cast includes Ilavarasu and Munishkanth, and the producer's identity is missing from the script (only in slides_spec) — minor omission
+  fact-check: slides_spec 'வெளியீட்டுத் தேதி இன்னும்' as hl2 is an ungrammatical/incomplete Tamil headline phrase with no clear meaning
+  fact-check: slides_spec lists Mukein Rao as the lead but the article says the hero is Mukein Rao while the slide's 'நடிகர்கள்' section lists Thaeju Ashwini and others as 'நடிப்பு' — acceptable
+  fact-check: slides_spec slide 'என்ன வெளியானது?' mixes the first-look poster, promo video and story theme into one unclear block, and the line 'செல்ல நாயை மையமாகக் கொண்ட மர்மக் கதை' is repeated across items
+  fact-check: slides_spec slide 'படத்தின் கதை' lists 'இயக்கம்: கவின் மூர்த்தி' under the story heading, mixing two different facts (story and director) in one slide
+  fact-check: reel_script states the film was shot 'நிறைவடைந்துள்ளது' correctly, but the caption says 'படத்தின் பர்ஸ்ட் லுக் வெளியீடு' as a headline while the article's headline is about first look poster and promo video together — consistent
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 2 problems
-  reel_script says 'ஆயிரத்து தொள்ளாயிரத்து எழுபத்து மூன்று ல்' for the Padma Bhushan and the slides/caption are consistent, but the reel_script's 1984 and 2005 award lines omit the 'பத்ம' context only partially; more importantly, the reel_script states Lakshman was born 'in Rasipuram' context: it says 'ராசிபுரத்தில் பூர்வீகம் கொண்ட' which matches the article's ancestry claim, but the headline and slides_spec 'loc' field label him as from Rasipuram in a way that conflates birthplace with origin (article says born in Mysore, ancestry from Tamil Nadu; Rasipuram is only in the name)
-  The article does not state that Lakshman's family is from Rasipuram; it says the family is originally from Tamil Nadu and his name includes Rasipuram. The headline 'ராசிபுரம் ஆர்.கே.லட்சுமண்' and the 'loc' field 'ராசிபுரம்' imply a Rasipuram origin/location that is not stated in the article.
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  fact-check: reel_script says 'ஆயிரத்து தொள்ளாயிரத்து எழுபத்து மூன்று ல்' for the Padma Bhushan and the slides/caption are consistent, but the reel_script's 1984 and 2005 award lines omit the 'பத்ம' context only partially; more importantly, the reel_script states Lakshman was born 'in Rasipuram' context: it says 'ராசிபுரத்தில் பூர்வீகம் கொண்ட' which matches the article's ancestry claim, but the headline and slides_spec 'loc' field label him as from Rasipuram in a way that conflates birthplace with origin (article says born in Mysore, ancestry from Tamil Nadu; Rasipuram is only in the name)
-  fact-check: The article does not state that Lakshman's family is from Rasipuram; it says the family is originally from Tamil Nadu and his name includes Rasipuram. The headline 'ராசிபுரம் ஆர்.கே.லட்சுமண்' and the 'loc' field 'ராசிபுரம்' imply a Rasipuram origin/location that is not stated in the article.
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-writing [N]: அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதுமக்கள் எதிர
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude answer not JSON (Expecting ',' delimiter: line 1 column 3557 (char 3556)); stop_reason=end_turn blocks=['text'] usage={'input_tokens': 1122, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 10095, 'cache_creation': {'ephemeral_5m_input_tokens': 0, 'ephemeral_1h_input_tokens': 0}, 'output_tokens': 2295, 'output_tokens_details': {'thinking_tokens': 0}, 'service_tier': 'standard', 'inference_geo': 'global', 'speed': 'standard'} head='```json\n{"tamil_headline": "அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதுமக்கள் எதிர்ப்பு", "english_headline": "Villagers oppose drawing water from a public well for a government school", "catego'
-claude rewrite failed: Expecting ',' delimiter: line 1 column 3557 (char 3556)
-writing [N]: நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் துறையினா் சோ
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 2 problems
-  The article states the raid covered 45 locations across Tamil Nadu (municipal and municipal corporation offices), but the draft omits this fact, which is an important point of the article and is missing from the reel_script.
-  The reel_script says the search was for money 'in the seats and files' (இருக்கைகளிலும் கோப்புகளிலும), which matches the article, but the slides_spec line 'இருக்கைகள், கோப்புகளிலும் கணக்கில் வராத பணம் தேடப்பட்டது' says the unaccounted money was searched in seats and files; this is consistent, but the caption/slide 'கைப்பேசியில் பணப் பரிவர்த்தனை நடந்ததா என ஆய்வு' is acceptable. No further invented details found.
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  fact-check: The article states the raid covered 45 locations across Tamil Nadu (municipal and municipal corporation offices), but the draft omits this fact, which is an important point of the article and is missing from the reel_script.
-  fact-check: The reel_script says the search was for money 'in the seats and files' (இருக்கைகளிலும் கோப்புகளிலும), which matches the article, but the slides_spec line 'இருக்கைகள், கோப்புகளிலும் கணக்கில் வராத பணம் தேடப்பட்டது' says the unaccounted money was searched in seats and files; this is consistent, but the caption/slide 'கைப்பேசியில் பணப் பரிவர்த்தனை நடந்ததா என ஆய்வு' is acceptable. No further invented details found.
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  slides_spec lists Tamil actress 'பிக்பாஸ் ஜனனி' and 'ஆதித்யா கதிர்' and 'தேஜு அஸ்வினி' under 'நடிப்பு', which is consistent with the article, but the slide also omits நடிகர் 'முனீஷ்காந்த்' and 'இளவரசு' — not an error per se, however the reel_script omits the 'Chennai' location for the film's shoot already included, so no issue there.
+  reel_script says the 'குற்றச் சம்பவம்' mystery is solved 'நாயின் உதவியுடன்' by the protagonist — matches article; no problem.
+  slides_spec 'loc' is 'சென்னை' which is the dateline of the article, acceptable.
+  The reel_script omits that the story is described as a 'மௌன சாட்சி' (silent witness) angle and the film's suspense/investigation theme — minor omission of an important tagline, though not a core fact.
+  slides_spec 'hl2' and 'title' fields and caption are consistent with the article; the caption's 📅 line only states the release date is not announced, which matches the article.
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: slides_spec lists Tamil actress 'பிக்பாஸ் ஜனனி' and 'ஆதித்யா கதிர்' and 'தேஜு அஸ்வினி' under 'நடிப்பு', which is consistent with the article, but the slide also omits நடிகர் 'முனீஷ்காந்த்' and 'இளவரசு' — not an error per se, however the reel_script omits the 'Chennai' location for the film's shoot already included, so no issue there.
+  fact-check: reel_script says the 'குற்றச் சம்பவம்' mystery is solved 'நாயின் உதவியுடன்' by the protagonist — matches article; no problem.
+  fact-check: slides_spec 'loc' is 'சென்னை' which is the dateline of the article, acceptable.
+  fact-check: The reel_script omits that the story is described as a 'மௌன சாட்சி' (silent witness) angle and the film's suspense/investigation theme — minor omission of an important tagline, though not a core fact.
+  fact-check: slides_spec 'hl2' and 'title' fields and caption are consistent with the article; the caption's 📅 line only states the release date is not announced, which matches the article.
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-writing [N]: எம்.எல்.எச்.பி., பணியாளரை சி.எச்.ஓ., என பெயர் மாற்றியதை அங்க
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 50 words; need 70-130 (detailed reel, about 40-50 seconds)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  slides must have 3 or 4 items
-  reel_script has 52 words; need 70-130 (detailed reel, about 40-50 seconds)
-  not grounded: location 'தமிழ்நாடு' is not in the article
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  reel_script has 51 words; need 70-130 (detailed reel, about 40-50 seconds)
-  not grounded: location 'தமிழ்நாடு' is not in the article
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-writing [N]: எஸ்.ஐ.ஆர்.,ஐ எதிர்த்து சி.ஐ.டி.யு., ஆர்ப்பாட்டம்
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 57 words; need 70-130 (detailed reel, about 40-50 seconds)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 60 words; need 70-130 (detailed reel, about 40-50 seconds)
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 50 words; need 70-130 (detailed reel, about 40-50 seconds)
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-writing [N]: மேம்பாலம் வழியாக சென்ற தனியார் பஸ்சுக்கு அபராதம்
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 51 words; need 70-130 (detailed reel, about 40-50 seconds)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 58 words; need 70-130 (detailed reel, about 40-50 seconds)
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 64 words; need 70-130 (detailed reel, about 40-50 seconds)
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-writing [N]: ப.வேலூர் ஆலைகளில் சோதனை 14 டன் சர்க்கரை, வெல்லம் பறிமுதல்
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  slide 1 line 1 longer than 60 characters
-  reel_script has 61 words; need 70-130 (detailed reel, about 40-50 seconds)
-  not grounded: location 'பரமத்தி' is not in the article
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  hl1 longer than 40 characters
-  reel_script has 65 words; need 70-130 (detailed reel, about 40-50 seconds)
-  not grounded: location 'பரமத்தி' is not in the article
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  reel_script has 63 words; need 70-130 (detailed reel, about 40-50 seconds)
-  not grounded: location 'பரமத்தி' is not in the article
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-writing [N]: 'மைலோ' திரைப்படத்தின் பர்ஸ்ட் லுக் போஸ்டர் மற்றும் ப்ரோமோ வீ
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 51 words; need 70-130 (detailed reel, about 40-50 seconds)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 67 words; need 70-130 (detailed reel, about 40-50 seconds)
-proofread skipped: free models not efficient (11 failures in a row): using Claude
+  reel_script has 48 words; need 50-130 (detailed reel, about 30-50 seconds)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok groq/openai/gpt-oss-120b (6s)
+proofread rejected (3 problems)
+  missing key: reel_script
+  missing key: caption
+  missing key: scenes
 earlier stories still waiting for images: []
 source dinamalar list: 8 items
 source google 'நாமக்கல்': 58 items
@@ -251,7 +346,7 @@ source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 2 items
 source google 'எருமப்பட்டி': 0 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 46 items
+source google 'நாமக்கல் மாவட்டம்': 22 items
 source bing 'நாமக்கல் மாவட்டம்': 11 items
 source google 'நாமக்கல் முட்டை விலை': 2 items
 source bing 'நாமக்கல் முட்டை விலை': 11 items
@@ -279,7 +374,7 @@ source google தினத்தந்தி 'ராசிபுரம்': 2 it
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
 source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்': 23 items
+source google தினமணி 'நாமக்கல்': 24 items
 source bing தினமணி 'நாமக்கல்': 12 items
 source google தினமணி 'ராசிபுரம்': 3 items
 source bing தினமணி 'ராசிபுரம்': 5 items
@@ -294,7 +389,7 @@ source bing இந்து தமிழ் 'திருச்செங்க�
 source google தினகரன் 'நாமக்கல்': 100 items
 source bing தினகரன் 'நாமக்கல்': 12 items
 source google தினகரன் 'ராசிபுரம்': 3 items
-source bing தினகரன் 'ராசிபுரம்': 2 items
+source bing தினகரன் 'ராசிபுரம்': 1 items
 source google தினகரன் 'திருச்செங்கோடு': 0 items
 source bing தினகரன் 'திருச்செங்கோடு': 5 items
 source google புதிய தலைமுறை 'நாமக்கல்': 0 items
@@ -310,7 +405,7 @@ source bing நியூஸ்18 தமிழ் 'ராசிபுரம்': 
 source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 3 items
 source bing நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 1 items
 source google விகடன் 'நாமக்கல்': 1 items
-source bing விகடன் 'நாமக்கல்': 12 items
+source bing விகடன் 'நாமக்கல்': 11 items
 source google விகடன் 'ராசிபுரம்': 3 items
 source bing விகடன் 'ராசிபுரம்': 0 items
 source google விகடன் 'திருச்செங்கோடு': 0 items
@@ -322,7 +417,7 @@ source bing பாலிமர் 'ராசிபுரம்': 0 items
 source google பாலிமர் 'திருச்செங்கோடு': 0 items
 source bing பாலிமர் 'திருச்செங்கோடு': 0 items
 source google சமயம் தமிழ் 'நாமக்கல்': 3 items
-source bing சமயம் தமிழ் 'நாமக்கல்': 11 items
+source bing சமயம் தமிழ் 'நாமக்கல்': 12 items
 source google சமயம் தமிழ் 'ராசிபுரம்': 0 items
 source bing சமயம் தமிழ் 'ராசிபுரம்': 9 items
 source google சமயம் தமிழ் 'திருச்செங்கோடு': 0 items
@@ -331,7 +426,7 @@ source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
 source google தினமலர் 'ராசிபுரம்': 27 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
-source google தினமலர் 'திருச்செங்கோடு': 8 items
+source google தினமலர் 'திருச்செங்கோடு': 7 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
 source google DT Next 'நாமக்கல்': 0 items
 source bing DT Next 'நாமக்கல்': 0 items
@@ -345,7 +440,7 @@ source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்': 9 items
+source google ABP நாடு 'நாமக்கல்': 10 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
@@ -375,22 +470,18 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 903 items -> 505 different news (20 Rasipuram)
+all sources: 879 items -> 507 different news (20 Rasipuram)
 Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: not Namakkal district news (state-wide /=147, checked earlier=137, old=136, collected=40, already filed=22, checked earlier=15, checked earlier=6, checked earlier=2
-to write: 4 Rasipuram + 36 other district candidates (max 12 + 12 stories)
-NOT filed (R) கொல்லிமலை சாலையில் சாய்ந்த மரங்கள் அகற்றம்: all free models failed: no usable answer from the models
-NOT filed (R) ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர்: would be wrong/unclear: reel_script has 59 words; need 70-130 (detailed reel, about 40-50 seconds)
-NOT filed (R) நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு வ: would be wrong/unclear: fact-check: The article never states the location as Rasipuram (ராசிபுரம்); it only says the Rasipuram branch offer exists, and the article's headline
-NOT filed (N) மாணவியர் சாலை பாதுகாப்பு விழிப்புணர்வு: would be wrong/unclear: reel_script has 57 words; need 70-130 (detailed reel, about 40-50 seconds)
-NOT filed (R) இதே நாளில் அன்று: அக். 24: would be wrong/unclear: reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
-NOT filed (N) அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதும: all free models failed: no usable answer from the models
-NOT filed (N) நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் து: would be wrong/unclear: reel_script has 68 words; need 70-130 (detailed reel, about 40-50 seconds)
-NOT filed (N) எம்.எல்.எச்.பி., பணியாளரை சி.எச்.ஓ., என பெயர் மாற்: would be wrong/unclear: reel_script has 50 words; need 70-130 (detailed reel, about 40-50 seconds)
-NOT filed (N) எஸ்.ஐ.ஆர்.,ஐ எதிர்த்து சி.ஐ.டி.யு., ஆர்ப்பாட்டம்: would be wrong/unclear: reel_script has 50 words; need 70-130 (detailed reel, about 40-50 seconds)
-NOT filed (N) மேம்பாலம் வழியாக சென்ற தனியார் பஸ்சுக்கு அபராதம்: would be wrong/unclear: reel_script has 64 words; need 70-130 (detailed reel, about 40-50 seconds)
-NOT filed (N) ப.வேலூர் ஆலைகளில் சோதனை 14 டன் சர்க்கரை, வெல்லம் ப: would be wrong/unclear: reel_script has 63 words; need 70-130 (detailed reel, about 40-50 seconds); not grounded: location 'பரமத்தி' is not in the article
-NOT filed (N) 'மைலோ' திரைப்படத்தின் பர்ஸ்ட் லுக் போஸ்டர் மற்றும்: would be wrong/unclear: reel_script has 67 words; need 70-130 (detailed reel, about 40-50 seconds)
+candidate filter: checked earlier=159, not Namakkal district news (state-wide /=148, old=139, already filed=22, checked earlier=19, collected=12, checked earlier=6, checked earlier=2
+to write: 3 Rasipuram + 9 other district candidates (max 12 + 12 stories)
+NOT filed (R) ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர்: would be wrong/unclear: reel_script has 43 words; need 50-130 (detailed reel, about 30-50 seconds)
+NOT filed (R) நாளை எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் திறப்பு வ: would be wrong/unclear: not grounded: location 'சாலை' is not in the article
+NOT filed (R) இதே நாளில் அன்று: அக். 24: would be wrong/unclear: source/outlet name or link appears: டைம்ஸ் ஆஃப் இந்தியா
+NOT filed (N) அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதும: would be wrong/unclear: fact-check: The article does not say that the officials were 'with a JCB/Poclain machine' as a fact about the reel_script's wording 'பொக்லைன் இயந்திரத
+NOT filed (N) நாமக்கல் மாநகராட்சி அலுவலகத்தில் லஞ்ச ஒழிப்புத் து: would be wrong/unclear: fact-check: The slide 'விசாரணை நிலவரம்' says 'மேலும் விவரங்கள் வெளியிடப்படவில்லை' (no further details released) in the 'தமிழகம் முழுவதும்' slide; this
+NOT filed (N) மேம்பாலம் வழியாக சென்ற தனியார் பஸ்சுக்கு அபராதம்: would be wrong/unclear: slides must have 3 or 4 items; reel_script has 49 words; need 50-130 (detailed reel, about 30-50 seconds)
+NOT filed (N) ப.வேலூர் ஆலைகளில் சோதனை 14 டன் சர்க்கரை, வெல்லம் ப: would be wrong/unclear: not grounded: location 'பரமத்தி' is not in the article
+NOT filed (N) 'மைலோ' திரைப்படத்தின் பர்ஸ்ட் லுக் போஸ்டர் மற்றும்: would be wrong/unclear: reel_script has 48 words; need 50-130 (detailed reel, about 30-50 seconds)
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 12 + 12) 
 stories: 0
