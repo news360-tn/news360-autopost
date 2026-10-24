@@ -212,8 +212,15 @@ def chain():
     return out
 
 
+FREE_FAILS = [0]                                              # failures of free models in a row (slow, poor or refused answers)
+FREE_FAIL_LIMIT = int(os.environ.get("LLM_FREE_FAIL_LIMIT", "3"))
+
+
 def ask_json(system, user, tries_per_model=1):
-    """returns (data, model_name). Starts with the model that worked last time; retries a busy (503/429) model once after a pause."""
+    """returns (data, model_name). Starts with the model that worked last time; retries a busy (503/429) model once after a pause.
+    Owner rule: when the free models have failed FREE_FAIL_LIMIT times in a row, this raises at once, so the caller uses Claude (paid) straight away."""
+    if FREE_FAILS[0] >= FREE_FAIL_LIMIT and claude_available():
+        raise RuntimeError(f"free models not efficient ({FREE_FAILS[0]} failures in a row): using Claude")
     last = None
     ch = chain()
     if PREFERRED[0]:
@@ -229,6 +236,7 @@ def ask_json(system, user, tries_per_model=1):
                 text = fn(model, system, user, key)
                 took = time.time() - t0
                 data = _json_from(text)
+                FREE_FAILS[0] = 0
                 if took > SLOW_SECS:      # answered, but far too slow: use another model for a while (checked again later)
                     DEAD[(provider, model)] = time.time() + 1800
                     _log(f"slow ({int(took)}s) - skipped for 30 min: {provider}/{model}")
@@ -238,6 +246,7 @@ def ask_json(system, user, tries_per_model=1):
             except Exception as e:
                 last = e
                 msg = str(e)
+                FREE_FAILS[0] += 1
                 _log(f"fail {provider}/{model}: {msg[:120]}")
                 low = msg.lower()
                 if any(c in msg for c in (" 401", " 403", " 404")):
