@@ -516,13 +516,47 @@ function processReadyReels_(p, allowed) {
   });
 }
 
+// One e-mail may hold ONE OR MORE zip files. Each zip = ONE reel (its own .md caption + ONE video).
+// Loose .md/.mp4 files attached directly (not in a zip) are treated as one reel together.
+function readyGroups_(msg, report) {
+  var groups = [], loose = [];
+  function isZip(b) { return String(b.getName()).toLowerCase().slice(-4) === '.zip' || String(b.getContentType()).indexOf('zip') >= 0; }
+  function clean(list) { return list.filter(function (b) { return !/(^|\/)\.|__MACOSX/.test(String(b.getName())); }); }
+  function take(b) {
+    if (isZip(b)) groups.push({ name: String(b.getName()), files: clean(Utilities.unzip(b)) });
+    else loose.push(b);
+  }
+  msg.getAttachments({ includeInlineImages: false, includeAttachments: true }).forEach(take);
+  var html = String(msg.getBody()), q = html.search(/class="gmail_quote/);
+  var typed = q >= 0 ? html.slice(0, q) : html, ids = [], m, re = /drive\.google\.com\/file\/d\/([\w-]+)/g;
+  while ((m = re.exec(typed))) if (ids.indexOf(m[1]) < 0) ids.push(m[1]);
+  ids.forEach(function (id) {
+    try { take(DriveApp.getFileById(id).getBlob()); }
+    catch (err) { report.push('Could not read the Drive file ' + id + ': ' + err); }
+  });
+  if (loose.length) groups.push({ name: 'loose files', files: loose });
+  return groups;
+}
+
 function readyOne_(msg) {
-  var report = [], sh = sheet_();
-  var files = allFiles_(msg, report);
+  var report = [];
+  var groups = readyGroups_(msg, report);
+  if (!groups.length) return report.concat(['NOT ADDED: no zip file (or caption/video file) found in this e-mail. Attach each reel as a zip.']);
+  groups.forEach(function (g) {
+    try { addReel_(g, report); }
+    catch (err) { report.push('NOT ADDED ' + g.name + ': ' + err); }
+  });
+  return report;
+}
+
+// one reel (one zip): exactly one caption .md and one video
+function addReel_(g, report) {
+  var sh = sheet_();
+  var files = g.files;
   var txt = files.filter(function (b) { return /\.(md|txt|markdown)$/i.test(b.getName()); });
   var vid = files.filter(function (b) { return /\.(mp4|mov|m4v)$/i.test(b.getName()); });
-  if (txt.length !== 1) return report.concat(['NOT ADDED: the zip must contain exactly ONE .md file (caption), found ' + txt.length]);
-  if (vid.length !== 1) return report.concat(['NOT ADDED: the zip must contain exactly ONE video (.mp4), found ' + vid.length]);
+  if (txt.length !== 1) { report.push('NOT ADDED ' + g.name + ': needs exactly ONE .md caption file inside, found ' + txt.length); return; }
+  if (vid.length !== 1) { report.push('NOT ADDED ' + g.name + ': needs exactly ONE video (.mp4) inside, found ' + vid.length); return; }
   var lines = txt[0].getDataAsString('UTF-8').replace(/^﻿/, '').replace(/\r/g, '').split('\n');
   var page = 'namakkal';
   while (lines.length && /^\s*(page|post_to)\s*:/i.test(lines[0])) {
@@ -530,7 +564,7 @@ function readyOne_(msg) {
     page = /both|\+/.test(v) ? 'both' : (/rasipuram/.test(v) ? 'rasipuram' : 'namakkal');
   }
   var cap = lines.map(function (l) { return l.replace(/^\s*#{1,6}\s+(?=\S)/, '').replace(/\*\*|__/g, ''); }).join('\n').trim();
-  if (cap.length < 40) return report.concat(['NOT ADDED: the caption is empty or too short']);
+  if (cap.length < 40) { report.push('NOT ADDED ' + g.name + ': the caption is empty or too short'); return; }
   var head = (cap.split('\n').filter(function (l) { return l.trim(); })[0] || '').trim();
   // owner-verified reels: no duplicate check here (owner decision, 24 Oct) - posted as received
   var no = nextStoryNo_(sh) + 1, id = 'RN-' + no;
@@ -546,12 +580,11 @@ function readyOne_(msg) {
   row[C.review - 1] = 'Auto'; row[C.post_to - 1] = to; row[C.reel - 1] = 'Yes';
   row[C.slides_spec - 1] = JSON.stringify({ v: 3, ready_reel: true, carousel: false });
   row[C.post_status - 1] = 'Queued';
-  row[C.notes - 1] = nowIst_() + ' ready reel by e-mail (video ' + Math.round(vid[0].getBytes().length / 1048576 * 10) / 10 + ' MB)';
+  row[C.notes - 1] = nowIst_() + ' ready reel by e-mail (' + g.name + ', video ' + Math.round(vid[0].getBytes().length / 1048576 * 10) / 10 + ' MB)';
   row[C.batch - 1] = 'READY-' + Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyyMMdd-HHmm');
   row[C.images - 1] = JSON.stringify([url]);
   sh.getRange(sh.getLastRow() + 1, 1, 1, NCOLS).setValues([row]);
-  report.push('ADDED ' + id + ' for ' + to + ': "' + head.slice(0, 60) + '". Right before posting the Instagram page captions are checked: if the same news is already there it is NOT posted. Otherwise the reel is posted as it is within about 20-40 minutes.');
-  return report;
+  report.push('ADDED ' + id + ' (' + g.name + ') for ' + to + ': "' + head.slice(0, 60) + '". It is posted automatically within about 20-40 minutes unless the same news is already on that Instagram page.');
 }
 
 
