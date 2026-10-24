@@ -48,9 +48,9 @@ jobs:
       - name: Is a story ready?
         id: chk
         run: |
-          if [ "$PAUSED" = "true" ] || [ -z "$BRIDGE_URL" ]; then
+          if [ -z "$BRIDGE_URL" ]; then   # posting is never paused: e-mailed and queued reels always post
             echo "ready=0" >> "$GITHUB_OUTPUT"
-            echo "Paused or setup not finished. PAUSED=[$PAUSED] BRIDGE_URL_set=[${BRIDGE_URL:+yes}]" | tee .last_check
+            echo "Setup not finished. BRIDGE_URL_set=[${BRIDGE_URL:+yes}]" | tee .last_check
           else
             pip install -q requests==2.32.5 pillow==11.3.0
             python poster/post.py check 2>&1 | tee .last_check

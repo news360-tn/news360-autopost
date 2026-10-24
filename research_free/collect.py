@@ -66,11 +66,23 @@ def interest(art):
     return best
 
 
+def _start_at():
+    """the moment automatic collecting was last started (research_free/START_AT, UTC). News published before it is never collected."""
+    try:
+        return datetime.datetime.fromisoformat((HERE / "START_AT").read_text().strip().replace("Z", "+00:00"))
+    except Exception:
+        return None
+
+
 def fresh(published):
     try:
-        d = datetime.datetime.fromisoformat(published).astimezone(IST).date()
+        t = datetime.datetime.fromisoformat(published)
+        d = t.astimezone(IST).date()
     except Exception:
         return True
+    st = _start_at()
+    if st is not None and t.tzinfo is not None and t < st:
+        return False      # published before the automation was started: already covered by the posted/e-mailed news
     return d >= (datetime.datetime.now(IST).date() - datetime.timedelta(days=1))
 
 
