@@ -44,6 +44,7 @@ jobs:
           CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
           CLOUDINARY_PRESET: ${{ secrets.CLOUDINARY_PRESET }}
           BUDGET_MIN: "55"
+          AUTO_IMAGES: "1"          # owner request 24 Oct: images made automatically (Cloudflare FLUX, then NVIDIA FLUX.1-dev); stories without all images go to the e-mail as before
           WRITE_STORIES: '1'
         run: |
           mkdir -p research_free/results
