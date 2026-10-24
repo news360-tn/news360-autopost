@@ -137,8 +137,8 @@ def validate(d, article, today_digits=("2026",)):
     if not rs.endswith(LAST):
         p.append("reel_script must end with exactly: " + LAST)
     wc = len(rs.split())
-    if not 70 <= wc <= 130:
-        p.append(f"reel_script has {wc} words; need 70-130 (detailed reel, about 40-50 seconds)")
+    if not 50 <= wc <= 130:
+        p.append(f"reel_script has {wc} words; need 50-130 (detailed reel, about 30-50 seconds)")
     if "வணக்கம்" in rs.split(".")[0]:
         p.append("reel_script must not start with a greeting")
     cap = d["caption"]
