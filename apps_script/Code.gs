@@ -549,26 +549,48 @@ function readyOne_(msg) {
   return report;
 }
 
-// one reel (one zip): exactly one caption .md and one video
+// one zip = one caption (.md) + one or more videos. Each video becomes its own reel row.
+// Which page a video goes to: its file name (contains "rasipuram" or "namakkal"), else the PAGE line in the .md (default namakkal).
+// If the zip has several videos, every video name must say its page (e.g. news_namakkal.mp4, news_rasipuram.mp4).
+function pageFromName_(name) {
+  var n = String(name).toLowerCase();
+  if (/rasipuram/.test(n) && /namakkal/.test(n)) return 'both';
+  if (/rasipuram/.test(n)) return 'rasipuram';
+  if (/namakkal/.test(n)) return 'namakkal';
+  return '';
+}
+
 function addReel_(g, report) {
-  var sh = sheet_();
   var files = g.files;
   var txt = files.filter(function (b) { return /\.(md|txt|markdown)$/i.test(b.getName()); });
-  var vid = files.filter(function (b) { return /\.(mp4|mov|m4v)$/i.test(b.getName()); });
+  var vids = files.filter(function (b) { return /\.(mp4|mov|m4v)$/i.test(b.getName()); });
   if (txt.length !== 1) { report.push('NOT ADDED ' + g.name + ': needs exactly ONE .md caption file inside, found ' + txt.length); return; }
-  if (vid.length !== 1) { report.push('NOT ADDED ' + g.name + ': needs exactly ONE video (.mp4) inside, found ' + vid.length); return; }
+  if (!vids.length) { report.push('NOT ADDED ' + g.name + ': needs at least ONE video (.mp4) inside, found 0'); return; }
   var lines = txt[0].getDataAsString('UTF-8').replace(/^﻿/, '').replace(/\r/g, '').split('\n');
-  var page = 'namakkal';
+  var defPage = 'namakkal';
   while (lines.length && /^\s*(page|post_to)\s*:/i.test(lines[0])) {
     var v = lines.shift().split(':')[1].toLowerCase();
-    page = /both|\+/.test(v) ? 'both' : (/rasipuram/.test(v) ? 'rasipuram' : 'namakkal');
+    defPage = /both|\+/.test(v) ? 'both' : (/rasipuram/.test(v) ? 'rasipuram' : 'namakkal');
   }
   var cap = lines.map(function (l) { return l.replace(/^\s*#{1,6}\s+(?=\S)/, '').replace(/\*\*|__/g, ''); }).join('\n').trim();
   if (cap.length < 40) { report.push('NOT ADDED ' + g.name + ': the caption is empty or too short'); return; }
   var head = (cap.split('\n').filter(function (l) { return l.trim(); })[0] || '').trim();
+  if (vids.length > 1) {
+    var unnamed = vids.filter(function (b) { return !pageFromName_(b.getName()); });
+    if (unnamed.length) { report.push('NOT ADDED ' + g.name + ': several videos in one zip - name each video with its page, e.g. news_namakkal.mp4 and news_rasipuram.mp4. Unnamed: ' + unnamed.map(function (b) { return b.getName(); }).join(', ')); return; }
+  }
+  vids.forEach(function (vb) {
+    var pg = pageFromName_(vb.getName()) || defPage;
+    try { addRow_(vb, pg, cap, head, g.name, report); }
+    catch (err) { report.push('NOT ADDED ' + vb.getName() + ': ' + err); }
+  });
+}
+
+function addRow_(vid, page, cap, head, groupName, report) {
+  var sh = sheet_();
   // owner-verified reels: no duplicate check here (owner decision, 24 Oct) - posted as received
   var no = nextStoryNo_(sh) + 1, id = 'RN-' + no;
-  var url = uploadVideo_(vid[0], id);
+  var url = uploadVideo_(vid, id);
   var row = new Array(NCOLS).fill('');
   var to = page === 'both' ? 'Namakkal 360 + Rasipuram 360' : (page === 'rasipuram' ? 'Rasipuram 360' : 'Namakkal 360');
   row[C.story_id - 1] = id;
@@ -580,11 +602,11 @@ function addReel_(g, report) {
   row[C.review - 1] = 'Auto'; row[C.post_to - 1] = to; row[C.reel - 1] = 'Yes';
   row[C.slides_spec - 1] = JSON.stringify({ v: 3, ready_reel: true, carousel: false });
   row[C.post_status - 1] = 'Queued';
-  row[C.notes - 1] = nowIst_() + ' ready reel by e-mail (' + g.name + ', video ' + Math.round(vid[0].getBytes().length / 1048576 * 10) / 10 + ' MB)';
+  row[C.notes - 1] = nowIst_() + ' ready reel by e-mail (' + groupName + ', ' + vid.getName() + ', video ' + Math.round(vid.getBytes().length / 1048576 * 10) / 10 + ' MB)';
   row[C.batch - 1] = 'READY-' + Utilities.formatDate(new Date(), 'Asia/Kolkata', 'yyyyMMdd-HHmm');
   row[C.images - 1] = JSON.stringify([url]);
   sh.getRange(sh.getLastRow() + 1, 1, 1, NCOLS).setValues([row]);
-  report.push('ADDED ' + id + ' (' + g.name + ') for ' + to + ': "' + head.slice(0, 60) + '". It is posted automatically within about 20-40 minutes unless the same news is already on that Instagram page.');
+  report.push('ADDED ' + id + ' (' + vid.getName() + ') for ' + to + ': "' + head.slice(0, 60) + '". Posted automatically within about 20-40 minutes unless the same news is already on that Instagram page.');
 }
 
 
