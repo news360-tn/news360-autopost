@@ -268,7 +268,7 @@ def english_outro(work, idx):
     """The brand line is spoken in clear Indian English (Tamil TTS cannot say English words well). Falls back to the Tamil line on any error."""
     try:
         mp3 = work / "outro_en.mp3"
-        subprocess.run([sys.executable, "-m", "edge_tts", "--voice", "en-IN-PrabhatNeural", "--rate=+0%", "--text", OUTRO_EN, "--write-media", str(mp3)], check=True, timeout=60)
+        subprocess.run([sys.executable, "-m", "edge_tts", "--voice", "en-IN-NeerjaNeural", "--rate=+0%", "--text", OUTRO_EN, "--write-media", str(mp3)], check=True, timeout=60)
         out = work / f"line{idx}.wav"
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af",
                         "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,"
