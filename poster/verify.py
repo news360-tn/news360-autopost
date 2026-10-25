@@ -141,3 +141,39 @@ def check_reel(mp4, spoken_lines):
     except Exception as e:
         probs.append(f"voice check could not run: {e}")
     return probs
+
+
+def clean_text(t):
+    """owner 25 Oct: Tamil text problems are FIXED, never a reason to skip a story. Removes broken characters, stray Tamil
+    vowel signs/pulli (no consonant before them) and characters the fonts cannot draw."""
+    if not isinstance(t, str) or not t:
+        return t
+    t = t.replace("\ufffd", "")
+    out, prev = [], None
+    for ch in t:
+        c = ord(ch)
+        if c in SIGNS:
+            if not (prev is not None and (ord(prev) in TAMIL_CONS or (ord(prev) in (0x0BC6, 0x0BC7) and c in (0x0BBE, 0x0BD7)))):
+                continue      # stray sign: dropped
+        out.append(ch)
+        prev = ch
+    t = "".join(out)
+    cov = font_coverage() or {}
+    cps = set()
+    for (pkg, sub, w), s in cov.items():
+        if pkg in ("noto-sans-tamil", "baloo-thambi-2", "catamaran"):
+            cps |= s
+    if cps:
+        t = "".join(ch for ch in t if not (0x0B80 <= ord(ch) <= 0x0BFF and ord(ch) not in cps and not ch.isspace()))
+    return t
+
+
+def clean_obj(o):
+    """clean_text on every string inside a dict/list (used on the spec and the reel scenes before rendering)"""
+    if isinstance(o, str):
+        return clean_text(o)
+    if isinstance(o, list):
+        return [clean_obj(x) for x in o]
+    if isinstance(o, dict):
+        return {k: clean_obj(v) for k, v in o.items()}
+    return o

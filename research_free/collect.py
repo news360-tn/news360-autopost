@@ -501,7 +501,7 @@ def main():
             for a in ("R", "N"):    # same event from another outlet / wording: never write it a second time
                 keep = []
                 for q in queues[a]:
-                    if difflib.SequenceMatcher(None, q["title"], art["title"]).ratio() > 0.5:
+                    if difflib.SequenceMatcher(None, q["title"], art["title"]).ratio() > 0.8:      # owner 25 Oct: only the same event, not similar wording
                         q["status"] = "duplicate of a story filed this round"
                     else:
                         keep.append(q)

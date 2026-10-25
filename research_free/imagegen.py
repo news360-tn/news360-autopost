@@ -109,6 +109,11 @@ def _generate(prompt, seed=0, key=None):
                     DEAD.add(FAL_MODEL)     # bad key / no balance / wrong model id: use the backups for the rest of this run
                     break
                 time.sleep(3)
+    if os.environ.get("NVIDIA_API_KEY"):      # owner 25 Oct: NVIDIA (free credits) before Cloudflare, whose daily allowance runs out early
+        try:
+            return generate_nvidia(prompt, seed, os.environ.get("NVIDIA_API_KEY"))
+        except Exception as e:
+            last = e
     if tok and acct:
         for model, build in CF_MODELS:
             if model in DEAD:
