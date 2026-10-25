@@ -222,17 +222,24 @@ def resolve(url):
     """Google News links are redirects; turn one into the publisher's page (needs the googlenewsdecoder package)."""
     if "news.google.com" not in url:
         return url
+    err = ""
+    for attempt in range(3):      # the decoder is rate-limited when many links come at once: pause and try again
+        try:
+            from googlenewsdecoder import gnewsdecoder
+            r = gnewsdecoder(url, interval=2)
+            if r.get("status") and r.get("decoded_url"):
+                return r["decoded_url"]
+            err = str(r.get("message") or "no decoded url")[:80]
+        except Exception as e:
+            err = f"decoder: {str(e)[:70]}"
+        time.sleep(6 * (attempt + 1))
     try:
-        from googlenewsdecoder import gnewsdecoder
-        r = gnewsdecoder(url, interval=1)
-        if r.get("status") and r.get("decoded_url"):
-            return r["decoded_url"]
-    except Exception:
-        pass
-    try:
-        return _get(url, timeout=30).url
-    except Exception:
-        return url
+        final = _get(url, timeout=30).url
+        if "news.google.com" not in final:
+            return final
+        raise RuntimeError("google page, not the article")
+    except Exception as e:
+        raise RuntimeError(f"google news link not decoded ({err}; {str(e)[:60]})")
 
 
 def article_any(url):
