@@ -32,6 +32,32 @@ TEMPLATE = ("ONE single continuous photograph from one camera angle (not a colla
             "Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.")
 
 
+BRIEF_SYSTEM = """You write image-generation prompts for a Tamil local-news photo. You get the story facts: the English headline, the place, the category and the article text.
+Write 3 different detailed prompts. Each one describes ONE real photograph of THIS story:
+- the exact place from the article and its real type (road, bus stand, school, hospital, collectorate office, field, river, hill, market, house);
+- the event itself as it looks (flood water on road, students with banners, police vehicle, damaged wall, crowd, rain, smoke) with the number of people and what they do;
+- the time of day, weather and light mentioned in the article; the vehicles, objects and buildings named in it;
+- people only from behind, far away or blurred; never a recognisable face.
+Use only facts from the article. Do not invent details. Each prompt 60-120 words, English, one single photograph.
+Never ask for text, letters, signboards with writing, logos or watermarks.
+Return ONLY JSON: {"scenes": ["prompt 1", "prompt 2", "prompt 3"]}"""
+
+IMG_TEMPLATE = ("Realistic news photograph, one single frame, tall vertical 9:16 composition, sharp focus, natural light, documentary press-photo look, no text, no letters, no logos. {scene} Keep the lower third plain (road, wall, sky).")
+
+
+def image_scenes(art, d):
+    """detailed image prompts built from the article itself (not a generic scene)"""
+    user = f"HEADLINE: {d.get('english_headline', '')}\nPLACE: {d.get('location', '')}\nCATEGORY: {d.get('category', '')}\nARTICLE:\n{(art.get('text') or '')[:3000]}"
+    try:
+        data, _ = llm.ask_json(BRIEF_SYSTEM, user)
+    except Exception:
+        if not llm.claude_available():
+            raise
+        data, _ = llm.ask_claude(BRIEF_SYSTEM, user, max_tokens=1500)
+    sc = [s.strip() for s in (data.get("scenes") or []) if isinstance(s, str) and len(s.strip()) > 40]
+    return sc[:3]
+
+
 def bridge(action, **kw):
     r = requests.get(BRIDGE_URL, params={"action": action, "key": BRIDGE_KEY, **kw}, timeout=120)
     r.raise_for_status()
@@ -329,7 +355,12 @@ def file_story(art, res, errors_log, recent):
         return None, "duplicate after write"
     if isinstance(d.get("slides_spec"), dict):
         d["slides_spec"]["v"] = 3          # the poster only reads format v3; a model writing v4 made RN-48 unpostable
-    prompts = "\n---\n".join(TEMPLATE.format(scene=s.strip()) for s in d["scenes"])
+    try:
+        scenes = image_scenes(art, d)
+    except Exception as e:
+        print("image brief failed, using the writer's scenes:", str(e)[:120], flush=True)
+        scenes = d["scenes"]
+    prompts = "\n---\n".join(IMG_TEMPLATE.format(scene=s.strip()) for s in scenes)
     ver = f"FREE-MODEL DRAFT ({model}) - not checked by Claude yet" + (f"; validator problems: {'; '.join(errors)}" if errors else "")
     return {"tamil_headline": d["tamil_headline"], "english_headline": d["english_headline"], "category": d["category"], "location": d["location"],
             "importance": d["importance"], "post_to": d["post_to"], "slides_spec": d["slides_spec"], "reel_script": d["reel_script"],

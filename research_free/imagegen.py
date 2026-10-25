@@ -1,7 +1,7 @@
 """Free AI image generation through the NVIDIA NIM API (build.nvidia.com) - realistic 9:16 news photos.
 generate(prompt, seed) -> PNG/JPEG bytes, or raises. Tries the models in order (best first); a model that answers 401/403/404
 (not in the free plan) is skipped for the rest of the run, 402/429 (credits / rate limit) switches to the next model."""
-import base64, os, sys, time, requests
+import base64, json, os, sys, time, requests
 
 GEN = "https://ai.api.nvidia.com/v1/genai/"
 # (model path, request body builder). FLUX only accepts sizes that are multiples of 64 inside 768..1344 -> 768x1344 is 9:16.
@@ -30,7 +30,7 @@ def _one(model, body, key):
 
 FAL_URL = "https://fal.run/"
 # fal.ai (paid, cheap). FAL_MODEL can be switched without code changes, e.g. fal-ai/bytedance/seedream/v4/text-to-image
-FAL_MODEL = os.environ.get("FAL_MODEL") or "fal-ai/flux/schnell"
+FAL_MODEL = os.environ.get("FAL_MODEL") or "fal-ai/flux/dev"   # owner 25 Oct: stronger model follows the news details better (Schnell is the cheap fallback)
 # fal bills per megapixel rounded UP: 720x1280 = 0.92 MP -> billed as 1 MP (768x1344 = 1.03 MP would be billed as 2 MP)
 FAL_W, FAL_H = 720, 1280
 
@@ -69,6 +69,29 @@ def _cf(model, body, token, acct):
     if not b64:
         raise RuntimeError(f"cloudflare {model} no image: {str(j)[:200]}")
     return base64.b64decode(b64)
+
+
+def matches(data, headline):
+    """a vision model checks that the picture shows the news headline. True when it matches or the check is not available."""
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key or not headline:
+        return True
+    try:
+        model = os.environ.get("GEMINI_VISION_MODEL", "gemini-2.5-flash")
+        body = {"contents": [{"parts": [
+                    {"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(data).decode()}},
+                    {"text": f'Does this photo show the news story: "{headline}"? Check the place type, the event, and the people. '
+                             'Answer only JSON: {"match": true or false, "why": "short reason"}'}]}],
+                "generationConfig": {"responseMimeType": "application/json", "temperature": 0}}
+        r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                          headers={"x-goog-api-key": key, "Content-Type": "application/json"}, json=body, timeout=90)
+        r.raise_for_status()
+        j = json.loads(r.json()["candidates"][0]["content"]["parts"][0]["text"])
+        print("image match:", j.get("match"), str(j.get("why", ""))[:120], flush=True)
+        return bool(j.get("match"))
+    except Exception as e:
+        print("image match check unavailable:", str(e)[:120], flush=True)
+        return True
 
 
 def to_story_size(data):

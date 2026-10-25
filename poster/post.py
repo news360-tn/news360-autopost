@@ -1061,14 +1061,18 @@ def auto_images():
             for k, pr in enumerate(prompts, 1):
                 data = None
                 last_err = None
-                for attempt in range(4):      # owner 25 Oct: retry across the image models before any picture is given up
+                for attempt in range(3):      # owner 25 Oct: a picture that does not show the news is generated again (up to 3 times)
                     try:
-                        data = imagegen.generate(("Square image, the main subject exactly in the centre. " + pr)[:1800], seed=k + 7 + attempt * 13)
-                        break
+                        cand = imagegen.generate(pr[:1800], seed=k + 7 + attempt * 13)
                     except Exception as e:
                         last_err = e
                         log("image attempt", attempt + 1, "failed:", str(e)[:140])
                         time.sleep(20 * (attempt + 1))
+                        continue
+                    data = cand
+                    if imagegen.matches(cand, r.get("headline_en") or ""):
+                        break
+                    log("picture does not match the news, generating again:", r.get("story_id"), k)
                 if data is None:
                     raise RuntimeError(str(last_err))
                 f = work / f"auto_{k}.jpg"
