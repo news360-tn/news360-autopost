@@ -507,7 +507,7 @@ def main():
                 n["status"], stt["s"] = "article text too short / blocked", "notext"
                 log.append(f"skip ({area}) no article text ({len(art['text'])} chars): {art['title'][:50]} [{url[:60]}]")
                 continue
-            if not fresh(art["published"]):
+            if not fresh(art["published"]) and n.get("query") != "manual":      # a link the owner gives by hand is written whatever its date
                 n["status"], stt["s"] = "old", "old"
                 log.append(f"skip ({area}) not today ({art['published'] or 'no date'}): {art['title'][:50]}")
                 continue
