@@ -1,187 +1,15 @@
-writing [N]: TN Rain | விடாது வெளுத்த கனமழை - சாலையில் பெருக்கெடுத்த மழைந
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-switching away from gemini/gemini-3.8-flash for 10 min
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.7-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
-dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
-fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
-dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
-fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-switching away from mistral/mistral-small-latest for 10 min
-free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  Caption says vehicles are 'floating' (மிதந்து செல்லும் நிலை) and slide 3 says 'வாகனங்கள் மிதந்து செல்லும் நிலை' — the article's headline says vehicles 'மிதந்து செல்லும்' so this matches the headline, but the body only says drivers struggle to cross; the slide/caption overstates it as the general situation (minor, but presented as fact beyond the body text)
-  Reel script says the Paramathi Velur area roads are flooded in general ('சாலைகளில் மழைநீர் வெள்ளம்போல் தேங்கியுள்ளது') while the article specifies only Kolakkattupudur road and the Paramathi Velur–Jedarpalayam road; the generalisation is not stated in the article
-  Reel script states the rain fell 'நேற்று இரவு' for the whole area and the slides attribute the flooding to the night rain; the article says the flood came from fields around Pandamangalam, so the cause is partly rephrased, but the reel's claim that rain falls 'கடந்த சில நாட்களாக' in Jedarpalayam and Kapilarmalai is accurate; no new error here, but the reel omits that the flood water came from surrounding farmland as the cause of Kolakkattupudur road flooding is stated only loosely
-  Reel script misses no major facts but the caption's first line headline 'பரமத்தி வேலூரில்' and the slide title 'பரமத்தி வேலூரில் கனமழை வெள்ளம்' are fine; the hashtag-free footer is excluded from checking
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: Caption says vehicles are 'floating' (மிதந்து செல்லும் நிலை) and slide 3 says 'வாகனங்கள் மிதந்து செல்லும் நிலை' — the article's headline says vehicles 'மிதந்து செல்லும்' so this matches the headline, but the body only says drivers struggle to cross; the slide/caption overstates it as the general situation (minor, but presented as fact beyond the body text)
-  fact-check: Reel script says the Paramathi Velur area roads are flooded in general ('சாலைகளில் மழைநீர் வெள்ளம்போல் தேங்கியுள்ளது') while the article specifies only Kolakkattupudur road and the Paramathi Velur–Jedarpalayam road; the generalisation is not stated in the article
-  fact-check: Reel script states the rain fell 'நேற்று இரவு' for the whole area and the slides attribute the flooding to the night rain; the article says the flood came from fields around Pandamangalam, so the cause is partly rephrased, but the reel's claim that rain falls 'கடந்த சில நாட்களாக' in Jedarpalayam and Kapilarmalai is accurate; no new error here, but the reel omits that the flood water came from surrounding farmland as the cause of Kolakkattupudur road flooding is stated only loosely
-  fact-check: Reel script misses no major facts but the caption's first line headline 'பரமத்தி வேலூரில்' and the slide title 'பரமத்தி வேலூரில் கனமழை வெள்ளம்' are fine; the hashtag-free footer is excluded from checking
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  slides_spec 'loc' and the headline/first slide say the rain is in பரமத்தி வேலூர, but the article only states the district and lists Paramathi Velur among several areas; the reel_script opening ('பரமத்தி வேலூர் பகுதியில் கனமழை') is an overgeneralization, though minor.
-  reel_script says the rain has been falling in பரமத்தி வேலூர், ஜேடர்பாளையம், கபிலர்மலை 'கடந்த சில நாட்களாக', which is supported, but the reel_script omits that the flooded area (ஜேடர்பாளையம் road) is described as flowing like a flood ('வெள்ளம்போல் தேங்கியுள்ளது') only in the article's wording – this is consistent, so no issue here.
-  slides_spec 'வாகனங்கள் சிக்கல்' slide and reel_script say vehicles 'சிரமப்படுகின்றனர்' – the article says vehicles are 'மிதந்து செல்லும்' (floating/struggling through water) and the headline mentions vehicles floating; the drafts omit that vehicles were floating/being swept through the water, which is an important visual fact missing from the reel_script.
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: slides_spec 'loc' and the headline/first slide say the rain is in பரமத்தி வேலூர, but the article only states the district and lists Paramathi Velur among several areas; the reel_script opening ('பரமத்தி வேலூர் பகுதியில் கனமழை') is an overgeneralization, though minor.
-  fact-check: reel_script says the rain has been falling in பரமத்தி வேலூர், ஜேடர்பாளையம், கபிலர்மலை 'கடந்த சில நாட்களாக', which is supported, but the reel_script omits that the flooded area (ஜேடர்பாளையம் road) is described as flowing like a flood ('வெள்ளம்போல் தேங்கியுள்ளது') only in the article's wording – this is consistent, so no issue here.
-  fact-check: slides_spec 'வாகனங்கள் சிக்கல்' slide and reel_script say vehicles 'சிரமப்படுகின்றனர்' – the article says vehicles are 'மிதந்து செல்லும்' (floating/struggling through water) and the headline mentions vehicles floating; the drafts omit that vehicles were floating/being swept through the water, which is an important visual fact missing from the reel_script.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The reel_script says the rain-soaked stretch involves vehicles floating (மிதந்து செல்லும் நிலை) in the headline and script, while the article only says vehicles struggled to cross and the headline says vehicles 'மிதந்து செல்லும்'; the article's headline supports this, so this is acceptable. However, the slide 'வாகனங்கள் மழைநீரில் மிதந்து செல்லும் நிலை' and the caption's 'வாகனங்கள் மிதந்து செல்லும் நிலை' are consistent with the article headline.
-  The slides_spec 'hl2' and caption describe the Paramathi Velur - Jedarpalayam road as the 'முக்கிய சாலை' flooding, which matches the article; no problem there.
-  The reel_script says 'சாலைகளில் நீர் பெருக்கு' and 'விளைநிலங்களிலிருந்து மழைநீர் சாலைக்கு வந்தது' in slides; the article says rainwater flowed from farmland around Pandamangalam and covered Kolakkattupudur road, which matches.
-  The reel_script states the rainwater 'சூழ்ந்தது' covered the road, which matches; the caption adds 'வாகன ஓட்டிகள் கவனமாக செல்லுங்கள்', which is an advisory not in the article but is a generic caption line rather than a factual claim.
-  The slides_spec 'loc' lists only 'பரமத்தி வேலூர், ஜேடர்பாளையம்' while the article mentions Pandamangalam and Kapilarmalai as well; this is a selection, not a factual error.
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The reel_script says the rain-soaked stretch involves vehicles floating (மிதந்து செல்லும் நிலை) in the headline and script, while the article only says vehicles struggled to cross and the headline says vehicles 'மிதந்து செல்லும்'; the article's headline supports this, so this is acceptable. However, the slide 'வாகனங்கள் மழைநீரில் மிதந்து செல்லும் நிலை' and the caption's 'வாகனங்கள் மிதந்து செல்லும் நிலை' are consistent with the article headline.
-  fact-check: The slides_spec 'hl2' and caption describe the Paramathi Velur - Jedarpalayam road as the 'முக்கிய சாலை' flooding, which matches the article; no problem there.
-  fact-check: The reel_script says 'சாலைகளில் நீர் பெருக்கு' and 'விளைநிலங்களிலிருந்து மழைநீர் சாலைக்கு வந்தது' in slides; the article says rainwater flowed from farmland around Pandamangalam and covered Kolakkattupudur road, which matches.
-  fact-check: The reel_script states the rainwater 'சூழ்ந்தது' covered the road, which matches; the caption adds 'வாகன ஓட்டிகள் கவனமாக செல்லுங்கள்', which is an advisory not in the article but is a generic caption line rather than a factual claim.
-  fact-check: The slides_spec 'loc' lists only 'பரமத்தி வேலூர், ஜேடர்பாளையம்' while the article mentions Pandamangalam and Kapilarmalai as well; this is a selection, not a factual error.
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: அர்னாப் புயல்! 9 துறைமுகங்களில் 1ஆம் எண் புயல் எச்சரிக்கை கூ
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  Namakkal district is not mentioned in the article as having heavy rain today; the article lists Namakkal, Salem and Erode together with the 17-district group, so the headline's claim that Namakkal district specifically is the focus is not clearly supported (article says 'நாமக்கல், சேலம், ஈரோடு ஆகிய மாவட்டங்களிலும் புதுச்சேரியிலும் இன்று கனமழைக்கு வாய்ப்புள்ளது' - this is actually supported, but the reel_script and slides omit that the article's heavy-rain list also includes Chennai and 16 other districts, and the headline's framing singles out Namakkal in a way the article does not)
-  The reel_script states the depression 'வலுப்பெற்றுள்ளது' and 'இது நாளை காலை அர்னாப் புயலாக மாறக் கூடும்' which is accurate, but the slides_spec line 'காற்றழுத்த தாழ்வு பகுதி வலுப்பெற்றுள்ளது' is placed under the 1st-number storm warning slide, mixing the storm-warning fact with the depression fact in one slide without clear sourcing
-  The reel_script omits the article's key fact that the 1st-number storm cage is hoisted at 9 ports, but it instead says 'ஏழு துறைமுகங்கள், புதுவை, காரைக்காலின் இரண்டு துறைமுகங்கள்' which is inconsistent: the article says 7 Tamil Nadu ports plus 2 in Puducherry/Karaikal, totalling 9, so the phrasing 'புதுவை, காரைக்காலின் இரண்டு துறைமுகங்கள்' is acceptable, but the slide lists 'சென்னை, கடலூர், நாகை, தூத்துக்குடி உள்ளிட்ட துறைமுகங்கள்' which is accurate; no error here beyond ambiguity
-  The slide 'கவனமாக இருங்கள்' contains advice not in the article: 'தாழ்வான பகுதி மக்கள் எச்சரிக்கையாக இருங்கள்' and 'மீனவர்கள் கடலுக்குச் செல்வதைத் தவிர்க்க வேண்டும்' are invented details not stated in the article
-  The slide 'வானிலை அறிவிப்புகளை தொடர்ந்து பாருங்கள்' is an invented instruction not present in the article
-  The caption's 'Share செய்யுங்கள்' call and English hashtags are fine, but the reel_script and caption omit the article's statement that 'இந்த புயலால் தமிழகத்திற்கு பெரிய அளவில் பாதிப்பு இருக்காது' is preceded by 'எனினும்' heavy-rain warnings for Theni, Dindigul, Madurai (அதி கனமழை), which is a significant omitted fact of the article
-claude rewrite 1 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: Namakkal district is not mentioned in the article as having heavy rain today; the article lists Namakkal, Salem and Erode together with the 17-district group, so the headline's claim that Namakkal district specifically is the focus is not clearly supported (article says 'நாமக்கல், சேலம், ஈரோடு ஆகிய மாவட்டங்களிலும் புதுச்சேரியிலும் இன்று கனமழைக்கு வாய்ப்புள்ளது' - this is actually supported, but the reel_script and slides omit that the article's heavy-rain list also includes Chennai and 16 other districts, and the headline's framing singles out Namakkal in a way the article does not)
-  fact-check: The reel_script states the depression 'வலுப்பெற்றுள்ளது' and 'இது நாளை காலை அர்னாப் புயலாக மாறக் கூடும்' which is accurate, but the slides_spec line 'காற்றழுத்த தாழ்வு பகுதி வலுப்பெற்றுள்ளது' is placed under the 1st-number storm warning slide, mixing the storm-warning fact with the depression fact in one slide without clear sourcing
-  fact-check: The reel_script omits the article's key fact that the 1st-number storm cage is hoisted at 9 ports, but it instead says 'ஏழு துறைமுகங்கள், புதுவை, காரைக்காலின் இரண்டு துறைமுகங்கள்' which is inconsistent: the article says 7 Tamil Nadu ports plus 2 in Puducherry/Karaikal, totalling 9, so the phrasing 'புதுவை, காரைக்காலின் இரண்டு துறைமுகங்கள்' is acceptable, but the slide lists 'சென்னை, கடலூர், நாகை, தூத்துக்குடி உள்ளிட்ட துறைமுகங்கள்' which is accurate; no error here beyond ambiguity
-  fact-check: The slide 'கவனமாக இருங்கள்' contains advice not in the article: 'தாழ்வான பகுதி மக்கள் எச்சரிக்கையாக இருங்கள்' and 'மீனவர்கள் கடலுக்குச் செல்வதைத் தவிர்க்க வேண்டும்' are invented details not stated in the article
-  fact-check: The slide 'வானிலை அறிவிப்புகளை தொடர்ந்து பாருங்கள்' is an invented instruction not present in the article
-  fact-check: The caption's 'Share செய்யுங்கள்' call and English hashtags are fine, but the reel_script and caption omit the article's statement that 'இந்த புயலால் தமிழகத்திற்கு பெரிய அளவில் பாதிப்பு இருக்காது' is preceded by 'எனினும்' heavy-rain warnings for Theni, Dindigul, Madurai (அதி கனமழை), which is a significant omitted fact of the article
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  not grounded: location 'கடல்' is not in the article
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 8 problems
-  reel_script says 'நாமக்கல்லில் இன்று கனமழைக்கு வாய்ப்பு' (heavy rain likely in Namakkal today) as the opening line, but the article lists Namakkal among districts with heavy rain expected today only in the sense of a general list; the opening framing presents it as the lead fact, which is a misrepresentation of the article's emphasis (the lead is the cyclone warning).
-  reel_script says 'ஒன்பது துறைமுகங்களில்... கூண்டு ஏற்றப்பட்டுள்ளது' and the cyclone is said to form 'நாளை' — the article says it may form tomorrow morning, so the 'நாளை உருவாகலாம்' wording is acceptable, but the reel_script omits the article's key point that the cyclone warning cage no. 11 must not be hoisted and the 1-to-11 explanation; this is not strictly required.
-  slides_spec 'எங்கே எச்சரிக்கை?' lists 'புதுவை, காரைக்கால் துறைமுகங்கள்' — the article says Puducherry and Karaikal ports, which is accurate, but the slide omits Tamil Nadu ports count consistency; minor.
-  slides_spec 'எப்போது கரையை' title is an incomplete/ungrammatical sentence (missing 'கடக்கும்'), so the slide heading has no clear meaning in Tamil.
-  slides_spec 'மழை எச்சரிக்கை' says 'சென்னை உள்ளிட்ட 17 மாவட்டங்களில் இன்று கனமழை' — the article says 17 districts including Chennai have chance of heavy rain today, which matches; however the slide combines this with the Namakkal/Salem/Erode sentence in a way that is acceptable.
-  caption states 'நாமக்கல், சேலம், ஈரோடு உள்ளிட்ட மாவட்டங்களில் இன்று கனமழைக்கு வாய்ப்பு' — the article says Namakkal, Salem, Erode and Puducherry have chance of heavy rain today; Puducherry omitted, not an invented claim but incomplete.
-  reel_script omits the article's key fact that the cyclone is expected to become an extremely severe cyclone (அதிதீவிர புயல்) before landfall, which is an important element of the storm's development.
-  reel_script 'தமிழகத்துக்குப் பெரிய பாதிப்பு இருக்காது' is accurate, but 'வரும் இருபத்து எட்டாம் தேதி' omits the month, which is acceptable; no clear error.
-claude rewrite 3 anthropic/claude-haiku-5-5: 8 problems
-  fact-check: reel_script says 'நாமக்கல்லில் இன்று கனமழைக்கு வாய்ப்பு' (heavy rain likely in Namakkal today) as the opening line, but the article lists Namakkal among districts with heavy rain expected today only in the sense of a general list; the opening framing presents it as the lead fact, which is a misrepresentation of the article's emphasis (the lead is the cyclone warning).
-  fact-check: reel_script says 'ஒன்பது துறைமுகங்களில்... கூண்டு ஏற்றப்பட்டுள்ளது' and the cyclone is said to form 'நாளை' — the article says it may form tomorrow morning, so the 'நாளை உருவாகலாம்' wording is acceptable, but the reel_script omits the article's key point that the cyclone warning cage no. 11 must not be hoisted and the 1-to-11 explanation; this is not strictly required.
-  fact-check: slides_spec 'எங்கே எச்சரிக்கை?' lists 'புதுவை, காரைக்கால் துறைமுகங்கள்' — the article says Puducherry and Karaikal ports, which is accurate, but the slide omits Tamil Nadu ports count consistency; minor.
-  fact-check: slides_spec 'எப்போது கரையை' title is an incomplete/ungrammatical sentence (missing 'கடக்கும்'), so the slide heading has no clear meaning in Tamil.
-  fact-check: slides_spec 'மழை எச்சரிக்கை' says 'சென்னை உள்ளிட்ட 17 மாவட்டங்களில் இன்று கனமழை' — the article says 17 districts including Chennai have chance of heavy rain today, which matches; however the slide combines this with the Namakkal/Salem/Erode sentence in a way that is acceptable.
-  fact-check: caption states 'நாமக்கல், சேலம், ஈரோடு உள்ளிட்ட மாவட்டங்களில் இன்று கனமழைக்கு வாய்ப்பு' — the article says Namakkal, Salem, Erode and Puducherry have chance of heavy rain today; Puducherry omitted, not an invented claim but incomplete.
-  fact-check: reel_script omits the article's key fact that the cyclone is expected to become an extremely severe cyclone (அதிதீவிர புயல்) before landfall, which is an important element of the storm's development.
-  fact-check: reel_script 'தமிழகத்துக்குப் பெரிய பாதிப்பு இருக்காது' is accurate, but 'வரும் இருபத்து எட்டாம் தேதி' omits the month, which is acceptable; no clear error.
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: வெள்ளை முதல் கருப்பு பெல்ட் வரை: சாதித்துக் காட்டிய குழந்தைக
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  The article says the belt ceremony was held at Senthamangalam in Thiruvarur district and it was an achievement of the academy's students, but the reel_script names the academy and ceremony accurately; however, the caption and slides state the students passed 'கிரேடிங் தேர்வில்' (grading exam) which is in the article, so no issue there — the real problem: the reel_script sentence 'நூற்று ஐம்பது -க்கும் மேற்பட்ட மாணவர்கள் கராத்தே தேர்வில் வெற்றி பெற்றனர்' is fine, but the headline says '150-க்கும் மேற்பட்ட மாணவர்கள்' which matches the article's 'சுமார் 150-க்கும் மேற்பட்ட'
-  The reel_script omits the important fact that the event was a sports academy's felicitation of students who passed grading tests with the academy running for 20+ years, and that Kiyoshi S. Ramachandran was the secretary; this is a minor omission
-  The reel_script says the belt ceremony was 'ஐ.எஸ்.ஆர். ஸ்போர்ட்ஸ் மார்ஷியல் ஆர்ட்ஸ் அகாடமி சார்பில்', but the slide says 'பல பள்ளிகளிலிருந்து பங்கேற்பு' while the article lists the schools' localities (Thiruvarur, Vazhkai, Manakkal, Thirumarugal, Nannilam) — the reel_script says 'பகுதிகளைச் சேர்ந்த அரசு மற்றும் தனியார் பள்ளி மாணவர்கள்', which is accurate
-  The slide 'யார் வந்தனர்?' claims 'பள்ளி மாணவ, மாணவிகள் பல பள்ளிகளிலிருந்து பங்கேற்பு' as who came, which is not clearly stated as the attendees of the ceremony beyond participants; minor wording issue
-  The slide 'அவர் சொன்னது' states 'அகாடமியின் சேவை பாராட்டுக்குரியது என தெரிவிப்பு' which matches the article, but the slide's 'கராத்தே உடல், மன உறுதியை வளர்க்கும்' is an unambiguous claim taken from the article's description
-  The caption and slides state 'தேர்ச்சி' and 'தேர்வில் வெற்றி' as the students' achievement, consistent with the article
-claude rewrite 1 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: The article says the belt ceremony was held at Senthamangalam in Thiruvarur district and it was an achievement of the academy's students, but the reel_script names the academy and ceremony accurately; however, the caption and slides state the students passed 'கிரேடிங் தேர்வில்' (grading exam) which is in the article, so no issue there — the real problem: the reel_script sentence 'நூற்று ஐம்பது -க்கும் மேற்பட்ட மாணவர்கள் கராத்தே தேர்வில் வெற்றி பெற்றனர்' is fine, but the headline says '150-க்கும் மேற்பட்ட மாணவர்கள்' which matches the article's 'சுமார் 150-க்கும் மேற்பட்ட'
-  fact-check: The reel_script omits the important fact that the event was a sports academy's felicitation of students who passed grading tests with the academy running for 20+ years, and that Kiyoshi S. Ramachandran was the secretary; this is a minor omission
-  fact-check: The reel_script says the belt ceremony was 'ஐ.எஸ்.ஆர். ஸ்போர்ட்ஸ் மார்ஷியல் ஆர்ட்ஸ் அகாடமி சார்பில்', but the slide says 'பல பள்ளிகளிலிருந்து பங்கேற்பு' while the article lists the schools' localities (Thiruvarur, Vazhkai, Manakkal, Thirumarugal, Nannilam) — the reel_script says 'பகுதிகளைச் சேர்ந்த அரசு மற்றும் தனியார் பள்ளி மாணவர்கள்', which is accurate
-  fact-check: The slide 'யார் வந்தனர்?' claims 'பள்ளி மாணவ, மாணவிகள் பல பள்ளிகளிலிருந்து பங்கேற்பு' as who came, which is not clearly stated as the attendees of the ceremony beyond participants; minor wording issue
-  fact-check: The slide 'அவர் சொன்னது' states 'அகாடமியின் சேவை பாராட்டுக்குரியது என தெரிவிப்பு' which matches the article, but the slide's 'கராத்தே உடல், மன உறுதியை வளர்க்கும்' is an unambiguous claim taken from the article's description
-  fact-check: The caption and slides state 'தேர்ச்சி' and 'தேர்வில் வெற்றி' as the students' achievement, consistent with the article
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  The draft says the ceremony was in Senthamangalam (சேந்தமங்கலம்) and the article is consistent with that, but the headline and slides say 'சிறுவர்களுக்கு' (boys) in the headline while the article says மாணவ-மாணவிகள் (students, both boys and girls); minor wording, but the headline's 'சிறுவர்கள்' is not supported as a gender-specific claim.
-  The draft says 'Senthamangalam' is the place of the ceremony, but the caption's location and the slide 'சேந்தமங்கலம், திருவாரூர்' are fine; however the reel_script lists 'வாழ்க்கை' and 'மணக்கால்' as areas of students, which matches the article, so no issue there.
-  The reel_script and slides state the ceremony was 'ஏற்பாடு' by the academy and that students 'பங்கேற்றனர்' — the article says the students passed grading exams, not that they participated in the ceremony; the draft conflates the two.
-  The slide 'அகாடமியின் சேவை பாராட்டுக்குரியது' and 'அவர் சொன்னது' attributes the statement about female students learning martial arts to the speaker, which matches the article; however the claim 'கராத்தே உடல், மன உறுதி, தன்னம்பிக்கையை வளர்க்கும்' is attributed to Rajiv Gandhi in the reel_script, while the article attributes it to the karate training in general (the article states it as the reporter's framing, not the speaker's quote) — a misattribution.
-  The reel_script omits that the academy has been operating for over 20 years and teaches silambam as well as karate; this is an important fact of the article not in the script, though the omission of the 20-year detail is minor.
-  The article says the chief guest 'தமிழ்நாடு நுகர்பொருள் வாணிபக் கழகத்தின் மாநில அமைப்புச் செயலாளர்' presided; the draft's slide names him as 'அமைப்புச் செயலாளர் பா. ராஜீவ்' (shortened name), which is acceptable, but the caption says 'அமைப்புச் செயலாளர் பா. ராஜீவ் காந்தி' while the reel_script says 'பெல்ட்டுகளும் சான்றிதழ்களும் பதக்கங்களும்' — consistent.
-claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: The draft says the ceremony was in Senthamangalam (சேந்தமங்கலம்) and the article is consistent with that, but the headline and slides say 'சிறுவர்களுக்கு' (boys) in the headline while the article says மாணவ-மாணவிகள் (students, both boys and girls); minor wording, but the headline's 'சிறுவர்கள்' is not supported as a gender-specific claim.
-  fact-check: The draft says 'Senthamangalam' is the place of the ceremony, but the caption's location and the slide 'சேந்தமங்கலம், திருவாரூர்' are fine; however the reel_script lists 'வாழ்க்கை' and 'மணக்கால்' as areas of students, which matches the article, so no issue there.
-  fact-check: The reel_script and slides state the ceremony was 'ஏற்பாடு' by the academy and that students 'பங்கேற்றனர்' — the article says the students passed grading exams, not that they participated in the ceremony; the draft conflates the two.
-  fact-check: The slide 'அகாடமியின் சேவை பாராட்டுக்குரியது' and 'அவர் சொன்னது' attributes the statement about female students learning martial arts to the speaker, which matches the article; however the claim 'கராத்தே உடல், மன உறுதி, தன்னம்பிக்கையை வளர்க்கும்' is attributed to Rajiv Gandhi in the reel_script, while the article attributes it to the karate training in general (the article states it as the reporter's framing, not the speaker's quote) — a misattribution.
-  fact-check: The reel_script omits that the academy has been operating for over 20 years and teaches silambam as well as karate; this is an important fact of the article not in the script, though the omission of the 20-year detail is minor.
-  fact-check: The article says the chief guest 'தமிழ்நாடு நுகர்பொருள் வாணிபக் கழகத்தின் மாநில அமைப்புச் செயலாளர்' presided; the draft's slide names him as 'அமைப்புச் செயலாளர் பா. ராஜீவ்' (shortened name), which is acceptable, but the caption says 'அமைப்புச் செயலாளர் பா. ராஜீவ் காந்தி' while the reel_script says 'பெல்ட்டுகளும் சான்றிதழ்களும் பதக்கங்களும்' — consistent.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The article says the academy has trained students for over 20 years, but the draft's slide 'எங்கே' states 'கடந்த 20 ஆண்டுகளாக' which matches; however the slide labels 'திருவாரூர், மணக்கால், திருமருகல், நன்னிலம் மாணவர்கள்' are listed as the students' schools, while the article lists these as school locations, which is acceptable; no error found there.
-  The reel_script and caption claim the ceremony was held at the academy and that 150 or more students passed; the article says 'சுமார் 150-க்கும் மேற்பட்ட' students passed grading exams, so this is supported, but the draft's 'நூற்று ஐம்பது' in the reel_script is slightly inconsistent with the source's 'சுமார்' (approximately) qualifier, making the exact figure an overstatement.
-  The caption says 'கிரேடிங் தேர்வுகளில் தேர்ச்சி பெற்றனர்' and the headline says 'கராத்தே தேர்வு' while the article describes a 'சிறப்பு கராத்தே தேர்வு (பெல்ட் வழங்கும் விழா)', which is consistent; no clear error.
-  The reel_script says 'அவர்களுக்கு பெல்ட் வழங்கப்பட்டது' and that Rajeev Gandhi 'பெல்ட்டுகளையும் சான்றிதழ்களையும் வழங்கினார்' — the article supports this.
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The article says the academy has trained students for over 20 years, but the draft's slide 'எங்கே' states 'கடந்த 20 ஆண்டுகளாக' which matches; however the slide labels 'திருவாரூர், மணக்கால், திருமருகல், நன்னிலம் மாணவர்கள்' are listed as the students' schools, while the article lists these as school locations, which is acceptable; no error found there.
-  fact-check: The reel_script and caption claim the ceremony was held at the academy and that 150 or more students passed; the article says 'சுமார் 150-க்கும் மேற்பட்ட' students passed grading exams, so this is supported, but the draft's 'நூற்று ஐம்பது' in the reel_script is slightly inconsistent with the source's 'சுமார்' (approximately) qualifier, making the exact figure an overstatement.
-  fact-check: The caption says 'கிரேடிங் தேர்வுகளில் தேர்ச்சி பெற்றனர்' and the headline says 'கராத்தே தேர்வு' while the article describes a 'சிறப்பு கராத்தே தேர்வு (பெல்ட் வழங்கும் விழா)', which is consistent; no clear error.
-  fact-check: The reel_script says 'அவர்களுக்கு பெல்ட் வழங்கப்பட்டது' and that Rajeev Gandhi 'பெல்ட்டுகளையும் சான்றிதழ்களையும் வழங்கினார்' — the article supports this.
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
+pending list not available: 404 Client Error: Not Found for url: https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnRJAAkY6goRjd-_bcSyt1yfYiUTu9ShyC_t7YXHDqIKVzDpi9ihmLi6WmFmLC81cyLVlhbMb--0k5ep2mVDv_6laMwmKz9Ks76_CFZiHYWNPjMSn7es9qbXQ75boonVPC7PTajMNBsFmw2ubn4rBa3TG807GchBnvvv-yw0zdyp0lkcnFy0z8V_mqcCgDtKcNZuhndeSB5dmuMU2tKUMrR4JrOm9nS_Kjl44EF24Id9-OzNE_q9znoFDtfGlG0fPkNMWI6BnJBZxLeRqadLZU2_AenIQHRfS_XWWjeX7EIWfdHXUjGNTurzcMIsynPVEhqysoQkifS_CR2D9Icy8-smD_Ecqw&lib=MShJgdfAXwq6qi-TwR06zrc-iZi6hpcg7
 earlier stories still waiting for images: []
 instagram check: 66 recent posts read from both pages
 source dinamalar list: 8 items
-source google 'நாமக்கல்': 56 items
-source bing 'நாமக்கல்': 10 items
-source google 'ராசிபுரம்': 8 items
+source google 'நாமக்கல்': 29 items
+source bing 'நாமக்கல்': 12 items
+source google 'ராசிபுரம்': 6 items
 source bing 'ராசிபுரம்': 12 items
-source google 'திருச்செங்கோடு': 2 items
+source google 'திருச்செங்கோடு': 3 items
 source bing 'திருச்செங்கோடு': 12 items
-source google 'பரமத்தி வேலூர்': 0 items
-source bing 'பரமத்தி வேலூர்': 11 items
+source google 'பரமத்தி வேலூர்': 1 items
+source bing 'பரமத்தி வேலூர்': 12 items
 source google 'குமாரபாளையம்': 2 items
 source bing 'குமாரபாளையம்': 12 items
 source google 'பள்ளிபாளையம்': 0 items
@@ -195,10 +23,10 @@ source bing 'மோகனூர்': 5 items
 source google 'நாமகிரிப்பேட்டை': 0 items
 source bing 'நாமகிரிப்பேட்டை': 4 items
 source google 'வெண்ணந்தூர்': 0 items
-source bing 'வெண்ணந்தூர்': 1 items
+source bing 'வெண்ணந்தூர்': 0 items
 source google 'எருமப்பட்டி': 1 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 45 items
+source google 'நாமக்கல் மாவட்டம்': 50 items
 source bing 'நாமக்கல் மாவட்டம்': 12 items
 source google 'நாமக்கல் முட்டை விலை': 1 items
 source bing 'நாமக்கல் முட்டை விலை': 9 items
@@ -220,19 +48,19 @@ source google மாலைமலர் 'ராசிபுரம்': 2 items
 source bing மாலைமலர் 'ராசிபுரம்': 2 items
 source google மாலைமலர் 'திருச்செங்கோடு': 0 items
 source bing மாலைமலர் 'திருச்செங்கோடு': 1 items
-source google தினத்தந்தி 'நாமக்கல்': 23 items
+source google தினத்தந்தி 'நாமக்கல்': 32 items
 source bing தினத்தந்தி 'நாமக்கல்': 12 items
-source google தினத்தந்தி 'ராசிபுரம்': 1 items
+source google தினத்தந்தி 'ராசிபுரம்': 2 items
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
 source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்': 59 items
+source google தினமணி 'நாமக்கல்': 49 items
 source bing தினமணி 'நாமக்கல்': 12 items
-source google தினமணி 'ராசிபுரம்': 4 items
+source google தினமணி 'ராசிபுரம்': 3 items
 source bing தினமணி 'ராசிபுரம்': 6 items
-source google தினமணி 'திருச்செங்கோடு': 3 items
-source bing தினமணி 'திருச்செங்கோடு': 9 items
-source google இந்து தமிழ் 'நாமக்கல்': 6 items
+source google தினமணி 'திருச்செங்கோடு': 4 items
+source bing தினமணி 'திருச்செங்கோடு': 10 items
+source google இந்து தமிழ் 'நாமக்கல்': 5 items
 source bing இந்து தமிழ் 'நாமக்கல்': 12 items
 source google இந்து தமிழ் 'ராசிபுரம்': 0 items
 source bing இந்து தமிழ் 'ராசிபுரம்': 0 items
@@ -276,9 +104,9 @@ source google சமயம் தமிழ் 'திருச்செங்க
 source bing சமயம் தமிழ் 'திருச்செங்கோடு': 9 items
 source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
-source google தினமலர் 'ராசிபுரம்': 15 items
+source google தினமலர் 'ராசிபுரம்': 13 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
-source google தினமலர் 'திருச்செங்கோடு': 6 items
+source google தினமலர் 'திருச்செங்கோடு': 11 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
 source google DT Next 'நாமக்கல்': 0 items
 source bing DT Next 'நாமக்கல்': 0 items
@@ -292,19 +120,19 @@ source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்': 5 items
+source google ABP நாடு 'நாமக்கல்': 6 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
 source google ABP நாடு 'திருச்செங்கோடு': 0 items
 source bing ABP நாடு 'திருச்செங்கோடு': 0 items
-source google Oneindia தமிழ் 'நாமக்கல்': 11 items
+source google Oneindia தமிழ் 'நாமக்கல்': 12 items
 source bing Oneindia தமிழ் 'நாமக்கல்': 12 items
 source google Oneindia தமிழ் 'ராசிபுரம்': 2 items
-source bing Oneindia தமிழ் 'ராசிபுரம்': 0 items
+source bing Oneindia தமிழ் 'ராசிபுரம்': 9 items
 source google Oneindia தமிழ் 'திருச்செங்கோடு': 0 items
 source bing Oneindia தமிழ் 'திருச்செங்கோடு': 9 items
-source google நக்கீரன் 'நாமக்கல்': 2 items
+source google நக்கீரன் 'நாமக்கல்': 1 items
 source bing நக்கீரன் 'நாமக்கல்': 0 items
 source google நக்கீரன் 'ராசிபுரம்': 0 items
 source bing நக்கீரன் 'ராசிபுரம்': 0 items
@@ -322,71 +150,24 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 957 items -> 559 different news (19 Rasipuram)
+all sources: 950 items -> 557 different news (19 Rasipuram)
+manual link added: https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/lottery-seller-arrested/4358544
 Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: not Namakkal district news (state-wide /=181, old=158, checked earlier=89, collected=50, already filed=46, checked earlier=26, checked earlier=5, checked earlier=4
-to write: 1 Rasipuram + 49 other district candidates (max 200 + 200 stories)
-skip (R) not today (2026-10-12 19:49:28): பள்ளி அருகே தேங்கும் மழைநீர் மாணவியருக்கு டெங்கு அ
-skip (N) not today (2026-10-22T01:50:44Z): கனமழை: 5 மாவட்டங்களில் பள்ளிகளுக்கு இன்று விடுமுறை
-skip (N) could not open: அர்னாப் புயல் எதிரொலி; மீண்டும் கொட்டப்போகும் கனமழ [https://tamil.news18.com/photogallery/tamil-nadu/asna-cyclon] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/tamil
-skip (N) could not open: Heavy Rain | Kovai | காந்திபுரம் ஸ்டன்! 1 மணி நேரம [https://news.google.com/rss/articles/CBMif0FVX3lxTE01T01uOEt] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: தீபாவளிக்கு முன் அகவிலைப்படி உயர்த்தப்படுமா? அக்.2 [https://news.google.com/rss/articles/CBMi2wFBVV95cUxPZVg4bWJ] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: வங்கக்கடலில் உருவாகிறது 'அர்னாப்' புயல்: ஆந்திர கட [https://news.google.com/rss/articles/CBMiyAJBVV95cUxQQ0pURnp] google news link not decoded (no decoded url; google page, not the article)
-skip (N) not today (2026-10-23T10:21:14.446Z): அக். 26 வரை வெளுக்கப்போகும் மிக கனமழை! உஷாராக இருக
-skip (N) could not open: நள்ளிரவில் கொட்டித் தீர்த்த மழை; ஊட்டி மலைப்பாதையி [https://news.google.com/rss/articles/CBMiiwFBVV95cUxOVnMxTDN] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: கொட்டித் தீர்த்த கனமழை காரணமாக கொடைக்கானல்-பெரியகு [https://news.google.com/rss/articles/CBMif0FVX3lxTE5FNm9XMEd] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: Today Headlines - 25.10.2026 | மாலை 6 மணி தலைப்புச [https://tamil.news18.com/videos/tamil-nadu/today-headlines-2] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+candidate filter: old=198, not Namakkal district news (state-wide /=174, checked earlier=92, already filed=52, checked earlier=29, checked earlier=6, checked earlier=4, collected=3
+to write: 1 Rasipuram + 2 other district candidates (max 200 + 200 stories)
+skip (R) not today (2026-10-23T18:44:19+05:30): இதே நாளில் அன்று: அக். 24
+skip (N) not today (2026-10-25T06:38:00+05:30): லாட்டரி விற்றவர் கைது
 skip (N) could not open: நாமக்கல் முட்டை விலை நிலவரம் [https://www.dinamalar.com/news/tamil-nadu-district-news-chen] 404 Client Error: Not Found for url: https://www.dinamalar.com/news/tamil-nadu-d
-skip (N) could not open: சாதியப் பாகுபாட்டில் மாணவன் தற்கொலை விவகாரம்; குடு [https://news.google.com/rss/articles/CBMiugFBVV95cUxPYWM3MVQ] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: ஐப்பசி மாத பவுர்ணமியை முன்னிட்டு பள்ளிப்பட்டு சங்க [https://news.google.com/rss/articles/CBMilwFBVV95cUxPU083bXR] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: மாணவன் மரணத்தில் 7 நாளாக அரசு மவுனம் ஏன்? உயர்மட்ட [https://news.google.com/rss/articles/CBMilgFBVV95cUxQQXJEbk0] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: ஒன்றிய அமைச்சர் பியூஷ் கோயல் தகவல்; ஏஐயால் பாதிக்க [https://news.google.com/rss/articles/CBMihwFBVV95cUxOZXNIRm9] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: அரசு பள்ளி மாணவர்களிடம் வினாத்தாள் கட்டணம் வசூலிக் [https://news.google.com/rss/articles/CBMimAFBVV95cUxPTEROd2J] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: ‘நாங்கள் வெறுத்து விட்டோம்’ பிரான்ஸ் அதிபர் மேக்ரா [https://news.google.com/rss/articles/CBMiggFBVV95cUxQZGdzQjd] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: Just Now |135 கிலோ மெத்தபெட்டமைன் கடத்த முயன்ற வழக [https://news.google.com/rss/articles/CBMid0FVX3lxTE5wZmI3T3d] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: சிவகங்கையில் ரவுடி சுள்ளான் மதன் கொலை வழக்கில் மேல [https://news.google.com/rss/articles/CBMinAFBVV95cUxOYi1vS3p] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: அமைச்சர் அருண்ராஜ் கருத்து; நாதக வேட்பாளர் கைது அர [https://news.google.com/rss/articles/CBMifEFVX3lxTFBJdno5cmV] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: உபியில் எக்ஸ்பிரஸ் ரயிலில் தீ விபத்து [https://news.google.com/rss/articles/CBMic0FVX3lxTE1aYW5KM19] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: பெரம்பலூர் அருகே வெள்ளாற்று வெள்ளத்தில் சிக்கிய 9  [https://news.google.com/rss/articles/CBMid0FVX3lxTE1RLWRyS2c] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: தவெக ஆட்சியில் குற்றச் சம்பவங்கள் அதிகரிப்பு; விரை [https://news.google.com/rss/articles/CBMid0FVX3lxTFA5UjJpZW5] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: தவெக நிர்வாகி மீது பாலியல் குற்றச்சாட்டு; ஆன்லைனில [https://news.google.com/rss/articles/CBMimwFBVV95cUxNWV84QS1] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: மேற்காசியாவில் நிலவும் ஸ்திரமின்மைக்கு இஸ்ரேலே கார [https://news.google.com/rss/articles/CBMiigFBVV95cUxOdXB2dWR] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: டாக்டருக்கு வாட்ஸ் அப்பில் லிங்க் அனுப்பி திருப்பத [https://news.google.com/rss/articles/CBMiiwFBVV95cUxQT1lPakh] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: 5 மாசத்துலயே இப்படின்னா... 5 வருஷத்துல...? தவெக ஆட [https://news.google.com/rss/articles/CBMilgFBVV95cUxQaE9CLW9] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: சீர்காழி அருகே குடும்பத்தகராறில் பயங்கரம்; இரும்பு [https://news.google.com/rss/articles/CBMiYkFVX3lxTE5rallkRVB] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: நாலூர் ஊராட்சியில் கால்வாய் ஆய்வு: வட்டார வளர்ச்சி [https://news.google.com/rss/articles/CBMie0FVX3lxTE1lSVRHUy1] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: விபி-ஜி ராம் ஜி' திட்டத்தின் கீழ் 31.69 கோடி வேலைந [https://news.google.com/rss/articles/CBMiqAFBVV95cUxQVldWZnV] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: Just Now | ஒரு யூனிட் மின்சாரத்திற்கு ரூ.46 செலவு  [https://news.google.com/rss/articles/CBMidkFVX3lxTE9SR3FPVmN] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: கோயில்களில் ஊழியர்கள் பணம் கேட்டால் உடனடி நடவடிக்க [https://news.google.com/rss/articles/CBMikgFBVV95cUxQWXJUa3p] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: ஈரான் தாக்குதல் குறித்த உளவுத்துறை எச்சரிக்கை எதிர [https://news.google.com/rss/articles/CBMimwFBVV95cUxNNWRIWjU] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: பிரபல சமையல் கலைஞர் செஃப் தாமு மறைவு: எடப்பாடி பழன [https://news.google.com/rss/articles/CBMilgFBVV95cUxOc21OLW1] google news link not decoded (no decoded url; google page, not the article)
-skip (N) no Namakkal place in article: 1 ரூபாய் லஞ்சம் கொடுக்காமல் இடமாறுதல்.. மின்சார து
-skip (N) could not open: 2060ம் ஆண்டுக்குள் அணுசக்தி பயன்பாடு 3 மடங்கு அதிக [https://news.google.com/rss/articles/CBMifEFVX3lxTE5jdXA3cG1] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: பத்திரப்பதிவு, நில அளவை பணிகளை தனியார்மயமாக்கும் ம [https://news.google.com/rss/articles/CBMikwFBVV95cUxPNnpraFN] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: நெல்லின் ஈரப்பத அளவை தளர்த்திட அரசு உரிய நடவடிக்கை [https://news.google.com/rss/articles/CBMicEFVX3lxTE1TNXRFNy0] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: வடகொரிய அதிபர் கிம் ஜாங் உன் சீனாவுக்கு பயணம் [https://news.google.com/rss/articles/CBMidkFVX3lxTE42WTVMUkx] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: டியூஷனுக்கு சென்ற சிறுவன் கடத்தல்? டூவீலர்களில் லி [https://news.google.com/rss/articles/CBMibkFVX3lxTE93VlFKWTR] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: மீண்டும் தாக்குதல் நடத்துவோம் என டிரம்ப் மிரட்டல்; [https://news.google.com/rss/articles/CBMia0FVX3lxTFBOaEJQY0Z] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: பாமகவை தவெக ஏற்கவில்லை எதிர்காலத்திலும் ஏற்கமாட்டா [https://news.google.com/rss/articles/CBMieEFVX3lxTFBWYTZiWU5] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: பிரெஞ்ச் ஓபன் பேட்மின்டன் பைனலில் பி.வி.சிந்து [https://news.google.com/rss/articles/CBMib0FVX3lxTE11UWVQekN] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: தவெக ஆட்சி 6 மாதங்களை பூர்த்தி செய்யாது; நம்புகிறா [https://news.google.com/rss/articles/CBMimwFBVV95cUxPMFNic25] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: நகராட்சி துறையில் அதிகாரிகள் நியமன முறைகேடு புகார் [https://news.google.com/rss/articles/CBMilwFBVV95cUxNQmt0Mk5] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: மருதுபாண்டியர் 225வது குருபூஜை விழா அமைச்சர்கள், அ [https://news.google.com/rss/articles/CBMinwFBVV95cUxPSDVRUkI] google news link not decoded (no decoded url; google page, not the article)
-skip (N) could not open: அரசு இணையதளத்தில் குளறுபடி; வாணியம்பாடி எம்எல்ஏவை  [https://news.google.com/rss/articles/CBMilAFBVV95cUxOcDZ0Yzg] google news link not decoded (no decoded url; google page, not the article)
-carousel for 0 of 3 stories, the rest reel only
-filed: 0 Rasipuram + 3 Namakkal (targets 200 + 200)
-All News sheet: {"ok":true,"added":4,"updated":56}
-All News sheet: {"ok":true,"added":8,"updated":52}
-All News sheet: {"ok":true,"added":4,"updated":56}
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+All News sheet: {"ok":false,"error":"unknown action undefined"}
 All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":41,"updated":19}
-All News sheet: {"ok":true,"added":31,"updated":29}
 All News sheet: {"ok":true,"added":5,"updated":55}
-All News sheet: {"ok":true,"added":5,"updated":55}
+All News sheet: {"ok":true,"added":9,"updated":51}
 All News sheet: {"ok":true,"added":7,"updated":53}
-All News sheet: {"ok":true,"added":2,"updated":17} 
-stories: 3
-images made: 2 for 'Heavy rain floods roads in Paramathi Vel'
-images made: 3 for 'Cyclone Arnab likely from Bay of Bengal;'
-images made: 3 for 'Karate belt ceremony for 150+ students a'
-bridge: 200 {"ok":true,"added":3,"auto_queued":3,"emailed":0,"reoffered":0,"batch":"B20261025-2220","first":"RN-94"}
+All News sheet: {"ok":true,"added":6,"updated":54}
+All News sheet: {"ok":true,"added":4,"updated":56}
+All News sheet: {"ok":true,"added":5,"updated":55}
+All News sheet: {"ok":true,"added":5,"updated":55}
+All News sheet: {"ok":true,"added":1,"updated":17} 
+stories: 0
