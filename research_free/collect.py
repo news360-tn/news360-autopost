@@ -431,11 +431,16 @@ def main():
         if st.get("s") in ("filed", "dup", "notext", "old", "notdistrict") or st.get("n", 0) >= 10:
             n["status"] = n["status"] if n["status"] != "collected" else "checked earlier: " + st.get("s", "failed")
     queues = {"R": [], "N": []}
+    rechecks = 0
     for n in sorted(news, key=lambda x: -x["score"]):
         if n["status"] == "collected" and n["area"] == "N" and allnews.outside_district(n["title"], n.get("via", "")):
             n["status"] = "not Namakkal district news (state-wide / other district)"
             continue
         if n["status"] == "collected" and fresh(n["published"]):
+            queues[n["area"]].append(n)
+        elif n["status"] == "collected" and any(w in (n.get("source") or "") for w in ("தினமணி", "தினமலர்")) and rechecks < 60:
+            # the feed date of a Dinamani / Dinamalar item can be older than the story: open the article and use ITS date (checked when opened)
+            rechecks += 1
             queues[n["area"]].append(n)
         elif n["status"] == "collected":
             n["status"] = "old"
