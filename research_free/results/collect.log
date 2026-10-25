@@ -1,184 +1,7 @@
-writing [N]: ஐ.டி. ஊழியா் தூக்கிட்டுத் தற்கொலை
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.8-flash
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.7-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
-dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
-fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
-dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
-fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-switching away from mistral/mistral-small-latest for 10 min
-free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 7 problems
-  reel_script says 'அக்டோபர் பத்தாம் தேதி' (October 10th) and caption says 'அக். 11' — the article gives only the day numbers (10th and 11th) with no month; the month name is an invented detail
-  reel_script states 'முப்பத்து மூன்று' (33) but the sentence structure reads as if the number is part of a name/role phrase, making it ungrammatical/unclear in context
-  reel_script says 'வீட்டு அறையில்' and slides say 'வீட்டில்' — minor, but caption/slides reference 'அக். 11 அன்று' contradicting the reel's month reference is inconsistent with the source
-  reel_script says the person worked at a 'தனியார் தகவல் தொழில்நுட்ப நிறுவனத்தில் பணியாற்றி வந்தார்' while slides/caption also specify the Chennai location; the article says he returned home from Chennai on the 10th, which the draft states as 'சென்னையிலிருந்து வீட்டுக்கு வந்த அவர்' — consistent, so no issue here
-  slides_spec 'நிலவரம்' slide adds 'விவரங்கள் இன்னும் முழுமையாகத் தெரியவரவில்லை' (details not yet fully known), which is not stated in the article — an invented detail
-  slides_spec and caption say 'நல்லூர் போலீஸ் விசாரணை' / 'நல்லூர் போலீஸார் வழக்குப் பதிவு செய்து விசாரணை நடத்தி வருகின்றனர்' — accurate, but the caption's heading 'ஐ.டி. ஊழியர் தற்கொலை' omits that the death occurred at Kandampalayam area location per the article (location omission is minor)
-  reel_script omits that the family broke the door open and the victim was taken to hospital after rescue — this is included, so no omission; however reel_script omits the victim's wife, daughter and parents context which the article provides as background, but this is not an important fact of who did what, so not a problem
-claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
-  fact-check: reel_script says 'அக்டோபர் பத்தாம் தேதி' (October 10th) and caption says 'அக். 11' — the article gives only the day numbers (10th and 11th) with no month; the month name is an invented detail
-  fact-check: reel_script states 'முப்பத்து மூன்று' (33) but the sentence structure reads as if the number is part of a name/role phrase, making it ungrammatical/unclear in context
-  fact-check: reel_script says 'வீட்டு அறையில்' and slides say 'வீட்டில்' — minor, but caption/slides reference 'அக். 11 அன்று' contradicting the reel's month reference is inconsistent with the source
-  fact-check: reel_script says the person worked at a 'தனியார் தகவல் தொழில்நுட்ப நிறுவனத்தில் பணியாற்றி வந்தார்' while slides/caption also specify the Chennai location; the article says he returned home from Chennai on the 10th, which the draft states as 'சென்னையிலிருந்து வீட்டுக்கு வந்த அவர்' — consistent, so no issue here
-  fact-check: slides_spec 'நிலவரம்' slide adds 'விவரங்கள் இன்னும் முழுமையாகத் தெரியவரவில்லை' (details not yet fully known), which is not stated in the article — an invented detail
-  fact-check: slides_spec and caption say 'நல்லூர் போலீஸ் விசாரணை' / 'நல்லூர் போலீஸார் வழக்குப் பதிவு செய்து விசாரணை நடத்தி வருகின்றனர்' — accurate, but the caption's heading 'ஐ.டி. ஊழியர் தற்கொலை' omits that the death occurred at Kandampalayam area location per the article (location omission is minor)
-  fact-check: reel_script omits that the family broke the door open and the victim was taken to hospital after rescue — this is included, so no omission; however reel_script omits the victim's wife, daughter and parents context which the article provides as background, but this is not an important fact of who did what, so not a problem
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  reel_script says 'முப்பத்து மூன்று' (thirty-three) as an age construction that reads as if it is a name/number attached to the victim; the article gives the age as 33 in parentheses, so this is a grammatical/meaning issue: the sentence 'கவியரசன், முப்பத்து மூன்று தூக்கிட்டுத்' is ungrammatical and unclear
-  slides_spec line 'சென்னையில் தனியார் தகவல் தொழில்நுட்ப நிறுவனத்தில்' is an incomplete sentence with no clear meaning (missing the verb 'பணியாற்றி வந்தார்')
-  reel_script omits the detail that the victim was first taken to hospital and treated intensively, but this is included; however the reel_script states the family 'சேர்த்தனர்' to two hospitals, which matches the article
-  caption says the victim was taken to 'கோவை, திருச்செங்கோடு மருத்துவமனைகளில்' which mixes the two hospitals into a single treatment narrative; the article says he was sent to Coimbatore and Tiruchengode private hospitals, so this is acceptable, but the caption's 'வீட்டில் தூக்கிட்டுக் கொண்டார்' omits that he used a bedsheet from the fan, a minor omission of the cause detail
-  reel_script omits that the family broke the door open to reach him, which is an important action detail; it is partially present as 'கதவை உடைத்து', so no omission here
-claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: reel_script says 'முப்பத்து மூன்று' (thirty-three) as an age construction that reads as if it is a name/number attached to the victim; the article gives the age as 33 in parentheses, so this is a grammatical/meaning issue: the sentence 'கவியரசன், முப்பத்து மூன்று தூக்கிட்டுத்' is ungrammatical and unclear
-  fact-check: slides_spec line 'சென்னையில் தனியார் தகவல் தொழில்நுட்ப நிறுவனத்தில்' is an incomplete sentence with no clear meaning (missing the verb 'பணியாற்றி வந்தார்')
-  fact-check: reel_script omits the detail that the victim was first taken to hospital and treated intensively, but this is included; however the reel_script states the family 'சேர்த்தனர்' to two hospitals, which matches the article
-  fact-check: caption says the victim was taken to 'கோவை, திருச்செங்கோடு மருத்துவமனைகளில்' which mixes the two hospitals into a single treatment narrative; the article says he was sent to Coimbatore and Tiruchengode private hospitals, so this is acceptable, but the caption's 'வீட்டில் தூக்கிட்டுக் கொண்டார்' omits that he used a bedsheet from the fan, a minor omission of the cause detail
-  fact-check: reel_script omits that the family broke the door open to reach him, which is an important action detail; it is partially present as 'கதவை உடைத்து', so no omission here
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  reel_script says 'முப்பத்து மூன்று' (thirty-three) for the age, which is written in words and placed awkwardly; it is grammatically unclear as a standalone phrase in the sentence about Kavyarasan (ungrammatical/unclear Tamil)
-  reel_script says the victim was rescued by family breaking the door and admitted to hospitals, but omits that he was taken to hospital in Coimbatore and Tiruchengode for intensive treatment in the sense intended (minor), and omits the detail that he was found when family became suspicious (partially covered)
-  caption says 'அக். 10ஆம் தேதி' and 'அக். 11ஆம் தேதி' adding a month (October) not stated in the article
-  caption states 'கே.பி.பாளையம் பகுதியைச் சேர்ந்த கவியரசன்' placing him in the locality, and 'கந்தம்பாளையம் அருகே' while the article says the family lives near Kandampalayam in Thenaimaram Thottam, a slight location detail mismatch
-  caption adds an invented closing advice about talking to trusted people and consulting a doctor, which is not in the article
-  slides_spec slide 1 says the incident happened 'பரமத்தி வேலூர் அருகே கந்தம்பாளையத்தில் சம்பவம்' and slide 2 'வீட்டுக்கு வந்தார்' is fine, but slide 2 line 'ஐ.டி. நிறுவன ஊழியர் கவியரசன் (33) தூக்கிட்டுக் கொண்டார்' is fine; no further issue there
-claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: reel_script says 'முப்பத்து மூன்று' (thirty-three) for the age, which is written in words and placed awkwardly; it is grammatically unclear as a standalone phrase in the sentence about Kavyarasan (ungrammatical/unclear Tamil)
-  fact-check: reel_script says the victim was rescued by family breaking the door and admitted to hospitals, but omits that he was taken to hospital in Coimbatore and Tiruchengode for intensive treatment in the sense intended (minor), and omits the detail that he was found when family became suspicious (partially covered)
-  fact-check: caption says 'அக். 10ஆம் தேதி' and 'அக். 11ஆம் தேதி' adding a month (October) not stated in the article
-  fact-check: caption states 'கே.பி.பாளையம் பகுதியைச் சேர்ந்த கவியரசன்' placing him in the locality, and 'கந்தம்பாளையம் அருகே' while the article says the family lives near Kandampalayam in Thenaimaram Thottam, a slight location detail mismatch
-  fact-check: caption adds an invented closing advice about talking to trusted people and consulting a doctor, which is not in the article
-  fact-check: slides_spec slide 1 says the incident happened 'பரமத்தி வேலூர் அருகே கந்தம்பாளையத்தில் சம்பவம்' and slide 2 'வீட்டுக்கு வந்தார்' is fine, but slide 2 line 'ஐ.டி. நிறுவன ஊழியர் கவியரசன் (33) தூக்கிட்டுக் கொண்டார்' is fine; no further issue there
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: சாக்கடை பள்ளத்தில் தவறி விழுந்த வாலிபர் பலி
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: பைக் மோதிய விபத்தில் நடந்து சென்றவர் பலி
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: டி.என்.பி.எஸ்.சி., குரூப் 4 தேர்வுக்கு இலவச பயிற்சி
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 7 problems
-  Reel script says the TNPSC notification was released in October ('அக்டோபர் ஆறாம் தேதி'), but the article says it was released on the 6th of an unstated month (the article only says 'கடந்த, 6ம் தேதி'); the month 'October' is invented.
-  Reel script says the direct coaching class is on October 15 ('அக்டோபர் பதினைந்தாம் தேதி'), but the article gives only the day (15th) with no month; the month 'October' is invented.
-  Reel script gives the phone number as '4286 ... 2,22,260' with a garbled, ungrammatical number format; the article number is 04286-222260, so the spoken rendering is inconsistent with the source ('நாலாயிரத்து இருநூற்று எண்பத்து ஆறு -இரண்டு லட்சத்து...' mixes two number readings), making it unclear.
-  Reel script says 'குரூப் நான்கு தேருக்கு' with 'தேரு' instead of 'தேர்வுக்கு', a misspelled/nonsensical word in Tamil.
-  Reel script says the closing deadline is 'நவம்பர் ஐந்து .' with a stray punctuation and the sentence structure is broken; also 'பத்து :முப்பது மணிக்கு' has a misplaced colon, making the time phrasing unclear.
-  Caption and slides state the coaching is 'அக்டோபர் 15' and the notification date 'அக்டோபர் 6' as facts, repeating the invented October month not present in the article.
-  Slides say the online portal and YouTube coaching exist, and the TV slot says 'கல்வி டிவியில் தினமும் காலை, மாலை 7 முதல் 9 மணி வரை' which is accurate, but the reel script omits the important fact that the free training is also available online/TV, which the article presents as part of the coaching offer (a missing key fact is minor here).
-claude rewrite 2 anthropic/claude-haiku-5-5: 7 problems
-  fact-check: Reel script says the TNPSC notification was released in October ('அக்டோபர் ஆறாம் தேதி'), but the article says it was released on the 6th of an unstated month (the article only says 'கடந்த, 6ம் தேதி'); the month 'October' is invented.
-  fact-check: Reel script says the direct coaching class is on October 15 ('அக்டோபர் பதினைந்தாம் தேதி'), but the article gives only the day (15th) with no month; the month 'October' is invented.
-  fact-check: Reel script gives the phone number as '4286 ... 2,22,260' with a garbled, ungrammatical number format; the article number is 04286-222260, so the spoken rendering is inconsistent with the source ('நாலாயிரத்து இருநூற்று எண்பத்து ஆறு -இரண்டு லட்சத்து...' mixes two number readings), making it unclear.
-  fact-check: Reel script says 'குரூப் நான்கு தேருக்கு' with 'தேரு' instead of 'தேர்வுக்கு', a misspelled/nonsensical word in Tamil.
-  fact-check: Reel script says the closing deadline is 'நவம்பர் ஐந்து .' with a stray punctuation and the sentence structure is broken; also 'பத்து :முப்பது மணிக்கு' has a misplaced colon, making the time phrasing unclear.
-  fact-check: Caption and slides state the coaching is 'அக்டோபர் 15' and the notification date 'அக்டோபர் 6' as facts, repeating the invented October month not present in the article.
-  fact-check: Slides say the online portal and YouTube coaching exist, and the TV slot says 'கல்வி டிவியில் தினமும் காலை, மாலை 7 முதல் 9 மணி வரை' which is accurate, but the reel script omits the important fact that the free training is also available online/TV, which the article presents as part of the coaching offer (a missing key fact is minor here).
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  reel_script says the group 4 exam has 6,574 vacancies as '6,574' spoken as 'ஆறாயிரத்து ஐந்நூற்று எழுபத்து நான்கு' — correct number, but the reel_script says 'நாலாயிரத்து இருநூற்று எண்பத்து ஆறு -இரண்டு லட்சத்து இருபத்து இரண்டாயிரத்து இருநூற்று அறுபது' as the phone number, which does not match the article's 04286-222260 (the article's number is 04286-222260 and this spoken form is garbled and reads as a different number)
-  reel_script says 'குரூப் நான்கு தேருக்கு' — 'தேரு' is a misspelling/wrong word for 'தேர்வுக்கு' (exam), making the sentence ungrammatical and unclear
-  reel_script omits the exam announcement date detail and the fact that the exam notification was released on the 6th; this is minor but the reel_script also omits that the training is for those writing the exam with the revised syllabus
-  reel_script omits the online resources (video learning, model question papers, study notes on the government career services website) and the Kalvi TV and YouTube broadcasts, which are important facts from the article
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: reel_script says the group 4 exam has 6,574 vacancies as '6,574' spoken as 'ஆறாயிரத்து ஐந்நூற்று எழுபத்து நான்கு' — correct number, but the reel_script says 'நாலாயிரத்து இருநூற்று எண்பத்து ஆறு -இரண்டு லட்சத்து இருபத்து இரண்டாயிரத்து இருநூற்று அறுபது' as the phone number, which does not match the article's 04286-222260 (the article's number is 04286-222260 and this spoken form is garbled and reads as a different number)
-  fact-check: reel_script says 'குரூப் நான்கு தேருக்கு' — 'தேரு' is a misspelling/wrong word for 'தேர்வுக்கு' (exam), making the sentence ungrammatical and unclear
-  fact-check: reel_script omits the exam announcement date detail and the fact that the exam notification was released on the 6th; this is minor but the reel_script also omits that the training is for those writing the exam with the revised syllabus
-  fact-check: reel_script omits the online resources (video learning, model question papers, study notes on the government career services website) and the Kalvi TV and YouTube broadcasts, which are important facts from the article
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: கே.எஸ்.ஆர். பல் மருத்துவ மாணவர்கள் ஆராய்ச்சி நிதியுதவி பெற்ற
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: சுகாதாரமற்ற முறையில் உணவு தயாரிப்பு 3 கடைக்கு ரூ.15,000 அபரா
-free models unavailable: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 13
-proofread skipped: free models not efficient (11 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
 earlier stories still waiting for images: []
 instagram check: 66 recent posts read from both pages
 source dinamalar list: 8 items
-source google 'நாமக்கல்': 28 items
+source google 'நாமக்கல்': 59 items
 source bing 'நாமக்கல்': 12 items
 source google 'ராசிபுரம்': 6 items
 source bing 'ராசிபுரம்': 12 items
@@ -190,7 +13,7 @@ source google 'குமாரபாளையம்': 2 items
 source bing 'குமாரபாளையம்': 12 items
 source google 'பள்ளிபாளையம்': 0 items
 source bing 'பள்ளிபாளையம்': 9 items
-source google 'சேந்தமங்கலம்': 1 items
+source google 'சேந்தமங்கலம்': 2 items
 source bing 'சேந்தமங்கலம்': 12 items
 source google 'கொல்லிமலை': 2 items
 source bing 'கொல்லிமலை': 12 items
@@ -202,9 +25,9 @@ source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 0 items
 source google 'எருமப்பட்டி': 1 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 52 items
+source google 'நாமக்கல் மாவட்டம்': 49 items
 source bing 'நாமக்கல் மாவட்டம்': 12 items
-source google 'நாமக்கல் முட்டை விலை': 2 items
+source google 'நாமக்கல் முட்டை விலை': 1 items
 source bing 'நாமக்கல் முட்டை விலை': 9 items
 source google நியூஸ்7 தமிழ் 'நாமக்கல்': 6 items
 source bing நியூஸ்7 தமிழ் 'நாமக்கல்': 7 items
@@ -226,11 +49,11 @@ source google மாலைமலர் 'திருச்செங்கோட�
 source bing மாலைமலர் 'திருச்செங்கோடு': 1 items
 source google தினத்தந்தி 'நாமக்கல்': 33 items
 source bing தினத்தந்தி 'நாமக்கல்': 12 items
-source google தினத்தந்தி 'ராசிபுரம்': 1 items
+source google தினத்தந்தி 'ராசிபுரம்': 2 items
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
-source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
+source google தினத்தந்தி 'திருச்செங்கோடு': 1 items
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்': 47 items
+source google தினமணி 'நாமக்கல்': 48 items
 source bing தினமணி 'நாமக்கல்': 12 items
 source google தினமணி 'ராசிபுரம்': 3 items
 source bing தினமணி 'ராசிபுரம்': 6 items
@@ -261,7 +84,7 @@ source bing நியூஸ்18 தமிழ் 'ராசிபுரம்': 
 source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 1 items
 source bing நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 6 items
 source google விகடன் 'நாமக்கல்': 2 items
-source bing விகடன் 'நாமக்கல்': 11 items
+source bing விகடன் 'நாமக்கல்': 10 items
 source google விகடன் 'ராசிபுரம்': 3 items
 source bing விகடன் 'ராசிபுரம்': 1 items
 source google விகடன் 'திருச்செங்கோடு': 0 items
@@ -296,7 +119,7 @@ source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்': 6 items
+source google ABP நாடு 'நாமக்கல்': 7 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
@@ -326,35 +149,23 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 949 items -> 556 different news (19 Rasipuram)
-manual link added: https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/lottery-seller-arrested/4358544
-manual link added: https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/3-unhygienic-food-outlets-fined-rs-15000/4347979
-manual link added: https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/dental-students-receive-research-funding/4347981
-manual link added: https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/free-coaching-for--group-4-exam/4347977
-manual link added: https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/pedestrian-killed-in-bike-accident/4347975
-manual link added: https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/youth-dies-after-falling-into-drain/4347980
-manual link added: https://www.dinamani.com/all-editions/edition-dharmapuri/namakkal/2026/Oct/24/%E0%AE%90%E0%AE%9F%E0%AE%BF-%E0%AE%8A%E0%AE%B4%E0%AE%BF%E0%AE%AF%E0%AE%BE%E0%AF%8D-%E0%AE%A4%E0%AF%82%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%BF%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%81%E0%AE%A4%E0%AF%8D-%E0%AE%A4%E0%AE%B1%E0%AF%8D%E0%AE%95%E0%AF%8A%E0%AE%B2%E0%AF%88
+all sources: 980 items -> 562 different news (19 Rasipuram)
+manual link added: https://www.dinamani.com/all-editions/edition-dharmapuri/namakkal/2026/Oct/25/%E0%AE%AA%E0%AE%B0%E0%AE%AE%E0%AE%A4%E0%AF%8D%E0%AE%A4%E0%AE%BF-%E0%AE%B5%E0%AF%87%E0%AE%B2%E0%AF%82%E0%AE%BE%E0%AF%8D-%E0%AE%AA%E0%AE%95%E0%AF%81%E0%AE%A4%E0%AE%BF%E0%AE%AF%E0%AE%BF%E0%AE%B2%E0%AF%8D-%E0%AE%A4%E0%AF%8A%E0%AE%9F%E0%AE%BE%E0%AF%8D%E0%AE%AE%E0%AE%B4%E0%AF%88-%E0%AE%AA%E0%AE%B4%E0%AF%88%E0%AE%AF-%E0%AE%A8%E0%AF%86%E0%AE%9F%E0%AF%81%E0%AE%9E%E0%AF%8D%E0%AE%9A%E0%AE%BE%E0%AE%B2%E0%AF%88%E0%AE%AF%E0%AE%BF%E0%AE%B2%E0%AF%8D-%E0%AE%9A%E0%AE%BE%E0%AE%AF%E0%AF%8D%E0%AE%A8%E0%AF%8D%E0%AE%A4-%E0%AE%AE%E0%AE%B0%E0%AE%AE%E0%AF%8D
+manual link added: https://www.dinamani.com/all-editions/edition-dharmapuri/namakkal/2026/Oct/25/%E0%AE%A8%E0%AE%BE%E0%AE%AE%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%B2%E0%AF%8D%E0%AE%B2%E0%AE%BF%E0%AE%B2%E0%AF%8D-%E0%AE%86%E0%AE%BE%E0%AF%8D%E0%AE%8E%E0%AE%B8%E0%AF%8D%E0%AE%8E%E0%AE%B8%E0%AF%8D-%E0%AE%85%E0%AE%A3%E0%AE%BF%E0%AE%B5%E0%AE%95%E0%AF%81%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81-%E0%AE%8A%E0%AE%BE%E0%AF%8D%E0%AE%B5%E0%AE%B2%E0%AE%AE%E0%AF%8D
 Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: old=197, not Namakkal district news (state-wide /=173, checked earlier=93, already filed=52, checked earlier=31, collected=8, checked earlier=6, checked earlier=3
-to write: 0 Rasipuram + 8 other district candidates (max 200 + 200 stories)
-skip (N) could not open: தேச நலனை பாதுகாக்க இந்தோ-பசிபிக் பகுதி உன்னிப்பாக  [https://news.google.com/rss/articles/CBMiqgFBVV95cUxPQVFWVmp] google news link not decoded (no decoded url; google page, not the article)
-carousel for 0 of 6 stories, the rest reel only
-filed: 0 Rasipuram + 6 Namakkal (targets 200 + 200)
-All News sheet: {"ok":true,"added":6,"updated":54}
+candidate filter: old=213, not Namakkal district news (state-wide /=174, checked earlier=82, already filed=53, checked earlier=30, checked earlier=6, collected=3, checked earlier=3
+to write: 0 Rasipuram + 3 other district candidates (max 200 + 200 stories)
+skip (N) could not open: நாமக்கல் முட்டை விலை நிலவரம் [https://www.dinamalar.com/news/tamil-nadu-district-news-chen] 404 Client Error: Not Found for url: https://www.dinamalar.com/news/tamil-nadu-d
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+All News sheet: {"ok":true,"added":3,"updated":57}
 All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":2,"updated":58}
-All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":2,"updated":58}
-All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":1,"updated":59}
 All News sheet: {"ok":true,"added":0,"updated":60}
 All News sheet: {"ok":true,"added":2,"updated":58}
-All News sheet: {"ok":true,"added":1,"updated":22} 
-stories: 6
-images made: 3 for 'IT employee dies by suicide near Paramat'
-images made: 3 for '17-year-old auto driver found dead in dr'
-images made: 3 for 'Elderly pedestrian dies after being hit '
-images made: 3 for 'Free direct coaching for TNPSC Group 4 e'
-images made: 3 for 'KSR dental students win Indian Council o'
-images made: 3 for 'Namakkal: 3 hotels fined Rs 15,000 in to'
-bridge: 200 {"ok":true,"added":6,"auto_queued":6,"emailed":0,"reoffered":0,"batch":"B20261026-0128","first":"RN-97"}
+All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":1,"updated":59}
+All News sheet: {"ok":true,"added":0,"updated":24} 
+stories: 0
