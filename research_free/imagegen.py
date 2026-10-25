@@ -28,6 +28,30 @@ def _one(model, body, key):
     return base64.b64decode(b64)
 
 
+FAL_URL = "https://fal.run/"
+# fal.ai (paid, cheap). FAL_MODEL can be switched without code changes, e.g. fal-ai/bytedance/seedream/v4/text-to-image
+FAL_MODEL = os.environ.get("FAL_MODEL") or "fal-ai/flux/schnell"
+# fal bills per megapixel rounded UP: 720x1280 = 0.92 MP -> billed as 1 MP (768x1344 = 1.03 MP would be billed as 2 MP)
+FAL_W, FAL_H = 720, 1280
+
+
+def _fal(prompt, seed, key):
+    body = {"prompt": prompt, "image_size": {"width": FAL_W, "height": FAL_H}, "num_images": 1, "seed": seed,
+            "enable_safety_checker": True}
+    if "schnell" in FAL_MODEL:
+        body["num_inference_steps"] = 4
+    r = requests.post(FAL_URL + FAL_MODEL, json=body, timeout=120,
+                      headers={"Authorization": "Key " + key, "Content-Type": "application/json"})
+    if r.status_code != 200:
+        raise RuntimeError(f"fal {FAL_MODEL} {r.status_code}: {r.text[:300]}")
+    imgs = r.json().get("images") or []
+    if not imgs or not imgs[0].get("url"):
+        raise RuntimeError(f"fal {FAL_MODEL} no image: {r.text[:200]}")
+    d = requests.get(imgs[0]["url"], timeout=120)
+    d.raise_for_status()
+    return d.content
+
+
 CF = "https://api.cloudflare.com/client/v4/accounts/{}/ai/run/@cf/"
 CF_MODELS = [
     ("black-forest-labs/flux-1-schnell", lambda p, s: {"prompt": p, "steps": 8}),
@@ -67,9 +91,24 @@ def generate(prompt, seed=0, key=None):
 
 
 def _generate(prompt, seed=0, key=None):
-    """Cloudflare Workers AI first (free daily allowance), NVIDIA second."""
+    """fal.ai first (paid, cheap), then Cloudflare Workers AI (free daily allowance), then NVIDIA."""
     tok, acct = os.environ.get("CLOUDFLARE_API_TOKEN"), os.environ.get("CLOUDFLARE_ACCOUNT_ID")
     last = None
+    fkey = os.environ.get("FAL_KEY")
+    if fkey and FAL_MODEL not in DEAD:
+        for k in range(2):
+            try:
+                img = _fal(prompt, seed + k, fkey)
+                USED[FAL_MODEL] = USED.get(FAL_MODEL, 0) + 1
+                return img
+            except Exception as e:
+                last = e
+                m = str(e)
+                print("imagegen:", m[:220], file=sys.stderr)
+                if any(c in m for c in (" 401", " 403", " 404", " 422")):
+                    DEAD.add(FAL_MODEL)     # bad key / no balance / wrong model id: use the backups for the rest of this run
+                    break
+                time.sleep(3)
     if tok and acct:
         for model, build in CF_MODELS:
             if model in DEAD:

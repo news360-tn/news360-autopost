@@ -167,6 +167,8 @@ _RECENT_IMG = []
 def reuse_images(st, need):
     """earlier posted stories' pictures that fit this news: same category and place first, then same category (partial match).
     Returns `need` picture URLs, or [] when nothing suitable exists."""
+    if os.environ.get("REUSE_IMAGES", "0") != "1":      # owner 25 Oct: never reuse earlier pictures, always make fresh ones
+        return []
     if not _RECENT_IMG:
         try:
             _RECENT_IMG.extend(bridge("recent").get("rows", []))
@@ -192,7 +194,7 @@ def reuse_images(st, need):
 def make_images(group, log=None):
     """AUTO images: every scene prompt -> NVIDIA image API -> Cloudinary. A story gets story["images"] only when ALL its images were made;
     the bridge then queues it for posting at once and leaves it out of the images-needed email. Any failure -> the e-mail flow as before."""
-    if os.environ.get("AUTO_IMAGES", "0") != "1" or not (os.environ.get("NVIDIA_API_KEY") or os.environ.get("CLOUDFLARE_API_TOKEN")) or DRY:
+    if os.environ.get("AUTO_IMAGES", "0") != "1" or not (os.environ.get("FAL_KEY") or os.environ.get("NVIDIA_API_KEY") or os.environ.get("CLOUDFLARE_API_TOKEN")) or DRY:
         return
     try:
         import imagegen

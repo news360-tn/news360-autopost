@@ -1007,6 +1007,8 @@ def missing_setup():
 
 def _reuse_pick(r, need):
     """earlier posted stories' pictures for this news: same category + place first, else same category (partial match)"""
+    if os.environ.get("REUSE_IMAGES", "0") != "1":      # owner 25 Oct: never reuse earlier pictures
+        return []
     try:
         recent = bridge_get("recent").get("rows", [])
     except Exception as e:
