@@ -1,15 +1,19 @@
-writing [N]: சங்ககிரி சுற்றுவட்டாரப் பகுதியில் கனமழை
+writing [N]: வேளாண்மை பொறியியல் துறை சாா்பில் மகளிருக்கு ‘ட்ரோன்’ பயன்பாட
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
 poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.7-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
 poor answer - skipped for 30 min: gemini/gemini-3.7-flash
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (16s)
+ok gemini/gemini-3.6-flash (20s)
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok gemini/gemini-3.6-flash (4s)
@@ -17,22 +21,22 @@ factcheck by gemini/gemini-3.6-flash: 0 problems
 attempt 1 gemini/gemini-3.6-flash: 0 problems
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (16s)
+ok gemini/gemini-3.6-flash (18s)
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (5s)
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (7s)
 factcheck by gemini/gemini-3.6-flash: 0 problems
 proofread by gemini/gemini-3.6-flash: 0 problems
 earlier stories still waiting for images: []
 instagram check: 66 recent posts read from both pages
 source dinamalar list: 8 items
-source google 'நாமக்கல்': 55 items
+source google 'நாமக்கல்': 54 items
 source bing 'நாமக்கல்': 10 items
-source google 'ராசிபுரம்': 10 items
+source google 'ராசிபுரம்': 9 items
 source bing 'ராசிபுரம்': 12 items
 source google 'திருச்செங்கோடு': 1 items
 source bing 'திருச்செங்கோடு': 12 items
-source google 'பரமத்தி வேலூர்': 1 items
+source google 'பரமத்தி வேலூர்': 0 items
 source bing 'பரமத்தி வேலூர்': 9 items
 source google 'குமாரபாளையம்': 1 items
 source bing 'குமாரபாளையம்': 11 items
@@ -50,7 +54,7 @@ source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 1 items
 source google 'எருமப்பட்டி': 0 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 52 items
+source google 'நாமக்கல் மாவட்டம்': 49 items
 source bing 'நாமக்கல் மாவட்டம்': 11 items
 source google 'நாமக்கல் முட்டை விலை': 1 items
 source bing 'நாமக்கல் முட்டை விலை': 9 items
@@ -66,7 +70,7 @@ source google என்டிடிவி தமிழ் 'ராசிபுர
 source bing என்டிடிவி தமிழ் 'ராசிபுரம்': 0 items
 source google என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
 source bing என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
-source google மாலைமலர் 'நாமக்கல்': 9 items
+source google மாலைமலர் 'நாமக்கல்': 10 items
 source bing மாலைமலர் 'நாமக்கல்': 12 items
 source google மாலைமலர் 'ராசிபுரம்': 2 items
 source bing மாலைமலர் 'ராசிபுரம்': 2 items
@@ -80,9 +84,9 @@ source google தினத்தந்தி 'திருச்செங்க�
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
 source google தினமணி 'நாமக்கல்': 29 items
 source bing தினமணி 'நாமக்கல்': 12 items
-source google தினமணி 'ராசிபுரம்': 2 items
-source bing தினமணி 'ராசிபுரம்': 5 items
-source google தினமணி 'திருச்செங்கோடு': 2 items
+source google தினமணி 'ராசிபுரம்': 3 items
+source bing தினமணி 'ராசிபுரம்': 6 items
+source google தினமணி 'திருச்செங்கோடு': 4 items
 source bing தினமணி 'திருச்செங்கோடு': 9 items
 source google இந்து தமிழ் 'நாமக்கல்': 8 items
 source bing இந்து தமிழ் 'நாமக்கல்': 12 items
@@ -92,7 +96,7 @@ source google இந்து தமிழ் 'திருச்செங்க
 source bing இந்து தமிழ் 'திருச்செங்கோடு': 0 items
 source google தினகரன் 'நாமக்கல்': 100 items
 source bing தினகரன் 'நாமக்கல்': 12 items
-source google தினகரன் 'ராசிபுரம்': 4 items
+source google தினகரன் 'ராசிபுரம்': 3 items
 source bing தினகரன் 'ராசிபுரம்': 2 items
 source google தினகரன் 'திருச்செங்கோடு': 0 items
 source bing தினகரன் 'திருச்செங்கோடு': 3 items
@@ -106,11 +110,11 @@ source google நியூஸ்18 தமிழ் 'நாமக்கல்': 1
 source bing நியூஸ்18 தமிழ் 'நாமக்கல்': 10 items
 source google நியூஸ்18 தமிழ் 'ராசிபுரம்': 1 items
 source bing நியூஸ்18 தமிழ் 'ராசிபுரம்': 3 items
-source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 2 items
+source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 3 items
 source bing நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 1 items
 source google விகடன் 'நாமக்கல்': 1 items
 source bing விகடன் 'நாமக்கல்': 10 items
-source google விகடன் 'ராசிபுரம்': 4 items
+source google விகடன் 'ராசிபுரம்': 3 items
 source bing விகடன் 'ராசிபுரம்': 1 items
 source google விகடன் 'திருச்செங்கோடு': 0 items
 source bing விகடன் 'திருச்செங்கோடு': 0 items
@@ -128,7 +132,7 @@ source google சமயம் தமிழ் 'திருச்செங்க
 source bing சமயம் தமிழ் 'திருச்செங்கோடு': 8 items
 source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
-source google தினமலர் 'ராசிபுரம்': 28 items
+source google தினமலர் 'ராசிபுரம்': 26 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
 source google தினமலர் 'திருச்செங்கோடு': 4 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
@@ -174,21 +178,21 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 899 items -> 531 different news (20 Rasipuram)
+all sources: 895 items -> 525 different news (19 Rasipuram)
 Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: old=204, not Namakkal district news (state-wide /=145, checked earlier=96, already filed=42, collected=27, checked earlier=11, checked earlier=5, checked earlier=1
-to write: 0 Rasipuram + 27 other district candidates (max 12 + 12 stories)
+candidate filter: old=190, not Namakkal district news (state-wide /=148, checked earlier=107, already filed=43, collected=17, checked earlier=12, checked earlier=5, checked earlier=2, checked earlier=1
+to write: 0 Rasipuram + 17 other district candidates (max 12 + 12 stories)
 carousel for 0 of 1 stories, the rest reel only
 filed: 0 Rasipuram + 1 Namakkal (targets 12 + 12)
-All News sheet: {"ok":true,"added":9,"updated":51}
 All News sheet: {"ok":true,"added":3,"updated":57}
-All News sheet: {"ok":true,"added":4,"updated":56}
-All News sheet: {"ok":true,"added":19,"updated":41}
-All News sheet: {"ok":true,"added":14,"updated":46}
-All News sheet: {"ok":true,"added":5,"updated":55}
+All News sheet: {"ok":true,"added":2,"updated":58}
+All News sheet: {"ok":true,"added":0,"updated":60}
 All News sheet: {"ok":true,"added":6,"updated":54}
-All News sheet: {"ok":true,"added":19,"updated":41}
-All News sheet: {"ok":true,"added":16,"updated":35} 
+All News sheet: {"ok":true,"added":8,"updated":52}
+All News sheet: {"ok":true,"added":5,"updated":55}
+All News sheet: {"ok":true,"added":2,"updated":58}
+All News sheet: {"ok":true,"added":11,"updated":49}
+All News sheet: {"ok":true,"added":2,"updated":43} 
 stories: 1
-earlier pictures reused for 'Heavy rain pours for an hour in Sankari;'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261025-0144","first":"RN-84"}
+earlier pictures reused for 'Free drone pilot training for women in N'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261025-0547","first":"RN-85"}
