@@ -430,6 +430,12 @@ def main():
         st = state.get(n["key"], {})
         if st.get("s") in ("filed", "dup", "notext", "old", "notdistrict") or st.get("n", 0) >= 10:
             n["status"] = n["status"] if n["status"] != "collected" else "checked earlier: " + st.get("s", "failed")
+    if os.environ.get("MANUAL_URL", "").strip():     # owner 26 Oct: one article link given by hand; same checks as any story (today only, not a duplicate)
+        mu = os.environ["MANUAL_URL"].strip()
+        news.insert(0, {"key": mu, "url": mu, "title": "", "source": "தினமலர்", "published": "", "via": "dinamalar-list",
+                        "query": "manual", "snippet": "", "outlets": ["manual link"], "alts": [mu], "mentions": 3,
+                        "area": "N", "score": 999, "status": "collected", "story": ""})
+        log.append(f"manual link added: {mu}")
     queues = {"R": [], "N": []}
     rechecks = 0
     for n in sorted(news, key=lambda x: -x["score"]):

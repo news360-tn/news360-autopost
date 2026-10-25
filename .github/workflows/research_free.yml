@@ -9,6 +9,9 @@ on:
       dry:
         description: "dry run (do not write to Sheet / send email)"
         default: "false"
+      manual_url:
+        description: "optional: one article link to write and post now (today's news only)"
+        default: ""
 permissions:
   contents: write
 concurrency: research-free
@@ -40,6 +43,7 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MANUAL_URL: ${{ github.event.inputs.manual_url }}
           BRIDGE_URL: ${{ secrets.BRIDGE_URL }}
           BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
           CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
