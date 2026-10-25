@@ -519,8 +519,9 @@ def main():
                 n["status"], stt["s"] = "not Namakkal district news (article names no Namakkal place)", "notdistrict"
                 log.append(f"skip ({area}) no Namakkal place in article: {art['title'][:50]}")
                 continue
-            if any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched")) for r in recent):
+            if not n.get("manual") and any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched")) for r in recent):
                 n["status"], stt["s"] = "already filed", "dup"
+                log.append(f"skip ({area}) similar to a filed story: {art['title'][:50]}")
                 continue
             art["interest"] = interest(art)
             print(f"writing [{area}]: {art['title'][:60]}", flush=True)
