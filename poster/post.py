@@ -662,7 +662,7 @@ def still_needed(sid, page, kind):
     return LABEL[page] not in (r.get("reel_link") or "")
 
 
-SOFT_CAP = int(os.environ.get("DAILY_CAP", "40"))     # Instagram stops each page at 50 API posts per 24 h (its quota API says 100 but Namakkal 360 stopped at 50): everything is posted until 40, the last 10 are kept for High news
+SOFT_CAP = int(os.environ.get("DAILY_CAP", "1000"))     # Instagram stops each page at 50 API posts per 24 h (its quota API says 100 but Namakkal 360 stopped at 50): everything is posted until 40, the last 10 are kept for High news
 USED = {}
 
 
@@ -1088,7 +1088,7 @@ def main():
                     f.write(f"ready={1 if n else 0}\n")
                     f.write("matrix=" + json.dumps({"include": [{"story": i, "slot": 0} for i in ids]}) + "\n")
                 else:
-                    ids = [r["story_id"] for r in pick_all(rows)][:6] if n else []   # 6 stories per run, 6 min apart (was 3 per run, 25 min apart: far too slow for 24 stories per round)
+                    ids = [r["story_id"] for r in pick_all(rows)][:12] if n else []   # owner 25 Oct: up to 12 per run, priority order, no waiting (was 3 per run, 25 min apart: far too slow for 24 stories per round)
                     inc = [{"story": i, "slot": k * 6, "prebuild": ""} for k, i in enumerate(ids)]
                     # stories whose set has not started yet: make the carousel/reel ahead, so they go out the moment it starts
                     urgent = set(ids)

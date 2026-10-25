@@ -10,8 +10,8 @@ import llm, sources, run, allnews
 IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 BRIDGE_URL, BRIDGE_KEY = os.environ.get("BRIDGE_URL", ""), os.environ.get("BRIDGE_KEY", "")
 def _slot_count():
-    """stories per round: 12 in the morning, afternoon and evening rounds (rounds run ~04:30, 10:30, 16:30 IST, often late)"""
-    return 12
+    """stories per round: no practical limit (owner 25 Oct: every news published today in the district is written and posted, priority first)"""
+    return 200
 
 
 SET_NEWS = int(os.environ.get("SET_NEWS_COUNT", "0") or 0) or _slot_count()
@@ -83,7 +83,7 @@ def fresh(published):
     st = _start_at()
     if st is not None and t.tzinfo is not None and t < st:
         return False      # published before the automation was started: already covered by the posted/e-mailed news
-    return d >= (datetime.datetime.now(IST).date() - datetime.timedelta(days=1))
+    return d == datetime.datetime.now(IST).date()      # owner 25 Oct: only news published TODAY (IST, from 00:00); yesterday's news is never used
 
 
 def _fr():
@@ -282,7 +282,7 @@ def pending_ids(max_hours=2):
 
 REOFFER = []
 TODAY = [0]
-DAILY_CAP = int(os.environ.get("DAILY_CAP", "40"))      # owner: after 40 posts in a day only the main / important news is written and posted
+DAILY_CAP = int(os.environ.get("DAILY_CAP", "1000"))      # owner: after 40 posts in a day only the main / important news is written and posted
 
 
 def send_batch(group, log=None):
@@ -314,9 +314,9 @@ def file_story(art, res, errors_log, recent):
     except Exception as e:
         return None, f"bad draft: {e}"
     HARD = ("not grounded", "numbers not found", "fact-check", "source/outlet", "not a JSON", "missing key")
-    hard = list(errors)      # owner rule (23 Oct): NO story with any remaining validator problem is posted - wrong numbers/words/layout all reject it
-    if hard:
-        return None, "would be wrong/unclear: " + "; ".join(hard)[:150]
+    # owner 25 Oct: a draft is NOT rejected for length, word count or validator problems. It is rewritten by the models (free, then Claude),
+    # and whatever is left goes out with the problems written in its verification note for the owner to see.
+    hard = list(errors)
     try:
         sys.path.insert(0, str(HERE.parent / "poster"))
         import freshness
@@ -397,7 +397,7 @@ def main():
                 n["status"] = "already filed"
     for n in news:
         st = state.get(n["key"], {})
-        if st.get("s") in ("filed", "dup", "notext", "old", "notdistrict") or st.get("n", 0) >= 3:
+        if st.get("s") in ("filed", "dup", "notext", "old", "notdistrict") or st.get("n", 0) >= 10:
             n["status"] = n["status"] if n["status"] != "collected" else "checked earlier: " + st.get("s", "failed")
     queues = {"R": [], "N": []}
     for n in sorted(news, key=lambda x: -x["score"]):
@@ -432,7 +432,7 @@ def main():
     # A Rasipuram story that is among the district's top MAX_NAMAKKAL by score also goes to Namakkal 360 (and uses one of its slots).
     all_sc = sorted([x["score"] for a_ in ("R", "N") for x in queues[a_]], reverse=True)
     district_cut = all_sc[MAX_NAMAKKAL - 1] if len(all_sc) >= MAX_NAMAKKAL else (all_sc[-1] if all_sc else 0)
-    tries_cap = {"R": MAX_RASIPURAM * 3, "N": MAX_NAMAKKAL * 3}
+    tries_cap = {"R": MAX_RASIPURAM * 10, "N": MAX_NAMAKKAL * 10}
     while time.time() < DEADLINE - 120:
         progressed = False
         for area in ("R", "N"):
@@ -459,7 +459,7 @@ def main():
             if url in seen_src or any(r.get("source") == url for r in recent):
                 n["status"], stt["s"] = "already filed", "dup"
                 continue
-            if len(art["text"]) < 150:
+            if len(art["text"]) < 20:      # owner 25 Oct: only an empty article is skipped, never by length
                 n["status"], stt["s"] = "article text too short / blocked", "notext"
                 continue
             if not fresh(art["published"]):

@@ -235,6 +235,7 @@ function emailBody_(r, b, label, kindLabel, time, test) {
     'Headline: ' + r.headline_ta,
     'English: ' + r.headline_en,
     'Category: ' + r.category + ' | Location: ' + r.location + ' | Importance: ' + r.importance,
+    'Source news link: ' + (r.source || '(not recorded)'),
     'Verification: ' + r.verification,
     '',
     'CAPTION USED:',
