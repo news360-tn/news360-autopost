@@ -1,60 +1,340 @@
-writing [N]: வேளாண்மை பொறியியல் துறை சாா்பில் மகளிருக்கு ‘ட்ரோன்’ பயன்பாட
+writing [N]: கனமழை: நாமக்கல் ஆட்சியர் பங்களா சுவர் இடிந்து விழுந்தது!
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
 poor answer - skipped for 30 min: gemini/gemini-3.8-flash
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.7-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
 poor answer - skipped for 30 min: gemini/gemini-3.7-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (20s)
+ok gemini/gemini-3.6-flash (17s)
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (4s)
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (5s)
 factcheck by gemini/gemini-3.6-flash: 0 problems
 attempt 1 gemini/gemini-3.6-flash: 0 problems
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (18s)
+ok gemini/gemini-3.6-flash (16s)
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (7s)
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (38s)
 factcheck by gemini/gemini-3.6-flash: 0 problems
 proofread by gemini/gemini-3.6-flash: 0 problems
+writing [N]: கொட்டி தீர்த்த கன மழை வீடுகளில் புகுந்த மழைநீர்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (23s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (6s)
+factcheck by gemini/gemini-3.6-flash: 1 problems
+  Reel script includes an invented detail that residents were unable to sleep at midnight ('நள்ளிரவில் தூங்க முடியாமல்'), which is not mentioned in the article
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  fact-check: Reel script includes an invented detail that residents were unable to sleep at midnight ('நள்ளிரவில் தூங்க முடியாமல்'), which is not mentioned in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (20s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (5s)
+factcheck by gemini/gemini-3.6-flash: 1 problems
+  tamil_headline claims sewage water entered houses ('கழிவுநீர் புகுந்து'), but the article states that rainwater entered houses ('வீடுகளில் மழைநீர் புகுந்ததால்') while sewage water only mixed with floodwater on the road
+attempt 2 gemini/gemini-3.6-flash: 1 problems
+  fact-check: tamil_headline claims sewage water entered houses ('கழிவுநீர் புகுந்து'), but the article states that rainwater entered houses ('வீடுகளில் மழைநீர் புகுந்ததால்') while sewage water only mixed with floodwater on the road
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (79s)
+attempt 3 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 40 words; need 50-130 (detailed reel, about 30-50 seconds)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (79s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (4s)
+factcheck by cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 0 problems
+attempt 4 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 0 problems
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (71s)
+proofread rejected (2 problems)
+  hl2 longer than 28 characters
+  post_to must start with 'Namakkal 360'
+writing [N]: துணை மருத்துவப் படிப்புகளில் கூடுதலாக 3,900 இடங்கள்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (75s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (2s)
+factcheck by cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 0 problems
+attempt 1 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 0 problems
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (83s)
+proofread rejected (5 problems)
+  slide 1 line 1 longer than 60 characters
+  slide 2 line 3 longer than 60 characters
+  slide 3 line 1 longer than 60 characters
+  slide 3 line 2 longer than 60 characters
+  post_to must start with 'Namakkal 360'
+writing [N]: இளம் பெண் மர்ம சாவு
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (49s)
+attempt 1 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 32 words; need 50-130 (detailed reel, about 30-50 seconds)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (69s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (5s)
+factcheck by cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 4 problems
+  Location mismatch: article mentions the incident occurred in a place related to Tiruchirappalli district, Thottiyam, but draft says it happened in Namakkal
+  Invented detail: draft mentions the police investigation is ongoing, but the article only mentions that efforts are being made to find the cause of Kokila's death
+  Missing fact: article mentions that the husband's name is not explicitly stated as Suresh, but draft assumes it is Suresh
+  Inconsistent detail: draft mentions the age of the woman as 30, which is consistent with the article, but the article does not explicitly state that the incident happened in Namakkal
+attempt 2 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 4 problems
+  fact-check: Location mismatch: article mentions the incident occurred in a place related to Tiruchirappalli district, Thottiyam, but draft says it happened in Namakkal
+  fact-check: Invented detail: draft mentions the police investigation is ongoing, but the article only mentions that efforts are being made to find the cause of Kokila's death
+  fact-check: Missing fact: article mentions that the husband's name is not explicitly stated as Suresh, but draft assumes it is Suresh
+  fact-check: Inconsistent detail: draft mentions the age of the woman as 30, which is consistent with the article, but the article does not explicitly state that the incident happened in Namakkal
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (51s)
+attempt 3 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 36 words; need 50-130 (detailed reel, about 30-50 seconds)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (55s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (5s)
+factcheck by cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 4 problems
+  Location mismatch: article mentions the incident occurred in a place related to திருச்சி மாவட்டம், தொட்டியம், but draft says நாமக்கல்
+  Missing detail: article mentions the deceased's father's name is முருகேசன், but draft does not
+  Unverified detail: draft mentions the police investigation is based on the family's statement, but article does not confirm this
+  Inconsistent detail: article does not explicitly state the location of the incident as நாமக்கல், but draft does
+attempt 4 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 4 problems
+  fact-check: Location mismatch: article mentions the incident occurred in a place related to திருச்சி மாவட்டம், தொட்டியம், but draft says நாமக்கல்
+  fact-check: Missing detail: article mentions the deceased's father's name is முருகேசன், but draft does not
+  fact-check: Unverified detail: draft mentions the police investigation is based on the family's statement, but article does not confirm this
+  fact-check: Inconsistent detail: article does not explicitly state the location of the incident as நாமக்கல், but draft does
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (63s)
+attempt 5 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 46 words; need 50-130 (detailed reel, about 30-50 seconds)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (62s)
+attempt 6 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 47 words; need 50-130 (detailed reel, about 30-50 seconds)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (53s)
+attempt 7 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 47 words; need 50-130 (detailed reel, about 30-50 seconds)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (59s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (4s)
+factcheck by cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 4 problems
+  Location mismatch: article mentions no location, draft says நாமக்கல்
+  No cause of death in article, but draft implies it may be related to marital dispute
+  Article does not mention investigation, but draft says விசாரணை நடந்து வருகிறது
+  Article does not mention police investigation, but draft says பொலிஸ் விசாரணையில் உண்மை வெளிவரும்
+attempt 8 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 4 problems
+  fact-check: Location mismatch: article mentions no location, draft says நாமக்கல்
+  fact-check: No cause of death in article, but draft implies it may be related to marital dispute
+  fact-check: Article does not mention investigation, but draft says விசாரணை நடந்து வருகிறது
+  fact-check: Article does not mention police investigation, but draft says பொலிஸ் விசாரணையில் உண்மை வெளிவரும்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (55s)
+attempt 9 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 5 problems
+  reel_script has 35 words; need 50-130 (detailed reel, about 30-50 seconds)
+  caption must contain the exact follow line
+  not grounded: location 'விவரம்' is not in the article
+  not grounded: location 'இன்னும்' is not in the article
+  not grounded: location 'தெரியவரவில்லை' is not in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (68s)
+attempt 10 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 49 words; need 50-130 (detailed reel, about 30-50 seconds)
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (1s)
+factcheck by cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 0 problems
+claude rewrite 1 anthropic/claude-haiku-5-5: 0 problems
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (67s)
+proofread rejected (4 problems)
+  slide 1 line 1 longer than 60 characters
+  slide 2 line 1 longer than 60 characters
+  reel_script has 45 words; need 50-130 (detailed reel, about 30-50 seconds)
+  post_to must start with 'Namakkal 360'
+writing [N]: கூட்டுறவுத்துறை ஊழியர்கள் கவன ஈர்ப்பு ஆர்ப்பாட்டம்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (53s)
+attempt 1 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 2 problems
+  slides must have 3 or 4 items
+  reel_script has 36 words; need 50-130 (detailed reel, about 30-50 seconds)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
+dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
+dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 7 problems
+  reel_script and slides_spec state the protest was in Namakkal district (நாமக்கல் மாவட்டம்), but the article never names the location; the article only says it is a cooperative employees protest.
+  reel_script says இளங்கோவன் presided over the protest (தலைமை வகித்தார்), but the article says சிவக்குமார் (இணை செயலாளர்) presided (வகித்தார்) and இளங்கோவன' delivered the special address (சிறப்புரையாற்றினார்); the role attribution is mixed up.
+  reel_script says ஊழியர்கள் 'கோரிக்கைகளை நிறுத்த வேண்டும் என்று கோரினர்' and 'புதுப்புது திட்டங்களையும் பணிகளையும் மேற்கொள்வதை நிறுத்த வேண்டும்' — the article's demand is that the projects should not be imposed to destroy cooperatives; the wording is changed and merges the demand with the cause in a way that is not clearly supported.
+  slides_spec says 'அரசு ஊழியர் சங்கம் இதில் பங்கேற்றது' (the Government Employees Association took part), which the article does not state as a participant fact; it only mentions the association's district secretary delivering a speech.
+  slides_spec 'யார் பேசினார்?' slide includes 'விவரம் இன்னும் தெரியவரவில்லை' (details not yet known), an invented statement not present in the article.
+  slides_spec line 'கூட்டுறவு நிறுவனங்களை அழிக்கும் நோக்கில் திட்டங்கள் என' is an incomplete, ungrammatical fragment with no clear meaning in Tamil.
+  caption says இளங்கோவன் 'சிறப்புரையாற்றினார்' correctly, but the caption's first line places the protest in 'நாமக்கல்லில', a location not stated in the article.
+claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
+  fact-check: reel_script and slides_spec state the protest was in Namakkal district (நாமக்கல் மாவட்டம்), but the article never names the location; the article only says it is a cooperative employees protest.
+  fact-check: reel_script says இளங்கோவன் presided over the protest (தலைமை வகித்தார்), but the article says சிவக்குமார் (இணை செயலாளர்) presided (வகித்தார்) and இளங்கோவன' delivered the special address (சிறப்புரையாற்றினார்); the role attribution is mixed up.
+  fact-check: reel_script says ஊழியர்கள் 'கோரிக்கைகளை நிறுத்த வேண்டும் என்று கோரினர்' and 'புதுப்புது திட்டங்களையும் பணிகளையும் மேற்கொள்வதை நிறுத்த வேண்டும்' — the article's demand is that the projects should not be imposed to destroy cooperatives; the wording is changed and merges the demand with the cause in a way that is not clearly supported.
+  fact-check: slides_spec says 'அரசு ஊழியர் சங்கம் இதில் பங்கேற்றது' (the Government Employees Association took part), which the article does not state as a participant fact; it only mentions the association's district secretary delivering a speech.
+  fact-check: slides_spec 'யார் பேசினார்?' slide includes 'விவரம் இன்னும் தெரியவரவில்லை' (details not yet known), an invented statement not present in the article.
+  fact-check: slides_spec line 'கூட்டுறவு நிறுவனங்களை அழிக்கும் நோக்கில் திட்டங்கள் என' is an incomplete, ungrammatical fragment with no clear meaning in Tamil.
+  fact-check: caption says இளங்கோவன் 'சிறப்புரையாற்றினார்' correctly, but the caption's first line places the protest in 'நாமக்கல்லில', a location not stated in the article.
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  reel_script has 40 words; need 50-130 (detailed reel, about 30-50 seconds)
+  not grounded: location 'இடம்' is not in the article
+  not grounded: location 'குறிப்பிடப்படவில்லை' is not in the article
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script and slides_spec place the protest in நாமக்கல் (Namakkal), but the article text never names the location
+  The article says the employees protested before a government / office setting but does not say the protest was 'நடத்தினர்' by the cooperative employees in Namakkal; the place is an unsupported addition
+  The article states the protest demanded that the stopping of the work/schemes be carried out in a repeated pattern (the 'repeated demand for same work in different form' point) and the reel_script says the employees demanded stopping new schemes that destroy cooperatives; this framing is partly interpreted and not clearly stated in the truncated article
+  reel_script says 'தொடர் நெருக்கடி தருவதையும் கைவிட' in a way that combines two separate article points (repeated work demand and continuous pressure) into one sentence, mixing two facts
+  Caption says 'ஊழியர்கள் கோரிக்கை வைத்தனர்' and reel_script says the protest was 'நடத்தினர' by employees; the article truncates before stating the protest organizers and the chair who presided (வகித்தார்), so the presiding person and organizers are missing from the reel_script
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script and slides_spec place the protest in நாமக்கல் (Namakkal), but the article text never names the location
+  fact-check: The article says the employees protested before a government / office setting but does not say the protest was 'நடத்தினர்' by the cooperative employees in Namakkal; the place is an unsupported addition
+  fact-check: The article states the protest demanded that the stopping of the work/schemes be carried out in a repeated pattern (the 'repeated demand for same work in different form' point) and the reel_script says the employees demanded stopping new schemes that destroy cooperatives; this framing is partly interpreted and not clearly stated in the truncated article
+  fact-check: reel_script says 'தொடர் நெருக்கடி தருவதையும் கைவிட' in a way that combines two separate article points (repeated work demand and continuous pressure) into one sentence, mixing two facts
+  fact-check: Caption says 'ஊழியர்கள் கோரிக்கை வைத்தனர்' and reel_script says the protest was 'நடத்தினர' by employees; the article truncates before stating the protest organizers and the chair who presided (வகித்தார்), so the presiding person and organizers are missing from the reel_script
+proofread skipped: free models not efficient (6 failures in a row): using Claude
+writing [N]: இன்று ஆர்எஸ்எஸ். பேரணி: எஸ்பி., ஆய்வு
+free models unavailable: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The article's date context is unclear: the draft's caption states 'இன்று (அக். 25)', but the article only says 'இன்று' and 'நாளை, நவ., 1ல்', so the specific date 'Oct 25' is not stated in the article.
+  The reel_script says the SP inspected 'பூங்கா சாலையில்' (at Park Road), but the article only says the SP reviewed the arrangements with the Park Road context in a meeting; the location of the inspection is not clearly stated as the road itself.
+  The caption says the route passes through 'பழைய பஸ் நிலையம்' and 'சந்தைப்பேட்டைபுதூர்' as part of the route list, but the article's route list is cut off, so the full route ending at the old bus stand is not verifiable.
+  The caption advises 'சாலை வழியாகப் பயணிப்போர் மாற்று வழிகளைப் பார்த்துக்கொள்ளுங்கள்' (travelers should find alternative routes), which is advice not present in the article.
+  The reel_script states the SP 'ஆலோசனை வழங்கினார்' (gave advice/consultation), a detail not stated in the article, which only says the SP inspected/reviewed the matter.
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The article's date context is unclear: the draft's caption states 'இன்று (அக். 25)', but the article only says 'இன்று' and 'நாளை, நவ., 1ல்', so the specific date 'Oct 25' is not stated in the article.
+  fact-check: The reel_script says the SP inspected 'பூங்கா சாலையில்' (at Park Road), but the article only says the SP reviewed the arrangements with the Park Road context in a meeting; the location of the inspection is not clearly stated as the road itself.
+  fact-check: The caption says the route passes through 'பழைய பஸ் நிலையம்' and 'சந்தைப்பேட்டைபுதூர்' as part of the route list, but the article's route list is cut off, so the full route ending at the old bus stand is not verifiable.
+  fact-check: The caption advises 'சாலை வழியாகப் பயணிப்போர் மாற்று வழிகளைப் பார்த்துக்கொள்ளுங்கள்' (travelers should find alternative routes), which is advice not present in the article.
+  fact-check: The reel_script states the SP 'ஆலோசனை வழங்கினார்' (gave advice/consultation), a detail not stated in the article, which only says the SP inspected/reviewed the matter.
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The article says the RSS procession was planned for today, tomorrow and Nov 1 (Tamil text 'இன்று, நாளை, நவ., 1ல்'), but the draft presents only today's procession and omits the multi-day schedule.
+  The reel_script and slides say the SP inspected security arrangements 'நேற்று' (yesterday), which matches the article, but the slides/caption state 'மேலும் விவரங்கள் வெளியிடப்படவில்லை' (no further details released), an unsupported claim not in the article.
+  The slide line 'முன்னெச்சரிக்கை நடவடிக்கைகள் எடுக்கப்படுகின்றன' and the reel's 'உரிய முன்னெச்சரிக்கை நடவடிக்கைகள் எடுக்கப்படுகின்றன' describe precautions as ongoing; the article only says the SP's inspection covered taking such measures, so the causal framing is slightly stretched.
+  The reel_script says the procession 'நாமக்கல்லில் இன்று மதியம் மூன்று மணிக்கு நடைபெறவுள்ளது' and the article says the first procession is at 3:00 pm today, which is consistent, but the phrase 'தமிழக அரசு இந்தப் பேரணிக்கு அனுமதி மறுத்த நிலையில் இது திட்டமிடப்பட்டுள்ளது' conflates the government's refusal with the plan in a way that is unclear about whether the procession is authorised.
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The article says the RSS procession was planned for today, tomorrow and Nov 1 (Tamil text 'இன்று, நாளை, நவ., 1ல்'), but the draft presents only today's procession and omits the multi-day schedule.
+  fact-check: The reel_script and slides say the SP inspected security arrangements 'நேற்று' (yesterday), which matches the article, but the slides/caption state 'மேலும் விவரங்கள் வெளியிடப்படவில்லை' (no further details released), an unsupported claim not in the article.
+  fact-check: The slide line 'முன்னெச்சரிக்கை நடவடிக்கைகள் எடுக்கப்படுகின்றன' and the reel's 'உரிய முன்னெச்சரிக்கை நடவடிக்கைகள் எடுக்கப்படுகின்றன' describe precautions as ongoing; the article only says the SP's inspection covered taking such measures, so the causal framing is slightly stretched.
+  fact-check: The reel_script says the procession 'நாமக்கல்லில் இன்று மதியம் மூன்று மணிக்கு நடைபெறவுள்ளது' and the article says the first procession is at 3:00 pm today, which is consistent, but the phrase 'தமிழக அரசு இந்தப் பேரணிக்கு அனுமதி மறுத்த நிலையில் இது திட்டமிடப்பட்டுள்ளது' conflates the government's refusal with the plan in a way that is unclear about whether the procession is authorised.
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  not grounded: location 'நகரம்' is not in the article
+proofread skipped: free models not efficient (6 failures in a row): using Claude
+writing [N]: டெங்கு பேரணி
+free models unavailable: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 49 words; need 50-130 (detailed reel, about 30-50 seconds)
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The article is truncated and does not mention a place of publication or the district 'நாமக்கல் மாவட்டம்'; the district name (and the 'நாமக்கல்' in the headline and caption) is not supported by the article text provided.
+  slides_spec 'என்ன ஏந்தினர்?' slide claims 'துண்டுப் பிரசுரங்களும் வழங்கப்பட்டன' (pamphlets were distributed), which is not stated in the visible article text (the article cuts off at 'துண்டு').
+  The 'டெங்கு பரவாமல் தடுக்க அனைவரும் கவனமாக இருங்கள்' line is an added advisory not stated in the article.
+  The reel_script says the rally was 'நாமக்கல் மாவட்டத்தில்' held and the caption '📍' location is unsupported by the article.
+  The reel_script begins with the rally starting 'ஆரம்ப சுகாதார நிலையத்தில் இருந்து' and the article says the rally departed from the health station; this is consistent, but the 'நாமக்கல்' location attribution is not verifiable from the article.
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The article is truncated and does not mention a place of publication or the district 'நாமக்கல் மாவட்டம்'; the district name (and the 'நாமக்கல்' in the headline and caption) is not supported by the article text provided.
+  fact-check: slides_spec 'என்ன ஏந்தினர்?' slide claims 'துண்டுப் பிரசுரங்களும் வழங்கப்பட்டன' (pamphlets were distributed), which is not stated in the visible article text (the article cuts off at 'துண்டு').
+  fact-check: The 'டெங்கு பரவாமல் தடுக்க அனைவரும் கவனமாக இருங்கள்' line is an added advisory not stated in the article.
+  fact-check: The reel_script says the rally was 'நாமக்கல் மாவட்டத்தில்' held and the caption '📍' location is unsupported by the article.
+  fact-check: The reel_script begins with the rally starting 'ஆரம்ப சுகாதார நிலையத்தில் இருந்து' and the article says the rally departed from the health station; this is consistent, but the 'நாமக்கல்' location attribution is not verifiable from the article.
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 45 words; need 50-130 (detailed reel, about 30-50 seconds)
+proofread skipped: free models not efficient (6 failures in a row): using Claude
 earlier stories still waiting for images: []
 instagram check: 66 recent posts read from both pages
 source dinamalar list: 8 items
-source google 'நாமக்கல்': 54 items
-source bing 'நாமக்கல்': 10 items
+source google 'நாமக்கல்': 50 items
+source bing 'நாமக்கல்': 12 items
 source google 'ராசிபுரம்': 9 items
 source bing 'ராசிபுரம்': 12 items
-source google 'திருச்செங்கோடு': 1 items
+source google 'திருச்செங்கோடு': 2 items
 source bing 'திருச்செங்கோடு': 12 items
 source google 'பரமத்தி வேலூர்': 0 items
 source bing 'பரமத்தி வேலூர்': 9 items
-source google 'குமாரபாளையம்': 1 items
+source google 'குமாரபாளையம்': 0 items
 source bing 'குமாரபாளையம்': 11 items
 source google 'பள்ளிபாளையம்': 0 items
-source bing 'பள்ளிபாளையம்': 8 items
+source bing 'பள்ளிபாளையம்': 9 items
 source google 'சேந்தமங்கலம்': 0 items
 source bing 'சேந்தமங்கலம்': 12 items
 source google 'கொல்லிமலை': 3 items
 source bing 'கொல்லிமலை': 10 items
-source google 'மோகனூர்': 3 items
+source google 'மோகனூர்': 2 items
 source bing 'மோகனூர்': 4 items
 source google 'நாமகிரிப்பேட்டை': 0 items
-source bing 'நாமகிரிப்பேட்டை': 3 items
+source bing 'நாமகிரிப்பேட்டை': 4 items
 source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 1 items
 source google 'எருமப்பட்டி': 0 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 49 items
+source google 'நாமக்கல் மாவட்டம்': 47 items
 source bing 'நாமக்கல் மாவட்டம்': 11 items
 source google 'நாமக்கல் முட்டை விலை': 1 items
 source bing 'நாமக்கல் முட்டை விலை': 9 items
@@ -70,9 +350,9 @@ source google என்டிடிவி தமிழ் 'ராசிபுர
 source bing என்டிடிவி தமிழ் 'ராசிபுரம்': 0 items
 source google என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
 source bing என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
-source google மாலைமலர் 'நாமக்கல்': 10 items
+source google மாலைமலர் 'நாமக்கல்': 9 items
 source bing மாலைமலர் 'நாமக்கல்': 12 items
-source google மாலைமலர் 'ராசிபுரம்': 2 items
+source google மாலைமலர் 'ராசிபுரம்': 1 items
 source bing மாலைமலர் 'ராசிபுரம்': 2 items
 source google மாலைமலர் 'திருச்செங்கோடு': 0 items
 source bing மாலைமலர் 'திருச்செங்கோடு': 1 items
@@ -82,11 +362,11 @@ source google தினத்தந்தி 'ராசிபுரம்': 2 it
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
 source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்': 29 items
+source google தினமணி 'நாமக்கல்': 44 items
 source bing தினமணி 'நாமக்கல்': 12 items
-source google தினமணி 'ராசிபுரம்': 3 items
+source google தினமணி 'ராசிபுரம்': 5 items
 source bing தினமணி 'ராசிபுரம்': 6 items
-source google தினமணி 'திருச்செங்கோடு': 4 items
+source google தினமணி 'திருச்செங்கோடு': 3 items
 source bing தினமணி 'திருச்செங்கோடு': 9 items
 source google இந்து தமிழ் 'நாமக்கல்': 8 items
 source bing இந்து தமிழ் 'நாமக்கல்': 12 items
@@ -96,7 +376,7 @@ source google இந்து தமிழ் 'திருச்செங்க
 source bing இந்து தமிழ் 'திருச்செங்கோடு': 0 items
 source google தினகரன் 'நாமக்கல்': 100 items
 source bing தினகரன் 'நாமக்கல்': 12 items
-source google தினகரன் 'ராசிபுரம்': 3 items
+source google தினகரன் 'ராசிபுரம்': 2 items
 source bing தினகரன் 'ராசிபுரம்': 2 items
 source google தினகரன் 'திருச்செங்கோடு': 0 items
 source bing தினகரன் 'திருச்செங்கோடு': 3 items
@@ -110,11 +390,11 @@ source google நியூஸ்18 தமிழ் 'நாமக்கல்': 1
 source bing நியூஸ்18 தமிழ் 'நாமக்கல்': 10 items
 source google நியூஸ்18 தமிழ் 'ராசிபுரம்': 1 items
 source bing நியூஸ்18 தமிழ் 'ராசிபுரம்': 3 items
-source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 3 items
+source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 4 items
 source bing நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 1 items
 source google விகடன் 'நாமக்கல்': 1 items
-source bing விகடன் 'நாமக்கல்': 10 items
-source google விகடன் 'ராசிபுரம்': 3 items
+source bing விகடன் 'நாமக்கல்': 11 items
+source google விகடன் 'ராசிபுரம்': 1 items
 source bing விகடன் 'ராசிபுரம்': 1 items
 source google விகடன் 'திருச்செங்கோடு': 0 items
 source bing விகடன் 'திருச்செங்கோடு': 0 items
@@ -124,7 +404,7 @@ source google பாலிமர் 'ராசிபுரம்': 0 items
 source bing பாலிமர் 'ராசிபுரம்': 0 items
 source google பாலிமர் 'திருச்செங்கோடு': 0 items
 source bing பாலிமர் 'திருச்செங்கோடு': 0 items
-source google சமயம் தமிழ் 'நாமக்கல்': 3 items
+source google சமயம் தமிழ் 'நாமக்கல்': 1 items
 source bing சமயம் தமிழ் 'நாமக்கல்': 12 items
 source google சமயம் தமிழ் 'ராசிபுரம்': 0 items
 source bing சமயம் தமிழ் 'ராசிபுரம்': 8 items
@@ -132,9 +412,9 @@ source google சமயம் தமிழ் 'திருச்செங்க
 source bing சமயம் தமிழ் 'திருச்செங்கோடு': 8 items
 source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
-source google தினமலர் 'ராசிபுரம்': 26 items
+source google தினமலர் 'ராசிபுரம்': 19 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
-source google தினமலர் 'திருச்செங்கோடு': 4 items
+source google தினமலர் 'திருச்செங்கோடு': 6 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
 source google DT Next 'நாமக்கல்': 0 items
 source bing DT Next 'நாமக்கல்': 0 items
@@ -148,13 +428,13 @@ source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்': 7 items
+source google ABP நாடு 'நாமக்கல்': 5 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
 source google ABP நாடு 'திருச்செங்கோடு': 0 items
 source bing ABP நாடு 'திருச்செங்கோடு': 0 items
-source google Oneindia தமிழ் 'நாமக்கல்': 11 items
+source google Oneindia தமிழ் 'நாமக்கல்': 9 items
 source bing Oneindia தமிழ் 'நாமக்கல்': 0 items
 source google Oneindia தமிழ் 'ராசிபுரம்': 0 items
 source bing Oneindia தமிழ் 'ராசிபுரம்': 0 items
@@ -178,21 +458,27 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 895 items -> 525 different news (19 Rasipuram)
+all sources: 894 items -> 533 different news (18 Rasipuram)
 Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: old=190, not Namakkal district news (state-wide /=148, checked earlier=107, already filed=43, collected=17, checked earlier=12, checked earlier=5, checked earlier=2, checked earlier=1
-to write: 0 Rasipuram + 17 other district candidates (max 12 + 12 stories)
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 12 + 12)
-All News sheet: {"ok":true,"added":3,"updated":57}
-All News sheet: {"ok":true,"added":2,"updated":58}
-All News sheet: {"ok":true,"added":0,"updated":60}
+candidate filter: old=205, not Namakkal district news (state-wide /=162, checked earlier=94, already filed=36, collected=26, checked earlier=5, checked earlier=4, checked earlier=1
+to write: 0 Rasipuram + 26 other district candidates (max 12 + 12 stories)
+NOT filed (N) கூட்டுறவுத்துறை ஊழியர்கள் கவன ஈர்ப்பு ஆர்ப்பாட்டம்: would be wrong/unclear: slides must have 3 or 4 items; reel_script has 36 words; need 50-130 (detailed reel, about 30-50 seconds)
+NOT filed (N) இன்று ஆர்எஸ்எஸ். பேரணி: எஸ்பி., ஆய்வு: would be wrong/unclear: not grounded: location 'நகரம்' is not in the article
+NOT filed (N) டெங்கு பேரணி: would be wrong/unclear: reel_script has 45 words; need 50-130 (detailed reel, about 30-50 seconds)
+carousel for 0 of 4 stories, the rest reel only
+filed: 0 Rasipuram + 4 Namakkal (targets 12 + 12)
+All News sheet: {"ok":true,"added":18,"updated":42}
 All News sheet: {"ok":true,"added":6,"updated":54}
-All News sheet: {"ok":true,"added":8,"updated":52}
+All News sheet: {"ok":true,"added":3,"updated":57}
+All News sheet: {"ok":true,"added":17,"updated":43}
+All News sheet: {"ok":true,"added":12,"updated":48}
+All News sheet: {"ok":true,"added":14,"updated":46}
+All News sheet: {"ok":true,"added":10,"updated":50}
 All News sheet: {"ok":true,"added":5,"updated":55}
-All News sheet: {"ok":true,"added":2,"updated":58}
-All News sheet: {"ok":true,"added":11,"updated":49}
-All News sheet: {"ok":true,"added":2,"updated":43} 
-stories: 1
-earlier pictures reused for 'Free drone pilot training for women in N'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261025-0547","first":"RN-85"}
+All News sheet: {"ok":true,"added":8,"updated":45} 
+stories: 4
+earlier pictures reused for '50-foot perimeter wall of Namakkal Colle'
+earlier pictures reused for 'Heavy rain in Namakkal: water enters hom'
+earlier pictures reused for '3,900 new seats in paramedical courses i'
+earlier pictures reused for 'Young woman Kokila found dead in her hom'
+bridge: 200 {"ok":true,"added":4,"auto_queued":4,"emailed":0,"reoffered":0,"batch":"B20261025-1018","first":"RN-86"}
