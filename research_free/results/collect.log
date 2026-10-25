@@ -1,7 +1,135 @@
+writing [N]: கூட்டுறவுத்துறை ஊழியர்கள் கவன ஈர்ப்பு ஆர்ப்பாட்டம்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+fail gemini/gemini-3.7-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.7-flash
+ok gemini/gemini-3.6-flash (22s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (4s)
+factcheck by gemini/gemini-3.6-flash: 1 problems
+  The place 'Namakkal' (நாமக்கல்) mentioned in the headline, script, slides, and caption is not in the article.
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  fact-check: The place 'Namakkal' (நாமக்கல்) mentioned in the headline, script, slides, and caption is not in the article.
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (25s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (7s)
+factcheck by gemini/gemini-3.6-flash: 1 problems
+  Invented detail in reel_script and slides_spec stating that the exact location of the protest is officially unknown.
+attempt 2 gemini/gemini-3.6-flash: 1 problems
+  fact-check: Invented detail in reel_script and slides_spec stating that the exact location of the protest is officially unknown.
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (20s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (5s)
+factcheck by gemini/gemini-3.6-flash: 1 problems
+  Location 'நாமக்கல் மாவட்டம்' in slides_spec is not mentioned in the article
+attempt 3 gemini/gemini-3.6-flash: 1 problems
+  fact-check: Location 'நாமக்கல் மாவட்டம்' in slides_spec is not mentioned in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
+dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
+dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 47 words; need 50-130 (detailed reel, about 30-50 seconds)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  slides must have 3 or 4 items
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  slides_spec 'முக்கிய கோரிக்கை' slide line 'கூட்டுறவு நிறுவனங்களை அழிக்கும் நோக்கில் புதுப்புது' is truncated and has no clear meaning in Tamil
+  slides_spec 'அடுத்து என்ன?' slide claims 'தொடர் நெருக்கடிகளை கைவிட வேண்டும் என வலியுறுத்தல்', but the article only mentions a demand to stop repeated/continuous demands, not 'நெருக்கடிகள்' (pressures) — a wording/meaning deviation
+  slides_spec and reel_script attribute the demands to the 'Namakkal' location and 'cat' ஆர்ப்பாட்டம' — the article does not state the location as Namakkal (only the page's footer/hashtag context), so the 'loc: நாமக்கல்' value is not supported by the article
+  reel_script first sentence says 'ஊழியர்கள் ஆர்ப்பாட்டம் நடத்தினர்' with the demand to stop 'கூட்டுறவு நிறுவனங்களை அழிக்கும் திட்டங்களை' — the article says the aim of the new plans was to destroy cooperative institutions, but the draft states the protest was specifically 'to abandon plans that destroy cooperatives', which mixes the stated demand with the protest purpose in a way the article does not clearly say
+  reel_script omits the article's specific demand list ('பல்வேறு கோரிக்கைகள்') details and the chairing person ('வகித்தார்') is not mentioned, so the key fact of who presided is missing
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: slides_spec 'முக்கிய கோரிக்கை' slide line 'கூட்டுறவு நிறுவனங்களை அழிக்கும் நோக்கில் புதுப்புது' is truncated and has no clear meaning in Tamil
+  fact-check: slides_spec 'அடுத்து என்ன?' slide claims 'தொடர் நெருக்கடிகளை கைவிட வேண்டும் என வலியுறுத்தல்', but the article only mentions a demand to stop repeated/continuous demands, not 'நெருக்கடிகள்' (pressures) — a wording/meaning deviation
+  fact-check: slides_spec and reel_script attribute the demands to the 'Namakkal' location and 'cat' ஆர்ப்பாட்டம' — the article does not state the location as Namakkal (only the page's footer/hashtag context), so the 'loc: நாமக்கல்' value is not supported by the article
+  fact-check: reel_script first sentence says 'ஊழியர்கள் ஆர்ப்பாட்டம் நடத்தினர்' with the demand to stop 'கூட்டுறவு நிறுவனங்களை அழிக்கும் திட்டங்களை' — the article says the aim of the new plans was to destroy cooperative institutions, but the draft states the protest was specifically 'to abandon plans that destroy cooperatives', which mixes the stated demand with the protest purpose in a way the article does not clearly say
+  fact-check: reel_script omits the article's specific demand list ('பல்வேறு கோரிக்கைகள்') details and the chairing person ('வகித்தார்') is not mentioned, so the key fact of who presided is missing
+proofread skipped: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+writing [N]: இன்று ஆர்எஸ்எஸ். பேரணி: எஸ்பி., ஆய்வு
+free models unavailable: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The article says the route also passes through the 'சந்தைப்பேட்டைபுதூர், பழைய பஸ்' area, but the reel_script omits this, and the slides_spec adds 'பழைய பஸ் ஸ்டாண்ட் பகுதி வழியாக செல்லும' which the article only partially supports (text is cut off after 'பழைய பஸ்'), so 'ஸ்டாண்ட்' is an unsupported completion.
+  The article says the first procession is planned for today at 3:00 PM, but the draft's reel_script and caption say 'today afternoon 3 o'clock' as the start time for the whole route, which is roughly consistent; however the slides_spec states 'சாலை வழியாகப் பயணிப்போர் கவனமாக இருங்கள்' (travellers should be careful), an advisory not present in the article.
+  The reel_script states the rally 'is to be held' and that the November 1 rally was also planned, but the article's phrasing about November 1 ('நவ., 1ல்') is part of a 'today, tomorrow, Nov 1' list of rally dates across the state, not specifically a Namakkal plan; the draft presents it as a Namakkal fact.
+  The article describes the SP's inspection as part of preparing precautionary measures, but the draft's wording 'போலீஸ் பாதுகாப்பு ஏற்பாடு' in the headline and 'உரிய முன்னெச்சரிக்கை நடவடிக்கைகள் எடுக்கப்படுகின்றன' are reasonable; no separate arrest or result is reported, so no omission there.
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The article says the route also passes through the 'சந்தைப்பேட்டைபுதூர், பழைய பஸ்' area, but the reel_script omits this, and the slides_spec adds 'பழைய பஸ் ஸ்டாண்ட் பகுதி வழியாக செல்லும' which the article only partially supports (text is cut off after 'பழைய பஸ்'), so 'ஸ்டாண்ட்' is an unsupported completion.
+  fact-check: The article says the first procession is planned for today at 3:00 PM, but the draft's reel_script and caption say 'today afternoon 3 o'clock' as the start time for the whole route, which is roughly consistent; however the slides_spec states 'சாலை வழியாகப் பயணிப்போர் கவனமாக இருங்கள்' (travellers should be careful), an advisory not present in the article.
+  fact-check: The reel_script states the rally 'is to be held' and that the November 1 rally was also planned, but the article's phrasing about November 1 ('நவ., 1ல்') is part of a 'today, tomorrow, Nov 1' list of rally dates across the state, not specifically a Namakkal plan; the draft presents it as a Namakkal fact.
+  fact-check: The article describes the SP's inspection as part of preparing precautionary measures, but the draft's wording 'போலீஸ் பாதுகாப்பு ஏற்பாடு' in the headline and 'உரிய முன்னெச்சரிக்கை நடவடிக்கைகள் எடுக்கப்படுகின்றன' are reasonable; no separate arrest or result is reported, so no omission there.
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  slides_spec 'எப்போது?' slide states the date as 25 அக்டோபர், which does not appear in the article
+  slides_spec 'பாதுகாப்பு' slide says 'பாதுகாப்புப் பணியில் போலீசார் ஈடுபடுவர்' (police will be deployed for security), which is not stated in the article
+  reel_script says 'மதியம் மூன்று மணிக்கு பேரணி நடைபெறவுள்ளது' and the article only says the first rally is planned for today at 3 pm; the 'தமிழக அரசு அனுமதி மறுத்த நிலையில் இந்த முதல் பேரணி திட்டமிடப்பட்டுள்ளது' sentence is a mix of facts (government denied permission, yet the rally is planned) and is not clearly supported as worded
+  reel_script omits that the article mentions the rally was planned for 'இன்று, நாளை, நவ., 1' (today, tomorrow and Nov 1) by RSS, which the reel only partly covers
+  reel_script states the SP inspected 'பாதுகாப்பு ஏற்பாடுகளை' (security arrangements), while the article only says he reviewed the precautionary measures in the context of the rally; the wording goes beyond the source
+  caption repeats the 'பாதுகாப்பு' claim that the SP did a security inspection and the 'உரிய முன்னெச்சரிக்கை நடவடிக்கைகள் எடுக்கப்படுகின்றன' line is an extrapolation of the truncated article
+claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: slides_spec 'எப்போது?' slide states the date as 25 அக்டோபர், which does not appear in the article
+  fact-check: slides_spec 'பாதுகாப்பு' slide says 'பாதுகாப்புப் பணியில் போலீசார் ஈடுபடுவர்' (police will be deployed for security), which is not stated in the article
+  fact-check: reel_script says 'மதியம் மூன்று மணிக்கு பேரணி நடைபெறவுள்ளது' and the article only says the first rally is planned for today at 3 pm; the 'தமிழக அரசு அனுமதி மறுத்த நிலையில் இந்த முதல் பேரணி திட்டமிடப்பட்டுள்ளது' sentence is a mix of facts (government denied permission, yet the rally is planned) and is not clearly supported as worded
+  fact-check: reel_script omits that the article mentions the rally was planned for 'இன்று, நாளை, நவ., 1' (today, tomorrow and Nov 1) by RSS, which the reel only partly covers
+  fact-check: reel_script states the SP inspected 'பாதுகாப்பு ஏற்பாடுகளை' (security arrangements), while the article only says he reviewed the precautionary measures in the context of the rally; the wording goes beyond the source
+  fact-check: caption repeats the 'பாதுகாப்பு' claim that the SP did a security inspection and the 'உரிய முன்னெச்சரிக்கை நடவடிக்கைகள் எடுக்கப்படுகின்றன' line is an extrapolation of the truncated article
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The article says the RSS rally was planned for 'today, tomorrow and Nov 1', but the draft's reel_script and caption say the government refused permission; the article says the government refused permission, so this matches, but the draft's slide says 'இதற்குத் தமிழக அரசு அனுமதி மறுத்தது' which is consistent — however the article is truncated and does not state the place of the rally route beyond 'Namakkal Park Road' as starting point, which the draft states as the start location (matches).
+  reel_script says 'முதல் பேரணி ... வழியாகச் செல்லும் என்று குறிப்பிடப்பட்டுள்ளது' and the route list includes பழைய பஸ் நிலையம் as a route — the article lists 'பழைய பஸ்' with the route, so this is consistent; no clear error found in route.
+  The reel_script sentence 'நாமக்கல்லில் இன்று மதியம் மூன்று மணிக்கு ஆர்எஸ்எஸ் பேரணி தொடங்குகிறது' contradicts the article's own account that the government refused permission to the rally, so the draft presents the rally as going ahead without noting the refusal and its outcome, mixing two facts (permission denied vs. rally starting) into a misleading statement.
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The article says the RSS rally was planned for 'today, tomorrow and Nov 1', but the draft's reel_script and caption say the government refused permission; the article says the government refused permission, so this matches, but the draft's slide says 'இதற்குத் தமிழக அரசு அனுமதி மறுத்தது' which is consistent — however the article is truncated and does not state the place of the rally route beyond 'Namakkal Park Road' as starting point, which the draft states as the start location (matches).
+  fact-check: reel_script says 'முதல் பேரணி ... வழியாகச் செல்லும் என்று குறிப்பிடப்பட்டுள்ளது' and the route list includes பழைய பஸ் நிலையம் as a route — the article lists 'பழைய பஸ்' with the route, so this is consistent; no clear error found in route.
+  fact-check: The reel_script sentence 'நாமக்கல்லில் இன்று மதியம் மூன்று மணிக்கு ஆர்எஸ்எஸ் பேரணி தொடங்குகிறது' contradicts the article's own account that the government refused permission to the rally, so the draft presents the rally as going ahead without noting the refusal and its outcome, mixing two facts (permission denied vs. rally starting) into a misleading statement.
+proofread skipped: free models not efficient (7 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
 earlier stories still waiting for images: []
 instagram check: 66 recent posts read from both pages
 source dinamalar list: 8 items
-source google 'நாமக்கல்': 28 items
+source google 'நாமக்கல்': 52 items
 source bing 'நாமக்கல்': 10 items
 source google 'ராசிபுரம்': 8 items
 source bing 'ராசிபுரம்': 12 items
@@ -47,15 +175,15 @@ source google மாலைமலர் 'ராசிபுரம்': 1 items
 source bing மாலைமலர் 'ராசிபுரம்': 2 items
 source google மாலைமலர் 'திருச்செங்கோடு': 0 items
 source bing மாலைமலர் 'திருச்செங்கோடு': 1 items
-source google தினத்தந்தி 'நாமக்கல்': 24 items
+source google தினத்தந்தி 'நாமக்கல்': 23 items
 source bing தினத்தந்தி 'நாமக்கல்': 12 items
 source google தினத்தந்தி 'ராசிபுரம்': 1 items
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
 source google தினத்தந்தி 'திருச்செங்கோடு': 0 items
 source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்': 58 items
+source google தினமணி 'நாமக்கல்': 61 items
 source bing தினமணி 'நாமக்கல்': 12 items
-source google தினமணி 'ராசிபுரம்': 4 items
+source google தினமணி 'ராசிபுரம்': 5 items
 source bing தினமணி 'ராசிபுரம்': 6 items
 source google தினமணி 'திருச்செங்கோடு': 3 items
 source bing தினமணி 'திருச்செங்கோடு': 9 items
@@ -149,21 +277,58 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 902 items -> 553 different news (18 Rasipuram)
-Rasipuram short of news: 0 items from nearby places added to its list
-candidate filter: old=200, not Namakkal district news (state-wide /=176, checked earlier=120, already filed=45, checked earlier=5, checked earlier=4, checked earlier=1, collected=1, checked earlier=1
-to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
+all sources: 929 items -> 558 different news (18 Rasipuram)
+Rasipuram short of news: 2 items from nearby places added to its list
+candidate filter: not Namakkal district news (state-wide /=177, old=174, checked earlier=119, already filed=45, collected=32, checked earlier=5, checked earlier=4, checked earlier=1, checked earlier=1
+to write: 7 Rasipuram + 27 other district candidates (max 200 + 200 stories)
+skip (R) not today (2026-10-17T21:53:20.455Z): ராசிபுரத்தில் மது போதையில் போக்குவரத்து ஆய்வாளரிடம
 skip (N) could not open: அர்னாப் புயல் எதிரொலி; மீண்டும் கொட்டப்போகும் கனமழ [https://tamil.news18.com/photogallery/tamil-nadu/asna-cyclon] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/tamil
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-All News sheet: {"ok":true,"added":1,"updated":59}
+skip (R) not today (2026-10-15T00:24:48.112Z): போலி வாரிசு சான்றிதழ்: இ-சேவை மைய உரிமையாளா் உள்பட
+skip (N) not today (2026-10-16T10:33:00+05:30): வடகிழக்கு பருவமழை முதல் நாளே அமர்க்களம்: அதிக மழைப
+skip (R) not today (2026-10-12T05:23:00+05:30): சாலையில் அத்துமீறல்; விவசாயிகள் புகார்
+skip (N) not today (2026-10-17T19:55:28+05:30): 22ல் மின் நிறுத்தம்
+skip (R) not today (2026-10-18T06:11:00+05:30): நாமகிரிப்பேட்டை ஏரியில் மண் அள்ளுவதில் தி.மு.க., -
+skip (N) not today (2026-10-12T17:34:30.174Z): நாளைய மின்தடை! - குமாரபாளையம்
+skip (R) not today (2026-10-14T00:53:14.515Z): ராசிபுரம் அருகே தீண்டாமை சுவா் இடித்து அகற்றம்
+skip (N) not today (2026-10-22T19:47:39.887Z): முட்டை விலை ரூ. 5.70-ஆக நீடிப்பு
+skip (R) not today (2026-10-16T06:34:00+05:30): கொல்லிமலை பெருமாள் கோவில் கும்பாபிஷேகம் கோலாகலம்
+skip (N) not today (2026-10-21T21:26:57+05:30): புரட்டாசி முடிந்ததால் நுகர்வு அதிகரிப்பு 2 நாளில் 
+skip (R) not today (2026-10-21T05:26:00+05:30): கொல்லிமலையில் 3 நாள் மாநில அளவில் திரிசாரணர், திரி
+skip (N) could not open: நாமக்கல் முட்டை விலை நிலவரம் [https://www.dinamalar.com/news/tamil-nadu-district-news-chen] 404 Client Error: Not Found for url: https://www.dinamalar.com/news/tamil-nadu-d
+skip (N) not today (2026-10-20T02:04:00+05:30): க்யூ.ஆர்., கோடுடன் குப்பைத்தொட்டி
+skip (N) not today (2026-10-22T00:10:30.379Z): திருச்செங்கோடு மாணவா்கள் விடுதியில் மடிக்கணினிகள்,
+skip (N) not today (2026-10-15T20:06:19.447Z): 20 போதை மாத்திரைகள் பறிமுதல்: ஒருவா் கைது
+skip (N) not today (2026-10-15T01:13:55.777Z): வெள்ளக்கோயில் - சங்ககிரி இடையே நான்குவழிச் சாலைத் 
+skip (N) not today (2026-09-03 10:48:00): அக்கா, 3 தங்கைகள் - திருச்செங்கோடு அருகே துயர சம்ப
+skip (N) not today (2026-10-21T06:04:00+05:30): புகழூர் ரயில்வே கேட் மூடல்
+skip (N) not today (2026-10-22T20:00:53.587Z): மனைவியை அடித்து துன்புறுத்தி
+கொலை மிரட்டல் விடுத்த
+skip (N) not today (2026-10-19T01:09:00+05:30): ரூ.1 கோடி கேட்டு நெல் வியாபாரி கடத்தலில் 7 பேர் கை
+skip (N) not today (2026-10-16T06:34:00+05:30): கொல்லிமலை பெருமாள் கோவில் கும்பாபிஷேகம் கோலாகலம்
+skip (N) not today (2026-10-19T06:15:00+05:30): பூக்கள், பழங்கள் விற்பனை ஜோர்
+skip (N) not today (2026-10-21T05:26:00+05:30): கொல்லிமலையில் 3 நாள் மாநில அளவில் திரிசாரணர், திரி
+skip (N) not today (2026-02-27T16:47:00+05:30): Section Category Page
+skip (N) not today (2026-10-12T05:18:00+05:30): குடி போதையில் அடுத்தடுத்து கொலை மதுபான கடைகளை இடமா
+skip (N) could not open: விபி-ஜி ராம் ஜி' திட்டத்தின் கீழ் 31.69 கோடி வேலைந [https://news.google.com/rss/articles/CBMiqAFBVV95cUxQVldWZnV] google news link not decoded (no decoded url; google page, not the article)
+skip (N) not today (2026-10-23T06:19:00+05:30): ஆம்புலன்ஸ் கவிழ்ந்து விபத்தில் சிக்கியவர் பலி
+skip (N) not today (2026-10-12T20:45:44.836Z): வீட்டின் கூரை மேலிருந்து விழுந்த 
+தொழிலாளி உயிரிழப
+skip (N) not today (2026-10-18T19:30:35.747Z): தலைமலை பெருமாள் கோயிலில் 
+ஹெலிபேட் அமைக்க நடவடிக்க
+skip (N) not today (2026-10-20T02:34:00+05:30): காரில் குட்கா கடத்தல் இருவருக்கு காப்பு
+carousel for 0 of 2 stories, the rest reel only
+filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)
+All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":0,"updated":60}
 All News sheet: {"ok":true,"added":0,"updated":60}
 All News sheet: {"ok":true,"added":1,"updated":59}
 All News sheet: {"ok":true,"added":0,"updated":60}
 All News sheet: {"ok":true,"added":0,"updated":60}
+All News sheet: {"ok":true,"added":0,"updated":60}
 All News sheet: {"ok":true,"added":1,"updated":59}
 All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":0,"updated":13} 
-stories: 0
+All News sheet: {"ok":true,"added":0,"updated":18} 
+stories: 2
+images made: 3 for 'Cooperative department employees hold at'
+images made: 3 for 'RSS rally in Namakkal today; SP reviews '
+bridge: 200 {"ok":true,"added":2,"auto_queued":2,"emailed":0,"reoffered":0,"batch":"B20261025-1706","first":"RN-92"}
