@@ -486,6 +486,7 @@ def main():
             n = queues[area].pop(0)
             progressed = True
             tried[area] += 1
+            log.append(f"try ({area}) manual={bool(n.get('manual'))}: {(n.get('title') or n.get('url') or '')[:60]}")
             stt = state.setdefault(n["key"], {"n": 0})
             stt["n"] = stt.get("n", 0) + 1
             stt["t"] = datetime.datetime.now(IST).isoformat()
@@ -558,6 +559,7 @@ def main():
                 queues[a] = keep
         if not progressed:
             break
+    log.append(f"candidate loop ended: left R={len(queues['R'])} N={len(queues['N'])}, tried={tried}, done={done}, time left {int((DEADLINE - time.time()) / 60)} min")
     rest = out[sent_n[0]:]
     assign_carousel(rest)
     log.append(f"carousel for {sum(1 for x in out if x['slides_spec'].get('carousel'))} of {len(out)} stories, the rest reel only")
