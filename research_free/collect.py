@@ -486,18 +486,23 @@ def main():
                 art["published"] = art.get("published") or n["published"]
             except Exception as e:
                 n["status"] = f"could not open the article: {str(e)[:60]}"
+                log.append(f"skip ({area}) could not open: {n['title'][:50]} [{n['url'][:60]}] {str(e)[:80]}")
                 continue
             if url in seen_src or any(r.get("source") == url for r in recent):
                 n["status"], stt["s"] = "already filed", "dup"
+                log.append(f"skip ({area}) already filed: {art['title'][:50]}")
                 continue
             if len(art["text"]) < 20:      # owner 25 Oct: only an empty article is skipped, never by length
                 n["status"], stt["s"] = "article text too short / blocked", "notext"
+                log.append(f"skip ({area}) no article text ({len(art['text'])} chars): {art['title'][:50]} [{url[:60]}]")
                 continue
             if not fresh(art["published"]):
                 n["status"], stt["s"] = "old", "old"
+                log.append(f"skip ({area}) not today ({art['published'] or 'no date'}): {art['title'][:50]}")
                 continue
             if not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:1500])) and n.get("via", "") != "dinamalar-list":
                 n["status"], stt["s"] = "not Namakkal district news (article names no Namakkal place)", "notdistrict"
+                log.append(f"skip ({area}) no Namakkal place in article: {art['title'][:50]}")
                 continue
             if any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched")) for r in recent):
                 n["status"], stt["s"] = "already filed", "dup"
