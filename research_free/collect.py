@@ -450,6 +450,8 @@ def main():
             queues[n["area"]].append(n)
         elif n["status"] == "collected":
             n["status"] = "old"
+    for a_ in ("R", "N"):      # links given by hand go first, before any time is used up
+        queues[a_] = [q for q in queues[a_] if q.get("manual")] + [q for q in queues[a_] if not q.get("manual")]
     if not PRIORITY_ONLY[0] and len(queues["R"]) < MAX_RASIPURAM:      # too little Rasipuram news: the Rasipuram page also takes news from the places next to it
         have = {q["key"] for q in queues["R"]}
         near = [q for q in queues["N"] if q["key"] not in have and any(w in q["title"] for w in allnews.RASI_NEAR)]
@@ -475,6 +477,7 @@ def main():
     all_sc = sorted([x["score"] for a_ in ("R", "N") for x in queues[a_]], reverse=True)
     district_cut = all_sc[MAX_NAMAKKAL - 1] if len(all_sc) >= MAX_NAMAKKAL else (all_sc[-1] if all_sc else 0)
     tries_cap = {"R": MAX_RASIPURAM * 10, "N": MAX_NAMAKKAL * 10}
+    log.append(f"candidates waiting: {len(queues['R'])} Rasipuram, {len(queues['N'])} Namakkal; time left {int((DEADLINE - time.time()) / 60)} min")
     while time.time() < DEADLINE - 120:
         progressed = False
         for area in ("R", "N"):
