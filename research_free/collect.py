@@ -212,7 +212,7 @@ def _stems(t):
 def same_news(a, b):
     """the same event in different words (ஆட்சியா் பங்களா சுவா் இடிந்து ~ கலெக்டர் குடியிருப்பின் சுற்றுச்சுவர் இடிந்தது): shared word stems"""
     x, y = _stems(a), _stems(b)
-    if len(x) < 3 or len(y) < 3:
+    if len(x) < 3 or len(y) < 3 or _fr().different_numbers(a, b):
         return False
     return len(x & y) / min(len(x), len(y)) >= 0.5
 

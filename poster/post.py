@@ -813,7 +813,7 @@ def ig_duplicate(row, page):
             def stems(t):
                 return {w[:5] for w in re.findall(r"[\u0B80-\u0BFF]{3,}", t)[:40]}
             a, b = stems(mine), stems(cap)
-            if a and b and len(a & b) / min(len(a), len(b)) >= 0.7:
+            if a and b and len(a & b) / min(len(a), len(b)) >= 0.7 and not freshness.different_numbers(ta or mine[:120], head):
                 return ts
     return ""
 

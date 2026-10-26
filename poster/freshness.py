@@ -85,11 +85,18 @@ def recurring(text):
     return bool(RECUR.search(text or ""))
 
 
+def different_numbers(a, b):
+    """both headlines give numbers and none of them match: a different event (8 arrested / Rs 1,47,000 is not 6 people / Rs 11,600)"""
+    na = set(re.findall(r"\d+", (a or "").replace(",", "")))
+    nb = set(re.findall(r"\d+", (b or "").replace(",", "")))
+    return bool(na) and bool(nb) and not (na & nb)
+
+
 def similar(a, b, thr, other_filed=None, today=None):
     """True when headline a and b are the same news. A repeating-price topic (e.g. today's egg price) counts as the same
     only when the other story was filed the same day - tomorrow's price is a new post."""
     import difflib
-    if not a or not b or difflib.SequenceMatcher(None, a, b).ratio() <= thr:
+    if not a or not b or difflib.SequenceMatcher(None, a, b).ratio() <= thr or different_numbers(a, b):
         return False
     if recurring(a) or recurring(b):
         today = today or datetime.datetime.now(IST).date()
