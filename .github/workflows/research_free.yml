@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-python@v5
         if: steps.sw.outputs.go == 'yes'
         with: {python-version: "3.11"}
-      - run: pip install requests googlenewsdecoder pillow
+      - run: pip install requests googlenewsdecoder==0.2.2 pillow
         if: steps.sw.outputs.go == 'yes'
       - name: Collect, write, validate, send
         if: steps.sw.outputs.go == 'yes'
@@ -51,6 +51,8 @@ jobs:
           BUDGET_MIN: "55"
           AUTO_IMAGES: "1"          # owner request 24 Oct: images made automatically (Cloudflare FLUX, then NVIDIA FLUX.1-dev); stories without all images go to the e-mail as before
           WRITE_STORIES: '1'
+          WRITE_WORKERS: "3"        # stories written at the same time
+          FRESH_DAYS: "2"           # news published today or yesterday (not posted yet)
         run: |
           mkdir -p research_free/results
           FLAG=""; [ "${{ github.event.inputs.dry }}" = "true" ] && FLAG="--dry"

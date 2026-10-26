@@ -227,7 +227,7 @@ def resolve(url):
         try:
             from googlenewsdecoder import gnewsdecoder
             r = gnewsdecoder(url, interval=2)
-            if r.get("status") and r.get("decoded_url"):
+            if (r.get("success") or r.get("status")) and r.get("decoded_url"):      # 0.2.x answers "success", older versions "status"
                 return r["decoded_url"]
             err = str(r.get("message") or "no decoded url")[:80]
         except Exception as e:

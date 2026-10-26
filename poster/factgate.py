@@ -69,3 +69,40 @@ def confirm(probs, title, text):
     except Exception as e:
         print("factgate confirm unavailable - keeping the flags:", str(e)[:120])
         return probs
+
+
+FIX = """You are a senior Tamil news editor. You get an ARTICLE, a DRAFT (JSON) and a list of CONFIRMED factual problems in the draft.
+Return the SAME JSON object (same keys, same structure) with ONLY those problems corrected: remove each invented detail, or change it to exactly what the ARTICLE says.
+Never add a fact that is not in the ARTICLE. Keep everything else unchanged, keep the closing follow sentence of reel_script, keep the slide character limits.
+Output ONLY the JSON object."""
+
+
+def fix(row, probs):
+    """confirmed problems: ask a model to correct ONLY those claims, then check the corrected text again.
+    Returns the corrected fields (dict) when the second check is clean, else None (the story is held, never posted with a false fact)."""
+    try:
+        import allnews, run, llm
+        a = allnews.article_any(row["source"].strip())
+        title, text = a.get("title", ""), a.get("text", "")
+        d = {"tamil_headline": row.get("headline_ta", ""), "reel_script": row.get("reel_script", ""),
+             "slides_spec": json.loads(row["slides_spec"]) if row.get("slides_spec") else "", "caption": row.get("caption", "")}
+        user = "ARTICLE:\n" + title + "\n" + text[:6000] + "\n\nPROBLEMS:\n" + "\n".join(f"- {p}" for p in probs) + "\n\nDRAFT:\n" + json.dumps(d, ensure_ascii=False)
+        for k in range(2):
+            try:
+                r, m = llm.ask_json(FIX, user) if k == 0 else llm.ask_claude(FIX, user, max_tokens=5000)
+            except Exception as e:
+                print(f"factgate fix {k + 1} unavailable:", str(e)[:120])
+                continue
+            if not isinstance(r, dict) or not all(r.get(x) for x in ("reel_script", "slides_spec")):
+                continue
+            chk = {"tamil_headline": r.get("tamil_headline") or d["tamil_headline"], "reel_script": r["reel_script"],
+                   "slides_spec": r["slides_spec"], "caption": _body(r.get("caption") or d["caption"])}
+            left = [p for p in run.factcheck(chk, {"title": title, "text": text}) if not any(w in p.lower() for w in SOFT)]
+            left = confirm(left, title, text) if left else []
+            print(f"factgate fix by {m}: {len(left)} problems left")
+            if not left:
+                return {"headline_ta": chk["tamil_headline"], "reel_script": r["reel_script"], "caption": r.get("caption") or d["caption"],
+                        "slides_spec": json.dumps(r["slides_spec"], ensure_ascii=False) if isinstance(r["slides_spec"], dict) else r["slides_spec"]}
+    except Exception as e:
+        print("factgate fix failed:", str(e)[:150])
+    return None

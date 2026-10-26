@@ -32,17 +32,36 @@ TEMPLATE = ("ONE single continuous photograph from one camera angle (not a colla
             "Keep the top-right corner and the lower third of the image visually simple (sky, road, wall, field) because Tamil text will be placed there.")
 
 
-BRIEF_SYSTEM = """You write image-generation prompts for a Tamil local-news photo. You get the story facts: the English headline, the place, the category and the article text.
-Write 3 different detailed prompts. Each one describes ONE real photograph of THIS story:
-- the exact place from the article and its real type (road, bus stand, school, hospital, collectorate office, field, river, hill, market, house);
-- the event itself as it looks (flood water on road, students with banners, police vehicle, damaged wall, crowd, rain, smoke) with the number of people and what they do;
-- the time of day, weather and light mentioned in the article; the vehicles, objects and buildings named in it;
-- people only from behind, far away or blurred; never a recognisable face.
-Use only facts from the article. Do not invent details. Each prompt 60-120 words, English, one single photograph.
-Never ask for text, letters, signboards with writing, logos or watermarks.
-Return ONLY JSON: {"scenes": ["prompt 1", "prompt 2", "prompt 3"]}"""
+BRIEF_SYSTEM = """You are the photo editor of a Tamil local-news page for Namakkal district, Tamil Nadu, India. You plan the 3 photographs that illustrate ONE news story.
+You get the English headline, place, category and the article text. Work in two steps and return both.
 
-IMG_TEMPLATE = ("Realistic news photograph, one single frame, tall vertical 9:16 composition, sharp focus, natural light, documentary press-photo look, no text, no letters, no logos. {scene} Keep the lower third plain (road, wall, sky).")
+STEP 1 - "facts": read the article and list ONLY what a camera could see, copied in meaning from the article:
+ what happened (the event itself), the exact place and its type (village road, highway, bus stand, government school, hospital, collectorate,
+ police station, temple, lake, farm field, market, poultry farm, textile/power-loom unit, house, hill road), the people by role and their number,
+ vehicles, objects, animals, crops, buildings, weather, time of day. Write "unknown" for anything the article does not say. Never invent.
+
+STEP 2 - "scenes": 3 different photographs of THIS event, each 70-120 words of plain English:
+ 1. WIDE establishing shot: the real place type with Namakkal / Tamil Nadu character, the event visible in it.
+ 2. MEDIUM shot of the event itself: the main action exactly as the article describes it (what the people do, what the objects show).
+ 3. DETAIL close-up of the one object or sign of the event that tells the story (the damaged vehicle part, the egg trays, the water on the road,
+    the paddy crop, the transformer, the closed shop shutter, the handed-over documents) - no faces.
+Every scene: name the place type, the action, the people (by role, number, clothes), the light and weather, the camera angle and lens.
+REGIONAL REALISM (always): Tamil Nadu town or village - red-tiled and concrete houses, coconut and palm trees, neem trees, dry red-brown soil,
+ narrow tar roads, TNSTC buses, two-wheelers, autorickshaws; men in shirts with veshti or trousers, women in sarees or salwar;
+ Tamil Nadu police in khaki uniform; TNEB linemen; Namakkal poultry farms, lorries, Kolli hills, Cauvery river at Paramathi / Pallipalayam / Mohanur.
+CATEGORY GUIDE: accident = the vehicles after the crash on that road, police and onlookers at a distance, no injured people; death or crime =
+ the place only (house exterior, police vehicle, police station gate), never a body or weapon; power cut = substation / transformer / linemen /
+ a dark street; rain or flood = water on that road or field, people wading; prices or market = the goods and the market stalls; protest = a crowd
+ with flags or placards seen from behind; government scheme or meeting = officials at a table in a government hall, people queuing;
+ school or exam = students in Tamil Nadu school uniform from behind; temple festival = the temple gopuram, chariot, devotees.
+NEVER: readable text, letters, numbers, signboards, logos, watermarks, a recognisable face of any real person or politician, blood, injuries,
+ dead bodies, weapons pointed at people, collages or split frames. People only from behind, far away or slightly blurred.
+Return ONLY JSON: {"facts": "...", "scenes": ["scene 1", "scene 2", "scene 3"]}"""
+
+IMG_TEMPLATE = ("Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), "
+                "tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, "
+                "true-to-life colours, documentary photojournalism. {scene} No text, no letters, no numbers, no signboards, no logos, no watermarks, "
+                "no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).")
 
 
 def image_scenes(art, d):
@@ -109,7 +128,11 @@ def fresh(published):
     st = _start_at()
     if st is not None and t.tzinfo is not None and t < st:
         return False      # published before the automation was started: already covered by the posted/e-mailed news
-    return d == datetime.datetime.now(IST).date()      # owner 25 Oct: only news published TODAY (IST, from 00:00); yesterday's news is never used
+    # owner 26 Oct: news published TODAY or YESTERDAY (IST) that is not posted yet; late-evening news is no longer lost after midnight
+    return (datetime.datetime.now(IST).date() - d).days < FRESH_DAYS
+
+
+FRESH_DAYS = int(os.environ.get("FRESH_DAYS", "2") or 1)      # 2 = today + yesterday, 1 = today only
 
 
 def _fr():
@@ -160,7 +183,6 @@ def save_state(st):
 
 
 PRIORITY_ONLY = [False]
-EARLY_N = int(os.environ.get("EARLY_EMAIL_AFTER", "0"))   # the first email (images needed) goes out as soon as this many stories are written
 
 
 def assign_carousel(group):
@@ -172,9 +194,7 @@ def assign_carousel(group):
             x["slides_spec"]["carousel"] = (i < top or str(x.get("importance", "")).strip() == "High") and os.environ.get("CAROUSEL_ON", "0") == "1"      # reels only for now
 
 
-STYLE = ("Square image, the main subject exactly in the centre with empty space around it so a tall centre crop keeps it. Scroll-stopping, emotionally engaging, high-impact news photograph: one clear strong focal subject, dramatic natural light "
-         "(golden hour, soft morning mist or storm-light as fits the story), rich saturated yet natural colours, cinematic composition with "
-         "depth, professional photojournalism look, ultra-sharp, realistic textures. No vehicle number plates, no signboards, no writing on any object. ")
+STYLE = ""      # the full photo style is in IMG_TEMPLATE (the old square / "dramatic golden hour" prefix fought the 9:16 news-photo template)
 
 
 def _upload_image(data):
@@ -188,6 +208,8 @@ def _upload_image(data):
 
 
 _RECENT_IMG = []
+IMG_DOWN = [False]
+IMG_SPENT = [0.0]      # seconds spent on images in this run (stories are now sent one by one)
 
 
 def reuse_images(st, need):
@@ -230,16 +252,21 @@ def make_images(group, log=None):
     from concurrent.futures import ThreadPoolExecutor
     t0 = time.time()
     for st in group:
-        if time.time() - t0 > IMG_BUDGET:
-            msg = "image budget used up: the remaining stories go to the images-needed email"
+        if time.time() - t0 > IMG_BUDGET or IMG_SPENT[0] > IMG_BUDGET:
+            st["auto_images"] = True
+            msg = "image budget used up: the remaining stories get their images in the posting job"
             print(msg); log is not None and log.append(msg)
             break
         prompts = [p.strip() for p in str(st.get("prompts", "")).split("\n---\n") if p.strip()]
         if not prompts:
             continue
+        if IMG_DOWN[0]:
+            st["auto_images"] = True
+            continue
         sid = st.get("english_headline", "")[:40]
         if IMG_MAX and sum(imagegen.USED.values()) + len(prompts) > IMG_MAX:
-            msg = f"image cap {IMG_MAX} per run reached (credit guard): the remaining stories go to the images-needed email"
+            st["auto_images"] = True
+            msg = f"image cap {IMG_MAX} per run reached (credit guard): the remaining stories get their images in the posting job"
             print(msg); log is not None and log.append(msg)
             break
         reused = reuse_images(st, len(prompts))
@@ -252,7 +279,11 @@ def make_images(group, log=None):
         try:
             def one(ip):
                 i, pr = ip
-                data = imagegen.generate((STYLE + pr)[:1800], seed=random.randint(1, 10**6))
+                data = None
+                for k in range(2):      # a picture that does not show this news is made once more with another seed
+                    data = imagegen.generate((STYLE + pr)[:1800], seed=random.randint(1, 10**6))
+                    if imagegen.matches(data, st.get("english_headline", "")):
+                        break
                 return _upload_image(data)
             # credit guard: the first image is made alone; if it fails, the rest of this story is NOT attempted (no credits wasted on half a story)
             first = one((0, prompts[0]))
@@ -265,6 +296,7 @@ def make_images(group, log=None):
             print(f"images made: {len(urls)} for '{sid}'")
         except Exception as e:
             print(f"images NOT made for '{sid}': {str(e)[:200]}")
+            st["auto_images"] = True      # the bridge queues it as "Auto images": the posting job tries the image models again within minutes
             if log is not None:
                 log.append(f"auto images failed for '{sid}': {str(e)[:120]} -> images-needed email")
             # last check: earlier pictures again (a partial match is accepted); otherwise this story waits for the owner's e-mail
@@ -275,7 +307,9 @@ def make_images(group, log=None):
                     log.append(f"earlier picture reused (second check) for '{sid}'")
                 continue
             if "all image models failed" in str(e):
-                break          # no image model works right now (credits/limit): do not waste time on the other stories
+                IMG_DOWN[0] = True      # no image model works right now (credits/limit): the next stories go straight to the posting job's retry
+                break
+    IMG_SPENT[0] += time.time() - t0
     if log is not None:
         log.append(f"auto images: {sum(1 for x in group if x.get('images'))} of {len(group)} stories ({imagegen.USED})")
 
@@ -311,18 +345,34 @@ TODAY = [0]
 DAILY_CAP = int(os.environ.get("DAILY_CAP", "1000"))      # owner: after 40 posts in a day only the main / important news is written and posted
 
 
-def send_batch(group, log=None):
-    """write these stories to the Sheet and send ONE images-needed email for them; returns True when the bridge accepted them"""
+def send_batch(group, log=None, images=True):
+    """write these stories to the Sheet (stories without all images: "Auto images" = the posting job makes them, or the images-needed e-mail);
+    returns True when the bridge accepted them. Retried, because a story that is not saved here is lost."""
     if not group or not BRIDGE_URL or DRY:
         return False
     assign_carousel(group)
-    make_images(group, log)           # free AI image API; stories whose images could not all be made stay on the images-needed email
+    if images:
+        make_images(group, log)           # AI image API; stories whose images could not all be made are marked auto_images
+    if os.environ.get("AUTO_IMAGES", "0") == "1":
+        for x in group:
+            if not x.get("images"):
+                x["auto_images"] = True
     clean = [{k: v for k, v in x.items() if not k.startswith("_")} for x in group]
+    last = None
+    for k in range(3):
+        try:
+            r = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": clean, "reoffer_ids": REOFFER}), timeout=180)
+            print("bridge:", r.status_code, r.text[:300])
+            r.raise_for_status()
+            if not r.json().get("ok"):
+                raise RuntimeError(r.text[:200])
+            REOFFER[:] = []      # earlier stories still waiting for images are listed once per round, not with every story
+            return True
+        except Exception as e:
+            last = e
+            time.sleep(10 * (k + 1))
     try:
-        r = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "addStories", "stories": clean, "reoffer_ids": REOFFER}), timeout=180)
-        print("bridge:", r.status_code, r.text[:300])
-        r.raise_for_status()
-        return True
+        raise last
     except Exception as e:
         print("bridge failed:", e)
         if log is not None:
@@ -330,7 +380,7 @@ def send_batch(group, log=None):
         return False
 
 
-def file_story(art, res, errors_log, recent):
+def file_story(art, res, errors_log, recent, scenes=None):
     """quality gate for one written story; returns the story dict, or (None, reason)"""
     if isinstance(res, Exception):
         return None, f"all free models failed: {str(res)[:80]}"
@@ -355,18 +405,35 @@ def file_story(art, res, errors_log, recent):
         return None, "duplicate after write"
     if isinstance(d.get("slides_spec"), dict):
         d["slides_spec"]["v"] = 3          # the poster only reads format v3; a model writing v4 made RN-48 unpostable
-    try:
-        scenes = image_scenes(art, d)
-    except Exception as e:
-        print("image brief failed, using the writer's scenes:", str(e)[:120], flush=True)
-        scenes = d["scenes"]
+    if not scenes:
+        try:
+            scenes = image_scenes(art, d)
+        except Exception as e:
+            print("image brief failed, using the writer's scenes:", str(e)[:120], flush=True)
+            scenes = d["scenes"]
     prompts = "\n---\n".join(IMG_TEMPLATE.format(scene=s.strip()) for s in scenes)
     ver = f"FREE-MODEL DRAFT ({model}) - not checked by Claude yet" + (f"; validator problems: {'; '.join(errors)}" if errors else "")
     return {"tamil_headline": d["tamil_headline"], "english_headline": d["english_headline"], "category": d["category"], "location": d["location"],
-            "importance": d["importance"], "post_to": d["post_to"], "slides_spec": d["slides_spec"], "reel_script": d["reel_script"],
+            "importance": d["importance"], "scope": d.get("scope", ""), "post_to": d["post_to"], "slides_spec": d["slides_spec"], "reel_script": d["reel_script"],
             "caption": d["caption"], "prompts": prompts, "source": art["url"], "published": art["published"], "verification": ver,
             "note": f"free-model draft {model}, {att} attempt(s), {len(errors)} validator problem(s)",
             "post_time": "right after your reply, same day"}, ""
+
+
+DISTRICT_WORDS = ("ஆட்சியர்", "மாவட்ட நிர்வாக", "வேலைவாய்ப்பு", "வேலை வாய்ப்பு", "ஆட்சேர்ப்பு", "பணியிட", "காலிப்பணி", "விண்ணப்பி", "முகாம்",
+                  "குறைதீர்", "மகளிர் உரிமை", "ரேஷன்", "முட்டை விலை", "முட்டை கொள்முதல்", "மாவட்டம் முழுவதும்", "மாவட்டத்தில் உள்ள அனைத்து",
+                  "வாக்காளர் பட்டியல்", "உதவித்தொகை", "கல்விக் கடன்", "பொதுத்தேர்வு", "மாவட்ட அளவில்")
+LOCAL_EVENT = ("விபத்து", "கொலை", "திருட்டு", "கைது", "தற்கொலை", "பலி", "உயிரிழ", "தீ விபத்து")
+
+
+def district_wide(story):
+    """news that people in the whole district need (not one village's event): posted on Namakkal 360 with Rasipuram 360 as collaborator"""
+    head = " ".join(str(story.get(k, "")) for k in ("tamil_headline", "category"))
+    if any(w in head for w in LOCAL_EVENT):
+        return False
+    if str(story.get("scope", "")).strip().lower().startswith("district"):
+        return True
+    return any(w in head for w in DISTRICT_WORDS)
 
 
 def instagram_recent(log=None):
@@ -410,7 +477,6 @@ def main():
         recent += instagram_recent(ig_log)
     today = datetime.datetime.now(IST).strftime("%A %d %B %Y")
     out, log = [], []
-    sent_n = [0]      # stories already sent in the early email
     state = load_state()
     REOFFER[:] = pending_ids()
     log.append(f"earlier stories still waiting for images: {REOFFER}")
@@ -452,7 +518,8 @@ def main():
             n["status"] = "old"
     for a_ in ("R", "N"):      # links given by hand go first, before any time is used up
         queues[a_] = [q for q in queues[a_] if q.get("manual")] + [q for q in queues[a_] if not q.get("manual")]
-    if not PRIORITY_ONLY[0] and len(queues["R"]) < MAX_RASIPURAM:      # too little Rasipuram news: the Rasipuram page also takes news from the places next to it
+    if os.environ.get("RASI_NEAR", "0") == "1" and not PRIORITY_ONLY[0] and len(queues["R"]) < MAX_RASIPURAM:
+        # off by default (owner 26 Oct: only real Rasipuram news goes to Rasipuram 360; all other district news to Namakkal 360)
         have = {q["key"] for q in queues["R"]}
         near = [q for q in queues["N"] if q["key"] not in have and any(w in q["title"] for w in allnews.RASI_NEAR)]
         queues["R"] += near[:MAX_RASIPURAM - len(queues["R"])]
@@ -472,64 +539,106 @@ def main():
             queues[a_] = [q for q in queues[a_] if q["mentions"] >= 3 or any(w in q["title"] for w in PRIO)][:4]
         PRIORITY_ONLY[0] = True
         log.append("archive round: priority scan only (urgent local news, if any)")
-    # Namakkal 360 = top news of the whole district (Rasipuram included), Rasipuram 360 = Rasipuram only; each page posts on its own.
-    # A Rasipuram story that is among the district's top MAX_NAMAKKAL by score also goes to Namakkal 360 (and uses one of its slots).
-    all_sc = sorted([x["score"] for a_ in ("R", "N") for x in queues[a_]], reverse=True)
-    district_cut = all_sc[MAX_NAMAKKAL - 1] if len(all_sc) >= MAX_NAMAKKAL else (all_sc[-1] if all_sc else 0)
+    # Rasipuram news -> ONE post on Rasipuram 360 with Namakkal 360 invited as collaborator; every other district news -> Namakkal 360 only
     tries_cap = {"R": MAX_RASIPURAM * 10, "N": MAX_NAMAKKAL * 10}
     log.append(f"candidates waiting: {len(queues['R'])} Rasipuram, {len(queues['N'])} Namakkal; time left {int((DEADLINE - time.time()) / 60)} min")
-    while time.time() < DEADLINE - 120:
-        progressed = False
-        for area in ("R", "N"):
-            if done[area] >= target[area] or not queues[area] or tried[area] >= tries_cap[area]:
+
+    def prepare(n, area):
+        """worker thread: open the article, check it, write the story and its image brief. Never raises; returns a result dict."""
+        try:
+            links = [u for u in [n["url"]] + n.get("alts", []) if u]
+            links = list(dict.fromkeys([u for u in links if "news.google.com" not in u] + links))      # a direct publisher link first, Google redirects last
+            url, last = None, None
+            for u in links[:4]:
+                try:
+                    url = allnews.resolve(u)
+                    break
+                except Exception as e:
+                    last = e
+            if url is None:
+                raise last or RuntimeError("no link")
+            art = allnews.article_any(url)
+            art["url"] = url
+            for k in ("text", "title"):      # some outlets type ூ as ு+ா (ப.வேலுார்): normalise so the writer copies the correct spelling
+                if art.get(k):
+                    art[k] = art[k].replace("ுா", "ூ")
+            art["title"] = art.get("title") or n["title"]
+            art["published"] = art.get("published") or n["published"]
+        except Exception as e:
+            return {"skip": f"could not open the article: {str(e)[:60]}", "log": f"skip ({area}) could not open: {n['title'][:50]} [{n['url'][:60]}] {str(e)[:80]}"}
+        if url in seen_src or any(r.get("source") == url for r in recent):
+            return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) already filed: {art['title'][:50]}"}
+        if len(art["text"]) < 20:      # owner 25 Oct: only an empty article is skipped, never by length
+            return {"skip": "article text too short / blocked", "s": "notext", "log": f"skip ({area}) no article text ({len(art['text'])} chars): {art['title'][:50]} [{url[:60]}]"}
+        if not fresh(art["published"]) and not n.get("manual"):      # a link the owner gives by hand is written whatever its date
+            return {"skip": "old", "s": "old", "log": f"skip ({area}) too old ({art['published'] or 'no date'}): {art['title'][:50]}"}
+        if not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:1500])) and n.get("via", "") != "dinamalar-list":
+            return {"skip": "not Namakkal district news (article names no Namakkal place)", "s": "notdistrict", "log": f"skip ({area}) no Namakkal place in article: {art['title'][:50]}"}
+        if not n.get("manual") and any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched")) for r in recent):
+            return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) similar to a filed story: {art['title'][:50]}"}
+        if area == "N" and allnews.area_of(art["title"] + " " + art["text"][:400]) == "R":
+            area = "R"      # the headline did not name the place, the article's opening does: Rasipuram news
+        art["interest"] = interest(art)
+        print(f"writing [{area}]: {art['title'][:60]}", flush=True)
+        try:
+            res = run.write(art, today)
+        except Exception as e:
+            res = e
+        scenes = None
+        if not isinstance(res, Exception):
+            try:
+                scenes = image_scenes(art, res[0])
+            except Exception as e:
+                print("image brief failed, using the writer's scenes:", str(e)[:120], flush=True)
+        return {"art": art, "res": res, "scenes": scenes, "area": area}
+
+    def next_item():
+        """next candidate, Rasipuram and Namakkal in turn; the same event already filed this round is never written again"""
+        for _ in range(2):
+            area = ("R", "N")[turn[0] % 2]
+            turn[0] += 1
+            if done[area] >= target[area] or tried[area] >= tries_cap[area]:
                 continue
-            n = queues[area].pop(0)
-            progressed = True
+            while queues[area]:
+                q = queues[area].pop(0)
+                if q["title"] and any(difflib.SequenceMatcher(None, q["title"], t).ratio() > 0.8 for t in filed_titles):      # owner 25 Oct: only the same event
+                    q["status"] = "duplicate of a story filed this round"
+                    continue
+                return q, area
+        return None
+
+    from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
+    workers = max(1, int(os.environ.get("WRITE_WORKERS", "3")))      # stories written at the same time (the models answer in parallel)
+    reserve = int(os.environ.get("RESERVE_MIN", "6")) * 60           # no new story is started this close to the deadline
+    turn, filed_titles, unsent = [0], [], []
+    running = {}
+    pool = ThreadPoolExecutor(max_workers=workers)
+    while True:
+        while len(running) < workers and time.time() < DEADLINE - reserve:
+            nx = next_item()
+            if not nx:
+                break
+            n, area = nx
             tried[area] += 1
             log.append(f"try ({area}) manual={bool(n.get('manual'))}: {(n.get('title') or n.get('url') or '')[:60]}")
             stt = state.setdefault(n["key"], {"n": 0})
             stt["n"] = stt.get("n", 0) + 1
             stt["t"] = datetime.datetime.now(IST).isoformat()
-            try:
-                url = allnews.resolve(n["url"])
-                art = allnews.article_any(url)
-                art["url"] = url
-                for k in ("text", "title"):      # some outlets type ூ as ு+ா (ப.வேலுார்): normalise so the writer copies the correct spelling
-                    if art.get(k):
-                        art[k] = art[k].replace("\u0bc1\u0bbe", "\u0bc2")
-                art["title"] = art.get("title") or n["title"]
-                art["published"] = art.get("published") or n["published"]
-            except Exception as e:
-                n["status"] = f"could not open the article: {str(e)[:60]}"
-                log.append(f"skip ({area}) could not open: {n['title'][:50]} [{n['url'][:60]}] {str(e)[:80]}")
+            running[pool.submit(prepare, n, area)] = (n, stt)
+        if not running or time.time() > DEADLINE + 240:
+            break
+        fin, _ = wait(list(running), timeout=30, return_when=FIRST_COMPLETED)
+        for f in fin:
+            n, stt = running.pop(f)
+            r = f.result()
+            if r.get("skip"):
+                n["status"] = r["skip"]
+                if r.get("s"):
+                    stt["s"] = r["s"]
+                log.append(r["log"])
                 continue
-            if url in seen_src or any(r.get("source") == url for r in recent):
-                n["status"], stt["s"] = "already filed", "dup"
-                log.append(f"skip ({area}) already filed: {art['title'][:50]}")
-                continue
-            if len(art["text"]) < 20:      # owner 25 Oct: only an empty article is skipped, never by length
-                n["status"], stt["s"] = "article text too short / blocked", "notext"
-                log.append(f"skip ({area}) no article text ({len(art['text'])} chars): {art['title'][:50]} [{url[:60]}]")
-                continue
-            if not fresh(art["published"]) and not n.get("manual"):      # a link the owner gives by hand is written whatever its date
-                n["status"], stt["s"] = "old", "old"
-                log.append(f"skip ({area}) not today ({art['published'] or 'no date'}): {art['title'][:50]}")
-                continue
-            if not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:1500])) and n.get("via", "") != "dinamalar-list":
-                n["status"], stt["s"] = "not Namakkal district news (article names no Namakkal place)", "notdistrict"
-                log.append(f"skip ({area}) no Namakkal place in article: {art['title'][:50]}")
-                continue
-            if not n.get("manual") and any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched")) for r in recent):
-                n["status"], stt["s"] = "already filed", "dup"
-                log.append(f"skip ({area}) similar to a filed story: {art['title'][:50]}")
-                continue
-            art["interest"] = interest(art)
-            print(f"writing [{area}]: {art['title'][:60]}", flush=True)
-            try:
-                res = run.write(art, today)
-            except Exception as e:
-                res = e
-            story, why = file_story(art, res, log, recent)
+            art, area = r["art"], r["area"]
+            story, why = file_story(art, r["res"], log, recent, r["scenes"])
             if not story:
                 n["status"] = "not filed: " + why
                 log.append(f"NOT filed ({area}) {art['title'][:50]}: {why}")
@@ -538,37 +647,37 @@ def main():
                 n["status"] = "checked: not urgent, left for the next normal round"
                 log.append(f"not urgent ({area}) {art['title'][:50]}")
                 continue
-            both = area == "R" and n["score"] >= district_cut
-            story["post_to"] = ("Rasipuram 360 + Namakkal 360" if both else "Rasipuram 360") if area == "R" else "Namakkal 360"
-            if both:
-                target["N"] = max(0, target["N"] - 1)
+            # Rasipuram news: Rasipuram 360 post (Rasipuram logo), Namakkal 360 invited as collaborator.
+            # District-wide news (Collector / government announcements, district jobs, schemes, camps ...): Namakkal 360 post (Namakkal logo),
+            # Rasipuram 360 invited as collaborator - people in Rasipuram need it too. Every other district news: Namakkal 360 only.
+            if area == "R":
+                story["post_to"] = "Rasipuram 360 (collab: Namakkal 360)"
+            elif district_wide(story):
+                story["post_to"] = "Namakkal 360 (collab: Rasipuram 360)"
+            else:
+                story["post_to"] = "Namakkal 360"
             story["_area"], story["_score"] = area, n["score"]
             out.append(story)
-            if EARLY_N and not sent_n[0] and len(out) >= EARLY_N and send_batch(out, log):
-                sent_n[0] = len(out)
-                log.append(f"early email: first {sent_n[0]} stories sent, the rest follow in a second email")
             recent.append({"headline_ta": story["tamil_headline"], "source": art["url"]})
+            filed_titles.append(art["title"])
             n["status"], n["story"], stt["s"] = "filed", story["tamil_headline"], "filed"
             done[area] += 1
-            for a in ("R", "N"):    # same event from another outlet / wording: never write it a second time
-                keep = []
-                for q in queues[a]:
-                    if difflib.SequenceMatcher(None, q["title"], art["title"]).ratio() > 0.8:      # owner 25 Oct: only the same event, not similar wording
-                        q["status"] = "duplicate of a story filed this round"
-                    else:
-                        keep.append(q)
-                queues[a] = keep
-        if not progressed:
-            break
+            # saved in the Sheet at once (images first): a story written in this round is never lost if the run is stopped later
+            if time.time() > DEADLINE:
+                story["auto_images"] = True      # no time left for images here: the posting job makes them within minutes
+            if not DRY and not send_batch([story], log):
+                unsent.append(story)
+    pool.shutdown(wait=False, cancel_futures=True)
     log.append(f"candidate loop ended: left R={len(queues['R'])} N={len(queues['N'])}, tried={tried}, done={done}, time left {int((DEADLINE - time.time()) / 60)} min")
-    rest = out[sent_n[0]:]
-    assign_carousel(rest)
     log.append(f"carousel for {sum(1 for x in out if x['slides_spec'].get('carousel'))} of {len(out)} stories, the rest reel only")
     log.append(f"filed: {done['R']} Rasipuram + {done['N']} Namakkal (targets {MAX_RASIPURAM} + {MAX_NAMAKKAL})")
     for n in news:
         if n["status"] == "collected":
             n["status"] = "collected (not in this round's top)"
-    # --- the full list of every news item, for the owner to analyse (Sheet tab "All News" + a CSV in the repository)
+    # --- the list of ELIGIBLE news only (owner 26 Oct): Namakkal-district news of today / yesterday that was not posted before.
+    # Other-district, old and already posted items are dropped silently (they used to fill the "All News" tab: 24,000 rows in 5 days).
+    NOT_ELIGIBLE = ("old", "not Namakkal", "already filed", "checked earlier", "duplicate of a story filed")
+    news = [n for n in news if not str(n["status"]).startswith(NOT_ELIGIBLE)]
     rows = [{"source": ", ".join(n["outlets"])[:80], "area": "Rasipuram" if n["area"] == "R" else "Namakkal district", "url": n["url"], "title": n["title"],
              "published": n["published"][:16].replace("T", " "), "mentions": n["mentions"], "score": n["score"], "status": n["status"], "story": n["story"]} for n in news]
     try:
@@ -596,8 +705,10 @@ def main():
     Path(HERE / "results").mkdir(exist_ok=True)
     (HERE / "results" / "collect.json").write_text(json.dumps({"log": log, "llm": llm.LOG, "stories": out}, ensure_ascii=False, indent=1), encoding="utf-8")
     print("\n".join(log), f"\nstories: {len(out)}")
-    if rest and not DRY:
-        if not send_batch(rest, log):
+    if unsent and not DRY:
+        for st in unsent:
+            st["auto_images"] = st.get("auto_images") or not st.get("images")
+        if not send_batch(unsent, log, images=False):      # last try for stories the bridge refused earlier
             raise RuntimeError("addStories failed for the final batch")
     elif not out and REOFFER and not DRY:
         try:      # no new story, but earlier stories still wait for images: ask for those again

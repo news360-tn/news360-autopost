@@ -30,6 +30,7 @@ env:
   CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
   FAL_KEY: ${{ secrets.FAL_KEY }}
   NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}   # picture check: does the AI image show the news?
   DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
   PREBUILD: ${{ github.event_name == 'workflow_dispatch' && inputs.prebuild && '1' || '' }}
   PAUSED: ${{ vars.PAUSED }}
@@ -37,7 +38,7 @@ env:
 jobs:
   check:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12      # also makes the automatic pictures (max 7 min per run)
     outputs:
       ready: ${{ steps.chk.outputs.ready }}
       matrix: ${{ steps.chk.outputs.matrix }}

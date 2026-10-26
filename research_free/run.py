@@ -35,10 +35,8 @@ def _norm(x, key=""):
     """full place names everywhere (ப.வேலூர் -> பரமத்தி வேலூர்); spoken role/abbreviation words in the reel script"""
     import names
     if isinstance(x, str):
-        if key == "reel_script":       # digits -> correct Tamil number words (deterministic: free models write number words badly)
-            sys.path.insert(0, str(HERE.parent / "reel"))
-            from tamilnum import speak_numbers
-            return speak_numbers(names.spoken(x))
+        if key == "reel_script":       # numbers stay DIGITS (screen text = the article's numbers); the voice says them in words (reel/tts.py)
+            return names.spoken(x)
         return names.full_places(x)
     if isinstance(x, list):
         return [_norm(i, key) for i in x]
@@ -144,7 +142,7 @@ def factcheck(d, art, claude=True):
 PROOF = """You are a senior Tamil news editor and proofreader for the Instagram page "நாமக்கல் 360".
 You get a JSON draft. Return the SAME JSON object (same keys, same structure, same facts, same numbers) with ONLY these fixes:
 1. Correct Tamil spelling, sandhi (புணர்ச்சி), grammar and place names in every Tamil text.
-2. reel_script: make it read like ONE continuous story by a professional Tamil TV news reader: smooth connecting words between sentences (மேலும், இதனால், இதையடுத்து, இந்நிலையில்), no abrupt jumps, no repeated facts, first sentence = the hook. Keep it 7-9 sentences, 85-120 words, give every detail the article has (who, exact place, when, how, numbers, action, what next), numbers as Tamil words, no digits, no English letters. English words that people say in Tamil must be written in Tamil script so a Tamil voice pronounces them (மொபைல், ஆன்லைன், பஸ்). Keep the last sentence exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
+2. reel_script: make it read like ONE continuous story by a professional Tamil TV news reader: smooth connecting words between sentences (மேலும், இதனால், இதையடுத்து, இந்நிலையில்), no abrupt jumps, no repeated facts, first sentence = the hook. Keep it 7-9 sentences, 85-120 words, give every detail the article has (who, exact place, when, how, numbers, action, what next). Keep EVERY number, date, time, amount and age exactly as the digits written in the draft (10.30 மணி, ரூ.5.70, 65 வயது, 26ஆம் தேதி) - never turn them into words and never change them. No English letters. English words that people say in Tamil must be written in Tamil script so a Tamil voice pronounces them (மொபைல், ஆன்லைன், பஸ்). Keep the last sentence exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
 3. slides_spec texts and caption: natural modern Tamil, no half-English sentences except fixed words (Follow, Share, Save). Keep the character limits (hl1 40, hl2 28, title 18, lines 60).
 Never add facts. Never remove the follow line or hashtags. Output ONLY the JSON object."""
 

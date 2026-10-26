@@ -66,6 +66,17 @@ def bridge_get(action, **params):
 
 
 def bridge_post(action, payload):
+    if action == "posted":      # a published post that is not recorded would be posted again: retry
+        for k in range(4):
+            try:
+                return _bridge_post(action, payload)
+            except Exception as e:
+                log(f"bridge 'posted' failed (try {k + 1}):", str(e)[:150])
+                time.sleep(15 * (k + 1))
+    return _bridge_post(action, payload)
+
+
+def _bridge_post(action, payload):
     r = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY},
                       data=json.dumps({"action": action, **payload}, ensure_ascii=False).encode("utf-8"),
                       headers={"Content-Type": "application/json"}, timeout=120)
@@ -97,13 +108,18 @@ LABEL = {"rasipuram": "இராசிபுரம் 360", "namakkal": "நா�
 
 
 def pages_of(row):
-    """the pages that post this story, each on its own (no collaboration): Namakkal 360 = top news of the whole district (Rasipuram
-    included), Rasipuram 360 = Rasipuram news only. post_to names them; a story can go to both, as two separate posts."""
+    """the ONE page that posts this story (its logo, follow line and account) = the first page named in post_to:
+    "Rasipuram 360 (collab: Namakkal 360)" -> rasipuram; "Namakkal 360 (collab: Rasipuram 360)" / "Namakkal 360" -> namakkal.
+    Older rows ("Rasipuram 360 + Namakkal 360") follow the same rule."""
     t = (row.get("post_to") or "").lower()
-    pg = [p for p in ("namakkal", "rasipuram") if p in t]
-    if "rasipuram" in pg:
-        return ["rasipuram"]     # owner (24 Oct): Rasipuram news = ONE post with the Rasipuram brand, Namakkal 360 is invited as collaborator
-    return pg or ["namakkal"]
+    pos = {p: t.find(p) for p in ("namakkal", "rasipuram") if p in t}
+    return [min(pos, key=pos.get)] if pos else ["namakkal"]
+
+
+def collab_page(row, page):
+    """the other page, invited as collaborator, when post_to names it (Rasipuram news always invites Namakkal 360)"""
+    other = "namakkal" if page == "rasipuram" else "rasipuram"
+    return other if (other in (row.get("post_to") or "").lower() or page == "rasipuram") else ""
 
 
 def page_done(row, page):
@@ -531,8 +547,13 @@ def pick_location(row, spec):
     return d if d.isdigit() else ""
 
 
+COLLAB = ""      # page invited as collaborator for the story being posted (set in run_story_page)
+
+
 def collab_user():
-    """the account invited as collaborator: Namakkal 360 on Rasipuram 360 posts"""
+    """the account invited as collaborator: Namakkal 360 on Rasipuram 360 posts, Rasipuram 360 on district-wide Namakkal 360 posts"""
+    if COLLAB == "rasipuram":
+        return CONFIG.get("collab_username", "rasipuram.360")
     return CONFIG.get("collab_namakkal_username", "namakkal.360")
 
 
@@ -630,12 +651,17 @@ def publish_story(token, media_url, kind):
     try:
         if not CONFIG.get("post_stories", True):
             return ""
+        spare = int(CONFIG.get("stories_below_quota", 25))
+        if USED.get(PAGE) is not None and USED[PAGE] + 1 >= spare:
+            log(f"story skipped: {USED[PAGE]} posts in 24 h - the limit of {IG_LIMIT} is kept for news posts (stories only below {spare})")
+            return ""
         uid, _ = ig_account(token)
         prm = dict(media_type="STORIES")
         prm["video_url" if kind == "video" else "image_url"] = media_url
         cid = ig("POST", f"{uid}/media", token, **prm)["id"]
         wait_ready(cid, token, 10)
         mid = ig("POST", f"{uid}/media_publish", token, creation_id=cid)["id"]
+        USED[PAGE] = USED.get(PAGE, 0) + 1
         log("story posted", kind, mid)
         return mid
     except Exception as e:
@@ -666,11 +692,32 @@ def fail(row, kind, msg):
 
 
 def still_needed(sid, page, kind):
-    """last check right before publishing: the sheet may have changed while this slow job was building (row marked skipped / already posted)"""
+    """last check right before publishing: the sheet may have changed while this slow job was building (row marked skipped / already posted),
+    and another job may have posted the same news meanwhile (Instagram feeds of both pages and the Sheet are read again)"""
     try:
-        r = next((x for x in bridge_get("queue")["rows"] if x.get("story_id") == sid), None)
+        rows = bridge_get("queue")["rows"]
+        r = next((x for x in rows if x.get("story_id") == sid), None)
     except Exception:
         return True
+    if r is not None and kind == "reel":
+        global ALL_ROWS
+        try:
+            fresh_rows = rows + [x for x in bridge_get("recent").get("rows", []) if x.get("story_id") not in {y.get("story_id") for y in rows}]
+            ALL_ROWS = fresh_rows
+        except Exception:
+            pass
+        IG_RECENT.clear()
+        for pg in ("namakkal", "rasipuram"):      # a Rasipuram post shows on Namakkal 360 too (collab): both feeds are checked
+            if r.get(pg + "_link") or LABEL[pg] in (r.get("reel_link") or ""):
+                continue      # this story's own earlier post on that page is not a duplicate
+            dup = ig_duplicate(r, pg)
+            if dup:
+                log(f"same news already on {LABEL[pg]} ({dup}) - not publishing", sid)
+                return False
+        why = skip_reason(r)
+        if why.startswith("duplicate"):
+            log(why, "- not publishing", sid)
+            return False
     if r is None:
         return False
     if (r.get("review") or "").strip().lower() == "hold":
@@ -682,6 +729,8 @@ def still_needed(sid, page, kind):
     return LABEL[page] not in (r.get("reel_link") or "")
 
 
+IG_LIMIT = int(os.environ.get("IG_DAILY_LIMIT", "50"))      # real Instagram limit per page per 24 h (feed posts AND stories count)
+TOTAL = {}
 SOFT_CAP = int(os.environ.get("DAILY_CAP", "1000"))     # Instagram stops each page at 50 API posts per 24 h (its quota API says 100 but Namakkal 360 stopped at 50): everything is posted until 40, the last 10 are kept for High news
 USED = {}
 
@@ -692,6 +741,13 @@ LIMIT = {}      # page -> True once Instagram's 24-hour publishing limit (50 pos
 def is_limit_error(e):
     t = str(e).lower()
     return "2207042" in t or "publish limit" in t or "publishing limit" in t or "maximum number of" in t and "posts" in t
+
+
+def is_transient(e):
+    """Instagram / network trouble that goes away by itself: the story is tried again in the next run, nothing is marked failed"""
+    t = str(e).lower()
+    return ("'is_transient': true" in t or "request limit reached" in t or "'code': 4," in t or "'code': 17," in t or "'code': 32," in t
+            or "please retry" in t or "timed out" in t or ("connection" in t and "error" in t) or "server error" in t)
 
 
 def limit_reached(page):
@@ -708,7 +764,9 @@ def limit_reached(page):
         d = ig("GET", f"{uid}/content_publishing_limit", token, fields="quota_usage,config")
         row = (d.get("data") or [{}])[0]
         used, total = int(row.get("quota_usage", 0)), int((row.get("config") or {}).get("quota_total", 50) or 50)
+        total = min(total, IG_LIMIT)      # the API says 100, but Instagram blocked Namakkal 360 at 50/100 (25 Oct)
         USED[page] = used
+        TOTAL[page] = total
         log(f"publishing quota {page}: {used}/{total}")
         LIMIT[page] = used >= total
     except Exception as e:
@@ -769,7 +827,7 @@ def run_story(row):
         except Exception:
             owner_reel = False
         # owner-made reels (e-mailed) are posted without the duplicate check (owner decision, 24 Oct); own earlier half-post is not a duplicate
-        dup = "" if (owner_reel or row.get(pg + "_link") or row.get("reel_link")) else ig_duplicate(row, pg)
+        dup = "" if (owner_reel or row.get(pg + "_link") or row.get("reel_link")) else (ig_duplicate(row, pg) or ig_duplicate(row, "rasipuram" if pg == "namakkal" else "namakkal"))
         if dup:
             log("SKIP instagram duplicate:", row.get("story_id"), pg, "already posted", dup)
             continue
@@ -808,7 +866,9 @@ def run_ready_reel(row, page):
             log("ready reel no longer needed (sheet changed) - not publishing", sid, PAGE)
             return []
         token = bridge_get("token", page=PAGE)["token"]
-        mid, link, collab_ok, why = publish_reel(token, url, caption, PAGE == "rasipuram", "")
+        global COLLAB
+        COLLAB = collab_page(row, PAGE)
+        mid, link, collab_ok, why = publish_reel(token, url, caption, bool(COLLAB), "")
         log("ready reel posted", sid, link)
         try:
             publish_story(token, url, "video")
@@ -829,6 +889,7 @@ def run_ready_reel(row, page):
 
 def run_story_page(row, page):
     """Build the carousel and the reel, run every check, and only then publish (carousel first, then reel)."""
+    global PAGE, LOGO, TAG
     import verify
     sid = row["story_id"]
     sys.path.insert(0, str(ROOT / "research_free"))
@@ -842,7 +903,7 @@ def run_story_page(row, page):
     _digits_in_spec(spec)
     spec["date"] = tamil_date_today()  # date shown on poster/reel = actual posting date (IST)
     global LOC_ID
-    LOC_ID = pick_location(row, spec)
+    LOC_ID = pick_location(row, spec) if CONFIG.get("location_tags", False) else ""
     if LOC_ID:
         log("location tag:", LOC_ID)
     # owner 25 Oct: text problems are fixed automatically, the story is never skipped for them
@@ -850,20 +911,70 @@ def run_story_page(row, page):
     problems = check_text(row, spec)
     if problems:
         log("text fixed automatically:", "; ".join(problems))
-    if not DRY:
+    # the checked text of an earlier run (fact-check corrections + Tamil proofread) is reused, so a retry posts exactly the same words
+    tc = CACHE / f"{sid}_{page}_text.json"
+    text_done = False
+    try:
+        saved = json.loads(tc.read_text(encoding="utf-8"))
+        row.update({k: saved[k] for k in ("headline_ta", "reel_script", "caption", "slides_spec") if saved.get(k)})
+        spec = json.loads(row["slides_spec"])
+        _digits_in_spec(spec)
+        spec["date"] = tamil_date_today()
+        text_done = True
+        log("checked text of an earlier run reused")
+    except Exception:
+        pass
+    if not DRY and not text_done:
         try:
             import factgate
-            notes = factgate.check(row)      # second fact check: advisory only now (owner 25 Oct: a correct story is not stopped)
+            notes = factgate.check(row)      # second fact check: only problems a second model can prove from the article are returned
             if notes:
-                log("fact-check note (posting goes on):", str(notes)[:300])
+                # a confirmed false / invented detail is corrected first; the story is held only when it cannot be corrected
+                # (a correct story is never stopped; FACTGATE_HOLD=0 = post anyway, as before 26 Oct)
+                log("fact-check problems:", str(notes)[:300])
+                fixed = factgate.fix(row, notes)
+                if fixed:
+                    row.update(fixed)
+                    row["reel_script"] = names.spoken(row["reel_script"])
+                    row["caption"] = names.full_places(row["caption"])
+                    row["slides_spec"] = names.full_places(row["slides_spec"])
+                    spec = json.loads(row["slides_spec"])
+                    _digits_in_spec(spec)
+                    spec["date"] = tamil_date_today()
+                    clean_caption(row)
+                    check_text(row, spec)
+                    log("fact-check problems corrected automatically")
+                elif os.environ.get("FACTGATE_HOLD", "1") != "0":
+                    PAGE = page
+                    return fail(row, "reel", "Fact check: could not correct " + "; ".join(notes)[:700])
+                else:
+                    log("fact-check problems not corrected (FACTGATE_HOLD=0, posting goes on)")
         except Exception as e:
             log("fact-check unavailable (posting goes on):", str(e)[:120])
-    global PAGE, LOGO, TAG
+    if not text_done:
+        try:      # last Tamil spelling / grammar / sentence check of everything that goes out
+            import tamilcheck
+            if tamilcheck.proofread(row, log):
+                spec = json.loads(row["slides_spec"])
+                _digits_in_spec(spec)
+                spec["date"] = tamil_date_today()
+        except Exception as e:
+            log("Tamil proofread failed (posting goes on):", str(e)[:120])
+        try:
+            if DRY:
+                raise RuntimeError("test run: not saved (the real run fact-checks first)")
+            CACHE.mkdir(parents=True, exist_ok=True)
+            tc.write_text(json.dumps({k: row.get(k) for k in ("headline_ta", "reel_script", "caption", "slides_spec")}, ensure_ascii=False), encoding="utf-8")
+        except Exception as e:
+            log("checked text not saved:", e)
     PAGE = page
     LOGO = KIT / f"logo_{PAGE}.png"
     TAG = "#Rasipuram360" if PAGE == "rasipuram" else "#Namakkal360"
     os.environ["PAGE_KEY"] = PAGE
-    collab = (PAGE == "rasipuram")      # Rasipuram news: Rasipuram 360 post, Namakkal 360 invited as collaborator
+    global COLLAB
+    COLLAB = collab_page(row, PAGE)
+    collab = bool(COLLAB)      # Rasipuram news: Namakkal 360 invited; district-wide Namakkal news: Rasipuram 360 invited
+    log(f"posting on {LABEL[PAGE]} with the {PAGE} logo" + (f", {LABEL[COLLAB]} invited as collaborator" if COLLAB else ""))
     caption = final_caption(row)
     work = OUT / sid
     key = cache_key(row, spec, caption)
@@ -975,6 +1086,7 @@ def run_story_page(row, page):
                 token = bridge_get("token", page=PAGE)["token"]
                 mid, link, collab_ok, why = publish_carousel(token, urls, caption, collab, (row.get('headline_en') or '')[:200] + (' - Rasipuram 360 news' if PAGE == 'rasipuram' else ' - Namakkal 360 news'))
                 log("carousel posted", sid, link)
+                USED[PAGE] = USED.get(PAGE, 0) + 1
                 first_comment(token, mid, sid, 0)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "permalink": link, "media_id": mid,
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab_ok, "checks": note})
@@ -988,6 +1100,8 @@ def run_story_page(row, page):
             if is_limit_error(e):
                 LIMIT[PAGE] = True
                 log("LIMIT: Instagram post limit hit while posting carousel", sid, "- waits, not a failure")
+            elif is_transient(e):
+                log("TEMPORARY Instagram problem while posting carousel", sid, "- tried again in the next run, not a failure:", str(e)[:200])
             else:
                 log("ERROR carousel", sid, e)
                 bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "carousel", "error": str(e)[:900]})
@@ -1005,6 +1119,7 @@ def run_story_page(row, page):
                 cover_url = media.get("cover") or ""
                 mid, link, collab_ok, why = publish_reel(token, url, caption, collab, cover_url)
                 log("reel posted", sid, link)
+                USED[PAGE] = USED.get(PAGE, 0) + 1
                 first_comment(token, mid, sid, 1)
                 publish_story(token, url, "video")
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "permalink": link, "media_id": mid,
@@ -1014,6 +1129,8 @@ def run_story_page(row, page):
             if is_limit_error(e):
                 LIMIT[PAGE] = True
                 log("LIMIT: Instagram post limit hit while posting reel", sid, "- waits, not a failure")
+            elif is_transient(e):
+                log("TEMPORARY Instagram problem while posting reel", sid, "- tried again in the next run, not a failure:", str(e)[:200])
             else:
                 log("ERROR reel", sid, e)
                 bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "reel", "error": str(e)[:900]})
@@ -1043,6 +1160,8 @@ def auto_images():
     pend = bridge_get("autoPending").get("rows", [])
     if not pend:
         return
+    budget = time.time() + int(os.environ.get("AUTO_IMG_SECONDS", "420"))      # the check job must finish; the rest waits for the next run
+    giveup_h = float(os.environ.get("AUTO_IMG_GIVEUP_H", "3"))
     sys.path.insert(0, str(ROOT / "research_free"))
     import imagegen
     cap = int(os.environ.get("IMG_MAX_PER_RUN", "40"))
@@ -1051,6 +1170,9 @@ def auto_images():
         prompts = [p.strip() for p in str(r.get("prompts", "")).split("\n---\n") if p.strip()]
         if not prompts:
             continue
+        if time.time() > budget:
+            log("auto images: time for this run used up, the rest waits for the next run")
+            break
         if made_total + len(prompts) > cap:
             log("auto images: credit cap reached for this run, the rest waits for the next run")
             break
@@ -1082,7 +1204,10 @@ def auto_images():
             bridge_post("setImages", {"row": r["row"], "story_id": r["story_id"], "images": urls})
             log("automatic images queued:", r["story_id"], len(urls))
         except Exception as e:
-            log("free image models failed for", r["story_id"], str(e)[:160], "- the reel is made without pictures")
+            if age_hours(r) < giveup_h:      # image models down for a while (credits / rate limit): tried again in the next run
+                log("image models failed for", r["story_id"], str(e)[:160], f"- tried again in the next run (gives up after {giveup_h:g} h)")
+                continue
+            log("image models failed for", r["story_id"], str(e)[:160], "- the reel is made without pictures")
             bridge_post("setImages", {"row": r["row"], "story_id": r["story_id"], "images": ["NOIMAGE"]})
 
 
@@ -1107,7 +1232,7 @@ def main():
         rows = []
     else:
         try:
-            if not PREBUILD and not DRY:
+            if mode == "check" and not PREBUILD and not DRY:      # once per cycle; the 12 posting jobs used to make the same pictures 12 times
                 auto_images()
         except Exception as e:
             log("automatic images step failed (posting goes on):", e)
@@ -1135,7 +1260,17 @@ def main():
                     f.write(f"ready={1 if n else 0}\n")
                     f.write("matrix=" + json.dumps({"include": [{"story": i, "slot": 0} for i in ids]}) + "\n")
                 else:
-                    ids = [r["story_id"] for r in pick_all(rows)][:12] if n else []   # owner 25 Oct: up to 12 per run, priority order, no waiting (was 3 per run, 25 min apart: far too slow for 24 stories per round)
+                    full = {p for p in ("namakkal", "rasipuram") if n and limit_reached(p)}
+                    if full:
+                        log("Instagram 24-hour limit reached for", sorted(full), "- their stories wait (nothing is dropped)")
+                    left = {p: TOTAL[p] - USED[p] for p in TOTAL if p in USED}      # posts this page may still make in the 24-hour window
+                    ids = []
+                    for r in (pick_all(rows) if n else []):
+                        pg = [p for p in pages_of(r) if not page_done(r, p) and p not in full and left.get(p, 1) > 0]
+                        if pg and len(ids) < 12:
+                            ids.append(r["story_id"])
+                            for p in pg:
+                                left[p] = left.get(p, 99) - 1   # owner 25 Oct: up to 12 per run, priority order, no waiting (was 3 per run, 25 min apart: far too slow for 24 stories per round)
                     inc = [{"story": i, "slot": k * 6, "prebuild": ""} for k, i in enumerate(ids)]
                     # stories whose set has not started yet: make the carousel/reel ahead, so they go out the moment it starts
                     urgent = set(ids)

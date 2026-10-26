@@ -13,6 +13,7 @@ OUTPUT JSON KEYS
  "category": "English category, e.g. Weather & Agriculture, Business & Prices, Health, Civic Issues, Temples & Events, Roads & Transport, Government & Services, Education, Crime & Safety, மின் தடை (for power shutdown)",
  "location": "English place, e.g. Rasipuram town, Namakkal district",
  "importance": "High | Medium | Low   (High: affects many people today: power shutdown in Rasipuram/Namakkal town, heavy rain alert, big public safety/service news)",
+ "scope": "district | local   (district: useful to people in the WHOLE district, wherever they live - a Collector / district administration announcement, a government scheme, camp or deadline for the district, district job / recruitment notice, exam or school notice for the district, district-wide power / water / transport notice, the Namakkal egg price; local: an event in one town or village - accident, crime, local function, one village's problem)",
  "post_to": "Namakkal 360 + Rasipuram 360 (collab)  if the place is Rasipuram town or its taluk villages (Namagiripettai, Vennandur, Puduchatram, Pattanam, Mettala, Ayilpatti, Seerapalli, Singalandapuram, Andagalur Gate, Athanur, Mallasamudram, Kurukkapuram, Anaippalayam, Muthukalipatti, Kakkaveri, Vadugam etc.), otherwise  Namakkal 360",
  "slides_spec": {"v":3, "cat":"short Tamil tag e.g. மழை எச்சரிக்கை", "loc":"Tamil place", "hl1":"cover headline, max 40 characters, strong and clear", "hl2":"cover key fact in yellow, max 28 characters", "slides":[{"title":"Tamil title, max 18 characters","lines":["fact line 1","fact line 2","optional line 3"]}]},
  "reel_script": "detailed Tamil news-reader script, 7-9 sentences, 85-120 words (see REEL DETAIL below)",
@@ -42,7 +43,16 @@ reel_script rules
 
 caption rules
 - Instagram search reads the caption, so the FIRST line is a hook that already contains the place name and the key fact (max 110 characters), with 1 emoji, e.g. "🥚 நாமக்கல்லில் முட்டை விலை 10 காசு உயர்வு - இன்றைய விலை 560 காசு". Numbers, times and dates are written as digits in the caption.
-- Then 3-5 short lines with the useful details (what, where, when, numbers, who announced, what residents should do). End with ONE short save/share prompt that fits the story (e.g. "தேவைப்படுவோருக்கு Share செய்யுங்கள்"). NEVER ask people to comment (no "கமெண்டில் சொல்லுங்கள்", no questions to the audience).
+- FULL DETAILS (viewers keep commenting "விவரம் வேண்டும்" - the caption must answer every question the article answers). After the hook line:
+  1. A blank line, then "📰 முழு விவரம்:" and a clear paragraph of 4-7 short sentences that tells the WHOLE story from the article in order:
+     what happened, exact place (village / road / area + town + taluk), date and time, who was involved (by role), how it happened,
+     every number / amount / count, what police, officials or the government did, and what happens next. One fact per sentence.
+  2. Then the key facts as short lines, each with one emoji, ONLY for facts the article gives (skip a line when the article does not say it):
+     "📍 இடம்: ...", "🗓️ நாள்: ...", "🕘 நேரம்: ...", "👮 நடவடிக்கை: ..." (action taken), "📞 தொடர்புக்கு: ..." (office / helpline the article names),
+     "ℹ️ மக்கள் கவனத்திற்கு: ..." (what residents should do, deadline, documents needed, where to apply - very important for job, scheme, camp,
+     power-cut and exam news).
+  3. End with ONE short save/share prompt that fits the story (e.g. "தேவைப்படுவோருக்கு Share செய்யுங்கள்"). NEVER ask people to comment (no "கமெண்டில் சொல்லுங்கள்", no questions to the audience).
+  Every sentence in correct, formal written Tamil (proper spelling and sandhi), no colloquial forms, nothing the article does not say.
 - Then ONE short English search line so people searching in English find the post, e.g. "Namakkal egg price today | Namakkal news". Then a line "📍 exact place, Namakkal | date" naming the town or village. Then exactly: உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏
 - Then exactly 5 hashtags (Instagram allows at most 5): #Namakkal360 + #Namakkal + ONE for the exact town/place (English or Tamil) + ONE for the topic + #NamakkalNews (for Rasipuram-area stories use #Rasipuram instead of #NamakkalNews; for power shutdowns the topic tag is #மின்தடை).
 - No links, no source names, no clickbait, no false urgency.

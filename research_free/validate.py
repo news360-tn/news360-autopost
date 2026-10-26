@@ -132,8 +132,8 @@ def validate(d, article, today_digits=("2026",)):
                 p.append(f"slide {i} line {j} longer than 60 characters")
     # scenes: the reel is built from reel_script, so the count of scenes does not block a story
     rs = d["reel_script"].strip()
-    if re.search(r"[0-9A-Za-z]", rs):
-        p.append("reel_script must have no digits or English letters (write numbers as Tamil words)")
+    if re.search(r"[A-Za-z]", rs):
+        p.append("reel_script must have no English letters (write English words and abbreviations in Tamil script)")
     if not rs.endswith(LAST):
         p.append("reel_script must end with exactly: " + LAST)
     wc = len(rs.split())
@@ -159,7 +159,7 @@ def validate(d, article, today_digits=("2026",)):
         p.append("no AI-image notes allowed")
     # every number must come from the article
     src = _digits_in(article) | set(today_digits) | _calendar_digits() | {"1", "2", "3", "4", "5"}
-    text = " ".join([d["tamil_headline"], d["english_headline"], _tags(json.dumps(sp, ensure_ascii=False)), cap.split("#")[0]])
+    text = " ".join([d["tamil_headline"], d["english_headline"], _tags(json.dumps(sp, ensure_ascii=False)), cap.split("#")[0], rs])      # the spoken script too
     stray = sorted(n for n in _digits_in(text) if n not in src and len(n) > 0 and n not in ("0", "360"))
     if stray:
         p.append("numbers not found in the article: " + ", ".join(stray[:6]))

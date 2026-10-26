@@ -55,16 +55,55 @@ def words(n):
     return out
 
 
-_AYIRAM = [("பன்னிரண்டு", "பன்னிரண்ட"), ("இரண்டு", "இரண்ட"), ("மூன்று", "மூவ"), ("நான்கு", "நால"), ("ஐந்து", "ஐய"), ("ஏழு", "ஏழ"), ("எட்டு", "எட்ட"), ("ஒன்பது", "ஒன்பத"), ("பத்து", "பத்த"), ("ஆறு", "ஆற")]
+_AYIRAM = [("பதினொரு", "பதினோர"), ("பன்னிரண்டு", "பன்னிரண்ட"), ("இரண்டு", "இரண்ட"), ("மூன்று", "மூவ"), ("நான்கு", "நால"), ("ஐந்து", "ஐய"), ("ஏழு", "ஏழ"), ("எட்டு", "எட்ட"), ("ஒன்பது", "ஒன்பத"), ("பத்து", "பத்த"), ("ஆறு", "ஆற")]
 
 
-ORD = re.compile(r"(\d[\d,]*)\s*(ஆம்|ம்)(?![ெ-௔ா-ௌ])")
+ORD = re.compile(r"(\d[\d,]*)\s*-?\s*(ஆம்|ம்)(?![ெ-௔ா-ௌ])")
+ORD_VADU = re.compile(r"(\d[\d,]*)\s*-?\s*(?:ஆவது|வது)")
 NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
+MONTHS = ["ஜனவரி", "பிப்ரவரி", "மார்ச்", "ஏப்ரல்", "மே", "ஜூன்", "ஜூலை", "ஆகஸ்ட்", "செப்டம்பர்", "அக்டோபர்", "நவம்பர்", "டிசம்பர்"]
+DAYPART = r"(காலை|மாலை|இரவு|மதியம்|அதிகாலை|பிற்பகல்|முற்பகல்|நண்பகல்|நள்ளிரவு)"
+
+
+def half(n):
+    """2.5 -> இரண்டரை, 10.5 -> பத்தரை (how a news reader says a half)"""
+    w = words(n)
+    return w[:-1] + "ரை" if w.endswith("ு") else w + " அரை"
+
+
+def _time(h, mm):
+    h, mm = int(h), int(mm)
+    if mm == 0:
+        return words(h)
+    if mm == 30:
+        return half(h)
+    return words(h) + " " + words(mm)
 
 
 def speak_numbers(t):
     """replace every number in a Tamil sentence by its Tamil words (12ம் -> பன்னிரண்டாம், 11,600 -> பதினோராயிரத்து அறுநூறு style)"""
     t = re.sub(r"<[^>]+>", "", t)                       # stray html (<b>56</b>)
+    # dates 26.10.2026 / 26/10/2026 / 26-10-2026 -> அக்டோபர் 26ஆம் தேதி (2026)
+    def _date(m):
+        d, mo, y = int(m.group(1)), int(m.group(2)), m.group(3)
+        if not (1 <= d <= 31 and 1 <= mo <= 12):
+            return m.group()
+        import datetime
+        y = ("20" + y) if len(y) == 2 else y
+        year = "" if y == str(datetime.date.today().year) else f" {y}"      # the current year is not read out
+        return f"{MONTHS[mo - 1]} {d}ஆம் தேதி{year} "
+    t = re.sub(r"(?<![\d.])(\d{1,2})[./-](\d{1,2})[./-](\d{4}|\d{2})(?![\d.])\s*(தேதி)?", lambda m: _date(m), t)
+    # times: காலை 10.30 மணி / 4:30 மணிக்கு -> பத்தரை மணி / நான்கரை மணிக்கு; 10.45 மணி -> பத்து நாற்பத்து ஐந்து மணி
+    t = re.sub(r"(?<![\d.])(\d{1,2})[.:](\d{2})(?=\s*(?:மணி|ம\.|hrs))", lambda m: _time(m.group(1), m.group(2)), t)
+    t = re.sub(DAYPART + r"\s*(\d{1,2})[.:](\d{2})(?![\d])", lambda m: m.group(1) + " " + _time(m.group(2), m.group(3)), t)
+    # money with paise: ரூ.5.70 -> 5 ரூபாய் 70 காசு (not "five point seven zero")
+    def _paise(m):
+        rs, ps = m.group(1), (m.group(2) + "0")[:2]
+        return f"{rs} ரூபாய்" + ("" if int(ps) == 0 else f" {int(ps)} காசு")
+    t = re.sub(r"(?:₹|ரூ\.?)\s*(\d[\d,]*)\.(\d{1,2})(?![\d])(?!\s*(?:லட்சம்|ஆயிரம்|கோடி))", _paise, t)
+    # ranges: 10-12 வகுப்பு -> 10 முதல் 12; a year range 2025-26 is read as two numbers
+    t = re.sub(r"(?<![\d.])(\d{4})\s*[-–]\s*(\d{2})(?![\d])", r"\1 \2", t)
+    t = re.sub(r"(?<![\d.])(\d[\d,]*)\s*[-–]\s*(\d[\d,]*)(?![\d.])", r"\1 முதல் \2", t)
     t = re.sub(r"(?:₹|ரூ\.?)\s*(\d[\d,]*(?:\.\d+)?)\s*(லட்சம்|ஆயிரம்|கோடி)", r"\1 \2 ரூபாய்", t)      # ரூ.9 லட்சம் -> 9 லட்சம் ரூபாய்
     t = re.sub(r"(?:₹|ரூ\.?)\s*(\d[\d,]*(?:\.\d+)?)", r"\1 ரூபாய்", t)      # ரூ.11,600 -> 11,600 ரூபாய்
     t = t.replace("%", " சதவீதம்")
@@ -74,14 +113,23 @@ def speak_numbers(t):
         w = words(n)
         return (w[:-1] + "ாம்" if w.endswith("ு") else w + "ஆம்") + " "
 
+    def vadu(m):
+        w = words(int(m.group(1).replace(",", "")))
+        return (w[:-1] + "ாவது" if w.endswith("ு") else (w[:-2] + "மாவது" if w.endswith("ம்") else w + "ஆவது")) + " "
+
     def num(m):
         s = m.group().replace(",", "")
         if "." in s:
             a, b = s.split(".", 1)
+            if b.rstrip("0") == "5":
+                return half(int(a)) + " "
+            if b.rstrip("0") == "":
+                return words(int(a)) + " "
             return words(int(a)) + " புள்ளி " + " ".join(ONES[int(c)] or "பூஜ்ஜியம்" for c in b) + " "
         if len(s) > 9:
             return " ".join(ONES[int(c)] or "பூஜ்ஜியம்" for c in s) + " "
         return words(int(s)) + " "
+    t = ORD_VADU.sub(vadu, t)
     t = ORD.sub(ordinal, t)
     t = NUM.sub(num, t)
     return re.sub(r"\s+", " ", t).strip()

@@ -86,11 +86,13 @@ function rowObj_(values, rowNum) {
   return o;
 }
 /** Only நாமக்கல் 360 posts. Rasipuram stories add இராசிபுரம் 360 as a collaborator instead of a second post. */
+/** The ONE page that posts a story = the first page named in post_to (same rule as poster/post.py pages_of):
+ *  "Rasipuram 360 (collab: Namakkal 360)" -> rasipuram, "Namakkal 360 (collab: Rasipuram 360)" -> namakkal. The other page is a collaborator. */
 function targets_(postTo) {
-  var t = String(postTo || '').toLowerCase(), out = [];
-  if (t.indexOf('namakkal') >= 0) out.push('namakkal');
-  if (t.indexOf('rasipuram') >= 0) out.push('rasipuram');
-  return out.length ? out : ['namakkal'];
+  var t = String(postTo || '').toLowerCase();
+  var n = t.indexOf('namakkal'), r = t.indexOf('rasipuram');
+  if (r >= 0 && (n < 0 || r < n)) return ['rasipuram'];
+  return ['namakkal'];
 }
 // true when every page named in post_to has its carousel (unless reel-only) and its reel
 function allDone_(r) {
@@ -356,7 +358,7 @@ function manualProblems_(st, recent) {
     ln.forEach(function (l, j) { if (stripTags_(l).length > 60) p.push('slide ' + (i + 1) + ' line ' + (j + 1) + ' longer than 60 characters'); });
   });
   if (['High', 'Medium', 'Low'].indexOf(st.importance) < 0) p.push('importance must be High, Medium or Low');
-  if (!/^Namakkal 360/.test(st.post_to)) p.push("post_to must start with 'Namakkal 360' (e.g. 'Namakkal 360 + Rasipuram 360 (collab)')");
+  if (!/^(Namakkal 360|Rasipuram 360)/.test(st.post_to)) p.push("post_to must be 'Rasipuram 360 (collab: Namakkal 360)' for Rasipuram news, 'Namakkal 360 (collab: Rasipuram 360)' for district-wide news, or 'Namakkal 360'");
   var rs = String(st.reel_script).trim();
   if (rs.indexOf(MANUAL_LAST) < 0) rs = rs.replace(/\s+$/, '') + ' ' + MANUAL_LAST;   // fixed closing line is added if missing
   st.reel_script = rs;
@@ -595,7 +597,7 @@ function addRow_(vid, page, cap, head, groupName, report) {
   var no = nextStoryNo_(sh) + 1, id = 'RN-' + no;
   var url = uploadVideo_(vid, id);
   var row = new Array(NCOLS).fill('');
-  var to = page === 'both' ? 'Namakkal 360 + Rasipuram 360' : (page === 'rasipuram' ? 'Rasipuram 360' : 'Namakkal 360');
+  var to = page === 'both' ? 'Namakkal 360 (collab: Rasipuram 360)' : (page === 'rasipuram' ? 'Rasipuram 360 (collab: Namakkal 360)' : 'Namakkal 360');
   row[C.story_id - 1] = id;
   row[C.researched - 1] = "'" + nowIst_(); row[C.published - 1] = "'" + nowIst_();
   row[C.headline_ta - 1] = head; row[C.headline_en - 1] = '';
@@ -621,7 +623,7 @@ function autoPending_() {
   sh.getRange(2, 1, last - 1, NCOLS).getValues().forEach(function (v, i) {
     var r = rowObj_(v, i + 2);
     if (r.post_status === 'Auto images' && r.prompts) {
-      out.push({ row: r.row, story_id: r.story_id, prompts: String(r.prompts), category: r.category, location: r.location, post_to: r.post_to, headline_ta: r.headline_ta });
+      out.push({ row: r.row, story_id: r.story_id, prompts: String(r.prompts), category: r.category, location: r.location, post_to: r.post_to, headline_ta: r.headline_ta, headline_en: r.headline_en, researched: r.researched });
     }
   });
   return out;
@@ -921,9 +923,13 @@ function addStories_(b) {
       row[C.post_status - 1] = 'Queued';
       row[C.notes - 1] += ' | ' + made.length + ' images made automatically (free AI image API)';
       auto++;
+    } else if (st.auto_images) {
+      // images could not be made in the research run: the posting job (every 5 minutes) tries the image models again, no 2-hour wait
+      row[C.post_status - 1] = 'Auto images';
+      row[C.notes - 1] += ' | images not made yet - the posting job makes them';
     }
     rows.push(row);
-    if (!made) items.push({ id: id, ta: st.tamil_headline, en: st.english_headline, post_to: st.post_to, importance: st.importance, post_time: st.post_time, prompts: prompts });
+    if (!made && !st.auto_images) items.push({ id: id, ta: st.tamil_headline, en: st.english_headline, post_to: st.post_to, importance: st.importance, post_time: st.post_time, prompts: prompts });
   });
   sh.getRange(sh.getLastRow() + 1, 1, rows.length, NCOLS).setValues(rows);
   var again = reofferItems_(b.reoffer_ids, batch);       // stories of earlier rounds that still wait for images go into the same e-mail
