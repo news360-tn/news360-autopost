@@ -1,0 +1,189 @@
+writing [N]: இன்றைய மின்தடை (26ம் தேதி)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.7-flash for 10 min
+ok gemini/gemini-3.6-flash (35s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "The service is currently unavailable.",
+   
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.6-flash for 10 min
+ok groq/openai/gpt-oss-120b (5s)
+factcheck by groq/openai/gpt-oss-120b: 3 problems
+  The draft claims the shutdown is due to "monthly maintenance work" which is not stated in the article
+  The place name "ஷேக்கல்முடி" is misspelled; article lists it as "ஷக்கல்முடி"
+  Caption adds the year "2026" to the date, which is not mentioned in the article
+attempt 1 gemini/gemini-3.6-flash: 3 problems
+  fact-check: The draft claims the shutdown is due to "monthly maintenance work" which is not stated in the article
+  fact-check: The place name "ஷேக்கல்முடி" is misspelled; article lists it as "ஷக்கல்முடி"
+  fact-check: Caption adds the year "2026" to the date, which is not mentioned in the article
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (83s)
+attempt 2 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
+  reel_script has 34 words; need 130-200 (full-detail reel, about 60-80 seconds)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: HTTPSConnectionPool(host='api.cloudflare.com', port=443): Read timed out. (read timeout=90)
+poor answer - skipped for 30 min: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (58s)
+attempt 3 cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: 2 problems
+  reel_script has 58 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  numbers not found in the article: 22, 9
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (35s)
+attempt 4 cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: 1 problems
+  numbers not found in the article: 22, 9
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (50s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: HTTPSConnectionPool(host='api.cloudflare.com', port=443): Read timed out. (read timeout=90)
+poor answer - skipped for 30 min: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
+ok groq/qwen/qwen3.8-27b (0s)
+factcheck by groq/qwen/qwen3.8-27b: 2 problems
+  The draft claims there are 26 areas (26 பகுதிகள்/வட்டாரங்கள்), but the article lists 38 distinct locations.
+  The draft states the power cut is in Namakkal district (நாமக்கல் மாவட்டத்தில்), but the article does not explicitly mention the district name (it only lists villages and the engineer's location Angalakurichi).
+attempt 5 cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: 2 problems
+  fact-check: The draft claims there are 26 areas (26 பகுதிகள்/வட்டாரங்கள்), but the article lists 38 distinct locations.
+  fact-check: The draft states the power cut is in Namakkal district (நாமக்கல் மாவட்டத்தில்), but the article does not explicitly mention the district name (it only lists villages and the engineer's location Angalakurichi).
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  slides must have 3 or 4 items
+  reel_script has 39 words; need 130-200 (full-detail reel, about 60-80 seconds)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  numbers not found in the article: 17, 22
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 56 words; need 130-200 (full-detail reel, about 60-80 seconds)
+proofread skipped: free models not efficient (3 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+images made: 3 for 'Power cut today (26 Oct) in Pollachi-are'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261026-2053","first":"RN-128"}
+posting job started at once
+write_stories.yml started
+earlier stories still waiting for images: []
+instagram check: 68 recent posts read from both pages
+write round: 58 news waiting in the queue (written in priority order)
+candidate filter: collected=35, already filed=15, not Namakkal district news (state-wide /=8
+to write: 0 Rasipuram + 35 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 35 Namakkal; time left 29 min
+try (N) manual=False: இன்றைய மின்தடை (26ம் தேதி)
+try (N) manual=False: நாமக்கல் மாநகராட்சி பகுதியில் 
+இன்று குடிநீா் விநியோகம் ரத்த
+try (N) manual=False: நாமக்கல் முட்டை விலை நிலவரம்
+skip (N) similar to a filed story: நாமக்கல் மாநகராட்சி பகுதியில் 
+இன்று குடிநீா் விநி
+try (N) manual=False: Today Headlines - 25.10.2026 | மாலை 6 மணி தலைப்புச் செய்திகள
+skip (N) could not open: Today Headlines - 25.10.2026 | மாலை 6 மணி தலைப்புச [https://tamil.news18.com/videos/tamil-nadu/today-headlines-2] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: SBI-ன் 444 நாள் மேஜிக் FD திட்டம்... ரூ.5 லட்சம் முதலீடு செய
+skip (N) could not open: நாமக்கல் முட்டை விலை நிலவரம் [https://www.dinamalar.com/news/tamil-nadu-district-news-chen] 404 Client Error: Not Found for url: https://www.dinamalar.com/news/tamil-nadu-d
+try (N) manual=False: Udhayanidhi Stalin Case | Just Now | தேர்தல் வழக்கு: உதயநிதி
+skip (N) could not open: SBI-ன் 444 நாள் மேஜிக் FD திட்டம்... ரூ.5 லட்சம் ம [https://news.google.com/rss/articles/CBMiuAFBVV95cUxOVkt3TUV] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/busin
+try (N) manual=False: Uthagai | நிலச்சரிவால் இன்றும் போக்குவரத்துக்கு தடை! - திருப
+skip (N) could not open: Udhayanidhi Stalin Case | Just Now | தேர்தல் வழக்க [https://news.google.com/rss/articles/CBMikgFBVV95cUxOdW84Zk8] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: பயணிகளுக்காக உயிர் தியாகம்! இறுதி நேரத்தில் அரசு பேருந்து ஓட
+skip (N) could not open: Uthagai | நிலச்சரிவால் இன்றும் போக்குவரத்துக்கு தட [https://news.google.com/rss/articles/CBMicEFVX3lxTFBfM0RISEZ] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: சாலையின் நடுவே விழுந்த ராட்சத பாறைகள்.. வால்பாறை செல்லும் வா
+skip (N) could not open: பயணிகளுக்காக உயிர் தியாகம்! இறுதி நேரத்தில் அரசு ப [https://news.google.com/rss/articles/CBMisgFBVV95cUxPLWtic2x] 403 Client Error: Forbidden for url: https://tamil.news18.com/tamil-nadu/nilgiri
+try (N) manual=False: Tea | மிச்சமாகும் டீத்தூளை இனி குப்பையில் போடாதீங்க... இந்த 
+skip (N) could not open: சாலையின் நடுவே விழுந்த ராட்சத பாறைகள்.. வால்பாறை ச [https://news.google.com/rss/articles/CBMirwFBVV95cUxPMl9ZLWd] 403 Client Error: Forbidden for url: https://tamil.news18.com/tamil-nadu/valpara
+try (N) manual=False: Anbil Mahesh Arrested | அன்பில் மகேஸ் கைது அடுத்தகட்ட நடவடிக
+skip (N) could not open: Tea | மிச்சமாகும் டீத்தூளை இனி குப்பையில் போடாதீங் [https://news.google.com/rss/articles/CBMipwFBVV95cUxNUHdrOXV] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/lifes
+try (N) manual=False: Breaking News | அன்பில் மகேஸ் கைது..செய்தி தெரிந்து கொந்தளித
+skip (N) could not open: Anbil Mahesh Arrested | அன்பில் மகேஸ் கைது அடுத்தக [https://news.google.com/rss/articles/CBMilgFBVV95cUxNYTdRLTN] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: கைது செய்யப்பட்ட அன்பில் மகேஷ் நீதிமன்றத்தில் ஆஜர்படுத்தப்பட
+skip (N) could not open: Breaking News | அன்பில் மகேஸ் கைது..செய்தி தெரிந்த [https://news.google.com/rss/articles/CBMipgFBVV95cUxQdl8yNE9] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Just Now |135 கிலோ மெத்தபெட்டமைன் கடத்த முயன்ற வழக்கில் மேலு
+skip (N) could not open: கைது செய்யப்பட்ட அன்பில் மகேஷ் நீதிமன்றத்தில் ஆஜர் [https://news.google.com/rss/articles/CBMivgFBVV95cUxQOUFSM09] 403 Client Error: Forbidden for url: https://tamil.news18.com/tamil-nadu/former-
+try (N) manual=False: Army Officer Arrested | ராணுவ ரகசியத்தை பகிர்ந்ததாக ஓய்வு பெ
+skip (N) could not open: Just Now |135 கிலோ மெத்தபெட்டமைன் கடத்த முயன்ற வழக [https://news.google.com/rss/articles/CBMid0FVX3lxTE5wZmI3T3d] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: DMK Anbil Mahesh Arrest | அன்பில் மகேஸ் வழக்கின் பின்னணி? - 
+skip (N) could not open: Army Officer Arrested | ராணுவ ரகசியத்தை பகிர்ந்ததா [https://news.google.com/rss/articles/CBMigwFBVV95cUxOR2g5NGJ] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: காலையில் டிபன் செய்ய நேரமில்லையா? 20 நிமிடங்களில் சுவையான ரவ
+skip (N) could not open: DMK Anbil Mahesh Arrest | அன்பில் மகேஸ் வழக்கின் ப [https://news.google.com/rss/articles/CBMihgFBVV95cUxQZndVb0Y] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: இந்த 10 அறிகுறிகள் இருக்கா? அசால்ட்டா எடுத்துக்காதீங்க... உங
+skip (N) could not open: காலையில் டிபன் செய்ய நேரமில்லையா? 20 நிமிடங்களில்  [https://news.google.com/rss/articles/CBMimgFBVV95cUxOWnV5eXh] 403 Client Error: Forbidden for url: https://tamil.news18.com/lifestyle/how-to-m
+try (N) manual=False: “அப்போ தான் ரீல்ஸ்ல பாக்க மாஸா இருக்கும்…” - சூர்யாவின் ‘சீன
+skip (N) could not open: இந்த 10 அறிகுறிகள் இருக்கா? அசால்ட்டா எடுத்துக்காத [https://news.google.com/rss/articles/CBMisAFBVV95cUxQNHVBTG5] 403 Client Error: Forbidden for url: https://tamil.news18.com/lifestyle/major-sy
+try (N) manual=False: CM Vijay Smile Wave | CM விஜயின் MASS STYLE..! - திரண்டு நின
+skip (N) could not open: “அப்போ தான் ரீல்ஸ்ல பாக்க மாஸா இருக்கும்…” - சூர்ய [https://news.google.com/rss/articles/CBMiswFBVV95cUxOdHlFLTR] 403 Client Error: Forbidden for url: https://tamil.news18.com/entertainment/suri
+try (N) manual=False: Para Asian Games | பாரா ஆசிய விளையாட்டில் சாதித்தவர்களுக்கு 
+skip (N) could not open: CM Vijay Smile Wave | CM விஜயின் MASS STYLE..! - த [https://news.google.com/rss/articles/CBMiogFBVV95cUxQRlVHVjh] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: DMK Anbil Mahesh Arrest | "அன்பில் மகேஸை பழிவாங்குறாங்க.!" -
+skip (N) could not open: Para Asian Games | பாரா ஆசிய விளையாட்டில் சாதித்தவ [https://news.google.com/rss/articles/CBMifEFVX3lxTFBqY3JlRTR] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Gingee Minor Girl Case Update | செஞ்சி சிறுமி வழக்கு - சுடுக
+skip (N) could not open: DMK Anbil Mahesh Arrest | "அன்பில் மகேஸை பழிவாங்கு [https://news.google.com/rss/articles/CBMinAFBVV95cUxNdGJfMFl] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Dhanush Political Entry | "விழா வீரா.." - தனுஷ் தரப்பில் வீட
+skip (N) could not open: Gingee Minor Girl Case Update | செஞ்சி சிறுமி வழக் [https://news.google.com/rss/articles/CBMilgFBVV95cUxPVjBBQ2h] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Gingee Missing Girl | காணாமல் போன செஞ்சி சிறுமியை கண்டுபிடிக
+skip (N) could not open: Dhanush Political Entry | "விழா வீரா.." - தனுஷ் தர [https://news.google.com/rss/articles/CBMiogFBVV95cUxPZTh0ZVg] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: ஒரே நேரத்தில் 3 மொழி... 3 சூப்பர் ஸ்டார்கள்... ரஜினியின் 'தர
+skip (N) could not open: Gingee Missing Girl | காணாமல் போன செஞ்சி சிறுமியை  [https://news.google.com/rss/articles/CBMigAFBVV95cUxQaHBvQ1V] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: OTT | ரன்பீர் கபூரின் ‘ராமாயணா’ படத்தை எந்த ஓடிடி நிறுவனம் க
+skip (N) could not open: ஒரே நேரத்தில் 3 மொழி... 3 சூப்பர் ஸ்டார்கள்... ரஜி [https://news.google.com/rss/articles/CBMi0gFBVV95cUxQcHJ3RmJ] 403 Client Error: Forbidden for url: https://tamil.news18.com/entertainment/naya
+try (N) manual=False: Actor Dhanush Fans Meet | தனுஷ் அரசியல் பேசவில்லை: பெண் நிர்
+skip (N) could not open: OTT | ரன்பீர் கபூரின் ‘ராமாயணா’ படத்தை எந்த ஓடிடி  [https://news.google.com/rss/articles/CBMizgFBVV95cUxOM1VkbW9] 403 Client Error: Forbidden for url: https://tamil.news18.com/entertainment/ranb
+try (N) manual=False: Gem Veeramani Case Update | ஜெம் வீரமணி வழக்கில் அதிரடி..! I
+skip (N) could not open: Actor Dhanush Fans Meet | தனுஷ் அரசியல் பேசவில்லை: [https://news.google.com/rss/articles/CBMihgFBVV95cUxPWU9icGF] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: DECODE | ஈரான் மீது மீண்டும் Epic Fury தாக்குதல்? உறுதிபடுத்
+skip (N) could not open: Gem Veeramani Case Update | ஜெம் வீரமணி வழக்கில் அ [https://news.google.com/rss/articles/CBMijgFBVV95cUxQampWWmp] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Gingee Child Missing Case Update | செஞ்சி சிறுமி வழக்கு - வி
+skip (N) could not open: DECODE | ஈரான் மீது மீண்டும் Epic Fury தாக்குதல்?  [https://news.google.com/rss/articles/CBMi0wFBVV95cUxPa01tTFV] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/internation
+try (N) manual=False: கூகுள் கிளவுட் வாடிக்கையாளர்களை விட AI ஆராய்ச்சியே முக்கியம்
+skip (N) could not open: Gingee Child Missing Case Update | செஞ்சி சிறுமி வ [https://news.google.com/rss/articles/CBMioAFBVV95cUxOUXpITWt] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: CM Reviews Chembarambakkam Lake Today | செம்பரம்பாக்கம் ஏரிய
+skip (N) could not open: கூகுள் கிளவுட் வாடிக்கையாளர்களை விட AI ஆராய்ச்சியே [https://news.google.com/rss/articles/CBMi2gFBVV95cUxNV2R5elJ] 403 Client Error: Forbidden for url: https://tamil.news18.com/technology/amid-gl
+try (N) manual=False: Just Now | ஒரு யூனிட் மின்சாரத்திற்கு ரூ.46 செலவு செய்யும் ர
+skip (N) could not open: CM Reviews Chembarambakkam Lake Today | செம்பரம்பா [https://news.google.com/rss/articles/CBMipAFBVV95cUxNLUNTWmx] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: KN Nehru Petition Dismissed | திமுக முன்னாள் அமைச்சர் கே.என்
+skip (N) could not open: Just Now | ஒரு யூனிட் மின்சாரத்திற்கு ரூ.46 செலவு  [https://news.google.com/rss/articles/CBMidkFVX3lxTE9SR3FPVmN] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+skip (N) could not open: KN Nehru Petition Dismissed | திமுக முன்னாள் அமைச் [https://news.google.com/rss/articles/CBMikAFBVV95cUxNOHo4OXF] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 35}, done={'R': 0, 'N': 1}, time left 18 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 33 news waiting to be written
+write_stories.yml started
+All News sheet: {"ok":true,"added":0,"updated":34} 
+stories: 1
