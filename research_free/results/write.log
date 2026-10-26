@@ -1,11 +1,98 @@
+writing [N]: நாமக்கல்லில் மக்கள் குறைதீர் கூட்டம்: 509 கோரிக்கை மனுக்கள் 
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.8-flash for 10 min
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.7-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
+dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
+dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (10 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The reel_script and slides omit the article's account of the sports and relief awards: the state-level football and kabaddi coaches honoured, and the relief materials and assistive devices given to individuals, are not mentioned.
+  The caption claims people can submit petitions in person at the meeting ("கூட்டத்தில் நேரில் மனு அளிக்கலாம்"), which is an invented detail not stated in the article.
+  The slide "விளையாட்டுப் பயிற்சியாளர்கள் கௌரவிக்கப்பட்டனர்" is accurate, but the reel_script's statement that the 57 students received scholarships is fine; however the caption's "நாள்: 26 அக்டோபர் 2026" is a posting date rather than an article claim, so no issue there.
+claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The reel_script and slides omit the article's account of the sports and relief awards: the state-level football and kabaddi coaches honoured, and the relief materials and assistive devices given to individuals, are not mentioned.
+  fact-check: The caption claims people can submit petitions in person at the meeting ("கூட்டத்தில் நேரில் மனு அளிக்கலாம்"), which is an invented detail not stated in the article.
+  fact-check: The slide "விளையாட்டுப் பயிற்சியாளர்கள் கௌரவிக்கப்பட்டனர்" is accurate, but the reel_script's statement that the 57 students received scholarships is fine; however the caption's "நாள்: 26 அக்டோபர் 2026" is a posting date rather than an article claim, so no issue there.
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (10 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  slides_spec slide 2 title 'எந்தக்' is an incomplete/ungrammatical fragment with no clear meaning
+  reel_script omits the important fact that the Red Cross relief supplies were given to Paruthipalli Sundaram whose wall collapsed in rain, and the disabled-persons aids (3 beneficiaries, Rs. 34,785 worth of hearing aids and wheelchairs) given by the District Collector
+  slides_spec slide 3 line 'மனுக்கள் மீது விரைந்து நடவடிக்கை எடுக்கப்படும்' presents a future action as a result of the order; the article only says the Collector ordered quick action, which is a mild rewording but acceptable; however slide 3 mixes petition handling with student scholarships and trainer honours into one slide, combining different facts
+  slides_spec and reel_script attribute the 'பயிற்சியாளர்களும் கௌரவிக்கப்பட்டனர்' to both football and kabaddi, while the article says the coaches were honoured for training that earned third place in football and first place in kabaddi; the draft drops the specific results and merges them
+  reel_script states the scholarship was given to students who scored first marks in Tamil in public exams of 2025-26 'தமிழ் பாடத்தில் முதல் மதிப்பெண்' without the article's detail that they were from Namakkal district, a minor omission of location
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: slides_spec slide 2 title 'எந்தக்' is an incomplete/ungrammatical fragment with no clear meaning
+  fact-check: reel_script omits the important fact that the Red Cross relief supplies were given to Paruthipalli Sundaram whose wall collapsed in rain, and the disabled-persons aids (3 beneficiaries, Rs. 34,785 worth of hearing aids and wheelchairs) given by the District Collector
+  fact-check: slides_spec slide 3 line 'மனுக்கள் மீது விரைந்து நடவடிக்கை எடுக்கப்படும்' presents a future action as a result of the order; the article only says the Collector ordered quick action, which is a mild rewording but acceptable; however slide 3 mixes petition handling with student scholarships and trainer honours into one slide, combining different facts
+  fact-check: slides_spec and reel_script attribute the 'பயிற்சியாளர்களும் கௌரவிக்கப்பட்டனர்' to both football and kabaddi, while the article says the coaches were honoured for training that earned third place in football and first place in kabaddi; the draft drops the specific results and merges them
+  fact-check: reel_script states the scholarship was given to students who scored first marks in Tamil in public exams of 2025-26 'தமிழ் பாடத்தில் முதல் மதிப்பெண்' without the article's detail that they were from Namakkal district, a minor omission of location
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (10 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  reel_script says Sundaram is 'பருத்திப்பள்ளி சுந்தரம்' but the article describes him as பருத்திப்பள்ளி சுந்தரம் (a resident of Paruthipalli) — minor; however the reel_script states the disabled beneficiaries received items 'மாற்றுத்திறனாளிகள் 3 பேருக்கு' which matches, so no issue there
+  reel_script states the 57 students received 'உதவித்தொகையும் பாராட்டுச் சான்றும்' which matches the article, but the caption says the exam was in 'கல்வியாண்டு 2025-26 பொதுத் தேர்வில' which is a mixed-up phrasing not clearly meaningful in Tamil
+  reel_script omits the 3 disabled beneficiaries' names/detail only partially; the important fact that the District Collector personally handed over the hearing aids and wheelchairs is included, so no omission
+  slides_spec and caption describe the petitions as 'நேரில்' (in person) received by the collector, which the article does not explicitly state
+  slides_spec slide 3 says 'கல்வி உதவித்தொகை பெற்ற 57 மாணவர்களுக்குப் பாராட்டு' presenting the students under 'அடுத்து என்ன?' (what next), which mixes the awards event with a follow-up action not in the article
+  caption date '26 அக்டோபர் 2026' is the posting date and is excluded from checking
+claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: reel_script says Sundaram is 'பருத்திப்பள்ளி சுந்தரம்' but the article describes him as பருத்திப்பள்ளி சுந்தரம் (a resident of Paruthipalli) — minor; however the reel_script states the disabled beneficiaries received items 'மாற்றுத்திறனாளிகள் 3 பேருக்கு' which matches, so no issue there
+  fact-check: reel_script states the 57 students received 'உதவித்தொகையும் பாராட்டுச் சான்றும்' which matches the article, but the caption says the exam was in 'கல்வியாண்டு 2025-26 பொதுத் தேர்வில' which is a mixed-up phrasing not clearly meaningful in Tamil
+  fact-check: reel_script omits the 3 disabled beneficiaries' names/detail only partially; the important fact that the District Collector personally handed over the hearing aids and wheelchairs is included, so no omission
+  fact-check: slides_spec and caption describe the petitions as 'நேரில்' (in person) received by the collector, which the article does not explicitly state
+  fact-check: slides_spec slide 3 says 'கல்வி உதவித்தொகை பெற்ற 57 மாணவர்களுக்குப் பாராட்டு' presenting the students under 'அடுத்து என்ன?' (what next), which mixes the awards event with a follow-up action not in the article
+  fact-check: caption date '26 அக்டோபர் 2026' is the posting date and is excluded from checking
+proofread skipped: free models not efficient (10 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+images made: 3 for '509 petitions received at Namakkal publi'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261026-2223","first":"RN-129"}
+posting job started at once
 earlier stories still waiting for images: []
-instagram check: 68 recent posts read from both pages
-write round: 0 news waiting in the queue (written in priority order)
-candidate filter: 
-to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+instagram check: 69 recent posts read from both pages
+write round: 8 news waiting in the queue (written in priority order)
+candidate filter: already filed=7, collected=1
+to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
+try (N) manual=False: நாமக்கல்லில் மக்கள் குறைதீர் கூட்டம்: 509 கோரிக்கை மனுக்கள் 
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 1}, time left 27 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 1
