@@ -290,8 +290,8 @@ def verify_candidates(items, state, log):
                 continue
             # owner 26 Oct: ONLY Namakkal-district news - a district place in the headline or in the opening lines (not just a sidebar or a
             # long list of districts), and a headline that names no other district / town and is not state-wide
-            if (not (allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300])) or allnews.outside_district(art["title"])
-                    or allnews.other_district(art["title"]) or allnews.other_district(n.get("title", ""))):
+            if (not allnews.local_ok(art["url"], art["title"]) or not allnews.local_ok(art["url"], n.get("title", "") or art["title"])
+                    or not (allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300])) or allnews.outside_district(art["title"])):
                 n["status"], stt["s"] = "not Namakkal district news (article names no Namakkal place)", "notdistrict"; kept["notdistrict"] += 1
                 continue
             n.update(url=art["url"], title=art["title"], published=art["published"], verified=True)
@@ -685,7 +685,7 @@ def main():
     log.append(f"earlier stories still waiting for images: {REOFFER}")
     log += ig_log
     if MODE == "write":
-        news = load_queue()
+        news = [n for n in load_queue() if allnews.local_ok(n["url"], n.get("title", ""))]
         log.append(f"write round: {len(news)} news waiting in the queue (written in priority order)")
     else:
         news = allnews.collect(log)                               # EVERY item from every source
@@ -789,7 +789,7 @@ def main():
         if not fresh(art["published"]) and not n.get("manual"):      # a link the owner gives by hand is written whatever its date
             return {"skip": "old", "s": "old", "log": f"skip ({area}) too old ({art['published'] or 'no date'}): {art['title'][:50]}"}
         if ((not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300])) and n.get("via", "") != "dinamalar-list")
-                or allnews.other_district(art["title"])) and not n.get("manual"):
+                or not allnews.local_ok(art["url"], art["title"])) and not n.get("manual"):
             return {"skip": "not Namakkal district news (article names no Namakkal place)", "s": "notdistrict", "log": f"skip ({area}) no Namakkal place in article: {art['title'][:50]}"}
         if not n.get("manual") and any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched"))
                                        or same_news(r.get("headline_ta", ""), art["title"]) for r in recent):      # already posted / written
@@ -893,7 +893,10 @@ def main():
     log.append(f"carousel for {sum(1 for x in out if x['slides_spec'].get('carousel'))} of {len(out)} stories, the rest reel only")
     log.append(f"filed: {done['R']} Rasipuram + {done['N']} Namakkal (targets {MAX_RASIPURAM} + {MAX_NAMAKKAL})")
     # the queue: every eligible news not written yet (new, not tried this round, or a try that can be repeated) - highest priority first
-    waiting = [n for n in news if str(n["status"]).startswith(("collected", "could not open", "not filed"))]
+    waiting = [n for n in news if str(n["status"]).startswith(("collected", "could not open", "not filed"))
+               and allnews.local_ok(n["url"], n.get("title", ""))
+               and (n.get("verified") or n.get("manual") or allnews.has_place(n.get("title", "")) or allnews.url_district(n["url"]) == "namakkal"
+                    or n.get("via") == "dinamalar-list")]
     for k in (["collect"] if MODE == "collect" else ["write"] if MODE == "write" else ["collect", "write"]):
         mark_run(k)
     left = 0

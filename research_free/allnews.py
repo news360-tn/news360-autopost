@@ -53,7 +53,8 @@ OUTSIDE_WORDS = ["தமிழகத்தில்", "தமிழ்நாட�
 
 
 # other districts and their towns (Namakkal's neighbours first): a headline that names one of these and no Namakkal place is not ours
-OTHER_PLACES = ["சேலம்", "ஓமலூர்", "மேட்டூர்", "தலைவாசல்", "ஏற்காடு",
+OTHER_PLACES = ["சேலம்", "சங்ககிரி", "எடப்பாடி", "ஓமலூர்", "மேட்டூர்", "தம்மம்பட்டி", "கெங்கவல்லி", "வாழப்பாடி", "ஆத்தூர்", "தலைவாசல்", "ஏற்காடு",
+                "மல்லூர்", "பனமரத்துப்பட்டி", "ஆட்டையாம்பட்டி", "பவானி", "புகழூர்", "வேலாயுதம்பாளையம்", "மேச்சேரி", "காட்டுப்புத்தூர்",
                 "ஈரோடு", "பவானி", "கோபி", "பெருந்துறை", "சத்தியமங்கலம்", "கரூர்", "குளித்தலை", "திருச்சி", "முசிறி", "தொட்டியம்", "துறையூர்", "தர்மபுரி",
                 "கிருஷ்ணகிரி", "ஓசூர்", "திருப்பூர்", "உடுமலை", "பல்லடம்", "கோவை", "கோயம்புத்தூர்", "பொள்ளாச்சி", "நீலகிரி", "ஊட்டி", "குன்னூர்",
                 "சென்னை", "கோயம்பேடு", "காசிமேடு", "செங்கல்பட்டு", "காஞ்சிபுரம்", "திருவள்ளூர்", "வேலூர் மாவட்ட", "ராணிப்பேட்டை", "திருப்பத்தூர்",
@@ -78,6 +79,34 @@ def _forms(w):
 OTHER_EN = ["salem", "yercaud", "erode", "ooty", "nilgiris", "coimbatore", "chennai", "madurai", "trichy", "tiruchirappalli", "tiruvarur",
             "udumalai", "tiruppur", "karur", "dharmapuri", "krishnagiri", "hosur", "vellore", "thanjavur", "kanniyakumari", "kanyakumari",
             "tirunelveli", "thoothukudi", "puducherry", "bengaluru", "kerala", "karnataka"]
+
+
+def url_district(url):
+    """the district a newspaper filed the article under, read from its link ('' when the link does not say)"""
+    u = (url or "").lower()
+    for pat in (r"district-news-([a-z]+)", r"/edition-[a-z]+/([a-z]+)/", r"dinakaran\.com/district/([a-z]+)[-_/]", r"tamil\.oneindia\.com/news/([a-z]+)/",
+                r"/districts?/([a-z]+)[-_/]", r"/news/district/([a-z]+)"):
+        m = re.search(pat, u)
+        if m:
+            return m.group(1)
+    return ""
+
+
+NON_NEWS = ("weekly-supplements", "/cinema", "/entertainment", "/lifestyle", "/recipe", "/food/", "/health/", "/technology", "/tech/",
+            "/astrology", "/photogallery", "/videos/", "/video/", "/sports/", "/world/", "/national/", "/trending/", "/web-stories")
+
+
+def local_ok(url, title):
+    """the link and headline allow this to be Namakkal-district news: not filed under another district, not a supplement / cinema / recipe
+    page, no other district or state-wide wording in the headline - unless the headline itself names a Namakkal-district place"""
+    if other_district(title):
+        return False
+    if has_place(title):
+        return True
+    d = url_district(url)
+    if d and d != "namakkal":
+        return False
+    return not any(s in (url or "").lower() for s in NON_NEWS)
 
 
 def other_district(title):
@@ -106,11 +135,8 @@ PLACE_STEMS = [w[:-1] if w.endswith("ம்") else w for w in NAMAKKAL_WORDS if 
     "தலைமலை", "கபிலக்குறிச்சி", "அணியாபுரம்", "ஆண்டகளூர்", "பிள்ளாநல்லுார்", "பரமத்தி", "சீராப்பள்ளி", "மல்லசமுத்திர", "நாமகிரிப்பேட்", "வெண்ணந்துார்"]
 
 
-# owner 26 Oct: towns just across the district border are covered too (people there read our pages). EDIT these lists to add / remove places.
-# NEAR_RASIPURAM -> Rasipuram 360 page; NEAR_NAMAKKAL -> Namakkal 360 page
-NEAR_RASIPURAM = ["மல்லூர்", "பனமரத்துப்பட்டி", "ஆட்டையாம்பட்டி", "அயோத்தியாப்பட்டணம்", "வாழப்பாடி", "பேளூர்"]
-NEAR_NAMAKKAL = ["சங்ககிரி", "பவானி", "வேலாயுதம்பாளையம்", "புகழூர்", "தவிட்டுப்பாளையம்", "முசிறி", "தொட்டியம்", "காட்டுப்புத்தூர்",
-                 "மேச்சேரி", "தம்மம்பட்டி", "கெங்கவல்லி", "ஆத்தூர்"]
+# owner 26 Oct (final): ONLY Namakkal-district news - no towns outside the district (the nearby-area lists were removed)
+NEAR_RASIPURAM, NEAR_NAMAKKAL = [], []
 
 
 def has_place(text):
