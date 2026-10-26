@@ -188,7 +188,7 @@ def load_queue():
 def save_queue(items):
     now = datetime.datetime.now(IST).isoformat()
     out, seen = [], set()
-    for n in sorted(items, key=lambda x: -x.get("score", 0)):
+    for n in sorted(items, key=lambda x: (not x.get("verified"), -x.get("score", 0))):
         if n["key"] in seen or n.get("manual"):
             continue
         seen.add(n["key"])
@@ -245,8 +245,17 @@ def verify_candidates(items, state, log):
         except Exception as e:
             return n, None, e
     kept = {"ok": 0, "old": 0, "notdistrict": 0, "notext": 0, "open": 0}
-    with ThreadPoolExecutor(max_workers=int(os.environ.get("VERIFY_WORKERS", "8"))) as ex:
-        for n, art, err in ex.map(check, todo):
+    results = []
+    with ThreadPoolExecutor(max_workers=int(os.environ.get("VERIFY_WORKERS", "4"))) as ex:
+        results = list(ex.map(check, todo))
+    again = [n for n, art, err in results if err is not None]
+    if again:      # second try, two at a time, after a pause (Google's link decoder limits bursts)
+        time.sleep(20)
+        with ThreadPoolExecutor(max_workers=2) as ex:
+            second = {id(n): (n, a, e) for n, a, e in ex.map(check, again)}
+        results = [second.get(id(n), (n, a, e)) if e is not None else (n, a, e) for n, a, e in results]
+    if True:
+        for n, art, err in results:
             stt = state.setdefault(n["key"], {"n": 0})
             stt["t"] = datetime.datetime.now(IST).isoformat()
             if err is not None:
@@ -686,7 +695,7 @@ def main():
     queues = {"R": [], "N": []}
     rechecks = 0
     for n in sorted(news, key=lambda x: -x["score"]):
-        if n["status"] == "collected" and n["area"] == "N" and allnews.outside_district(n["title"], n.get("via", "")):
+        if n["status"] == "collected" and (allnews.other_district(n["title"]) or (n["area"] == "N" and allnews.outside_district(n["title"], n.get("via", "")))):
             n["status"] = "not Namakkal district news (state-wide / other district)"
             continue
         if n["status"] == "collected" and fresh(n["published"]):
@@ -781,7 +790,7 @@ def main():
         return {"art": art, "res": res, "scenes": scenes, "area": area}
 
     for a_ in ("R", "N"):      # owner 26 Oct: ONE priority order (highest first) across both pages; links given by hand first
-        queues[a_].sort(key=lambda q: (not q.get("manual"), -q.get("score", 0)))
+        queues[a_].sort(key=lambda q: (not q.get("manual"), not q.get("verified"), -q.get("score", 0)))
 
     def next_item():
         """the highest-priority waiting news of either page; the same event already filed this round is never written again"""
@@ -789,7 +798,7 @@ def main():
             open_ = [a for a in ("R", "N") if queues[a] and done[a] < target[a] and tried[a] < tries_cap[a]]
             if not open_:
                 return None
-            area = max(open_, key=lambda a: (queues[a][0].get("manual", False), queues[a][0].get("score", 0)))
+            area = max(open_, key=lambda a: (queues[a][0].get("manual", False), bool(queues[a][0].get("verified")), queues[a][0].get("score", 0)))
             q = queues[area].pop(0)
             if q["title"] and any(difflib.SequenceMatcher(None, q["title"], t).ratio() > 0.8 for t in filed_titles):      # owner 25 Oct: only the same event
                 q["status"] = "duplicate of a story filed this round"

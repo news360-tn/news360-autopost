@@ -63,10 +63,29 @@ OTHER_PLACES = ["சேலம்", "ஓமலூர்", "மேட்டூர�
 STATE_WIDE = ["TN Rain", "Tamil Nadu", "தமிழகம்", "தமிழ்நாடு", "புயல் எதிரொலி", "புயல் எச்சரிக்கை", "தீவிர புயல்", "புயல் உருவாக", "வங்கக்கடலில்", "அரபிக்கடலில்"]
 
 
+def _forms(w):
+    """a place name and the forms it takes before a Tamil ending: திருவாரூர் -> திருவாரூரில், சேலம் -> சேலத்தில்"""
+    out = [w]
+    if w.endswith("\u0bcd") and len(w) > 3:
+        out.append(w[:-1])
+    if w.endswith("ம்") and len(w) > 3:
+        out.append(w[:-2] + "த்")
+    if w.endswith("டு") and len(w) > 3:      # ஏற்காடு -> ஏற்காட்டில், திருச்செங்கோடு -> திருச்செங்கோட்டில்
+        out.append(w[:-1] + "்ட")
+    return out
+
+
+OTHER_EN = ["salem", "yercaud", "erode", "ooty", "nilgiris", "coimbatore", "chennai", "madurai", "trichy", "tiruchirappalli", "tiruvarur",
+            "udumalai", "tiruppur", "karur", "dharmapuri", "krishnagiri", "hosur", "vellore", "thanjavur", "kanniyakumari", "kanyakumari",
+            "tirunelveli", "thoothukudi", "puducherry", "bengaluru", "kerala", "karnataka"]
+
+
 def other_district(title):
     """headline names another district / town / the whole state and no Namakkal-district place"""
     t = title or ""
-    return not has_place(t) and (any(w in t for w in OTHER_PLACES) or any(w in t for w in STATE_WIDE))
+    low = t.lower()
+    return not has_place(t) and (any(f in t for w in OTHER_PLACES for f in _forms(w)) or any(w in t for w in STATE_WIDE)
+                                 or any(re.search(r"\b" + w + r"\b", low) for w in OTHER_EN))
 
 
 # these headlines are never Namakkal-district news, even when Namakkal is one name in a long list
