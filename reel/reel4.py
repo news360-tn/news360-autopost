@@ -9,7 +9,8 @@ What changed from v3 (why):
 - 5W fact cards (where / when / who / how many / action) with an icon, instead of one yellow sticker: the details people ask for in comments.
 - Captions are whole short phrases (never a sentence cut in the middle), large, outlined, the spoken word highlighted, 2 lines max.
 - Location pin from frame 1: local news is watched because it is about the viewer's own town.
-- End card asks for a SEND ("தேவைப்படுவோருக்கு அனுப்புங்கள்") - DM sends are the strongest signal for reaching new people - then Follow.
+- Viewer feedback 26 Oct: no top progress line; page logo top-RIGHT (Instagram shows the profile picture on the left); footer logo strip at the
+  bottom; the existing follow end card; the reel opens with a one-line story, a short beat, then the full news.
 Env PREVIEW_TTS=edge: preview voice from edge-tts (no local Tamil voice model needed); the posting job keeps tts.py.
 """
 import json, sys, os, re, subprocess, html, math
@@ -35,12 +36,10 @@ body{font-family:'NST','CT',sans-serif;color:#fff;position:relative}
 #shade{position:absolute;inset:0;z-index:5;background:linear-gradient(180deg,rgba(3,8,22,.80) 0%,rgba(3,8,22,.35) 18%,rgba(3,8,22,0) 34%,rgba(3,8,22,0) 50%,rgba(3,8,22,.30) 62%,rgba(3,8,22,.66) 78%,rgba(3,8,22,.88) 100%)}
 #flash{position:absolute;inset:0;z-index:7;background:#fff;opacity:0}
 /* top: story-style progress segments (one per sentence) */
-#segs{position:absolute;left:48px;right:48px;top:30px;height:8px;z-index:30;display:flex;gap:8px}
-#segs i{flex:1;background:rgba(255,255,255,.28);border-radius:4px;overflow:hidden;position:relative}
-#segs i b{position:absolute;left:0;top:0;bottom:0;width:0;background:#fff;border-radius:4px}
 /* header */
 #hdr{position:absolute;left:48px;top:150px;z-index:30;display:flex;align-items:center;gap:22px}
-#hdr img{width:108px;height:108px;border-radius:50%;border:4px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#plogo{position:absolute;right:48px;top:140px;width:128px;height:128px;border-radius:50%;border:4px solid #fff;z-index:30;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+#foot{position:absolute;left:44px;bottom:28px;width:300px;height:auto;z-index:35;pointer-events:none;opacity:.92}
 #hdr .nm{font:800 50px/1.05 'BT','NST';text-shadow:0 3px 12px rgba(0,0,0,.7)}
 #hdr .sub{display:flex;align-items:center;gap:12px;margin-top:6px;font:700 30px 'NST','CT';color:#E8ECF5;text-shadow:0 2px 8px rgba(0,0,0,.8)}
 #hdr .tag{background:var(--acc);color:#fff;padding:4px 16px 0;border-radius:8px;font:800 28px 'NST','CT'}
@@ -80,6 +79,10 @@ body{font-family:'NST','CT',sans-serif;color:#fff;position:relative}
 #end{position:absolute;inset:0;z-index:40;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;text-align:center;
   padding:0 70px 260px;background:rgba(3,8,22,.62)}
 #end img{width:250px;height:250px;border-radius:50%;border:6px solid #fff;box-shadow:0 14px 50px rgba(0,0,0,.6)}
+#end .e1{font:900 76px/1.25 'CT','NST'}
+#end .e2{background:var(--red,#E3151B);font:900 56px 'CT','NST';padding:16px 46px 8px;border-radius:999px}
+#end .e4{font:800 44px 'NST','CT';color:#fff;background:rgba(0,0,0,.35);padding:12px 30px 6px;border-radius:16px}
+#end .e3{font:800 50px 'CT','NST';color:var(--yellow)}
 #end .send{display:flex;align-items:center;gap:24px;background:#fff;color:var(--navy);padding:22px 40px 16px;border-radius:28px;font:900 58px/1.2 'CT','NST';box-shadow:0 14px 40px rgba(0,0,0,.5)}
 #end .send .ic{font-size:64px;color:var(--acc);flex:none;margin-top:-6px}
 #end .fol{display:flex;align-items:center;gap:18px;background:var(--acc);font:900 52px 'CT','NST';padding:16px 44px 10px;border-radius:999px}
@@ -93,7 +96,7 @@ STYLES = {
     # B - TV broadcast: red headline band, yellow tags, dark cards, captions on a black bar
     "B": """
 #hdr{background:rgba(7,20,51,.88);padding:12px 26px 12px 12px;border-radius:999px 24px 24px 999px}
-#hdr img{width:92px;height:92px}
+
 #pin{background:var(--yellow);color:var(--navy)}
 #pin .ic{color:var(--navy)}
 #hook{text-align:center}
@@ -118,7 +121,7 @@ STYLES = {
     "C": """
 #shade{background:linear-gradient(180deg,rgba(0,0,0,.65) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 55%,rgba(0,0,0,.55) 75%,rgba(0,0,0,.85) 100%)}
 #hdr{left:0;right:0;justify-content:center}
-#hdr img{width:84px;height:84px;border-width:3px}
+
 #hdr .nm{font-size:44px}
 #hdr .tag{background:transparent;border:2px solid #fff;padding:2px 14px 0}
 #pin{left:0;right:0;margin:0 auto;width:fit-content;transform-origin:50% 50%;background:rgba(255,255,255,.16);color:#fff;border:2px solid rgba(255,255,255,.45);backdrop-filter:blur(16px);box-shadow:none}
@@ -196,7 +199,7 @@ def phrases(words, maxw=4):
     return out
 
 
-def edge_lines(work, texts, voice="ta-IN-ValluvarNeural"):
+def edge_lines(work, texts, voice="ta-IN-ValluvarNeural", rate="+8%", pitch="+0Hz"):
     """preview voice: edge-tts per line (numbers and abbreviations prepared exactly like the real voice)"""
     import tts
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "research_free"))
@@ -205,7 +208,7 @@ def edge_lines(work, texts, voice="ta-IN-ValluvarNeural"):
         mp3, wav = work / f"line{i}.mp3", work / f"line{i}.wav"
         say = tts.clean(names.spoken(t))
         for k in range(4):      # the free voice service fails now and then: try again
-            r = subprocess.run([sys.executable, "-m", "edge_tts", "--voice", voice, "--rate=+8%", "--text", say, "--write-media", str(mp3)], timeout=90)
+            r = subprocess.run([sys.executable, "-m", "edge_tts", "--voice", voice, f"--rate={rate}", f"--pitch={pitch}", "--text", say, "--write-media", str(mp3)], timeout=90)
             if r.returncode == 0 and mp3.exists() and mp3.stat().st_size > 1000:
                 break
             import time; time.sleep(5 * (k + 1))
@@ -216,8 +219,33 @@ def edge_lines(work, texts, voice="ta-IN-ValluvarNeural"):
                         "-ar", "22050", "-ac", "1", str(wav)], check=True)
 
 
+def voice_setting():
+    """poster/config.json "reel_voice": the news voice (owner 26 Oct: Valluvar, news style). Falls back to the AI4Bharat model."""
+    try:
+        cfg = json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text())
+        return cfg.get("reel_voice") or {}
+    except Exception:
+        return {}
+
+
+def english_outro(work, idx, voice):
+    """the follow line in Indian English, in a voice that matches the news voice"""
+    try:
+        mp3 = work / "outro_en.mp3"
+        subprocess.run([sys.executable, "-m", "edge_tts", "--voice", voice, "--rate=+0%", "--text", V3.OUTRO_EN, "--write-media", str(mp3)], check=True, timeout=60)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af",
+                        "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,"
+                        "highpass=f=80,acompressor=threshold=0.12:ratio=3:attack=5:release=80,loudnorm=I=-16:TP=-1.5", "-ar", "22050", "-ac", "1",
+                        str(work / f"line{idx}.wav")], check=True)
+        print("outro spoken in English", voice)
+    except Exception as e:
+        print("English outro failed, keeping the Tamil line:", e)
+
+
 def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
     logo = f"file://{R.KIT.resolve() / page['logo']}"
+    foot_key = "rasipuram" if "rasipuram" in page["logo"].lower() else "namakkal"
+    foot = f"file://{(Path(__file__).resolve().parent / 'assets' / ('footer_' + foot_key + '.png')).as_posix()}"
     acc = accent_for(spec.get("cat", ""))
     imgs = "".join(f'<img class="pic" id="p{i}" src="file://{Path(p).resolve()}">' for i, p in enumerate(spec["images"]))
     cards = ""
@@ -247,7 +275,6 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
         cap_html += f'<div class="ph" id="g{gi}">{spans}</div>'
     hook = spec.get("hook") or ["", ""]
     mini = spec.get("mini") or " ".join(x for x in hook if x)
-    segs = "".join("<i><b></b></i>" for _ in sents)
     data = json.dumps({"shots": shots, "sents": [{"a": s["a"], "b": s["b"], "card": s["has_card"]} for s in sents],
                        "caps": [{"a": g["a"], "b": g["b"], "w": [[x[1], x[2]] for x in g["words"]]} for g in caps],
                        "hook_end": hook_end, "end_t": end_t, "total": total, "n": len(spec["images"]),
@@ -255,19 +282,17 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
     style = (os.environ.get("REEL_STYLE") or spec.get("style") or "A").upper()
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{CSS}{STYLES.get(style, "")}</style></head><body style="--acc:{acc}">
 <div id="stage">{imgs}</div><div id="shade"></div><div id="flash"></div>
-<div id="segs">{segs}</div>
-<div id="hdr"><img src="{logo}"><div><div class="nm">{page['name']}</div>
+<img id="plogo" src="{logo}">
+<div id="hdr"><div><div class="nm">{page['name']}</div>
 <div class="sub"><span class="tag">{E(spec.get('cat', ''))}</span><span>{E(spec['date'])}</span></div></div></div>
+<img id="foot" src="{foot}">
 <div id="pin">{R.icon('location-dot')}<span>{E(spec.get('location', ''))}</span></div>
 <div id="hook"><div class="h1">{E(hook[0])}</div><div class="h2">{E(hook[1])}</div></div>
 <div id="mini">{E(mini)}</div>
 {cards}
 {summary}
 <div id="cap">{cap_html}</div>
-<div id="end"><img src="{logo}">
-<div class="send">{R.icon('paper-plane')}<span>தேவைப்படுவோருக்கு அனுப்புங்கள்</span></div>
-<div class="fol">{R.icon('user-plus')}<span>FOLLOW @{page['handle']}</span></div>
-<div class="pl">{E(page['tagline'])}</div></div>
+<div id="end"><img src="{logo}"><div class="e1">{E(page['tagline'])}</div><div class="e2">FOLLOW @{page['handle']}</div><div class="e4">📌 Save • தேவைப்படுவோருக்கு Share</div><div class="e3">{E(spec.get('location',''))}</div></div>
 <script>
 const D={data};
 const cl=x=>Math.max(0,Math.min(1,x)), ease=x=>1-Math.pow(1-x,3), back=x=>{{const c=1.70158,c3=c+1;return 1+c3*Math.pow(x-1,3)+c*Math.pow(x-1,2)}};
@@ -287,7 +312,6 @@ window.renderAt=function(t){{
   if(t>=D.end_t)el.style.filter='blur('+(18*Math.min(1,(t-D.end_t)/0.3))+'px)';
   document.getElementById('flash').style.opacity=(active.a>0&&k<0.1&&prev&&prev.img!==active.img)?0.12*(1-k/0.1):0;
   // progress segments: one per sentence
-  document.querySelectorAll('#segs b').forEach((b,i)=>{{const s=D.sents[i];b.style.width=(100*cl((t-s.a)/Math.max(0.3,s.b-s.a)))+'%';}});
   // hook: frame 1 -> hook_end, then the mini headline stays
   const h=document.getElementById('hook'), hin=back(cl(t/0.3)), hout=cl((t-(D.hook_end-0.25))/0.25);
   h.style.opacity=(t<D.hook_end)?cl(t/0.12)*(1-hout):0; h.style.transform='translateY('+(30*(1-Math.min(1,hin)))+'px)';
@@ -295,7 +319,7 @@ window.renderAt=function(t){{
   m.style.opacity=(t>=D.hook_end&&t<D.end_t)?min_:0; m.style.transform='translateX('+(-(1-min_)*60)+'px)';
   // pin + header always (until the end card)
   const live=t<D.end_t?1:0;
-  ['pin','hdr','segs'].forEach(id=>document.getElementById(id).style.opacity=live);
+  ['pin','hdr','plogo'].forEach(id=>document.getElementById(id).style.opacity=live);
   document.getElementById('pin').style.transform='scale('+(0.9+0.1*back(cl(t/0.35)))+')';
   // 5W cards: with the sentence they belong to (not during the hook)
   D.sents.forEach((s,i)=>{{
@@ -344,16 +368,24 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     if os.environ.get("REUSE_VOICE") == "1" and all((work / f"line{i}.wav").exists() for i in range(len(texts))):
         print("voice of an earlier render reused (design comparison: same story, same voice)")
     else:
-        if os.environ.get("PREVIEW_TTS") == "edge":
-            edge_lines(work, texts)
-        else:
+        vs = voice_setting()
+        used = ""
+        if os.environ.get("PREVIEW_TTS") == "edge" or vs.get("engine") == "edge":
+            try:
+                edge_lines(work, texts, vs.get("voice", "ta-IN-ValluvarNeural"), vs.get("rate", "+8%"), vs.get("pitch", "+0Hz"))
+                used = "edge"
+                print("news voice:", vs.get("voice", "ta-IN-ValluvarNeural"), vs.get("rate", ""), vs.get("pitch", ""))
+            except Exception as e:
+                print("news voice not available, using the AI4Bharat voice instead:", str(e)[:120])
+        if not used:
             (work / "lines.json").write_text(json.dumps(texts, ensure_ascii=False))
             subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "tts.py"), str(work / "lines.json"), str(work), spec.get("voice", "female")], check=True)
-        V3.english_outro(work, len(texts) - 1)
+        english_outro(work, len(texts) - 1, vs.get("outro_voice", "en-IN-PrabhatNeural") if used else "en-IN-NeerjaNeural")
     starts, ends, t = [], [], lead
     for i in range(len(texts)):
         d = V3.wav_dur(work / f"line{i}.wav")
-        starts.append(round(t, 3)); ends.append(round(t + d, 3)); t += d + (V3.PAUSE if i == len(texts) - 2 else gap)
+        starts.append(round(t, 3)); ends.append(round(t + d, 3))
+        t += d + (V3.PAUSE if i == len(texts) - 2 else (0.55 if i == 0 else gap))      # a beat after the one-line story, then the full news
     V3.CHIME_T = round(ends[-2] + 0.12, 3)
     end_t = V3.CHIME_T
     total = round(max(ends[-1] + 0.6, end_t + 1.8), 3)
@@ -367,7 +399,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
             caps.append({"a": g[0][1], "b": g[-1][2], "words": g})
     snaps = [w[1] for g in caps for w in g["words"]]
     shots = V3.plan_shots(len(spec["images"]), end_t, snaps)
-    hook_end = min(2.6, ends[0])
+    hook_end = max(2.6, min(6.0, ends[0] + 0.3))      # the hook stays while the one-line story is spoken
     V3.build_audio(work, starts, shots, [dict(s, fact="") for s in sents], total)
     page = work / "reel4.html"
     page.write_text(build_html(spec, shots, sents, caps, hook_end, end_t, total, R.PAGE))
@@ -388,7 +420,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
             if f % 150 == 0:
                 print(f"frame {f}/{nframes}", flush=True)
         pg.evaluate("renderAt(0.9)")
-        pg.evaluate("document.getElementById('cap').style.display='none';document.getElementById('segs').style.display='none';document.getElementById('hook').style.opacity=1;")
+        pg.evaluate("document.getElementById('cap').style.display='none';document.getElementById('hook').style.opacity=1;")
         pg.screenshot(path=str(Path(out_mp4).with_name(Path(out_mp4).stem + "_cover.jpg")), type="jpeg", quality=95)
         b.close()
     enc.stdin.close(); enc.wait()

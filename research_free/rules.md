@@ -66,7 +66,7 @@ BEFORE ANSWERING, re-read the article once and tick off every sentence of the re
 HARD LIMITS (a draft that breaks one is thrown away - COUNT the characters of every field before answering): hl1 max 40, hl2 max 28, every slide title max 18, every slide line max 60, 3-4 slides, number of scenes = number of slides + 1, reel_script 130-200 words and it must not begin with a greeting or the page name.
 
 REEL DETAIL (this overrides the shorter length given above): viewers asked for more detail. The reel_script must tell the WHOLE story from the article, in this order, one fact per sentence:
-1. Hook (sentence 1): WHAT happened + the key number or result, max 14 words.
+1. ONE-LINE STORY (sentence 1, viewers asked for this): tell the WHOLE news as one gripping story line, the way a good storyteller starts - who/what, where, and the most striking fact, so the viewer wants to hear the rest (max 18 words), e.g. "ராசிபுரம் அருகே நள்ளிரவில் வீட்டின் சுவர் இடிந்து விழுந்ததில் ஒரு குடும்பம் உயிர் தப்பியது." Facts from the article only - no question, no greeting, no "இன்றைய செய்தி", no exaggeration. From sentence 2 on, explain the full news in the order below.
 2. WHO: the people involved by role or name exactly as the article gives them (name only when the article names them).
 3. EXACT WHERE: the full place name, village or road, taluk and district exactly as the article says it.
 4. WHEN: the day, date and time as the article says it.
