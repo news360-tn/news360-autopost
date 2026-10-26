@@ -175,7 +175,9 @@ def not_namakkal(row):
     if not src.startswith("http"):
         return ""
     cap = (row.get("caption") or "")[:600]
-    if allnews.has_place(head) and not allnews.other_district(head):
+    if allnews.other_district(head):
+        return "not Namakkal district news (the headline names another district)"
+    if allnews.has_place(head):
         return ""
     d = allnews.url_district(src)
     if d and d != "namakkal":
