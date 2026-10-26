@@ -172,7 +172,7 @@ def score(n):
 # the writer round (every 20 min) takes the queue in priority order, writes the story, and the posting job posts it at once.
 MODE = os.environ.get("COLLECT_MODE", "both")      # collect | write | both
 QUEUE = ARCHIVE / "queue.json"
-QFIELDS = ("key", "url", "title", "source", "published", "via", "query", "snippet", "outlets", "alts", "mentions", "area", "score", "queued_at")
+QFIELDS = ("key", "url", "title", "source", "published", "via", "query", "snippet", "outlets", "alts", "mentions", "area", "score", "queued_at", "verified")
 
 
 def load_queue():
@@ -196,6 +196,93 @@ def save_queue(items):
     ARCHIVE.mkdir(exist_ok=True)
     QUEUE.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
     return len(out)
+
+
+def open_article(n):
+    """resolved link + article (title, date, text) of a news item; raises when it cannot be opened"""
+    links = [u for u in [n["url"]] + n.get("alts", []) if u]
+    links = list(dict.fromkeys([u for u in links if "news.google.com" not in u] + links))      # a direct publisher link first
+    url, last = None, None
+    for u in links[:4]:
+        try:
+            url = allnews.resolve(u)
+            break
+        except Exception as e:
+            last = e
+    if url is None:
+        raise last or RuntimeError("no link")
+    art = allnews.article_any(url)
+    art["url"] = url
+    for k in ("text", "title"):      # some outlets type ூ as ு+ா (ப.வேலுார்)
+        if art.get(k):
+            art[k] = art[k].replace("\u0bc1\u0bbe", "\u0bc2")
+    art["title"] = art.get("title") or n["title"]
+    art["published"] = art.get("published") or n["published"]
+    return art
+
+
+def local_score(n, text=""):
+    """priority: real local news first (Rasipuram, a district place in the headline), then topic interest, outlets and freshness"""
+    s = score(n)
+    if n.get("area") == "R":
+        s += 4
+    if allnews.has_place(n.get("title", "")):
+        s += 3
+    elif allnews.has_place(text[:600]):
+        s += 1
+    return round(s, 2)
+
+
+def verify_candidates(items, state, log):
+    """collect round: open every candidate now, keep only real Namakkal-district news of today / yesterday, merge the same event
+    reported by several outlets. The queue then holds only news that will really be written (no time lost on other districts)."""
+    from concurrent.futures import ThreadPoolExecutor
+    todo = [n for n in items if not n.get("verified")]
+
+    def check(n):
+        try:
+            return n, open_article(n), None
+        except Exception as e:
+            return n, None, e
+    kept = {"ok": 0, "old": 0, "notdistrict": 0, "notext": 0, "open": 0}
+    with ThreadPoolExecutor(max_workers=int(os.environ.get("VERIFY_WORKERS", "8"))) as ex:
+        for n, art, err in ex.map(check, todo):
+            stt = state.setdefault(n["key"], {"n": 0})
+            stt["t"] = datetime.datetime.now(IST).isoformat()
+            if err is not None:
+                n["status"] = f"could not open the article: {str(err)[:60]}"      # stays in the queue, tried again later
+                stt["n"] = stt.get("n", 0) + 1
+                kept["open"] += 1
+                continue
+            if len(art["text"]) < 20:
+                n["status"], stt["s"] = "article text too short / blocked", "notext"; kept["notext"] += 1
+                continue
+            if not fresh(art["published"]) and not n.get("manual"):
+                n["status"], stt["s"] = "old", "old"; kept["old"] += 1
+                continue
+            # owner 26 Oct: ONLY Namakkal-district news - a district place in the headline or in the opening lines (not just a sidebar or a
+            # long list of districts), and a headline that names no other district / town and is not state-wide
+            if (not (allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300])) or allnews.outside_district(art["title"])
+                    or allnews.other_district(art["title"]) or allnews.other_district(n.get("title", ""))):
+                n["status"], stt["s"] = "not Namakkal district news (article names no Namakkal place)", "notdistrict"; kept["notdistrict"] += 1
+                continue
+            n.update(url=art["url"], title=art["title"], published=art["published"], verified=True)
+            n["area"] = allnews.area_of_story(art["title"], art["text"])
+            n["score"] = local_score(n, art["text"])
+            kept["ok"] += 1
+    # the same event from several outlets = one item (the highest priority one; the outlets add to its priority)
+    good = sorted([n for n in items if n.get("verified") and str(n["status"]).startswith("collected")], key=lambda x: -x["score"])
+    merged = []
+    for n in good:
+        twin = next((m for m in merged if difflib.SequenceMatcher(None, m["title"], n["title"]).ratio() > 0.6), None)
+        if twin:
+            n["status"] = "duplicate of a queued news"
+            twin["alts"] = list(dict.fromkeys(twin.get("alts", []) + [n["url"]] + n.get("alts", [])))
+            twin["mentions"] = twin.get("mentions", 1) + 1
+        else:
+            merged.append(n)
+    log.append(f"checked at collection: {kept['ok']} real local news, {len(good) - len(merged)} duplicates merged, {kept['old']} old, "
+               f"{kept['notdistrict']} other district / state-wide, {kept['notext']} empty, {kept['open']} could not be opened (tried again later)")
 
 
 def mark_run(kind):
@@ -427,6 +514,24 @@ def send_batch(group, log=None, images=True):
 _LAST_TRIGGER = [0.0]
 
 
+def trigger_workflow(name, inputs=None, log=None):
+    """start another workflow now (GitHub's own schedule is often late or skipped); never fails the run"""
+    tok, repo = os.environ.get("GH_TOKEN"), os.environ.get("GH_REPO")
+    if not tok or not repo or DRY:
+        return False
+    try:
+        r = requests.post(f"https://api.github.com/repos/{repo}/actions/workflows/{name}/dispatches", timeout=30,
+                          headers={"Authorization": "Bearer " + tok, "Accept": "application/vnd.github+json"},
+                          json={"ref": "main", "inputs": inputs or {}})
+        msg = f"{name} started" if r.status_code == 204 else f"{name} not started ({r.status_code} {r.text[:80]})"
+    except Exception as e:
+        msg = f"{name} not started ({str(e)[:80]})"
+    print(msg, flush=True)
+    if log is not None:
+        log.append(msg)
+    return msg.endswith("started")
+
+
 def trigger_posting(log=None):
     """start the posting workflow now (a story with pictures was just saved) instead of waiting for its schedule; at most every 8 minutes.
     Never fails the run: without a token the normal schedule posts it."""
@@ -616,6 +721,10 @@ def main():
         PRIORITY_ONLY[0] = True
         log.append("archive round: priority scan only (urgent local news, if any)")
     if MODE == "collect":
+        try:
+            verify_candidates(queues["R"] + queues["N"], state, log)
+        except Exception as e:
+            log.append(f"checking at collection failed (the writer checks each news instead): {str(e)[:120]}")
         target = {"R": 0, "N": 0}
         log.append("collect round: nothing is written now - the writer job takes the queue by priority and posts each story at once")
     # Rasipuram news -> ONE post on Rasipuram 360 with Namakkal 360 invited as collaborator; every other district news -> Namakkal 360 only
@@ -651,12 +760,12 @@ def main():
             return {"skip": "article text too short / blocked", "s": "notext", "log": f"skip ({area}) no article text ({len(art['text'])} chars): {art['title'][:50]} [{url[:60]}]"}
         if not fresh(art["published"]) and not n.get("manual"):      # a link the owner gives by hand is written whatever its date
             return {"skip": "old", "s": "old", "log": f"skip ({area}) too old ({art['published'] or 'no date'}): {art['title'][:50]}"}
-        if not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:1500])) and n.get("via", "") != "dinamalar-list":
+        if ((not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300])) and n.get("via", "") != "dinamalar-list")
+                or allnews.other_district(art["title"])) and not n.get("manual"):
             return {"skip": "not Namakkal district news (article names no Namakkal place)", "s": "notdistrict", "log": f"skip ({area}) no Namakkal place in article: {art['title'][:50]}"}
         if not n.get("manual") and any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched")) for r in recent):
             return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) similar to a filed story: {art['title'][:50]}"}
-        if area == "N" and allnews.area_of(art["title"] + " " + art["text"][:400]) == "R":
-            area = "R"      # the headline did not name the place, the article's opening does: Rasipuram news
+        area = allnews.area_of_story(art["title"], art["text"])      # Rasipuram page only for Rasipuram and the villages around it
         art["interest"] = interest(art)
         print(f"writing [{area}]: {art['title'][:60]}", flush=True)
         try:
@@ -671,20 +780,21 @@ def main():
                 print("image brief failed, using the writer's scenes:", str(e)[:120], flush=True)
         return {"art": art, "res": res, "scenes": scenes, "area": area}
 
+    for a_ in ("R", "N"):      # owner 26 Oct: ONE priority order (highest first) across both pages; links given by hand first
+        queues[a_].sort(key=lambda q: (not q.get("manual"), -q.get("score", 0)))
+
     def next_item():
-        """next candidate, Rasipuram and Namakkal in turn; the same event already filed this round is never written again"""
-        for _ in range(2):
-            area = ("R", "N")[turn[0] % 2]
-            turn[0] += 1
-            if done[area] >= target[area] or tried[area] >= tries_cap[area]:
+        """the highest-priority waiting news of either page; the same event already filed this round is never written again"""
+        while True:
+            open_ = [a for a in ("R", "N") if queues[a] and done[a] < target[a] and tried[a] < tries_cap[a]]
+            if not open_:
+                return None
+            area = max(open_, key=lambda a: (queues[a][0].get("manual", False), queues[a][0].get("score", 0)))
+            q = queues[area].pop(0)
+            if q["title"] and any(difflib.SequenceMatcher(None, q["title"], t).ratio() > 0.8 for t in filed_titles):      # owner 25 Oct: only the same event
+                q["status"] = "duplicate of a story filed this round"
                 continue
-            while queues[area]:
-                q = queues[area].pop(0)
-                if q["title"] and any(difflib.SequenceMatcher(None, q["title"], t).ratio() > 0.8 for t in filed_titles):      # owner 25 Oct: only the same event
-                    q["status"] = "duplicate of a story filed this round"
-                    continue
-                return q, area
-        return None
+            return q, area
 
     from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
     workers = max(1, int(os.environ.get("WRITE_WORKERS", "3")))      # stories written at the same time (the models answer in parallel)
@@ -757,10 +867,15 @@ def main():
     waiting = [n for n in news if str(n["status"]).startswith(("collected", "could not open", "not filed"))]
     for k in (["collect"] if MODE == "collect" else ["write"] if MODE == "write" else ["collect", "write"]):
         mark_run(k)
+    left = 0
     try:
-        log.append(f"queue: {save_queue(waiting)} news waiting to be written")
+        left = save_queue(waiting)
+        log.append(f"queue: {left} news waiting to be written")
     except Exception as e:
         log.append(f"queue not saved: {e}")
+    if left and MODE in ("collect", "write"):
+        # the writer goes on at once (after this run has saved the queue - both share one concurrency group, so it starts when this one ends)
+        trigger_workflow("write_stories.yml", None, log)
     for n in news:
         if n["status"] == "collected":
             n["status"] = "queued for writing" if MODE == "collect" else "collected (not in this round's top)"

@@ -19,7 +19,11 @@ RASIPURAM = ["ராசிபுரம்", "நாமகிரிப்பே�
              "காக்காவேரி", "வடுகம்", "ராசிபுரத்தில்", "ராசிபுரம்"]
 # searches that cover the whole district (every taluk and big town)
 QUERIES = ["நாமக்கல்", "ராசிபுரம்", "திருச்செங்கோடு", "பரமத்தி வேலூர்", "குமாரபாளையம்", "பள்ளிபாளையம்", "சேந்தமங்கலம்", "கொல்லிமலை",
-           "மோகனூர்", "நாமகிரிப்பேட்டை", "வெண்ணந்தூர்", "எருமப்பட்டி", "நாமக்கல் மாவட்டம்", "நாமக்கல் முட்டை விலை"]
+           "மோகனூர்", "நாமகிரிப்பேட்டை", "வெண்ணந்தூர்", "எருமப்பட்டி", "நாமக்கல் மாவட்டம்", "நாமக்கல் முட்டை விலை",
+           # government / TNEB announcements (owner 26 Oct): the newspapers carry the official notices every day
+           "நாமக்கல் மின்தடை", "ராசிபுரம் மின்தடை", "திருச்செங்கோடு மின்தடை", "பரமத்தி வேலூர் மின்தடை", "குமாரபாளையம் மின்தடை",
+           "நாமக்கல் ஆட்சியர் அறிவிப்பு", "நாமக்கல் மாவட்ட நிர்வாகம்", "நாமக்கல் வேலைவாய்ப்பு முகாம்", "நாமக்கல் ஆட்சேர்ப்பு",
+           "நாமக்கல் சிறப்பு முகாம்", "நாமக்கல் குறைதீர் கூட்டம்", "Namakkal power shutdown", "Namakkal collector"]
 # every outlet is also searched on its own (so a channel like News7 Tamil or NDTV Tamil is never missed)
 SITES = {"நியூஸ்7 தமிழ்": "news7tamil.live", "என்டிடிவி தமிழ்": "ndtv.com/tamil", "மாலைமலர்": "maalaimalar.com", "தினத்தந்தி": "dailythanthi.com",
          "தினமணி": "dinamani.com", "இந்து தமிழ்": "hindutamil.in", "தினகரன்": "dinakaran.com", "புதிய தலைமுறை": "puthiyathalaimurai.com",
@@ -48,6 +52,23 @@ OUTSIDE_WORDS = ["தமிழகத்தில்", "தமிழ்நாட�
                  "தமிழக", "இந்தியா", "பிரதமர்", "முதல்வர் ஸ்டாலின்", "விஜய்", "டெல்லி", "கேரளா", "கர்நாடக", "Chennai", "Tamil Nadu"]
 
 
+# other districts and their towns (Namakkal's neighbours first): a headline that names one of these and no Namakkal place is not ours
+OTHER_PLACES = ["சேலம்", "ஓமலூர்", "மேட்டூர்", "தலைவாசல்", "ஏற்காடு",
+                "ஈரோடு", "பவானி", "கோபி", "பெருந்துறை", "சத்தியமங்கலம்", "கரூர்", "குளித்தலை", "திருச்சி", "முசிறி", "தொட்டியம்", "துறையூர்", "தர்மபுரி",
+                "கிருஷ்ணகிரி", "ஓசூர்", "திருப்பூர்", "உடுமலை", "பல்லடம்", "கோவை", "கோயம்புத்தூர்", "பொள்ளாச்சி", "நீலகிரி", "ஊட்டி", "குன்னூர்",
+                "சென்னை", "கோயம்பேடு", "காசிமேடு", "செங்கல்பட்டு", "காஞ்சிபுரம்", "திருவள்ளூர்", "வேலூர் மாவட்ட", "ராணிப்பேட்டை", "திருப்பத்தூர்",
+                "திருவண்ணாமலை", "விழுப்புரம்", "கள்ளக்குறிச்சி", "கடலூர்", "பெரம்பலூர்", "அரியலூர்", "தஞ்சா", "திருவாரூர்", "நாகை", "நாகப்பட்டினம்",
+                "மயிலாடுதுறை", "புதுக்கோட்டை", "சிவகங்கை", "ராமநாதபுரம்", "மதுரை", "தேனி", "திண்டுக்கல்", "விருதுநகர்", "தூத்துக்குடி",
+                "திருநெல்வேலி", "நெல்லை", "தென்காசி", "கன்னியாகுமரி", "நாகர்கோவில்", "புதுச்சேரி", "பெங்களூரு", "கேரளா", "கர்நாடக"]
+STATE_WIDE = ["TN Rain", "Tamil Nadu", "தமிழகம்", "தமிழ்நாடு", "புயல் எதிரொலி", "புயல் எச்சரிக்கை", "தீவிர புயல்", "புயல் உருவாக", "வங்கக்கடலில்", "அரபிக்கடலில்"]
+
+
+def other_district(title):
+    """headline names another district / town / the whole state and no Namakkal-district place"""
+    t = title or ""
+    return not has_place(t) and (any(w in t for w in OTHER_PLACES) or any(w in t for w in STATE_WIDE))
+
+
 # these headlines are never Namakkal-district news, even when Namakkal is one name in a long list
 ALWAYS_OUTSIDE = ["மாவட்டங்களில்", "மாவட்டங்களுக்கு", "மாவட்டங்கள்", "தமிழகத்தில்", "தமிழ்நாட்டில்", "தமிழகம் முழுவதும்", "மாநிலம் முழுவதும்",
                   "மத்தியப் பிரதேச", "மத்திய பிரதேச", "ராஜ்யசபா", "மாநிலங்களவை", "பிரதமர்", "இடைத்தேர்தல்", "தேர்தல் ஆணையம்", "உச்ச நீதிமன்றம்"]
@@ -66,8 +87,17 @@ PLACE_STEMS = [w[:-1] if w.endswith("ம்") else w for w in NAMAKKAL_WORDS if 
     "தலைமலை", "கபிலக்குறிச்சி", "அணியாபுரம்", "ஆண்டகளூர்", "பிள்ளாநல்லுார்", "பரமத்தி", "சீராப்பள்ளி", "மல்லசமுத்திர", "நாமகிரிப்பேட்", "வெண்ணந்துார்"]
 
 
+# owner 26 Oct: towns just across the district border are covered too (people there read our pages). EDIT these lists to add / remove places.
+# NEAR_RASIPURAM -> Rasipuram 360 page; NEAR_NAMAKKAL -> Namakkal 360 page
+NEAR_RASIPURAM = ["மல்லூர்", "பனமரத்துப்பட்டி", "ஆட்டையாம்பட்டி", "அயோத்தியாப்பட்டணம்", "வாழப்பாடி", "பேளூர்"]
+NEAR_NAMAKKAL = ["சங்ககிரி", "எடப்பாடி", "பவானி", "வேலாயுதம்பாளையம்", "புகழூர்", "தவிட்டுப்பாளையம்", "முசிறி", "தொட்டியம்", "காட்டுப்புத்தூர்",
+                 "மேச்சேரி", "தம்மம்பட்டி", "கெங்கவல்லி", "ஆத்தூர்"]
+
+
 def has_place(text):
-    return any(w in (text or "") for w in PLACE_STEMS) or any(w in (text or "") for w in NAMAKKAL_WORDS if w.isascii())
+    t = text or ""
+    return (any(w in t for w in PLACE_STEMS) or any(w in t for w in NAMAKKAL_WORDS if w.isascii())
+            or any(w[:-1] in t if w.endswith("ர்") else w in t for w in NEAR_RASIPURAM + NEAR_NAMAKKAL))
 
 
 def outside_district(text, via=""):
@@ -87,7 +117,18 @@ def outside_district(text, via=""):
 
 
 def area_of(text, default="N"):
-    return "R" if any(k in text for k in RASIPURAM) else default
+    stem = lambda w: w[:-1] if w.endswith(("ர்", "ம்")) else w      # மல்லூர் -> மல்லூரில், ராசிபுரம் -> ராசிபுரத்தில்
+    return "R" if any(stem(k) in text for k in RASIPURAM + NEAR_RASIPURAM) else default
+
+
+def area_of_story(title, lead):
+    """Rasipuram page when the HEADLINE names Rasipuram or a place around it, or (headline names no place) the opening lines do.
+    District-wide news ("நாமக்கல் மாவட்டத்தில் ...") that only lists Rasipuram among the taluks stays on the Namakkal page."""
+    if area_of(title or "") == "R":
+        return "R"
+    if "மாவட்ட" in (title or "") or has_place(title or ""):
+        return "N"
+    return area_of((lead or "")[:250])
 
 
 def _clean_title(t):
