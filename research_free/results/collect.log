@@ -1,42 +1,29 @@
-writing [N]: புளியஞ்சோலையில் காட்டாற்று வெள்ளம்
+writing [N]: தமிழ்நாடு முழுவதும் ஆர்.எஸ்.எஸ் பேரணி; ஆயிரக்கணக்கான தொண்டர்
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
 poor answer - skipped for 30 min: gemini/gemini-3.8-flash
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.7-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.7-flash
-ok gemini/gemini-3.6-flash (18s)
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.7-flash
+ok gemini/gemini-3.6-flash (22s)
 attempt 1 gemini/gemini-3.6-flash: 1 problems
-  not grounded: location 'கொல்லிமலை' is not in the article
+  not grounded: location 'உட்பட' is not in the article
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (29s)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (7s)
-factcheck by gemini/gemini-3.6-flash: 2 problems
-  The draft includes invented warnings/advisories for tourists and the public to be cautious, which are not present in the article.
-  The draft completes the truncated article text by inventing that tourists are facing disruption/impact.
-attempt 2 gemini/gemini-3.6-flash: 2 problems
-  fact-check: The draft includes invented warnings/advisories for tourists and the public to be cautious, which are not present in the article.
-  fact-check: The draft completes the truncated article text by inventing that tourists are facing disruption/impact.
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to generate JSON. Please adjust your prompt. See 'failed_gener
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
 dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
 fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
@@ -46,289 +33,136 @@ fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"
 switching away from mistral/mistral-small-latest for 10 min
 free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The article is cut off mid-sentence ('இதனால் சுற்றுலா பயணிகள் அங்கு செல்ல,'), so the claim that tourists are not allowed / are advised not to go (in the headline, reel_script, slides and caption) is not supported by the visible article text.
-  The slide line 'நிலவரம் சீரான பிறகு செல்லலாம்' (can go once the situation normalises) is an invented detail not present in the article.
-  The headline and slide 'சுற்றுலா பயணிகளுக்கு அனுமதி இல்லை' (tourists are not permitted) asserts an official ban that the article does not state.
-  The reel_script states that the flood 'உருவானது' due to rain, and the article mentions the rain, but the article's stated cause and the draft's advisory framing (advised not to go, avoid riverbank) are not verifiable from the article as provided.
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The article is cut off mid-sentence ('இதனால் சுற்றுலா பயணிகள் அங்கு செல்ல,'), so the claim that tourists are not allowed / are advised not to go (in the headline, reel_script, slides and caption) is not supported by the visible article text.
-  fact-check: The slide line 'நிலவரம் சீரான பிறகு செல்லலாம்' (can go once the situation normalises) is an invented detail not present in the article.
-  fact-check: The headline and slide 'சுற்றுலா பயணிகளுக்கு அனுமதி இல்லை' (tourists are not permitted) asserts an official ban that the article does not state.
-  fact-check: The reel_script states that the flood 'உருவானது' due to rain, and the article mentions the rain, but the article's stated cause and the draft's advisory framing (advised not to go, avoid riverbank) are not verifiable from the article as provided.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The article is cut off mid-sentence ('இதனால் சுற்றுலா பயணிகள் அங்கு செல்ல,'), so the draft's claim that further details are unknown may omit an important fact (e.g., a restriction or ban on tourists) that the article likely states; the reel_script and caption do not mention what happens to tourists.
-  The draft says 'வெள்ளம் குறித்த கூடுதல் விவரம் இன்னும் தெரியவரவில்லை' (no further details known), which is not stated in the article and contradicts the truncated article's implication of a consequence for tourists.
-  The reel_script states that heavy rain in Namakkal district is the cause of the flood, but the article only says rain is occurring and the flood has occurred; the causal link is a mild inference not explicitly stated in the article.
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The article is cut off mid-sentence ('இதனால் சுற்றுலா பயணிகள் அங்கு செல்ல,'), so the draft's claim that further details are unknown may omit an important fact (e.g., a restriction or ban on tourists) that the article likely states; the reel_script and caption do not mention what happens to tourists.
-  fact-check: The draft says 'வெள்ளம் குறித்த கூடுதல் விவரம் இன்னும் தெரியவரவில்லை' (no further details known), which is not stated in the article and contradicts the truncated article's implication of a consequence for tourists.
-  fact-check: The reel_script states that heavy rain in Namakkal district is the cause of the flood, but the article only says rain is occurring and the flood has occurred; the causal link is a mild inference not explicitly stated in the article.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The headline and the slides_spec line 'வெள்ளம் காரணமாக சுற்றுலா பயணிகள் அங்கு செல்வது குறித்த' mix a sentence fragment about tourists going there with the flood cause; the article is truncated mid-sentence ('இதனால் சுற்றுலா பயணிகள் அங்கு செல்ல,') so the tourist advisory is incomplete and the draft's tamil_headline ends in an unfinished phrase ('...அங்கு செல்ல...') with no clear meaning.
-  The reel_script and caption state that the full details about tourists going there are not in the article/not yet released, which is an inference beyond the article's text, which simply cuts off mid-sentence.
-  The slides_spec 'சுற்றுலா பயணிகள்' slide line 'ரம்மியமான இயற்கை சூழல் காரணமாக இங்கு சுற்றுலா பயணிகள்' is a broken, unfinished sentence without a clear meaning in Tamil.
-  The reel_script says 'அதிகாரிகளின் அறிவிப்புகளைப் பின்பற்றுங்கள்' (follow official announcements) as advice that does not appear in the article, which is an invented detail.
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The headline and the slides_spec line 'வெள்ளம் காரணமாக சுற்றுலா பயணிகள் அங்கு செல்வது குறித்த' mix a sentence fragment about tourists going there with the flood cause; the article is truncated mid-sentence ('இதனால் சுற்றுலா பயணிகள் அங்கு செல்ல,') so the tourist advisory is incomplete and the draft's tamil_headline ends in an unfinished phrase ('...அங்கு செல்ல...') with no clear meaning.
-  fact-check: The reel_script and caption state that the full details about tourists going there are not in the article/not yet released, which is an inference beyond the article's text, which simply cuts off mid-sentence.
-  fact-check: The slides_spec 'சுற்றுலா பயணிகள்' slide line 'ரம்மியமான இயற்கை சூழல் காரணமாக இங்கு சுற்றுலா பயணிகள்' is a broken, unfinished sentence without a clear meaning in Tamil.
-  fact-check: The reel_script says 'அதிகாரிகளின் அறிவிப்புகளைப் பின்பற்றுங்கள்' (follow official announcements) as advice that does not appear in the article, which is an invented detail.
-proofread skipped: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [R]: சிவன் கோவில்களில் அன்னாபிஷேகம்
-free models unavailable: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The article says the 50 kg annam decoration was done for the main deity at Kailasanathar temple; the draft's caption/reel are consistent, but the reel_script says 'ஐம்பது கிலோ' — matches. However, the caption and reel state the event date as 'நேற்று (அக். 25)'; the article gives no calendar date, so the specific date 'அக். 25' is an invented detail not present in the article.
-  The reel_script says 'சுவாமி மற்றும் அம்பாளுக்கு வாசனை திரவியங்களால் சிறப்பு அபிஷேகம்' — the article supports this, but it is placed before the 50 kg decoration sentence order is fine; no issue there.
-  The article is truncated before its end, so the claim that devotees from Rasipuram, Seeraapalli and Kalkurichi participated is supported only by the visible text; the reel_script's statement that devotees 'கலந்துகொண்டனர்' is consistent, so no problem is raised there.
-claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The article says the 50 kg annam decoration was done for the main deity at Kailasanathar temple; the draft's caption/reel are consistent, but the reel_script says 'ஐம்பது கிலோ' — matches. However, the caption and reel state the event date as 'நேற்று (அக். 25)'; the article gives no calendar date, so the specific date 'அக். 25' is an invented detail not present in the article.
-  fact-check: The reel_script says 'சுவாமி மற்றும் அம்பாளுக்கு வாசனை திரவியங்களால் சிறப்பு அபிஷேகம்' — the article supports this, but it is placed before the 50 kg decoration sentence order is fine; no issue there.
-  fact-check: The article is truncated before its end, so the claim that devotees from Rasipuram, Seeraapalli and Kalkurichi participated is supported only by the visible text; the reel_script's statement that devotees 'கலந்துகொண்டனர்' is consistent, so no problem is raised there.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 0 problems
-claude rewrite 2 anthropic/claude-haiku-5-5: 0 problems
-proofread skipped: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [R]: எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் புதிய கிளை திறப்பு விழா
-free models unavailable: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 49 words; need 50-130 (detailed reel, about 30-50 seconds)
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 7 problems
-  The article says the new branch opening took place at Rasipuram (ராசிபுரம்) only loosely; the article lists Rasipuram among branch locations and does not clearly state the opening location, so the headline and reel claim the opening was in Rasipuram without clear support.
-  The reel_script attributes the welcome speech to the owner Maguteeswaran, but the article says the welcome was given by Subbarayan/Thirumagan/Ravi/Baskar and others, not clearly Maguteeswaran; the owner is named as giving the gift/welcome role in ambiguous grouping.
-  The reel_script says 'ராஜ்ய சபா எம்.பி. ராஜேஸ்குமார்' cut the ribbon; the article's sentence mixes multiple names and roles, making the attribution of MP role unclear.
-  The reel_script states Srisabhan/Abirami Silks Manivasagam attended, but the article's text for Manivasagam is garbled and does not clearly confirm his participation as stated.
-  The reel_script and slides say the chain has branches in Avinashi (அவிநாசி) and Thiruchengode, Namakkal, Tiruppur, Salem; the article's branch list is partially garbled and the inclusion of Avinashi in the reel is inconsistent with the slide text, which omits it.
-  The reel_script and slides say the event was 'welcoming those who came' generically; the slides claim 'பலர் வரவேற்கப்பட்டனர்' which is not clearly stated in the article.
-  The slides_spec line 'ராசிபுரத்தில் நடந்தது' is a location claim not clearly supported by the article's text.
-claude rewrite 2 anthropic/claude-haiku-5-5: 7 problems
-  fact-check: The article says the new branch opening took place at Rasipuram (ராசிபுரம்) only loosely; the article lists Rasipuram among branch locations and does not clearly state the opening location, so the headline and reel claim the opening was in Rasipuram without clear support.
-  fact-check: The reel_script attributes the welcome speech to the owner Maguteeswaran, but the article says the welcome was given by Subbarayan/Thirumagan/Ravi/Baskar and others, not clearly Maguteeswaran; the owner is named as giving the gift/welcome role in ambiguous grouping.
-  fact-check: The reel_script says 'ராஜ்ய சபா எம்.பி. ராஜேஸ்குமார்' cut the ribbon; the article's sentence mixes multiple names and roles, making the attribution of MP role unclear.
-  fact-check: The reel_script states Srisabhan/Abirami Silks Manivasagam attended, but the article's text for Manivasagam is garbled and does not clearly confirm his participation as stated.
-  fact-check: The reel_script and slides say the chain has branches in Avinashi (அவிநாசி) and Thiruchengode, Namakkal, Tiruppur, Salem; the article's branch list is partially garbled and the inclusion of Avinashi in the reel is inconsistent with the slide text, which omits it.
-  fact-check: The reel_script and slides say the event was 'welcoming those who came' generically; the slides claim 'பலர் வரவேற்கப்பட்டனர்' which is not clearly stated in the article.
-  fact-check: The slides_spec line 'ராசிபுரத்தில் நடந்தது' is a location claim not clearly supported by the article's text.
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 45 words; need 50-130 (detailed reel, about 30-50 seconds)
-proofread skipped: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [R]: 4 வயது குழந்தை உள்பட பலரை துரத்தி துரத்தி கடித்த வெறிநாய்
-free models unavailable: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 7 problems
-  reel_script says 'நான்கு பலத்த காயமடைந்து' — the number 4 is wrongly attached to Kavisri's injury as if it were a noun/quantity rather than her age; the sentence is garbled and does not clearly say she is 4 years old (ungrammatical/unclear Tamil).
-  reel_script says Kavisri is being treated at 'ராசிபுரம் மருத்துவமனை' — the article's visible text mentions Rasipuram in the context of her treatment, but the cut-off article does not clearly confirm the hospital name in the draft's wording; the claim should be verified against the full article.
-  reel_script says 'மணிகண்டன் உட்பட பலரும் காயமடைந்தனர்' and caption says 'மணிகண்டன் உட்பட பலரும் காயம்' — the article's cut-off text only states Manikandan was injured without a clear confirmation of 'பலரும்' beyond the article's wording; the phrase 'பலரும்' is not clearly supported.
-  slides_spec 'யார் காயம்?' slide has '<b>4 வயது</b>' inserted as an HTML tag inside the lines, which is markup not Tamil text and is inconsistent with the rest of the spec.
-  slides_spec 'என்ன நடந்தது?' line 'சாலையில் நடந்தவர்கள், வீட்டு முன் விளையாடிய குழந்தைகளை' is an incomplete sentence with no verb, so it has no clear meaning on its own.
-  Caption and reel_script say the dog was 'துரத்தித் துரத்திக் கடித்தது' of 'சாலையில் நடந்து சென்றவர்களையும்' — accurate, but the reel_script's 'வீட்டு முன் விளையாடிக்கொண்டிருந்த குழந்தைகளையும்' merges the two groups correctly; no issue here, so this is not a problem.
-  The article states the dog was 'வெறிநாய்' and the draft's headline 'வெறிநாய் கடித்து' is consistent; however the article's mention that the dog must be captured was requested repeatedly from the Town Panchayat administration — the draft's claim that the administration 'இதுவரை நடவடிக்கை எடுக்கவில்லை' is supported, so no problem there.
-claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
-  fact-check: reel_script says 'நான்கு பலத்த காயமடைந்து' — the number 4 is wrongly attached to Kavisri's injury as if it were a noun/quantity rather than her age; the sentence is garbled and does not clearly say she is 4 years old (ungrammatical/unclear Tamil).
-  fact-check: reel_script says Kavisri is being treated at 'ராசிபுரம் மருத்துவமனை' — the article's visible text mentions Rasipuram in the context of her treatment, but the cut-off article does not clearly confirm the hospital name in the draft's wording; the claim should be verified against the full article.
-  fact-check: reel_script says 'மணிகண்டன் உட்பட பலரும் காயமடைந்தனர்' and caption says 'மணிகண்டன் உட்பட பலரும் காயம்' — the article's cut-off text only states Manikandan was injured without a clear confirmation of 'பலரும்' beyond the article's wording; the phrase 'பலரும்' is not clearly supported.
-  fact-check: slides_spec 'யார் காயம்?' slide has '<b>4 வயது</b>' inserted as an HTML tag inside the lines, which is markup not Tamil text and is inconsistent with the rest of the spec.
-  fact-check: slides_spec 'என்ன நடந்தது?' line 'சாலையில் நடந்தவர்கள், வீட்டு முன் விளையாடிய குழந்தைகளை' is an incomplete sentence with no verb, so it has no clear meaning on its own.
-  fact-check: Caption and reel_script say the dog was 'துரத்தித் துரத்திக் கடித்தது' of 'சாலையில் நடந்து சென்றவர்களையும்' — accurate, but the reel_script's 'வீட்டு முன் விளையாடிக்கொண்டிருந்த குழந்தைகளையும்' merges the two groups correctly; no issue here, so this is not a problem.
-  fact-check: The article states the dog was 'வெறிநாய்' and the draft's headline 'வெறிநாய் கடித்து' is consistent; however the article's mention that the dog must be captured was requested repeatedly from the Town Panchayat administration — the draft's claim that the administration 'இதுவரை நடவடிக்கை எடுக்கவில்லை' is supported, so no problem there.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (8 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The article's text is cut off before the full account: the draft states that those injured are receiving treatment (slide 2 'சிகிச்சை நடைபெறுகிறது'), which is not stated in the visible article.
-  The draft says Manikandan was injured, but the article text is truncated and the extent of his injury and his relation to the attack cannot be verified.
-  Slide 3 claims 'வெறிநாய்களைப் பிடிக்க நடவடிக்கை எடுக்க வேண்டும்' (action must be taken to catch rabid dogs), which is a call to action not clearly supported by the visible article; the article mentions catching stray dogs.
-  Caption line 4 gives a safety advisory about keeping children careful, which is an added recommendation not in the article.
-  Slide 2 wording 'யார் காயம்?' with 'உள்ளிட்டோரும்' implies more injured people than the article's visible names, which cannot be confirmed from the truncated text.
-claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The article's text is cut off before the full account: the draft states that those injured are receiving treatment (slide 2 'சிகிச்சை நடைபெறுகிறது'), which is not stated in the visible article.
-  fact-check: The draft says Manikandan was injured, but the article text is truncated and the extent of his injury and his relation to the attack cannot be verified.
-  fact-check: Slide 3 claims 'வெறிநாய்களைப் பிடிக்க நடவடிக்கை எடுக்க வேண்டும்' (action must be taken to catch rabid dogs), which is a call to action not clearly supported by the visible article; the article mentions catching stray dogs.
-  fact-check: Caption line 4 gives a safety advisory about keeping children careful, which is an added recommendation not in the article.
-  fact-check: Slide 2 wording 'யார் காயம்?' with 'உள்ளிட்டோரும்' implies more injured people than the article's visible names, which cannot be confirmed from the truncated text.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  reel_script says 'நான்கு பலத்த காயமடைந்தார்' (four was seriously injured) which garbles the article's '4' age of Kavisri into a nonsensical count, mixing up the age with a number of injured people
-  reel_script states Jayakumar's daughter Kavisri as the injured person but omits the article's other injured person Manikandan; it says 'பலர் காயமடைந்தனர்' but the script never names the other victims, while the slides mention Manikandan as bitten
-  slides_spec 'யார் காயம்?' slide says 'ராசிபுரம் அரசு மருத்துவமனையில் சேர்க்கப்பட்டவர்கள் விவரம்' (details of those admitted to Rasipuram government hospital), which is not clearly supported and reads as a claim about hospital admission not stated in the article as shown
-  slides_spec 'பொதுமக்கள்' line 'முழு விவரம் இன்னும் தெரியவரவில்லை' (full details not yet known) is an added claim not present in the visible article text
-  slides_spec lines are fragmentary and ungrammatical (e.g. 'சாலையில் நடந்தவர்களையும் வீட்டு முன் விளையாடிய' is cut off mid-sentence with no clear meaning)
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: reel_script says 'நான்கு பலத்த காயமடைந்தார்' (four was seriously injured) which garbles the article's '4' age of Kavisri into a nonsensical count, mixing up the age with a number of injured people
-  fact-check: reel_script states Jayakumar's daughter Kavisri as the injured person but omits the article's other injured person Manikandan; it says 'பலர் காயமடைந்தனர்' but the script never names the other victims, while the slides mention Manikandan as bitten
-  fact-check: slides_spec 'யார் காயம்?' slide says 'ராசிபுரம் அரசு மருத்துவமனையில் சேர்க்கப்பட்டவர்கள் விவரம்' (details of those admitted to Rasipuram government hospital), which is not clearly supported and reads as a claim about hospital admission not stated in the article as shown
-  fact-check: slides_spec 'பொதுமக்கள்' line 'முழு விவரம் இன்னும் தெரியவரவில்லை' (full details not yet known) is an added claim not present in the visible article text
-  fact-check: slides_spec lines are fragmentary and ungrammatical (e.g. 'சாலையில் நடந்தவர்களையும் வீட்டு முன் விளையாடிய' is cut off mid-sentence with no clear meaning)
-proofread skipped: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: நீச்சல் குளத்துடன் விளையாட்டு மைதானம் திருச்செங்கோட்டில் அமை
-free models unavailable: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 6, 9
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The article says the project will be completed within 6 to 9 months, but the draft's slides say the completion timeline is not known ("பணி நிறைவடைய விவரம் இன்னும் தெரியவரவில்லை"), which contradicts the article.
-  The reel_script omits the completion timeline (6 to 9 months) from the article.
-  Slide 2 says the project 'was started with funds' (நிதியுடன் தொடங்கப்பட்டுள்ளது), which mixes in the funding source without it being clearly connected in the article's text; the article mentions a fund (நிதியிலிருந்து) but the sentence structure is unclear about what the funds are for.
-  The reel_script states the aim is to produce Tamil Nadu athletes who can win Olympic medals, which is only loosely supported by the article's statement that such players should come out of Tamil Nadu.
-  The caption says the swimming pool and stadium 'are to be built' and mentions the Minister performed bhoomi pooja, which is supported, but the caption's '🏅' line states the aim as producing Olympic medal winners, a claim stated as a goal not clearly in the article's text.
-claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The article says the project will be completed within 6 to 9 months, but the draft's slides say the completion timeline is not known ("பணி நிறைவடைய விவரம் இன்னும் தெரியவரவில்லை"), which contradicts the article.
-  fact-check: The reel_script omits the completion timeline (6 to 9 months) from the article.
-  fact-check: Slide 2 says the project 'was started with funds' (நிதியுடன் தொடங்கப்பட்டுள்ளது), which mixes in the funding source without it being clearly connected in the article's text; the article mentions a fund (நிதியிலிருந்து) but the sentence structure is unclear about what the funds are for.
-  fact-check: The reel_script states the aim is to produce Tamil Nadu athletes who can win Olympic medals, which is only loosely supported by the article's statement that such players should come out of Tamil Nadu.
-  fact-check: The caption says the swimming pool and stadium 'are to be built' and mentions the Minister performed bhoomi pooja, which is supported, but the caption's '🏅' line states the aim as producing Olympic medal winners, a claim stated as a goal not clearly in the article's text.
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 6, 9
-proofread skipped: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: அய்யனாரப்பன் கோவில் கும்பாபிஷேகம் கோலாகலம்
-free models unavailable: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The reel_script and slides_spec say the kumbabishekam (consecration) was performed for the parivara deities, but the article only shows a 'kumbabishekam' headline and describes parivara deity events; the main-deity claim is not clearly supported.
-  The article's sentence on 'நேற்று' (yesterday) for the 4th kala yaga puja, kadam purappadu, and the 'nerru' reference in the reel and caption are described as 'yesterday at 6 am', but slides_spec states '25ஆம் தேதி' for that event, which is an invented date not stated in the article.
-  The slides_spec dates the 4th kala yaga puja to the 25th, which is not in the article; the article only gives 23 and 24 as explicit dates.
-  The article's 'முளைப்பாரி போடப்பட்டது' and 'காப்பு கட்டி' events are described as happening 'நேற்று' (yesterday), but the slides and reel place them without date context, which blurs which day each event belongs to.
-  The 'இரண்டாம் கால யாக பூஜை' on the 24th is in the article, but the article text is truncated in the middle of the sentence, so the reel's 'இருபத்து நான்காம் தேதி' attribution and the 25th date assignment cannot be verified against the full article.
+  Headline and reel_script claim the rally was held in Namakkal (நாமக்கல்), but the article's list of districts where rallies took place (சென்னை, புதுச்சேரி, தஞ்சாவூர், நீலகிரி, சேலம், திருப்பூர், நாமக்கல், விழுப்புரம், கோவை, திருச்சி, தருமபுரி, கன்னியாகுமரி) does include நாமக்கல், so this is supported; however the slides_spec 'hl2' and headline emphasize Namakkal as a specific highlight, which is acceptable.
+  reel_script says 'நேற்று, இருபத்து ஐந்து அக்டோபர் அன்று' — the article gives the date as 25-10-26 and 'நேற்று'; the draft's year-specific wording is consistent, but the caption adds '2026' which is an inferred year not stated in the article text itself (only in the date code 25-10-26).
+  reel_script omits the detail that the rally was held under a Madras High Court order and that the court (judge லட்சுமி நாராயணன்) granted permission after the police explanation; it only says the court 'அனுமதி அளித்தது', which is an incomplete but not false summary.
+  Slide 2 lists 'விழுப்புரம்' and other districts not mentioned, and omits விழுப்புரம் and நீலகிரி from the caption list while slide lists நீலகிரி and தஞ்சாவூர் — inconsistency in location listings across slides and caption (caption omits புதுச்சேரி, தஞ்சாவூர், நீலகிரி, விழுப்புரம் but says 'உள்ளிட்ட'), which is acceptable but the slide claims 'சென்னை, சேலம், திருப்பூர், நாமக்கல் உள்ளிட்ட மாவட்டங்களில்' correctly.
+  reel_script's first sentence merges the 45-location count and Namakkal inclusion with the date/attendance sentence in a way that mixes facts; the statement that the rally was held 'in Namakkal' is verified, but the reel does not name the specific Namakkal location, which the article does not provide either.
 claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The reel_script and slides_spec say the kumbabishekam (consecration) was performed for the parivara deities, but the article only shows a 'kumbabishekam' headline and describes parivara deity events; the main-deity claim is not clearly supported.
-  fact-check: The article's sentence on 'நேற்று' (yesterday) for the 4th kala yaga puja, kadam purappadu, and the 'nerru' reference in the reel and caption are described as 'yesterday at 6 am', but slides_spec states '25ஆம் தேதி' for that event, which is an invented date not stated in the article.
-  fact-check: The slides_spec dates the 4th kala yaga puja to the 25th, which is not in the article; the article only gives 23 and 24 as explicit dates.
-  fact-check: The article's 'முளைப்பாரி போடப்பட்டது' and 'காப்பு கட்டி' events are described as happening 'நேற்று' (yesterday), but the slides and reel place them without date context, which blurs which day each event belongs to.
-  fact-check: The 'இரண்டாம் கால யாக பூஜை' on the 24th is in the article, but the article text is truncated in the middle of the sentence, so the reel's 'இருபத்து நான்காம் தேதி' attribution and the 25th date assignment cannot be verified against the full article.
+  fact-check: Headline and reel_script claim the rally was held in Namakkal (நாமக்கல்), but the article's list of districts where rallies took place (சென்னை, புதுச்சேரி, தஞ்சாவூர், நீலகிரி, சேலம், திருப்பூர், நாமக்கல், விழுப்புரம், கோவை, திருச்சி, தருமபுரி, கன்னியாகுமரி) does include நாமக்கல், so this is supported; however the slides_spec 'hl2' and headline emphasize Namakkal as a specific highlight, which is acceptable.
+  fact-check: reel_script says 'நேற்று, இருபத்து ஐந்து அக்டோபர் அன்று' — the article gives the date as 25-10-26 and 'நேற்று'; the draft's year-specific wording is consistent, but the caption adds '2026' which is an inferred year not stated in the article text itself (only in the date code 25-10-26).
+  fact-check: reel_script omits the detail that the rally was held under a Madras High Court order and that the court (judge லட்சுமி நாராயணன்) granted permission after the police explanation; it only says the court 'அனுமதி அளித்தது', which is an incomplete but not false summary.
+  fact-check: Slide 2 lists 'விழுப்புரம்' and other districts not mentioned, and omits விழுப்புரம் and நீலகிரி from the caption list while slide lists நீலகிரி and தஞ்சாவூர் — inconsistency in location listings across slides and caption (caption omits புதுச்சேரி, தஞ்சாவூர், நீலகிரி, விழுப்புரம் but says 'உள்ளிட்ட'), which is acceptable but the slide claims 'சென்னை, சேலம், திருப்பூர், நாமக்கல் உள்ளிட்ட மாவட்டங்களில்' correctly.
+  fact-check: reel_script's first sentence merges the 45-location count and Namakkal inclusion with the date/attendance sentence in a way that mixes facts; the statement that the rally was held 'in Namakkal' is verified, but the reel does not name the specific Namakkal location, which the article does not provide either.
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (8 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The article says the Mahakumbabhishekam (kumbabishekam) ceremony was celebrated, but the reel script and slides present it generically; the article's headline and body do support it, so this is not a problem.
-  Reel script says 'பரிவார தெய்வங்களுக்கான மகா கும்பாபிஷேக நிகழ்ச்சிகள்' and slides say 'விவரம் இன்னும் முழுமையாகத் தெரியவரவில்லை' (details not yet fully known) — this claim is not supported by the article, which gives a detailed schedule.
-  Slide 'பூஜை விவரம்' states 'முளைப்பாரி போடப்பட்டது' under the 'நேற்று' pooja details, but the article places முளைப்பாரி போடப்பட்டது in the earlier sequence (பந்தல் நடப்பட்டு, காப்பு கட்டி, முளைப்பாரி போடப்பட்டது on 'நேற்று'), so the attribution to the morning pooja is a mixing of two separate events.
-  Reel script states the 24th-day second kaala yaga pooja was held, but the article's text for the 24th is truncated and the caption/slides present it as a completed event without the article supporting the completion, and the slide 'முக்கிய' wrongly groups the 24th pooja with completed events.
-  Slide 'என்ன விழா?' and caption describe the event with 'பரிவார தெய்வங்களுக்கு விழா நடைபெற்றது' and omit the explicit mention that the event was on 'நேற்று' for the Kollampattarai festival, so the scheduling of the event in the reel script is inconsistent with the article's 'நேற்று' timing for the main kumbabishekam.
+  The reel_script says the rallies took place on 'இருபத்து ஐந்து -பத்து -இருபத்து ஆறு அன்று' (25-10-26), which is a garbled date rendering; the article gives the date as 25-10-26 but the reel_script's wording is confusing and not clearly meaningful Tamil.
+  The reel_script and slides_spec state that Namakkal is one of the 45 places where rallies were held, but the article's list of districts for the 45 locations includes Namakkal, so this is supported; however the headline's claim that Namakkal is among the places is fine. No issue there.
+  The reel_script omits the article's key fact that the rallies were held after the High Court (Judge Lakshmi Narayanan) granted permission for 128 places in Tamil Nadu and that 58 locations were refused for law and order reasons, which is an important part of the court outcome.
+  The slides_spec 'எந்தெந்த' slide title is an incomplete, ungrammatical heading that does not have a clear meaning in Tamil.
+  The slides_spec and caption say the district list includes 'தருமபுரி, கன்னியாகுமரி' and 'தஞ்சாவூர், நீலகிரி, விழுப்புரம், புதுச்சேரி', but the caption lists only some districts while the slide mixes lists; the caption also says permission was given 'in the court order' while the article says the court accepted police's decision, which is a partial mix of two facts into one sentence.
 claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The article says the Mahakumbabhishekam (kumbabishekam) ceremony was celebrated, but the reel script and slides present it generically; the article's headline and body do support it, so this is not a problem.
-  fact-check: Reel script says 'பரிவார தெய்வங்களுக்கான மகா கும்பாபிஷேக நிகழ்ச்சிகள்' and slides say 'விவரம் இன்னும் முழுமையாகத் தெரியவரவில்லை' (details not yet fully known) — this claim is not supported by the article, which gives a detailed schedule.
-  fact-check: Slide 'பூஜை விவரம்' states 'முளைப்பாரி போடப்பட்டது' under the 'நேற்று' pooja details, but the article places முளைப்பாரி போடப்பட்டது in the earlier sequence (பந்தல் நடப்பட்டு, காப்பு கட்டி, முளைப்பாரி போடப்பட்டது on 'நேற்று'), so the attribution to the morning pooja is a mixing of two separate events.
-  fact-check: Reel script states the 24th-day second kaala yaga pooja was held, but the article's text for the 24th is truncated and the caption/slides present it as a completed event without the article supporting the completion, and the slide 'முக்கிய' wrongly groups the 24th pooja with completed events.
-  fact-check: Slide 'என்ன விழா?' and caption describe the event with 'பரிவார தெய்வங்களுக்கு விழா நடைபெற்றது' and omit the explicit mention that the event was on 'நேற்று' for the Kollampattarai festival, so the scheduling of the event in the reel script is inconsistent with the article's 'நேற்று' timing for the main kumbabishekam.
+  fact-check: The reel_script says the rallies took place on 'இருபத்து ஐந்து -பத்து -இருபத்து ஆறு அன்று' (25-10-26), which is a garbled date rendering; the article gives the date as 25-10-26 but the reel_script's wording is confusing and not clearly meaningful Tamil.
+  fact-check: The reel_script and slides_spec state that Namakkal is one of the 45 places where rallies were held, but the article's list of districts for the 45 locations includes Namakkal, so this is supported; however the headline's claim that Namakkal is among the places is fine. No issue there.
+  fact-check: The reel_script omits the article's key fact that the rallies were held after the High Court (Judge Lakshmi Narayanan) granted permission for 128 places in Tamil Nadu and that 58 locations were refused for law and order reasons, which is an important part of the court outcome.
+  fact-check: The slides_spec 'எந்தெந்த' slide title is an incomplete, ungrammatical heading that does not have a clear meaning in Tamil.
+  fact-check: The slides_spec and caption say the district list includes 'தருமபுரி, கன்னியாகுமரி' and 'தஞ்சாவூர், நீலகிரி, விழுப்புரம், புதுச்சேரி', but the caption lists only some districts while the slide mixes lists; the caption also says permission was given 'in the court order' while the article says the court accepted police's decision, which is a partial mix of two facts into one sentence.
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The reel_script says 'the 23rd' and the slides say '24ல் இரண்டாம் கால யாக பூஜை' (second yaga pooja on the 24th), but the article's visible text does not clearly confirm these dates; the article is cut off and the 23rd/24th assignments cannot be verified against it.
-  The reel_script states the 'நேற்று காலை ஆறு மணிக்கு நான்காம் கால யாக பூஜை' and that Kadam departure followed, which is consistent with the article, but the reel_script omits the article's first yaga pooja (முதல் கால யாக பூஜை) on the evening of the 23rd, a key event of the schedule.
-  The article says the Mahaganapathi homam and Thirumanjanam were on the 23rd, but the slides and caption attribute 'திருமஞ்சனம்' only loosely and merge the 23rd homam with the Thirumanjanam from Mohanur Kaveri without a clear statement of which date the Thirumanjanam occurred, mixing two facts in one line.
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The reel_script says 'the 23rd' and the slides say '24ல் இரண்டாம் கால யாக பூஜை' (second yaga pooja on the 24th), but the article's visible text does not clearly confirm these dates; the article is cut off and the 23rd/24th assignments cannot be verified against it.
-  fact-check: The reel_script states the 'நேற்று காலை ஆறு மணிக்கு நான்காம் கால யாக பூஜை' and that Kadam departure followed, which is consistent with the article, but the reel_script omits the article's first yaga pooja (முதல் கால யாக பூஜை) on the evening of the 23rd, a key event of the schedule.
-  fact-check: The article says the Mahaganapathi homam and Thirumanjanam were on the 23rd, but the slides and caption attribute 'திருமஞ்சனம்' only loosely and merge the 23rd homam with the Thirumanjanam from Mohanur Kaveri without a clear statement of which date the Thirumanjanam occurred, mixing two facts in one line.
-proofread skipped: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: சூதாடிய 8 பேர் கைது
-free models unavailable: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  reel_script has 42 words; need 50-130 (detailed reel, about 30-50 seconds)
-  numbers not found in the article: 147000
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 147000
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  reel_script has 45 words; need 50-130 (detailed reel, about 30-50 seconds)
-  numbers not found in the article: 147000
-proofread skipped: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: ஓய்வு பெற்றோர் நலச்சங்க கூட்டம்
-free models unavailable: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  not grounded: only 48% of the words come from the article (e.g. கோரி, நடைபெற்றது, இரண்டாயிரத்து, மூன்று, ஒன்று); use the article's own words and facts
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  reel_script must have no digits or English letters (write numbers as Tamil words)
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The reel_script says the meeting 'took place' (நடைபெற்றது) in Namakkal, but the article only shows a district consultation meeting for CPS pensioners at Namakkal; the article does not state the meeting was held there in a verifiable way beyond the heading, so the location claim is only loosely supported.
-  The reel_script states the demand applies to those who served from 2003 to 2025, but the article text is truncated and the demand is not fully confirmed beyond the 2003 Feb 1 to 2025 Dec 31 period.
-  The reel_script claims the meeting discussed total monetary benefits of retirees, but the article is cut off before any such discussion is described, so this claim is not verifiable from the article.
-  The caption and reel_script say the monetary benefits were 'discussed/debated' (பேசப்பட்டது / விவாதிக்கப்பட்டது), which is not supported by the truncated article text.
-  The reel_script's slide 3 and the caption both say 'details are not fully known' while the caption presents total benefits as a discussed point; this is internally inconsistent with the unsupported discussion claim.
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The reel_script says the meeting 'took place' (நடைபெற்றது) in Namakkal, but the article only shows a district consultation meeting for CPS pensioners at Namakkal; the article does not state the meeting was held there in a verifiable way beyond the heading, so the location claim is only loosely supported.
-  fact-check: The reel_script states the demand applies to those who served from 2003 to 2025, but the article text is truncated and the demand is not fully confirmed beyond the 2003 Feb 1 to 2025 Dec 31 period.
-  fact-check: The reel_script claims the meeting discussed total monetary benefits of retirees, but the article is cut off before any such discussion is described, so this claim is not verifiable from the article.
-  fact-check: The caption and reel_script say the monetary benefits were 'discussed/debated' (பேசப்பட்டது / விவாதிக்கப்பட்டது), which is not supported by the truncated article text.
-  fact-check: The reel_script's slide 3 and the caption both say 'details are not fully known' while the caption presents total benefits as a discussed point; this is internally inconsistent with the unsupported discussion claim.
-proofread skipped: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-writing [N]: கரும்புக்கான நிலுவை தொகை வழங்க விவசாயிகள் கோரிக்கை
-free models unavailable: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (8 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 6 problems
-  The article says the Rs 4,000 per tonne was announced in the 2024-25 budget (the 'pending' announcement) and that the new government issued a G.O. for 2025-26 season; the draft says the announcement was for the 2025-26 crushing season, which conflicts with the article's account of the 2024-25 budget announcement.
-  The article says the previous DMK government announced the scheme and the TVK government then issued the G.O. for the 2025-26 season; the draft merges these into a single unclear claim that the pending amount is for the 2025-26 season, mixing two different facts.
-  The reel_script says the announcement was made 'when the financial statement was released' and then cites the 2025-26 season as the season it applies to, mixing the budget year (2024-25) with the crushing season (2025-26).
-  The article states the G.O. has been issued for Rs 4,000 per tonne, but the draft says the G.O. has not been issued ('அரசாணை வெளியிடப்படவில்லை'), contradicting the article.
-  The article states the farmers' demand is for the pending amount to be released immediately by the TVK government; the draft's slides_spec line 'மேலும் விவரம் இன்னும் தெரியவரவில்லை' (more details not yet known) is an invented statement not found in the article.
-  The article does not specify the 'Namakkal' district location; the draft's loc 'நாமக்கல் மாவட்டம்' and the caption's English tag 'Namakkal farmers news' are not supported by the article text.
-claude rewrite 1 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: The article says the Rs 4,000 per tonne was announced in the 2024-25 budget (the 'pending' announcement) and that the new government issued a G.O. for 2025-26 season; the draft says the announcement was for the 2025-26 crushing season, which conflicts with the article's account of the 2024-25 budget announcement.
-  fact-check: The article says the previous DMK government announced the scheme and the TVK government then issued the G.O. for the 2025-26 season; the draft merges these into a single unclear claim that the pending amount is for the 2025-26 season, mixing two different facts.
-  fact-check: The reel_script says the announcement was made 'when the financial statement was released' and then cites the 2025-26 season as the season it applies to, mixing the budget year (2024-25) with the crushing season (2025-26).
-  fact-check: The article states the G.O. has been issued for Rs 4,000 per tonne, but the draft says the G.O. has not been issued ('அரசாணை வெளியிடப்படவில்லை'), contradicting the article.
-  fact-check: The article states the farmers' demand is for the pending amount to be released immediately by the TVK government; the draft's slides_spec line 'மேலும் விவரம் இன்னும் தெரியவரவில்லை' (more details not yet known) is an invented statement not found in the article.
-  fact-check: The article does not specify the 'Namakkal' district location; the draft's loc 'நாமக்கல் மாவட்டம்' and the caption's English tag 'Namakkal farmers news' are not supported by the article text.
+  The draft says the petition was filed by the RSS state secretary Jegatheesan, but the article says he filed it in the Madras High Court seeking an order to the police; the draft's 'தாக்கல் செய்த மனு' is consistent with this, so no issue there.
+  The slides_spec and caption say the 45 rallies were held 'நேற்று (25-10-26)' with 'அக். 25' in the caption, but the article only gives the date 25-10-26 as 'நேற்று'; the caption's 'அக். 25' is consistent with the article's date format, so this is not a discrepancy.
+  reel_script states the court allowed rallies at 128 places, but the article says the judge allowed the police's decision, which included 128 places in Tamil Nadu; this matches.
+  The reel_script says the rallies scheduled for 'அக்டோபர் 25 மற்றும் நவம்பர் 1' were allowed, which matches the article.
+  The slides_spec 'அடுத்த பேரணி' slide says the remaining rallies are on November 1 and says 'தென் மாவட்டங்களில் நவம்பர் 1 அணிவகுப்பு', but the article says November 1 is for southern districts while the north was October 25; the slide omits that the rest were on Oct 25 for north districts, which is a missing fact rather than an error.
+  The caption says 'நவம்பர் 1 அன்று நடைபெறும்' (will be held on November 1), which is a tense/fact claim the article does not clearly support because the article only says permission was given for those dates, not that the rallies are scheduled to take place.
+claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: The draft says the petition was filed by the RSS state secretary Jegatheesan, but the article says he filed it in the Madras High Court seeking an order to the police; the draft's 'தாக்கல் செய்த மனு' is consistent with this, so no issue there.
+  fact-check: The slides_spec and caption say the 45 rallies were held 'நேற்று (25-10-26)' with 'அக். 25' in the caption, but the article only gives the date 25-10-26 as 'நேற்று'; the caption's 'அக். 25' is consistent with the article's date format, so this is not a discrepancy.
+  fact-check: reel_script states the court allowed rallies at 128 places, but the article says the judge allowed the police's decision, which included 128 places in Tamil Nadu; this matches.
+  fact-check: The reel_script says the rallies scheduled for 'அக்டோபர் 25 மற்றும் நவம்பர் 1' were allowed, which matches the article.
+  fact-check: The slides_spec 'அடுத்த பேரணி' slide says the remaining rallies are on November 1 and says 'தென் மாவட்டங்களில் நவம்பர் 1 அணிவகுப்பு', but the article says November 1 is for southern districts while the north was October 25; the slide omits that the rest were on Oct 25 for north districts, which is a missing fact rather than an error.
+  fact-check: The caption says 'நவம்பர் 1 அன்று நடைபெறும்' (will be held on November 1), which is a tense/fact claim the article does not clearly support because the article only says permission was given for those dates, not that the rallies are scheduled to take place.
+proofread skipped: free models not efficient (8 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+writing [N]: மழையால் இடிந்து விழுந்தது கலெக்டர் பங்களா சுற்றுச்சுவர்
+free models unavailable: free models not efficient (8 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (8 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The reel_script says the collapse happened 'in the residential area behind the playground' — the article says the playground is behind the residential complexes, so this places the wall incorrectly.
+  The reel_script states 'no loss of life or major accident occurred' — the article only says an accident was avoided because it fell at midnight; the 'no casualties' claim is an embellishment not explicitly stated.
+  The caption says the wall was 'on the left side of the collector's residence' and the article's left side is correct, but the caption's 'இடதுபுறம் இருந்த' is accurate; however the slides_spec 'hl1' and reel_script together describe the collapse as happening in the 'residential area' — the article places the collapse at the collector's residence, not a general residential area.
+  The reel_script 'ஐம்பது அடி' and '6 அடி' figures match, but the slides_spec 'லைன்' describes the 'residence'/'playground behind' location inconsistently with the article, which says the collector's residence is behind the playground area.
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The reel_script says the collapse happened 'in the residential area behind the playground' — the article says the playground is behind the residential complexes, so this places the wall incorrectly.
+  fact-check: The reel_script states 'no loss of life or major accident occurred' — the article only says an accident was avoided because it fell at midnight; the 'no casualties' claim is an embellishment not explicitly stated.
+  fact-check: The caption says the wall was 'on the left side of the collector's residence' and the article's left side is correct, but the caption's 'இடதுபுறம் இருந்த' is accurate; however the slides_spec 'hl1' and reel_script together describe the collapse as happening in the 'residential area' — the article places the collapse at the collector's residence, not a general residential area.
+  fact-check: The reel_script 'ஐம்பது அடி' and '6 அடி' figures match, but the slides_spec 'லைன்' describes the 'residence'/'playground behind' location inconsistently with the article, which says the collector's residence is behind the playground area.
 ok anthropic/claude-haiku-5-5
 claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  not grounded: location 'தமிழ்நாடு' is not in the article
+  reel_script has 48 words; need 50-130 (detailed reel, about 30-50 seconds)
 ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  not grounded: location 'தமிழ்நாடு' is not in the article
-proofread skipped: free models not efficient (7 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (8 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  slides_spec hl2 states 'நள்ளிரவில் உயிர்ச்சேதம்' (loss of life at midnight), which is not in the article; the article says the collapse caused no casualties and an accident was avoided
+  reel_script says the wall was 'இடதுபுறம் இருந்த ஆறு அடி உயரச் சுவர்' and the first sentence calls it the 'ஐம்பது அடி நீளச் சுற்றுச்சுவர்' of the collector's residence, which conflates the collapsed section with the whole compound wall; the article says a 50 ft section of the 6 ft wall collapsed
+  slides_spec hl1 'கலெக்டர் பங்களா சுற்றுச்சுவர் இடிந்தது' is acceptable, but slide 2 'எங்கே, எப்போது?' lists the location without the collector residence context clearly, and the 'நள்ளிரவில் சுவர் விழுந்ததால் அசம்பாவிதம் தவிர்க்கப்பட்டது' line is fine
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: slides_spec hl2 states 'நள்ளிரவில் உயிர்ச்சேதம்' (loss of life at midnight), which is not in the article; the article says the collapse caused no casualties and an accident was avoided
+  fact-check: reel_script says the wall was 'இடதுபுறம் இருந்த ஆறு அடி உயரச் சுவர்' and the first sentence calls it the 'ஐம்பது அடி நீளச் சுற்றுச்சுவர்' of the collector's residence, which conflates the collapsed section with the whole compound wall; the article says a 50 ft section of the 6 ft wall collapsed
+  fact-check: slides_spec hl1 'கலெக்டர் பங்களா சுற்றுச்சுவர் இடிந்தது' is acceptable, but slide 2 'எங்கே, எப்போது?' lists the location without the collector residence context clearly, and the 'நள்ளிரவில் சுவர் விழுந்ததால் அசம்பாவிதம் தவிர்க்கப்பட்டது' line is fine
+proofread skipped: free models not efficient (8 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+writing [N]: வீடுகளுக்குள் புகுந்த மழைநீர் விடிய விடிய மக்கள் தவிப்பு
+free models unavailable: free models not efficient (8 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (8 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The headline and reel_script place the event in 'பரமத்தி வேலூர் அருகே' / 'மோகனூர் பகுதியில', but the article only gives 'ப.வேலூர் - மோகனூர்' as the road; the draft's location framing (Mohanur area) is not directly stated as the incident location.
+  The article says the protest was at 3:00 (மணிக்கு) on the main road, but the draft never mentions the time; this is a minor omission rather than an error.
+  The article says the officials 'உடனடியாக' took action after inspection, which is cut off; the draft omits the outcome of the officials' action, so the reel_script is missing the result of the officials' response.
+  The reel_script says the people 'மறியலில் ஈடுபட்டனர்' (blocked the road), while the article describes it as 'ஆர்ப்பாட்டம்' (demonstration); the draft's characterization is a stronger claim than the source supports.
+  The reel_script says the officials inspected 'சம்பவ இடத்தில்' and lists the Highways RI as 'நெடுஞ்சாலைத்துறை ஆர்.ஐ. சிவகாமி' as having inspected, which matches the article, but the reel_script says 'வருவாய்த்துறை ஊழியர்கள்' are inspecting while the article names them as Revenue Department staff; this is consistent.
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The headline and reel_script place the event in 'பரமத்தி வேலூர் அருகே' / 'மோகனூர் பகுதியில', but the article only gives 'ப.வேலூர் - மோகனூர்' as the road; the draft's location framing (Mohanur area) is not directly stated as the incident location.
+  fact-check: The article says the protest was at 3:00 (மணிக்கு) on the main road, but the draft never mentions the time; this is a minor omission rather than an error.
+  fact-check: The article says the officials 'உடனடியாக' took action after inspection, which is cut off; the draft omits the outcome of the officials' action, so the reel_script is missing the result of the officials' response.
+  fact-check: The reel_script says the people 'மறியலில் ஈடுபட்டனர்' (blocked the road), while the article describes it as 'ஆர்ப்பாட்டம்' (demonstration); the draft's characterization is a stronger claim than the source supports.
+  fact-check: The reel_script says the officials inspected 'சம்பவ இடத்தில்' and lists the Highways RI as 'நெடுஞ்சாலைத்துறை ஆர்.ஐ. சிவகாமி' as having inspected, which matches the article, but the reel_script says 'வருவாய்த்துறை ஊழியர்கள்' are inspecting while the article names them as Revenue Department staff; this is consistent.
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (8 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The article says the protest happened at 3:00, but the reel_script says 'மாலை மூன்று மணியளவில' (around 3 PM in the evening); the article gives no 'evening' qualifier, so 'மாலை' is an added detail.
+  The article does not say the sentence 'மக்கள் இரவு முழுவதும் தூங்க வழியின்றி தவித்தனர்' in a way that is fully supported; the article's 'இரவு நேரத்தில் தூங்க வழியின்றி' is partly cut off, so the claim that people stayed awake all night is only loosely supported.
+  The article text is truncated mid-sentence ('பின், உடனடியாக'), yet the draft states 'உடனடி நடவடிக்கை குறித்த விவரம் இன்னும் முழுமையாக தெரியவரவில்லை', an unverifiable claim about the status of follow-up action.
+  The location 'மோகனூர்' is presented as the flood location, but the article only names Mohanur officials and the Paramathi Velur - Mohanur road; the flooded area itself is not identified in the visible article text.
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The article says the protest happened at 3:00, but the reel_script says 'மாலை மூன்று மணியளவில' (around 3 PM in the evening); the article gives no 'evening' qualifier, so 'மாலை' is an added detail.
+  fact-check: The article does not say the sentence 'மக்கள் இரவு முழுவதும் தூங்க வழியின்றி தவித்தனர்' in a way that is fully supported; the article's 'இரவு நேரத்தில் தூங்க வழியின்றி' is partly cut off, so the claim that people stayed awake all night is only loosely supported.
+  fact-check: The article text is truncated mid-sentence ('பின், உடனடியாக'), yet the draft states 'உடனடி நடவடிக்கை குறித்த விவரம் இன்னும் முழுமையாக தெரியவரவில்லை', an unverifiable claim about the status of follow-up action.
+  fact-check: The location 'மோகனூர்' is presented as the flood location, but the article only names Mohanur officials and the Paramathi Velur - Mohanur road; the flooded area itself is not identified in the visible article text.
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (8 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The article says the road was ப.வேலூர்-மோகனூர் (Paramathi Velur-Mohanur), and the draft uses 'பரமத்தி வேலூர்' which is a place-name expansion not stated in the article; minor but a deviation from the source wording.
+  The phrase 'தொடர் மழையால்' is an added cause ('continuous rain') not explicitly stated; the article only says rain has been falling heavily for several days (பலத்த மழை காரணமாக).
+  Slide 2 line 'நேரம்: 3:00 மணி' is placed beside claims about the blockade, but the article only says the protest happened at 3:00; acceptable, however the caption and reel do not mention the time, so this is inconsistent across outputs.
+  The reel_script says 'அதிகாரிகள் எடுத்த நடவடிக்கை குறித்த முழு விவரம் இன்னும் தெரியவரவில்லை' (full details of officials' action not yet known), but the article ends with 'பின், உடனடியாக' (then immediately), truncated; the draft asserts information status not supported by the article.
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The article says the road was ப.வேலூர்-மோகனூர் (Paramathi Velur-Mohanur), and the draft uses 'பரமத்தி வேலூர்' which is a place-name expansion not stated in the article; minor but a deviation from the source wording.
+  fact-check: The phrase 'தொடர் மழையால்' is an added cause ('continuous rain') not explicitly stated; the article only says rain has been falling heavily for several days (பலத்த மழை காரணமாக).
+  fact-check: Slide 2 line 'நேரம்: 3:00 மணி' is placed beside claims about the blockade, but the article only says the protest happened at 3:00; acceptable, however the caption and reel do not mention the time, so this is inconsistent across outputs.
+  fact-check: The reel_script says 'அதிகாரிகள் எடுத்த நடவடிக்கை குறித்த முழு விவரம் இன்னும் தெரியவரவில்லை' (full details of officials' action not yet known), but the article ends with 'பின், உடனடியாக' (then immediately), truncated; the draft asserts information status not supported by the article.
+proofread skipped: free models not efficient (8 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 earlier stories still waiting for images: []
-instagram check: 66 recent posts read from both pages
+instagram check: 68 recent posts read from both pages
 source dinamalar list: 8 items
 source google 'நாமக்கல்': 53 items
 source bing 'நாமக்கல்': 12 items
-source google 'ராசிபுரம்': 8 items
+source google 'ராசிபுரம்': 3 items
 source bing 'ராசிபுரம்': 12 items
 source google 'திருச்செங்கோடு': 5 items
 source bing 'திருச்செங்கோடு': 12 items
@@ -338,7 +172,7 @@ source google 'குமாரபாளையம்': 2 items
 source bing 'குமாரபாளையம்': 12 items
 source google 'பள்ளிபாளையம்': 0 items
 source bing 'பள்ளிபாளையம்': 9 items
-source google 'சேந்தமங்கலம்': 4 items
+source google 'சேந்தமங்கலம்': 3 items
 source bing 'சேந்தமங்கலம்': 12 items
 source google 'கொல்லிமலை': 6 items
 source bing 'கொல்லிமலை': 12 items
@@ -350,7 +184,7 @@ source google 'வெண்ணந்தூர்': 0 items
 source bing 'வெண்ணந்தூர்': 0 items
 source google 'எருமப்பட்டி': 1 items
 source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 57 items
+source google 'நாமக்கல் மாவட்டம்': 45 items
 source bing 'நாமக்கல் மாவட்டம்': 12 items
 source google 'நாமக்கல் முட்டை விலை': 2 items
 source bing 'நாமக்கல் முட்டை விலை': 9 items
@@ -366,25 +200,25 @@ source google என்டிடிவி தமிழ் 'ராசிபுர
 source bing என்டிடிவி தமிழ் 'ராசிபுரம்': 0 items
 source google என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
 source bing என்டிடிவி தமிழ் 'திருச்செங்கோடு': 0 items
-source google மாலைமலர் 'நாமக்கல்': 9 items
+source google மாலைமலர் 'நாமக்கல்': 8 items
 source bing மாலைமலர் 'நாமக்கல்': 12 items
 source google மாலைமலர் 'ராசிபுரம்': 2 items
 source bing மாலைமலர் 'ராசிபுரம்': 2 items
 source google மாலைமலர் 'திருச்செங்கோடு': 0 items
 source bing மாலைமலர் 'திருச்செங்கோடு': 1 items
-source google தினத்தந்தி 'நாமக்கல்': 42 items
+source google தினத்தந்தி 'நாமக்கல்': 47 items
 source bing தினத்தந்தி 'நாமக்கல்': 12 items
-source google தினத்தந்தி 'ராசிபுரம்': 2 items
+source google தினத்தந்தி 'ராசிபுரம்': 3 items
 source bing தினத்தந்தி 'ராசிபுரம்': 0 items
-source google தினத்தந்தி 'திருச்செங்கோடு': 1 items
-source bing தினத்தந்தி 'திருச்செங்கோடு': 2 items
-source google தினமணி 'நாமக்கல்': 44 items
+source google தினத்தந்தி 'திருச்செங்கோடு': 2 items
+source bing தினத்தந்தி 'திருச்செங்கோடு': 1 items
+source google தினமணி 'நாமக்கல்': 43 items
 source bing தினமணி 'நாமக்கல்': 12 items
-source google தினமணி 'ராசிபுரம்': 3 items
+source google தினமணி 'ராசிபுரம்': 4 items
 source bing தினமணி 'ராசிபுரம்': 7 items
-source google தினமணி 'திருச்செங்கோடு': 5 items
+source google தினமணி 'திருச்செங்கோடு': 6 items
 source bing தினமணி 'திருச்செங்கோடு': 11 items
-source google இந்து தமிழ் 'நாமக்கல்': 5 items
+source google இந்து தமிழ் 'நாமக்கல்': 3 items
 source bing இந்து தமிழ் 'நாமக்கல்': 12 items
 source google இந்து தமிழ் 'ராசிபுரம்': 0 items
 source bing இந்து தமிழ் 'ராசிபுரம்': 0 items
@@ -392,7 +226,7 @@ source google இந்து தமிழ் 'திருச்செங்க
 source bing இந்து தமிழ் 'திருச்செங்கோடு': 0 items
 source google தினகரன் 'நாமக்கல்': 100 items
 source bing தினகரன் 'நாமக்கல்': 12 items
-source google தினகரன் 'ராசிபுரம்': 3 items
+source google தினகரன் 'ராசிபுரம்': 2 items
 source bing தினகரன் 'ராசிபுரம்': 2 items
 source google தினகரன் 'திருச்செங்கோடு': 0 items
 source bing தினகரன் 'திருச்செங்கோடு': 3 items
@@ -404,13 +238,13 @@ source google புதிய தலைமுறை 'திருச்செங
 source bing புதிய தலைமுறை 'திருச்செங்கோடு': 0 items
 source google நியூஸ்18 தமிழ் 'நாமக்கல்': 100 items
 source bing நியூஸ்18 தமிழ் 'நாமக்கல்': 12 items
-source google நியூஸ்18 தமிழ் 'ராசிபுரம்': 2 items
+source google நியூஸ்18 தமிழ் 'ராசிபுரம்': 1 items
 source bing நியூஸ்18 தமிழ் 'ராசிபுரம்': 4 items
-source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 1 items
+source google நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 2 items
 source bing நியூஸ்18 தமிழ் 'திருச்செங்கோடு': 6 items
-source google விகடன் 'நாமக்கல்': 2 items
-source bing விகடன் 'நாமக்கல்': 11 items
-source google விகடன் 'ராசிபுரம்': 2 items
+source google விகடன் 'நாமக்கல்': 4 items
+source bing விகடன் 'நாமக்கல்': 12 items
+source google விகடன் 'ராசிபுரம்': 0 items
 source bing விகடன் 'ராசிபுரம்': 1 items
 source google விகடன் 'திருச்செங்கோடு': 0 items
 source bing விகடன் 'திருச்செங்கோடு': 0 items
@@ -420,17 +254,17 @@ source google பாலிமர் 'ராசிபுரம்': 0 items
 source bing பாலிமர் 'ராசிபுரம்': 0 items
 source google பாலிமர் 'திருச்செங்கோடு': 0 items
 source bing பாலிமர் 'திருச்செங்கோடு': 0 items
-source google சமயம் தமிழ் 'நாமக்கல்': 1 items
+source google சமயம் தமிழ் 'நாமக்கல்': 2 items
 source bing சமயம் தமிழ் 'நாமக்கல்': 12 items
 source google சமயம் தமிழ் 'ராசிபுரம்': 0 items
-source bing சமயம் தமிழ் 'ராசிபுரம்': 9 items
+source bing சமயம் தமிழ் 'ராசிபுரம்': 10 items
 source google சமயம் தமிழ் 'திருச்செங்கோடு': 0 items
-source bing சமயம் தமிழ் 'திருச்செங்கோடு': 9 items
+source bing சமயம் தமிழ் 'திருச்செங்கோடு': 10 items
 source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
-source google தினமலர் 'ராசிபுரம்': 16 items
+source google தினமலர் 'ராசிபுரம்': 13 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
-source google தினமலர் 'திருச்செங்கோடு': 15 items
+source google தினமலர் 'திருச்செங்கோடு': 12 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
 source google DT Next 'நாமக்கல்': 0 items
 source bing DT Next 'நாமக்கல்': 0 items
@@ -444,20 +278,20 @@ source google ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
-source google ABP நாடு 'நாமக்கல்': 7 items
+source google ABP நாடு 'நாமக்கல்': 6 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
 source bing ABP நாடு 'ராசிபுரம்': 0 items
 source google ABP நாடு 'திருச்செங்கோடு': 0 items
 source bing ABP நாடு 'திருச்செங்கோடு': 0 items
-source google Oneindia தமிழ் 'நாமக்கல்': 12 items
+source google Oneindia தமிழ் 'நாமக்கல்': 9 items
 source bing Oneindia தமிழ் 'நாமக்கல்': 12 items
 source google Oneindia தமிழ் 'ராசிபுரம்': 2 items
 source bing Oneindia தமிழ் 'ராசிபுரம்': 9 items
 source google Oneindia தமிழ் 'திருச்செங்கோடு': 0 items
 source bing Oneindia தமிழ் 'திருச்செங்கோடு': 9 items
 source google நக்கீரன் 'நாமக்கல்': 1 items
-source bing நக்கீரன் 'நாமக்கல்': 0 items
+source bing நக்கீரன் 'நாமக்கல்': 1 items
 source google நக்கீரன் 'ராசிபுரம்': 0 items
 source bing நக்கீரன் 'ராசிபுரம்': 0 items
 source google நக்கீரன் 'திருச்செங்கோடு': 0 items
@@ -474,61 +308,76 @@ source google தமிழ் முரசு 'ராசிபுரம்': 0 i
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-all sources: 1011 items -> 555 different news (19 Rasipuram)
-Rasipuram short of news: 1 items from nearby places added to its list
-candidate filter: old=183, not Namakkal district news (state-wide /=168, checked earlier=82, collected=46, already filed=43, checked earlier=26, checked earlier=5, checked earlier=2
-to write: 6 Rasipuram + 41 other district candidates (max 200 + 200 stories)
-candidates waiting: 6 Rasipuram, 41 Namakkal; time left 53 min
+all sources: 991 items -> 544 different news (19 Rasipuram)
+Rasipuram short of news: 0 items from nearby places added to its list
+candidate filter: old=181, not Namakkal district news (state-wide /=165, checked earlier=68, already filed=50, collected=46, checked earlier=26, checked earlier=4, checked earlier=4
+to write: 2 Rasipuram + 44 other district candidates (max 200 + 200 stories)
+candidates waiting: 2 Rasipuram, 44 Namakkal; time left 53 min
 try (R) manual=False: மல்லசமுத்திரம் அரசு பள்ளியில் பள்ளி மேலாண்மை குழு கூட்டம்
 skip (R) could not open: மல்லசமுத்திரம் அரசு பள்ளியில் பள்ளி மேலாண்மை குழு  [https://news.google.com/rss/articles/CBMi2wFBVV95cUxPaGNiZ24] google news link not decoded (no decoded url; google page, not the article)
-try (N) manual=False: புளியஞ்சோலையில் காட்டாற்று வெள்ளம்
-try (R) manual=False: சிவன் கோவில்களில் அன்னாபிஷேகம்
-try (N) manual=False: மேற்குத்தொடா்ச்சி மலையில் கனமழை! அமணலிங்கேஸ்வரா் கோயிலை சூழ்
-skip (N) no Namakkal place in article: மேற்குத்தொடா்ச்சி மலையில் கனமழை! அமணலிங்கேஸ்வரா் க
-try (R) manual=False: ஓட்டுச்சாவடிகள் மறுசீரமைப்பு அனைத்து கட்சிகள் ஆலோசனை
-skip (R) not today (2026-10-24T05:46:00+05:30): ஓட்டுச்சாவடி பிரித்தல் தொடர்பாக அனைத்து கட்சியினர்
-try (N) manual=False: நாமக்கல் உழவர் சந்தையில் 40 டன் காய்கறி விற்பனை
-skip (N) similar to a filed story: நாமக்கல் உழவர் சந்தையில் 40 டன் காய்கறி விற்பனை
-try (R) manual=False: எஸ்.ஆர்.எம்., ஸ்வீட்ஸ் அண்டு கேக்ஸ் புதிய கிளை திறப்பு விழா
+try (N) manual=False: Udumalai | Panjalinga Falls | பஞ்சலிங்க அருவியில் பயங்கர வெள
+skip (N) could not open: Udumalai | Panjalinga Falls | பஞ்சலிங்க அருவியில்  [https://news.google.com/rss/articles/CBMiiAFBVV95cUxPREpqTlB] google news link not decoded (no decoded url; google page, not the article)
+try (R) manual=False: கம்பம் நடும் விழா கோலாகலம்
+skip (R) not today (2026-10-24T05:49:00+05:30): கம்பம் நடும் விழா கோலாகலம்
+try (N) manual=False: School Holiday Breaking | ராமநாதபுரம் மாவட்டத்தில் பள்ளிகளுக
+skip (N) not today (2026-10-23T07:54:19+05:30): School Holiday Today | விழுப்புரம் மாவட்டத்தில் இன
 try (N) manual=False: மழையால் இடிந்து விழுந்தது கலெக்டர் பங்களா சுற்றுச்சுவர்
 skip (N) could not open: மழையால் இடிந்து விழுந்தது கலெக்டர் பங்களா சுற்றுச் [https://news.google.com/rss/articles/CBMixwFBVV95cUxQNkVCTEt] google news link not decoded (no decoded url; google page, not the article)
-try (R) manual=False: 4 வயது குழந்தை உள்பட பலரை துரத்தி துரத்தி கடித்த வெறிநாய்
-try (N) manual=False: நாமக்கல் மாவட்டத்தில் இரவு முழுவதும் கனமழை: கொல்லிமலையில் ..
-skip (N) similar to a filed story: நாமக்கல் மாவட்டத்தில்  இரவு முழுவதும் கனமழை: கொல்ல
-try (R) manual=False: நாமக்கல் மாவட்டத்தில் இரவு முழுவதும் கனமழை: கொல்லிமலையில் ..
-skip (R) similar to a filed story: நாமக்கல் மாவட்டத்தில்  இரவு முழுவதும் கனமழை: கொல்ல
 try (N) manual=False: தம்மம்பட்டி, கெங்கவல்லி பகுதிகளில் கனமழை: சுவேத நதியில் வெள்
 skip (N) could not open: தம்மம்பட்டி, கெங்கவல்லி பகுதிகளில் கனமழை: சுவேத நத [https://news.google.com/rss/articles/CBMinAZBVV95cUxNRk05a0t] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: தேங்கிய மழைநீரால் நோயாளிகள் அவதி
+skip (N) could not open: தேங்கிய மழைநீரால் நோயாளிகள் அவதி [https://news.google.com/rss/articles/CBMikgFBVV95cUxNWDhhUjV] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: புயல் எச்சரிக்கை அறிவிப்பு; காசிமேடு மீனவர்கள் கரை திரும்ப உ
 skip (N) could not open: புயல் எச்சரிக்கை அறிவிப்பு; காசிமேடு மீனவர்கள் கரை [https://news.google.com/rss/articles/CBMisAFBVV95cUxNUkVEaGI] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: வீடுகளுக்குள் புகுந்த மழைநீர் விடிய விடிய மக்கள் தவிப்பு
 skip (N) could not open: வீடுகளுக்குள் புகுந்த மழைநீர் விடிய விடிய மக்கள் த [https://news.google.com/rss/articles/CBMiswFBVV95cUxPUU16eDJ] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: நாமக்கல் முட்டை விலை நிலவரம்
 skip (N) could not open: நாமக்கல் முட்டை விலை நிலவரம் [https://www.dinamalar.com/news/tamil-nadu-district-news-chen] 404 Client Error: Not Found for url: https://www.dinamalar.com/news/tamil-nadu-d
-try (N) manual=False: நீச்சல் குளத்துடன் விளையாட்டு மைதானம் திருச்செங்கோட்டில் அமை
+try (N) manual=False: நாமக்கல் உழவர் சந்தையில் 40 டன் காய்கறி விற்பனை
+skip (N) similar to a filed story: நாமக்கல் உழவர் சந்தையில் 40 டன் காய்கறி விற்பனை
+try (N) manual=False: ஆண்டுக்கு ரூ.33 லட்சம் வருவாய் அடிப்படை வசதியின்றி கெலமங்கலத
+skip (N) could not open: ஆண்டுக்கு ரூ.33 லட்சம் வருவாய் அடிப்படை வசதியின்றி [https://news.google.com/rss/articles/CBMi3AFBVV95cUxQdzhrcGx] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: நிறுவன அறிவிப்புகள்
 skip (N) could not open: நிறுவன அறிவிப்புகள் [https://news.google.com/rss/articles/CBMijgFBVV95cUxOUS04ZUt] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: பயணிகளுக்காக உயிர் தியாகம்! இறுதி நேரத்தில் அரசு பேருந்து ஓட
+skip (N) could not open: பயணிகளுக்காக உயிர் தியாகம்! இறுதி நேரத்தில் அரசு ப [https://news.google.com/rss/articles/CBMisgFBVV95cUxPLWtic2x] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதுமக்கள் ...
+skip (N) not today (2026-10-24T06:49:00+05:30): அரசு பள்ளிக்கு பொது கிணற்றில் தண்ணீர் எடுக்க பொதும
+try (N) manual=False: தார்சாலை அமைக்கப்படுமா?
+skip (N) could not open: தார்சாலை அமைக்கப்படுமா? [https://news.google.com/rss/articles/CBMihAFBVV95cUxOa3BGYm5] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: சாலை உயரம் அதிகரிக்கப்படுவதை எதிர்த்து அறப்போர் இயக்கத்தினர்
 skip (N) could not open: சாலை உயரம் அதிகரிக்கப்படுவதை எதிர்த்து அறப்போர் இய [https://news.google.com/rss/articles/CBMilAFBVV95cUxNaDJhSWt] google news link not decoded (no decoded url; google page, not the article)
-try (N) manual=False: அய்யனாரப்பன் கோவில் கும்பாபிஷேகம் கோலாகலம்
-try (N) manual=False: பல நாடுகளில் இது தேர்தல் காலம்
-skip (N) could not open: பல நாடுகளில் இது தேர்தல் காலம் [https://news.google.com/rss/articles/CBMimAFBVV95cUxQYldYeFN] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: ஒரு கி.மீ.க்கு ரூ.77 முதல் ரூ.80 வரை நிர்ணயம்; மின்சார பேருந
+skip (N) could not open: ஒரு கி.மீ.க்கு ரூ.77 முதல் ரூ.80 வரை நிர்ணயம்; மின [https://news.google.com/rss/articles/CBMimwFBVV95cUxQdkNsMXF] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: 'வரை தொழில் அலுவலர்' வீட்டுக்குள் வைத்து அடைப்பு
+skip (N) not today (2026-10-24T05:50:00+05:30): வரை தொழில் அலுவலர் வீட்டுக்குள் வைத்து அடைப்பு
 try (N) manual=False: சூதாடிய 8 பேர் கைது
 skip (N) could not open: சூதாடிய 8 பேர் கைது [https://news.google.com/rss/articles/CBMijAFBVV95cUxOUzVNQnB] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: மது விற்ற பெண் கைது
 skip (N) could not open: மது விற்ற பெண் கைது [https://news.google.com/rss/articles/CBMiqwFBVV95cUxOckhFTTR] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: உ.பி.,யில் சோகம்: சிலை ஊர்வலம் மீது அதிவேகமாக மோதிய கார்; 3 
+skip (N) could not open: உ.பி.,யில் சோகம்: சிலை ஊர்வலம் மீது அதிவேகமாக மோதி [https://news.google.com/rss/articles/CBMixgFBVV95cUxOa2NkTHU] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: தமிழ்நாடு முழுவதும் ஆர்.எஸ்.எஸ் பேரணி; ஆயிரக்கணக்கான தொண்டர்
+try (N) manual=False: OTT | ரன்பீர் கபூரின் ‘ராமாயணா’ படத்தை எந்த ஓடிடி நிறுவனம் க
+skip (N) could not open: OTT | ரன்பீர் கபூரின் ‘ராமாயணா’ படத்தை எந்த ஓடிடி  [https://news.google.com/rss/articles/CBMizgFBVV95cUxOM1VkbW9] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: https://www.dinamalar.com/news/tamil-nadu-district-news-nama
+try (N) manual=False: https://www.dinamalar.com/news/tamil-nadu-district-news-nama
 try (N) manual=False: ஓய்வு பெற்றோர் நலச்சங்க கூட்டம்
 skip (N) could not open: ஓய்வு பெற்றோர் நலச்சங்க கூட்டம் [https://news.google.com/rss/articles/CBMiuwFBVV95cUxOSWVXS0t] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: பி.டி.சி., கேர் சென்டர் திறப்பு விழா
 skip (N) could not open: பி.டி.சி., கேர் சென்டர் திறப்பு விழா [https://news.google.com/rss/articles/CBMiqwFBVV95cUxQUU1GUDg] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: வீட்டின் சுவர் இடிந்து சேதம்
 skip (N) could not open: வீட்டின் சுவர் இடிந்து சேதம் [https://news.google.com/rss/articles/CBMipwFBVV95cUxONWxFdS0] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: 4 வயது குழந்தை உள்பட பலரை துரத்தி துரத்தி கடித்த வெறிநாய்
+skip (N) could not open: 4 வயது குழந்தை உள்பட பலரை துரத்தி துரத்தி கடித்த வ [https://news.google.com/rss/articles/CBMi0AFBVV95cUxNSElEeVh] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: ரெயில் நிலையங்களில் அடிப்படை வசதி
 skip (N) could not open: ரெயில் நிலையங்களில் அடிப்படை வசதி [https://news.google.com/rss/articles/CBMiZEFVX3lxTE5kTjE5X1E] google news link not decoded (no decoded url; google page, not the article)
-try (N) manual=False: மின் விளக்குகள் பழுது
-skip (N) could not open: மின் விளக்குகள் பழுது [https://news.google.com/rss/articles/CBMihwFBVV95cUxPeGRRbmR] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: புகாருக்கு உடனடி தீர்வு
+skip (N) could not open: புகாருக்கு உடனடி தீர்வு [https://news.google.com/rss/articles/CBMiY0FVX3lxTFBMcTE5Z1N] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: நாய்களால் பயணிகளுக்கு இடையூறு
 skip (N) could not open: நாய்களால் பயணிகளுக்கு இடையூறு [https://news.google.com/rss/articles/CBMikAFBVV95cUxNU1FDOFV] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: ஏரிக்கரையில் கொட்டப்படும் இறைச்சி கழிவுகள்
+skip (N) could not open: ஏரிக்கரையில் கொட்டப்படும் இறைச்சி கழிவுகள் [https://news.google.com/rss/articles/CBMilgFBVV95cUxORUNwVVV] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: வெளிநாட்டு பல்கலைக்கழகம்: மறுபரிசீலனை அவசியம்
 skip (N) could not open: வெளிநாட்டு பல்கலைக்கழகம்: மறுபரிசீலனை அவசியம் [https://news.google.com/rss/articles/CBMiswJBVV95cUxQaFBldlR] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: தேவை 'மரியாதை'க்கு மரியாதை!
@@ -545,42 +394,29 @@ try (N) manual=False: இந்து சமய அறநிலையத்த�
 skip (N) could not open: இந்து சமய அறநிலையத்துறையில் 18 இணை ஆணையர்கள் பணியி [https://news.google.com/rss/articles/CBMi3wFBVV95cUxPd3QzWEl] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: ஞானேஷ் குமாரை பதவி நீக்கம் செய்யும் வரை எங்கள் போராட்டம் ஓயா
 skip (N) could not open: ஞானேஷ் குமாரை பதவி நீக்கம் செய்யும் வரை எங்கள் போர [https://news.google.com/rss/articles/CBMigwFBVV95cUxQX2g4ZnN] google news link not decoded (no decoded url; google page, not the article)
+try (N) manual=False: பன்னீர், வெண்ணெய் போன்ற 100 பொருட்கள் உற்பத்தி நிறுத்தம்; பு
+skip (N) could not open: பன்னீர், வெண்ணெய் போன்ற 100 பொருட்கள் உற்பத்தி நிற [https://news.google.com/rss/articles/CBMifEFVX3lxTE5DNmJ6c0d] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: மணல் கொள்ளையை தடுக்க வேண்டும்
 skip (N) could not open: மணல் கொள்ளையை தடுக்க வேண்டும் [https://news.google.com/rss/articles/CBMihgFBVV95cUxQdUR6V2d] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: டீக்கடை உரிமையாளர் வீட்டில் 10 பவுன் நகை, பணம் திருட்டு
 skip (N) could not open: டீக்கடை உரிமையாளர் வீட்டில் 10 பவுன் நகை, பணம் திர [https://news.google.com/rss/articles/CBMizwFBVV95cUxOTGpQUlB] google news link not decoded (no decoded url; google page, not the article)
-try (N) manual=False: கரும்புக்கான நிலுவை தொகை வழங்க விவசாயிகள் கோரிக்கை
-skip (N) could not open: கரும்புக்கான நிலுவை தொகை வழங்க விவசாயிகள் கோரிக்கை [https://news.google.com/rss/articles/CBMiqgFBVV95cUxOSlJlSUw] google news link not decoded (no decoded url; google page, not the article)
 try (N) manual=False: அரசு ஊழியர்கள் அரசின் கொள்கைகளை பொது வெளியில் விமர்சித்தால் 
 skip (N) could not open: அரசு ஊழியர்கள் அரசின் கொள்கைகளை பொது வெளியில் விமர [https://news.google.com/rss/articles/CBMiuwFBVV95cUxQTl9Ydmp] google news link not decoded (no decoded url; google page, not the article)
-try (N) manual=False: https://www.dinamalar.com/news/tamil-nadu-district-news-nama
-try (N) manual=False: https://www.dinamalar.com/news/tamil-nadu-district-news-nama
-try (N) manual=False: https://www.dinamalar.com/news/tamil-nadu-district-news-nama
-try (N) manual=False: https://www.dinamalar.com/news/tamil-nadu-district-news-nama
-skip (N) similar to a filed story: ஓட்டுச்சாவடிகள் மறுசீரமைப்பு அனைத்து கட்சிகள் ஆலோச
-try (N) manual=False: https://www.dinamalar.com/news/tamil-nadu-district-news-nama
-skip (N) similar to a filed story: நாமக்கல்லில் ஆர்.எஸ்.எஸ்., பேரணி
-candidate loop ended: left R=0 N=0, tried={'R': 6, 'N': 39}, done={'R': 3, 'N': 6}, time left 24 min
-carousel for 0 of 9 stories, the rest reel only
-filed: 3 Rasipuram + 6 Namakkal (targets 200 + 200)
-All News sheet: {"ok":true,"added":26,"updated":34}
-All News sheet: {"ok":true,"added":3,"updated":57}
-All News sheet: {"ok":true,"added":0,"updated":60}
-All News sheet: {"ok":true,"added":8,"updated":52}
-All News sheet: {"ok":true,"added":4,"updated":56}
-All News sheet: {"ok":true,"added":9,"updated":51}
+candidate loop ended: left R=0 N=0, tried={'R': 2, 'N': 44}, done={'R': 0, 'N': 3}, time left 22 min
+carousel for 0 of 3 stories, the rest reel only
+filed: 0 Rasipuram + 3 Namakkal (targets 200 + 200)
+All News sheet: {"ok":true,"added":5,"updated":55}
 All News sheet: {"ok":true,"added":1,"updated":59}
 All News sheet: {"ok":true,"added":5,"updated":55}
 All News sheet: {"ok":true,"added":5,"updated":55}
-All News sheet: {"ok":true,"added":0,"updated":15} 
-stories: 9
-images made: 3 for 'Continuous heavy rain causes flash flood'
-images made: 3 for 'Annabhishekam held at Shiva temples arou'
-images made: 3 for 'S.R.M. Sweets and Cakes opens a new bran'
-images made: 3 for 'Rabid dog bites several people including'
-images made: 3 for 'Swimming pool and sports stadium to come'
-images made: 3 for 'Ayyanarappan temple kumbabishekam celebr'
-images made: 3 for '8 arrested for gambling in Veppadai; Rs '
-images made: 3 for 'CPS retirees' welfare association holds '
-images made: 3 for 'Sugarcane farmers demand pending dues of'
-bridge: 200 {"ok":true,"added":9,"auto_queued":9,"emailed":0,"reoffered":0,"batch":"B20261026-0622","first":"RN-105"}
+All News sheet: {"ok":true,"added":10,"updated":50}
+All News sheet: {"ok":true,"added":11,"updated":49}
+All News sheet: {"ok":true,"added":3,"updated":57}
+All News sheet: {"ok":true,"added":11,"updated":49}
+All News sheet: {"ok":true,"added":6,"updated":54}
+All News sheet: {"ok":true,"added":0,"updated":4} 
+stories: 3
+images made: 3 for 'RSS rallies held in 45 places across Tam'
+images made: 3 for 'Rain brings down 50-ft stretch of Namakk'
+images made: 3 for 'Rainwater enters homes in Mohanur area; '
+bridge: 200 {"ok":true,"added":3,"auto_queued":3,"emailed":0,"reoffered":0,"batch":"B20261026-1027","first":"RN-114"}
