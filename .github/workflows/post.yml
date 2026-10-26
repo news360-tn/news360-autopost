@@ -141,12 +141,21 @@ jobs:
           unzip -q /tmp/ta.zip -d reel/models && rm /tmp/ta.zip
           ls reel/models/ta
       - name: Install
+        timeout-minutes: 25      # normally 2 min; a stuck download (26 Oct: 20+ min) must not block posting for 90 min
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          pip install torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu
-          pip install -r reel/requirements.txt
-          python -m playwright install --with-deps chromium
-          cd kit && npm install --no-audit --no-fund
+          inst() {
+            sudo dpkg --configure -a 2>/dev/null || true
+            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg &&
+            pip install --timeout 60 torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu &&
+            pip install --timeout 60 -r reel/requirements.txt &&
+            python -m playwright install --with-deps chromium &&
+            (cd kit && npm install --no-audit --no-fund)
+          }
+          for i in 1 2; do
+            timeout 600 bash -c "$(declare -f inst); inst" && exit 0
+            echo "install attempt $i stuck or failed - trying again"
+          done
+          exit 1
       - name: Build and post the carousel and the reel
         run: python poster/post.py run ${{ matrix.story }}
       - name: Keep the finished files (so a retry or the next run does not rebuild)
