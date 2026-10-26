@@ -905,8 +905,10 @@ def main():
         log.append(f"queue: {left} news waiting to be written")
     except Exception as e:
         log.append(f"queue not saved: {e}")
-    if left and MODE in ("collect", "write"):
-        # the writer goes on at once (after this run has saved the queue - both share one concurrency group, so it starts when this one ends)
+    progressed = sum(done.values()) > 0 or time.time() > DEADLINE - 300      # wrote something, or ran out of time with news left
+    if left and (MODE == "collect" or (MODE == "write" and progressed)):
+        # the writer goes on at once (after this run has saved the queue - both share one concurrency group, so it starts when this one ends);
+        # a writer round that could not write anything does not restart itself (no loop) - its 20-minute schedule tries again
         trigger_workflow("write_stories.yml", None, log)
     for n in news:
         if n["status"] == "collected":
