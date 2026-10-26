@@ -20,6 +20,7 @@ concurrency:
 
 permissions:
   contents: write
+  actions: write      # the watchdog restarts an overdue news collection / story writer
 
 env:
   BRIDGE_URL: ${{ secrets.BRIDGE_URL }}
@@ -59,6 +60,30 @@ jobs:
           fi
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
           if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then git add -f .last_check && git commit -qm "check log" && git pull -q --rebase && git push -q || true; fi
+      - name: Watchdog - restart an overdue collection or writer (GitHub sometimes skips scheduled runs)
+        if: github.event_name == 'schedule' && env.BRIDGE_URL != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          [ -f research_free/ENABLED ] || { echo "collecting is paused (no research_free/ENABLED)"; exit 0; }
+          python3 - <<'PY' > /tmp/wd.txt
+          import json, datetime as d
+          now = d.datetime.now(d.timezone.utc)
+          try: last = json.load(open("research_free/archive/last_run.json"))
+          except Exception: last = {}
+          def age(k):
+              try: return (now - d.datetime.fromisoformat(last[k])).total_seconds() / 60
+              except Exception: return 1e9
+          try: q = len(json.load(open("research_free/archive/queue.json")))
+          except Exception: q = 0
+          print("collect" if age("collect") > 255 else "", "write" if q and age("write") > 30 else "")
+          print(f"last collect {age('collect'):.0f} min ago, last write {age('write'):.0f} min ago, queue {q}")
+          PY
+          cat /tmp/wd.txt
+          todo=$(head -1 /tmp/wd.txt)
+          case "$todo" in *collect*) gh workflow run research_free.yml -f dry=false && echo "news collection was overdue: started now";; esac
+          case "$todo" in *write*) gh workflow run write_stories.yml && echo "queued news waiting: story writer started now";; esac
+          true
       - name: Keep the schedule alive (daily heartbeat)
         if: github.event_name == 'schedule' && env.BRIDGE_URL != ''
         run: |

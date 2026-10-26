@@ -198,6 +198,20 @@ def save_queue(items):
     return len(out)
 
 
+def mark_run(kind):
+    """research_free/archive/last_run.json: when the last collect / write round ran (the posting check restarts an overdue one)"""
+    if DRY:
+        return
+    f = ARCHIVE / "last_run.json"
+    try:
+        d = json.loads(f.read_text(encoding="utf-8"))
+    except Exception:
+        d = {}
+    d[kind] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+    ARCHIVE.mkdir(exist_ok=True)
+    f.write_text(json.dumps(d), encoding="utf-8")
+
+
 def load_state():
     try:
         st = json.loads((ARCHIVE / "state.json").read_text(encoding="utf-8"))
@@ -516,6 +530,7 @@ def instagram_recent(log=None):
 def main():
     if MODE == "write" and not load_queue() and not os.environ.get("MANUAL_URL", "").strip():
         print("write round: the queue is empty - nothing to write until the next collection")
+        mark_run("write")
         return
     recent = []
     if BRIDGE_URL:
@@ -740,6 +755,8 @@ def main():
     log.append(f"filed: {done['R']} Rasipuram + {done['N']} Namakkal (targets {MAX_RASIPURAM} + {MAX_NAMAKKAL})")
     # the queue: every eligible news not written yet (new, not tried this round, or a try that can be repeated) - highest priority first
     waiting = [n for n in news if str(n["status"]).startswith(("collected", "could not open", "not filed"))]
+    for k in (["collect"] if MODE == "collect" else ["write"] if MODE == "write" else ["collect", "write"]):
+        mark_run(k)
     try:
         log.append(f"queue: {save_queue(waiting)} news waiting to be written")
     except Exception as e:
