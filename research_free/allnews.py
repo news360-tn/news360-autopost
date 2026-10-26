@@ -109,7 +109,7 @@ PLACE_STEMS = [w[:-1] if w.endswith("ம்") else w for w in NAMAKKAL_WORDS if 
 # owner 26 Oct: towns just across the district border are covered too (people there read our pages). EDIT these lists to add / remove places.
 # NEAR_RASIPURAM -> Rasipuram 360 page; NEAR_NAMAKKAL -> Namakkal 360 page
 NEAR_RASIPURAM = ["மல்லூர்", "பனமரத்துப்பட்டி", "ஆட்டையாம்பட்டி", "அயோத்தியாப்பட்டணம்", "வாழப்பாடி", "பேளூர்"]
-NEAR_NAMAKKAL = ["சங்ககிரி", "எடப்பாடி", "பவானி", "வேலாயுதம்பாளையம்", "புகழூர்", "தவிட்டுப்பாளையம்", "முசிறி", "தொட்டியம்", "காட்டுப்புத்தூர்",
+NEAR_NAMAKKAL = ["சங்ககிரி", "பவானி", "வேலாயுதம்பாளையம்", "புகழூர்", "தவிட்டுப்பாளையம்", "முசிறி", "தொட்டியம்", "காட்டுப்புத்தூர்",
                  "மேச்சேரி", "தம்மம்பட்டி", "கெங்கவல்லி", "ஆத்தூர்"]
 
 
