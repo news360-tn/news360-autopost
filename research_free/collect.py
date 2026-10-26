@@ -685,7 +685,7 @@ def main():
     log.append(f"earlier stories still waiting for images: {REOFFER}")
     log += ig_log
     if MODE == "write":
-        news = [n for n in load_queue() if allnews.local_ok(n["url"], n.get("title", ""))]
+        news = [n for n in load_queue() if n.get("verified") and allnews.local_ok(n["url"], n.get("title", ""))]
         log.append(f"write round: {len(news)} news waiting in the queue (written in priority order)")
     else:
         news = allnews.collect(log)                               # EVERY item from every source
@@ -893,10 +893,10 @@ def main():
     log.append(f"carousel for {sum(1 for x in out if x['slides_spec'].get('carousel'))} of {len(out)} stories, the rest reel only")
     log.append(f"filed: {done['R']} Rasipuram + {done['N']} Namakkal (targets {MAX_RASIPURAM} + {MAX_NAMAKKAL})")
     # the queue: every eligible news not written yet (new, not tried this round, or a try that can be repeated) - highest priority first
+    # owner 26 Oct: ONLY news that was opened and checked (real Namakkal-district news that can be written) goes into the queue.
+    # A link that could not be opened is not queued - the next collection finds it again and checks it then.
     waiting = [n for n in news if str(n["status"]).startswith(("collected", "could not open", "not filed"))
-               and allnews.local_ok(n["url"], n.get("title", ""))
-               and (n.get("verified") or n.get("manual") or allnews.has_place(n.get("title", "")) or allnews.url_district(n["url"]) == "namakkal"
-                    or n.get("via") == "dinamalar-list")]
+               and (n.get("verified") or n.get("manual")) and allnews.local_ok(n["url"], n.get("title", ""))]
     for k in (["collect"] if MODE == "collect" else ["write"] if MODE == "write" else ["collect", "write"]):
         mark_run(k)
     left = 0
