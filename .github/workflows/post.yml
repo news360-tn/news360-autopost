@@ -145,7 +145,8 @@ jobs:
         run: |
           inst() {
             sudo dpkg --configure -a 2>/dev/null || true
-            sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg &&
+            APT="-o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 -o Acquire::Retries=3"      # 26 Oct: a silent Ubuntu mirror hung apt for 30 min
+            sudo apt-get $APT update -qq && sudo apt-get $APT install -y -qq ffmpeg &&
             pip install --timeout 60 torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu &&
             pip install --timeout 60 -r reel/requirements.txt &&
             python -m playwright install --with-deps chromium &&
