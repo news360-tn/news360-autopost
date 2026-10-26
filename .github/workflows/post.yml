@@ -140,20 +140,39 @@ jobs:
           curl -sL -o /tmp/ta.zip https://github.com/AI4Bharat/Indic-TTS/releases/download/v1-checkpoints-release/ta.zip
           unzip -q /tmp/ta.zip -d reel/models && rm /tmp/ta.zip
           ls reel/models/ta
+      - name: Browser (cached)
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-chromium-${{ hashFiles('reel/requirements.txt') }}
       - name: Install
         timeout-minutes: 25      # normally 2 min; a stuck download (26 Oct: 20+ min) must not block posting for 90 min
         run: |
-          inst() {
+          # ffmpeg: fast copy from GitHub (fingerprint checked), Ubuntu only as the backup - 26 Oct: Ubuntu mirrors hung apt for 30 min
+          ffmpeg_github() {
+            U=https://github.com/BtbN/FFmpeg-Builds/releases/download/latest
+            line=$(curl -sfL --max-time 30 $U/checksums.sha256 | grep -E '  ffmpeg-n[0-9.]+-latest-linux64-gpl-[0-9.]+\.tar\.xz$' | sort -k2 -V | tail -1) &&
+            [ -n "$line" ] && f=${line##* } && cd /tmp &&
+            curl -sfL --max-time 180 --retry 2 -o "$f" "$U/$f" && echo "$line" | sha256sum -c --quiet - &&
+            tar xf "$f" && sudo cp /tmp/ffmpeg-*/bin/ffmpeg /tmp/ffmpeg-*/bin/ffprobe /usr/local/bin/ && cd - >/dev/null &&
+            ffmpeg -hide_banner -version | head -1
+          }
+          ffmpeg_ubuntu() {
             sudo dpkg --configure -a 2>/dev/null || true
-            APT="-o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 -o Acquire::Retries=3"      # 26 Oct: a silent Ubuntu mirror hung apt for 30 min
-            sudo apt-get $APT update -qq && sudo apt-get $APT install -y -qq ffmpeg &&
+            sudo apt-get $APT update -qq && sudo apt-get $APT install -y -qq ffmpeg
+          }
+          browser_ok() { python -c "from playwright.sync_api import sync_playwright as s; p=s().start(); p.chromium.launch().close(); p.stop()"; }
+          inst() {
+            APT="-o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 -o Acquire::Retries=3"
+            { command -v ffmpeg >/dev/null || ffmpeg_github || { echo "GitHub ffmpeg failed - using Ubuntu"; ffmpeg_ubuntu; }; } &&
             pip install --timeout 60 torch==2.8.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cpu &&
             pip install --timeout 60 -r reel/requirements.txt &&
-            python -m playwright install --with-deps chromium &&
+            python -m playwright install chromium &&
+            { browser_ok || { echo "browser needs system parts - using Ubuntu"; sudo "$(command -v python)" -m playwright install-deps chromium; }; } &&
             (cd kit && npm install --no-audit --no-fund)
           }
           for i in 1 2; do
-            timeout 600 bash -c "$(declare -f inst); inst" && exit 0
+            timeout 600 bash -c "$(declare -f inst ffmpeg_github ffmpeg_ubuntu browser_ok); inst" && exit 0
             echo "install attempt $i stuck or failed - trying again"
           done
           exit 1
