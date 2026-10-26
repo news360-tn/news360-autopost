@@ -45,6 +45,7 @@ jobs:
       matrix: ${{ steps.chk.outputs.matrix }}
     steps:
       - uses: actions/checkout@v4
+        with: {ref: main}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -59,7 +60,7 @@ jobs:
             python poster/post.py check 2>&1 | tee .last_check
           fi
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
-          if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then git add -f .last_check && git commit -qm "check log" && git pull -q --rebase && git push -q || true; fi
+          if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then git add -f .last_check && git commit -qm "check log" && { git pull -q --rebase -X theirs && git push -q || git rebase --abort 2>/dev/null; } || true; fi
       - name: Watchdog - restart an overdue collection or writer (GitHub sometimes skips scheduled runs)
         if: github.event_name == 'schedule' && env.BRIDGE_URL != ''
         env:
@@ -117,6 +118,7 @@ jobs:
       PREBUILD: ${{ matrix.prebuild || (github.event_name == 'workflow_dispatch' && inputs.prebuild && '1' || '') }}
     steps:
       - uses: actions/checkout@v4
+        with: {ref: main}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -153,5 +155,5 @@ jobs:
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
           if [ -n "$(ls poster/prebuilt 2>/dev/null)" ]; then
             git add -f poster/prebuilt && git commit -qm "prebuilt ${{ matrix.story }}" || exit 0
-            for i in 1 2 3 4 5; do git pull -q --rebase && git push -q && break; sleep 5; done
+            for i in 1 2 3 4 5; do git pull -q --rebase -X theirs && git push -q && break; git rebase --abort 2>/dev/null; sleep 5; done
           fi

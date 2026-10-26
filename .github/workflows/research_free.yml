@@ -22,6 +22,7 @@ jobs:
     timeout-minutes: 65
     steps:
       - uses: actions/checkout@v4
+        with: {ref: main}
       - name: Check switch
         id: sw
         run: |
@@ -73,8 +74,7 @@ jobs:
           git config user.name "news360-bot"; git config user.email "bot@users.noreply.github.com"
           git add -f research_free/results research_free/archive
           git commit -m "free collector log" || echo none
-          git pull --rebase --autostash origin main || true
-          git push || true
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs --autostash origin main && git push && break; git rebase --abort 2>/dev/null; sleep $((i*4)); done || true
       - name: Fail loudly if the collector crashed (GitHub then emails the repo owner)
         if: steps.sw.outputs.go == 'yes'
         run: |

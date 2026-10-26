@@ -16,6 +16,7 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
+        with: {ref: main}
       - name: Check switch and queue
         id: sw
         run: |
@@ -63,7 +64,7 @@ jobs:
           git config user.name "news360-bot"; git config user.email "bot@users.noreply.github.com"
           git add -f research_free/results research_free/archive
           git commit -m "story writer log" || echo none
-          for i in 1 2 3; do git pull --rebase --autostash origin main && git push && break; sleep 5; done || true
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs --autostash origin main && git push && break; git rebase --abort 2>/dev/null; sleep $((i*4)); done || true
       - name: Fail loudly if the writer crashed (GitHub then emails the repo owner)
         if: steps.sw.outputs.go == 'yes'
         run: |
