@@ -3,7 +3,7 @@ name: research-free
 # (quality-checked) and sends ONE images-needed e-mail - only when there is news. Stories still waiting for images from an earlier round are listed again in it.
 on:
   schedule:
-    - cron: "7 */4 * * *"    # every 4 hours (owner 26 Oct); each story is posted right after it is written
+    - cron: "7 */4 * * *"    # every 4 hours: COLLECT only (all news, queued by priority); write-stories.yml writes them and posting follows at once
   workflow_dispatch:
     inputs:
       dry:
@@ -54,6 +54,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
           AUTO_IMAGES: "1"          # owner request 24 Oct: images made automatically (Cloudflare FLUX, then NVIDIA FLUX.1-dev); stories without all images go to the e-mail as before
           WRITE_STORIES: '1'
+          COLLECT_MODE: ${{ github.event.inputs.manual_url != '' && 'both' || 'collect' }}      # a link given by hand is written at once
           WRITE_WORKERS: "3"        # stories written at the same time
           FRESH_DAYS: "2"           # news published today or yesterday (not posted yet)
         run: |

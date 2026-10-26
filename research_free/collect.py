@@ -168,6 +168,36 @@ def score(n):
     return s
 
 
+# collect / write split (owner 26 Oct): the 4-hourly round only COLLECTS and queues every eligible news by priority;
+# the writer round (every 20 min) takes the queue in priority order, writes the story, and the posting job posts it at once.
+MODE = os.environ.get("COLLECT_MODE", "both")      # collect | write | both
+QUEUE = ARCHIVE / "queue.json"
+QFIELDS = ("key", "url", "title", "source", "published", "via", "query", "snippet", "outlets", "alts", "mentions", "area", "score", "queued_at")
+
+
+def load_queue():
+    """news collected earlier and not written yet (kept 2 days; the freshness check still applies when it is written)"""
+    try:
+        q = json.loads(QUEUE.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    cut = (datetime.datetime.now(IST) - datetime.timedelta(days=2)).isoformat()
+    return [dict(x, outlets=list(x.get("outlets") or []), alts=list(x.get("alts") or [x["url"]])) for x in q if x.get("queued_at", "") >= cut]
+
+
+def save_queue(items):
+    now = datetime.datetime.now(IST).isoformat()
+    out, seen = [], set()
+    for n in sorted(items, key=lambda x: -x.get("score", 0)):
+        if n["key"] in seen or n.get("manual"):
+            continue
+        seen.add(n["key"])
+        out.append({k: (n.get(k) if k != "queued_at" else n.get("queued_at") or now) for k in QFIELDS})
+    ARCHIVE.mkdir(exist_ok=True)
+    QUEUE.write_text(json.dumps(out, ensure_ascii=False), encoding="utf-8")
+    return len(out)
+
+
 def load_state():
     try:
         st = json.loads((ARCHIVE / "state.json").read_text(encoding="utf-8"))
@@ -484,6 +514,9 @@ def instagram_recent(log=None):
 
 
 def main():
+    if MODE == "write" and not load_queue() and not os.environ.get("MANUAL_URL", "").strip():
+        print("write round: the queue is empty - nothing to write until the next collection")
+        return
     recent = []
     if BRIDGE_URL:
         rr = bridge("recent")
@@ -503,7 +536,13 @@ def main():
     REOFFER[:] = pending_ids()
     log.append(f"earlier stories still waiting for images: {REOFFER}")
     log += ig_log
-    news = allnews.collect(log)                                   # EVERY item from every source
+    if MODE == "write":
+        news = load_queue()
+        log.append(f"write round: {len(news)} news waiting in the queue (written in priority order)")
+    else:
+        news = allnews.collect(log)                               # EVERY item from every source
+        have = {n["key"] for n in news}
+        news += [q for q in load_queue() if q["key"] not in have]      # earlier collected, not written yet: stays in the queue
     for n in news:
         n["score"] = score(n)
         n["status"] = "collected"
@@ -561,6 +600,9 @@ def main():
             queues[a_] = [q for q in queues[a_] if q["mentions"] >= 3 or any(w in q["title"] for w in PRIO)][:4]
         PRIORITY_ONLY[0] = True
         log.append("archive round: priority scan only (urgent local news, if any)")
+    if MODE == "collect":
+        target = {"R": 0, "N": 0}
+        log.append("collect round: nothing is written now - the writer job takes the queue by priority and posts each story at once")
     # Rasipuram news -> ONE post on Rasipuram 360 with Namakkal 360 invited as collaborator; every other district news -> Namakkal 360 only
     tries_cap = {"R": MAX_RASIPURAM * 10, "N": MAX_NAMAKKAL * 10}
     log.append(f"candidates waiting: {len(queues['R'])} Rasipuram, {len(queues['N'])} Namakkal; time left {int((DEADLINE - time.time()) / 60)} min")
@@ -696,9 +738,15 @@ def main():
     log.append(f"candidate loop ended: left R={len(queues['R'])} N={len(queues['N'])}, tried={tried}, done={done}, time left {int((DEADLINE - time.time()) / 60)} min")
     log.append(f"carousel for {sum(1 for x in out if x['slides_spec'].get('carousel'))} of {len(out)} stories, the rest reel only")
     log.append(f"filed: {done['R']} Rasipuram + {done['N']} Namakkal (targets {MAX_RASIPURAM} + {MAX_NAMAKKAL})")
+    # the queue: every eligible news not written yet (new, not tried this round, or a try that can be repeated) - highest priority first
+    waiting = [n for n in news if str(n["status"]).startswith(("collected", "could not open", "not filed"))]
+    try:
+        log.append(f"queue: {save_queue(waiting)} news waiting to be written")
+    except Exception as e:
+        log.append(f"queue not saved: {e}")
     for n in news:
         if n["status"] == "collected":
-            n["status"] = "collected (not in this round's top)"
+            n["status"] = "queued for writing" if MODE == "collect" else "collected (not in this round's top)"
     # --- the list of ELIGIBLE news only (owner 26 Oct): Namakkal-district news of today / yesterday that was not posted before.
     # Other-district, old and already posted items are dropped silently (they used to fill the "All News" tab: 24,000 rows in 5 days).
     NOT_ELIGIBLE = ("old", "not Namakkal", "already filed", "checked earlier", "duplicate of a story filed")
@@ -735,7 +783,7 @@ def main():
             st["auto_images"] = st.get("auto_images") or not st.get("images")
         if not send_batch(unsent, log, images=False):      # last try for stories the bridge refused earlier
             raise RuntimeError("addStories failed for the final batch")
-    elif not out and REOFFER and not DRY:
+    elif not out and REOFFER and not DRY and MODE != "write":      # the reminder e-mail only from the 4-hourly round, never every 20 min
         try:      # no new story, but earlier stories still wait for images: ask for those again
             rr = requests.post(BRIDGE_URL, params={"key": BRIDGE_KEY}, data=json.dumps({"action": "reoffer", "ids": REOFFER}), timeout=180)
             print("reoffer:", rr.status_code, rr.text[:200])
