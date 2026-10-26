@@ -1,26 +1,58 @@
-writing [N]: நாமக்கல்லில் மக்கள் குறைதீர் கூட்டம்: 509 கோரிக்கை மனுக்கள் 
+writing [N]: விபத்தில் காயமடைந்தவருக்கு 
+உதவிய அமைச்சா்
+writing [N]: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.8-flash
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-switching away from gemini/gemini-3.8-flash for 10 min
+fail gemini/gemini-3.7-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.7-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.7-flash
+ok gemini/gemini-3.6-flash (21s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/openai/gpt-oss-120b (4s)
+factcheck by groq/openai/gpt-oss-120b: 3 problems
+  Slide 2 contains an incomplete/ungrammatical sentence "அரசு நிகழ்ச்சி முடிந்து வந்த அமைச்சர் அருண்ராஜ் காரை" which lacks a clear verb and meaning
+  Slide 3 contains an incomplete sentence "கொக்கராயன்பேட்டை ஆரம்ப சுகாதார நிலையத்தில் முதலுதவி" missing a verb (e.g., அளித்தார்) and is unclear
+  Slide 3 line "மேல் சிக்ச்சைக்காக ஈரோடு அரசு மருத்துவமனைக்கு அனுப்பி வைப்பு" is missing a subject/verb and is grammatically awkward
+attempt 1 gemini/gemini-3.6-flash: 3 problems
+  fact-check: Slide 2 contains an incomplete/ungrammatical sentence "அரசு நிகழ்ச்சி முடிந்து வந்த அமைச்சர் அருண்ராஜ் காரை" which lacks a clear verb and meaning
+  fact-check: Slide 3 contains an incomplete sentence "கொக்கராயன்பேட்டை ஆரம்ப சுகாதார நிலையத்தில் முதலுதவி" missing a verb (e.g., அளித்தார்) and is unclear
+  fact-check: Slide 3 line "மேல் சிக்ச்சைக்காக ஈரோடு அரசு மருத்துவமனைக்கு அனுப்பி வைப்பு" is missing a subject/verb and is grammatically awkward
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
 dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
@@ -31,68 +63,117 @@ fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"
 switching away from mistral/mistral-small-latest for 10 min
 free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (10 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The reel_script and slides omit the article's account of the sports and relief awards: the state-level football and kabaddi coaches honoured, and the relief materials and assistive devices given to individuals, are not mentioned.
-  The caption claims people can submit petitions in person at the meeting ("கூட்டத்தில் நேரில் மனு அளிக்கலாம்"), which is an invented detail not stated in the article.
-  The slide "விளையாட்டுப் பயிற்சியாளர்கள் கௌரவிக்கப்பட்டனர்" is accurate, but the reel_script's statement that the 57 students received scholarships is fine; however the caption's "நாள்: 26 அக்டோபர் 2026" is a posting date rather than an article claim, so no issue there.
-claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The reel_script and slides omit the article's account of the sports and relief awards: the state-level football and kabaddi coaches honoured, and the relief materials and assistive devices given to individuals, are not mentioned.
-  fact-check: The caption claims people can submit petitions in person at the meeting ("கூட்டத்தில் நேரில் மனு அளிக்கலாம்"), which is an invented detail not stated in the article.
-  fact-check: The slide "விளையாட்டுப் பயிற்சியாளர்கள் கௌரவிக்கப்பட்டனர்" is accurate, but the reel_script's statement that the 57 students received scholarships is fine; however the caption's "நாள்: 26 அக்டோபர் 2026" is a posting date rather than an article claim, so no issue there.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (10 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.6-flash
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 5 problems
-  slides_spec slide 2 title 'எந்தக்' is an incomplete/ungrammatical fragment with no clear meaning
-  reel_script omits the important fact that the Red Cross relief supplies were given to Paruthipalli Sundaram whose wall collapsed in rain, and the disabled-persons aids (3 beneficiaries, Rs. 34,785 worth of hearing aids and wheelchairs) given by the District Collector
-  slides_spec slide 3 line 'மனுக்கள் மீது விரைந்து நடவடிக்கை எடுக்கப்படும்' presents a future action as a result of the order; the article only says the Collector ordered quick action, which is a mild rewording but acceptable; however slide 3 mixes petition handling with student scholarships and trainer honours into one slide, combining different facts
-  slides_spec and reel_script attribute the 'பயிற்சியாளர்களும் கௌரவிக்கப்பட்டனர்' to both football and kabaddi, while the article says the coaches were honoured for training that earned third place in football and first place in kabaddi; the draft drops the specific results and merges them
-  reel_script states the scholarship was given to students who scored first marks in Tamil in public exams of 2025-26 'தமிழ் பாடத்தில் முதல் மதிப்பெண்' without the article's detail that they were from Namakkal district, a minor omission of location
-claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: slides_spec slide 2 title 'எந்தக்' is an incomplete/ungrammatical fragment with no clear meaning
-  fact-check: reel_script omits the important fact that the Red Cross relief supplies were given to Paruthipalli Sundaram whose wall collapsed in rain, and the disabled-persons aids (3 beneficiaries, Rs. 34,785 worth of hearing aids and wheelchairs) given by the District Collector
-  fact-check: slides_spec slide 3 line 'மனுக்கள் மீது விரைந்து நடவடிக்கை எடுக்கப்படும்' presents a future action as a result of the order; the article only says the Collector ordered quick action, which is a mild rewording but acceptable; however slide 3 mixes petition handling with student scholarships and trainer honours into one slide, combining different facts
-  fact-check: slides_spec and reel_script attribute the 'பயிற்சியாளர்களும் கௌரவிக்கப்பட்டனர்' to both football and kabaddi, while the article says the coaches were honoured for training that earned third place in football and first place in kabaddi; the draft drops the specific results and merges them
-  fact-check: reel_script states the scholarship was given to students who scored first marks in Tamil in public exams of 2025-26 'தமிழ் பாடத்தில் முதல் மதிப்பெண்' without the article's detail that they were from Namakkal district, a minor omission of location
+  reel_script says the minister 'immediately' helped, but the article says he first sent an assistant and only went after learning of the accident; 'உடனடியாக' is not supported in that sense
+  reel_script/caption say the minister went to the scene personally ('நேரில் சென்று') — the article says he sent an assistant to check first and then, after being informed, rescued him; the sequence is slightly altered but the article does say he took him in his car, so this is minor
+  slides_spec and caption say the minister took the victim to the Kokkarayanpettai PHC in his car; the article says he took him in his car to the health centre only after the assistant reported, which is consistent, but the caption's 'நேரில் சென்று' combined with the assistant sentence mixes two actions in one sentence
+  reel_script omits the article's detail that the minister instructed that the youth be taken to Erode government hospital after first aid is not clearly attributed to him; the draft attributes the referral passively, dropping that the minister advised it
+  caption says 'சுகாதாரத் துறை அமைச்சர்' is a role reference not explicit in the article title context, but the article does name him as health minister, so no issue; however the slides_spec 'அமைச்சர் உதவி' line 'விபத்து தகவல் அறிந்ததும் நேரில் சென்றார்' is grammatically incomplete as a slide line
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script says the minister 'immediately' helped, but the article says he first sent an assistant and only went after learning of the accident; 'உடனடியாக' is not supported in that sense
+  fact-check: reel_script/caption say the minister went to the scene personally ('நேரில் சென்று') — the article says he sent an assistant to check first and then, after being informed, rescued him; the sequence is slightly altered but the article does say he took him in his car, so this is minor
+  fact-check: slides_spec and caption say the minister took the victim to the Kokkarayanpettai PHC in his car; the article says he took him in his car to the health centre only after the assistant reported, which is consistent, but the caption's 'நேரில் சென்று' combined with the assistant sentence mixes two actions in one sentence
+  fact-check: reel_script omits the article's detail that the minister instructed that the youth be taken to Erode government hospital after first aid is not clearly attributed to him; the draft attributes the referral passively, dropping that the minister advised it
+  fact-check: caption says 'சுகாதாரத் துறை அமைச்சர்' is a role reference not explicit in the article title context, but the article does name him as health minister, so no issue; however the slides_spec 'அமைச்சர் உதவி' line 'விபத்து தகவல் அறிந்ததும் நேரில் சென்றார்' is grammatically incomplete as a slide line
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (10 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (9 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  reel_script says Sundaram is 'பருத்திப்பள்ளி சுந்தரம்' but the article describes him as பருத்திப்பள்ளி சுந்தரம் (a resident of Paruthipalli) — minor; however the reel_script states the disabled beneficiaries received items 'மாற்றுத்திறனாளிகள் 3 பேருக்கு' which matches, so no issue there
-  reel_script states the 57 students received 'உதவித்தொகையும் பாராட்டுச் சான்றும்' which matches the article, but the caption says the exam was in 'கல்வியாண்டு 2025-26 பொதுத் தேர்வில' which is a mixed-up phrasing not clearly meaningful in Tamil
-  reel_script omits the 3 disabled beneficiaries' names/detail only partially; the important fact that the District Collector personally handed over the hearing aids and wheelchairs is included, so no omission
-  slides_spec and caption describe the petitions as 'நேரில்' (in person) received by the collector, which the article does not explicitly state
-  slides_spec slide 3 says 'கல்வி உதவித்தொகை பெற்ற 57 மாணவர்களுக்குப் பாராட்டு' presenting the students under 'அடுத்து என்ன?' (what next), which mixes the awards event with a follow-up action not in the article
-  caption date '26 அக்டோபர் 2026' is the posting date and is excluded from checking
-claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: reel_script says Sundaram is 'பருத்திப்பள்ளி சுந்தரம்' but the article describes him as பருத்திப்பள்ளி சுந்தரம் (a resident of Paruthipalli) — minor; however the reel_script states the disabled beneficiaries received items 'மாற்றுத்திறனாளிகள் 3 பேருக்கு' which matches, so no issue there
-  fact-check: reel_script states the 57 students received 'உதவித்தொகையும் பாராட்டுச் சான்றும்' which matches the article, but the caption says the exam was in 'கல்வியாண்டு 2025-26 பொதுத் தேர்வில' which is a mixed-up phrasing not clearly meaningful in Tamil
-  fact-check: reel_script omits the 3 disabled beneficiaries' names/detail only partially; the important fact that the District Collector personally handed over the hearing aids and wheelchairs is included, so no omission
-  fact-check: slides_spec and caption describe the petitions as 'நேரில்' (in person) received by the collector, which the article does not explicitly state
-  fact-check: slides_spec slide 3 says 'கல்வி உதவித்தொகை பெற்ற 57 மாணவர்களுக்குப் பாராட்டு' presenting the students under 'அடுத்து என்ன?' (what next), which mixes the awards event with a follow-up action not in the article
-  fact-check: caption date '26 அக்டோபர் 2026' is the posting date and is excluded from checking
-proofread skipped: free models not efficient (10 failures in a row): using Claude
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The draft states the date as 28 October; the article gives 'புதன்கிழமை (அக். 28)' so the date matches, but the caption and reel_script introduce a year (2026) that does not appear in the article.
+  The reel_script says the outage affects 'நாளை காளப்பநாயக்கன்பட்டி பகுதியில் 5 மணி நேரம்' and the affected areas list; the article says the power cut is for those listed areas, but the reel_script's opening implies only Kalappanaickenpatti is affected, which conflicts with the list of nine areas.
+  The slides_spec 'என்ன செய்யலாம்?' slide adds an advice line 'மின்தடை நேரத்தில் மின் சாதனங்களை அணைத்து வையுங்கள்' that is not in the article.
+  The slides_spec and caption add the phrase 'மின்தடை குறித்த விவரங்களுக்கு மின்வாரியத்தை அணுகுங்கள்' and the caption adds '📞 தொடர்புக்கு: நாமக்கல் மின்வாரிய செயற்பொறியாளர்', which are not stated in the article as a contact instruction.
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The draft states the date as 28 October; the article gives 'புதன்கிழமை (அக். 28)' so the date matches, but the caption and reel_script introduce a year (2026) that does not appear in the article.
+  fact-check: The reel_script says the outage affects 'நாளை காளப்பநாயக்கன்பட்டி பகுதியில் 5 மணி நேரம்' and the affected areas list; the article says the power cut is for those listed areas, but the reel_script's opening implies only Kalappanaickenpatti is affected, which conflicts with the list of nine areas.
+  fact-check: The slides_spec 'என்ன செய்யலாம்?' slide adds an advice line 'மின்தடை நேரத்தில் மின் சாதனங்களை அணைத்து வையுங்கள்' that is not in the article.
+  fact-check: The slides_spec and caption add the phrase 'மின்தடை குறித்த விவரங்களுக்கு மின்வாரியத்தை அணுகுங்கள்' and the caption adds '📞 தொடர்புக்கு: நாமக்கல் மின்வாரிய செயற்பொறியாளர்', which are not stated in the article as a contact instruction.
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (9 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The reel_script says the minister 'sent an assistant' and 'learned the details' but omits that he himself took the injured man in his car; actually the reel says he took him in his car, so this is fine — however the reel_script states the minister 'instructed' the transfer to Erode while the article says the minister advised it, which matches; no clear error here.
+  The caption says the minister 'first sent an assistant to find out details' and then took the injured man, which follows the article; however the caption says 'அனுப்பப்பட்டார்' (was sent) for the Erode transfer, which is acceptable wording.
+  The reel_script omits that the injured man was taken to Erode government hospital by the minister's instruction only after first aid — this is present; no omission found.
+  The slide line 'சுகாதாரத் துறை அமைச்சர் அருண்ராஜ் உதவியாளரை அனுப்பி விவரம்' is an incomplete, ungrammatical sentence with no clear meaning (it ends mid-thought).
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The reel_script says the minister 'sent an assistant' and 'learned the details' but omits that he himself took the injured man in his car; actually the reel says he took him in his car, so this is fine — however the reel_script states the minister 'instructed' the transfer to Erode while the article says the minister advised it, which matches; no clear error here.
+  fact-check: The caption says the minister 'first sent an assistant to find out details' and then took the injured man, which follows the article; however the caption says 'அனுப்பப்பட்டார்' (was sent) for the Erode transfer, which is acceptable wording.
+  fact-check: The reel_script omits that the injured man was taken to Erode government hospital by the minister's instruction only after first aid — this is present; no omission found.
+  fact-check: The slide line 'சுகாதாரத் துறை அமைச்சர் அருண்ராஜ் உதவியாளரை அனுப்பி விவரம்' is an incomplete, ungrammatical sentence with no clear meaning (it ends mid-thought).
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 52 words; need 130-200 (full-detail reel, about 60-80 seconds)
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (9 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (9 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says the minister 'took the injured youth in his own car to the hospital' and 'அரசு நிகழ்ச்சி... திரும்பிக் கொண்டிருந்த' is fine, but slides_spec/reel_script omit that the youth was first taken to Kokkarayan Pettai PHC by the minister's car; minor, however the reel_script says he 'உதவியாளரை அனுப்பி விவரம் அறிந்தார்' which matches. Main issue: slides_spec says 'உதவியாளரும் நிலைமையை பார்க்க அனுப்பப்பட்டார்' – the article says only the assistant was sent to check, not an additional person 'also' sent; this is an invented/altered detail.
+  slides_spec third slide says 'அமைச்சரின் அறிவுறுத்தலின்படி இந்த ஏற்பாடு' – the article says the minister advised taking him to Erode for further treatment, which is consistent, but the line 'மேல் சிகிச்சைக்காக ஈரோடு அரசு மருத்துவமனைக்கு' is fine; no issue here.
+  caption says the 'Share' call and the date '(அக். 25, 2026)' – the date is the posting date, which is allowed.
+  reel_script says 'திருச்செங்கோடு அருகே கொக்கராயன் பேட்டை' – the article says the place is in Namakkal district near Tiruchengode; acceptable.
+  caption 'நடவடிக்கை: அமைச்சர் உதவியுடன் ஈரோடு அரசு மருத்துவமனைக்கு அனுப்பப்பட்டார்' – the article says he was sent to Erode, but the caption labels this as an 'action' under the minister's help, which is a wording stretch but not a factual error.
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script says the minister 'took the injured youth in his own car to the hospital' and 'அரசு நிகழ்ச்சி... திரும்பிக் கொண்டிருந்த' is fine, but slides_spec/reel_script omit that the youth was first taken to Kokkarayan Pettai PHC by the minister's car; minor, however the reel_script says he 'உதவியாளரை அனுப்பி விவரம் அறிந்தார்' which matches. Main issue: slides_spec says 'உதவியாளரும் நிலைமையை பார்க்க அனுப்பப்பட்டார்' – the article says only the assistant was sent to check, not an additional person 'also' sent; this is an invented/altered detail.
+  fact-check: slides_spec third slide says 'அமைச்சரின் அறிவுறுத்தலின்படி இந்த ஏற்பாடு' – the article says the minister advised taking him to Erode for further treatment, which is consistent, but the line 'மேல் சிகிச்சைக்காக ஈரோடு அரசு மருத்துவமனைக்கு' is fine; no issue here.
+  fact-check: caption says the 'Share' call and the date '(அக். 25, 2026)' – the date is the posting date, which is allowed.
+  fact-check: reel_script says 'திருச்செங்கோடு அருகே கொக்கராயன் பேட்டை' – the article says the place is in Namakkal district near Tiruchengode; acceptable.
+  fact-check: caption 'நடவடிக்கை: அமைச்சர் உதவியுடன் ஈரோடு அரசு மருத்துவமனைக்கு அனுப்பப்பட்டார்' – the article says he was sent to Erode, but the caption labels this as an 'action' under the minister's help, which is a wording stretch but not a factual error.
+proofread skipped: free models not efficient (9 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 7 problems
+  reel_script adds advice not in the article: 'மொபைல் போன்களை முழுமையாக சார்ஜ் செய்து வைத்துக்கொள்ளுங்கள்' (charge mobile phones fully) is an invented detail
+  reel_script adds advice not in the article: 'குடிநீர் தேவையையும் முன்பே பார்த்துக்கொள்ளுங்கள்' (arrange drinking water in advance) is an invented detail
+  reel_script states 'மின் வாரியம் அறிவித்துள்ள நேரத்திற்குள் பணிகள் முடிக்கப்படும் என எதிர்பார்க்கப்படுகிறது' (work expected to finish within the announced time), which is not stated in the article
+  reel_script says 'தேவையான பணிகளை முன்கூட்டியே முடித்துக்கொள்ளுங்கள்' as a viewer instruction; this advice is not in the article
+  caption adds a 'தொடர்புக்கு' (contact) line pointing to the office, which is not in the article
+  caption adds the advice 'மின்தடை நேரத்திற்கு முன் தேவையான பணிகளை முடித்துக்கொள்ளுங்கள்' which is not in the article
+  slides_spec 'யார் அறிவிப்பு?' slide adds 'மின்வாரியம் சார்பில் தகவல் தெரிவிக்கப்பட்டுள்ளது' and 'மின்தடை நேரத்தில் மின் இணைப்பு இருக்காது' (no power supply during the outage), the latter being a restatement not exactly in the article
+claude rewrite 3 anthropic/claude-haiku-5-5: 7 problems
+  fact-check: reel_script adds advice not in the article: 'மொபைல் போன்களை முழுமையாக சார்ஜ் செய்து வைத்துக்கொள்ளுங்கள்' (charge mobile phones fully) is an invented detail
+  fact-check: reel_script adds advice not in the article: 'குடிநீர் தேவையையும் முன்பே பார்த்துக்கொள்ளுங்கள்' (arrange drinking water in advance) is an invented detail
+  fact-check: reel_script states 'மின் வாரியம் அறிவித்துள்ள நேரத்திற்குள் பணிகள் முடிக்கப்படும் என எதிர்பார்க்கப்படுகிறது' (work expected to finish within the announced time), which is not stated in the article
+  fact-check: reel_script says 'தேவையான பணிகளை முன்கூட்டியே முடித்துக்கொள்ளுங்கள்' as a viewer instruction; this advice is not in the article
+  fact-check: caption adds a 'தொடர்புக்கு' (contact) line pointing to the office, which is not in the article
+  fact-check: caption adds the advice 'மின்தடை நேரத்திற்கு முன் தேவையான பணிகளை முடித்துக்கொள்ளுங்கள்' which is not in the article
+  fact-check: slides_spec 'யார் அறிவிப்பு?' slide adds 'மின்வாரியம் சார்பில் தகவல் தெரிவிக்கப்பட்டுள்ளது' and 'மின்தடை நேரத்தில் மின் இணைப்பு இருக்காது' (no power supply during the outage), the latter being a restatement not exactly in the article
+proofread skipped: free models not efficient (9 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
 ok anthropic/claude-haiku-5-5
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for '509 petitions received at Namakkal publi'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261026-2223","first":"RN-129"}
+images made: 3 for 'Health Minister Arunraj rescues injured '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-0214","first":"RN-130"}
 posting job started at once
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+images made: 3 for 'Kalappanaickenpatti substation maintenan'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-0214","first":"RN-131"}
 earlier stories still waiting for images: []
-instagram check: 69 recent posts read from both pages
-write round: 8 news waiting in the queue (written in priority order)
-candidate filter: already filed=7, collected=1
-to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
-try (N) manual=False: நாமக்கல்லில் மக்கள் குறைதீர் கூட்டம்: 509 கோரிக்கை மனுக்கள் 
+instagram check: 70 recent posts read from both pages
+write round: 7 news waiting in the queue (written in priority order)
+candidate filter: already filed=5, collected=2
+to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min
+try (N) manual=False: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
+try (N) manual=False: விபத்தில் காயமடைந்தவருக்கு 
+உதவிய அமைச்சா்
 auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 1}, time left 27 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 6})
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 2}, time left 25 min
+carousel for 0 of 2 stories, the rest reel only
+filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+All News sheet: {"ok":true,"added":0,"updated":2} 
+stories: 2
