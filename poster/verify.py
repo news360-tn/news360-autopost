@@ -118,8 +118,8 @@ def check_reel(mp4, spoken_lines):
         probs.append("reel is not 1080x1920")
     if not a:
         probs.append("reel has no audio (voice missing)")
-    if not 10 <= dur <= 60:
-        probs.append(f"reel length {dur:.1f}s is outside 10-60 seconds")
+    if not 10 <= dur <= 90:
+        probs.append(f"reel length {dur:.1f}s is outside 10-90 seconds")
     if a:
         r = subprocess.run(["ffmpeg", "-hide_banner", "-nostats", "-i", str(mp4), "-af", "volumedetect", "-vn", "-f", "null", "-"],
                            capture_output=True, text=True)

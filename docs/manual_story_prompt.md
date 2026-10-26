@@ -31,7 +31,7 @@ Write ONE JSON object only (no explanation) with exactly these keys:
  "source": "https://link-of-the-news-article",          // used only for the fact check, never shown
  "slides_spec": {"v":3,"cat":"...","loc":"short place","hl1":"max 40 chars","hl2":"max 28 chars",
    "slides":[{"title":"max 18 chars","lines":["2-3 short lines, each max 60 chars; <b>bold</b> allowed for key facts"]}]},   // 3 or 4 slides: who/what/when/where/why/how
- "reel_script": "...",               // 85-120 Tamil words, 7-9 sentences with every detail, numbers, dates, times and amounts as DIGITS (10.30 மணி, ரூ.5.70, 65 வயது), NO English letters (TNPSC, SI, DSP are read out by the system), strong hook in the first sentence (no greeting), short sentences, plain words, covers who-what-when-where-why-how, ends with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
+ "reel_script": "...",               // 130-200 Tamil words, 10-14 sentences with every detail, numbers, dates, times and amounts as DIGITS (10.30 மணி, ரூ.5.70, 65 வயது), NO English letters (TNPSC, SI, DSP are read out by the system), strong hook in the first sentence (no greeting), short sentences, plain words, covers who-what-when-where-why-how, ends with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
  "caption": "..."                    // emoji heading, 3-5 short lines with facts, then a line 📍 place | date, then 5 hashtags, last line: உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏
 }
 Rules: no newspaper/TV/website names or links in any text field except "source"; no "comment below" lines; readable plain Tamil.

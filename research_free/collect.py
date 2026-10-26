@@ -380,6 +380,28 @@ def send_batch(group, log=None, images=True):
         return False
 
 
+_LAST_TRIGGER = [0.0]
+
+
+def trigger_posting(log=None):
+    """start the posting workflow now (a story with pictures was just saved) instead of waiting for its schedule; at most every 8 minutes.
+    Never fails the run: without a token the normal schedule posts it."""
+    tok, repo = os.environ.get("GH_TOKEN"), os.environ.get("GH_REPO")
+    if not tok or not repo or DRY or time.time() - _LAST_TRIGGER[0] < 480:
+        return
+    try:
+        r = requests.post(f"https://api.github.com/repos/{repo}/actions/workflows/post.yml/dispatches", timeout=30,
+                          headers={"Authorization": "Bearer " + tok, "Accept": "application/vnd.github+json"},
+                          json={"ref": "main", "inputs": {"dry_run": "false", "prebuild": "false"}})
+        _LAST_TRIGGER[0] = time.time()
+        msg = "posting job started at once" if r.status_code == 204 else f"posting job not started ({r.status_code}): the schedule posts it"
+    except Exception as e:
+        msg = f"posting job not started ({str(e)[:80]}): the schedule posts it"
+    print(msg, flush=True)
+    if log is not None:
+        log.append(msg)
+
+
 def file_story(art, res, errors_log, recent, scenes=None):
     """quality gate for one written story; returns the story dict, or (None, reason)"""
     if isinstance(res, Exception):
@@ -665,8 +687,11 @@ def main():
             # saved in the Sheet at once (images first): a story written in this round is never lost if the run is stopped later
             if time.time() > DEADLINE:
                 story["auto_images"] = True      # no time left for images here: the posting job makes them within minutes
-            if not DRY and not send_batch([story], log):
-                unsent.append(story)
+            if not DRY:
+                if send_batch([story], log):
+                    trigger_posting(log)      # posts within minutes (pictures still missing are made by that job's check step)
+                else:
+                    unsent.append(story)
     pool.shutdown(wait=False, cancel_futures=True)
     log.append(f"candidate loop ended: left R={len(queues['R'])} N={len(queues['N'])}, tried={tried}, done={done}, time left {int((DEADLINE - time.time()) / 60)} min")
     log.append(f"carousel for {sum(1 for x in out if x['slides_spec'].get('carousel'))} of {len(out)} stories, the rest reel only")

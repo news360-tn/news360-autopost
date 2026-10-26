@@ -423,14 +423,15 @@ def reel_spec(row, spec, images):
         st = _stems(sent)
         for j, ln in enumerate(pool):
             sc = len(st & _stems(ln))
-            if j not in used and sc > bs and len(ln) <= 48:
+            if j not in used and sc > bs and len(ln) <= (60 if CONFIG.get("reel_design") == "v4" else 48):
                 best, bs, bj = ln, sc, j
         if best and i >= 1:
             used.add(bj)
         sents.append({"say": sent, "caption": sent, "fact": best if i >= 1 else ""})
     hook = [(spec.get("hl1") or "").strip(), (spec.get("hl2") or "").strip()]
     return {"v": 3, "story": row["story_id"], "date": spec["date"], "cat": (spec.get("cat") or "").strip(),
-            "location": (spec.get("loc") or "நாமக்கல்")[:30], "voice": "male", "hook": hook,
+            "location": (spec.get("loc") or "நாமக்கல்")[:60], "voice": "male", "hook": hook,
+            "mini": (row.get("headline_ta") or "").strip(),
             "images": [str(p) for p in images], "sentences": sents, "outro": {"say": last},
             "scenes": [{"caption": x["caption"]} for x in sents] + [{"caption": last}]}
 
@@ -442,7 +443,8 @@ def render_reel(row, spec, images, work, voice_file=None):
     if voice_file:
         env["VOICE_FILE"] = str(voice_file)
     mp4 = work / f"{row['story_id']}_reel.mp4"
-    subprocess.run([sys.executable, str(REEL / "reel3.py"), str(work / "reel.json"), str(mp4), PAGE], check=True, env=env)
+    design = "reel4.py" if CONFIG.get("reel_design") == "v4" else "reel3.py"      # v4: full-detail design (safe zone, 5W cards, summary, send CTA)
+    subprocess.run([sys.executable, str(REEL / design), str(work / "reel.json"), str(mp4), PAGE], check=True, env=env)
     return mp4
 
 
@@ -1021,7 +1023,7 @@ def run_story_page(row, page):
                 probs = verify.check_reel(mp4, [x["say"] for x in rs["sentences"]] + [rs["outro"]["say"]])
                 if probs:
                     return fail(row, "reel", "Reel check failed: " + "; ".join(probs))
-                checks.append("reel 1080x1920, 10-30 s, voice present and fully pronounceable")
+                checks.append("reel 1080x1920, 10-90 s, voice present and fully pronounceable")
                 cov = mp4.with_name(mp4.stem + "_cover.jpg")
                 reel_cover = cov if cov.exists() else None
                 if not reel_cover:
