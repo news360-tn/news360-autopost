@@ -150,6 +150,9 @@ def skip_reason(row):
     why = "" if same_day else freshness.stale_reason(row.get("headline_ta") or "", row.get("headline_en") or "", row.get("category") or "", row.get("published") or "")
     if why:
         return "stale: " + why
+    why = not_namakkal(row)
+    if why:
+        return why
     for o in ALL_ROWS:
         went_out = o.get("rasipuram_link") or o.get("namakkal_link") or o.get("reel_link") or str(o.get("post_status") or "").lower().startswith(("posted", "partly"))
         if o.get("story_id") == row.get("story_id") or not went_out:
@@ -157,6 +160,28 @@ def skip_reason(row):
         if (freshness.similar(o.get("headline_ta") or "", row.get("headline_ta") or "", 0.62, o.get("researched"))
                 or freshness.similar((o.get("headline_en") or "").lower(), (row.get("headline_en") or "").lower(), 0.65, o.get("researched"))):
             return f"duplicate of {o.get('story_id')}"
+    return ""
+
+
+def not_namakkal(row):
+    """last gate (owner 26 Oct: ONLY Namakkal-district news): a story whose source link is filed under another district, or whose headline
+    and caption name no Namakkal-district place, is not posted. Stories e-mailed by the owner are not checked."""
+    try:
+        sys.path.insert(0, str(ROOT / "research_free"))
+        import allnews
+    except Exception:
+        return ""
+    src, head = (row.get("source") or "").strip(), row.get("headline_ta") or ""
+    if not src.startswith("http"):
+        return ""
+    cap = (row.get("caption") or "")[:600]
+    if allnews.has_place(head) and not allnews.other_district(head):
+        return ""
+    d = allnews.url_district(src)
+    if d and d != "namakkal":
+        return f"not Namakkal district news (source filed under {d})"
+    if not allnews.has_place(cap) and not allnews.has_place(row.get("location") or ""):
+        return "not Namakkal district news (no Namakkal-district place in the headline or caption)"
     return ""
 
 
