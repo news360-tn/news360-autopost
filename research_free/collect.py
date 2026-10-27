@@ -704,9 +704,10 @@ def main():
                 n["status"] = "already filed"
     for n in news:
         st = state.get(n["key"], {})
-        retry = ((st.get("s") == "notdistrict" and allnews.url_district(n.get("url", "")) == "namakkal") or st.get("s") == "dup") and not st.get("r27")
+        retry = ((st.get("s") == "notdistrict" and allnews.url_district(n.get("url", "")) == "namakkal") or st.get("s") == "dup") and not st.get("r27b")
         if retry:      # 27 Oct: stories on a paper's own Namakkal page, and 'duplicates' found by the old letter-only match, are checked once more
-            st["r27"] = 1
+            st["r27b"] = 1
+            st.pop("s", None)      # the old verdict is removed, so the writer (a separate run) does not skip it as 'checked earlier'; a new check sets a new one
         if not retry and (st.get("s") in ("filed", "dup", "notext", "old", "notdistrict") or st.get("n", 0) >= 10):
             n["status"] = n["status"] if n["status"] != "collected" else "checked earlier: " + st.get("s", "failed")
     manual_links = [u.strip() for u in re.split(r"[\s,]+", os.environ.get("MANUAL_URL", "")) if u.strip().startswith("http")]
