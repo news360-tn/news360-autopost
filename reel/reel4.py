@@ -22,7 +22,10 @@ import reel as R
 import reel3 as V3
 from digits import to_digits
 
-E = html.escape
+def E(s):
+    """on-screen text: drop the <b>..</b> marks the writer puts for the carousel (27 Oct: '<b>90,703</b>' showed in a reel)"""
+    return html.escape(re.sub(r"</?[a-zA-Z][^>]*>", "", str(s)))
+
 W, H, FPS = 1080, 1920, 30
 
 CSS = R.ff("CT", "catamaran", [700, 800, 900]) + R.ff("NST", "noto-sans-tamil", [600, 700, 800]) + R.ff("BT", "baloo-thambi-2", [800]) + """
