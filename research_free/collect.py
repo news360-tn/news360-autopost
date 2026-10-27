@@ -441,7 +441,7 @@ def make_images(group, log=None):
                 i, pr = ip
                 data = None
                 for k in range(2):      # a picture that does not show this news is made once more with another seed
-                    data = imagegen.generate((STYLE + pr)[:1800], seed=random.randint(1, 10**6))
+                    data = imagegen.generate((STYLE + pr)[:1800], seed=random.randint(1, 10**6), cheap=i > 0)      # cover: dev; scenes 2-3: schnell
                     if imagegen.matches(data, st.get("english_headline", "")):
                         break
                 return _upload_image(data)

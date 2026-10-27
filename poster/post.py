@@ -1218,7 +1218,7 @@ def auto_images():
                 last_err = None
                 for attempt in range(3):      # owner 25 Oct: a picture that does not show the news is generated again (up to 3 times)
                     try:
-                        cand = imagegen.generate(pr[:1800], seed=k + 7 + attempt * 13)
+                        cand = imagegen.generate(pr[:1800], seed=k + 7 + attempt * 13, cheap=k > 1)      # cover: dev; scenes 2-3: schnell
                     except Exception as e:
                         last_err = e
                         log("image attempt", attempt + 1, "failed:", str(e)[:140])
