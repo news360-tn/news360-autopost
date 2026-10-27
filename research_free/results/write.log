@@ -1,12 +1,6 @@
-writing [N]: கொட்டும் மழையில் சேவை மாணவர்களுக்கு ரெயின் கோட்
-writing [N]: மழைநீர் வடிகால் ஆக்கிரமிப்பால் 30 ஏக்கர் பயிர் நீரில் மூழ்கி
-writing [N]: 6 மாதம் முதல் 5 வயது குழந்தைகளுக்கு வைட்டமின் ஏ குறைபாடு தடு
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+writing [N]: மரவள்ளி விவசாயிகள் பிரச்னை வரும் 30ல் முத்தரப்பு கூட்டம்
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
   "error": {
     "code": 503,
@@ -15,30 +9,17 @@ fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.8-flash
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.8-flash
+switching away from gemini/gemini-3.8-flash for 10 min
 fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.7-flash
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.7-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (26s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  stray Tamil sign 'ு' after 'ு' in «யிட்டுுள்ள»
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
@@ -51,409 +32,78 @@ dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
 fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
 dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
 fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
 fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
 switching away from mistral/mistral-small-latest for 10 min
 free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
-fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.8-flash
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  slide 1 line 1 longer than 60 characters
-  not grounded: location 'பரமத்தி' is not in the article
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-switching away from groq/openai/gpt-oss-120b for 10 min
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  not grounded: location 'பரமத்தி' is not in the article
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  Caption adds the month 'அக்டோபர் 2026' (October 2026), which is not stated in the article.
+  Caption says the meeting is 'நடத்தப்படுகிறது' and tells readers to attend, but slides_spec and caption describe the meeting as 'கூட்டம்' with the stated time; the 'பயன்பெற கூட்டத்திற்கு வாருங்கள்' line in slides_spec is an invented call to attendance not in the article.
+  Reel_script omits the article's stated purpose of discussing the farmers' demands and the fact that the meeting is for all listed participants' benefit only partially; more importantly, it omits that the meeting will discuss the farmers' demands (கோரிக்கைகளை விவாதிக்க), an important fact of the article.
+  slides_spec headline 'வரும் 30 மாலை 4:30 மணி' and 'எப்போது' line present the date as '30' without any month, which is fine, but slides_spec 'ஏன் இந்தக்' title is ungrammatical/incomplete Tamil with no clear meaning.
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: Caption adds the month 'அக்டோபர் 2026' (October 2026), which is not stated in the article.
+  fact-check: Caption says the meeting is 'நடத்தப்படுகிறது' and tells readers to attend, but slides_spec and caption describe the meeting as 'கூட்டம்' with the stated time; the 'பயன்பெற கூட்டத்திற்கு வாருங்கள்' line in slides_spec is an invented call to attendance not in the article.
+  fact-check: Reel_script omits the article's stated purpose of discussing the farmers' demands and the fact that the meeting is for all listed participants' benefit only partially; more importantly, it omits that the meeting will discuss the farmers' demands (கோரிக்கைகளை விவாதிக்க), an important fact of the article.
+  fact-check: slides_spec headline 'வரும் 30 மாலை 4:30 மணி' and 'எப்போது' line present the date as '30' without any month, which is fine, but slides_spec 'ஏன் இந்தக்' title is ungrammatical/incomplete Tamil with no clear meaning.
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 54 words; need 130-200 (full-detail reel, about 60-80 seconds)
-ok gemini/gemini-3.6-flash (20s)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (0s)
-factcheck by groq/qwen/qwen3.8-27b: 3 problems
-  Headline and caption claim the camp runs until 'Oct 30' (அக். 30 / அக்டோபர் 30), but the article only states '30' without specifying the month; adding 'October' is an invented detail.
-  Reel script and slides claim the camp will be held in 'all Anganwadi centers' (மாவட்டத்தின் அனைத்து அங்கன்வாடி மையங்களிலும்), but the article only mentions the camp was held at the Silambatti Anganwadi center and does not explicitly state it is happening in all centers in the district.
-  Caption invents a start date of 'October 27' (அக்டோபர் 27), which is not present in the article.
-attempt 1 gemini/gemini-3.6-flash: 3 problems
-  fact-check: Headline and caption claim the camp runs until 'Oct 30' (அக். 30 / அக்டோபர் 30), but the article only states '30' without specifying the month; adding 'October' is an invented detail.
-  fact-check: Reel script and slides claim the camp will be held in 'all Anganwadi centers' (மாவட்டத்தின் அனைத்து அங்கன்வாடி மையங்களிலும்), but the article only mentions the camp was held at the Silambatti Anganwadi center and does not explicitly state it is happening in all centers in the district.
-  fact-check: Caption invents a start date of 'October 27' (அக்டோபர் 27), which is not present in the article.
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  not grounded: location 'பரமத்தி' is not in the article
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (3s)
-proofread by groq/qwen/qwen3.8-27b: 1 problems
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 7 problems
-  reel_script says the camp 'நடைபெறுகிறது' / caption says it 'நடைபெற்றது' (held) while also saying 'முகாம் தொடங்கியது' (started); the article describes it as held and then gives 30 as the end date, but 'முகாம் 30 வரை நடைபெறும்' is attributed in the article to the camp running until the 30th, which is fine — however the slides say 'தகவலுக்கு அங்கன்வாடி மையத்தை அணுகுங்கள்' and 'குழந்தைகளை அழைத்துச் செல்லுங்கள்', which are not in the article
-  slides_spec 'முகாம் நாட்கள்' slide and caption say the camp is 'பொது சுகாதாரம்... சார்பில்' correctly, but the reel_script says 'முகாம் 30 வரை நடைபெறும்' with no month, while the article's date is ambiguous; no month is stated in article either, so the date 30 is an incomplete claim in both reel and slides
-  caption states 'தேசிய அளவில்' as part of the camp description, which is in the article, but the caption's 'வைட்டமின் ஏ திரவம் வழங்கப்படுகிறது' (headline) conflates the one-time camp with the twice-yearly schedule, mixing two facts in one sentence
-  reel_script 'வைட்டமின் ஏ பார்வைக்கு தேவைப்படும் முக்கிய சத்து' mixes the nutrient's role with the camp description in a way that is ungrammatical; the article says விழித்திரைக்கு (retina), so 'பார்வைக்கு' is a distortion of the source's meaning
-  reel_script says 'முகாம் தொடங்கியது' (camp started) and headline claims a camp 'வழங்கும்' (providing) while the article does not say the drops were given at the camp itself; the 90,703 figure is a 'வழங்கப்பட உள்ளது' (to be given) plan, but the reel and caption present it as already occurring
-  caption omits the article's note that Doctor/district officials (மாவட்ட திட்ட அலுவலர் போர்ஷியா ரூபி) attended, which is an important detail of who was involved, while the slides invent 'அங்கன்வாடி மையத்தை அணுகுங்கள்' guidance not in article
-  slides_spec 'ஏன் முக்கியம்?' slide lists 'தட்டம்மை' as a result of deficiency, which the article lists as a problem; but the claim that deficiency causes 'கண் பாதிப்பு, தட்டம்மை' is presented as direct causation, while the article only lists these among problems linked to the deficiency
-claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
-  fact-check: reel_script says the camp 'நடைபெறுகிறது' / caption says it 'நடைபெற்றது' (held) while also saying 'முகாம் தொடங்கியது' (started); the article describes it as held and then gives 30 as the end date, but 'முகாம் 30 வரை நடைபெறும்' is attributed in the article to the camp running until the 30th, which is fine — however the slides say 'தகவலுக்கு அங்கன்வாடி மையத்தை அணுகுங்கள்' and 'குழந்தைகளை அழைத்துச் செல்லுங்கள்', which are not in the article
-  fact-check: slides_spec 'முகாம் நாட்கள்' slide and caption say the camp is 'பொது சுகாதாரம்... சார்பில்' correctly, but the reel_script says 'முகாம் 30 வரை நடைபெறும்' with no month, while the article's date is ambiguous; no month is stated in article either, so the date 30 is an incomplete claim in both reel and slides
-  fact-check: caption states 'தேசிய அளவில்' as part of the camp description, which is in the article, but the caption's 'வைட்டமின் ஏ திரவம் வழங்கப்படுகிறது' (headline) conflates the one-time camp with the twice-yearly schedule, mixing two facts in one sentence
-  fact-check: reel_script 'வைட்டமின் ஏ பார்வைக்கு தேவைப்படும் முக்கிய சத்து' mixes the nutrient's role with the camp description in a way that is ungrammatical; the article says விழித்திரைக்கு (retina), so 'பார்வைக்கு' is a distortion of the source's meaning
-  fact-check: reel_script says 'முகாம் தொடங்கியது' (camp started) and headline claims a camp 'வழங்கும்' (providing) while the article does not say the drops were given at the camp itself; the 90,703 figure is a 'வழங்கப்பட உள்ளது' (to be given) plan, but the reel and caption present it as already occurring
-  fact-check: caption omits the article's note that Doctor/district officials (மாவட்ட திட்ட அலுவலர் போர்ஷியா ரூபி) attended, which is an important detail of who was involved, while the slides invent 'அங்கன்வாடி மையத்தை அணுகுங்கள்' guidance not in article
-  fact-check: slides_spec 'ஏன் முக்கியம்?' slide lists 'தட்டம்மை' as a result of deficiency, which the article lists as a problem; but the claim that deficiency causes 'கண் பாதிப்பு, தட்டம்மை' is presented as direct causation, while the article only lists these among problems linked to the deficiency
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 2 problems
-  The article says the Tamil Nadu health minister (Arunraj) gave guidance for the volunteer work, but the reel_script and caption omit this; the article does not say the minister gave the rain coats, so no claim is wrong, but the minister's involvement is an important fact missing from the reel_script.
-  The article names the rain coats as given by the college secretaries; the draft's caption and reel_script are consistent, but the slides_spec line 'பக்தர்கள் கல்லூரி நிர்வாகத்தைப் பாராட்டினர்' calls the institutions 'கல்லூரி நிர்வாகம்' (college administration), which is a slight role mismatch since the article calls them educational institutions (கல்வி நிறுவனங்கள்), not necessarily colleges.
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  fact-check: The article says the Tamil Nadu health minister (Arunraj) gave guidance for the volunteer work, but the reel_script and caption omit this; the article does not say the minister gave the rain coats, so no claim is wrong, but the minister's involvement is an important fact missing from the reel_script.
-  fact-check: The article names the rain coats as given by the college secretaries; the draft's caption and reel_script are consistent, but the slides_spec line 'பக்தர்கள் கல்லூரி நிர்வாகத்தைப் பாராட்டினர்' calls the institutions 'கல்லூரி நிர்வாகம்' (college administration), which is a slight role mismatch since the article calls them educational institutions (கல்வி நிறுவனங்கள்), not necessarily colleges.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The article says the camp runs until the 30th, but the draft's reel_script and slides say 'முகாம் 30 வரை நடைபெறும்' without the article's clarity; this is consistent, so not a problem. However, the article says the 'Nation-level' camp (தேசிய அளவில்) is run by the public health and disease prevention medicine department; the draft says the same, so no problem there.
-  The draft's slides_spec line 'கலெக்டர் மதுபாலன் தலைமையில் தொடங்கியது' (began under the leadership of Collector Madhubalan) is consistent with the article's 'முகாமை தொடங்கி வைத்தார்' context, so it is not a problem.
-  The reel_script omits the article's mention that the district project officer Porshia Ruby and other government officials took part, an important detail of who attended, which is missing from the reel_script (it appears only in the caption).
+  The article says the meeting is on the 30th at 4:30 pm, but does not specify the month or that it is 'the 30th of this month'; the draft's 'வரும் 30ஆம் தேதி' is acceptable, but the caption's claim of 'அனைத்து விவசாய சங்கப் பிரதிநிதிகளும்' is fine; no real error found in dates.
+  The article states the meeting is chaired by Collector Madhubalan and that farmers' demands were the basis, which the draft reflects; however the reel_script states the meeting is held 'to find a solution' while the article says measures 'will be taken' - minor wording.
+  Caption states the meeting is held 'விவசாயிகளின் கோரிக்கையின் அடிப்படையில்' which matches the article; no invented facts found in the caption body.
 claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The article says the camp runs until the 30th, but the draft's reel_script and slides say 'முகாம் 30 வரை நடைபெறும்' without the article's clarity; this is consistent, so not a problem. However, the article says the 'Nation-level' camp (தேசிய அளவில்) is run by the public health and disease prevention medicine department; the draft says the same, so no problem there.
-  fact-check: The draft's slides_spec line 'கலெக்டர் மதுபாலன் தலைமையில் தொடங்கியது' (began under the leadership of Collector Madhubalan) is consistent with the article's 'முகாமை தொடங்கி வைத்தார்' context, so it is not a problem.
-  fact-check: The reel_script omits the article's mention that the district project officer Porshia Ruby and other government officials took part, an important detail of who attended, which is missing from the reel_script (it appears only in the caption).
+  fact-check: The article says the meeting is on the 30th at 4:30 pm, but does not specify the month or that it is 'the 30th of this month'; the draft's 'வரும் 30ஆம் தேதி' is acceptable, but the caption's claim of 'அனைத்து விவசாய சங்கப் பிரதிநிதிகளும்' is fine; no real error found in dates.
+  fact-check: The article states the meeting is chaired by Collector Madhubalan and that farmers' demands were the basis, which the draft reflects; however the reel_script states the meeting is held 'to find a solution' while the article says measures 'will be taken' - minor wording.
+  fact-check: Caption states the meeting is held 'விவசாயிகளின் கோரிக்கையின் அடிப்படையில்' which matches the article; no invented facts found in the caption body.
 ok anthropic/claude-haiku-5-5
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  The reel_script and caption attribute the minister's guidance to 'சுகாதாரம், மருத்துவ கல்வி மற்றும் குடும்ப நலத்துறை அமைச்சர் அருண்ராஜ்' — the article names him as the minister of health, medical education and family welfare, which matches, so this is fine; however the reel_script and caption say the minister's guidance applies to the service, which is consistent with the article.
-  The reel_script states the service is 'ஜூன் முதல் ஒவ்வொரு மாதமும்' and the caption says the same; the article says the service started in June and happens every full-moon month, which matches.
-  The slides_spec line 'கிரிவலத்தில் தன்னார்வலர்களாகப் பணியாற்றுகின்றனர்' and 'ஜூன் முதல் ஒவ்வொரு மாதமும் பவுர்ணமியில் சேவை' are consistent with the article.
-  The caption's '🗓️ நாள்: நேற்று முன்தினம்' is a relative date from the posting date, which is acceptable per the rules.
-  The reel_script omits the key article fact that students from the named institutions (Sengunthar, Shanmuga, KSR, Vidya Vikas) are the volunteers; it only mentions 'மாணவர்கள', which is a minor omission but the institutions are named in the slides_spec only.
-  The reel_script says 'மழையில் நனையாமல் பணியாற்ற' which is a reasonable paraphrase of the article's purpose.
-claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: The reel_script and caption attribute the minister's guidance to 'சுகாதாரம், மருத்துவ கல்வி மற்றும் குடும்ப நலத்துறை அமைச்சர் அருண்ராஜ்' — the article names him as the minister of health, medical education and family welfare, which matches, so this is fine; however the reel_script and caption say the minister's guidance applies to the service, which is consistent with the article.
-  fact-check: The reel_script states the service is 'ஜூன் முதல் ஒவ்வொரு மாதமும்' and the caption says the same; the article says the service started in June and happens every full-moon month, which matches.
-  fact-check: The slides_spec line 'கிரிவலத்தில் தன்னார்வலர்களாகப் பணியாற்றுகின்றனர்' and 'ஜூன் முதல் ஒவ்வொரு மாதமும் பவுர்ணமியில் சேவை' are consistent with the article.
-  fact-check: The caption's '🗓️ நாள்: நேற்று முன்தினம்' is a relative date from the posting date, which is acceptable per the rules.
-  fact-check: The reel_script omits the key article fact that students from the named institutions (Sengunthar, Shanmuga, KSR, Vidya Vikas) are the volunteers; it only mentions 'மாணவர்கள', which is a minor omission but the institutions are named in the slides_spec only.
-  fact-check: The reel_script says 'மழையில் நனையாமல் பணியாற்ற' which is a reasonable paraphrase of the article's purpose.
-proofread skipped: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  reel_script must have no English letters (write English words and abbreviations in Tamil script)
-proofread skipped: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Drain encroachment floods 30 acres of cr'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-0622","first":"RN-132"}
-posting job started at once
-writing [N]: தனியாா் பேருந்து மோதி 
-தொழிலாளி உயிரிழப்பு
-free models unavailable: free models not efficient (5 failures in a row): using Claude
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 5 problems
-  Slide 1 line says the private bus hit the two-wheeler and then the line is cut off ('தனியார்') and the 'hit' fact is split across lines in a way that leaves the sentence incomplete/ungrammatical in context.
-  Caption states '🗓️ நாள்: 22 அக்டோபர் 2026 (விபத்து)' - the article only says the accident happened on the 22nd, with no month or year; the month and year are invented.
-  Caption states the injured man received first aid at Namakkal Government Medical College Hospital, which is in the article, but caption says he was 'admitted' to a private hospital in Salem for further treatment; the article says he was treated there, consistent, but the caption's claim that he was 'சேர்க்கப்பட்டார்' is acceptable - no issue there.
-  Slide 3 line 'சாலையில் வாகனம் ஓட்டும்போது கவனமாக இருங்கள்' is an added advisory not present in the article.
-  Reel script omits the key fact that the victim was Sabarinathan by name is included, but it omits the name entirely while the article names him; the important identifying fact (name of the deceased) is missing from the reel_script.
-claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: Slide 1 line says the private bus hit the two-wheeler and then the line is cut off ('தனியார்') and the 'hit' fact is split across lines in a way that leaves the sentence incomplete/ungrammatical in context.
-  fact-check: Caption states '🗓️ நாள்: 22 அக்டோபர் 2026 (விபத்து)' - the article only says the accident happened on the 22nd, with no month or year; the month and year are invented.
-  fact-check: Caption states the injured man received first aid at Namakkal Government Medical College Hospital, which is in the article, but caption says he was 'admitted' to a private hospital in Salem for further treatment; the article says he was treated there, consistent, but the caption's claim that he was 'சேர்க்கப்பட்டார்' is acceptable - no issue there.
-  fact-check: Slide 3 line 'சாலையில் வாகனம் ஓட்டும்போது கவனமாக இருங்கள்' is an added advisory not present in the article.
-  fact-check: Reel script omits the key fact that the victim was Sabarinathan by name is included, but it omits the name entirely while the article names him; the important identifying fact (name of the deceased) is missing from the reel_script.
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Namakkal: Vitamin A camp for children ag'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-0622","first":"RN-133"}
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  The article says the victim was taken to Namakkal government medical college hospital for first aid and then sent to a private hospital in Salem; the draft says he received first aid at Namakkal and then treatment at a Salem private hospital. This matches, so no problem there.
-  The reel_script and slides say the victim 'died on Sunday' after treatment; the article says he died on Sunday at the Salem hospital. Consistent.
-  The caption's 'நடவடிக்கை' line and the 🗓️ line label 22-ஆம் தேதி as the accident date without a month; the article also gives no month, so this is not an added detail, but the caption and slides describe the accident as happening on 22 while the reel says 'கடந்த 22-ஆம் தேதி', which matches the article.
-  The reel_script says the victim was 'சின்னசீரகபாடியைச் சேர்ந்த' and 'இருசக்கர வாகனத்தில் மணிகட்டிபுதூர் வழியாகச் சென்றபோது' - both match the article.
-  The article states the accident was caused by a private bus hitting the two-wheeler, and the draft matches that.
-  Missing fact: the reel_script omits that the victim was taken to hospital by people who came by and that the accident caused a head injury leading to death; the reel does mention head injury. No significant omission identified.
-claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: The article says the victim was taken to Namakkal government medical college hospital for first aid and then sent to a private hospital in Salem; the draft says he received first aid at Namakkal and then treatment at a Salem private hospital. This matches, so no problem there.
-  fact-check: The reel_script and slides say the victim 'died on Sunday' after treatment; the article says he died on Sunday at the Salem hospital. Consistent.
-  fact-check: The caption's 'நடவடிக்கை' line and the 🗓️ line label 22-ஆம் தேதி as the accident date without a month; the article also gives no month, so this is not an added detail, but the caption and slides describe the accident as happening on 22 while the reel says 'கடந்த 22-ஆம் தேதி', which matches the article.
-  fact-check: The reel_script says the victim was 'சின்னசீரகபாடியைச் சேர்ந்த' and 'இருசக்கர வாகனத்தில் மணிகட்டிபுதூர் வழியாகச் சென்றபோது' - both match the article.
-  fact-check: The article states the accident was caused by a private bus hitting the two-wheeler, and the draft matches that.
-  fact-check: Missing fact: the reel_script omits that the victim was taken to hospital by people who came by and that the accident caused a head injury leading to death; the reel does mention head injury. No significant omission identified.
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  slides_spec.hl2 states 'அக். 22' (October 22), but the article only says '22-ஆம் தேதி' with no month; the month is an invented detail
-  slides_spec.hl2 and slides_spec.slides 'ஞாயிறு' is consistent, but the reel_script and caption say the victim died 'ஞாயிற்றுக்கிழமை' which the article does state, so no issue there; however the caption describes the victim as having 'காயமடைந்தார்' and then says first aid was received at Namakkal hospital, which is accurate, so no extra problem there
-  slides_spec.slides[0] line 'இருசக்கர வாகனத்தில் சென்ற கூலித் தொழிலாளி காயம்' omits that the motorcycle was hit by a private bus; the bus collision is mentioned but the slide wording mixes the cause and the injury into one line unclearly
-  caption states 'நடவடிக்கை: வேலகவுண்டம்பட்டி போலீஸார் வழக்குப் பதிவு செய்து விசாரணை' which is accurate, but the caption's 'விபத்து நாள்: 22-ஆம் தேதி' omits the month that the article also does not give, so the date is incomplete rather than invented; the slide's 'அக். 22' is the invented part
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: slides_spec.hl2 states 'அக். 22' (October 22), but the article only says '22-ஆம் தேதி' with no month; the month is an invented detail
-  fact-check: slides_spec.hl2 and slides_spec.slides 'ஞாயிறு' is consistent, but the reel_script and caption say the victim died 'ஞாயிற்றுக்கிழமை' which the article does state, so no issue there; however the caption describes the victim as having 'காயமடைந்தார்' and then says first aid was received at Namakkal hospital, which is accurate, so no extra problem there
-  fact-check: slides_spec.slides[0] line 'இருசக்கர வாகனத்தில் சென்ற கூலித் தொழிலாளி காயம்' omits that the motorcycle was hit by a private bus; the bus collision is mentioned but the slide wording mixes the cause and the injury into one line unclearly
-  fact-check: caption states 'நடவடிக்கை: வேலகவுண்டம்பட்டி போலீஸார் வழக்குப் பதிவு செய்து விசாரணை' which is accurate, but the caption's 'விபத்து நாள்: 22-ஆம் தேதி' omits the month that the article also does not give, so the date is incomplete rather than invented; the slide's 'அக். 22' is the invented part
-proofread skipped: free models not efficient (5 failures in a row): using Claude
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Students volunteering at Tiruchengode Gi'
-ok anthropic/claude-haiku-5-5
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-0623","first":"RN-134"}
-writing [N]: பழைய ஓய்வூதிய திட்டம் அமல்படுத்த கோரிக்கை
-free models unavailable: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The article says the two government orders were issued and the expert committee report was withheld from the public; the reel_script's claim that the report 'was not released to the public' is consistent, but the slide line 'ஓய்வூதியத் திட்டம் தொடர்பாக இரண்டு அரசு உத்தரவுகள் வெளியானன' contains an ungrammatical word ('வெளியானன' is not a valid form, should be 'வெளியாகியுள்ளன')
-  The slide 'அரசின் நிலை' omits the key point that the petition accuses the government of concealing the expert committee report, which caused dissatisfaction among government employees and teachers; the slide only says the report was not released and teachers are dissatisfied, mixing the cause and effect without the article's attribution to the government concealing it
-  The reel_script states the petition was sent 'from Namakkal', but the article only gives Namakkal as the dateline; the source of the petition location is not explicitly stated as the petitioner's place (minor inference, not clearly supported)
-  The reel_script says the petition demands the TOPS scheme be cancelled and the old pension scheme implemented, while the article says the TVK election promise was to examine and evaluate reinstating the old pension scheme; the draft presents the TOPS cancellation as a firm demand without the article's 'after review and proper assessment' qualifier, slightly overstating the claim
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The article says the two government orders were issued and the expert committee report was withheld from the public; the reel_script's claim that the report 'was not released to the public' is consistent, but the slide line 'ஓய்வூதியத் திட்டம் தொடர்பாக இரண்டு அரசு உத்தரவுகள் வெளியானன' contains an ungrammatical word ('வெளியானன' is not a valid form, should be 'வெளியாகியுள்ளன')
-  fact-check: The slide 'அரசின் நிலை' omits the key point that the petition accuses the government of concealing the expert committee report, which caused dissatisfaction among government employees and teachers; the slide only says the report was not released and teachers are dissatisfied, mixing the cause and effect without the article's attribution to the government concealing it
-  fact-check: The reel_script states the petition was sent 'from Namakkal', but the article only gives Namakkal as the dateline; the source of the petition location is not explicitly stated as the petitioner's place (minor inference, not clearly supported)
-  fact-check: The reel_script says the petition demands the TOPS scheme be cancelled and the old pension scheme implemented, while the article says the TVK election promise was to examine and evaluate reinstating the old pension scheme; the draft presents the TOPS cancellation as a firm demand without the article's 'after review and proper assessment' qualifier, slightly overstating the claim
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Labourer dies after private bus hits his'
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 9 problems
-  reel_script says the Top's/TAPS scheme was 'DMK government's' — article says DMK government introduced it, which matches; no issue there
-  reel_script says 'அரசு உறுதியளித்த ஓய்வூதியத் திட்டத்தை மட்டுமே' and slide says the government 'focuses only on implementing the assured pension scheme' — the article actually says the government is focusing only on implementing the pension scheme it promised, which is consistent, but the reel_script omits that the TVK promised to implement old pension scheme in its election manifesto (the article's core complaint that the government deviated from its own promise is only partly conveyed)
-  reel_script says 'தி மு க அரசின் டாப்ஸ் திட்டத்தை ரத்து செய்யவும் அவர் கோரியுள்ளார்' — article says the TAPS scheme introduced by DMK should be cancelled, consistent
-  slides_spec 'என்ன வாக்குறுதி?' slide line 'ஆனால் அரசு உறுதியளித்த ஓய்வூதியத் திட்டத்தை மட்டுமே' is an incomplete/ungrammatical sentence with no clear meaning in Tamil (missing the verb, e.g. 'நடைமுறைப்படுத்துவதில் மட்டுமே கவனம் செலுத்துகிறது')
-  reel_script sentence 'அடிப்படையான வல்லுநர் குழு அறிக்கை பொதுமக்களுக்கு வெளியிடப்படவில்லை' mis-describes the article: the report is the basis of the two government orders and is being withheld from the public, but the word 'அடிப்படையான' is attached oddly; the meaning is roughly right but the slide line 'அடிப்படையான வல்லுநர் குழு அறிக்கை பொதுமக்களுக்கு' is cut off and lacks the verb, making it unclear
-  slides_spec 'அரசின் நிலை' line 'ஓய்வூதியத் திட்டம் தொடர்பாக இரண்டு அரசு உத்தரவுகள்' is an incomplete sentence with no verb, so its meaning is unclear
-  slides_spec 'யார் கோரிக்கை?' first line 'நேரடி நியமன முதுநிலை பட்டதாரி ஆசிரியர்கள் சங்க மாநிலத்' is cut off mid-title (missing 'தலைவர் ராமு'), giving an incomplete and misleading subject
-  slides_spec 'கோரிக்கை' line 'வாக்குறுதிப்படி நடவடிக்கை எடுக்கக் கோரிக்கை' is a garbled phrase, and the 'வாக்குறுதி' point is attributed as a demand without clear meaning
-  reel_script omits the article's key point that the TVK election manifesto itself promised to consider implementing the old pension scheme (it is mentioned only vaguely as 'த வெ க தேர்தல் வாக்குறுதியில் கூறப்பட்டிருந்தது' without the 'modify/evaluate' cause context), and omits that the request is addressed to the Chief Minister's election-campaign promise
-claude rewrite 2 anthropic/claude-haiku-5-5: 9 problems
-  fact-check: reel_script says the Top's/TAPS scheme was 'DMK government's' — article says DMK government introduced it, which matches; no issue there
-  fact-check: reel_script says 'அரசு உறுதியளித்த ஓய்வூதியத் திட்டத்தை மட்டுமே' and slide says the government 'focuses only on implementing the assured pension scheme' — the article actually says the government is focusing only on implementing the pension scheme it promised, which is consistent, but the reel_script omits that the TVK promised to implement old pension scheme in its election manifesto (the article's core complaint that the government deviated from its own promise is only partly conveyed)
-  fact-check: reel_script says 'தி மு க அரசின் டாப்ஸ் திட்டத்தை ரத்து செய்யவும் அவர் கோரியுள்ளார்' — article says the TAPS scheme introduced by DMK should be cancelled, consistent
-  fact-check: slides_spec 'என்ன வாக்குறுதி?' slide line 'ஆனால் அரசு உறுதியளித்த ஓய்வூதியத் திட்டத்தை மட்டுமே' is an incomplete/ungrammatical sentence with no clear meaning in Tamil (missing the verb, e.g. 'நடைமுறைப்படுத்துவதில் மட்டுமே கவனம் செலுத்துகிறது')
-  fact-check: reel_script sentence 'அடிப்படையான வல்லுநர் குழு அறிக்கை பொதுமக்களுக்கு வெளியிடப்படவில்லை' mis-describes the article: the report is the basis of the two government orders and is being withheld from the public, but the word 'அடிப்படையான' is attached oddly; the meaning is roughly right but the slide line 'அடிப்படையான வல்லுநர் குழு அறிக்கை பொதுமக்களுக்கு' is cut off and lacks the verb, making it unclear
-  fact-check: slides_spec 'அரசின் நிலை' line 'ஓய்வூதியத் திட்டம் தொடர்பாக இரண்டு அரசு உத்தரவுகள்' is an incomplete sentence with no verb, so its meaning is unclear
-  fact-check: slides_spec 'யார் கோரிக்கை?' first line 'நேரடி நியமன முதுநிலை பட்டதாரி ஆசிரியர்கள் சங்க மாநிலத்' is cut off mid-title (missing 'தலைவர் ராமு'), giving an incomplete and misleading subject
-  fact-check: slides_spec 'கோரிக்கை' line 'வாக்குறுதிப்படி நடவடிக்கை எடுக்கக் கோரிக்கை' is a garbled phrase, and the 'வாக்குறுதி' point is attributed as a demand without clear meaning
-  fact-check: reel_script omits the article's key point that the TVK election manifesto itself promised to consider implementing the old pension scheme (it is mentioned only vaguely as 'த வெ க தேர்தல் வாக்குறுதியில் கூறப்பட்டிருந்தது' without the 'modify/evaluate' cause context), and omits that the request is addressed to the Chief Minister's election-campaign promise
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-0623","first":"RN-135"}
-writing [N]: 100 ஆண்டுகளான புளியமரம் சாலையின் குறுக்கே சாய்ந்தது
-free models unavailable: free models not efficient (5 failures in a row): using Claude
-writing [N]: புகையிலை விற்ற 2 பேருக்கு காப்பு
-free models unavailable: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 52 words; need 130-200 (full-detail reel, about 60-80 seconds)
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  reel_script says 'தி மு க அரசின் டாப்ஸ் திட்டத்தை ரத்து செய்ய வேண்டும்' — the article says the TOPS scheme introduced by DMK should be cancelled as part of the request; this is consistent, but the slide 'என்ன கோரிக்கை?' and reel_script present it fine — no issue here
-  slides_spec 'ஏன்?' slide says 'அரசு அதை நடைமுறைப்படுத்துவதில் கவனம் குறைவு' — the article says the government is focusing only on implementing the pension scheme (the opposite), and the complaint is that it deviates from the election promise; the slide's claim of 'கவனம் குறைவு' (low attention) is not in the article
-  slides_spec 'ஏன்?' slide omits the actual reason stated in the article: the government is focusing only on implementing the pension scheme contrary to its promise, which is a misrepresentation of the grievance
-  reel_script says 'பழைய ஓய்வூதியத் திட்டத்தை உடனடியாக அமல்படுத்த வேண்டும்' and the article says the demand is for immediate action — consistent
-  reel_script states the TVK/த.வெ.க. promise as 'பரிசீலிப்பதாக' (will consider), which matches the article, but the caption/reel omit that the petition says the government is focusing only on implementing the scheme contrary to the promise (the key grievance)
-  reel_script omits the important fact that the petition is sent by the state president Ramu of the union and that the demand was sent to the Tamil Nadu Chief Minister — present; however the reel omits that the expert committee report is being hidden from public view by the government, stated only as 'வெளியிடப்படவில்லை' without the claim that the government is concealing it
-claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: reel_script says 'தி மு க அரசின் டாப்ஸ் திட்டத்தை ரத்து செய்ய வேண்டும்' — the article says the TOPS scheme introduced by DMK should be cancelled as part of the request; this is consistent, but the slide 'என்ன கோரிக்கை?' and reel_script present it fine — no issue here
-  fact-check: slides_spec 'ஏன்?' slide says 'அரசு அதை நடைமுறைப்படுத்துவதில் கவனம் குறைவு' — the article says the government is focusing only on implementing the pension scheme (the opposite), and the complaint is that it deviates from the election promise; the slide's claim of 'கவனம் குறைவு' (low attention) is not in the article
-  fact-check: slides_spec 'ஏன்?' slide omits the actual reason stated in the article: the government is focusing only on implementing the pension scheme contrary to its promise, which is a misrepresentation of the grievance
-  fact-check: reel_script says 'பழைய ஓய்வூதியத் திட்டத்தை உடனடியாக அமல்படுத்த வேண்டும்' and the article says the demand is for immediate action — consistent
-  fact-check: reel_script states the TVK/த.வெ.க. promise as 'பரிசீலிப்பதாக' (will consider), which matches the article, but the caption/reel omit that the petition says the government is focusing only on implementing the scheme contrary to the promise (the key grievance)
-  fact-check: reel_script omits the important fact that the petition is sent by the state president Ramu of the union and that the demand was sent to the Tamil Nadu Chief Minister — present; however the reel omits that the expert committee report is being hidden from public view by the government, stated only as 'வெளியிடப்படவில்லை' without the claim that the government is concealing it
-proofread skipped: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The reel_script says the two men were arrested for selling banned tobacco products ("தடை செய்யப்பட்ட புகையிலை விற்ற"), but the article only says the products were stored/hidden (பதுக்கி வைக்கப்பட்டிருந்தது) and that the men were arrested; it does not say they were caught selling. The headline and caption share the same 'selling' claim.
-  The slides_spec and caption describe the seizure as banned products 'விற்பனை' and the 'தொடர் நடவடிக்கை' (continued action against sellers) on slide 3 is an invented claim not in the article.
-  The caption's 'Share' call-to-action and the 'தடை செய்யப்பட்ட பொருட்களை விற்பனை செய்ய வேண்டாம்' warning are added content not present in the article.
-  The reel_script states the police team 'conducted intensive searches at various places' and the search found hoarded products, but the article does not specify that the tobacco was found in Mohanur alone; the 'Mohanur' location framing in the headline (புகையிலை பதுக்கல்) is acceptable, but the reel_script's 'மோகனூரில் ... விற்ற இருவர்' places the selling in Mohanur, which the article does not state.
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The reel_script says the two men were arrested for selling banned tobacco products ("தடை செய்யப்பட்ட புகையிலை விற்ற"), but the article only says the products were stored/hidden (பதுக்கி வைக்கப்பட்டிருந்தது) and that the men were arrested; it does not say they were caught selling. The headline and caption share the same 'selling' claim.
-  fact-check: The slides_spec and caption describe the seizure as banned products 'விற்பனை' and the 'தொடர் நடவடிக்கை' (continued action against sellers) on slide 3 is an invented claim not in the article.
-  fact-check: The caption's 'Share' call-to-action and the 'தடை செய்யப்பட்ட பொருட்களை விற்பனை செய்ய வேண்டாம்' warning are added content not present in the article.
-  fact-check: The reel_script states the police team 'conducted intensive searches at various places' and the search found hoarded products, but the article does not specify that the tobacco was found in Mohanur alone; the 'Mohanur' location framing in the headline (புகையிலை பதுக்கல்) is acceptable, but the reel_script's 'மோகனூரில் ... விற்ற இருவர்' places the selling in Mohanur, which the article does not state.
-ok anthropic/claude-haiku-5-5
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  Reel script and slides say the tree fell 'near Kuppanaickenur bypass' area, which is roughly consistent, but the slides and headline say 'Senthamangalam' while the article places it in Kuppanaickenur near Senthamangalam — minor, acceptable.
-  Slide 'உயிரிழப்பு இல்லை' (no deaths) is a claim the article does not make; the article only says no mishap ('அசம்பாவிதம் ஏதும் நடக்கவில்லை') occurred due to early morning timing.
-  Reel script and caption say the tree fell 'across the road' (சாலையின் குறுக்கே) and slides say 'சாலையில் சாய்ந்தது'; the article says it fell on the road near the bypass — acceptable.
-  Caption says the tree was 'on both sides of the road' (சாலையின் இருபுறமும் வளர்ந்திருந்த) — the article says trees grow on both sides of the road in the area, not that this specific tree did; this conflates the area description with the fallen tree.
-  Caption and reel script say the 'சாரல் மழை' started at 8 PM the day before, but the reel script omits the nuance that heavy rain caused waterlogging; the reel also states rain 'தொடங்கியது' at 8 PM as a fact about the Senthamangalam area, which is supported, but the caption wrongly attributes waterlogging to the 'சாரல் மழை' that started at 8 PM — conflating two facts.
-  Caption date line '26 அக்டோபர் 2026' is the posting date, which is excluded from checking; however the caption's '🗓️ நாள்' line presents it as the event date, which is a date claim not supported by the article (the article gives only 'நேற்று அதிகாலை').
-claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: Reel script and slides say the tree fell 'near Kuppanaickenur bypass' area, which is roughly consistent, but the slides and headline say 'Senthamangalam' while the article places it in Kuppanaickenur near Senthamangalam — minor, acceptable.
-  fact-check: Slide 'உயிரிழப்பு இல்லை' (no deaths) is a claim the article does not make; the article only says no mishap ('அசம்பாவிதம் ஏதும் நடக்கவில்லை') occurred due to early morning timing.
-  fact-check: Reel script and caption say the tree fell 'across the road' (சாலையின் குறுக்கே) and slides say 'சாலையில் சாய்ந்தது'; the article says it fell on the road near the bypass — acceptable.
-  fact-check: Caption says the tree was 'on both sides of the road' (சாலையின் இருபுறமும் வளர்ந்திருந்த) — the article says trees grow on both sides of the road in the area, not that this specific tree did; this conflates the area description with the fallen tree.
-  fact-check: Caption and reel script say the 'சாரல் மழை' started at 8 PM the day before, but the reel script omits the nuance that heavy rain caused waterlogging; the reel also states rain 'தொடங்கியது' at 8 PM as a fact about the Senthamangalam area, which is supported, but the caption wrongly attributes waterlogging to the 'சாரல் மழை' that started at 8 PM — conflating two facts.
-  fact-check: Caption date line '26 அக்டோபர் 2026' is the posting date, which is excluded from checking; however the caption's '🗓️ நாள்' line presents it as the event date, which is a date claim not supported by the article (the article gives only 'நேற்று அதிகாலை').
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The slides_spec 'என்ன நடந்தது?' slide line 'தகவலின் அடிப்படையில் சோதனை நடந்தது' is redundant but not a factual error; however the slide line 'தடை செய்யப்பட்ட புகையிலை பொருட்கள் பதுக்கி' is an ungrammatical/incomplete sentence with no clear meaning (missing verb/object such as 'வைக்கப்பட்டிருந்தது').
-  The slides_spec 'யார் கைது?' slide line 'பரளி பஞ்சாயத்து, நல்லையம்பட்டி கண்ணன் (33)' mixes the two persons' details and omits that the person is from Nallaiyampatti (article says 'பரளி பஞ்., நல்-லையம்பட்டியை சேர்ந்த கண்ணன், 33'), which is acceptable, but the slide line 'குன்னிப்பாளையம் யோகராஜ்' omits the note that he is from Kunnipalayam, which is fine; no factual change there.
-  The slides_spec 'பறிமுதல்' slide says 'எஸ்.ஐ. செல்வம் தலைமையிலான போலீசார் நடவடிக்கை' placed under seizure, mixing the raid/action with the seizure fact, so two different facts are mixed into one slide section.
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The slides_spec 'என்ன நடந்தது?' slide line 'தகவலின் அடிப்படையில் சோதனை நடந்தது' is redundant but not a factual error; however the slide line 'தடை செய்யப்பட்ட புகையிலை பொருட்கள் பதுக்கி' is an ungrammatical/incomplete sentence with no clear meaning (missing verb/object such as 'வைக்கப்பட்டிருந்தது').
-  fact-check: The slides_spec 'யார் கைது?' slide line 'பரளி பஞ்சாயத்து, நல்லையம்பட்டி கண்ணன் (33)' mixes the two persons' details and omits that the person is from Nallaiyampatti (article says 'பரளி பஞ்., நல்-லையம்பட்டியை சேர்ந்த கண்ணன், 33'), which is acceptable, but the slide line 'குன்னிப்பாளையம் யோகராஜ்' omits the note that he is from Kunnipalayam, which is fine; no factual change there.
-  fact-check: The slides_spec 'பறிமுதல்' slide says 'எஸ்.ஐ. செல்வம் தலைமையிலான போலீசார் நடவடிக்கை' placed under seizure, mixing the raid/action with the seizure fact, so two different facts are mixed into one slide section.
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 1 problems
-  The article says the two men were arrested and the police seized tobacco products and two motorbikes, which the draft states. However, the draft's reel_script and slides_spec use 'காவல் உதவி ஆய்வாளர்' (sub-inspector) for எஸ்.ஐ., which is an acceptable expansion, so no error there. Upon full check, no fabricated facts were found in the headline, reel_script, slides_spec or caption; all places, names, ages, numbers and actions match the article.
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  fact-check: The article says the two men were arrested and the police seized tobacco products and two motorbikes, which the draft states. However, the draft's reel_script and slides_spec use 'காவல் உதவி ஆய்வாளர்' (sub-inspector) for எஸ்.ஐ., which is an acceptable expansion, so no error there. Upon full check, no fabricated facts were found in the headline, reel_script, slides_spec or caption; all places, names, ages, numbers and actions match the article.
-proofread skipped: free models not efficient (5 failures in a row): using Claude
-images made: 3 for 'Namakkal teachers' union urges Chief Min'
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  slides_spec.slides 'மக்கள் நிலை' line 'மழையால் சாலைகளில் சாரல் மழை தொடர்கிறது' is not stated in the article; it adds an invented claim about road conditions
-  slides_spec.slides 'அதிகாரிகள்' line 'நெடுஞ்சாலைத்துறையினர் சம்பவ இடத்திற்கு விரைந்தனர்' is an embellished detail; the article only says they went to the spot after being informed (தகவலறிந்து சென்ற), so 'விரைந்தனர்' (rushed) is not stated
-  slides_spec.cat 'சாலை விபத்து தடுப்பு' (road accident prevention) is not supported: no accident or prevention measure is described in the article
-  reel_script says the incident happened 'near the Kuppanayakkanur bypass' and 'the tree fell on the road' - acceptable, but the reel_script omits the key fact that the tree fell uprooted (வேரோடு சாய்ந்து) and that it was a 100-year-old tree being removed by machine is present; however the reel_script claims rain 'is continuing' in the sentence about heavy rain, which mixes the rain context with the tree incident without a clear causal link stated in the article (the article does not say the rain caused the fall)
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: slides_spec.slides 'மக்கள் நிலை' line 'மழையால் சாலைகளில் சாரல் மழை தொடர்கிறது' is not stated in the article; it adds an invented claim about road conditions
-  fact-check: slides_spec.slides 'அதிகாரிகள்' line 'நெடுஞ்சாலைத்துறையினர் சம்பவ இடத்திற்கு விரைந்தனர்' is an embellished detail; the article only says they went to the spot after being informed (தகவலறிந்து சென்ற), so 'விரைந்தனர்' (rushed) is not stated
-  fact-check: slides_spec.cat 'சாலை விபத்து தடுப்பு' (road accident prevention) is not supported: no accident or prevention measure is described in the article
-  fact-check: reel_script says the incident happened 'near the Kuppanayakkanur bypass' and 'the tree fell on the road' - acceptable, but the reel_script omits the key fact that the tree fell uprooted (வேரோடு சாய்ந்து) and that it was a 100-year-old tree being removed by machine is present; however the reel_script claims rain 'is continuing' in the sentence about heavy rain, which mixes the rain context with the tree incident without a clear causal link stated in the article (the article does not say the rain caused the fall)
-proofread skipped: free models not efficient (5 failures in a row): using Claude
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-0624","first":"RN-136"}
-ok anthropic/claude-haiku-5-5
-writing [N]: திருச்செங்கோடு நகராட்சியில் ஊழல் எதிர்ப்பு உறுதிமொழி
-free models unavailable: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 56 words; need 130-200 (full-detail reel, about 60-80 seconds)
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Two arrested in Mohanur for selling bann'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-0624","first":"RN-137"}
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 2 problems
-  The caption's 'நடவடிக்கை' line claims an action of 'ஊழல் தொடர்பான நிகழ்வுகளை உரிய அதிகார அமைப்புக்குத் தெரிவிக்க உறுதி' as if it were an outcome; the article only states this as part of the pledge text read out, not a concrete action taken.
-  The caption says the pledge was 'எடுத்துக்கொள்ளப்பட்டது' and then that 'அனைவரும் உறுதியேற்றனர்' while the article says everyone 'வழிமொழிந்தனர்' (endorsed/repeated it); the caption's 'உறுதியேற்றனர்' overstates the wording used in the article.
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  fact-check: The caption's 'நடவடிக்கை' line claims an action of 'ஊழல் தொடர்பான நிகழ்வுகளை உரிய அதிகார அமைப்புக்குத் தெரிவிக்க உறுதி' as if it were an outcome; the article only states this as part of the pledge text read out, not a concrete action taken.
-  fact-check: The caption says the pledge was 'எடுத்துக்கொள்ளப்பட்டது' and then that 'அனைவரும் உறுதியேற்றனர்' while the article says everyone 'வழிமொழிந்தனர்' (endorsed/repeated it); the caption's 'உறுதியேற்றனர்' overstates the wording used in the article.
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 56 words; need 130-200 (full-detail reel, about 60-80 seconds)
-proofread skipped: free models not efficient (5 failures in a row): using Claude
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for '100-year-old tamarind tree falls across '
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-0624","first":"RN-138"}
+  The article does not say the meeting is in the Namakkal district collector's office as 'நாமக்கல் கலெக்டர் அலுவலகம்' only; this is consistent, so no issue there. However, the slides_spec line 'கலெக்டர் மதுபாலன் தலைமையில் நடக்கிறது' repeats the same fact and is fine.
+  The slides_spec line 'இடர்பாடுகளை களைய நடவடிக்கை எடுக்கப்படும்' and the 'விவசாயிகளுக்கு' slide are fine, but the caption's 'Namakkal tapioca farmers meeting on 30th' English line gives no month and is unsupported only in wording, not in fact.
+  The slides_spec 'hl2' and slide text say 'வரும் 30 மாலை 4:30 மணி' without the month or 'தேதி'; the reel_script says 'வரும் 30ஆம் தேதி', which is an acceptable reading of 'வரும், 30'.
+  The reel_script says 'மரவள்ளி விவசாயிகளின் பிரச்னைகளுக்குத் தீர்வு காண ... கூட்டம் நடைபெறுகிறது' which accurately reflects the article; no invented detail found.
+  The reel_script omits the article's note that the meeting will discuss farmers' demands and improve their livelihood, which is a minor omission; the core facts (time, place, chair, participants, purpose) are present.
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The article does not say the meeting is in the Namakkal district collector's office as 'நாமக்கல் கலெக்டர் அலுவலகம்' only; this is consistent, so no issue there. However, the slides_spec line 'கலெக்டர் மதுபாலன் தலைமையில் நடக்கிறது' repeats the same fact and is fine.
+  fact-check: The slides_spec line 'இடர்பாடுகளை களைய நடவடிக்கை எடுக்கப்படும்' and the 'விவசாயிகளுக்கு' slide are fine, but the caption's 'Namakkal tapioca farmers meeting on 30th' English line gives no month and is unsupported only in wording, not in fact.
+  fact-check: The slides_spec 'hl2' and slide text say 'வரும் 30 மாலை 4:30 மணி' without the month or 'தேதி'; the reel_script says 'வரும் 30ஆம் தேதி', which is an acceptable reading of 'வரும், 30'.
+  fact-check: The reel_script says 'மரவள்ளி விவசாயிகளின் பிரச்னைகளுக்குத் தீர்வு காண ... கூட்டம் நடைபெறுகிறது' which accurately reflects the article; no invented detail found.
+  fact-check: The reel_script omits the article's note that the meeting will discuss farmers' demands and improve their livelihood, which is a minor omission; the core facts (time, place, chair, participants, purpose) are present.
+proofread skipped: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Anti-corruption pledge taken at Tiruchen'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-0625","first":"RN-139"}
+images made: 3 for 'Tripartite meeting on Oct 30 to resolve '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-1014","first":"RN-140"}
+posting job started at once
 earlier stories still waiting for images: []
 instagram check: 70 recent posts read from both pages
-write round: 18 news waiting in the queue (written in priority order)
-candidate filter: collected=13, already filed=5
-to write: 0 Rasipuram + 13 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 13 Namakkal; time left 29 min
+write round: 12 news waiting in the queue (written in priority order)
+candidate filter: already filed=7, collected=5
+to write: 0 Rasipuram + 5 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 5 Namakkal; time left 29 min
 try (N) manual=False: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
-try (N) manual=False: கொட்டும் மழையில் சேவை மாணவர்களுக்கு ரெயின் கோட்
-try (N) manual=False: மழைநீர் வடிகால் ஆக்கிரமிப்பால் 30 ஏக்கர் பயிர் நீரில் மூழ்கி
-skip (N) similar to a filed story: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
-try (N) manual=False: 6 மாதம் முதல் 5 வயது குழந்தைகளுக்கு வைட்டமின் ஏ குறைபாடு தடு
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3})
-posting job started at once
-try (N) manual=False: தனியாா் பேருந்து மோதி 
-தொழிலாளி உயிரிழப்பு
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 6})
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 9})
-try (N) manual=False: பழைய ஓய்வூதிய திட்டம் அமல்படுத்த கோரிக்கை
 try (N) manual=False: எக்ஸல் மருந்தியல் கல்லூரி போலியோ விழிப்புணர்வு பேரணி
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 12})
-try (N) manual=False: 100 ஆண்டுகளான புளியமரம் சாலையின் குறுக்கே சாய்ந்தது
+try (N) manual=False: மரவள்ளி விவசாயிகள் பிரச்னை வரும் 30ல் முத்தரப்பு கூட்டம்
+skip (N) similar to a filed story: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
+try (N) manual=False: சன்ன ரக அரிசி விற்பனை புகாரளிக்க வாட்ஸாப் எண்
 skip (N) similar to a filed story: எக்ஸல் மருந்தியல் கல்லூரி போலியோ விழிப்புணர்வு பேர
-try (N) manual=False: நாமக்கல் நீதிமன்றத்திலிருந்து 
-தப்பியோடிய கைதி பிடிப்பு
-skip (N) similar to a filed story: நாமக்கல் நீதிமன்றத்திலிருந்து 
-தப்பியோடிய கைதி பிட
 try (N) manual=False: விபத்தில் காயமடைந்தவருக்கு 
 உதவிய அமைச்சா்
 skip (N) similar to a filed story: விபத்தில் காயமடைந்தவருக்கு 
 உதவிய அமைச்சா்
-try (N) manual=False: புகையிலை விற்ற 2 பேருக்கு காப்பு
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 15})
-try (N) manual=False: சன்ன ரக அரிசி விற்பனை புகாரளிக்க வாட்ஸாப் எண்
 skip (N) similar to a filed story: சன்ன ரக அரிசி விற்பனை புகாரளிக்க வாட்ஸாப் எண்
-try (N) manual=False: திருச்செங்கோடு நகராட்சியில் ஊழல் எதிர்ப்பு உறுதிமொழி
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 18})
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 21})
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 24})
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 13}, done={'R': 0, 'N': 8}, time left 24 min
-carousel for 0 of 8 stories, the rest reel only
-filed: 0 Rasipuram + 8 Namakkal (targets 200 + 200)
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 5}, done={'R': 0, 'N': 1}, time left 26 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":8} 
-stories: 8
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 1
