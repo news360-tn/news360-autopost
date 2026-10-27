@@ -84,5 +84,20 @@
     "outro_voice": "en-IN-Chirp3-HD-Charon",
     "note": "owner 27 Oct: Google Charon reads EVERY reel, ONLY inside Google's free allowance (1 million characters a month); the code stops at 700,000 (safety margin: some usage records can be lost when posting jobs save at the same time), then Valluvar until the 1st; Valluvar also whenever Google fails. Never paid. Needs secret GOOGLE_TTS_API_KEY",
     "free_chars_per_month": 700000
+  },
+  "prime_time": {
+    "enabled": true,
+    "windows": [
+      [
+        "09:00",
+        "12:00"
+      ],
+      [
+        "18:00",
+        "21:30"
+      ]
+    ],
+    "max_wait_hours": 12,
+    "note": "owner 27 Oct: non-urgent reels wait for the high-view times (insights: 9-12 and 18-21:30 IST); urgent news posts at once; nothing is ever dropped - a reel that has waited max_wait_hours posts at once"
   }
 }

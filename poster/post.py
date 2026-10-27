@@ -88,6 +88,37 @@ def _bridge_post(action, payload):
 
 
 # ---------------------------------------------------------------- selection
+# ---- prime time (owner 27 Oct): non-urgent reels go out in the high-view hours; urgent news never waits; nothing is dropped
+URGENT = re.compile(r"மின்\s*தடை|மின்தடை|power\s*(cut|shut)|விபத்து|மோதி|உயிரிழ|பலி|accident|died|கனமழை|மழை\s*எச்சரிக்கை|எச்சரிக்கை|"
+                    r"alert|warning|flood|வெள்ள|ஆட்சியர்|கலெக்டர்|collector|அறிவிப்பு|announce|முகாம்|camp|வேலைவாய்ப்பு|ஆட்சேர்ப்பு|"
+                    r"recruit|job|விண்ணப்ப|apply|கடைசி\s*நாள்|last\s*date|deadline|இன்று|நாளை|today|tomorrow|தேர்வு|exam|result|"
+                    r"தீ\s*விபத்து|fire|காணவில்லை|missing|சாலை\s*மறியல்|traffic\s*diversion|போக்குவரத்து\s*மாற்றம்", re.I)
+
+
+def prime_urgent(row):
+    """time-sensitive news (power cut, accident, rain warning, Collector / Govt notice, jobs, exam, today / tomorrow) never waits"""
+    return bool(URGENT.search(f"{row.get('headline_ta', '')} {row.get('headline_en', '')} {row.get('category', '')}"))
+
+
+def in_prime_time(now=None):
+    now = now or datetime.now(IST)
+    hm = now.strftime("%H:%M")
+    return any(a <= hm < b for a, b in (CONFIG.get("prime_time") or {}).get("windows", []))
+
+
+def prime_wait(row, now=None):
+    """'' = post now. Otherwise why this reel waits (a high-view window is coming). Urgent news and reels that have already
+    waited max_wait_hours never wait, so every news still goes out."""
+    pt = CONFIG.get("prime_time") or {}
+    if not pt.get("enabled") or prime_urgent(row) or is_urgent(row) or in_prime_time(now):
+        return ""
+    waited = age_hours(row)
+    if waited is not None and waited >= float(pt.get("max_wait_hours", 12)):
+        return ""
+    nxt = next((a for a, b in sorted(pt.get("windows", [])) if a > (now or datetime.now(IST)).strftime("%H:%M")), (pt.get("windows") or [["09:00"]])[0][0])
+    return f"waits for prime time ({nxt} IST)"
+
+
 def age_hours(row):
     for key in ("researched", "published"):
         v = (row.get(key) or "").lstrip("'").replace(" IST", "").strip()
@@ -1306,9 +1337,13 @@ def main():
                     if full:
                         log("Instagram 24-hour limit reached for", sorted(full), "- their stories wait (nothing is dropped)")
                     left = {p: TOTAL[p] - USED[p] for p in TOTAL if p in USED}      # posts this page may still make in the 24-hour window
-                    ids = []
+                    ids, waiting = [], []
                     for r in (pick_all(rows) if n else []):
                         pg = [p for p in pages_of(r) if not page_done(r, p) and p not in full and left.get(p, 1) > 0]
+                        why = prime_wait(r)
+                        if pg and why:
+                            waiting.append(r["story_id"]); log("  ", r["story_id"], why)
+                            continue
                         if pg and len(ids) < 12:
                             ids.append(r["story_id"])
                             for p in pg:
@@ -1316,7 +1351,7 @@ def main():
                     inc = [{"story": i, "slot": k * 6, "prebuild": ""} for k, i in enumerate(ids)]
                     # stories whose set has not started yet: make the carousel/reel ahead, so they go out the moment it starts
                     urgent = set(ids)
-                    pre = [r["story_id"] for r in rows if ready(r) and r["story_id"] not in urgent and not set_started(r) and not all(cache_path(r["story_id"], p).exists() for p in pages_of(r) if not page_done(r, p))][:3]
+                    pre = [r["story_id"] for r in rows if ready(r) and r["story_id"] not in urgent and (not set_started(r) or r["story_id"] in waiting) and not all(cache_path(r["story_id"], p).exists() for p in pages_of(r) if not page_done(r, p))][:12]      # waiting reels are made ahead, so they go out the minute prime time starts
                     inc += [{"story": i, "slot": 0, "prebuild": "1"} for i in pre]
                     if pre:
                         log("prebuilding ahead of the set start:", pre)

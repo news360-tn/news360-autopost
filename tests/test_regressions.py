@@ -208,6 +208,33 @@ class Images(unittest.TestCase):
         self.assertNotEqual("1", os.environ.get("REUSE_IMAGES"), "older pictures are never reused")
 
 
+class PrimeTime(unittest.TestCase):
+    """owner 27 Oct: non-urgent reels wait for 9-12 / 18-21:30; urgent news never waits; nothing is ever dropped"""
+    def at(self, h, m=0):
+        return datetime.datetime.combine(TODAY, datetime.time(h, m), IST)
+
+    def row(self, title, filed_h_ago=1):
+        t = datetime.datetime.now(IST) - datetime.timedelta(hours=filed_h_ago)
+        return {"story_id": "RN-T", "headline_ta": title, "headline_en": "", "category": "", "researched": t.strftime("%d %b %Y, %H:%M")}
+
+    def test_urgent_never_waits(self):
+        for title in ("காளப்பநாயக்கன்பட்டி பகுதியில் நாளை மின் தடை", "தனியார் பேருந்து மோதி தொழிலாளி உயிரிழப்பு",
+                      "நாமக்கல் மாவட்டத்தில் கனமழை எச்சரிக்கை", "ஆட்சியர் அறிவிப்பு: சிறப்பு முகாம்"):
+            self.assertEqual("", post.prime_wait(self.row(title), self.at(14)), title)
+
+    def test_other_news_waits_outside_prime_time(self):
+        self.assertIn("prime time", post.prime_wait(self.row("கோவில் கும்பாபிஷேக விழா"), self.at(14)))
+        self.assertIn("18:00", post.prime_wait(self.row("கோவில் கும்பாபிஷேக விழா"), self.at(14)))
+        self.assertIn("09:00", post.prime_wait(self.row("கோவில் கும்பாபிஷேக விழா"), self.at(23)))
+
+    def test_posts_inside_prime_time(self):
+        self.assertEqual("", post.prime_wait(self.row("கோவில் கும்பாபிஷேக விழா"), self.at(10)))
+        self.assertEqual("", post.prime_wait(self.row("கோவில் கும்பாபிஷேக விழா"), self.at(19, 30)))
+
+    def test_never_dropped_after_long_wait(self):      # a reel that has waited 12 hours goes out whatever the hour
+        self.assertEqual("", post.prime_wait(self.row("கோவில் கும்பாபிஷேக விழா", filed_h_ago=13), self.at(3)))
+
+
 class Website(unittest.TestCase):
     """owner 27 Oct: every posted story goes to the website with all its details; a website problem never stops posting"""
     def test_payload_has_everything(self):
