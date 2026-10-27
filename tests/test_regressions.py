@@ -245,6 +245,34 @@ class ReelOpening(unittest.TestCase):
         self.assertTrue(json.loads((ROOT / "poster" / "config.json").read_text()).get("reel_punch"))
 
 
+class ReelWords(unittest.TestCase):
+    """owner 27 Oct: no double reading, full dates, everyday Tamil Nadu words in voice, subtitles and cards"""
+    ns = None
+
+    @classmethod
+    def setUpClass(cls):
+        cls.ns = from_file(ROOT / "reel" / "reel4.py", {"everyday", "everyday_on", "EVERYDAY", "fix_dates", "MONTHS_TA", "repeats", "_words", "punch_line"})
+
+    def test_everyday_words(self):
+        e = self.ns["everyday"]
+        self.assertEqual("தனியார் பஸ் மோதி டூவீலரில் சென்ற", e("தனியார் பேருந்து மோதி இருசக்கர வாகனத்தில் சென்ற"))
+        self.assertEqual("மாவட்ட கலெக்டர் மதுபாலன், கலெக்டரிடம் மனு", e("மாவட்ட ஆட்சியர் மதுபாலன், ஆட்சியரிடம் மனு"))
+        self.assertEqual("போலீசார் விசாரணை", e("காவல்துறையினர் விசாரணை"))
+        self.assertEqual("திமுக ஆட்சியில்", e("திமுக ஆட்சியில்"))      # 'in rule' is not 'Collector'
+
+    def test_full_dates(self):
+        f, T = self.ns["fix_dates"], datetime.date(2026, 10, 27)
+        self.assertEqual("முகாம் அக்டோபர் 30ஆம் தேதி வரை நடைபெறும்.", f("முகாம் <b>30</b> வரை நடைபெறும்.", T))
+        self.assertEqual("அக்டோபர் 22ஆம் தேதி மணிகட்டிபுதூர்", f("22-ஆம் தேதி மணிகட்டிபுதூர்", T))
+        for keep in ("அக்டோபர் 28 அன்று", "மாலை 4:30 வரை", "10.30 வரை", "5 வயது வரையுள்ள"):
+            self.assertEqual(keep, f(keep, T))
+
+    def test_no_double_reading(self):
+        self.assertTrue(self.ns["repeats"]("தனியார் பஸ் மோதி தொழிலாளி பலி!", "வேலகவுண்டம்பட்டி அருகே தனியார் பஸ் மோதி ஒரு கூலித் தொழிலாளி உயிரிழந்தார்."))
+        self.assertFalse(self.ns["repeats"]("நாளை மின் தடை!", "ராசிபுரம் துணை மின் நிலையத்தில் பராமரிப்பு பணி நடைபெறுகிறது."))
+        self.assertEqual("தனியார் பேருந்து மோதி தொழிலாளி பலி!", self.ns["punch_line"]({"hook": ["தனியார் பேருந்து மோதி தொழிலாளி பலி", "22 விபத்து, ஞாயிறு"]}))
+
+
 class Website(unittest.TestCase):
     """owner 27 Oct: every posted story goes to the website with all its details; a website problem never stops posting"""
     def test_payload_has_everything(self):

@@ -229,6 +229,8 @@ def google_say(text, voice, lang, rate=None):
     if not key:
         raise RuntimeError("GOOGLE_TTS_API_KEY not set")
     body = {"input": {"text": text}, "voice": {"languageCode": lang, "name": voice}, "audioConfig": {"audioEncoding": "MP3"}}
+    if text.count(",") >= 3:      # fix 3: a long list ("மீன், முட்டை, இறைச்சி, ...") gets a short pause after each item
+        body["input"] = {"markup": re.sub(r",\s*", ", [pause short] ", text)}
     if rate:
         body["audioConfig"]["speakingRate"] = rate
     last = None
@@ -237,6 +239,9 @@ def google_say(text, voice, lang, rate=None):
         if r.status_code == 200 and r.json().get("audioContent"):
             return base64.b64decode(r.json()["audioContent"])
         last = f"google tts {r.status_code}: {r.text[:200]}"
+        if r.status_code == 400 and "markup" in body["input"]:
+            body["input"] = {"text": text}      # this voice does not take pause marks: plain text
+            continue
         if r.status_code == 400 and "speakingRate" in body["audioConfig"]:
             body["audioConfig"].pop("speakingRate")      # a voice without speed control: its normal speed
             continue
@@ -327,6 +332,61 @@ def pick_voice(spec):
     return vs, None
 
 
+# ---- owner 27 Oct: words Tamil Nadu says in everyday English, not formal Tamil (voice + subtitles; headline cards stay as written)
+EVERYDAY = [("காவல்துறையினர்", "போலீசார்"), ("காவலர்கள்", "போலீசார்"), ("போலீஸார்", "போலீசார்"), ("காவல் நிலைய", "போலீஸ் ஸ்டேஷன்"),
+            ("காவல் ஆய்வாளர்", "இன்ஸ்பெக்டர்"), ("ஆட்சியர", "கலெக்டர"), ("பேருந்து நிலைய", "பஸ் ஸ்டாண்ட்"), ("பேருந்தில்", "பஸ்ஸில்"),
+            ("பேருந்துகள்", "பஸ்கள்"), ("பேருந்து", "பஸ்"), ("இருசக்கர வாகனத்தில்", "டூவீலரில்"), ("இருசக்கர வாகனங்கள்", "டூவீலர்கள்"),
+            ("இருசக்கர வாகனம்", "டூவீலர்"), ("இருசக்கர வாகன", "டூவீலர்")]
+
+
+def everyday(t):
+    if not t or not everyday_on():
+        return t
+    for a, b in EVERYDAY:
+        t = t.replace(a, b)
+    return t
+
+
+def everyday_on():
+    try:
+        return bool(json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text()).get("reel_everyday_words", True))
+    except Exception:
+        return True
+
+
+MONTHS_TA = ["ஜனவரி", "பிப்ரவரி", "மார்ச்", "ஏப்ரல்", "மே", "ஜூன்", "ஜூலை", "ஆகஸ்ட்", "செப்டம்பர்", "அக்டோபர்", "நவம்பர்", "டிசம்பர்"]
+
+
+def fix_dates(t, today=None):
+    """fix 2: a date without its month ("22-ஆம் தேதி", "30 வரை") is read with the month ("அக்டோபர் 22ஆம் தேதி")"""
+    import datetime
+    today = today or datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=5, minutes=30))).date()
+    def month_for(d, until):
+        cands = []
+        for k in (-1, 0, 1):
+            m = (today.month - 1 + k) % 12 + 1
+            y = today.year + ((today.month - 1 + k) // 12)
+            try:
+                cands.append(datetime.date(y, m, d))
+            except ValueError:
+                pass
+        if until:      # "... வரை" is about the coming days
+            fut = [c for c in cands if c >= today]
+            cands = fut or cands
+        return min(cands, key=lambda c: abs((c - today).days)).month
+    def rep(m):
+        pre = t[max(0, m.start() - 14):m.start()]
+        if any(x in pre for x in MONTHS_TA) or re.search(r"\d[./-]\s*$", pre):
+            return m.group(0)
+        d = int(m.group(1))
+        if not 1 <= d <= 31:
+            return m.group(0)
+        until = bool(m.group(3))
+        return f"{MONTHS_TA[month_for(d, until) - 1]} {d}ஆம் தேதி" + (" வரை" if until else "")
+    t2 = re.sub(r"(?<![\d:.,])(?:<b>)?(\d{1,2})(?:</b>)?\s*-?\s*(?:(ம்|ஆம்)\s*தேதி|(?=\s*வரை))(\s*வரை)?", rep, t)
+    return t2
+
+
 def punch_on():
     """change 1 (strong 2-second opening): on when poster/config.json "reel_punch" is true, or REEL_PUNCH=1 (sample renders)"""
     if os.environ.get("REEL_PUNCH") in ("0", "1"):
@@ -343,9 +403,19 @@ def punch_line(spec):
     if spec.get("punch"):
         return re.sub(r"<[^>]+>", "", str(spec["punch"])).strip()
     h1, h2 = (re.sub(r"<[^>]+>", "", str(x or "")).strip() for x in (spec.get("hook") or ["", ""])[:2])
-    if h2 and re.search(r"\d", h2) and h1 and len(h2) <= 24:
-        return f"{h2} {h1}!"
+    if h2 and h1 and re.fullmatch(r"(ரூ\.?\s*|₹\s*)?[\d,.]+\s*(%|பேர்|பேருக்கு|ஏக்கர்|கோடி|லட்சம்|டன்|மி\.?மீ\.?|கி\.?மீ\.?)?", h2):
+        return f"{h2} {h1}!"      # "90,703 குழந்தைகளுக்கு வைட்டமின் ஏ முகாம்!"
     return f"{h1}!" if h1 else ""
+
+
+def _words(t):
+    return {w[:5] for w in re.findall(r"[\u0B80-\u0BFF\w]{3,}", re.sub(r"<[^>]+>", "", t))}
+
+
+def repeats(punch, first):
+    """fix 1: the one-line story already says what the punch line says -> the punch is not spoken (no double reading)"""
+    a, b = _words(punch), _words(first)
+    return bool(a) and len(a & b) / len(a) >= 0.6
 
 
 def voice_setting():
@@ -498,7 +568,24 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     work = Path(out_mp4).with_suffix("")
     work = work.parent / (work.name + "_work"); work.mkdir(parents=True, exist_ok=True)
     sents, outro = spec["sentences"], spec["outro"]
-    punch = punch_line(spec) if punch_on() else ""
+    sents = [dict(x, say=everyday(fix_dates(x["say"])), caption=everyday(fix_dates(x.get("caption", x["say"])))) for x in sents]
+    # owner 27 Oct: the on-screen cards use the same everyday words as the voice (headline, number line, fact cards, summary)
+    spec["hook"] = [everyday(h) for h in (spec.get("hook") or ["", ""])]
+    if spec.get("mini"):
+        spec["mini"] = everyday(spec["mini"])
+    for x in sents:
+        for k in ("fact", "card"):
+            v = x.get(k)
+            if isinstance(v, str):
+                x[k] = everyday(fix_dates(v))
+            elif isinstance(v, dict) and v.get("text"):
+                x[k] = dict(v, text=everyday(fix_dates(v["text"])))
+    if spec.get("summary"):
+        spec["summary"] = [dict(r, text=everyday(r.get("text", ""))) if isinstance(r, dict) else r for r in spec["summary"]]
+    punch = everyday(punch_line(spec)) if punch_on() else ""
+    if punch and sents and repeats(punch, sents[0]["say"]):
+        print("opening: the one-line story already says it - read at once with the big headline (no double reading):", punch)
+        punch = ""
     if punch:      # owner 27 Oct (change 1): the most striking fact is SPOKEN first (~2 s) while the big headline + number are on screen
         sents = [{"say": punch, "caption": punch, "fact": ""}] + sents
         print("opening punch line:", punch)
