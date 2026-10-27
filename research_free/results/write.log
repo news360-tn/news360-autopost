@@ -1,372 +1,141 @@
-writing [R]: தொடர் மழையால் மஞ்சள் ஏலம் ரத்து
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-writing [N]: எருமப்பட்டியில் தொடர் கைவரிசை 4 வாலிபர்களிடம் போலீஸ் விசாரணை
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-writing [N]: முதியவர் தீக்குளிக்க முயற்சி கலெக்டர் ஆபீசில் பரபரப்பு
+writing [N]: ஓமலூரில் காணாமல் போன 4 பள்ளி சிறுவர்கள் குமாரபாளையத்தில் மீட
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
   "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.8-flash
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.8-flash for 10 min
 fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.7-flash
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.8-flash
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.8-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
 switching away from gemini/gemini-3.6-flash for 10 min
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-switching away from groq/openai/gpt-oss-120b for 10 min
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-ok gemini/gemini-3.6-flash (36s)
+ok groq/openai/gpt-oss-120b (7s)
+attempt 1 groq/openai/gpt-oss-120b: 3 problems
+  missing key: reel_script
+  missing key: caption
+  missing key: scenes
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (0s)
-factcheck by groq/qwen/qwen3.8-27b: 3 problems
-  The caption explicitly states the theft dates were in October ('அக்டோபர் 13, 14, 15, 16'), but the article does not mention the month, only the days (13, 14, 15, 16).
-  The reel_script states the police registered a case ('வழக்குப்பதிவு செய்து'), but the article only mentions they were investigating ('விசாரித்து வந்தனர்') and does not explicitly state a case was registered at that stage.
-  The reel_script describes the 17-year-old as having escaped from the 'Chengalpattu correctional school' generally, whereas the article specifies he was in the 'Chengalpattu Juvenile Correctional School' ('சிறுவர் சீர்திருத்த பள்ளி') and escaped in May; the draft omits the specific 'Juvenile' designation and the month of escape, though this is a minor detail, the main issue is the October date in the caption.
-attempt 1 gemini/gemini-3.6-flash: 3 problems
-  fact-check: The caption explicitly states the theft dates were in October ('அக்டோபர் 13, 14, 15, 16'), but the article does not mention the month, only the days (13, 14, 15, 16).
-  fact-check: The reel_script states the police registered a case ('வழக்குப்பதிவு செய்து'), but the article only mentions they were investigating ('விசாரித்து வந்தனர்') and does not explicitly state a case was registered at that stage.
-  fact-check: The reel_script describes the 17-year-old as having escaped from the 'Chengalpattu correctional school' generally, whereas the article specifies he was in the 'Chengalpattu Juvenile Correctional School' ('சிறுவர் சீர்திருத்த பள்ளி') and escaped in May; the draft omits the specific 'Juvenile' designation and the month of escape, though this is a minor detail, the main issue is the October date in the caption.
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (73s)
+attempt 2 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 4 problems
+  reel_script must have no English letters (write English words and abbreviations in Tamil script)
+  reel_script has 32 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  caption needs 5 hashtags (Instagram max), has 6
+  not grounded: only 36% of the words come from the article (e.g. மீடப்பட்டனர், போனது, குறித்து, அவர்களின், குடும்பத்தினர்); use the article's own words and facts
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (87s)
+attempt 3 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 2 problems
+  reel_script has 50 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  not grounded: only 30% of the words come from the article (e.g. இருந்து, போயினர், அவர்களின், குடும்பத்தினர், கவலை); use the article's own words and facts
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (66s)
-attempt 1 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
-  reel_script has 55 words; need 130-200 (full-detail reel, about 60-80 seconds)
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (75s)
+attempt 4 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 3 problems
+  reel_script has 41 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  caption needs 5 hashtags (Instagram max), has 6
+  not grounded: only 44% of the words come from the article (e.g. போயினர், தொடர்பாக, குடும்பத்தினர், கவலையடைந்தனர், பின்னர்); use the article's own words and facts
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (71s)
+attempt 5 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 2 problems
+  reel_script has 34 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  not grounded: only 26% of the words come from the article (e.g. போயினர், தொடர்பாக, விசாரணைகள், நடந்தன, பின்னர்); use the article's own words and facts
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (77s)
-attempt 2 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 1 problems
-  reel_script has 58 words; need 130-200 (full-detail reel, about 60-80 seconds)
+attempt 6 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 4 problems
+  reel_script must have no English letters (write English words and abbreviations in Tamil script)
+  reel_script has 46 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  caption needs 5 hashtags (Instagram max), has 6
+  not grounded: only 28% of the words come from the article (e.g. தொடர்பாக, விசாரணைகள், நடந்தன, தகவல், தெரிய); use the article's own words and facts
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: HTTPSConnectionPool(host='api.cloudflare.com', port=443): Read timed out. (read timeout=90)
 poor answer - skipped for 30 min: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (21s)
+attempt 7 cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: 3 problems
+  reel_script has 31 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  not grounded: location 'ராசிபுரம்' is not in the article
+  not grounded: only 44% of the words come from the article (e.g. போனார்கள், இன்று, காலை, மணிக்கு, போனார்கள்); use the article's own words and facts
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (24s)
+attempt 8 cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: 2 problems
+  reel_script has 37 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  not grounded: only 32% of the words come from the article (e.g. போனார்கள், இவர்கள், மாணவர்கள், இவர்கள், சாலையில்); use the article's own words and facts
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: HTTPSConnectionPool(host='api.cloudflare.com', port=443): Read timed out. (read timeout=90)
-poor answer - skipped for 30 min: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (26s)
+ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (22s)
+attempt 9 cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: 2 problems
+  reel_script has 43 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  not grounded: only 28% of the words come from the article (e.g. இவர்கள், படிக்கிறார்கள், இவர்கள், தங்கள், வீட்டில்); use the article's own words and facts
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast (81s)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/qwen/qwen3.8-27b (0s)
-factcheck by groq/qwen/qwen3.8-27b: 2 problems
-  reel_script states the youths are from 'Erumpatti, Namagripettai area' (எருமப்பட்டி, நாமகிரிப்பேட்டை பகுதியை சேர்ந்தவர்கள்), but the article says they are from Erumpatti and were staying in 'Thanneerbandalkadu near Namagripettai' (நாமகிரிப்பேட்டை அடுத்த தண்ணீர்பந்தல்காடு பகுதியில் தங்கி). The draft conflates their residence with their temporary stay location.
-  slides_spec slide 2 states they are from 'Erumpatti, Namagripettai area', repeating the same geographical inaccuracy as the reel_script.
-attempt 3 cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: 2 problems
-  fact-check: reel_script states the youths are from 'Erumpatti, Namagripettai area' (எருமப்பட்டி, நாமகிரிப்பேட்டை பகுதியை சேர்ந்தவர்கள்), but the article says they are from Erumpatti and were staying in 'Thanneerbandalkadu near Namagripettai' (நாமகிரிப்பேட்டை அடுத்த தண்ணீர்பந்தல்காடு பகுதியில் தங்கி). The draft conflates their residence with their temporary stay location.
-  fact-check: slides_spec slide 2 states they are from 'Erumpatti, Namagripettai area', repeating the same geographical inaccuracy as the reel_script.
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: Unterminated string starting at: line 1 column 13454 (char 13453)
-poor answer - skipped for 30 min: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-switching away from mistral/mistral-small-latest for 10 min
-free fact-check unavailable, using Claude: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit ex
+ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (18s)
+attempt 10 cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: 2 problems
+  reel_script has 40 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  not grounded: only 40% of the words come from the article (e.g. போனதில், நேற்று, காலை, மணிக்கு, மாணவர்கள்); use the article's own words and facts
 ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 7 problems
-  reel_script says the elderly man lives in 'சந்திரகிரி பகுதி' while the article says he is from Sandhirakiri (Chandrakiri) in Arasanatham panchayat; the caption also repeats this as a residence detail, which matches the article loosely but the slides say 'சந்திரகிரி' as a location of the incident context — minor, but the reel_script attributes the place as residence correctly; no clear error here.
-  reel_script says the police 'தடுக்கினர்' (ungrammatical; should be தடுத்து நிறுத்தினர்), and the sentence has no clear meaning as written.
-  reel_script and slides say the land-grab attempt was by 'சிலர்' (unspecified people); the article says people came in a tractor and car on Sept 20 to break the stones — the vehicle detail is missing, but this is an omission rather than an error.
-  slides_spec states 'போலீஸ், தாசில்தார், வி.ஏ.ஓ. புகார் கேட்டுக்கொள்ளவில்லை' — this is ungrammatical and inaccurate; the article says complaints were filed with them and no action was taken, not that they failed to hear complaints.
-  slides_spec 'நடவடிக்கை' slide says 'மருத்துவமனைக்கு அனுப்பப்பட்டார்' without naming the hospital (Namakkal Government Medical College Hospital) and by ambulance; the hospital detail is omitted.
-  slides_spec 'நிலப்பிரச்சினை' slide line 'செப்டம்பர் 20ல் நிலத்தை அபகரிக்க முயன்றவர்கள்' mixes the attempt on the land with the date without stating what they did (broke stone markers), combining two facts into one line.
-  reel_script 'இன்று (அக்டோபர், 27)' and caption 'அக்., 27' are consistent with the article's date, so no problem there; however the reel_script omits that the man was taken to the hospital by ambulance, a key outcome of the event.
-attempt 1 cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: 7 problems
-  fact-check: reel_script says the elderly man lives in 'சந்திரகிரி பகுதி' while the article says he is from Sandhirakiri (Chandrakiri) in Arasanatham panchayat; the caption also repeats this as a residence detail, which matches the article loosely but the slides say 'சந்திரகிரி' as a location of the incident context — minor, but the reel_script attributes the place as residence correctly; no clear error here.
-  fact-check: reel_script says the police 'தடுக்கினர்' (ungrammatical; should be தடுத்து நிறுத்தினர்), and the sentence has no clear meaning as written.
-  fact-check: reel_script and slides say the land-grab attempt was by 'சிலர்' (unspecified people); the article says people came in a tractor and car on Sept 20 to break the stones — the vehicle detail is missing, but this is an omission rather than an error.
-  fact-check: slides_spec states 'போலீஸ், தாசில்தார், வி.ஏ.ஓ. புகார் கேட்டுக்கொள்ளவில்லை' — this is ungrammatical and inaccurate; the article says complaints were filed with them and no action was taken, not that they failed to hear complaints.
-  fact-check: slides_spec 'நடவடிக்கை' slide says 'மருத்துவமனைக்கு அனுப்பப்பட்டார்' without naming the hospital (Namakkal Government Medical College Hospital) and by ambulance; the hospital detail is omitted.
-  fact-check: slides_spec 'நிலப்பிரச்சினை' slide line 'செப்டம்பர் 20ல் நிலத்தை அபகரிக்க முயன்றவர்கள்' mixes the attempt on the land with the date without stating what they did (broke stone markers), combining two facts into one line.
-  fact-check: reel_script 'இன்று (அக்டோபர், 27)' and caption 'அக்., 27' are consistent with the article's date, so no problem there; however the reel_script omits that the man was taken to the hospital by ambulance, a key outcome of the event.
-free models unavailable: free models not efficient (5 failures in a row): using Claude
-ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (36s)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (0s)
-factcheck by groq/qwen/qwen3.8-27b: 2 problems
-  The reel_script and caption omit the specific dates (13, 14, 15, 16) mentioned in the article, replacing them with the vague 'four days', which is a missing detail.
-  The slide title 'வாலிபர்களின்' is grammatically incomplete and has no clear meaning in Tamil.
-attempt 4 cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: 2 problems
-  fact-check: The reel_script and caption omit the specific dates (13, 14, 15, 16) mentioned in the article, replacing them with the vague 'four days', which is a missing detail.
-  fact-check: The slide title 'வாலிபர்களின்' is grammatically incomplete and has no clear meaning in Tamil.
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  not grounded: only 21% of the words come from the article (e.g. நான்கு, இந்த, பகுதியில், இருந்து, போனதாக); use the article's own words and facts
 ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (1s)
-factcheck by groq/qwen/qwen3.8-27b: 5 problems
-  reel_script: The abbreviation 'வி.ஏ.ஓ.' (V.A.O.) is incorrectly translated as 'கிராம நிர்வாக அலுவலர்' (Village Administrative Officer); the article specifically mentions V.A.O.
-  slides_spec: Slide 2 line 1 contains an incomplete place name 'சந்திரகிரி' instead of the full 'சந்திரகிரி' or 'சந்திரகிரியை' as per the article
-  slides_spec: Slide 1 line 2 is an incomplete sentence fragment ending with 'ஊற்றித்' without a verb or object
-  slides_spec: Slide 3 line 2 is an incomplete sentence fragment ending with 'என அவர்' without a predicate
-  slides_spec: Slide 4 line 1 is an incomplete sentence fragment ending with 'மருத்துவக் கல்லூரி' without the destination or action verb
-claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: reel_script: The abbreviation 'வி.ஏ.ஓ.' (V.A.O.) is incorrectly translated as 'கிராம நிர்வாக அலுவலர்' (Village Administrative Officer); the article specifically mentions V.A.O.
-  fact-check: slides_spec: Slide 2 line 1 contains an incomplete place name 'சந்திரகிரி' instead of the full 'சந்திரகிரி' or 'சந்திரகிரியை' as per the article
-  fact-check: slides_spec: Slide 1 line 2 is an incomplete sentence fragment ending with 'ஊற்றித்' without a verb or object
-  fact-check: slides_spec: Slide 3 line 2 is an incomplete sentence fragment ending with 'என அவர்' without a predicate
-  fact-check: slides_spec: Slide 4 line 1 is an incomplete sentence fragment ending with 'மருத்துவக் கல்லூரி' without the destination or action verb
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/qwen/qwen3.8-27b (0s)
-factcheck by groq/qwen/qwen3.8-27b: 2 problems
-  reel_script and slides_spec omit the specific location 'தேவராயபுரம்' for the TASMAC shop, listing only 'பொட்டிரெட்டிப்பட்டி', whereas the article specifies the shop is in 'தேவராயபுரம்' (likely a suburb or specific area, distinct from the town name in the article's phrasing 'பொட்டிரெட்டிப்பட்டி, தேவராயபுரம் டாஸ்மாக் கடையை').
-  reel_script and slides_spec omit the detail that the youths are from 'எருமப்பட்டி' (Erumpatti) as stated in the article ('எருமப்பட்டியை சேர்ந்த...'), only mentioning their residence in 'தண்ணீர்பந்தல்காடு'.
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  fact-check: reel_script and slides_spec omit the specific location 'தேவராயபுரம்' for the TASMAC shop, listing only 'பொட்டிரெட்டிப்பட்டி', whereas the article specifies the shop is in 'தேவராயபுரம்' (likely a suburb or specific area, distinct from the town name in the article's phrasing 'பொட்டிரெட்டிப்பட்டி, தேவராயபுரம் டாஸ்மாக் கடையை').
-  fact-check: reel_script and slides_spec omit the detail that the youths are from 'எருமப்பட்டி' (Erumpatti) as stated in the article ('எருமப்பட்டியை சேர்ந்த...'), only mentioning their residence in 'தண்ணீர்பந்தல்காடு'.
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/qwen/qwen3.8-27b (1s)
-factcheck by groq/qwen/qwen3.8-27b: 2 problems
-  reel_script: The draft states 'மோகனூர் அருகே அரசநத்தம் பஞ்சாயத்து' (Aranatham Panchayat near Mohanur), but the article states 'மோகனூர், அரசநத்தம் பஞ்., சந்திரகிரியை' (Mohanur, Arantham Panch., Chandrakiriyai), implying Mohanur is the taluk/block and Arantham is the panchayat, not that Arantham is near Mohanur in a way that excludes Mohanur as the primary location context, though this is a minor phrasing issue. More critically, the reel_script omits the specific detail that the perpetrators came in a 'tractor and car' (டிராக்டர் மற்றும் காரில்), which is present in the article and caption but missing from the script's description of the incident.
-  reel_script: The draft translates 'வி.ஏ.ஓ.' (V.A.O.) as 'கிராம நிர்வாக அலுவலர்' (Village Administrative Officer). While V.A.O. stands for Village Administrative Officer, the article explicitly uses the acronym 'வி.ஏ.ஓ.'. While not a factual error per se, the reel script also omits the specific detail about the 'tractor and car' mentioned in the article's quote, which is a key factual detail of the cause.
 claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  fact-check: reel_script: The draft states 'மோகனூர் அருகே அரசநத்தம் பஞ்சாயத்து' (Aranatham Panchayat near Mohanur), but the article states 'மோகனூர், அரசநத்தம் பஞ்., சந்திரகிரியை' (Mohanur, Arantham Panch., Chandrakiriyai), implying Mohanur is the taluk/block and Arantham is the panchayat, not that Arantham is near Mohanur in a way that excludes Mohanur as the primary location context, though this is a minor phrasing issue. More critically, the reel_script omits the specific detail that the perpetrators came in a 'tractor and car' (டிராக்டர் மற்றும் காரில்), which is present in the article and caption but missing from the script's description of the incident.
-  fact-check: reel_script: The draft translates 'வி.ஏ.ஓ.' (V.A.O.) as 'கிராம நிர்வாக அலுவலர்' (Village Administrative Officer). While V.A.O. stands for Village Administrative Officer, the article explicitly uses the acronym 'வி.ஏ.ஓ.'. While not a factual error per se, the reel script also omits the specific detail about the 'tractor and car' mentioned in the article's quote, which is a key factual detail of the cause.
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
-fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: Expecting value: line 1 column 16655 (char 16654)
-poor answer - skipped for 30 min: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  The article says the thieves were detained by Inspector Muthukrishnan's team during a vehicle check, but the draft omits the inspector-led police team; minor, but the reel_script says 'போலீசாரிடம் சிக்கினர' which is acceptable.
-  The reel_script and slides say the four were caught at the Erumapatti - Ponneri road check, but the article states the four were questioned after being found suspicious and admitted to the thefts; the draft's 'நால்வர் பிடிபட்டனர்' is consistent, however the key fact that the 17-year-old had escaped from the Chengalpattu juvenile correction school in May (after being jailed in 2025 for a theft case) is only partially conveyed: slide 3 says 'சிறுவர் சீர்திருத்த பள்ளியிலிருந்து' without stating he escaped, which changes the meaning and is an important fact missing from the reel_script entirely.
-  The reel_script omits that the youths were staying at Thanneerpandhalkadu near Namagiripettai, which is present in the slides but the escape/prior-case detail is absent from the reel_script.
-  The 'hl1' headline says 'எருமப்பட்டியில் தொடர் திருட்டு: 4' with the number cut off from 'வாலிபர்கள்', an unclear and ungrammatical headline fragment.
-  The slide 'தற்போதைய நிலை' line 'மேலும் விவரங்களை போலீசார் வெளியிடுவர்' (police will release further details) is an invented claim not in the article.
-  The caption says the youths were 'கைது' with the 4 pieces of wrongdoing, but the caption's 'மேலும்' and 'நால்வரும்' are fine; however the caption's claim of 'தொடர் விசாரணை' is consistent with article.
-claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: The article says the thieves were detained by Inspector Muthukrishnan's team during a vehicle check, but the draft omits the inspector-led police team; minor, but the reel_script says 'போலீசாரிடம் சிக்கினர' which is acceptable.
-  fact-check: The reel_script and slides say the four were caught at the Erumapatti - Ponneri road check, but the article states the four were questioned after being found suspicious and admitted to the thefts; the draft's 'நால்வர் பிடிபட்டனர்' is consistent, however the key fact that the 17-year-old had escaped from the Chengalpattu juvenile correction school in May (after being jailed in 2025 for a theft case) is only partially conveyed: slide 3 says 'சிறுவர் சீர்திருத்த பள்ளியிலிருந்து' without stating he escaped, which changes the meaning and is an important fact missing from the reel_script entirely.
-  fact-check: The reel_script omits that the youths were staying at Thanneerpandhalkadu near Namagiripettai, which is present in the slides but the escape/prior-case detail is absent from the reel_script.
-  fact-check: The 'hl1' headline says 'எருமப்பட்டியில் தொடர் திருட்டு: 4' with the number cut off from 'வாலிபர்கள்', an unclear and ungrammatical headline fragment.
-  fact-check: The slide 'தற்போதைய நிலை' line 'மேலும் விவரங்களை போலீசார் வெளியிடுவர்' (police will release further details) is an invented claim not in the article.
-  fact-check: The caption says the youths were 'கைது' with the 4 pieces of wrongdoing, but the caption's 'மேலும்' and 'நால்வரும்' are fine; however the caption's claim of 'தொடர் விசாரணை' is consistent with article.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (3 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  reel_script says 'இன்று அக்டோபர் 27 அன்று' - date is consistent with article (அக்.,27), so no issue there; however the article gives 'இன்று (அக்.,27)' and the draft's '88 வயது முதியவர்' and the caption's '88 வயது விவசாயி' are consistent with the article, so no date/number problem
-  The reel_script omits the key fact that the farmer was trying to end his life by self-immolation out of despair (விரக்தியில் தற்கொலை செய்து கொள்ள முடிவு), which is an important motive/outcome detail of the article
-  slides_spec line 'புகார் அளித்தும் நடவடிக்கை இல்லை என்று கூறினார்' is a mixed sentence fragment that joins two facts (the land-grab incident on செப். 20 with the complaint) in a way that is grammatically unclear
-  slides_spec line 'செப். 20 அன்று டிராக்டர், காரில் வந்தவர்கள் நிலத்தை' is an incomplete sentence with no clear meaning (missing the verb 'அபகரிக்க முயன்றனர்' and the damage of the stone markers)
-  caption says 'சேதப்படுத்தி நிலத்தை அபகரிக்க முயன்றதாகக் கூறினார்' - the article says the men broke the stones and tried to grab the land; caption wording is acceptable but the caption also omits that the attempt was to end life, which is a key cause detail
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: reel_script says 'இன்று அக்டோபர் 27 அன்று' - date is consistent with article (அக்.,27), so no issue there; however the article gives 'இன்று (அக்.,27)' and the draft's '88 வயது முதியவர்' and the caption's '88 வயது விவசாயி' are consistent with the article, so no date/number problem
-  fact-check: The reel_script omits the key fact that the farmer was trying to end his life by self-immolation out of despair (விரக்தியில் தற்கொலை செய்து கொள்ள முடிவு), which is an important motive/outcome detail of the article
-  fact-check: slides_spec line 'புகார் அளித்தும் நடவடிக்கை இல்லை என்று கூறினார்' is a mixed sentence fragment that joins two facts (the land-grab incident on செப். 20 with the complaint) in a way that is grammatically unclear
-  fact-check: slides_spec line 'செப். 20 அன்று டிராக்டர், காரில் வந்தவர்கள் நிலத்தை' is an incomplete sentence with no clear meaning (missing the verb 'அபகரிக்க முயன்றனர்' and the damage of the stone markers)
-  fact-check: caption says 'சேதப்படுத்தி நிலத்தை அபகரிக்க முயன்றதாகக் கூறினார்' - the article says the men broke the stones and tried to grab the land; caption wording is acceptable but the caption also omits that the attempt was to end life, which is a key cause detail
-proofread skipped: free models not efficient (3 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (3 failures in a row): using Claude
-ok groq/qwen/qwen3.8-27b (1s)
-factcheck by groq/qwen/qwen3.8-27b: 4 problems
-  Slide 1 claims the auction was cancelled 'Today (Oct 27)', but the article states it was cancelled 'yesterday' (implying the article was published the day after the cancellation, or at least that the event happened in the past relative to the text, not necessarily today). More critically, the specific date 'Oct 27' is not mentioned in the article.
-  The article states the auction is held in Namagiri Pettai (RCMS), while the headline and slides repeatedly attribute the location to Rasipuram. While Rasipuram is the taluk, the specific venue is Namagiri Pettai, and the article explicitly names Namagiri Pettai as the location of the RCMS where the auction takes place. Attributing the specific event location solely to Rasipuram in the headline/slides is a minor inaccuracy compared to the article's specific location detail, though often acceptable in local news. However, the primary error is the date.
-  Slide 1 line 2 says 'Yesterday very few turmeric bundles arrived', but the article says 'Yesterday... very few turmeric bundles arrived... so the auction was cancelled yesterday'. The slide implies the cancellation happened today because of yesterday's arrival, whereas the article says the cancellation happened yesterday due to the low arrival that day. The draft's reel script correctly says 'yesterday... cancelled', but Slide 1 line 1 says 'Today... cancelled'. This is a contradiction within the draft and against the article's timeline (Article: 'Nerthu' = Yesterday).
-  Slide 1 line 1 states 'Today (Oct 27) turmeric auction cancelled', but the article says 'Nerthu' (Yesterday) the auction was cancelled. The draft incorrectly shifts the event to today.
-attempt 2 cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: 4 problems
-  fact-check: Slide 1 claims the auction was cancelled 'Today (Oct 27)', but the article states it was cancelled 'yesterday' (implying the article was published the day after the cancellation, or at least that the event happened in the past relative to the text, not necessarily today). More critically, the specific date 'Oct 27' is not mentioned in the article.
-  fact-check: The article states the auction is held in Namagiri Pettai (RCMS), while the headline and slides repeatedly attribute the location to Rasipuram. While Rasipuram is the taluk, the specific venue is Namagiri Pettai, and the article explicitly names Namagiri Pettai as the location of the RCMS where the auction takes place. Attributing the specific event location solely to Rasipuram in the headline/slides is a minor inaccuracy compared to the article's specific location detail, though often acceptable in local news. However, the primary error is the date.
-  fact-check: Slide 1 line 2 says 'Yesterday very few turmeric bundles arrived', but the article says 'Yesterday... very few turmeric bundles arrived... so the auction was cancelled yesterday'. The slide implies the cancellation happened today because of yesterday's arrival, whereas the article says the cancellation happened yesterday due to the low arrival that day. The draft's reel script correctly says 'yesterday... cancelled', but Slide 1 line 1 says 'Today... cancelled'. This is a contradiction within the draft and against the article's timeline (Article: 'Nerthu' = Yesterday).
-  fact-check: Slide 1 line 1 states 'Today (Oct 27) turmeric auction cancelled', but the article says 'Nerthu' (Yesterday) the auction was cancelled. The draft incorrectly shifts the event to today.
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 8 problems
-  reel_script says the theft was in Dharmapuri-style 'வடவத்தூர் மருதகாளியம்மன் கோவில்' — article is consistent here, so no issue; however slides_spec 'hl1' ends with '4' and 'hl2' 'ஒருவர் சிறுவர்' are truncated/ungrammatical fragments with no clear meaning
-  slides_spec line 'எப்படிப்' is a truncated title with no clear meaning
-  slides_spec line 'விசாரணையில் திருட்டுகளை ஒப்புக்கொண்டனர்' (they confessed to the thefts) is not stated in the article, which only says they were questioned and found to have committed the thefts; confession is an invented detail
-  slides_spec line '17 வயதுடையவர் மே மாதம் சிறுவர் சீர்திருத்தப்' is cut off mid-word and omits that he escaped; the 2025 detail is also incomplete
-  slides_spec line 'நாமகிரிப்பேட்டை அருகே தண்ணீர்பந்தல்காடு பகுதியில்' is an incomplete sentence (missing the verb 'தங்கியிருந்து')
-  caption says 'திருட்டுகளை ஒப்புக்கொண்டனர்' (confessed), an invented detail not in the article
-  reel_script omits the inspector-led patrol (இன்ஸ்பெக்டர் முத்துகிருஷ்ணன் தலைமையிலான போலீசார்) which is in the article; this is a minor but notable missing who-did-what detail
-  reel_script omits the detail that the four were found suspicious and gave contradictory answers, which is how they were caught
-claude rewrite 3 anthropic/claude-haiku-5-5: 8 problems
-  fact-check: reel_script says the theft was in Dharmapuri-style 'வடவத்தூர் மருதகாளியம்மன் கோவில்' — article is consistent here, so no issue; however slides_spec 'hl1' ends with '4' and 'hl2' 'ஒருவர் சிறுவர்' are truncated/ungrammatical fragments with no clear meaning
-  fact-check: slides_spec line 'எப்படிப்' is a truncated title with no clear meaning
-  fact-check: slides_spec line 'விசாரணையில் திருட்டுகளை ஒப்புக்கொண்டனர்' (they confessed to the thefts) is not stated in the article, which only says they were questioned and found to have committed the thefts; confession is an invented detail
-  fact-check: slides_spec line '17 வயதுடையவர் மே மாதம் சிறுவர் சீர்திருத்தப்' is cut off mid-word and omits that he escaped; the 2025 detail is also incomplete
-  fact-check: slides_spec line 'நாமகிரிப்பேட்டை அருகே தண்ணீர்பந்தல்காடு பகுதியில்' is an incomplete sentence (missing the verb 'தங்கியிருந்து')
-  fact-check: caption says 'திருட்டுகளை ஒப்புக்கொண்டனர்' (confessed), an invented detail not in the article
-  fact-check: reel_script omits the inspector-led patrol (இன்ஸ்பெக்டர் முத்துகிருஷ்ணன் தலைமையிலான போலீசார்) which is in the article; this is a minor but notable missing who-did-what detail
-  fact-check: reel_script omits the detail that the four were found suspicious and gave contradictory answers, which is how they were caught
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-ok anthropic/claude-haiku-5-5
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/qwen/qwen3.8-27b (0s)
-factcheck by groq/qwen/qwen3.8-27b: 1 problems
-  Caption invents the specific date 'Oct 26' (அக். 26) which is not mentioned in the article (article only says 'yesterday' and mentions previous cancellations on 13th and 20th).
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  fact-check: Caption invents the specific date 'Oct 26' (அக். 26) which is not mentioned in the article (article only says 'yesterday' and mentions previous cancellations on 13th and 20th).
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Elderly farmer attempts self-immolation '
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on input tokens per minute (ITPM): Limit 7000, Used 6004, Requested 1583. Please try again in 5.031428571s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
-
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-2230","first":"RN-146"}
-posting job started at once
-writing [N]: கணவர் இறந்ததாக சான்றிதழ் மனைவி மீது வழக்கு
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 58 words; need 130-200 (full-detail reel, about 60-80 seconds)
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  not grounded: location 'பரமத்தி' is not in the article
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The reel_script and slides say the auction was cancelled 'yesterday' (நேற்று), but the article does not state the day of the cancellation in relation to the current date; it names 13th and 20th (last-week cancellations) and says 'நேற்று' only in the sense of the most recent day — this timing reference is not clearly supported and conflicts with the 13th/20th dates given in the article.
-  The reel_script states the auction is held on Tuesdays 'at the Namakkal Namagiripettai RCMS centre' and omits the article's explanation that the cancellation on 13th and the 20th (Ayudha Puja) were also cancelled, which is a relevant fact about the repeated cancellations.
-  The caption date line states 'நாள்: அக். 27, 2026 (செவ்வாய்க்கிழமை)' as the event date, which conflicts with the article's cancellation dates (13th and 20th) and the claim the cancellation was yesterday; the date is not supported by the article.
-  The reel_script and caption say the cancellation was caused only by lower arrivals due to rain, but the article also attributes the cancellation of the 20th to Ayudha Puja, a cause omitted/mixed in the reel_script narrative.
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The reel_script and slides say the auction was cancelled 'yesterday' (நேற்று), but the article does not state the day of the cancellation in relation to the current date; it names 13th and 20th (last-week cancellations) and says 'நேற்று' only in the sense of the most recent day — this timing reference is not clearly supported and conflicts with the 13th/20th dates given in the article.
-  fact-check: The reel_script states the auction is held on Tuesdays 'at the Namakkal Namagiripettai RCMS centre' and omits the article's explanation that the cancellation on 13th and the 20th (Ayudha Puja) were also cancelled, which is a relevant fact about the repeated cancellations.
-  fact-check: The caption date line states 'நாள்: அக். 27, 2026 (செவ்வாய்க்கிழமை)' as the event date, which conflicts with the article's cancellation dates (13th and 20th) and the claim the cancellation was yesterday; the date is not supported by the article.
-  fact-check: The reel_script and caption say the cancellation was caused only by lower arrivals due to rain, but the article also attributes the cancellation of the 20th to Ayudha Puja, a cause omitted/mixed in the reel_script narrative.
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Four minors arrested for series of theft'
-ok anthropic/claude-haiku-5-5
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  not grounded: location 'பரமத்தி' is not in the article
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-2231","first":"RN-147"}
+  reel_script has 34 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  not grounded: only 42% of the words come from the article (e.g. பேர், போனதாக, புகார், அளிக்கப்பட்டிருந்த, நிலையில்); use the article's own words and facts
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  not grounded: location 'பரமத்தி' is not in the article
+  not grounded: only 30% of the words come from the article (e.g. நான்கு, போனதாக, பகுதியில், புகார், அளிக்கப்பட்டிருந்த); use the article's own words and facts
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
+ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (32s)
+proofread rejected (3 problems)
+  importance must be High, Medium or Low
+  post_to must start with 'Namakkal 360'
+  not grounded: only 25% of the words come from the article (e.g. நான்கு, போனதால், பெரும், அலறல், ஏற்பட்டது); use the article's own words and facts
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-ok anthropic/claude-haiku-5-5
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Turmeric auction cancelled at Namagiripe'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-2231","first":"RN-148"}
+ok cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct (6s)
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Wife allegedly used false death certific'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-2232","first":"RN-149"}
+images made: 3 for '4 school boys missing from Omalur found '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261028-0226","first":"RN-150"}
+posting job started at once
 earlier stories still waiting for images: []
 instagram check: 70 recent posts read from both pages
-write round: 15 news waiting in the queue (written in priority order)
-candidate filter: collected=9, already filed=6
-to write: 1 Rasipuram + 8 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 8 Namakkal; time left 29 min
-try (R) manual=False: தொடர் மழையால் மஞ்சள் ஏலம் ரத்து
-try (N) manual=False: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
-try (N) manual=False: வீடுகளுக்குள் புகுந்த மழைநீர் விடிய விடிய மக்கள் தவிப்பு
-skip (N) similar to a filed story: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
-try (N) manual=False: எருமப்பட்டியில் தொடர் கைவரிசை 4 வாலிபர்களிடம் போலீஸ் விசாரணை
-skip (N) similar to a filed story: வீடுகளுக்குள் புகுந்த மழைநீர் விடிய விடிய மக்கள் த
-try (N) manual=False: எக்ஸல் மருந்தியல் கல்லூரி போலியோ விழிப்புணர்வு பேரணி
-skip (N) similar to a filed story: எக்ஸல் மருந்தியல் கல்லூரி போலியோ விழிப்புணர்வு பேர
-try (N) manual=False: முதியவர் தீக்குளிக்க முயற்சி கலெக்டர் ஆபீசில் பரபரப்பு
+write round: 3 news waiting in the queue (written in priority order)
+candidate filter: collected=2, already filed=1
+to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min
+try (N) manual=False: ஓமலூரில் காணாமல் போன 4 பள்ளி சிறுவர்கள் குமாரபாளையத்தில் மீட
+try (N) manual=False: கணவர் இறந்ததாக சான்றிதழ் மனைவி மீது வழக்கு
+skip (N) similar to a filed story: கணவர் இறந்ததாக சான்றிதழ் மனைவி மீது வழக்கு
 auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 2})
 posting job started at once
-try (N) manual=False: கணவர் இறந்ததாக சான்றிதழ் மனைவி மீது வழக்கு
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'fal-ai/flux/schnell': 4})
-try (N) manual=False: விபத்தில் காயமடைந்தவருக்கு 
-உதவிய அமைச்சா்
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3, 'fal-ai/flux/schnell': 6})
-try (N) manual=False: சன்ன ரக அரிசி விற்பனை புகாரளிக்க வாட்ஸாப் எண்
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 4, 'fal-ai/flux/schnell': 8})
-skip (N) similar to a filed story: விபத்தில் காயமடைந்தவருக்கு 
-உதவிய அமைச்சா்
-skip (N) similar to a filed story: சன்ன ரக அரிசி விற்பனை புகாரளிக்க வாட்ஸாப் எண்
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 8}, done={'R': 1, 'N': 3}, time left 23 min
-carousel for 0 of 4 stories, the rest reel only
-filed: 1 Rasipuram + 3 Namakkal (targets 200 + 200)
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 1}, time left 17 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":4} 
-stories: 4
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 1
