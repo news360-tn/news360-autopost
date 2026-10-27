@@ -1,8 +1,26 @@
-writing [N]: Namakkal Corporation backs women’s SHG to convert flower was
+writing [N]: நாமக்கல் அறிஞர் அண்ணா அரசு கல்லூரியில் ஊழல் தடுப்பு விழிப்பு
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+writing [N]: நாமக்கல் நீதிமன்றத்திலிருந்து 
+தப்பியோடிய கைதி பிடிப்பு
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+writing [N]: சென்டர் மீடியனால் கடும் நெரிசல்
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.8-flash for 10 min
 fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
   "error": {
     "code": 503,
@@ -12,54 +30,211 @@ fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
     "code": 503,
     "message": "This model is currently experiencing high d
 switching away from gemini/gemini-3.7-flash for 10 min
-fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.6-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.6-flash for 10 min
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.6-flash for 10 min
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
 dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
 fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
 dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
 fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+ok gemini/gemini-3.6-flash (21s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok groq/openai/gpt-oss-120b (4s)
+factcheck by groq/openai/gpt-oss-120b: 0 problems
+attempt 1 gemini/gemini-3.6-flash: 0 problems
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
 fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
 switching away from mistral/mistral-small-latest for 10 min
 free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  not grounded: location 'கோசவம்பட்டி' is not in the article
-  not grounded: only 0% of the words come from the article (e.g. நாமக்கல்லில், தினமும், கிலோ, பூக், கழிவை); use the article's own words and facts
+free fact-check unavailable, using Claude: free models not efficient (3 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
-  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
-  reel_script has 58 words; need 130-200 (full-detail reel, about 60-80 seconds)
-  not grounded: location 'மாநகராட்சி' is not in the article
-  not grounded: only 0% of the words come from the article (e.g. நாமக்கல்லில், தினமும், கிலோ, பூக், கழிவு); use the article's own words and facts
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  reel_script says the college 'instructed students that bribes should not be given' as the event's headline, while the article says the DSP urged students to take up the fight against corruption and not give bribes in any situation; the headline-level claim 'லஞ்சம் கொடுக்கக் கூடாது: மாணவர்களுக்கு' in slides_spec is a reasonable summary but slide 2 line 'லஞ்சம் கொடுக்கக் கூடாது என்று மாணவர்களுக்கு அறிவுறுத்தினார்' is accurate
+  reel_script omits the article's key fact that the DSP is from the Bribery Prevention and Vigilance police (லஞ்ச ஒழிப்பு மற்றும் கண்காணிப்பு) as the special guest—only partially covered; more importantly the reel_script's first sentence merges the event with the bribe message, mixing the event subject with a separate instruction
+  reel_script omits the article's mention that the event had the theme 'செழிப்புக்கான நேர்மை' and that students created awareness on it, as well as the coordinator/SSI participants (less critical)
+  caption contains the date '27 அக்டோபர் 2026' in the 🗓️ நாள் line, which is part of the posting-date footer rule only if it were the 📍 place | posting-date line; here it is presented as the event date, which the article does not state and is an invented date claim
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: reel_script says the college 'instructed students that bribes should not be given' as the event's headline, while the article says the DSP urged students to take up the fight against corruption and not give bribes in any situation; the headline-level claim 'லஞ்சம் கொடுக்கக் கூடாது: மாணவர்களுக்கு' in slides_spec is a reasonable summary but slide 2 line 'லஞ்சம் கொடுக்கக் கூடாது என்று மாணவர்களுக்கு அறிவுறுத்தினார்' is accurate
+  fact-check: reel_script omits the article's key fact that the DSP is from the Bribery Prevention and Vigilance police (லஞ்ச ஒழிப்பு மற்றும் கண்காணிப்பு) as the special guest—only partially covered; more importantly the reel_script's first sentence merges the event with the bribe message, mixing the event subject with a separate instruction
+  fact-check: reel_script omits the article's mention that the event had the theme 'செழிப்புக்கான நேர்மை' and that students created awareness on it, as well as the coordinator/SSI participants (less critical)
+  fact-check: caption contains the date '27 அக்டோபர் 2026' in the 🗓️ நாள் line, which is part of the posting-date footer rule only if it were the 📍 place | posting-date line; here it is presented as the event date, which the article does not state and is an invented date claim
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 2048. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
 ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  not grounded: location 'கோசவம்பட்டி' is not in the article
-  not grounded: only 0% of the words come from the article (e.g. நாமக்கல்லில், தினமும், கிலோ, பூக், கழிவு); use the article's own words and facts
-proofread skipped: free models not efficient (10 failures in a row): using Claude
+free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 8 problems
+  reel_script says the prisoner threw sand/dust in the police's eyes (கண்ணில் மண்ணைத் தூவி) to escape; the article only says he escaped without the knowledge of police and court staff, with no such detail.
+  reel_script says the escaped man was taken back to court (மீண்டும் நீதிமன்றத்தில் ஆஜர்படுத்தப்பட்டார) — the article says he was brought to court and produced, which is roughly correct, but reel_script omits the article's point that he was then returned to the Namakkal branch jail; the closing 'மீண்டும்' mismatch is minor.
+  reel_script says 'எஸ்.நாட்டாமங்கலம் அருகே' while the article specifies 'எஸ்.நாட்டாமங்கலம் கூத்தமூப்பன்பட்டி ஊராட்சி ஒன்றிய தொடக்கப் பள்ளி' — the location is altered from a specific school/panchayat to a vague 'near', which misstates the article.
+  slides_spec 'போலி காசோலை வழங்கிய புகாரில் 13 அக்டோபர் கைது' invents the month 'அக்டோபர்'; the article only says the 13th of an unspecified month (the posting date is not a claim from the article).
+  caption says the prisoner was arrested on the 13th and 'நாமக்கல் கிளை சிறையில் அடைக்கப்பட்டிருந்தார்' — consistent, but the caption also says the escaped prisoner was 'விசாரணைக்கு அழைத்து வரப்பட்ட' correctly; no issue here.
+  reel_script states the teacher works 'தொடக்கப் பள்ளி ஆசிரியராகப் பணியாற்றுபவர்' near S.Nattamangalam, dropping the article's Koothamoopanpatti village panchayat union school detail, which is an important identifying fact.
+  reel_script omits that the prisoner was arrested in relation to passing a fake cheque in exchange for money from several people (பணம் பெற்று போலி காசோலை), reducing the cause to a generic complaint.
+  reel_script says the policemen were 'கவனக்குறைவாக இருந்த காவலர்கள்' and that the superintendent 'விசாரணை நடத்தியவர்' — the article names him as Yadav Girish Ashok; the reel omits the name, but this is not an invented fact. The article's statement that he was 'சில மணி நேரங்களில்' caught is kept; no problem.
+claude rewrite 1 anthropic/claude-haiku-5-5: 8 problems
+  fact-check: reel_script says the prisoner threw sand/dust in the police's eyes (கண்ணில் மண்ணைத் தூவி) to escape; the article only says he escaped without the knowledge of police and court staff, with no such detail.
+  fact-check: reel_script says the escaped man was taken back to court (மீண்டும் நீதிமன்றத்தில் ஆஜர்படுத்தப்பட்டார) — the article says he was brought to court and produced, which is roughly correct, but reel_script omits the article's point that he was then returned to the Namakkal branch jail; the closing 'மீண்டும்' mismatch is minor.
+  fact-check: reel_script says 'எஸ்.நாட்டாமங்கலம் அருகே' while the article specifies 'எஸ்.நாட்டாமங்கலம் கூத்தமூப்பன்பட்டி ஊராட்சி ஒன்றிய தொடக்கப் பள்ளி' — the location is altered from a specific school/panchayat to a vague 'near', which misstates the article.
+  fact-check: slides_spec 'போலி காசோலை வழங்கிய புகாரில் 13 அக்டோபர் கைது' invents the month 'அக்டோபர்'; the article only says the 13th of an unspecified month (the posting date is not a claim from the article).
+  fact-check: caption says the prisoner was arrested on the 13th and 'நாமக்கல் கிளை சிறையில் அடைக்கப்பட்டிருந்தார்' — consistent, but the caption also says the escaped prisoner was 'விசாரணைக்கு அழைத்து வரப்பட்ட' correctly; no issue here.
+  fact-check: reel_script states the teacher works 'தொடக்கப் பள்ளி ஆசிரியராகப் பணியாற்றுபவர்' near S.Nattamangalam, dropping the article's Koothamoopanpatti village panchayat union school detail, which is an important identifying fact.
+  fact-check: reel_script omits that the prisoner was arrested in relation to passing a fake cheque in exchange for money from several people (பணம் பெற்று போலி காசோலை), reducing the cause to a generic complaint.
+  fact-check: reel_script says the policemen were 'கவனக்குறைவாக இருந்த காவலர்கள்' and that the superintendent 'விசாரணை நடத்தியவர்' — the article names him as Yadav Girish Ashok; the reel omits the name, but this is not an invented fact. The article's statement that he was 'சில மணி நேரங்களில்' caught is kept; no problem.
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says the DSP 'advised students' that bribes should never be given; article says he said students should come forward to uproot corruption, bribes should never be given, and they should develop courage to oppose corruption. Mostly consistent, but the key message about uprooting corruption is omitted.
+  reel_script and slides say the event was held at 'Annadurai Government Arts College' (அறிஞர் அண்ணா அரசு கலைக் கல்லூரி) in the reel but slides_spec.loc says 'அண்ணா அரசு கல்லூரி' – minor naming inconsistency with the article's full name.
+  slides_spec line 'லஞ்சம் எந்த சூழ்நிலையிலும் கொடுக்கக் கூடாது என்று' is an incomplete sentence with no clear meaning in Tamil on its own.
+  slides_spec 'ஊழலை எதிர்க்கும் தைரியத்தை மாணவர்கள் வளர்க்க வேண்டும்' is attributed under 'யார் பேசினார்?' which is fine, but the first slide line 'நாமக்கல் அறிஞர் அண்ணா அரசு கலைக் கல்லூரியில் விழிப்புணர்வு' is a fragment that merges the venue with the event title awkwardly.
+  reel_script says the prize-winners were 'மாணவர்கள்' but the article says 'மாணவ மாணவியர்' (male and female students) – the reel narrows the audience, dropping the female students.
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script says the DSP 'advised students' that bribes should never be given; article says he said students should come forward to uproot corruption, bribes should never be given, and they should develop courage to oppose corruption. Mostly consistent, but the key message about uprooting corruption is omitted.
+  fact-check: reel_script and slides say the event was held at 'Annadurai Government Arts College' (அறிஞர் அண்ணா அரசு கலைக் கல்லூரி) in the reel but slides_spec.loc says 'அண்ணா அரசு கல்லூரி' – minor naming inconsistency with the article's full name.
+  fact-check: slides_spec line 'லஞ்சம் எந்த சூழ்நிலையிலும் கொடுக்கக் கூடாது என்று' is an incomplete sentence with no clear meaning in Tamil on its own.
+  fact-check: slides_spec 'ஊழலை எதிர்க்கும் தைரியத்தை மாணவர்கள் வளர்க்க வேண்டும்' is attributed under 'யார் பேசினார்?' which is fine, but the first slide line 'நாமக்கல் அறிஞர் அண்ணா அரசு கலைக் கல்லூரியில் விழிப்புணர்வு' is a fragment that merges the venue with the event title awkwardly.
+  fact-check: reel_script says the prize-winners were 'மாணவர்கள்' but the article says 'மாணவ மாணவியர்' (male and female students) – the reel narrows the audience, dropping the female students.
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Namakkal Corporation backs women's SHG t'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-1425","first":"RN-141"}
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
+images made: 3 for 'Unplanned center median on narrow Ottame'
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script must have no English letters (write English words and abbreviations in Tamil script)
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The reel_script and slides omit that DSP Subhashini was a special guest 'along with' the college principal's presiding role; more importantly, the article states the programme was organised by the anti-corruption coordinator Professor Wesley, and SSI Periyasamy and others attended — these facts are missing from the reel_script.
+  The slides_spec line 'லஞ்ச ஒழிப்பு போலீஸ் டிஎஸ்பி சுபாஷினி சிறப்பு விருந்தினர்' and the reel_script wording 'லஞ்ச ஒழிப்பு மற்றும் கண்காணிப்பு போலீஸ் டிஎஸ்பி' are fine, but the headline 'லஞ்சம் கொடுக்கக் கூடாது' presents a quote as the headline without a clear attribution, which is acceptable; however, the slide 'ஊழலை எதிர்க்க மாணவர்களுக்கு அழைப்பு' (hl1) is a paraphrase not stated in the article.
+  The slides_spec line 'லஞ்ச ஒழிப்பு போலீஸ் டிஎஸ்பி சுபாஷினி' omits the 'கண்காணிப்பு' (vigilance) part of the official designation, making the agency description inaccurate.
+  The reel_script states 'வார்த்தை ஜாலங்கள் போட்டியில் வெற்றி பெற்ற மாணவ, மாணவியருக்குப் பரிசுகள் வழங்கப்பட்டன' — accurate, but the caption's theme sentence 'இந்த ஆண்டின் கருப்பொருளான செழிப்புக்கான நேர்மை' is only partly reflected: the reel_script omits the theme entirely, an important fact of the article's awareness activity.
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The reel_script and slides omit that DSP Subhashini was a special guest 'along with' the college principal's presiding role; more importantly, the article states the programme was organised by the anti-corruption coordinator Professor Wesley, and SSI Periyasamy and others attended — these facts are missing from the reel_script.
+  fact-check: The slides_spec line 'லஞ்ச ஒழிப்பு போலீஸ் டிஎஸ்பி சுபாஷினி சிறப்பு விருந்தினர்' and the reel_script wording 'லஞ்ச ஒழிப்பு மற்றும் கண்காணிப்பு போலீஸ் டிஎஸ்பி' are fine, but the headline 'லஞ்சம் கொடுக்கக் கூடாது' presents a quote as the headline without a clear attribution, which is acceptable; however, the slide 'ஊழலை எதிர்க்க மாணவர்களுக்கு அழைப்பு' (hl1) is a paraphrase not stated in the article.
+  fact-check: The slides_spec line 'லஞ்ச ஒழிப்பு போலீஸ் டிஎஸ்பி சுபாஷினி' omits the 'கண்காணிப்பு' (vigilance) part of the official designation, making the agency description inaccurate.
+  fact-check: The reel_script states 'வார்த்தை ஜாலங்கள் போட்டியில் வெற்றி பெற்ற மாணவ, மாணவியருக்குப் பரிசுகள் வழங்கப்பட்டன' — accurate, but the caption's theme sentence 'இந்த ஆண்டின் கருப்பொருளான செழிப்புக்கான நேர்மை' is only partly reflected: the reel_script omits the theme entirely, an important fact of the article's awareness activity.
+proofread skipped: free models not efficient (5 failures in a row): using Claude
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-1824","first":"RN-142"}
 posting job started at once
+writing [N]: ஸ்டார் 3.0 இ-டெண்டரை ரத்து செய்யணும் பத்திரம் எழுதுவோர் சங்க
+free models unavailable: free models not efficient (5 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (5 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says Thesigan was a teacher at 'எஸ்.நாட்டாமங்கலம் தொடக்கப் பள்ளி' but the article says he is a teacher at 'கூத்தமூப்பன்பட்டி ஊராட்சி ஒன்றிய தொடக்கப் பள்ளி' (the school name is incorrect/shortened to a different place name).
+  reel_script says the fraud was a cheque issued in exchange for money taken from several people; the draft omits that he took money from people and gave a fake cheque in return, which is simplified to just 'போலி காசோலை வழங்கிய புகார்' (minor, but the fraud detail is incomplete).
+  reel_script says the prisoner was 'மீண்டும் நாமக்கல் கிளை சிறையில் அடைக்கப்பட்டார்' — the article says he was produced in court and then returned to the sub-jail; wording is acceptable but the court production step is missing from the reel's account of the recapture.
+  slides_spec 'எப்படிப்' is an ungrammatical/meaningless heading in Tamil (incomplete word 'எப்படி' with stray 'ப்'), and the slide line 'பரமத்தி வேலூர் வட்டம், கோனூர் கந்தம்பாளையம் அருகே இருசக்கர' is an incomplete sentence with no clear meaning.
+  reel_script mentions the officer 'மாவட்டக் காவல் கண்காணிப்பாளர்' without the name, which is fine, but the article's key cause (the escape happened while police and court staff were unaware of it, and the prisoner was unnoticed) is missing from the reel_script's description of the escape.
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script says Thesigan was a teacher at 'எஸ்.நாட்டாமங்கலம் தொடக்கப் பள்ளி' but the article says he is a teacher at 'கூத்தமூப்பன்பட்டி ஊராட்சி ஒன்றிய தொடக்கப் பள்ளி' (the school name is incorrect/shortened to a different place name).
+  fact-check: reel_script says the fraud was a cheque issued in exchange for money taken from several people; the draft omits that he took money from people and gave a fake cheque in return, which is simplified to just 'போலி காசோலை வழங்கிய புகார்' (minor, but the fraud detail is incomplete).
+  fact-check: reel_script says the prisoner was 'மீண்டும் நாமக்கல் கிளை சிறையில் அடைக்கப்பட்டார்' — the article says he was produced in court and then returned to the sub-jail; wording is acceptable but the court production step is missing from the reel's account of the recapture.
+  fact-check: slides_spec 'எப்படிப்' is an ungrammatical/meaningless heading in Tamil (incomplete word 'எப்படி' with stray 'ப்'), and the slide line 'பரமத்தி வேலூர் வட்டம், கோனூர் கந்தம்பாளையம் அருகே இருசக்கர' is an incomplete sentence with no clear meaning.
+  fact-check: reel_script mentions the officer 'மாவட்டக் காவல் கண்காணிப்பாளர்' without the name, which is fine, but the article's key cause (the escape happened while police and court staff were unaware of it, and the prisoner was unnoticed) is missing from the reel_script's description of the escape.
+proofread skipped: free models not efficient (5 failures in a row): using Claude
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slide 3 line 1 longer than 60 characters
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+ok anthropic/claude-haiku-5-5
+images made: 3 for 'Anti-corruption awareness event at Namak'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-1824","first":"RN-143"}
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  slide 3 line 1 longer than 60 characters
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+images made: 3 for 'Prisoner who escaped from Namakkal court'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-1825","first":"RN-144"}
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  slide 3 line 1 longer than 60 characters
+proofread skipped: free models not efficient (5 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+images made: 3 for 'Namakkal document writers protest demand'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-1825","first":"RN-145"}
 earlier stories still waiting for images: []
 instagram check: 70 recent posts read from both pages
-write round: 15 news waiting in the queue (written in priority order)
-candidate filter: already filed=6, checked earlier=5, collected=2, checked earlier=2
-to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min
+write round: 16 news waiting in the queue (written in priority order)
+candidate filter: collected=10, already filed=6
+to write: 0 Rasipuram + 10 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 10 Namakkal; time left 29 min
 try (N) manual=False: நாமக்கல் மாவட்டத்தில்  இரவு முழுவதும் கனமழை: கொல்லிமலையில் வ
-try (N) manual=False: Namakkal Corporation backs women’s SHG to convert flower was
+try (N) manual=False: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
+try (N) manual=False: வீடுகளுக்குள் புகுந்த மழைநீர் விடிய விடிய மக்கள் தவிப்பு
+skip (N) similar to a filed story: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
+try (N) manual=False: எக்ஸல் மருந்தியல் கல்லூரி போலியோ விழிப்புணர்வு பேரணி
 skip (N) similar to a filed story: நாமக்கல் மாவட்டத்தில்  இரவு முழுவதும் கனமழை: கொல்ல
+try (N) manual=False: நாமக்கல் அறிஞர் அண்ணா அரசு கல்லூரியில் ஊழல் தடுப்பு விழிப்பு
+skip (N) similar to a filed story: வீடுகளுக்குள் புகுந்த மழைநீர் விடிய விடிய மக்கள் த
+try (N) manual=False: சென்டர் மீடியனால் கடும் நெரிசல்
+skip (N) similar to a filed story: எக்ஸல் மருந்தியல் கல்லூரி போலியோ விழிப்புணர்வு பேர
+try (N) manual=False: நாமக்கல் நீதிமன்றத்திலிருந்து 
+தப்பியோடிய கைதி பிடிப்பு
 auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 2})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 1}, time left 25 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+try (N) manual=False: சன்ன ரக அரிசி விற்பனை புகாரளிக்க வாட்ஸாப் எண்
+skip (N) similar to a filed story: சன்ன ரக அரிசி விற்பனை புகாரளிக்க வாட்ஸாப் எண்
+try (N) manual=False: ஸ்டார் 3.0 இ-டெண்டரை ரத்து செய்யணும் பத்திரம் எழுதுவோர் சங்க
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'fal-ai/flux/schnell': 4})
+try (N) manual=False: விபத்தில் காயமடைந்தவருக்கு 
+உதவிய அமைச்சா்
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3, 'fal-ai/flux/schnell': 6})
+skip (N) similar to a filed story: விபத்தில் காயமடைந்தவருக்கு 
+உதவிய அமைச்சா்
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 4, 'fal-ai/flux/schnell': 8})
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 10}, done={'R': 0, 'N': 4}, time left 26 min
+carousel for 0 of 4 stories, the rest reel only
+filed: 0 Rasipuram + 4 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+All News sheet: {"ok":true,"added":0,"updated":4} 
+stories: 4
