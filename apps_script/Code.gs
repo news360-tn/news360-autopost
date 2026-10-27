@@ -48,6 +48,7 @@ function doGet(e) {
   try {
     var a = e.parameter.action;
     if (a === 'queue') return json_({ ok: true, rows: queue_() });
+    if (a === 'posted_rows') return json_({ ok: true, rows: postedRows_() });
     if (a === 'token') return json_({ ok: true, token: token_(e.parameter.page) });
     if (a === 'voice') return json_(voice_(e.parameter.story));
     if (a === 'recent') return json_({ ok: true, rows: recent_() });
@@ -849,6 +850,24 @@ function recent_() {
     var r = rowObj_(v, from + i);
     return { story_id: r.story_id, researched: r.researched, headline_ta: r.headline_ta, headline_en: r.headline_en, source: r.source, post_status: r.post_status, images: r.images, category: r.category, location: r.location, post_to: r.post_to };
   });
+}
+
+/** website backfill (read only): every story already posted on Instagram, with the text, pictures and links the website shows */
+function postedRows_() {
+  var sh = sheet_();
+  var last = sh.getLastRow();
+  if (last < 2) return [];
+  var data = sh.getRange(2, 1, last - 1, NCOLS).getValues();
+  var out = [];
+  for (var i = 0; i < data.length; i++) {
+    var r = rowObj_(data[i], i + 2);
+    var st = r.post_status.toLowerCase();
+    if (!r.story_id || (st.indexOf('posted') !== 0 && st.indexOf('partly') !== 0)) continue;
+    out.push({ story_id: r.story_id, researched: r.researched, published: r.published, headline_ta: r.headline_ta, headline_en: r.headline_en,
+               category: r.category, location: r.location, source: r.source, caption: r.caption, reel_script: r.reel_script,
+               images: r.images, reel_link: r.reel_link, namakkal_link: r.namakkal_link, rasipuram_link: r.rasipuram_link });
+  }
+  return out;
 }
 
 function nextStoryNo_(sh) {

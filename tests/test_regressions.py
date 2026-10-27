@@ -208,5 +208,27 @@ class Images(unittest.TestCase):
         self.assertNotEqual("1", os.environ.get("REUSE_IMAGES"), "older pictures are never reused")
 
 
+class Website(unittest.TestCase):
+    """owner 27 Oct: every posted story goes to the website with all its details; a website problem never stops posting"""
+    def test_payload_has_everything(self):
+        import website
+        row = {"story_id": "RN-140", "researched": "27 Oct 2026, 10:14", "published": "2026-10-27", "headline_ta": "மரவள்ளி கூட்டம்",
+               "headline_en": "Tapioca meeting", "category": "Government & Services", "location": "நாமக்கல்", "source": "https://www.dinamalar.com/x/1",
+               "caption": "📰 முழு விவரம்:\n🕘 நேரம்: மாலை 4:30", "reel_script": "கூட்டம் நடைபெறும்.",
+               "images": '["https://res.cloudinary.com/a.jpg", "NOIMAGE", "http://insecure.jpg"]', "reel_link": "நாமக்கல் 360: https://www.instagram.com/reel/De_Cu6Pj3zR/"}
+        p = website.payload(row, "", {"title_en": "Collector calls meeting", "story_en": "A meeting will be held."})
+        self.assertEqual("2026-10-27T10:14:00+05:30", p["filed_at"])      # exact India time, not 12:00
+        self.assertEqual(["https://res.cloudinary.com/a.jpg"], p["images"])
+        self.assertEqual("Collector calls meeting", p["headline_en"])
+        self.assertIn("instagram.com/reel/", p["reel_link"])
+        for k in ("location", "category", "source", "caption", "reel_script"):
+            self.assertTrue(p[k], k)
+
+    def test_never_raises_without_key(self):
+        import website
+        os.environ.pop("WEBSITE_INGEST_KEY", None)
+        self.assertFalse(website.send({"story_id": "RN-1", "headline_ta": "x", "_en": {"title_en": "x", "story_en": "y" * 50}}, ""))
+
+
 if __name__ == "__main__":
     unittest.main()

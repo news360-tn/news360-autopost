@@ -1162,6 +1162,11 @@ def run_story_page(row, page):
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "permalink": link, "media_id": mid,
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab_ok, "checks": note})
                 done.append(("reel", link))
+                try:      # owner 27 Oct: the posted story goes to the Namakkal 360 website at once (a website problem never stops posting)
+                    import website
+                    website.send(row, link)
+                except Exception as e:
+                    log("website step skipped:", str(e)[:150])
         except Exception as e:
             if is_limit_error(e):
                 LIMIT[PAGE] = True
