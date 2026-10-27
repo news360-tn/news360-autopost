@@ -1,32 +1,21 @@
-writing [N]: மரவள்ளி விவசாயிகள் பிரச்னை வரும் 30ல் முத்தரப்பு கூட்டம்
+writing [N]: Namakkal Corporation backs women’s SHG to convert flower was
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-switching away from gemini/gemini-3.8-flash for 10 min
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.7-flash
-ok gemini/gemini-3.6-flash (26s)
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  stray Tamil sign 'ு' after 'ு' in «யிட்டுுள்ள»
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
+switching away from gemini/gemini-3.7-flash for 10 min
+fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.6-flash
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
 dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
 fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
@@ -36,72 +25,39 @@ fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"
 switching away from mistral/mistral-small-latest for 10 min
 free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  not grounded: location 'கோசவம்பட்டி' is not in the article
+  not grounded: only 0% of the words come from the article (e.g. நாமக்கல்லில், தினமும், கிலோ, பூக், கழிவை); use the article's own words and facts
 ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  Caption adds the month 'அக்டோபர் 2026' (October 2026), which is not stated in the article.
-  Caption says the meeting is 'நடத்தப்படுகிறது' and tells readers to attend, but slides_spec and caption describe the meeting as 'கூட்டம்' with the stated time; the 'பயன்பெற கூட்டத்திற்கு வாருங்கள்' line in slides_spec is an invented call to attendance not in the article.
-  Reel_script omits the article's stated purpose of discussing the farmers' demands and the fact that the meeting is for all listed participants' benefit only partially; more importantly, it omits that the meeting will discuss the farmers' demands (கோரிக்கைகளை விவாதிக்க), an important fact of the article.
-  slides_spec headline 'வரும் 30 மாலை 4:30 மணி' and 'எப்போது' line present the date as '30' without any month, which is fine, but slides_spec 'ஏன் இந்தக்' title is ungrammatical/incomplete Tamil with no clear meaning.
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: Caption adds the month 'அக்டோபர் 2026' (October 2026), which is not stated in the article.
-  fact-check: Caption says the meeting is 'நடத்தப்படுகிறது' and tells readers to attend, but slides_spec and caption describe the meeting as 'கூட்டம்' with the stated time; the 'பயன்பெற கூட்டத்திற்கு வாருங்கள்' line in slides_spec is an invented call to attendance not in the article.
-  fact-check: Reel_script omits the article's stated purpose of discussing the farmers' demands and the fact that the meeting is for all listed participants' benefit only partially; more importantly, it omits that the meeting will discuss the farmers' demands (கோரிக்கைகளை விவாதிக்க), an important fact of the article.
-  fact-check: slides_spec headline 'வரும் 30 மாலை 4:30 மணி' and 'எப்போது' line present the date as '30' without any month, which is fine, but slides_spec 'ஏன் இந்தக்' title is ungrammatical/incomplete Tamil with no clear meaning.
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
+  reel_script has 58 words; need 130-200 (full-detail reel, about 60-80 seconds)
+  not grounded: location 'மாநகராட்சி' is not in the article
+  not grounded: only 0% of the words come from the article (e.g. நாமக்கல்லில், தினமும், கிலோ, பூக், கழிவு); use the article's own words and facts
 ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The article says the meeting is on the 30th at 4:30 pm, but does not specify the month or that it is 'the 30th of this month'; the draft's 'வரும் 30ஆம் தேதி' is acceptable, but the caption's claim of 'அனைத்து விவசாய சங்கப் பிரதிநிதிகளும்' is fine; no real error found in dates.
-  The article states the meeting is chaired by Collector Madhubalan and that farmers' demands were the basis, which the draft reflects; however the reel_script states the meeting is held 'to find a solution' while the article says measures 'will be taken' - minor wording.
-  Caption states the meeting is held 'விவசாயிகளின் கோரிக்கையின் அடிப்படையில்' which matches the article; no invented facts found in the caption body.
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The article says the meeting is on the 30th at 4:30 pm, but does not specify the month or that it is 'the 30th of this month'; the draft's 'வரும் 30ஆம் தேதி' is acceptable, but the caption's claim of 'அனைத்து விவசாய சங்கப் பிரதிநிதிகளும்' is fine; no real error found in dates.
-  fact-check: The article states the meeting is chaired by Collector Madhubalan and that farmers' demands were the basis, which the draft reflects; however the reel_script states the meeting is held 'to find a solution' while the article says measures 'will be taken' - minor wording.
-  fact-check: Caption states the meeting is held 'விவசாயிகளின் கோரிக்கையின் அடிப்படையில்' which matches the article; no invented facts found in the caption body.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The article does not say the meeting is in the Namakkal district collector's office as 'நாமக்கல் கலெக்டர் அலுவலகம்' only; this is consistent, so no issue there. However, the slides_spec line 'கலெக்டர் மதுபாலன் தலைமையில் நடக்கிறது' repeats the same fact and is fine.
-  The slides_spec line 'இடர்பாடுகளை களைய நடவடிக்கை எடுக்கப்படும்' and the 'விவசாயிகளுக்கு' slide are fine, but the caption's 'Namakkal tapioca farmers meeting on 30th' English line gives no month and is unsupported only in wording, not in fact.
-  The slides_spec 'hl2' and slide text say 'வரும் 30 மாலை 4:30 மணி' without the month or 'தேதி'; the reel_script says 'வரும் 30ஆம் தேதி', which is an acceptable reading of 'வரும், 30'.
-  The reel_script says 'மரவள்ளி விவசாயிகளின் பிரச்னைகளுக்குத் தீர்வு காண ... கூட்டம் நடைபெறுகிறது' which accurately reflects the article; no invented detail found.
-  The reel_script omits the article's note that the meeting will discuss farmers' demands and improve their livelihood, which is a minor omission; the core facts (time, place, chair, participants, purpose) are present.
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The article does not say the meeting is in the Namakkal district collector's office as 'நாமக்கல் கலெக்டர் அலுவலகம்' only; this is consistent, so no issue there. However, the slides_spec line 'கலெக்டர் மதுபாலன் தலைமையில் நடக்கிறது' repeats the same fact and is fine.
-  fact-check: The slides_spec line 'இடர்பாடுகளை களைய நடவடிக்கை எடுக்கப்படும்' and the 'விவசாயிகளுக்கு' slide are fine, but the caption's 'Namakkal tapioca farmers meeting on 30th' English line gives no month and is unsupported only in wording, not in fact.
-  fact-check: The slides_spec 'hl2' and slide text say 'வரும் 30 மாலை 4:30 மணி' without the month or 'தேதி'; the reel_script says 'வரும் 30ஆம் தேதி', which is an acceptable reading of 'வரும், 30'.
-  fact-check: The reel_script says 'மரவள்ளி விவசாயிகளின் பிரச்னைகளுக்குத் தீர்வு காண ... கூட்டம் நடைபெறுகிறது' which accurately reflects the article; no invented detail found.
-  fact-check: The reel_script omits the article's note that the meeting will discuss farmers' demands and improve their livelihood, which is a minor omission; the core facts (time, place, chair, participants, purpose) are present.
-proofread skipped: free models not efficient (7 failures in a row): using Claude
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  not grounded: location 'கோசவம்பட்டி' is not in the article
+  not grounded: only 0% of the words come from the article (e.g. நாமக்கல்லில், தினமும், கிலோ, பூக், கழிவு); use the article's own words and facts
+proofread skipped: free models not efficient (10 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
 image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Tripartite meeting on Oct 30 to resolve '
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-1014","first":"RN-140"}
+images made: 3 for 'Namakkal Corporation backs women's SHG t'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261027-1425","first":"RN-141"}
 posting job started at once
 earlier stories still waiting for images: []
 instagram check: 70 recent posts read from both pages
-write round: 12 news waiting in the queue (written in priority order)
-candidate filter: already filed=7, collected=5
-to write: 0 Rasipuram + 5 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 5 Namakkal; time left 29 min
-try (N) manual=False: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
-try (N) manual=False: எக்ஸல் மருந்தியல் கல்லூரி போலியோ விழிப்புணர்வு பேரணி
-try (N) manual=False: மரவள்ளி விவசாயிகள் பிரச்னை வரும் 30ல் முத்தரப்பு கூட்டம்
-skip (N) similar to a filed story: நாளைய மின்தடை! காளப்பநாயக்கன்பட்டி
-try (N) manual=False: சன்ன ரக அரிசி விற்பனை புகாரளிக்க வாட்ஸாப் எண்
-skip (N) similar to a filed story: எக்ஸல் மருந்தியல் கல்லூரி போலியோ விழிப்புணர்வு பேர
-try (N) manual=False: விபத்தில் காயமடைந்தவருக்கு 
-உதவிய அமைச்சா்
-skip (N) similar to a filed story: விபத்தில் காயமடைந்தவருக்கு 
-உதவிய அமைச்சா்
-skip (N) similar to a filed story: சன்ன ரக அரிசி விற்பனை புகாரளிக்க வாட்ஸாப் எண்
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3})
+write round: 15 news waiting in the queue (written in priority order)
+candidate filter: already filed=6, checked earlier=5, collected=2, checked earlier=2
+to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min
+try (N) manual=False: நாமக்கல் மாவட்டத்தில்  இரவு முழுவதும் கனமழை: கொல்லிமலையில் வ
+try (N) manual=False: Namakkal Corporation backs women’s SHG to convert flower was
+skip (N) similar to a filed story: நாமக்கல் மாவட்டத்தில்  இரவு முழுவதும் கனமழை: கொல்ல
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 2})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 5}, done={'R': 0, 'N': 1}, time left 26 min
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 1}, time left 25 min
 carousel for 0 of 1 stories, the rest reel only
 filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
