@@ -327,6 +327,27 @@ def pick_voice(spec):
     return vs, None
 
 
+def punch_on():
+    """change 1 (strong 2-second opening): on when poster/config.json "reel_punch" is true, or REEL_PUNCH=1 (sample renders)"""
+    if os.environ.get("REEL_PUNCH") in ("0", "1"):
+        return os.environ["REEL_PUNCH"] == "1"
+    try:
+        return bool(json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text()).get("reel_punch"))
+    except Exception:
+        return False
+
+
+def punch_line(spec):
+    """the shortest striking line: the writer's own "punch" if given, else the yellow number + the headline line
+    ("90,703 குழந்தைகளுக்கு வைட்டமின் ஏ முகாம்!"), else the headline line alone"""
+    if spec.get("punch"):
+        return re.sub(r"<[^>]+>", "", str(spec["punch"])).strip()
+    h1, h2 = (re.sub(r"<[^>]+>", "", str(x or "")).strip() for x in (spec.get("hook") or ["", ""])[:2])
+    if h2 and re.search(r"\d", h2) and h1 and len(h2) <= 24:
+        return f"{h2} {h1}!"
+    return f"{h1}!" if h1 else ""
+
+
 def voice_setting():
     """poster/config.json "reel_voice": the news voice (owner 26 Oct: Valluvar, news style). Falls back to the AI4Bharat model."""
     try:
@@ -477,6 +498,10 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     work = Path(out_mp4).with_suffix("")
     work = work.parent / (work.name + "_work"); work.mkdir(parents=True, exist_ok=True)
     sents, outro = spec["sentences"], spec["outro"]
+    punch = punch_line(spec) if punch_on() else ""
+    if punch:      # owner 27 Oct (change 1): the most striking fact is SPOKEN first (~2 s) while the big headline + number are on screen
+        sents = [{"say": punch, "caption": punch, "fact": ""}] + sents
+        print("opening punch line:", punch)
     texts = [s["say"] for s in sents] + [outro["say"]]
     gap, lead = 0.16, 0.08
     if os.environ.get("REUSE_VOICE") == "1" and all((work / f"line{i}.wav").exists() for i in range(len(texts))):

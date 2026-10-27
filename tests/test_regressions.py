@@ -235,6 +235,16 @@ class PrimeTime(unittest.TestCase):
         self.assertEqual("", post.prime_wait(self.row("கோவில் கும்பாபிஷேக விழா", filed_h_ago=13), self.at(3)))
 
 
+class ReelOpening(unittest.TestCase):
+    """owner 27 Oct (change 1): the most striking fact is spoken first"""
+    def test_punch_line(self):
+        ns = from_file(ROOT / "reel" / "reel4.py", {"punch_line", "punch_on"})
+        self.assertEqual("90,703 குழந்தைகளுக்கு வைட்டமின் ஏ முகாம்!", ns["punch_line"]({"hook": ["குழந்தைகளுக்கு வைட்டமின் ஏ முகாம்", "<b>90,703</b>"]}))
+        self.assertEqual("நாளை மின் தடை!", ns["punch_line"]({"hook": ["நாளை மின் தடை", "9 பகுதிகளில் மின் தடை - முழுப் பட்டியல் கீழே பாருங்கள்"]}))
+        self.assertEqual("எழுத்தாளர் வரி", ns["punch_line"]({"punch": "<b>எழுத்தாளர்</b> வரி", "hook": ["x", "1"]}))
+        self.assertTrue(json.loads((ROOT / "poster" / "config.json").read_text()).get("reel_punch"))
+
+
 class Website(unittest.TestCase):
     """owner 27 Oct: every posted story goes to the website with all its details; a website problem never stops posting"""
     def test_payload_has_everything(self):
