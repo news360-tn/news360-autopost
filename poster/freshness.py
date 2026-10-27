@@ -77,6 +77,35 @@ def stale_reason(headline_ta, headline_en, category, published, today=None):
     return ""
 
 
+def power_cut_over(headline_ta, headline_en, published, now=None):
+    """'' or why a power-cut notice is too late to post: the cut is today and its end time ('மதியம் 2 வரை', 'till 5 pm') is less
+    than 1 hour away or past. Checked even for stories filed today (27 Oct: a 9-2 cut was about to go out at 1:40 pm as 'tomorrow')."""
+    text = f"{headline_ta} {headline_en}"
+    if not SHUT.search(text):
+        return ""
+    now = now or datetime.datetime.now(IST)
+    today, pub = now.date(), pub_date(published)
+    ds = [d for d in dates_in(text, today.year) if abs((d - today).days) < 300]
+    day = max(ds) if ds else (pub + datetime.timedelta(days=1) if pub and TOMORROW.search(text) else pub)
+    if day != today:
+        return ""
+    m = (re.search(r"(மதியம்|மாலை|இரவு|பிற்பகல்)?\s*(\d{1,2})(?:[.:](\d{2}))?\s*(?:மணி\s*)?வரை", headline_ta or "")
+         or re.search(r"(?:till|to|until)\s*(\d{1,2})(?:[.:](\d{2}))?\s*(pm|am)?", headline_en or "", re.I))
+    if not m:
+        return ""
+    if m.re.pattern.startswith("(மதியம்"):
+        pm, h, mi = bool(m.group(1)) or int(m.group(2)) <= 7, int(m.group(2)), int(m.group(3) or 0)
+    else:
+        h, mi = int(m.group(1)), int(m.group(2) or 0)
+        pm = (m.group(3) or "").lower() == "pm" or (not m.group(3) and h <= 7)
+    if pm and h < 12:
+        h += 12
+    end = now.replace(hour=min(h, 23), minute=mi, second=0, microsecond=0)
+    if now >= end - datetime.timedelta(minutes=60):
+        return f"power cut ends today at {end:%H:%M} - too late to post"
+    return ""
+
+
 # ---- repeating topics (daily egg price, gold rate, fuel price ...): the same headline every day is NEW news each day
 RECUR = re.compile(r"முட்டை\s*(விலை|கொள்முதல்)|egg\s*(price|rate)|தங்கம்\s*விலை|gold\s*(rate|price)|பெட்ரோல்\s*விலை|டீசல்\s*விலை|petrol|diesel", re.I)
 
@@ -92,11 +121,33 @@ def different_numbers(a, b):
     return bool(na) and bool(nb) and not (na & nb)
 
 
+POWER = re.compile(r"மின்\s*தடை|மின்\s*நிறுத்த|power\s*(cut|shut)", re.I)
+_POWER_COMMON = ("மின்", "தடை", "நாளை", "இன்று", "இன்றை", "காலை", "மதியம", "மாலை", "வரை", "முதல்", "பகுதி", "துணை", "நிலைய",
+                 "பராமர", "பணி", "காரண", "அறிவி", "மணி", "நாமக்", "மாவட", "எந்தெ", "power", "cut", "shut", "tomorr", "today",
+                 "areas", "mainte", "substa", "namakk", "from", "till", "will", "the")
+
+
+def different_power_cut(a, b, other_filed=None, today=None):
+    """two power-cut notices look alike ('நாளை மின்தடை ... 9 முதல் 2 வரை'); they are the same news only when they name the same
+    place and were filed within 3 days (27 Oct: Kalappanaickenpatti's cut was skipped as a 'duplicate' of an older notice)"""
+    if not (POWER.search(a or "") and POWER.search(b or "")):
+        return False
+    def places(t):
+        return {w[:6] for w in re.findall(r"[\u0B80-\u0BFFa-zA-Z]{4,}", t.lower()) if not w.startswith(_POWER_COMMON)}
+    pa, pb = places(a), places(b)
+    if pa and pb and not (pa & pb):
+        return True
+    d = pub_date(other_filed)
+    today = today or datetime.datetime.now(IST).date()
+    return bool(d and (today - d).days >= 3)
+
+
 def similar(a, b, thr, other_filed=None, today=None):
     """True when headline a and b are the same news. A repeating-price topic (e.g. today's egg price) counts as the same
     only when the other story was filed the same day - tomorrow's price is a new post."""
     import difflib
-    if not a or not b or difflib.SequenceMatcher(None, a, b).ratio() <= thr or different_numbers(a, b):
+    if (not a or not b or difflib.SequenceMatcher(None, a, b).ratio() <= thr or different_numbers(a, b)
+            or different_power_cut(a, b, other_filed, today)):
         return False
     if recurring(a) or recurring(b):
         today = today or datetime.datetime.now(IST).date()
