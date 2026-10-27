@@ -77,6 +77,31 @@ def stale_reason(headline_ta, headline_en, category, published, today=None):
     return ""
 
 
+def news_date(published, source_url="", filed=None):
+    """the day the news was published: the 'published' cell, else the date in the newspaper's link (/2026/Oct/26/, 2026-10-26,
+    dinakaran namakkal-261026-3), else the day it was filed (never earlier than the real day, so it can only be lenient)"""
+    d = pub_date(published)
+    if d:
+        return d
+    u = str(source_url or "")
+    m = re.search(r"/(20\d\d)/([A-Za-z]{3})[a-z]*/(\d{1,2})/", u)
+    if m and _mon_en(m.group(2)):
+        return datetime.date(int(m.group(1)), _mon_en(m.group(2)), int(m.group(3)))
+    m = re.search(r"/(20\d\d)[/-](\d{2})[/-](\d{2})(?:/|\b)", u)
+    if m:
+        try:
+            return datetime.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        except ValueError:
+            pass
+    m = re.search(r"dinakaran\.com/district/[a-z]+-(\d{2})(\d{2})(\d{2})", u)
+    if m:
+        try:
+            return datetime.date(2000 + int(m.group(3)), int(m.group(2)), int(m.group(1)))
+        except ValueError:
+            pass
+    return filed.date() if filed else None
+
+
 def power_cut_over(headline_ta, headline_en, published, now=None):
     """'' or why a power-cut notice is too late to post: the cut is today and its end time ('மதியம் 2 வரை', 'till 5 pm') is less
     than 1 hour away or past. Checked even for stories filed today (27 Oct: a 9-2 cut was about to go out at 1:40 pm as 'tomorrow')."""

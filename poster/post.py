@@ -147,7 +147,11 @@ def skip_reason(row):
     import difflib, freshness
     f = filed_at(row)
     same_day = bool(f and f.date() == datetime.now(IST).date())      # filed today: it goes out today, whatever the clock says
-    why = freshness.power_cut_over(row.get("headline_ta") or "", row.get("headline_en") or "", row.get("published") or "")
+    nd = freshness.news_date(row.get("published"), row.get("source"), f)
+    manual = "manual" in " ".join(str(row.get(k) or "") for k in ("notes", "batch", "review", "source")).lower()
+    if nd and not manual and (datetime.now(IST).date() - nd).days > 1:      # owner: only today's or yesterday's news is posted
+        return f"stale: published {nd:%d %b}, older than yesterday"      # (27 Oct: a 25 Oct story went out two days late)
+    why = freshness.power_cut_over(row.get("headline_ta") or "", row.get("headline_en") or "", row.get("published") or (nd.isoformat() if nd else ""))
     if why:
         return "stale: " + why
     why = "" if same_day else freshness.stale_reason(row.get("headline_ta") or "", row.get("headline_en") or "", row.get("category") or "", row.get("published") or "")
