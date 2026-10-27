@@ -252,6 +252,17 @@ def local_score(n, text=""):
     return round(s, 2)
 
 
+def recheck_once(st, url):
+    """27 Oct: stories on a paper's own Namakkal page, and 'duplicates' found by the old letter-only match, are checked once more.
+    The old verdict is removed, so the writer (a separate run) does not skip the item as 'checked earlier'; a new check sets a new one.
+    True when this item gets its second check now (st is changed in place)."""
+    if st.get("r27b") or not ((st.get("s") == "notdistrict" and allnews.url_district(url) == "namakkal") or st.get("s") == "dup"):
+        return False
+    st["r27b"] = 1
+    st.pop("s", None)
+    return True
+
+
 def verify_candidates(items, state, log):
     """collect round: open every candidate now, keep only real Namakkal-district news of today / yesterday, merge the same event
     reported by several outlets. The queue then holds only news that will really be written (no time lost on other districts)."""
@@ -704,11 +715,7 @@ def main():
                 n["status"] = "already filed"
     for n in news:
         st = state.get(n["key"], {})
-        retry = ((st.get("s") == "notdistrict" and allnews.url_district(n.get("url", "")) == "namakkal") or st.get("s") == "dup") and not st.get("r27b")
-        if retry:      # 27 Oct: stories on a paper's own Namakkal page, and 'duplicates' found by the old letter-only match, are checked once more
-            st["r27b"] = 1
-            st.pop("s", None)      # the old verdict is removed, so the writer (a separate run) does not skip it as 'checked earlier'; a new check sets a new one
-        if not retry and (st.get("s") in ("filed", "dup", "notext", "old", "notdistrict") or st.get("n", 0) >= 10):
+        if not recheck_once(st, n.get("url", "")) and (st.get("s") in ("filed", "dup", "notext", "old", "notdistrict") or st.get("n", 0) >= 10):
             n["status"] = n["status"] if n["status"] != "collected" else "checked earlier: " + st.get("s", "failed")
     manual_links = [u.strip() for u in re.split(r"[\s,]+", os.environ.get("MANUAL_URL", "")) if u.strip().startswith("http")]
     for mu in manual_links:     # owner 26 Oct: links given by hand are written whatever their date; still skipped if already filed or no article text
