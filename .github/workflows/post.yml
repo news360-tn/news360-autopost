@@ -115,7 +115,6 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}      # Google human-like voice for every second story (reel_voice_alt)
       PREBUILD: ${{ matrix.prebuild || (github.event_name == 'workflow_dispatch' && inputs.prebuild && '1' || '') }}
     steps:
       - uses: actions/checkout@v4

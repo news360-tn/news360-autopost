@@ -222,58 +222,6 @@ def edge_lines(work, texts, voice="ta-IN-ValluvarNeural", rate="+8%", pitch="+0H
                         "-ar", "22050", "-ac", "1", str(wav)], check=True)
 
 
-def google_say(text, voice, lang, rate=None):
-    """Google Cloud Text-to-Speech (Chirp 3 HD, human-like) -> mp3 bytes. Needs GOOGLE_TTS_API_KEY."""
-    import base64, requests
-    key = os.environ.get("GOOGLE_TTS_API_KEY")
-    if not key:
-        raise RuntimeError("GOOGLE_TTS_API_KEY not set")
-    body = {"input": {"text": text}, "voice": {"languageCode": lang, "name": voice}, "audioConfig": {"audioEncoding": "MP3"}}
-    if rate:
-        body["audioConfig"]["speakingRate"] = rate
-    last = None
-    for k in range(4):
-        r = requests.post("https://texttospeech.googleapis.com/v1/text:synthesize", params={"key": key}, json=body, timeout=90)
-        if r.status_code == 200 and r.json().get("audioContent"):
-            return base64.b64decode(r.json()["audioContent"])
-        last = f"google tts {r.status_code}: {r.text[:200]}"
-        if r.status_code == 400 and "speakingRate" in body["audioConfig"]:
-            body["audioConfig"].pop("speakingRate")      # a voice without speed control: its normal speed
-            continue
-        if r.status_code in (401, 403, 404):
-            break
-        import time; time.sleep(5 * (k + 1))
-    raise RuntimeError(last)
-
-
-def google_lines(work, texts, voice="ta-IN-Chirp3-HD-Charon", rate=None):
-    """the news in Google's human-like voice, line by line; numbers and abbreviations prepared exactly like the other voices"""
-    import tts
-    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "research_free"))
-    import names
-    for i, t in enumerate(texts):
-        mp3, wav = work / f"line{i}.mp3", work / f"line{i}.wav"
-        mp3.write_bytes(google_say(tts.clean(names.spoken(t)), voice, "ta-IN", rate))
-        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af",
-                        "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,loudnorm=I=-16:TP=-1.5",
-                        "-ar", "22050", "-ac", "1", str(wav)], check=True)
-
-
-def pick_voice(spec):
-    """owner 27 Oct: two news voices take turns - one story in the usual voice (Valluvar), the next in Google's human-like voice.
-    Even story numbers get the "reel_voice_alt" voice; it falls back to the usual voice if Google is not set up or fails."""
-    vs = voice_setting()
-    alt = {}
-    try:
-        alt = json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text()).get("reel_voice_alt") or {}
-    except Exception:
-        pass
-    m = re.search(r"(\d+)", str(spec.get("story") or ""))
-    if alt.get("engine") == "google" and m and int(m.group(1)) % 2 == 0 and os.environ.get("GOOGLE_TTS_API_KEY"):
-        return alt, vs
-    return vs, None
-
-
 def voice_setting():
     """poster/config.json "reel_voice": the news voice (owner 26 Oct: Valluvar, news style). Falls back to the AI4Bharat model."""
     try:
@@ -283,14 +231,11 @@ def voice_setting():
         return {}
 
 
-def english_outro(work, idx, voice, google=False):
+def english_outro(work, idx, voice):
     """the follow line in Indian English, in a voice that matches the news voice"""
     try:
         mp3 = work / "outro_en.mp3"
-        if google:
-            mp3.write_bytes(google_say(V3.OUTRO_EN, voice, "en-IN"))
-        else:
-            subprocess.run([sys.executable, "-m", "edge_tts", "--voice", voice, "--rate=+0%", "--text", V3.OUTRO_EN, "--write-media", str(mp3)], check=True, timeout=60)
+        subprocess.run([sys.executable, "-m", "edge_tts", "--voice", voice, "--rate=+0%", "--text", V3.OUTRO_EN, "--write-media", str(mp3)], check=True, timeout=60)
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af",
                         "silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,"
                         "highpass=f=80,acompressor=threshold=0.12:ratio=3:attack=5:release=80,loudnorm=I=-16:TP=-1.5", "-ar", "22050", "-ac", "1",
@@ -426,17 +371,9 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     if os.environ.get("REUSE_VOICE") == "1" and all((work / f"line{i}.wav").exists() for i in range(len(texts))):
         print("voice of an earlier render reused (design comparison: same story, same voice)")
     else:
-        vs, usual = pick_voice(spec)
+        vs = voice_setting()
         used = ""
-        if vs.get("engine") == "google":
-            try:
-                google_lines(work, texts, vs.get("voice", "ta-IN-Chirp3-HD-Charon"), vs.get("rate"))
-                used = "google"
-                print("news voice: Google", vs.get("voice"))
-            except Exception as e:
-                print("Google voice not available, using the usual voice instead:", str(e)[:160])
-                vs = usual
-        if not used and (os.environ.get("PREVIEW_TTS") == "edge" or vs.get("engine") == "edge"):
+        if os.environ.get("PREVIEW_TTS") == "edge" or vs.get("engine") == "edge":
             try:
                 edge_lines(work, texts, vs.get("voice", "ta-IN-ValluvarNeural"), vs.get("rate", "+8%"), vs.get("pitch", "+0Hz"))
                 used = "edge"
@@ -446,7 +383,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
         if not used:
             (work / "lines.json").write_text(json.dumps(texts, ensure_ascii=False))
             subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "tts.py"), str(work / "lines.json"), str(work), spec.get("voice", "female")], check=True)
-        english_outro(work, len(texts) - 1, vs.get("outro_voice", "en-IN-PrabhatNeural") if used else "en-IN-NeerjaNeural", used == "google")
+        english_outro(work, len(texts) - 1, vs.get("outro_voice", "en-IN-PrabhatNeural") if used else "en-IN-NeerjaNeural")
     starts, ends, t = [], [], lead
     for i in range(len(texts)):
         d = V3.wav_dur(work / f"line{i}.wav")
