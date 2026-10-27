@@ -298,8 +298,8 @@ def google_record(chars):
 
 
 def pick_voice(spec):
-    """owner 27 Oct: two news voices take turns - one story in the usual voice (Valluvar), the next in Google's human-like voice.
-    Even story numbers get the "reel_voice_alt" voice; it falls back to the usual voice if Google is not set up or fails."""
+    """owner 27 Oct: Google's human-like voice (reel_voice_alt, Charon) for every reel inside Google's FREE allowance;
+    the usual voice (Valluvar) when the allowance is used up, Google is not set up, or Google fails."""
     vs = voice_setting()
     alt = {}
     try:
@@ -307,7 +307,8 @@ def pick_voice(spec):
     except Exception:
         pass
     m = re.search(r"(\d+)", str(spec.get("story") or ""))
-    if alt.get("engine") == "google" and m and int(m.group(1)) % 2 == 0 and os.environ.get("GOOGLE_TTS_API_KEY"):
+    # owner 27 Oct (evening): Google Charon reads EVERY reel while the free allowance lasts; Valluvar only after that or if Google fails
+    if alt.get("engine") == "google" and m and os.environ.get("GOOGLE_TTS_API_KEY"):
         used, month = google_used_this_month()
         need = int(sum(len(x["say"]) for x in spec.get("sentences", [])) * 1.6) + 400      # numbers are spoken as words: counted generously
         limit = int(alt.get("free_chars_per_month", 800000))

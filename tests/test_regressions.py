@@ -176,9 +176,9 @@ class Reel(unittest.TestCase):
             try:
                 spec = {"story": "RN-142", "sentences": [{"say": "அ" * 1300}]}
                 self.assertEqual("google", ns["pick_voice"](spec)[0].get("engine"))
-                self.assertEqual("edge", ns["pick_voice"]({"story": "RN-143", "sentences": spec["sentences"]})[0].get("engine"))
+                self.assertEqual("google", ns["pick_voice"]({"story": "RN-143", "sentences": spec["sentences"]})[0].get("engine"))      # every reel, odd numbers too
                 month = datetime.datetime.now(IST).strftime("%Y-%m")
-                (Path(tmp) / f"RN-2_gvoice_{month}.json").write_text(json.dumps({"chars": 799000}))
+                (Path(tmp) / f"RN-2_gvoice_{month}.json").write_text(json.dumps({"chars": 699500}))
                 self.assertEqual("edge", ns["pick_voice"]({"story": "RN-144", "sentences": spec["sentences"]})[0].get("engine"))
                 cfg = json.loads((ROOT / "poster" / "config.json").read_text())
                 self.assertLessEqual(cfg["reel_voice_alt"]["free_chars_per_month"], 1000000, "never above Google's free tier")
