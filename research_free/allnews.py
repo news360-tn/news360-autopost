@@ -23,14 +23,18 @@ QUERIES = ["நாமக்கல்", "ராசிபுரம்", "திர
            # government / TNEB announcements (owner 26 Oct): the newspapers carry the official notices every day
            "நாமக்கல் மின்தடை", "ராசிபுரம் மின்தடை", "திருச்செங்கோடு மின்தடை", "பரமத்தி வேலூர் மின்தடை", "குமாரபாளையம் மின்தடை",
            "நாமக்கல் ஆட்சியர் அறிவிப்பு", "நாமக்கல் மாவட்ட நிர்வாகம்", "நாமக்கல் வேலைவாய்ப்பு முகாம்", "நாமக்கல் ஆட்சேர்ப்பு",
-           "நாமக்கல் சிறப்பு முகாம்", "நாமக்கல் குறைதீர் கூட்டம்", "Namakkal power shutdown", "Namakkal collector"]
+           "நாமக்கல் சிறப்பு முகாம்", "நாமக்கல் குறைதீர் கூட்டம்", "Namakkal power shutdown", "Namakkal collector",
+           # 27 Oct cross-check: the other spelling, smaller towns and English reports are searched too
+           "இராசிபுரம்", "பரமத்தி", "புதுச்சத்திரம்", "மல்லசமுத்திரம்", "கபிலர்மலை", "ஜேடர்பாளையம்", "வேலகவுண்டம்பட்டி", "எலச்சிபாளையம்",
+           "Namakkal", "Rasipuram", "Tiruchengode", "Kumarapalayam", "Pallipalayam", "Paramathi Velur", "Kolli Hills"]
 # every outlet is also searched on its own (so a channel like News7 Tamil or NDTV Tamil is never missed)
 SITES = {"நியூஸ்7 தமிழ்": "news7tamil.live", "என்டிடிவி தமிழ்": "ndtv.com/tamil", "மாலைமலர்": "maalaimalar.com", "தினத்தந்தி": "dailythanthi.com",
          "தினமணி": "dinamani.com", "இந்து தமிழ்": "hindutamil.in", "தினகரன்": "dinakaran.com", "புதிய தலைமுறை": "puthiyathalaimurai.com",
          "நியூஸ்18 தமிழ்": "news18.com", "விகடன்": "vikatan.com", "பாலிமர்": "polimernews.com", "சமயம் தமிழ்": "tamil.samayam.com",
          "தினமலர்": "dinamalar.com", "DT Next": "dtnext.in", "ஜீ தமிழ்": "zeenews.india.com", "ABP நாடு": "tamil.abplive.com",
-         "Oneindia தமிழ்": "tamil.oneindia.com", "நக்கீரன்": "nakkheeran.in", "தினபூமி": "dinaboomi.com", "தமிழ் முரசு": "tamilmurasu.com.sg"}
-SITE_QUERIES = ["நாமக்கல்", "ராசிபுரம்", "திருச்செங்கோடு"]
+         "Oneindia தமிழ்": "tamil.oneindia.com", "நக்கீரன்": "nakkheeran.in", "தினபூமி": "dinaboomi.com", "தமிழ் முரசு": "tamilmurasu.com.sg",
+         "The Hindu": "thehindu.com", "New Indian Express": "newindianexpress.com", "Times of India": "timesofindia.indiatimes.com"}
+SITE_QUERIES = ["நாமக்கல்", "ராசிபுரம்", "திருச்செங்கோடு", "Namakkal"]      # English for the English papers
 OUTLET_WORDS = ["தினமலர்", "தினத்தந்தி", "தினமணி", "மாலைமலர்", "தினகரன்", "இந்து தமிழ்", "தி இந்து", "புதிய தலைமுறை", "நியூஸ்18", "நியூஸ் 18",
                 "விகடன்", "ஏபிபி", "சமயம்", "polimer", "பாலிமர்", "தந்தி டிவி", "ஜீ தமிழ்", "நக்கீரன்", "டைம்ஸ்"]
 
