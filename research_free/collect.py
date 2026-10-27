@@ -291,7 +291,8 @@ def verify_candidates(items, state, log):
             # owner 26 Oct: ONLY Namakkal-district news - a district place in the headline or in the opening lines (not just a sidebar or a
             # long list of districts), and a headline that names no other district / town and is not state-wide
             if (not allnews.local_ok(art["url"], art["title"]) or not allnews.local_ok(art["url"], n.get("title", "") or art["title"])
-                    or not (allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300])) or allnews.outside_district(art["title"])):
+                    or not (allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300]) or allnews.url_district(art["url"]) == "namakkal")
+                    or allnews.outside_district(art["title"])):      # 27 Oct: a story on the paper's own Namakkal page is Namakkal news even when it names no town
                 n["status"], stt["s"] = "not Namakkal district news (article names no Namakkal place)", "notdistrict"; kept["notdistrict"] += 1
                 continue
             n.update(url=art["url"], title=art["title"], published=art["published"], verified=True)
@@ -703,7 +704,10 @@ def main():
                 n["status"] = "already filed"
     for n in news:
         st = state.get(n["key"], {})
-        if st.get("s") in ("filed", "dup", "notext", "old", "notdistrict") or st.get("n", 0) >= 10:
+        retry = ((st.get("s") == "notdistrict" and allnews.url_district(n.get("url", "")) == "namakkal") or st.get("s") == "dup") and not st.get("r27")
+        if retry:      # 27 Oct: stories on a paper's own Namakkal page, and 'duplicates' found by the old letter-only match, are checked once more
+            st["r27"] = 1
+        if not retry and (st.get("s") in ("filed", "dup", "notext", "old", "notdistrict") or st.get("n", 0) >= 10):
             n["status"] = n["status"] if n["status"] != "collected" else "checked earlier: " + st.get("s", "failed")
     manual_links = [u.strip() for u in re.split(r"[\s,]+", os.environ.get("MANUAL_URL", "")) if u.strip().startswith("http")]
     for mu in manual_links:     # owner 26 Oct: links given by hand are written whatever their date; still skipped if already filed or no article text
@@ -788,7 +792,8 @@ def main():
             return {"skip": "article text too short / blocked", "s": "notext", "log": f"skip ({area}) no article text ({len(art['text'])} chars): {art['title'][:50]} [{url[:60]}]"}
         if not fresh(art["published"]) and not n.get("manual"):      # a link the owner gives by hand is written whatever its date
             return {"skip": "old", "s": "old", "log": f"skip ({area}) too old ({art['published'] or 'no date'}): {art['title'][:50]}"}
-        if ((not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300])) and n.get("via", "") != "dinamalar-list")
+        if ((not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300])
+                  or allnews.url_district(art["url"]) == "namakkal") and n.get("via", "") != "dinamalar-list")
                 or not allnews.local_ok(art["url"], art["title"])) and not n.get("manual"):
             return {"skip": "not Namakkal district news (article names no Namakkal place)", "s": "notdistrict", "log": f"skip ({area}) no Namakkal place in article: {art['title'][:50]}"}
         if not n.get("manual") and any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched"))

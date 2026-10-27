@@ -142,12 +142,29 @@ def different_power_cut(a, b, other_filed=None, today=None):
     return bool(d and (today - d).days >= 3)
 
 
+_GENERIC = ("நாமக்", "ராசிப", "இராசி", "மாவட்", "namak", "rasip", "அருகே", "அருகில்", "இன்று", "நாளை", "நேற்று", "உயிரிழ",
+            "தொழிலா", "கைது", "பகுதி", "நடந்த", "வழங்க")
+
+
+def shares_words(a, b):
+    """Tamil headlines share many letters, so a letter match alone is weak (27 Oct: 'நாமக்கல் நீதிமன்றத்திலிருந்து தப்பியோடிய
+    கைதி பிடிப்பு' was taken for 'நாமக்கல்லில் நீதிமன்ற உத்தரவுப்படி ஆர்எஸ்எஸ் ஊர்வலம்'). The same news also shares a third of
+    its own words (place names and common words left out), or is almost letter-for-letter the same."""
+    import difflib
+    n = lambda t: (t or "").replace("ா்", "ர்").lower()
+    w = lambda t: {x[:4] for x in re.findall(r"[\u0B80-\u0BFFa-z0-9]{3,}", n(t)) if not x.startswith(_GENERIC)}
+    x, y = w(a), w(b)
+    if x and y and len(x & y) / min(len(x), len(y)) >= 0.34:
+        return True
+    return difflib.SequenceMatcher(None, n(a), n(b)).ratio() >= 0.75
+
+
 def similar(a, b, thr, other_filed=None, today=None):
     """True when headline a and b are the same news. A repeating-price topic (e.g. today's egg price) counts as the same
     only when the other story was filed the same day - tomorrow's price is a new post."""
     import difflib
     if (not a or not b or difflib.SequenceMatcher(None, a, b).ratio() <= thr or different_numbers(a, b)
-            or different_power_cut(a, b, other_filed, today)):
+            or different_power_cut(a, b, other_filed, today) or not shares_words(a, b)):
         return False
     if recurring(a) or recurring(b):
         today = today or datetime.datetime.now(IST).date()

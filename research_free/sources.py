@@ -19,6 +19,13 @@ def candidate_links(limit=15):
         u = "https://www.dinamalar.com" + m.group(1)
         if u not in links:
             links.append(u)
+    # 27 Oct: only the first 8 stories are <a href> links; the rest of the district list sits in the page data as
+    # '/news/tamil-nadu-district-news-namakkal/<id>/<slug>' (the 140 mm rain report was missed)
+    for m in re.finditer(r'/news/(tamil-nadu-district-news-namakkal)/(?:(\d{6,})/([a-z0-9-]+)|([a-z0-9-]+)/(\d{6,}))', h):
+        slug, nid = (m.group(3), m.group(2)) if m.group(2) else (m.group(4), m.group(5))
+        u = f"https://www.dinamalar.com/news/{m.group(1)}/{slug}/{nid}"
+        if u not in links:
+            links.append(u)
     return links[:limit]
 
 
