@@ -1,49 +1,11 @@
-writing [N]: முட்டை விலை ரூ. 5.70 ஆக நீடிப்பு
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.8-flash
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.7-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
-dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
-fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
-dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
-fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
-switching away from mistral/mistral-small-latest for 10 min
-free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (9 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 0 problems
-claude rewrite 1 anthropic/claude-haiku-5-5: 0 problems
-proofread skipped: free models not efficient (9 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
 earlier stories still waiting for images: []
 instagram check: 72 recent posts read from both pages
 write round: 1 news waiting in the queue (written in priority order)
-candidate filter: collected=1
-to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
-try (N) manual=False: முட்டை விலை ரூ. 5.70 ஆக நீடிப்பு
-NOT filed (N) முட்டை விலை ரூ. 5.70 ஆக நீடிப்பு: stale: price news from 27 Oct, not today
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min
+candidate filter: checked earlier=1
+to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 1 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
+queue: 0 news waiting to be written 
 stories: 0
