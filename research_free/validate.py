@@ -137,8 +137,9 @@ def validate(d, article, today_digits=("2026",)):
     if not rs.endswith(LAST):
         p.append("reel_script must end with exactly: " + LAST)
     wc = len(rs.split())
-    if not 60 <= wc <= 220:
-        p.append(f"reel_script has {wc} words; need 130-200 (full-detail reel, about 60-80 seconds)")
+    need = min(130, int(len(_tamil_words(article)) * 0.55)) if article else 60      # owner 28 Oct: full detail - a longer article needs a longer reel
+    if not max(60, need) <= wc <= 175:      # owner 28 Oct: a reel is at most 90 s (~170 words with the outro)
+        p.append(f"reel_script has {wc} words; need {max(60, need)}-170 (full detail in at most 90 seconds: every fact of the article, each said once)")
     if "வணக்கம்" in rs.split(".")[0]:
         p.append("reel_script must not start with a greeting")
     cap = d["caption"]

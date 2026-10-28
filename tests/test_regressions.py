@@ -295,5 +295,33 @@ class Website(unittest.TestCase):
         self.assertFalse(website.send({"story_id": "RN-1", "headline_ta": "x", "_en": {"title_en": "x", "story_en": "y" * 50}}, ""))
 
 
+class FullDetail(unittest.TestCase):
+    """28 Oct: reels were 50-90 words while the source article had more detail; owner: full detail, at most 90 seconds"""
+
+    def length_problems(self, words, article_words):
+        import validate
+        d = dict(json.loads((ROOT / "research_free" / "examples.json").read_text(encoding="utf-8"))[1]["output"])
+        d["reel_script"] = " ".join(["தகவல்"] * words) + " " + validate.LAST
+        art = " ".join(f"சொல்{i}" for i in range(article_words))
+        return [x for x in validate.validate(d, art) if x.startswith("reel_script has")]
+
+    def test_short_reel_of_long_article_is_rewritten(self):
+        self.assertTrue(self.length_problems(70, 300))
+        self.assertFalse(self.length_problems(150, 300))
+
+    def test_short_article_keeps_a_short_reel(self):
+        self.assertFalse(self.length_problems(70, 80))
+
+    def test_never_more_words_than_90_seconds(self):
+        self.assertTrue(self.length_problems(200, 400))
+
+    def test_examples_are_full_detail(self):
+        for e in json.loads((ROOT / "research_free" / "examples.json").read_text(encoding="utf-8")):
+            self.assertGreaterEqual(len(e["output"]["reel_script"].split()), 80)
+
+    def test_reel_max_seconds(self):
+        self.assertEqual(json.loads((ROOT / "poster" / "config.json").read_text())["reel_max_seconds"], 90)
+        self.assertIn("fit_max(work, len(texts), lead, gap)", (ROOT / "reel" / "reel4.py").read_text(encoding="utf-8"))
+
 if __name__ == "__main__":
     unittest.main()
