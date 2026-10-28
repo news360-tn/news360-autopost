@@ -1,27 +1,23 @@
 writing [N]: முட்டை விலை ரூ. 5.70 ஆக நீடிப்பு
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.8-flash
-fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.7-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (25s)
+ok gemini/gemini-3.6-flash (19s)
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
@@ -29,15 +25,14 @@ fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
 dead for this round: gemini/gemini-3.6-flash
 ok groq/openai/gpt-oss-120b (3s)
 factcheck by groq/openai/gpt-oss-120b: 1 problems
-  Caption states a specific date (27 அக்டோபர் 2026) which is not mentioned in the article
+  Caption includes a specific date (27 அக்டோபர் 2026) that is not mentioned in the article
 attempt 1 gemini/gemini-3.6-flash: 1 problems
-  fact-check: Caption states a specific date (27 அக்டோபர் 2026) which is not mentioned in the article
+  fact-check: Caption includes a specific date (27 அக்டோபர் 2026) that is not mentioned in the article
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-switching away from groq/openai/gpt-oss-120b for 10 min
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
 dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
 fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
@@ -49,36 +44,8 @@ free models unavailable: no free model answered: mistral mistral-small-latest 42
 ok anthropic/claude-haiku-5-5
 free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  Caption says the Namakkal zone meeting was held 'செவ்வாய்க்கிழமை' and the caption attributes the decision to 'பண்ணையாளர்கள்' saying no change is needed; the article says the national coordination committee announced the price after asking farmers, so the caption attributes the stance to farmers as a direct statement, which is a slight distortion.
-  Reel script says the price was 'நிர்ணயிக்கப்பட்டது' (fixed) with no mention that the national coordination committee announced it, an important actor missing from the reel_script.
-  Reel_script and slides say 'பல்லடத்தில் நடைபெற்ற கூட்டத்தில்' while the article says the national coordination committee meeting was held in Palladam, but the reel script merges this into the same sentence as the Namakkal meeting, mixing two separate meetings into one sentence with the prices.
-  Slide 'ஏன் மாற்றமில்லை?' states the reason as 'மற்ற மண்டலங்களில் விலை மாறாததால்' (because prices did not change in other zones), which is an explicit causal claim the article only implies by saying other zones had no change and no change is wanted here.
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: Caption says the Namakkal zone meeting was held 'செவ்வாய்க்கிழமை' and the caption attributes the decision to 'பண்ணையாளர்கள்' saying no change is needed; the article says the national coordination committee announced the price after asking farmers, so the caption attributes the stance to farmers as a direct statement, which is a slight distortion.
-  fact-check: Reel script says the price was 'நிர்ணயிக்கப்பட்டது' (fixed) with no mention that the national coordination committee announced it, an important actor missing from the reel_script.
-  fact-check: Reel_script and slides say 'பல்லடத்தில் நடைபெற்ற கூட்டத்தில்' while the article says the national coordination committee meeting was held in Palladam, but the reel script merges this into the same sentence as the Namakkal meeting, mixing two separate meetings into one sentence with the prices.
-  fact-check: Slide 'ஏன் மாற்றமில்லை?' states the reason as 'மற்ற மண்டலங்களில் விலை மாறாததால்' (because prices did not change in other zones), which is an explicit causal claim the article only implies by saying other zones had no change and no change is wanted here.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The reel_script says the Namakkal zone price 'remains unchanged' (மாற்றமின்றி), but the article only says the zone's price stays at ₹5.70 after the meeting; this matches, so no issue there.
-  The caption says the meeting was held on 'செவ்வாய்க்கிழமை (அக். 27, 2026)'; the article only says Tuesday, and the date is not stated in the article, so the specific date is an invented detail.
-  The slides_spec claims the Tuesday meeting was where 'பண்ணையாளர்களிடம் கருத்து' was gathered and that the outcome was decided there; the article attributes the ₹5.70 decision to the national coordination committee, which the slide's 'நாமக்கல் மண்டல ஆலோசனைக் கூட்டத்தில் முடிவு' ('decided at the Namakkal zone consultation meeting') misattributes.
-  The slides_spec slide 'கூட்டத்தில் என்ன?' says 'மற்ற மண்டலங்களிலும் விலை மாற்றம் இல்லை' which is a fair paraphrase, but the headline hl1 'நாமக்கல்லில் முட்டை விலை மாற்றமில்லை' and cat/loc labels are fine; no further problem there.
-claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The reel_script says the Namakkal zone price 'remains unchanged' (மாற்றமின்றி), but the article only says the zone's price stays at ₹5.70 after the meeting; this matches, so no issue there.
-  fact-check: The caption says the meeting was held on 'செவ்வாய்க்கிழமை (அக். 27, 2026)'; the article only says Tuesday, and the date is not stated in the article, so the specific date is an invented detail.
-  fact-check: The slides_spec claims the Tuesday meeting was where 'பண்ணையாளர்களிடம் கருத்து' was gathered and that the outcome was decided there; the article attributes the ₹5.70 decision to the national coordination committee, which the slide's 'நாமக்கல் மண்டல ஆலோசனைக் கூட்டத்தில் முடிவு' ('decided at the Namakkal zone consultation meeting') misattributes.
-  fact-check: The slides_spec slide 'கூட்டத்தில் என்ன?' says 'மற்ற மண்டலங்களிலும் விலை மாற்றம் இல்லை' which is a fair paraphrase, but the headline hl1 'நாமக்கல்லில் முட்டை விலை மாற்றமில்லை' and cat/loc labels are fine; no further problem there.
-ok anthropic/claude-haiku-5-5
-free fact-check unavailable, using Claude: free models not efficient (7 failures in a row): using Claude
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 1 problems
-  slides_spec hl1 says 'நாமக்கல்லில் முட்டை விலை மாற்றமில்லை' (no price change in Namakkal), which is a reasonable reading, but slide 3 header 'பிற விலைகள்' is fine; however slide 2 line 'எனவே நாமக்கல்லிலும் மாற்றம் வேண்டாம் எனத் தெரிவிக்கப்பட்டது' is grammatically acceptable but states the reason as 'எனவே' (therefore) which the article presents as the reason, so no issue there; the reel_script says the price was 'நிர்ணயிக்கப்பட்டதாக' announced by the national committee, consistent with the article; the caption says the Namakkal price was set (நிர்ணயிக்கப்பட்டது) at Rs 5.70, which is consistent with the article's wording; however the reel_script and caption attribute the national coordination committee's 'announcement' of the price correctly; no clear factual errors were found on re-check
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  fact-check: slides_spec hl1 says 'நாமக்கல்லில் முட்டை விலை மாற்றமில்லை' (no price change in Namakkal), which is a reasonable reading, but slide 3 header 'பிற விலைகள்' is fine; however slide 2 line 'எனவே நாமக்கல்லிலும் மாற்றம் வேண்டாம் எனத் தெரிவிக்கப்பட்டது' is grammatically acceptable but states the reason as 'எனவே' (therefore) which the article presents as the reason, so no issue there; the reel_script says the price was 'நிர்ணயிக்கப்பட்டதாக' announced by the national committee, consistent with the article; the caption says the Namakkal price was set (நிர்ணயிக்கப்பட்டது) at Rs 5.70, which is consistent with the article's wording; however the reel_script and caption attribute the national coordination committee's 'announcement' of the price correctly; no clear factual errors were found on re-check
+factcheck by anthropic/claude-haiku-5-5: 0 problems
+claude rewrite 1 anthropic/claude-haiku-5-5: 0 problems
 proofread skipped: free models not efficient (7 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 earlier stories still waiting for images: []
@@ -89,7 +56,7 @@ to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
 candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
 try (N) manual=False: முட்டை விலை ரூ. 5.70 ஆக நீடிப்பு
 NOT filed (N) முட்டை விலை ரூ. 5.70 ஆக நீடிப்பு: stale: price news from 27 Oct, not today
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 26 min
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 28 min
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
 queue: 1 news waiting to be written
