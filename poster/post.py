@@ -470,6 +470,27 @@ def render_carousel(row, spec, work):
     return jpgs
 
 
+def shorten_script(txt, ratio):
+    """owner 28 Oct: a reel longer than 90 s is shortened, never skipped. Keeps the first sentence (the one-line story),
+    then the next sentences in order while they fit in ratio x the original length; the follow line stays last.
+    Always keeps at least 2 news sentences (+ the follow line), so reel_spec still has its 3 sentences."""
+    sents = [s.strip() for s in re.split(r"(?<=[.!?\u0964])\s+", (txt or "").strip()) if s.strip()]
+    follow = [s for s in sents[-1:] if "பின்தொடரு" in s or "Follow" in s]
+    body = sents[:-1] if follow else sents
+    if len(body) <= 2:
+        return txt
+    budget = sum(len(s) for s in body) * max(0.3, min(ratio, 0.95))
+    keep, used = [], 0
+    for i, s in enumerate(body):
+        if i >= 2 and used + len(s) > budget:
+            continue
+        keep.append(s)
+        used += len(s)
+    if len(keep) == len(body):      # nothing could be dropped by the budget: drop the last news sentence
+        keep = keep[:-1]
+    return " ".join(keep + follow)
+
+
 def reel_spec(row, spec, images):
     txt = (row.get("reel_script") or "").strip()
     sentences = [s.strip() for s in re.split(r"(?<=[.!?।])\s+", txt) if s.strip()]
@@ -1089,8 +1110,19 @@ def run_story_page(row, page):
                         log("using recorded human voice", v.get("name"))
                 except Exception as e:
                     log("voice lookup failed, using the voice model:", e)
-                mp4 = render_reel(row, spec, images, work, voice_file)
-                probs = verify.check_reel(mp4, [x["say"] for x in rs["sentences"]] + [rs["outro"]["say"]])
+                for shrink in range(4):      # owner 28 Oct: too long -> the script is shortened automatically, the story is never held for length
+                    mp4 = render_reel(row, spec, images, work, voice_file)
+                    probs = verify.check_reel(mp4, [x["say"] for x in rs["sentences"]] + [rs["outro"]["say"]])
+                    dur = verify.reel_duration(mp4)
+                    if not (probs and dur > 90 and not voice_file and all("outside 10-90" in p for p in probs)):
+                        break
+                    shorter = shorten_script(row.get("reel_script") or "", 84.0 / dur)
+                    if shorter == row.get("reel_script"):
+                        break
+                    log(f"reel {dur:.1f}s is longer than 90 s: script shortened from {len(row.get('reel_script') or '')} to {len(shorter)} characters")
+                    row["reel_script"] = shorter
+                    rs = verify.clean_obj(reel_spec(row, spec, images))
+                    checks.append(f"reel script shortened automatically (was {dur:.0f} s)")
                 if probs:
                     return fail(row, "reel", "Reel check failed: " + "; ".join(probs))
                 checks.append("reel 1080x1920, 10-90 s, voice present and fully pronounceable")

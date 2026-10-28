@@ -107,6 +107,14 @@ def ff_json(args):
     return json.loads(subprocess.run(args, capture_output=True, text=True, check=True).stdout)
 
 
+def reel_duration(mp4):
+    """length of a finished reel in seconds (0 if it cannot be read)"""
+    try:
+        return float(ff_json(["ffprobe", "-v", "error", "-print_format", "json", "-show_format", str(mp4)])["format"].get("duration", 0))
+    except Exception:
+        return 0.0
+
+
 def check_reel(mp4, spoken_lines):
     probs = []
     info = ff_json(["ffprobe", "-v", "error", "-print_format", "json", "-show_streams", "-show_format", str(mp4)])

@@ -449,3 +449,22 @@ class Ages(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ReelTooLong(unittest.TestCase):
+    """owner 28 Oct (RN-153): a reel over 90 s is shortened automatically, never held"""
+    SCRIPT = ("பொத்தனூர் சந்தையில் இரண்டு வாரங்களாக தேங்காய் ஏலம் நடைபெறவில்லை. விவசாயிகள் பாதிக்கப்பட்டுள்ளனர். "
+              "வாரந்தோறும் செவ்வாய், வியாழக்கிழமைகளில் ஏலம் நடைபெறுவது வழக்கம். பல ஊர்களைச் சேர்ந்த விவசாயிகள் இங்கு வருகின்றனர். "
+              "வியாபாரிகள் ஏலத்தில் பங்கேற்க மறுத்தனர். வெளிச் சந்தைகளில் குறைந்த விலையே கிடைக்கும். "
+              "மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.")
+
+    def test_shorter_keeps_first_and_follow_line(self):
+        out = post.shorten_script(self.SCRIPT, 0.5)
+        self.assertLess(len(out), len(self.SCRIPT))
+        self.assertTrue(out.startswith("பொத்தனூர் சந்தையில்"))
+        self.assertTrue(out.endswith("பின்தொடருங்கள்."))
+        self.assertGreaterEqual(len(re.split(r"(?<=[.!?])\s+", out)), 3)
+
+    def test_short_script_unchanged(self):
+        s = "ஒன்று. இரண்டு. மேலும் செய்திகளுக்கு பின்தொடருங்கள்."
+        self.assertEqual(post.shorten_script(s, 0.5), s)
