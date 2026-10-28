@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-28 | `c2f3cbf` | No missed news: an arrest/verdict/rescue reported days after the event is new news, not a duplicate (RN-159); the paper's Namakkal page counts as Namakkal news at posting too (RN-161); All News sheet no longer fails on a link listed twice |
 | 2026-10-28 | `e30419b` | Clear news reading: the reel opens with the one-line story (6-9 words, first 2-3 s) then the explanation; every number said with its meaning (age, count, date with month) - bare numbers like 'ராஜா, 12,' are rewritten |
 | 2026-10-28 | `5025c7a` | Proofread no longer damages reels: only whole-word small spelling fixes, never names/page/follow line/article words/meaning (RN-158 doubled words, RN-155 நம்மக்கல்); ages said as a news reader; repost workflow for a removed reel |
 | 2026-10-28 | `98bdd3f` | Reels: full news detail from the source (every fact, 130-170 words; examples and rules no longer push short scripts), at most 90 seconds (voice read up to 1.2x faster instead of cutting facts) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-26 | `17ba72c` | Posting job: never post a story that is not Namakkal-district news |
 | 2026-10-26 | `16bc946` | Queue only news that was opened and checked |
 | 2026-10-26 | `b852ced` | Only Namakkal-district news: nearby areas removed, link district checked |
-| 2026-10-26 | `b4a33d7` | Posting job: install step limited to 10 min per try, retried once |
 <!-- recent-changes:end -->
