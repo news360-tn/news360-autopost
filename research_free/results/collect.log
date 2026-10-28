@@ -1,14 +1,191 @@
-write_stories.yml started
+writing [N]: சர்வீஸ் சாலையில் குவிக்கும் குப்பையால் சுகாதார சீர்கேடு
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+writing [N]: சர்வீஸ் சாலையில் குவிக்கும் குப்பையால் சுகாதார சீர்கேடு
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.7-flash for 10 min
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.6-flash for 10 min
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
+dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
+dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The reel_script says the garbage is dumped and piled up 'from various areas' and that the buses 'come and go in this area' is roughly supported, but the reel_script's claim that Nallipalayam bypass bridge buses 'come and go in this area' is a loose reading of the article's list of destinations; the article lists buses going to Pazhayur, Namakkal New and Old Bus Stands, Collectorate, and the new government hospital, which the draft omits.
+  The caption's summary says 'நான்கு பகுதிகளில் பயணியர் நிழற்கூடங்கள் உள்ளன' and the reel_script says 'இங்குள்ள நான்கு பகுதிகளில்', which is accurate, but the slide and reel text describe the shelters as being in the same area as the garbage, which the article does not state.
+  The caption's closing sentence 'சுகாதாரச் சீர்கேட்டைத் தவிர்க்க குப்பையை முறையாக அகற்ற வேண்டும்' is an invented call to action (a demand for proper removal) not present in the article.
+  The slides_spec 'loc' and the headline say 'நாமக்கல் பைபாஸ் சர்வீஸ் சாலை' and the first slide says 'நாமக்கல் - கரூர் பைபாஸ் சர்வீஸ் சாலைகளில', while the article only describes the Namakkal-Tiruchengode road and the Karur-Namakkal service roads; the phrase 'Namakkal - Karur bypass service roads' is a reasonable reading but the 'Namakkal Bypass' naming in the headline is a mild embellishment.
+  The reel_script opens with 'மழை பெய்து வருவதால் குப்பை அழுகி துர்நாற்றம் அதிகமாகியுள்ளது', while the article says it is raining and the garbage rots and smells badly; 'அதிகமாகியுள்ளது' (has increased) is an added claim not stated in the article.
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The reel_script says the garbage is dumped and piled up 'from various areas' and that the buses 'come and go in this area' is roughly supported, but the reel_script's claim that Nallipalayam bypass bridge buses 'come and go in this area' is a loose reading of the article's list of destinations; the article lists buses going to Pazhayur, Namakkal New and Old Bus Stands, Collectorate, and the new government hospital, which the draft omits.
+  fact-check: The caption's summary says 'நான்கு பகுதிகளில் பயணியர் நிழற்கூடங்கள் உள்ளன' and the reel_script says 'இங்குள்ள நான்கு பகுதிகளில்', which is accurate, but the slide and reel text describe the shelters as being in the same area as the garbage, which the article does not state.
+  fact-check: The caption's closing sentence 'சுகாதாரச் சீர்கேட்டைத் தவிர்க்க குப்பையை முறையாக அகற்ற வேண்டும்' is an invented call to action (a demand for proper removal) not present in the article.
+  fact-check: The slides_spec 'loc' and the headline say 'நாமக்கல் பைபாஸ் சர்வீஸ் சாலை' and the first slide says 'நாமக்கல் - கரூர் பைபாஸ் சர்வீஸ் சாலைகளில', while the article only describes the Namakkal-Tiruchengode road and the Karur-Namakkal service roads; the phrase 'Namakkal - Karur bypass service roads' is a reasonable reading but the 'Namakkal Bypass' naming in the headline is a mild embellishment.
+  fact-check: The reel_script opens with 'மழை பெய்து வருவதால் குப்பை அழுகி துர்நாற்றம் அதிகமாகியுள்ளது', while the article says it is raining and the garbage rots and smells badly; 'அதிகமாகியுள்ளது' (has increased) is an added claim not stated in the article.
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slide 3 line 2 longer than 60 characters
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  slides_spec.loc 'நல்லிபாளையம், நாமக்கல்' is a location detail for the bypass overbridge, not the garbage site as stated in the article; the article gives the garbage location as the bypass service roads between Karur and Namakkal, so the location label is inaccurate
+  reel_script says 'பரமத்தி வேலூர்' (Paramathi Velur) whereas the article says 'ப.வேலூர்'; the expansion is an inference not stated in the article, though it is a plausible reading
+  reel_script states that bus stops/shelters exist in 'நான்கு பகுதிகளில்' and that buses travel via Nallipalayam overbridge; the article says the shelter is set up 'பலத்தின் கீழ்' (garbled in source) at four areas, so the reel adds an interpretation of the source's garbled sentence
+  slides_spec slide 2 line 'தற்போது மழை பெய்து வருவதால் குப்பை அழுகுகிறது' and reel 'தற்போது மழை பெய்து வருவதால்' are fine, but slides_spec line 'பல்வேறு பகுதிகளில் இருந்து குப்பைக் கழிவுகள் கொண்டு வந்து' is an incomplete sentence with no clear meaning (ends in 'வந்து' with no verb completion)
+  slides_spec slide 3 line 'நல்லிபாளையம் பைபாஸ் மேம்பாலம் வழியாக பஸ்கள் வந்து செல்கின்றன' mixes the bus route fact with the shelter/passenger fact in the same slide and omits the destinations, mixing two facts in one line
+  reel_script omits the key fact that the garbage is dumped on the service roads and that the problem is the dumping by people from various areas as the cause; it also does not mention the 'சர்வீஸ் சாலை' destination-direction detail fully (Karur-to-Namakkal and Namakkal-to-Karur roads), reducing completeness of the main fact
+claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: slides_spec.loc 'நல்லிபாளையம், நாமக்கல்' is a location detail for the bypass overbridge, not the garbage site as stated in the article; the article gives the garbage location as the bypass service roads between Karur and Namakkal, so the location label is inaccurate
+  fact-check: reel_script says 'பரமத்தி வேலூர்' (Paramathi Velur) whereas the article says 'ப.வேலூர்'; the expansion is an inference not stated in the article, though it is a plausible reading
+  fact-check: reel_script states that bus stops/shelters exist in 'நான்கு பகுதிகளில்' and that buses travel via Nallipalayam overbridge; the article says the shelter is set up 'பலத்தின் கீழ்' (garbled in source) at four areas, so the reel adds an interpretation of the source's garbled sentence
+  fact-check: slides_spec slide 2 line 'தற்போது மழை பெய்து வருவதால் குப்பை அழுகுகிறது' and reel 'தற்போது மழை பெய்து வருவதால்' are fine, but slides_spec line 'பல்வேறு பகுதிகளில் இருந்து குப்பைக் கழிவுகள் கொண்டு வந்து' is an incomplete sentence with no clear meaning (ends in 'வந்து' with no verb completion)
+  fact-check: slides_spec slide 3 line 'நல்லிபாளையம் பைபாஸ் மேம்பாலம் வழியாக பஸ்கள் வந்து செல்கின்றன' mixes the bus route fact with the shelter/passenger fact in the same slide and omits the destinations, mixing two facts in one line
+  fact-check: reel_script omits the key fact that the garbage is dumped on the service roads and that the problem is the dumping by people from various areas as the cause; it also does not mention the 'சர்வீஸ் சாலை' destination-direction detail fully (Karur-to-Namakkal and Namakkal-to-Karur roads), reducing completeness of the main fact
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  reel_script says the bus routes pass through 'நல்லிபாளையம் பைபாஸ் மேம்பாலம்' area only loosely, but also states buses 'செல்கின்றன' to Karur, Dindigul, Madurai, Tiruchengode, Erode, Coimbatore – article lists these as areas served via that road, acceptable; however the reel_script adds 'பேருந்துகள்' generically which is fine
+  reel_script says 'பரமத்தி வேலூர்' whereas the article says 'ப.வேலூர' – a place-name rendering that differs from the article and may refer to a different place
+  reel_script says 'குப்பை அகற்றப்பட்டு சுகாதாரம் காக்கப்பட வேண்டும் என்பது பயணிகளின் எதிர்பார்ப்பாக உள்ளது' – an invented detail: the article does not state passengers' expectations
+  slides_spec third slide says 'குப்பை சூழலில் பயணிகள் அவதிப்படுகின்றனர்' – invented claim that passengers are suffering; not in the article
+  slides_spec and caption say the bus stands are in 'நான்கு பகுதிகளிலும்' sheltered; article says shelters are at four places, consistent, but caption/reel say passengers 'காத்திருக்கின்றனர்' at 'பயணியர் நிழற்கூடம்' while article says 'பலத்தின் கீழ்' (under the bridge/strength) – shelter location detail mistranslated/altered
+  caption describes the road as 'நாமக்கல் - கரூர் பைபாஸ் சர்வீஸ் சாலைகள்' combining the two directions into one heading, which is a minor merging but the caption's 'பேருந்துகள்' list merges two separate bus groups into one sentence (inter-city and town buses), mixing facts
+claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: reel_script says the bus routes pass through 'நல்லிபாளையம் பைபாஸ் மேம்பாலம்' area only loosely, but also states buses 'செல்கின்றன' to Karur, Dindigul, Madurai, Tiruchengode, Erode, Coimbatore – article lists these as areas served via that road, acceptable; however the reel_script adds 'பேருந்துகள்' generically which is fine
+  fact-check: reel_script says 'பரமத்தி வேலூர்' whereas the article says 'ப.வேலூர' – a place-name rendering that differs from the article and may refer to a different place
+  fact-check: reel_script says 'குப்பை அகற்றப்பட்டு சுகாதாரம் காக்கப்பட வேண்டும் என்பது பயணிகளின் எதிர்பார்ப்பாக உள்ளது' – an invented detail: the article does not state passengers' expectations
+  fact-check: slides_spec third slide says 'குப்பை சூழலில் பயணிகள் அவதிப்படுகின்றனர்' – invented claim that passengers are suffering; not in the article
+  fact-check: slides_spec and caption say the bus stands are in 'நான்கு பகுதிகளிலும்' sheltered; article says shelters are at four places, consistent, but caption/reel say passengers 'காத்திருக்கின்றனர்' at 'பயணியர் நிழற்கூடம்' while article says 'பலத்தின் கீழ்' (under the bridge/strength) – shelter location detail mistranslated/altered
+  fact-check: caption describes the road as 'நாமக்கல் - கரூர் பைபாஸ் சர்வீஸ் சாலைகள்' combining the two directions into one heading, which is a minor merging but the caption's 'பேருந்துகள்' list merges two separate bus groups into one sentence (inter-city and town buses), mixing facts
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The article does not mention any 'மக்கள் கவனத்திற்கு: சாலையோரங்களில் குப்பை கொட்டுவதைத் தவிர்க்கவும்' appeal in the caption; this is an invented call-to-action not in the article.
+  The reel_script says 'பயணிகள் நிலை' slide claim that 'குப்பை கொட்டுவதால் பயணிகள் அவதி' (passengers suffer due to garbage dumping) is not stated in the article; the article only says passengers wait for buses at the shelters.
+  The reel_script claims the buses 'வந்து செல்கின்றன' via the Nallipalayam bypass and the slides say buses 'வந்து' there, but the article lists bus routes; the slide wording 'பயணியர் நிழற்கூடம் அமைக்கப்பட்ட நான்கு இடங்களில்' (four places) is an added detail, since the article says the shelters are on four sides ('நான்கு பகுதியிலும்') and does not clearly state they are the same places as the garbage dumping.
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The article does not mention any 'மக்கள் கவனத்திற்கு: சாலையோரங்களில் குப்பை கொட்டுவதைத் தவிர்க்கவும்' appeal in the caption; this is an invented call-to-action not in the article.
+  fact-check: The reel_script says 'பயணிகள் நிலை' slide claim that 'குப்பை கொட்டுவதால் பயணிகள் அவதி' (passengers suffer due to garbage dumping) is not stated in the article; the article only says passengers wait for buses at the shelters.
+  fact-check: The reel_script claims the buses 'வந்து செல்கின்றன' via the Nallipalayam bypass and the slides say buses 'வந்து' there, but the article lists bus routes; the slide wording 'பயணியர் நிழற்கூடம் அமைக்கப்பட்ட நான்கு இடங்களில்' (four places) is an added detail, since the article says the shelters are on four sides ('நான்கு பகுதியிலும்') and does not clearly state they are the same places as the garbage dumping.
+proofread skipped: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The draft says 'பரமத்தி வேலூர்' (Paramathi Velur) while the article says 'ப.வேலூர்'. This is a place name rendered in a form that is not stated in the article, though it is the same location; flagged as a minor naming difference.
+  The reel_script states that buses 'வந்து செல்கின்றன' to Karur, Dindigul, Madurai, Tiruchengode, Erode, Coimbatore, and the article says the buses come via the Nallipalayam bypass flyover; this is consistent. However, the reel_script states that the Tamil 'ப.வேலூர்' town-bus route serves Paramathi, which the article does not explicitly say is Paramathi; this expansion is an unstated interpretation.
+  The reel_script and slides say the bus stand/shelter is 'பைபாஸ் பாலத்தின் கீழ்' (under the bypass bridge) and the caption says 'பாலத்தின் கீழ்' - the article says 'பலத்தின் கீழ்' (a typo for பாலத்தின் கீழ் in the source), so this is consistent, but the slide says 'பைபாஸ் பாலத்தின் கீழ் நான்கு இடங்களில்' which adds 'பைபாஸ' not explicitly tied to the shelters in the article.
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The draft says 'பரமத்தி வேலூர்' (Paramathi Velur) while the article says 'ப.வேலூர்'. This is a place name rendered in a form that is not stated in the article, though it is the same location; flagged as a minor naming difference.
+  fact-check: The reel_script states that buses 'வந்து செல்கின்றன' to Karur, Dindigul, Madurai, Tiruchengode, Erode, Coimbatore, and the article says the buses come via the Nallipalayam bypass flyover; this is consistent. However, the reel_script states that the Tamil 'ப.வேலூர்' town-bus route serves Paramathi, which the article does not explicitly say is Paramathi; this expansion is an unstated interpretation.
+  fact-check: The reel_script and slides say the bus stand/shelter is 'பைபாஸ் பாலத்தின் கீழ்' (under the bypass bridge) and the caption says 'பாலத்தின் கீழ்' - the article says 'பலத்தின் கீழ்' (a typo for பாலத்தின் கீழ் in the source), so this is consistent, but the slide says 'பைபாஸ் பாலத்தின் கீழ் நான்கு இடங்களில்' which adds 'பைபாஸ' not explicitly tied to the shelters in the article.
+proofread skipped: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+image match: True The image depicts a wet service road running alongside an elevated highway/bypass with large piles of garbage lining bot
+image match: False The image shows a close-up of generic street trash with autumn leaves and a bicycle wheel, not a bypass service road in 
+image match: False The image is an AI-generated close-up of trash (cups, leaves, and plastic bags) on wet asphalt, not a real photograph of
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 3 for 'Garbage piling up on Namakkal bypass ser'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261028-1740","first":"RN-164"}
+posting job started at once
+writing [N]: 30ல் விவசாயிகள் குறைதீர் கூட்டம்
+free models unavailable: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 2 problems
+  The article says the meeting is on '30' (வரும், 30) with no month given; the draft adds 'அக்டோபர்'/'அக். 30' (October), which is not stated in the article.
+  The draft's reel_script and slides say the meeting is 'at Namakkal Collector's office', which matches the article, but the caption's date line '30 அக்டோபர் 2026' adds a year and month not present in the article.
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  fact-check: The article says the meeting is on '30' (வரும், 30) with no month given; the draft adds 'அக்டோபர்'/'அக். 30' (October), which is not stated in the article.
+  fact-check: The draft's reel_script and slides say the meeting is 'at Namakkal Collector's office', which matches the article, but the caption's date line '30 அக்டோபர் 2026' adds a year and month not present in the article.
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The slides_spec 'என்ன செய்யலாம்?' slide adds an invented instruction 'மேலும் விவரங்களுக்கு கலெக்டர் அலுவலகத்தை அணுகுங்கள்' (contact the Collector's office for more details), which is not in the article.
+  The slides_spec 'எங்கே?' slide lists 'கூட்டத்தை நடத்துபவர்: நாமக்கல் கலெக்டர் மதுபாலன்' as the meeting's organizer/host, which the article does not state; the article only says the Collector announced it.
+  The slides_spec 'எப்போது?' slide says 'காலை 10:30 மணிக்கு கூட்டம்' and the 'எங்கே?' slide says the meeting is at the Collector's office; the article supports this, but the 'என்ன' slide's line 'இதர துறைகளின் மானியத் திட்டங்கள்' is a reasonable paraphrase, so no issue there. The main problems are the invented/unsupported details above.
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The slides_spec 'என்ன செய்யலாம்?' slide adds an invented instruction 'மேலும் விவரங்களுக்கு கலெக்டர் அலுவலகத்தை அணுகுங்கள்' (contact the Collector's office for more details), which is not in the article.
+  fact-check: The slides_spec 'எங்கே?' slide lists 'கூட்டத்தை நடத்துபவர்: நாமக்கல் கலெக்டர் மதுபாலன்' as the meeting's organizer/host, which the article does not state; the article only says the Collector announced it.
+  fact-check: The slides_spec 'எப்போது?' slide says 'காலை 10:30 மணிக்கு கூட்டம்' and the 'எங்கே?' slide says the meeting is at the Collector's office; the article supports this, but the 'என்ன' slide's line 'இதர துறைகளின் மானியத் திட்டங்கள்' is a reasonable paraphrase, so no issue there. The main problems are the invented/unsupported details above.
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 2 problems
+  The article gives no month or year: it says only 'வரும், 30' (the 30th). The draft adds 'அக்டோபர்' (October) and '2026' in the reel_script, slides_spec ('30 அக்டோபர் 2026') and caption, which are invented details.
+  The caption and slides_spec state the posting date as the event date ('30 அக்டோபர் 2026'), which is not supported by the article.
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  fact-check: The article gives no month or year: it says only 'வரும், 30' (the 30th). The draft adds 'அக்டோபர்' (October) and '2026' in the reel_script, slides_spec ('30 அக்டோபர் 2026') and caption, which are invented details.
+  fact-check: The caption and slides_spec state the posting date as the event date ('30 அக்டோபர் 2026'), which is not supported by the article.
+proofread skipped: free models not efficient (19 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 3 for 'Namakkal farmers' grievance day meeting '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261028-1742","first":"RN-165"}
 earlier stories still waiting for images: []
-instagram check: 72 recent posts read from both pages
+instagram check: 73 recent posts read from both pages
 source dinamalar list: 15 items
-source google 'நாமக்கல்': 32 items
+source google 'நாமக்கல்': 45 items
 source bing 'நாமக்கல்': 12 items
-source google 'ராசிபுரம்': 2 items
+source google 'ராசிபுரம்': 3 items
 source bing 'ராசிபுரம்': 12 items
-source google 'திருச்செங்கோடு': 6 items
+source google 'திருச்செங்கோடு': 4 items
 source bing 'திருச்செங்கோடு': 12 items
-source google 'பரமத்தி வேலூர்': 0 items
+source google 'பரமத்தி வேலூர்': 1 items
 source bing 'பரமத்தி வேலூர்': 12 items
 source google 'குமாரபாளையம்': 5 items
 source bing 'குமாரபாளையம்': 12 items
@@ -16,7 +193,7 @@ source google 'பள்ளிபாளையம்': 1 items
 source bing 'பள்ளிபாளையம்': 8 items
 source google 'சேந்தமங்கலம்': 2 items
 source bing 'சேந்தமங்கலம்': 12 items
-source google 'கொல்லிமலை': 1 items
+source google 'கொல்லிமலை': 0 items
 source bing 'கொல்லிமலை': 12 items
 source google 'மோகனூர்': 0 items
 source bing 'மோகனூர்': 6 items
@@ -25,13 +202,13 @@ source bing 'நாமகிரிப்பேட்டை': 4 items
 source google 'வெண்ணந்தூர்': 1 items
 source bing 'வெண்ணந்தூர்': 2 items
 source google 'எருமப்பட்டி': 2 items
-source bing 'எருமப்பட்டி': 6 items
-source google 'நாமக்கல் மாவட்டம்': 48 items
+source bing 'எருமப்பட்டி': 5 items
+source google 'நாமக்கல் மாவட்டம்': 46 items
 source bing 'நாமக்கல் மாவட்டம்': 12 items
 source google 'நாமக்கல் முட்டை விலை': 1 items
 source bing 'நாமக்கல் முட்டை விலை': 8 items
 source google 'நாமக்கல் மின்தடை': 2 items
-source bing 'நாமக்கல் மின்தடை': 8 items
+source bing 'நாமக்கல் மின்தடை': 9 items
 source google 'ராசிபுரம் மின்தடை': 0 items
 source bing 'ராசிபுரம் மின்தடை': 1 items
 source google 'திருச்செங்கோடு மின்தடை': 0 items
@@ -42,11 +219,11 @@ source google 'குமாரபாளையம் மின்தடை': 4 it
 source bing 'குமாரபாளையம் மின்தடை': 6 items
 source google 'நாமக்கல் ஆட்சியர் அறிவிப்பு': 0 items
 source bing 'நாமக்கல் ஆட்சியர் அறிவிப்பு': 4 items
-source google 'நாமக்கல் மாவட்ட நிர்வாகம்': 2 items
+source google 'நாமக்கல் மாவட்ட நிர்வாகம்': 1 items
 source bing 'நாமக்கல் மாவட்ட நிர்வாகம்': 12 items
 source google 'நாமக்கல் வேலைவாய்ப்பு முகாம்': 1 items
 source bing 'நாமக்கல் வேலைவாய்ப்பு முகாம்': 1 items
-source google 'நாமக்கல் ஆட்சேர்ப்பு': 8 items
+source google 'நாமக்கல் ஆட்சேர்ப்பு': 9 items
 source bing 'நாமக்கல் ஆட்சேர்ப்பு': 1 items
 source google 'நாமக்கல் சிறப்பு முகாம்': 0 items
 source bing 'நாமக்கல் சிறப்பு முகாம்': 3 items
@@ -72,11 +249,11 @@ source google 'வேலகவுண்டம்பட்டி': 1 items
 source bing 'வேலகவுண்டம்பட்டி': 1 items
 source google 'எலச்சிபாளையம்': 0 items
 source bing 'எலச்சிபாளையம்': 3 items
-source google 'Namakkal': 32 items
+source google 'Namakkal': 31 items
 source bing 'Namakkal': 12 items
-source google 'Rasipuram': 7 items
+source google 'Rasipuram': 8 items
 source bing 'Rasipuram': 12 items
-source google 'Tiruchengode': 12 items
+source google 'Tiruchengode': 11 items
 source bing 'Tiruchengode': 12 items
 source google 'Kumarapalayam': 2 items
 source bing 'Kumarapalayam': 12 items
@@ -85,7 +262,7 @@ source bing 'Pallipalayam': 12 items
 source google 'Paramathi Velur': 0 items
 source bing 'Paramathi Velur': 12 items
 source google 'Kolli Hills': 0 items
-source bing 'Kolli Hills': 12 items
+source bing 'Kolli Hills': 11 items
 source google நியூஸ்7 தமிழ் 'நாமக்கல்': 0 items
 source bing நியூஸ்7 தமிழ் 'நாமக்கல்': 7 items
 source google நியூஸ்7 தமிழ் 'ராசிபுரம்': 0 items
@@ -118,7 +295,7 @@ source google தினத்தந்தி 'திருச்செங்க�
 source bing தினத்தந்தி 'திருச்செங்கோடு': 1 items
 source google தினத்தந்தி 'Namakkal': 2 items
 source bing தினத்தந்தி 'Namakkal': 3 items
-source google தினமணி 'நாமக்கல்': 18 items
+source google தினமணி 'நாமக்கல்': 17 items
 source bing தினமணி 'நாமக்கல்': 12 items
 source google தினமணி 'ராசிபுரம்': 2 items
 source bing தினமணி 'ராசிபுரம்': 7 items
@@ -130,7 +307,7 @@ source google இந்து தமிழ் 'நாமக்கல்': 2 item
 source bing இந்து தமிழ் 'நாமக்கல்': 11 items
 source google இந்து தமிழ் 'ராசிபுரம்': 0 items
 source bing இந்து தமிழ் 'ராசிபுரம்': 0 items
-source google இந்து தமிழ் 'திருச்செங்கோடு': 1 items
+source google இந்து தமிழ் 'திருச்செங்கோடு': 0 items
 source bing இந்து தமிழ் 'திருச்செங்கோடு': 0 items
 source google இந்து தமிழ் 'Namakkal': 2 items
 source bing இந்து தமிழ் 'Namakkal': 0 items
@@ -141,7 +318,7 @@ source bing தினகரன் 'ராசிபுரம்': 2 items
 source google தினகரன் 'திருச்செங்கோடு': 0 items
 source bing தினகரன் 'திருச்செங்கோடு': 2 items
 source google தினகரன் 'Namakkal': 100 items
-source bing தினகரன் 'Namakkal': 11 items
+source bing தினகரன் 'Namakkal': 10 items
 source google புதிய தலைமுறை 'நாமக்கல்': 0 items
 source bing புதிய தலைமுறை 'நாமக்கல்': 5 items
 source google புதிய தலைமுறை 'ராசிபுரம்': 0 items
@@ -186,7 +363,7 @@ source google தினமலர் 'நாமக்கல்': 100 items
 source bing தினமலர் 'நாமக்கல்': 12 items
 source google தினமலர் 'ராசிபுரம்': 12 items
 source bing தினமலர் 'ராசிபுரம்': 12 items
-source google தினமலர் 'திருச்செங்கோடு': 14 items
+source google தினமலர் 'திருச்செங்கோடு': 13 items
 source bing தினமலர் 'திருச்செங்கோடு': 12 items
 source google தினமலர் 'Namakkal': 100 items
 source bing தினமலர் 'Namakkal': 12 items
@@ -205,7 +382,7 @@ source bing ஜீ தமிழ் 'ராசிபுரம்': 0 items
 source google ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source bing ஜீ தமிழ் 'திருச்செங்கோடு': 0 items
 source google ஜீ தமிழ் 'Namakkal': 0 items
-source bing ஜீ தமிழ் 'Namakkal': 0 items
+source bing ஜீ தமிழ் 'Namakkal': 1 items
 source google ABP நாடு 'நாமக்கல்': 3 items
 source bing ABP நாடு 'நாமக்கல்': 12 items
 source google ABP நாடு 'ராசிபுரம்': 0 items
@@ -238,13 +415,13 @@ source google தினபூமி 'திருச்செங்கோடு'
 source bing தினபூமி 'திருச்செங்கோடு': 0 items
 source google தினபூமி 'Namakkal': 0 items
 source bing தினபூமி 'Namakkal': 0 items
-source google தமிழ் முரசு 'நாமக்கல்': 1 items
+source google தமிழ் முரசு 'நாமக்கல்': 0 items
 source bing தமிழ் முரசு 'நாமக்கல்': 0 items
 source google தமிழ் முரசு 'ராசிபுரம்': 0 items
 source bing தமிழ் முரசு 'ராசிபுரம்': 0 items
 source google தமிழ் முரசு 'திருச்செங்கோடு': 0 items
 source bing தமிழ் முரசு 'திருச்செங்கோடு': 0 items
-source google தமிழ் முரசு 'Namakkal': 1 items
+source google தமிழ் முரசு 'Namakkal': 0 items
 source bing தமிழ் முரசு 'Namakkal': 0 items
 source google The Hindu 'நாமக்கல்': 0 items
 source bing The Hindu 'நாமக்கல்': 0 items
@@ -261,7 +438,7 @@ source bing New Indian Express 'ராசிபுரம்': 0 items
 source google New Indian Express 'திருச்செங்கோடு': 0 items
 source bing New Indian Express 'திருச்செங்கோடு': 0 items
 source google New Indian Express 'Namakkal': 0 items
-source bing New Indian Express 'Namakkal': 11 items
+source bing New Indian Express 'Namakkal': 10 items
 source google Times of India 'நாமக்கல்': 0 items
 source bing Times of India 'நாமக்கல்': 0 items
 source google Times of India 'ராசிபுரம்': 0 items
@@ -276,16 +453,187 @@ source ஒன்இந்தியா நாமக்கல்: 14 items
 source பாலிமர் நாமக்கல்: 7 items
 source இந்து தமிழ் நாமக்கல்: 9 items
 source விகடன் நாமக்கல்: 14 items
-all sources: 1632 items -> 778 different news (23 Rasipuram)
-candidate filter: not Namakkal district news (state-wide /=237, old=148, checked earlier=121, checked earlier=87, collected=83, already filed=81, checked earlier=9, checked earlier=8, checked earlier=4
-to write: 1 Rasipuram + 82 other district candidates (max 200 + 200 stories)
-checked at collection: 11 real local news, 1 duplicates merged, 0 old, 25 other district / state-wide, 3 empty, 44 could not be opened (tried again later)
-collect round: nothing is written now - the writer job takes the queue by priority and posts each story at once
-candidates waiting: 1 Rasipuram, 82 Namakkal; time left 49 min
-candidate loop ended: left R=1 N=82, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 49 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 10 news waiting to be written
-write_stories.yml started
-All News sheet: {"ok":true,"added":35,"updated":23} 
-stories: 0
+all sources: 1634 items -> 772 different news (23 Rasipuram)
+manual link added: https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/garbage-piles-up-on-service-road-health-deteriorates/4361137
+candidate filter: not Namakkal district news (state-wide /=240, old=134, checked earlier=123, collected=86, already filed=86, checked earlier=84, checked earlier=8, checked earlier=8, checked earlier=4
+to write: 1 Rasipuram + 85 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 85 Namakkal; time left 52 min
+try (N) manual=True: https://www.dinamalar.com/news/tamil-nadu-district-news-nama
+try (N) manual=False: மழைக்கால முன் எச்சரிக்கையாக தயார் நிலையில் மீட்பு குழுவினர்
+try (N) manual=False: வீட்டுக்குள் பசுமை... மழைக்காலத்தில் வளர்க்க ஏற்ற அழகான உள்அ
+skip (N) could not open: வீட்டுக்குள் பசுமை... மழைக்காலத்தில் வளர்க்க ஏற்ற  [https://news.google.com/rss/articles/CBMi9wFBVV95cUxOeUtxeXV] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/lifes
+try (N) manual=False: உள்ளூா் வரத்து குறைவால் சின்ன வெங்காயம் விலை அதிகரிப்பு
+skip (N) no Namakkal place in article: உள்ளூா் வரத்து குறைவால் சின்ன வெங்காயம் விலை அதிகர
+try (N) manual=False: ஒன்றிய அரசு ஊழியர்களுக்கு 3% அகவிலைப்படி உயர்வு!
+skip (N) no Namakkal place in article: மழைக்கால முன் எச்சரிக்கையாக தயார் நிலையில் மீட்பு 
+try (N) manual=False: 🔷1 மேற்கு வங்கத்திலும் கொட்டித் தீர்த்த மழை
+skip (N) no Namakkal place in article: ஒன்றிய அரசு ஊழியர்களுக்கு 3% அகவிலைப்படி உயர்வு!
+try (N) manual=False: தீபாவளி பண்டிகையையொட்டி இனிப்பு, காரம் தயாரித்து விற்க உரிமம
+skip (N) could not open: 🔷1 மேற்கு வங்கத்திலும் கொட்டித் தீர்த்த மழை [https://news.google.com/rss/articles/CBMiaEFVX3lxTE44UW9ONUd] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: ஆணைவாரி நீர்வீழ்ச்சியில் வெள்ள பெருக்கு... சுற்றுலா பயணிகள் 
+skip (N) could not open: ஆணைவாரி நீர்வீழ்ச்சியில் வெள்ள பெருக்கு... சுற்றுல [https://tamil.news18.com/salem/forest-department-bans-touris] 403 Client Error: Forbidden for url: https://tamil.news18.com/salem/forest-depar
+try (N) manual=False: Aavin Price Hike | ஆவின் பால் பொருட்கள் விலை அதிரடி உயர்வு..
+skip (N) could not open: Aavin Price Hike | ஆவின் பால் பொருட்கள் விலை அதிரட [https://news.google.com/rss/articles/CBMijgFBVV95cUxOY19HUkY] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: கூடலூர் அரசு பள்ளியில் போதைப்பொருள் ஒழிப்பு விழிப்புணர்வு மு
+skip (N) similar to a filed story: தீபாவளி பண்டிகையையொட்டி இனிப்பு, காரம் தயாரித்து வ
+try (N) manual=False: அரசு பள்ளியில் ஆதார் முகாம்
+skip (N) no Namakkal place in article: கூடலூர் அரசு பள்ளியில் போதைப்பொருள் ஒழிப்பு விழிப்
+try (N) manual=False: சிறுநீரக நோயாளிகளுக்கு நம்பிக்கை..! 10,000 டயாலிசிஸ் சிகிச்ச
+skip (N) no Namakkal place in article: அரசு பள்ளியில் ஆதார் முகாம்
+try (N) manual=False: CM Vijay | டிஜிஎஸ் சாலையில் அமைக்கப்படும் முதலமைச்சர் முகாம்
+skip (N) could not open: சிறுநீரக நோயாளிகளுக்கு நம்பிக்கை..! 10,000 டயாலிசி [https://news.google.com/rss/articles/CBMiygFBVV95cUxNSWpKbjR] 403 Client Error: Forbidden for url: https://tamil.news18.com/puducherry/governm
+try (N) manual=False: November New Rules | ஓய்வூதியம் முதல் வருமான வரி தாக்கல் வரை
+skip (N) could not open: CM Vijay | டிஜிஎஸ் சாலையில் அமைக்கப்படும் முதலமைச் [https://news.google.com/rss/articles/CBMihAFBVV95cUxOR0lYY1F] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: சர்வீஸ் சாலையில் குவிக்கும் குப்பையால் சுகாதார சீர்கேடு
+skip (N) could not open: November New Rules | ஓய்வூதியம் முதல் வருமான வரி த [https://news.google.com/rss/articles/CBMi2AFBVV95cUxPeFJGdVR] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/busin
+try (N) manual=False: திருச்செந்தூருக்கு குடிநீர் - ரூ.30 கோடி ஒதுக்க கனிமொழி வலிய
+skip (N) no Namakkal place in article: திருச்செந்தூருக்கு குடிநீர் - ரூ.30 கோடி ஒதுக்க கன
+try (N) manual=False: விளையாட்டில் சாதனை மாணவர்களுக்கு பாராட்டு
+skip (N) no Namakkal place in article: விளையாட்டில் சாதனை மாணவர்களுக்கு பாராட்டு
+try (N) manual=False: வேளாண் கல்லுாரி மாணவிகள் டெங்கு விழிப்புணர்வு ஊர்வலம்
+skip (N) no Namakkal place in article: வேளாண் கல்லூரி மாணவிகள் டெங்கு விழிப்புணர்வு ஊர்வல
+try (N) manual=False: உலக திறன் போட்டிகளில் பதக்கம்; 12 மாணவர்களுக்கு ஊக்கத்தொகை
+skip (N) no Namakkal place in article: உலக திறன் போட்டிகளில் பதக்கம்; 12 மாணவர்களுக்கு ஊக
+try (N) manual=False: தலைமைத் தேர்தல் ஆணையர் மீது நடவடிக்கை எடுக்கக் கோரி குடியரசு
+skip (N) no Namakkal place in article: தலைமைத் தேர்தல் ஆணையர் மீது நடவடிக்கை எடுக்கக் கோர
+try (N) manual=False: வாக்காளர் நீக்கங்கள் தேர்தல் முடிவுகளை மாற்றியதா.? - மு.க.ஸ்
+skip (N) no Namakkal place in article: வாக்காளர் நீக்கங்கள் தேர்தல் முடிவுகளை மாற்றியதா.?
+try (N) manual=False: Highway Bridges | JUST NOW | “நெடுஞ்சாலைகளில் பாலங்களை தரமாக
+skip (N) could not open: Highway Bridges | JUST NOW | “நெடுஞ்சாலைகளில் பாலங [https://news.google.com/rss/articles/CBMihwFBVV95cUxQM0xLNEZ] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: ஒன்றாக மது அருந்தியவரின் டூ வீலரை திருடிய வாலிபர் கைது!!
+skip (N) no Namakkal place in article: ஒன்றாக மது அருந்தியவரின் டூ வீலரை திருடிய வாலிபர் 
+try (N) manual=False: Anbil Mahesh | அன்பில் மகேஷ் வழக்கு கடந்து வந்த பாதை - மோசடி
+skip (N) could not open: Anbil Mahesh | அன்பில் மகேஷ் வழக்கு கடந்து வந்த பா [https://news.google.com/rss/articles/CBMigAJBVV95cUxONDI3a0N] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/tamil
+try (N) manual=False: DECODE | இஸ்ரேலின் அரசியல் தலைவிதியை நிர்ணயிக்கும் தேர்தல்..
+skip (N) could not open: DECODE | இஸ்ரேலின் அரசியல் தலைவிதியை நிர்ணயிக்கும் [https://news.google.com/rss/articles/CBMi0wFBVV95cUxOdHhxLUV] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/internation
+try (N) manual=False: Child Missing Case | சிக்கிய கும்பல்.. - 35 நாட்களுக்கு பிறக
+skip (N) could not open: Child Missing Case | சிக்கிய கும்பல்.. - 35 நாட்கள [https://news.google.com/rss/articles/CBMijgFBVV95cUxNZk5vdEl] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: BREAKING | முதல்வர் குறித்து சர்ச்சை பேச்சு - திமுக கவுன்சில
+skip (N) could not open: BREAKING | முதல்வர் குறித்து சர்ச்சை பேச்சு - திமு [https://news.google.com/rss/articles/CBMihwFBVV95cUxQUTltUUx] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: எங்கும் பாதுகாப்பில்லை; குற்றவாளிகளுக்கு பயமில்லை; ஸ்டாலின் 
+skip (N) no Namakkal place in article: எங்கும் பாதுகாப்பில்லை; குற்றவாளிகளுக்கு பயமில்லை;
+try (N) manual=False: முதலமைச்சர் கோப்பை விளையாட்டு போட்டி: அக்டோபர் 29-ல் முதல்வர
+skip (N) could not open: முதலமைச்சர் கோப்பை விளையாட்டு போட்டி: அக்டோபர் 29- [https://tamil.newsbytesapp.com/news/sports/chief-minister-s-] 403 Client Error: Forbidden for url: https://tamil.newsbytesapp.com/news/sports/
+try (N) manual=False: ஆட்டோவில் ஏறிய கைதி - குறுக்கே வந்த போலீஸ் - ஆட்டோ டிரைவர் ப
+skip (N) could not open: ஆட்டோவில் ஏறிய கைதி - குறுக்கே வந்த போலீஸ் - ஆட்டோ [https://news.google.com/rss/articles/CBMihAFBVV95cUxPS2tyVTJ] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Theni Jail Prisioners Escaped Update | தப்பிய கைதிகள்.. போலீ
+skip (N) could not open: Theni Jail Prisioners Escaped Update | தப்பிய கைதி [https://news.google.com/rss/articles/CBMirgFBVV95cUxNQWJTNXE] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Anbil Magesh Arrest BIG BREAKING | அன்பில் மகேஷ்க்கு அடுத்த 
+skip (N) could not open: Anbil Magesh Arrest BIG BREAKING | அன்பில் மகேஷ்க் [https://news.google.com/rss/articles/CBMimwFBVV95cUxOX040aml] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: SIR-ஐ ரத்து செய்து வாக்குச்சீட்டு முறையை மீண்டும் கொண்டு வர 
+skip (N) no Namakkal place in article: SIR-ஐ ரத்து செய்து வாக்குச்சீட்டு முறையை மீண்டும் 
+try (N) manual=False: வெள்ள நிவாரண முகாமில் தங்கியிருந்த பழங்குடியின மக்கள் வீடு த
+skip (N) no Namakkal place in article: வெள்ள நிவாரண முகாமில் தங்கியிருந்த பழங்குடியின மக்
+try (N) manual=False: v
+skip (N) no Namakkal place in article: v
+try (N) manual=False: JUSTNOW | அரசுத் துறைகளில் அவுட்சோர்சிங் மூலம் நியமனம்- புதி
+skip (N) could not open: JUSTNOW | அரசுத் துறைகளில் அவுட்சோர்சிங் மூலம் நிய [https://news.google.com/rss/articles/CBMicEFVX3lxTE1yZHBWSkh] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: BREAKING | “தவெக ஆட்சி இருக்கும் வரை தமிழ்நாட்டிற்கு விடிவே 
+skip (N) could not open: BREAKING | “தவெக ஆட்சி இருக்கும் வரை தமிழ்நாட்டிற் [https://news.google.com/rss/articles/CBMihAFBVV95cUxQUW96UjZ] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: தயிர் சாப்பிட சரியான நேரம் எது.? காலையிலா, மதியத்திலா, இரவில
+skip (N) could not open: தயிர் சாப்பிட சரியான நேரம் எது.? காலையிலா, மதியத்த [https://news.google.com/rss/articles/CBMi-gFBVV95cUxQNGNRVFN] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/lifes
+try (N) manual=False: தொடர் பாதிப்புகளைச் சந்திக்கும் பர்லியார்... நிலச்சரிவு கண்க
+skip (N) could not open: தொடர் பாதிப்புகளைச் சந்திக்கும் பர்லியார்... நிலச் [https://news.google.com/rss/articles/CBMi1wFBVV95cUxPS3ViREF] 403 Client Error: Forbidden for url: https://tamil.news18.com/nilgiris/nilgiris-
+try (N) manual=False: நீங்கள் வாங்கும் சிமெண்ட் தரமானதா? சில நிமிடங்களில் சரிபார்க
+skip (N) could not open: நீங்கள் வாங்கும் சிமெண்ட் தரமானதா? சில நிமிடங்களில [https://news.google.com/rss/articles/CBMiowFBVV95cUxNSEg1c2Z] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/trend
+try (N) manual=False: “கைதிகள் தப்பிய விவகாரம்: நீதிபதி தலைமையில் விசாரணை ஆணையம் வ
+skip (N) could not open: “கைதிகள் தப்பிய விவகாரம்: நீதிபதி தலைமையில் விசாரண [https://news.google.com/rss/articles/CBMiwAFBVV95cUxNWlBXSWJ] 403 Client Error: Forbidden for url: https://tamil.news18.com/tamil-nadu/prisone
+try (N) manual=False: Prisioners Escaped | சிறையிலிருந்து 17 பேர் எஸ்கேப்..! 15 பே
+skip (N) could not open: Prisioners Escaped | சிறையிலிருந்து 17 பேர் எஸ்கேப [https://news.google.com/rss/articles/CBMiigFBVV95cUxNajNHNFh] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: "இந்த நாள் உங்களுடையது" - ஜியோ ஊழியர்கள், தொழில்நுட்ப வல்லுந
+skip (N) could not open: "இந்த நாள் உங்களுடையது" - ஜியோ ஊழியர்கள், தொழில்நு [https://news.google.com/rss/articles/CBMizAFBVV95cUxPSkNtbzd] 403 Client Error: Forbidden for url: https://tamil.news18.com/business/jio-succe
+try (N) manual=False: ஆக்கிரமிப்பு அகற்றும் பணி
+skip (N) no Namakkal place in article: ஆக்கிரமிப்பு அகற்றும் பணி
+try (N) manual=False: Jailer 2 சந்தானம் Scene இது தான்... OTT- ல Deleted Scene எதி
+skip (N) no Namakkal place in article: Jailer 2 சந்தானம் Scene இது தான்... OTT- ல Deleted
+try (N) manual=False: பத்திரிகையாளர்களை புகைப்படம் எடுத்த விஐடி துணைத் தலைவர்
+skip (N) no Namakkal place in article: பத்திரிகையாளர்களை புகைப்படம் எடுத்த விஐடி துணைத் த
+try (N) manual=False: கால்வாயை தூர்வார வேண்டும்: குறைதீர் கூட்டத்தில் விவசாயிகள் வ
+skip (N) no Namakkal place in article: கால்வாயை தூர்வார வேண்டும்: குறைதீர் கூட்டத்தில் வி
+try (N) manual=False: விருத்தாசலம், எருமனூர் அரசு நேரடி நெல் கொள்முதல் நிலையத்தின்
+skip (N) could not open: விருத்தாசலம், எருமனூர் அரசு நேரடி நெல் கொள்முதல் ந [https://news.google.com/rss/articles/CBMiYkFVX3lxTE9VQk9xQWR] HTTPSConnectionPool(host='www.dinamalar.com', port=443): Read timed out. (read t
+try (N) manual=False: மது மட்டுமல்ல... நீங்கள் தினமும் உண்ணும் இந்த 5 உணவுகளும் கல
+skip (N) could not open: மது மட்டுமல்ல... நீங்கள் தினமும் உண்ணும் இந்த 5 உண [https://news.google.com/rss/articles/CBMi6AFBVV95cUxNTEs2bXN] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/lifes
+try (N) manual=False: Cyclone Arnab Alert ????| தீவிர புயலாக மாறிய ‘Arnab’..! இன்ன
+skip (N) could not open: Cyclone Arnab Alert ????| தீவிர புயலாக மாறிய ‘Arna [https://news.google.com/rss/articles/CBMiiwFBVV95cUxQSVQtMzl] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: பயிர்க் காப்பீடு செய்ய நவம்பர் 16-ம் தேதிதான் கடைசி நாள்... 
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 3})
+posting job started at once
+try (N) manual=False: Sabarimalai | வரப்போகுது கார்த்திகை மாதம்.. மண்டல பூஜைக்காக 
+NOT filed (N) சர்வீஸ் சாலையில் குவிக்கும் குப்பையால் சுகாதார சீர: duplicate after write
+skip (N) could not open: பயிர்க் காப்பீடு செய்ய நவம்பர் 16-ம் தேதிதான் கடைச [https://news.google.com/rss/articles/CBMiiAJBVV95cUxQN3BPQ1p] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/busin
+try (R) manual=False: விளையாட்டு மைதானம் அமைக்க கோரிக்கை
+try (N) manual=False: https://www.dinamalar.com/news/tamil-nadu-district-news-nama
+skip (R) no Namakkal place in article: விளையாட்டு மைதானம் அமைக்க கோரிக்கை
+try (N) manual=False: https://www.dinamalar.com/news/tamil-nadu-district-news-nama
+skip (N) similar to a filed story: வீடுகளுக்குள் புகுந்த மழைநீர் பொதுமக்கள் சாலை மறிய
+try (N) manual=False: 310 பஞ்.,ல் நவ., 1ல் கிராம சபை
+skip (N) could not open: Sabarimalai | வரப்போகுது கார்த்திகை மாதம்.. மண்டல  [https://news.google.com/rss/articles/CBMiigJBVV95cUxONlRUeG5] 403 Client Error: Forbidden for url: https://tamil.news18.com/spiritual/sabarima
+try (N) manual=False: 100 ரூபாயில் கல்வி: தந்தையின் வழியில் பயணிக்கும் மகள்!
+skip (N) already filed: 310 பஞ்.,ல் நவ., 1ல் கிராம சபை
+try (N) manual=False: ஆரோக்கியமான கூந்தலுக்கு ஆர்கானிக் ஆயில்!
+skip (N) no Namakkal place in article: 100 ரூபாயில் கல்வி: தந்தையின் வழியில் பயணிக்கும் ம
+try (N) manual=False: வீட்டு தயிரை எவ்வளவு நாட்கள் பயன்படுத்தலாம்? கெட்டுப்போனதை எ
+skip (N) could not open: வீட்டு தயிரை எவ்வளவு நாட்கள் பயன்படுத்தலாம்? கெட்ட [https://news.google.com/rss/articles/CBMitgFBVV95cUxOSVNRaTN] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/lifes
+try (N) manual=False: ஆரோக்கியம் நிறைந்த சுவையான 'மட்டன் பாயா' செய்வது எப்படி.? ரெ
+skip (N) no Namakkal place in article: ஆரோக்கியமான கூந்தலுக்கு ஆர்கானிக் ஆயில்! - Dinakar
+try (N) manual=False: உங்க குழந்தை புத்திசாலியாக வளரணுமா.? - 1 முதல் 2 வயதில் இந்த
+skip (N) could not open: ஆரோக்கியம் நிறைந்த சுவையான 'மட்டன் பாயா' செய்வது எ [https://news.google.com/rss/articles/CBMiugFBVV95cUxOaHVPRkN] 403 Client Error: Forbidden for url: https://tamil.news18.com/lifestyle/food-rec
+try (N) manual=False: பட்டியலிடப்பட்ட நாளிலேயே ஜியோ பிளாட்ஃபார்ம்ஸ் பங்குகளை வாங்க
+skip (N) could not open: உங்க குழந்தை புத்திசாலியாக வளரணுமா.? - 1 முதல் 2 வ [https://news.google.com/rss/articles/CBMipAJBVV95cUxOMC1ScjV] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/tamil
+try (N) manual=False: வைபவ் நடிக்கும் ‘மணிகண்டா’ படத்தின் ஃபர்ஸ்ட் லுக் போஸ்டர் வெ
+skip (N) could not open: பட்டியலிடப்பட்ட நாளிலேயே ஜியோ பிளாட்ஃபார்ம்ஸ் பங்க [https://news.google.com/rss/articles/CBMiygFBVV95cUxOZGtsM3d] 403 Client Error: Forbidden for url: https://tamil.news18.com/business/jio-platf
+try (N) manual=False: Robots | சீன உணவகங்களை ஆக்கிரமிக்கும் ரோபோக்கள்... சாதகமா பா
+skip (N) could not open: வைபவ் நடிக்கும் ‘மணிகண்டா’ படத்தின் ஃபர்ஸ்ட் லுக்  [https://news.google.com/rss/articles/CBMiqgFBVV95cUxOQWlkMzN] 403 Client Error: Forbidden for url: https://tamil.news18.com/entertainment/vaib
+try (N) manual=False: CM Vijay Diwali Gift Scheme | பெண்களுக்கு மட்டும் CM விஜயின்
+skip (N) could not open: Robots | சீன உணவகங்களை ஆக்கிரமிக்கும் ரோபோக்கள்... [https://news.google.com/rss/articles/CBMivAFBVV95cUxQU1Bta2E] 403 Client Error: Forbidden for url: https://tamil.news18.com/international/robo
+try (N) manual=False: Sollathigaram | " இந்த வழக்குல பிரச்னையே இது தானே "
+skip (N) could not open: CM Vijay Diwali Gift Scheme | பெண்களுக்கு மட்டும்  [https://news.google.com/rss/articles/CBMitAFBVV95cUxNZXF3Vkl] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: DECODE | Lula da Silva | 80 வயதில் மீண்டும் அதிபர்? பிரேசில்
+skip (N) could not open: Sollathigaram | " இந்த வழக்குல பிரச்னையே இது தானே  [https://news.google.com/rss/articles/CBMieEFVX3lxTE0yVmtkekh] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: வீட்டில் செய்யும் பொங்கல் கெட்டியும் ஆகக்கூடாது, கரண்டியிலும
+skip (N) could not open: DECODE | Lula da Silva | 80 வயதில் மீண்டும் அதிபர் [https://news.google.com/rss/articles/CBMiwAFBVV95cUxQVDhtSkM] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/internation
+try (N) manual=False: தீபாவளிக்கு சொந்த ஊர் போறவங்களுக்கு செம அப்டேட்.. 'கரண்ட் பு
+skip (N) could not open: வீட்டில் செய்யும் பொங்கல் கெட்டியும் ஆகக்கூடாது, க [https://news.google.com/rss/articles/CBMiwgFBVV95cUxNT3lQWUR] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/lifes
+try (N) manual=False: உங்கள் கிச்சனில் இருக்கவே கூடாத 5 முக்கியமான உணவுகள் இவைதான்
+skip (N) could not open: தீபாவளிக்கு சொந்த ஊர் போறவங்களுக்கு செம அப்டேட்..  [https://news.google.com/rss/articles/CBMi8wFBVV95cUxPYzAwSHl] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/natio
+try (N) manual=False: ஆஸ்கர் செல்லும் மராத்தி படம் ‘கோந்தல்’... இளையராஜா இசையில் த
+skip (N) could not open: உங்கள் கிச்சனில் இருக்கவே கூடாத 5 முக்கியமான உணவுக [https://news.google.com/rss/articles/CBMivwFBVV95cUxOanRvV2p] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/lifes
+try (N) manual=False: Anbil Mahesh | காவல் ஆணையர் அலுவலகத்தில் அன்பில் மகேஸிடம் வி
+skip (N) could not open: ஆஸ்கர் செல்லும் மராத்தி படம் ‘கோந்தல்’... இளையராஜா [https://news.google.com/rss/articles/CBMitwFBVV95cUxPVFdOZFh] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/entertainme
+try (N) manual=False: Arnab cyclone | வங்கக் கடலில் நிலைக் கொண்டுள்ள ஒர்னாப் புயலி
+skip (N) could not open: Anbil Mahesh | காவல் ஆணையர் அலுவலகத்தில் அன்பில் ம [https://news.google.com/rss/articles/CBMifEFVX3lxTE5Id3hYTm4] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Isha Ambani Emotional Speech | "அம்மா.. நீங்க தான்..!"-ஈஷா ப
+skip (N) could not open: Arnab cyclone | வங்கக் கடலில் நிலைக் கொண்டுள்ள ஒர் [https://news.google.com/rss/articles/CBMihAFBVV95cUxNZmNaX0x] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Gingee Girl Missing Case Update | 2 பேரை பிடித்து சிபிசிஐடி 
+skip (N) could not open: Isha Ambani Emotional Speech | "அம்மா.. நீங்க தான் [https://news.google.com/rss/articles/CBMijAFBVV95cUxPT1JIZWp] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Sollathigaram | "FIR போட்டா நேரா ED கிட்ட போய்விடும்"
+skip (N) could not open: Gingee Girl Missing Case Update | 2 பேரை பிடித்து  [https://news.google.com/rss/articles/CBMipgFBVV95cUxNVUpsMXp] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Cyclone Arnab BREAKING | புயலுக்கு Tata.. கரையைக் கடந்த 'Arn
+skip (N) could not open: Sollathigaram | "FIR போட்டா நேரா ED கிட்ட போய்விடு [https://news.google.com/rss/articles/CBMiggFBVV95cUxNdVN4Vkd] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Sivakasi Heavy Fog | "எதிரே வர்றதே தெரியல!" - சிவகாசியில் தி
+skip (N) could not open: Cyclone Arnab BREAKING | புயலுக்கு Tata.. கரையைக்  [https://news.google.com/rss/articles/CBMikwFBVV95cUxNWDFLYXh] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: NLC India Apprenticeship 2026: 1067 காலிப்பணியிடங்கள்... உடன
+skip (N) could not open: Sivakasi Heavy Fog | "எதிரே வர்றதே தெரியல!" - சிவக [https://news.google.com/rss/articles/CBMijgFBVV95cUxQNTduRXZ] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: Gingee Girl Missing Shock UPDATE | சிறுமி மாயம்! - அப்போ தந்
+skip (N) could not open: NLC India Apprenticeship 2026: 1067 காலிப்பணியிடங் [https://news.google.com/rss/articles/CBMixgFBVV95cUxNVi1Wd18] 403 Client Error: Forbidden for url: https://tamil.news18.com/photogallery/emplo
+try (N) manual=False: முக்கியச் செய்திகள்
+skip (N) could not open: முக்கியச் செய்திகள் [https://tamil.news18.com/tag/breaking-news/] 403 Client Error: Forbidden for url: https://tamil.news18.com/tag/breaking-news/
+try (N) manual=False: புகையிலை விற்ற 2 பேருக்கு 'காப்பு'
+skip (N) could not open: Gingee Girl Missing Shock UPDATE | சிறுமி மாயம்! - [https://news.google.com/rss/articles/CBMikgFBVV95cUxPaXJCbEZ] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+try (N) manual=False: இன்றைய தினமலர் கார்ட்டூன் - Today Dinamalar Cartoon | Dinama
+skip (N) already filed: புகையிலை விற்ற 2 பேருக்கு காப்பு
+try (N) manual=False: 30ல் விவசாயிகள் குறைதீர் கூட்டம்
+skip (N) no Namakkal place in article: தேனி சிறையில் 17 கைதிகள் ஓட்டம்:  13 பேர் மீண்டும்
+try (N) manual=False: வாக்குச்சாவடிகளை மறு சீரமைத்தல் தொடர்பாக; அரசியல் கட்சி பிரத
+skip (N) no Namakkal place in article: வாக்குச்சாவடிகளை மறு சீரமைத்தல் தொடர்பாக; அரசியல் 
+try (N) manual=False: Breaking News | முதல்வர் கோப்பை- நாளை மறுநாள் பரிசளிப்பு விழ
+skip (N) could not open:  [https://www.dinamalar.com/news/tamil-nadu-district-news-nama] HTTPSConnectionPool(host='www.dinamalar.com', port=443): Read timed out. (read t
+skip (N) could not open: Breaking News | முதல்வர் கோப்பை- நாளை மறுநாள் பரிச [https://news.google.com/rss/articles/CBMi8wFBVV95cUxQcy1pZmE] 403 Client Error: Forbidden for url: https://tamil.news18.com/videos/tamil-nadu/
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'fal-ai/flux/schnell': 5})
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 85}, done={'R': 0, 'N': 2}, time left 44 min
+carousel for 0 of 2 stories, the rest reel only
+filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":13,"updated":44} 
+stories: 2
