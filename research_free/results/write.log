@@ -1,11 +1,96 @@
+writing [R]: ராசிபுரம் பகுதியில் ரேஷன் அரிசி பதுக்கிய பெண் கைது; 150 கிலோ
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.8-flash
+fail gemini/gemini-3.7-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.7-flash
+ok gemini/gemini-3.6-flash (21s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (17s)
+factcheck by gemini/gemini-3.6-flash: 2 problems
+  The reel_script incorrectly states in the opening sentence that the police arrested the woman ('காவல் துறையினர் கைது செய்தனர்'), whereas the article specifies that Food Safety Department Sub-Inspector Siddiq made the arrest.
+  The name of the arrested woman (Anitha) is omitted from the reel_script.
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  fact-check: The reel_script incorrectly states in the opening sentence that the police arrested the woman ('காவல் துறையினர் கைது செய்தனர்'), whereas the article specifies that Food Safety Department Sub-Inspector Siddiq made the arrest.
+  fact-check: The name of the arrested woman (Anitha) is omitted from the reel_script.
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (23s)
+attempt 2 gemini/gemini-3.6-flash: 1 problems
+  sentence 1 (one-line story) has 21 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (33s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (17s)
+factcheck by gemini/gemini-3.6-flash: 1 problems
+  Grammatical error in tamil_headline: 'வீட்டின்' should be 'வீட்டில்'.
+attempt 3 gemini/gemini-3.6-flash: 1 problems
+  fact-check: Grammatical error in tamil_headline: 'வீட்டின்' should be 'வீட்டில்'.
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (18s)
+attempt 4 gemini/gemini-3.6-flash: 1 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (27s)
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (10s)
+factcheck by gemini/gemini-3.6-flash: 0 problems
+attempt 5 gemini/gemini-3.6-flash: 0 problems
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (27s)
+proofread rejected (1 problems)
+  sentence 1 (one-line story) has 17 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (12s)
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
+images made: 3 for 'Woman arrested in Rasipuram for hoarding'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261028-1435","first":"RN-163"}
+posting job started at once
 earlier stories still waiting for images: []
 instagram check: 72 recent posts read from both pages
-write round: 1 news waiting in the queue (written in priority order)
-candidate filter: checked earlier=1
-to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+write round: 10 news waiting in the queue (written in priority order)
+candidate filter: collected=6, already filed=4
+to write: 1 Rasipuram + 5 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 5 Namakkal; time left 29 min
+try (R) manual=False: ராசிபுரம் பகுதியில் ரேஷன் அரிசி பதுக்கிய பெண் கைது; 150 கிலோ
+try (N) manual=False: தீபாவளி பண்டிகையையொட்டி இனிப்பு, காரம் தயாரித்து விற்க உரிமம
+try (N) manual=False: சர்வீஸ் சாலையில் குவிக்கும் குப்பையால் சுகாதார சீர்கேடு
+skip (N) similar to a filed story: தீபாவளி பண்டிகையையொட்டி இனிப்பு, காரம் தயாரித்து வ
+try (N) manual=False: முதியவர் தீக்குளிக்க முயற்சி கலெக்டர் ஆபீசில் பரபரப்பு
+skip (N) similar to a filed story: சர்வீஸ் சாலையில் குவிக்கும் குப்பையால் சுகாதார சீர
+try (N) manual=False: கணவர் இறந்ததாக சான்றிதழ் மனைவி மீது வழக்கு
+skip (N) similar to a filed story: முதியவர் தீக்குளிக்க முயற்சி கலெக்டர் ஆபீசில் பரபர
+try (N) manual=False: 30ல் விவசாயிகள் குறைதீர் கூட்டம்
+skip (N) similar to a filed story: கணவர் இறந்ததாக சான்றிதழ் மனைவி மீது வழக்கு
+skip (N) similar to a filed story: 30ல் விவசாயிகள் குறைதீர் கூட்டம்
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 2})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 5}, done={'R': 1, 'N': 0}, time left 22 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 1
