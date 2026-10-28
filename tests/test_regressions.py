@@ -383,5 +383,29 @@ class ClearReading(unittest.TestCase):
             self.assertFalse([p for p in self.problems(ok) if "without their meaning" in p], ok)
 
 
+class FollowUpAndPage(unittest.TestCase):
+    """28 Oct: RN-159 (3 arrested for the laptop theft) was blocked as a duplicate of RN-42 (the theft, 6 days earlier);
+    RN-161 (the district Collector's Diwali sweets notice on the paper's Namakkal page) was blocked as not Namakkal news"""
+
+    def test_arrest_after_the_theft_is_new_news(self):
+        old = {"story_id": "RN-42", "researched": "22 Oct 2026, 10:26", "headline_en": "Four laptops and a phone stolen from students' room near Thiruchengode",
+               "headline_ta": "மாணவர்களின் லேப்டாப் திருட்டு: 4 லேப்டாப், செல்போன் மாயம்"}
+        new = {"story_id": "RN-159", "researched": "28 Oct 2026, 06:39", "headline_en": "Three arrested for stealing laptops and mobile phones from student rooms near Tiruchengode",
+               "headline_ta": "திருச்செங்கோடு அருகே மடிக்கணினி, கைப்பேசி திருட்டு: 3 பேர் கைது"}
+        self.assertTrue(fr.follow_up(old, new))
+
+    def test_same_day_report_stays_a_duplicate(self):
+        a = {"researched": "27 Oct 2026, 17:10", "headline_ta": "ஓமலூரில் காணாமல் போன 4 பள்ளி சிறுவர்கள் குமாரபாளையத்தில் மீட்பு"}
+        b = {"researched": "28 Oct 2026, 05:46", "headline_ta": "பள்ளி செல்லாமல் பிறந்த நாள் கொண்டாடிய 3 மாணவர்கள் குமாரபாளையத்தில் மீட்பு"}
+        self.assertFalse(fr.follow_up(a, b))
+
+    def test_paper_namakkal_page_is_namakkal_news(self):
+        row = {"source": "https://www.dinamani.com/all-editions/edition-dharmapuri/namakkal/2026/Oct/27/தீபாவளி-இனிப்பு-காரம்-விற்பனைக்கு-உரிமம்-பெறுவது-கட்டாயம்",
+               "headline_ta": "தீபாவளி இனிப்பு, காரம் விற்பனைக்கு உரிமம் கட்டாயம்", "caption": "உரிமம் கட்டாயம்", "location": "Tamil Nadu"}
+        self.assertEqual(post.not_namakkal(row), "")
+        row["headline_ta"] = "சேலத்தில் இனிப்பு விற்பனைக்கு உரிமம் கட்டாயம்"
+        self.assertTrue(post.not_namakkal(row))
+
+
 if __name__ == "__main__":
     unittest.main()

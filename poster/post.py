@@ -197,6 +197,8 @@ def skip_reason(row):
             continue
         if (freshness.similar(o.get("headline_ta") or "", row.get("headline_ta") or "", 0.62, o.get("researched"))
                 or freshness.similar((o.get("headline_en") or "").lower(), (row.get("headline_en") or "").lower(), 0.65, o.get("researched"))):
+            if freshness.follow_up(o, row):
+                continue
             return f"duplicate of {o.get('story_id')}"
     return ""
 
@@ -218,6 +220,8 @@ def not_namakkal(row):
     if allnews.has_place(head):
         return ""
     d = allnews.url_district(src)
+    if d == "namakkal":      # the paper's own Namakkal page (same rule as the collector; 28 Oct RN-161: the district Collector's notice)
+        return ""
     if d and d != "namakkal":
         return f"not Namakkal district news (source filed under {d})"
     if not allnews.has_place(cap) and not allnews.has_place(row.get("location") or ""):

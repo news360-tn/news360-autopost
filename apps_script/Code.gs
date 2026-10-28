@@ -912,6 +912,7 @@ function archiveNews_(b) {
   if (last > 1) sh.getRange(2, 4, last - 1, 1).getValues().forEach(function (r, i) { idx[r[0]] = i + 2; });
   var add = [], rows = b.rows || [];
   rows.forEach(function (r) {
+    if (idx[r.url] === -1) return;      // the same link twice in one batch (28 Oct: 'starting row of the range is too small')
     if (idx[r.url]) {
       sh.getRange(idx[r.url], 7, 1, 4).setValues([[r.mentions, r.score, r.status, r.story || '']]);
     } else {

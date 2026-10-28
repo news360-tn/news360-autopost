@@ -195,3 +195,18 @@ def similar(a, b, thr, other_filed=None, today=None):
         today = today or datetime.datetime.now(IST).date()
         return pub_date(other_filed) == today
     return True
+
+
+FOLLOW = re.compile(r"கைது|சிறை|தீர்ப்பு|மீட்பு|மீட்கப்|பறிமுதல்|இழப்பீடு|குற்றப்பத்திரிகை|ஜாமீன்|சரண்|உயிரிழப்பு|பலி|"
+                    r"arrest|held|nabbed|sentenc|verdict|convict|rescued|recovered|seized|compensation|bail|surrender|died|dead", re.I)
+
+
+def follow_up(old, new, days=2):
+    """28 Oct (RN-159 '3 arrested for stealing laptops' was blocked as a duplicate of RN-42 'laptops stolen', 6 days earlier):
+    a later report that brings a new development (arrest, verdict, rescue, seizure ...) about a story filed more than `days`
+    days before is new news, not a duplicate"""
+    o, n = pub_date(old.get("researched")), pub_date(new.get("researched"))
+    if not o or not n or (n - o).days <= days:
+        return False
+    text = lambda r: (r.get("headline_ta") or "") + " " + (r.get("headline_en") or "")
+    return bool(FOLLOW.search(text(new))) and not FOLLOW.search(text(old))
