@@ -209,12 +209,18 @@ def _stems(t):
     return {w[:4] for w in re.findall(r"[\u0B80-\u0BFF]{4,}", t)}
 
 
-def same_news(a, b):
-    """the same event in different words (ஆட்சியா் பங்களா சுவா் இடிந்து ~ கலெக்டர் குடியிருப்பின் சுற்றுச்சுவர் இடிந்தது): shared word stems"""
+def same_news(a, b, filed=None, days=3):
+    """the same event in different words (ஆட்சியா் பங்களா சுவா் இடிந்து ~ கலெக்டர் குடியிருப்பின் சுற்றுச்சுவர் இடிந்தது): shared word stems.
+    28 Oct: two shared words in short headlines matched old, other news ('140 மி.மீ. மழை' ~ RN-58, 'சர்வீஸ் சாலை குப்பை' ~ RN-69,
+    '30ல் விவசாயிகள் குறைதீர் கூட்டம்' ~ RN-140): at least 3 shared stems, and only against stories filed in the last `days` days"""
     x, y = _stems(a), _stems(b)
     if len(x) < 3 or len(y) < 3 or _fr().different_numbers(a, b) or _fr().different_power_cut(a, b):
         return False
-    return len(x & y) / min(len(x), len(y)) >= 0.5
+    f = _fr().pub_date(filed) if filed else None
+    if f and (datetime.datetime.now(_fr().IST).date() - f).days > days:
+        return False
+    shared = len(x & y)
+    return shared >= 3 and shared / min(len(x), len(y)) >= 0.5
 
 
 def open_article(n):
@@ -805,7 +811,7 @@ def main():
                 or not allnews.local_ok(art["url"], art["title"])) and not n.get("manual"):
             return {"skip": "not Namakkal district news (article names no Namakkal place)", "s": "notdistrict", "log": f"skip ({area}) no Namakkal place in article: {art['title'][:50]}"}
         if not n.get("manual") and any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched"))
-                                       or same_news(r.get("headline_ta", ""), art["title"]) for r in recent):      # already posted / written
+                                       or same_news(r.get("headline_ta", ""), art["title"], r.get("researched")) for r in recent):      # already posted / written
             return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) similar to a filed story: {art['title'][:50]}"}
         area = allnews.area_of_story(art["title"], art["text"])      # Rasipuram page only for Rasipuram and the villages around it
         art["interest"] = interest(art)

@@ -7,7 +7,7 @@ Every call goes through ask_json(); a model is tried in order, the next one is u
 import json, os, re, time
 import requests
 
-GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash"]
+GEMINI_MODELS = ["gemini-3.6-flash", "gemini-3.5-flash"]      # only used when the model list cannot be read (2.5 retired 28 Oct)
 GROQ_MODELS = ["llama-3.3-70b-versatile"]
 OR_PREFER = ["gemma", "llama-3.3", "qwen", "deepseek", "mistral", "gpt-oss"]
 OR_BLOCK = ["flint", "recursive", "lite", "tiny", "mini", "1b", "3b", "7b", "8b"]   # weak models write broken Tamil

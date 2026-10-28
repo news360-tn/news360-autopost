@@ -60,6 +60,16 @@ class DuplicateCheck(unittest.TestCase):
         self.assertTrue(collect.same_news("மழையால் நாமக்கல் கலெக்டர் குடியிருப்பின் சுற்றுச்சுவர் இடிந்தது",
                                           "கனமழை: நாமக்கல் ஆட்சியர் பங்களா சுவர் இடிந்து விழுந்தது"))
 
+    def test_writer_other_news_not_duplicate(self):      # 28 Oct: three new stories were skipped as 'similar to a filed story'
+        now = f"{TODAY:%d %b %Y}, 06:00"
+        old = f"{TODAY - datetime.timedelta(days=6):%d %b %Y}, 06:00"
+        self.assertFalse(collect.same_news("நாமக்கல்லில் மரவள்ளி விவசாயிகள் பிரச்னை: அக். 30-ல் முத்தரப்புக் கூட்டம்",
+                                           "30ல் விவசாயிகள் குறைதீர் கூட்டம்", now))      # RN-140: two shared words only
+        self.assertFalse(collect.same_news("🗑️ குப்பையுடன் தேங்கிய மழைநீர் – சுகாதார சீர்கேடு",
+                                           "சர்வீஸ் சாலையில் குவிக்கும் குப்பையால் சுகாதார சீர்கேடு", old))      # RN-69: days older
+        self.assertTrue(collect.same_news("கலெக்டர் அலுவலகத்தில் முதியவர் தீக்குளிக்க முயற்சி: நிலத் தகராறு",
+                                          "முதியவர் தீக்குளிக்க முயற்சி கலெக்டர் ஆபீசில் பரபரப்பு", now))      # RN-146: real repeat
+
 
 class PowerCutTiming(unittest.TestCase):
     A = "காளப்பநாயக்கன்பட்டி துணை மின் நிலையப் பராமரிப்பு: நாளை காலை 9 முதல் மதியம் 2 வரை மின் தடை"

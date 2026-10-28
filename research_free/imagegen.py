@@ -75,22 +75,49 @@ def _cf(model, body, token, acct):
     return base64.b64decode(b64)
 
 
+_VISION = []
+
+
+def _vision_models(key):
+    """flash models that exist for this key right now (same list as the writer), asked once per run"""
+    if not _VISION:
+        env = os.environ.get("GEMINI_VISION_MODEL")
+        try:
+            sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+            import llm
+            found = llm.gemini_models(key)
+        except Exception:
+            found = []
+        stable = [m for m in found if "preview" not in m]      # a stable, answering model first (3.6 / 3.5 answered on 28 Oct; 3.8 / 3.7 timed out)
+        _VISION.extend(dict.fromkeys(([env] if env else []) + stable[2:] + stable[:2] + llm.GEMINI_MODELS))
+    return list(_VISION)
+
+
 def matches(data, headline):
     """a vision model checks that the picture shows the news headline. True when it matches or the check is not available."""
     key = os.environ.get("GEMINI_API_KEY")
     if not key or not headline:
         return True
     try:
-        model = os.environ.get("GEMINI_VISION_MODEL", "gemini-2.5-flash")
         body = {"contents": [{"parts": [
                     {"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(data).decode()}},
                     {"text": f'Does this photo show the news story: "{headline}"? Check the place type, the event, and the people. '
                              'Answer only JSON: {"match": true or false, "why": "short reason"}'}]}],
                 "generationConfig": {"responseMimeType": "application/json", "temperature": 0}}
-        r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                          headers={"x-goog-api-key": key, "Content-Type": "application/json"}, json=body, timeout=90)
-        r.raise_for_status()
-        j = json.loads(r.json()["candidates"][0]["content"]["parts"][0]["text"])
+        j, last = None, None
+        for model in _vision_models(key):      # 28 Oct: gemini-2.5-flash was retired (404) and every picture went out unchecked
+            try:      # the newest models often time out or are busy (503): the next one answers
+                r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                                  headers={"x-goog-api-key": key, "Content-Type": "application/json"}, json=body, timeout=30)
+                if r.status_code == 404:
+                    _VISION.remove(model)
+                r.raise_for_status()
+                j = json.loads(r.json()["candidates"][0]["content"]["parts"][0]["text"])
+                break
+            except Exception as e:
+                last = f"{model}: {e}"
+        if j is None:
+            raise RuntimeError(last or "no vision model")
         print("image match:", j.get("match"), str(j.get("why", ""))[:120], flush=True)
         return bool(j.get("match"))
     except Exception as e:
