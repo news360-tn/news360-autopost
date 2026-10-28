@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-28 | `e034b52` | No missed news: writer duplicate check needs 3 shared words and only compares with stories of the last 3 days (28 Oct: rain 140 mm, service-road garbage, farmers' meeting were wrongly skipped); picture check works again (gemini-2.5-flash retired: uses the live model list, next model on timeout/busy) |
 | 2026-10-28 | `916a2f8` | README: current automatic flow (collect, write, post, insights), switches, secrets; LIVE file stops posting |
 | 2026-10-28 | `bc8f0cf` | Ages read clearly: newspaper shorthand 'செல்வம், 47,' / 'செல்வம் (47)' becomes 'செல்வம் (47 வயது)' in voice, subtitles, cards and caption, also for stories written earlier (RN-156) |
 | 2026-10-28 | `c2f3cbf` | No missed news: an arrest/verdict/rescue reported days after the event is new news, not a duplicate (RN-159); the paper's Namakkal page counts as Namakkal news at posting too (RN-161); All News sheet no longer fails on a link listed twice |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-26 | `d17fa3c` | Posting gate: a headline that names another district is never posted |
 | 2026-10-26 | `17d5db0` | Posting job: apt gives up on a silent mirror after 20 s and retries |
 | 2026-10-26 | `0ac8155` | Writer restarts itself only after progress (no restart loop) |
-| 2026-10-26 | `17ba72c` | Posting job: never post a story that is not Namakkal-district news |
 <!-- recent-changes:end -->
