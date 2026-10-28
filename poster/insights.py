@@ -69,6 +69,7 @@ def main():
     if len(rows) >= MIN_POSTS:
         tw, by = {}, {}
         for h in rows:
+            h["topic"] = learned.topic(h["caption"])      # topics of older posts follow the current topic list (28 Oct: power_cut, jobs split out)
             by.setdefault(h["topic"], []).append(h["rel"])
         for t, v in by.items():
             if t != "other" and len(v) >= MIN_PER_TOPIC:

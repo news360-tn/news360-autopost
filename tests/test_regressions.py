@@ -71,6 +71,23 @@ class DuplicateCheck(unittest.TestCase):
                                           "முதியவர் தீக்குளிக்க முயற்சி கலெக்டர் ஆபீசில் பரபரப்பு", now))      # RN-146: real repeat
 
 
+class LearnedPriority(unittest.TestCase):
+    """28 Oct: power cuts and jobs (our most watched news) were scored -0.5 as 'civic' / 'education_jobs'"""
+
+    def test_power_cut_and_jobs_have_own_topic(self):
+        import learned
+        self.assertEqual("power_cut", learned.topic("நாளை காளப்பநாயக்கன்பட்டி உள்ளிட்ட 9 பகுதிகளில் மின் தடை: சாலை பணி"))
+        self.assertEqual("jobs", learned.topic("நாமக்கல்லில் 23ஆம் தேதி தனியார் வேலைவாய்ப்பு முகாம்"))
+        self.assertEqual("education", learned.topic("TNPSC குரூப் 4 தேர்வுக்கு இலவசப் பயிற்சி"))      # 'தேர்' (chariot) is not temple
+        real = learned.load
+        learned.load = lambda: {"topic_weight": {"civic": -0.5, "education": -0.5}}      # not measured yet: the starting weight is used
+        try:
+            self.assertGreater(learned.boost("நாளை 9 பகுதிகளில் மின் தடை"), 0)
+            self.assertGreater(learned.boost("தனியார் வேலைவாய்ப்பு முகாம்"), 0)
+        finally:
+            learned.load = real
+
+
 class PowerCutTiming(unittest.TestCase):
     A = "காளப்பநாயக்கன்பட்டி துணை மின் நிலையப் பராமரிப்பு: நாளை காலை 9 முதல் மதியம் 2 வரை மின் தடை"
 
