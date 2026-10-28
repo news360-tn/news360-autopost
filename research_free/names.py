@@ -53,7 +53,19 @@ ROLES = [
 def full_places(text):
     for pat, full in PLACES:
         text = re.sub(pat, full, text or "")
-    return text
+    return ages(text)
+
+
+MONTH_WORDS = ("ஜனவரி", "பிப்ரவரி", "மார்ச்", "ஏப்ரல்", "மே", "ஜூன்", "ஜூலை", "ஆகஸ்ட்", "செப்டம்பர்", "அக்டோபர்", "நவம்பர்", "டிசம்பர்")
+
+
+def ages(text):
+    """owner 28 Oct (RN-156 'செல்வம், 47,' / 'செல்வம் (47)'): newspaper shorthand ages are said with the word வயது -
+    'செல்வம் (47 வயது)' - so a viewer hears it is an age, not a bare number"""
+    W = r"(?<![\u0B80-\u0BFF])([\u0B80-\u0BFF]+)"
+    keep = lambda f: lambda m: m.group(0) if m.group(1) in MONTH_WORDS else f(m)
+    text = re.sub(W + r",\s?(\d{1,2}),(?!\s*\d)", keep(lambda m: f"{m.group(1)} ({m.group(2)} வயது),"), text or "")
+    return re.sub(W + r"\s?\((\d{1,2})\)", keep(lambda m: f"{m.group(1)} ({m.group(2)} வயது)"), text)
 
 
 # English letters as a Tamil news reader says them (the voice model drops Latin letters completely: "TNPSC" was silent)
