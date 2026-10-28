@@ -140,6 +140,9 @@ def validate(d, article, today_digits=("2026",)):
     need = min(130, int(len(_tamil_words(article)) * 0.55)) if article else 60      # owner 28 Oct: full detail - a longer article needs a longer reel
     if not max(60, need) <= wc <= 175:      # owner 28 Oct: a reel is at most 90 s (~170 words with the outro)
         p.append(f"reel_script has {wc} words; need {max(60, need)}-170 (full detail in at most 90 seconds: every fact of the article, each said once)")
+    ages = re.findall(r"[\u0B80-\u0BFF]+,\s?\d{1,2},", rs)
+    if ages:      # owner 28 Oct (RN-158): "ராஜா, 12," is newspaper shorthand; read aloud it is confusing
+        p.append(f"reel_script writes ages as newspaper shorthand ({', '.join(ages[:3])}); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'")
     if "வணக்கம்" in rs.split(".")[0]:
         p.append("reel_script must not start with a greeting")
     cap = d["caption"]

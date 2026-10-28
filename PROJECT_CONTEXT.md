@@ -29,6 +29,7 @@ daily        insights.yml       Instagram insights -> learned topic weights (wri
 | Reel language | Formal news Tamil, no slang; everyday Tamil Nadu words in voice, subtitles and cards (பஸ், டூவீலர், போலீசார், கலெக்டர் ...); dates always with the month |
 | Images | New AI images for every story, made from the story's own scenes; older pictures are never reused |
 | Text | No `<b>` marks on screen; website never shows long dashes |
+| Proofread | The last Tamil proofread only fixes small spelling/sandhi mistakes of whole words; never page/place names, the follow line, English lines, words the article itself uses, or anything that changes meaning |
 | Costs | Free tiers first (Gemini/Groq/NVIDIA/Cloudflare/Mistral...); Claude Haiku only as backup; FAL images ~₹2.7 per reel |
 | Privacy | Personal project: commits only as **news360-tn**; no office account, office email or Claude lines in commits; files only in the owner's personal folder |
 
@@ -57,6 +58,7 @@ WEBSITE_INGEST_KEY. Local copies live only in `.env` (git-ignored).
 ```
 python3 -m unittest discover -s tests        # regression tests (also run by tests.yml on every code push)
 python3 poster/website.py backfill --from RN-1   # (Actions: website-backfill) resend posted stories to the website
+python3 tools/repost.py RN-158                   # (Actions: repost) post a reel again after it was removed from Instagram
 ```
 
 ## Recent changes

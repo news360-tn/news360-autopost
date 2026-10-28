@@ -1,7 +1,7 @@
 """Last Tamil proofread before a reel is built: spelling, sandhi (புணர்ச்சி), grammar and unclear sentences in everything that goes out
 (headline, slide texts shown in the reel, the spoken script, the caption). Free models first, Claude only when they are not available.
 Only exact, small corrections are applied; a correction that changes a number, or makes broken Tamil, is ignored."""
-import json, re, sys
+import difflib, json, re, sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "research_free"))
 
@@ -28,9 +28,60 @@ def _digits(t):
     return re.findall(r"\d+", t or "")
 
 
-def proofread(row, log=print):
-    """corrects row in place; returns the number of corrections applied"""
-    import llm, verify
+LAST = "மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்."
+KEEP = ("நாமக்கல்", "ராசிபுரம்", "இராசிபுரம்", "த்ரீ", "சிக்ஸ்டி", "360")      # page names and the follow line are never "corrected"
+NEG = ("அற்ற", "இல்லை", "இல்லாத", "மாட்டா", "கூடாது", "வேண்டாம்", "அல்ல", "இன்றி")      # a fix that adds "not" flips the meaning
+TA = "\u0B80-\u0BFF\\w"
+
+
+def _whole(w):
+    return re.compile(f"(?<![{TA}]){re.escape(w)}(?![{TA}])")
+
+
+def _repeats(t):
+    """'X X' or 'X Y X' word runs (28 Oct RN-158: 'செல்லாமல் சென்றனர் செல்லாமல்')"""
+    w = re.findall(r"\S+", t or "")
+    return {" ".join(w[i:i + 3]) for i in range(len(w) - 2) if w[i] == w[i + 2] and len(w[i]) > 3} | \
+        {" ".join(w[i:i + 2]) for i in range(len(w) - 1) if w[i] == w[i + 1] and len(w[i]) > 3}
+
+
+def _article(row):
+    try:
+        import allnews
+        a = allnews.article_any((row.get("source") or "").strip())
+        return (a.get("title", "") + " " + a.get("text", "")) if isinstance(a, dict) else str(a[-1] if isinstance(a, (tuple, list)) else a or "")
+    except Exception:
+        return ""
+
+
+def unsafe(w, ok, article=""):
+    """why a proposed fix must NOT be applied ('' = safe). 28 Oct: the proofreader turned மீட்கப்பட்டனர் into மீட்டப்பட்டனர்,
+    நாமக்கல் into நம்மக்கல், 'வர வேண்டிய' into 'வரத் தேவையற்ற', deleted facts and doubled words - only small spelling fixes go in."""
+    if not w or not ok or w == ok or len(w) < 2:
+        return "empty"
+    if re.search(r"[A-Za-z]", w + ok):
+        return "English text / follow line"
+    if _digits(w) != _digits(ok):
+        return "number changed"
+    if any(k in w for k in KEEP):
+        return "page or place name"
+    if any(n in ok and n not in w for n in NEG):
+        return "meaning flipped"
+    if abs(len(ok.split()) - len(w.split())) > 1 or difflib.SequenceMatcher(None, w, ok).ratio() < 0.6:
+        return "rewrite, not a spelling fix"
+    words = [x.strip(".,;:!?()\"'") for x in w.split()]
+    if article and all(_whole(x).search(article) for x in words if x):
+        return "the article itself writes it this way"
+    import verify
+    if verify.tamil_sequence_problems(ok):
+        return "broken Tamil"
+    return ""
+
+
+def proofread(row, log=print, article=None):
+    """corrects row in place; returns the number of corrections applied. Only whole-word, single-place, small spelling/sandhi
+    fixes are applied; anything that could change a fact or the meaning is ignored."""
+    import llm
     user = json.dumps(_texts(row), ensure_ascii=False)
     try:
         try:
@@ -46,25 +97,30 @@ def proofread(row, log=print):
     if not fixes:
         log(f"Tamil proofread by {m}: no mistakes found")
         return 0
+    if article is None:
+        article = _article(row)
     spec = row.get("slides_spec") or ""
     done = 0
     for f in fixes[:25]:
-        w, ok = str(f.get("wrong") or ""), str(f.get("right") or "")
-        if not w or not ok or w == ok or len(w) < 2:
-            continue
-        if _digits(w) != _digits(ok) or len(ok) > 2 * len(w) + 12:      # a number changed, or a rewrite instead of a correction
-            log("proofread fix ignored (would change a number / too big):", w[:40], "->", ok[:40])
-            continue
-        if verify.tamil_sequence_problems(ok):
+        w, ok = str(f.get("wrong") or "").strip(), str(f.get("right") or "").strip()
+        why = unsafe(w, ok, article)
+        if why:
+            log(f"proofread fix ignored ({why}):", w[:40], "->", ok[:40])
             continue
         hit = False
         for k in FIELDS:
-            if w in (row.get(k) or ""):
-                row[k] = row[k].replace(w, ok)
-                hit = True
-        if w in spec:
-            spec = spec.replace(json.dumps(w, ensure_ascii=False)[1:-1], json.dumps(ok, ensure_ascii=False)[1:-1])
-            hit = True
+            t = row.get(k) or ""
+            if len(_whole(w).findall(t)) != 1:      # not there, or in several places: never replace blindly
+                continue
+            body, last = (t[:-len(LAST)], LAST) if k == "reel_script" and t.rstrip().endswith(LAST) else (t, "")
+            new = _whole(w).sub(lambda _: ok, body, count=1) + last
+            if _repeats(new) - _repeats(t):
+                log("proofread fix ignored (would double words):", w[:40], "->", ok[:40])
+                continue
+            row[k], hit = new, True
+        jw, jo = json.dumps(w, ensure_ascii=False)[1:-1], json.dumps(ok, ensure_ascii=False)[1:-1]
+        if len(_whole(jw).findall(spec)) == 1:
+            spec, hit = _whole(jw).sub(lambda _: jo, spec, count=1), True
         if hit:
             done += 1
             log(f"Tamil fix: «{w}» -> «{ok}» ({str(f.get('why', ''))[:60]})")

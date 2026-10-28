@@ -323,5 +323,44 @@ class FullDetail(unittest.TestCase):
         self.assertEqual(json.loads((ROOT / "poster" / "config.json").read_text())["reel_max_seconds"], 90)
         self.assertIn("fit_max(work, len(texts), lead, gap)", (ROOT / "reel" / "reel4.py").read_text(encoding="utf-8"))
 
+class Proofread(unittest.TestCase):
+    """28 Oct: the last Tamil proofread damaged posted reels (RN-158 'செல்லாமல் சென்றனர் செல்லாமல்', RN-155 நம்மக்கல்,
+    RN-145 'வர வேண்டிய' -> 'வரத் தேவையற்ற', RN-150 மீட்டப்பட்டனர், RN-157 follow line 'மூன்று அறுபது')"""
+
+    def setUp(self):
+        import tamilcheck
+        self.T = tamilcheck
+
+    def test_bad_fixes_are_refused(self):
+        art = "மனைப்பட்டா கேட்டு மனு. சிறுவர்கள் மீட்கப்பட்டனர்."
+        for w, ok in [("நாமக்கல்", "நம்மக்கல்"), ("வர வேண்டிய", "வரத் தேவையற்ற"), ("த்ரீ சிக்ஸ்டி", "மூன்று அறுபது"),
+                      ("Follow", "பின்தொடருங்கள்"), ("கடுமையாக", ""), ("செல்லாமல்", "செல்லாமல் சென்றனர் செல்லாமல்"),
+                      ("மீட்கப்பட்டனர்.", "மீட்டப்பட்டனர்."), ("மனைப்பட்டா,", "மனப்பெட்டா,"), ("பரமத்தி வேலூர்", "ப.வேலுார்")]:
+            self.assertTrue(self.T.unsafe(w, ok, art), f"{w} -> {ok} must be refused")
+
+    def test_real_spelling_fixes_still_go_in(self):
+        for w, ok in [("வெளியிட்டுுள்ளார்.", "வெளியிட்டுள்ளார்."), ("இயக்குனர்", "இயக்குநர்"), ("கீழ்கண்ட", "கீழ்க்கண்ட")]:
+            self.assertEqual(self.T.unsafe(w, ok, ""), "")
+
+    def test_rn158_no_word_inside_a_word(self):
+        import llm
+        row = {"headline_ta": "x", "caption": "பள்ளிக்குச் செல்லாமல்", "slides_spec": "{}",
+               "reel_script": "பள்ளிக்குச் செல்லாமல் பிறந்த நாள். ராஜா பள்ளிக்குச் செல்லவில்லை. " + self.T.LAST}
+        before = dict(row)
+        old = llm.ask_json
+        llm.ask_json = lambda *a, **k: ({"fixes": [{"wrong": "செல்ல", "right": "செல்லாமல் சென்ற"}]}, "test")
+        try:
+            self.T.proofread(row, log=lambda *a: None, article="")
+        finally:
+            llm.ask_json = old
+        self.assertEqual(row, before)
+
+    def test_age_shorthand_sent_back(self):
+        import validate
+        d = dict(json.loads((ROOT / "research_free" / "examples.json").read_text(encoding="utf-8"))[1]["output"])
+        d["reel_script"] = "வீராச்சாமி தனது மகன் ராஜா, 12, பள்ளிக்குச் செல்லவில்லை. " + validate.LAST
+        self.assertTrue([p for p in validate.validate(d, "") if "ages" in p])
+
+
 if __name__ == "__main__":
     unittest.main()

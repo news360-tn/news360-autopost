@@ -72,12 +72,34 @@ function doPost(e) {
     if (body.action === 'archiveNews') return json_(archiveNews_(body));
     if (body.action === 'reoffer') return json_(reoffer_(body));
     if (body.action === 'setImages') return json_(setImages_(body));
+    if (body.action === 'repost') return json_(repost_(body));
     return json_({ ok: false, error: 'unknown action ' + body.action });
   } catch (err) {
     return json_({ ok: false, error: String(err) });
   } finally {
     lock.releaseLock();
   }
+}
+
+// owner 28 Oct: a posted reel the owner removed from Instagram (wrong text) is posted again: its page line is taken out of reel_link
+// and the story goes back to the queue (the posting job rebuilds the reel with the corrected text). body: {ids:["RN-158"], page:"namakkal"}
+function repost_(b) {
+  var sh = sheet_();
+  var last = sh.getLastRow();
+  var data = sh.getRange(2, 1, last - 1, NCOLS).getValues();
+  var done = [];
+  for (var i = 0; i < data.length; i++) {
+    var r = rowObj_(data[i], i + 2);
+    if ((b.ids || []).indexOf(r.story_id) < 0) continue;
+    var page = b.page || targets_(r.post_to)[0];
+    var label = PAGE_LABEL[page] || page;
+    var keep = String(r.reel_link || '').split('\n').filter(function (l) { return l && l.indexOf(label) < 0; });
+    sh.getRange(r.row, C.reel_link).setValue(keep.join('\n'));
+    sh.getRange(r.row, C.post_status).setValue('Queued');
+    appendNote_(sh, r.row, r.notes, nowIst_() + ' repost: ' + label + ' reel removed by the owner, posted again with corrected text');
+    done.push(r.story_id);
+  }
+  return { ok: true, reposted: done };
 }
 
 // ------------------------------------------------------------------ queue
