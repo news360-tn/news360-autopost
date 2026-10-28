@@ -1,96 +1,287 @@
-writing [R]: ராசிபுரம் பகுதியில் ரேஷன் அரிசி பதுக்கிய பெண் கைது; 150 கிலோ
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.8-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.8-flash
-fail gemini/gemini-3.7-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.7-flash
-ok gemini/gemini-3.6-flash (21s)
+writing [N]: ஆன்லைனில் குறைந்த விலையில் பட்டாசு விற்பனை: நாமக்கல் பகுதியி
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (17s)
-factcheck by gemini/gemini-3.6-flash: 2 problems
-  The reel_script incorrectly states in the opening sentence that the police arrested the woman ('காவல் துறையினர் கைது செய்தனர்'), whereas the article specifies that Food Safety Department Sub-Inspector Siddiq made the arrest.
-  The name of the arrested woman (Anitha) is omitted from the reel_script.
-attempt 1 gemini/gemini-3.6-flash: 2 problems
-  fact-check: The reel_script incorrectly states in the opening sentence that the police arrested the woman ('காவல் துறையினர் கைது செய்தனர்'), whereas the article specifies that Food Safety Department Sub-Inspector Siddiq made the arrest.
-  fact-check: The name of the arrested woman (Anitha) is omitted from the reel_script.
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+writing [N]: தொடர் மழையிலும் நீர்நிலைகள் வறட்சி பள்ளிப்பாளையம் விவசாயிகள்
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (23s)
-attempt 2 gemini/gemini-3.6-flash: 1 problems
-  sentence 1 (one-line story) has 21 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+writing [N]: நாமக்கல்லில் நவ.1ல் டிஎன்பிஎஸ்சி குரூப் 2 தேர்வு: 14,199 பேர
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.8-flash
+fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.7-flash
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.8-flash for 10 min
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (33s)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (17s)
-factcheck by gemini/gemini-3.6-flash: 1 problems
-  Grammatical error in tamil_headline: 'வீட்டின்' should be 'வீட்டில்'.
-attempt 3 gemini/gemini-3.6-flash: 1 problems
-  fact-check: Grammatical error in tamil_headline: 'வீட்டின்' should be 'வீட்டில்'.
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.8-flash
 ok gemini/gemini-3.6-flash (18s)
-attempt 4 gemini/gemini-3.6-flash: 1 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (27s)
-gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (10s)
-factcheck by gemini/gemini-3.6-flash: 0 problems
-attempt 5 gemini/gemini-3.6-flash: 0 problems
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  reel_script has 117 words; need 122-170 (full detail in at most 90 seconds: every fact of the article, each said once)
+  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (27s)
-proofread rejected (1 problems)
-  sentence 1 (one-line story) has 17 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
+dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {"errors":[{"message":"AiError: AiError: you have used up y
+dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+ok gemini/gemini-3.6-flash (20s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  source/outlet name or link appears: ஆதாரம்
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (12s)
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-image match check unavailable: 404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateCo
-images made: 3 for 'Woman arrested in Rasipuram for hoarding'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261028-1435","first":"RN-163"}
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
+  slide 2 line 1 longer than 60 characters
+  reel_script has 117 words; need 122-170 (full detail in at most 90 seconds: every fact of the article, each said once)
+  reel_script has numbers without their meaning (2); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'
+fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
+switching away from mistral/mistral-small-latest for 10 min
+free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 124 words; need 130-170 (full detail in at most 90 seconds: every fact of the article, each said once)
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 2 problems
+  The article says the reservoirs (நீர்தேக்கம்) are across the stream in Mampalayam, Elanthakuttai, Savuthapuram and Velikkuttai, but the draft's slides_spec and reel_script also call the ponds in Sillangadu, Samayasangili, Molakavundampalayam and Elaiyampalayam 'ஏரிகள்', and the caption repeats this grouping. The article says the Sillangadu/Samayasangili/Molakavundampalayam/Elaiyampalayam places have ஏரிகள், which the draft matches, so this is fine; however the reel_script mentions 'நீர்தேக்கங்கள் உள்ளன' for the second group, which matches the article.
+  The reel_script says the rainfall was 'கடந்த ஒரு வாரமாக' and then 'வடகிழக்கு பருவமழை தொடர்ந்து பெய்ததால்', while the article says 'கடந்த ஓரிரு வாரமாக' for the northeast monsoon. The draft's 'ஒரு வாரம்' conflicts with the article's 'ஓரிரு வாரம்' in the reel_script's rainfall duration, and the caption and headline-level claims also use 'ஒரு வாரம்'.
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  fact-check: The article says the reservoirs (நீர்தேக்கம்) are across the stream in Mampalayam, Elanthakuttai, Savuthapuram and Velikkuttai, but the draft's slides_spec and reel_script also call the ponds in Sillangadu, Samayasangili, Molakavundampalayam and Elaiyampalayam 'ஏரிகள்', and the caption repeats this grouping. The article says the Sillangadu/Samayasangili/Molakavundampalayam/Elaiyampalayam places have ஏரிகள், which the draft matches, so this is fine; however the reel_script mentions 'நீர்தேக்கங்கள் உள்ளன' for the second group, which matches the article.
+  fact-check: The reel_script says the rainfall was 'கடந்த ஒரு வாரமாக' and then 'வடகிழக்கு பருவமழை தொடர்ந்து பெய்ததால்', while the article says 'கடந்த ஓரிரு வாரமாக' for the northeast monsoon. The draft's 'ஒரு வாரம்' conflicts with the article's 'ஓரிரு வாரம்' in the reel_script's rainfall duration, and the caption and headline-level claims also use 'ஒரு வாரம்'.
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  reel_script has numbers without their meaning (2); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+  slide 2 line 3 longer than 60 characters
+  reel_script has 118 words; need 122-170 (full detail in at most 90 seconds: every fact of the article, each said once)
+  reel_script has numbers without their meaning (2); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'
+proofread skipped: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  reel_script says the fraud is in the Namakkal district and that 25 people 'ஏமாந்து' lost Rs 1.50 lakh, but article says 25 people complained in 2 days; minor, consistent. However, reel_script states 'நாமக்கல் மாவட்டத்தில் ஆன்லைன் பட்டாசு மோசடியில் 25 பேர்' — acceptable.
+  reel_script omits that the ADSP Vijayaraghavan of Namakkal cyber crime police gave this advice, which is an important source fact (the official warning context).
+  reel_script states the 'முதலீடு செய்தால் இரட்டிப்பு பணம் கிடைக்கும்' scam as part of the same list, but the article says the fraud happened via online investment promise, which is fine; however the phrase 'சிவகாசி பட்டாசுகளுக்கு 75 முதல் 80 சதவீதம் வரை தள்ளுபடி என போலி விளம்பரங்கள் வெளியிடப்படுகின்றன' is accurate.
+  reel_script says 'பணம் செலுத்தும் முன் இணையதளம் அல்லது நிறுவனத்தின் நம்பகத்தன்மையை உறுதி செய்ய வேண்டும்' — accurate.
+  slides_spec 'என்ன நடந்தது?' lines mix facts: '2 நாட்களில் ரூ. 1.50 லட்சம் இழப்பு' combined with '25 பேர்' in one slide is acceptable, but 'நாமக்கல் மாவட்டத்தில் புகார்கள் பதிவாகின' is fine.
+  caption states 'தீபாவளிக்காக ஆன்லைனில் பட்டாசு ஆர்டர் செய்வோரை குறிவைத்து' which is supported by the article.
+claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: reel_script says the fraud is in the Namakkal district and that 25 people 'ஏமாந்து' lost Rs 1.50 lakh, but article says 25 people complained in 2 days; minor, consistent. However, reel_script states 'நாமக்கல் மாவட்டத்தில் ஆன்லைன் பட்டாசு மோசடியில் 25 பேர்' — acceptable.
+  fact-check: reel_script omits that the ADSP Vijayaraghavan of Namakkal cyber crime police gave this advice, which is an important source fact (the official warning context).
+  fact-check: reel_script states the 'முதலீடு செய்தால் இரட்டிப்பு பணம் கிடைக்கும்' scam as part of the same list, but the article says the fraud happened via online investment promise, which is fine; however the phrase 'சிவகாசி பட்டாசுகளுக்கு 75 முதல் 80 சதவீதம் வரை தள்ளுபடி என போலி விளம்பரங்கள் வெளியிடப்படுகின்றன' is accurate.
+  fact-check: reel_script says 'பணம் செலுத்தும் முன் இணையதளம் அல்லது நிறுவனத்தின் நம்பகத்தன்மையை உறுதி செய்ய வேண்டும்' — accurate.
+  fact-check: slides_spec 'என்ன நடந்தது?' lines mix facts: '2 நாட்களில் ரூ. 1.50 லட்சம் இழப்பு' combined with '25 பேர்' in one slide is acceptable, but 'நாமக்கல் மாவட்டத்தில் புகார்கள் பதிவாகின' is fine.
+  fact-check: caption states 'தீபாவளிக்காக ஆன்லைனில் பட்டாசு ஆர்டர் செய்வோரை குறிவைத்து' which is supported by the article.
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says 'ஓரிரு வாரமாக' (for a couple of weeks) rain continued, while the article also says 'கடந்த ஒரு வாரமாக' (past one week) — minor inconsistency in the timeframe of the rain, though article itself has both phrasings
+  Caption lists 'எளையாம்பாளையம்' among lake areas and 'சில்லாங்காடு, சமயசங்கிலி, மோளகவுண்டம்பாளையம், எளையாம்பாளையம் ஏரிகள்' which matches the article; however the reel_script omits எளையாம்பாளையம் from the list of lakes, an incomplete listing of an article fact
+  reel_script says 'ஏரிகளும் நீர்தேக்கப் பகுதிகளும் வழக்கம்போல் வறண்டே உள்ளன' — the article says lakes and water-storage areas are dry, which is consistent; no issue here beyond the omission noted
+  slides_spec 'ஏன் கவலை?' slide states 'இந்த முறை ஏரிகளும் நீர்தேக்கங்களும் வறண்டுள்ளன' while the article's point is the usual dryness ('வழக்கம்போல்'); 'இந்த முறை' (this time) slightly misrepresents the 'as usual' framing
+  slides_spec 'நிலைமை' slide says 'விவசாயிகள் நிலத்தடி நீரை எதிர்பார்த்துள்ளனர்' — the article says farmers expected rainwater to reach water bodies, not that they are expecting groundwater; this is a mischaracterization
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script says 'ஓரிரு வாரமாக' (for a couple of weeks) rain continued, while the article also says 'கடந்த ஒரு வாரமாக' (past one week) — minor inconsistency in the timeframe of the rain, though article itself has both phrasings
+  fact-check: Caption lists 'எளையாம்பாளையம்' among lake areas and 'சில்லாங்காடு, சமயசங்கிலி, மோளகவுண்டம்பாளையம், எளையாம்பாளையம் ஏரிகள்' which matches the article; however the reel_script omits எளையாம்பாளையம் from the list of lakes, an incomplete listing of an article fact
+  fact-check: reel_script says 'ஏரிகளும் நீர்தேக்கப் பகுதிகளும் வழக்கம்போல் வறண்டே உள்ளன' — the article says lakes and water-storage areas are dry, which is consistent; no issue here beyond the omission noted
+  fact-check: slides_spec 'ஏன் கவலை?' slide states 'இந்த முறை ஏரிகளும் நீர்தேக்கங்களும் வறண்டுள்ளன' while the article's point is the usual dryness ('வழக்கம்போல்'); 'இந்த முறை' (this time) slightly misrepresents the 'as usual' framing
+  fact-check: slides_spec 'நிலைமை' slide says 'விவசாயிகள் நிலத்தடி நீரை எதிர்பார்த்துள்ளனர்' — the article says farmers expected rainwater to reach water bodies, not that they are expecting groundwater; this is a mischaracterization
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+proofread skipped: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says 'சில்லாங்காடு, சமயசங்கிலி, மோளகவுண்டம்பாளையம், எளையாம்பாளையம் பகுதிகளில் ஏரிகள் உள்ளன' but the article lists 'எளையாம்பாளையம்' as well; this matches, so no issue there — however, slides_spec 'எந்தப் பகுதிகள்?' slide lists 'சில்லாங்காடு, சமயசங்கிலி, மோளகவுண்டம்பாளையம்' omitting எளையாம்பாளையம், an incomplete location list
+  caption says 'மழைநீர் வந்து சேர்ந்தால் பல மாதங்கள் தேங்கி நிலத்தடி நீர்மட்டம் உயரும்' which is a generalized claim presented as a sequence; the article says water 'will remain for many months' when rain arrives, so the caption mixes the cause and effect of two separate facts into one sentence in a way that is not clearly supported
+  slides_spec 'ஏன் கவலை?' slide line 'நிலத்தடி நீர்மட்டம் உயர்ந்து பயிர் சாகுபடிக்கு உதவும்' is a conditional fact from the article (what happens when rain comes) placed under 'why worried', which mixes two different facts into one slide
+  reel_script says 'நிலத்தடி நீர்மட்டம் உயர்ந்திருக்கும்' (would have risen) whereas the article says 'அதிகரித்து காணப்படும்' (is found to be increased); the tense change alters the stated fact
+  reel_script says 'மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்' is the permitted closing line and is not a problem
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script says 'சில்லாங்காடு, சமயசங்கிலி, மோளகவுண்டம்பாளையம், எளையாம்பாளையம் பகுதிகளில் ஏரிகள் உள்ளன' but the article lists 'எளையாம்பாளையம்' as well; this matches, so no issue there — however, slides_spec 'எந்தப் பகுதிகள்?' slide lists 'சில்லாங்காடு, சமயசங்கிலி, மோளகவுண்டம்பாளையம்' omitting எளையாம்பாளையம், an incomplete location list
+  fact-check: caption says 'மழைநீர் வந்து சேர்ந்தால் பல மாதங்கள் தேங்கி நிலத்தடி நீர்மட்டம் உயரும்' which is a generalized claim presented as a sequence; the article says water 'will remain for many months' when rain arrives, so the caption mixes the cause and effect of two separate facts into one sentence in a way that is not clearly supported
+  fact-check: slides_spec 'ஏன் கவலை?' slide line 'நிலத்தடி நீர்மட்டம் உயர்ந்து பயிர் சாகுபடிக்கு உதவும்' is a conditional fact from the article (what happens when rain comes) placed under 'why worried', which mixes two different facts into one slide
+  fact-check: reel_script says 'நிலத்தடி நீர்மட்டம் உயர்ந்திருக்கும்' (would have risen) whereas the article says 'அதிகரித்து காணப்படும்' (is found to be increased); the tense change alters the stated fact
+  fact-check: reel_script says 'மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்' is the permitted closing line and is not a problem
+proofread skipped: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match: False The image is an AI-generated illustration containing misspelled text ('GOVERNINATE CENTREM TAMIL NATOU') rather than an 
+image match: False The image is an AI-generated graphic with garbled text on signs ('EXAMINAOL CENTRE') rather than an authentic news photo
+image match: False The photo shows a desk still life with personal items and an ID card, not candidates writing an exam or an exam centre i
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 3 for 'TNPSC Group 2 exam on 1 Nov in Namakkal:'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261028-2231","first":"RN-167"}
 posting job started at once
+writing [N]: மாவட்டத்தில் நடைபெறும் மத்திய அரசின் திட்டங்களை விரைந்து முட
+free models unavailable: free models not efficient (6 failures in a row): using Claude
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  sentence 1 (one-line story) has 15 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 3 for 'Cheap crackers online scam: 25 people lo'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261028-2232","first":"RN-168"}
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  reel_script has 120 words; need 130-170 (full detail in at most 90 seconds: every fact of the article, each said once)
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+proofread skipped: free models not efficient (6 failures in a row): using Claude
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 3 for 'Water bodies remain dry in Pallipalayam '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261028-2232","first":"RN-169"}
+writing [N]: 11 விற்பனை நிலையங்களில் 8.57 டன் விதை விற்க தடை
+free models unavailable: free models not efficient (6 failures in a row): using Claude
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 3 for 'Namakkal: Disha committee chairman direc'
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 7 problems
+  reel_script says the inspection was on 'அக்டோபர் 27ஆம் தேதி' (October 27), which is a date reconstruction; the article only says 'நேற்று (அக்.,27)' — this is consistent, so not a problem.
+  reel_script says the authorities 'தெரிவித்துள்ளனர்' that action will be taken against sellers of 'தரமற்ற விதைகள்' and 'விதிமீறி விற்பனை செய்வோர்'; the article says action will be taken against these sellers, so this is accurate.
+  reel_script states the inspection was 'நேற்று' and that the 11 shops are in 'ஆத்தூர், பெத்தநாயக்கன்பாளையம், சேலம் வட்டாரங்களில்' — accurate.
+  slides_spec 'hl1' and caption say the 11 shops are 'விதைக் கடைகளில்' and the article says 'விதை விற்பனை நிலையங்களில' — accurate.
+  reel_script says the Salem and Namakkal district seed-inspection deputy director Chitra led the team; the article says 'சேலம், நாமக்கல் மாவட்ட விதை ஆய்வு துணை இயக்குனர் சித்ரா' — accurate.
+  The caption's '👮 நடவடிக்கை' and '🚨' emojis add no factual claims beyond the article.
+  reel_script says '19.22 லட்சம் ரூபாய்' value — accurate.
+claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
+  fact-check: reel_script says the inspection was on 'அக்டோபர் 27ஆம் தேதி' (October 27), which is a date reconstruction; the article only says 'நேற்று (அக்.,27)' — this is consistent, so not a problem.
+  fact-check: reel_script says the authorities 'தெரிவித்துள்ளனர்' that action will be taken against sellers of 'தரமற்ற விதைகள்' and 'விதிமீறி விற்பனை செய்வோர்'; the article says action will be taken against these sellers, so this is accurate.
+  fact-check: reel_script states the inspection was 'நேற்று' and that the 11 shops are in 'ஆத்தூர், பெத்தநாயக்கன்பாளையம், சேலம் வட்டாரங்களில்' — accurate.
+  fact-check: slides_spec 'hl1' and caption say the 11 shops are 'விதைக் கடைகளில்' and the article says 'விதை விற்பனை நிலையங்களில' — accurate.
+  fact-check: reel_script says the Salem and Namakkal district seed-inspection deputy director Chitra led the team; the article says 'சேலம், நாமக்கல் மாவட்ட விதை ஆய்வு துணை இயக்குனர் சித்ரா' — accurate.
+  fact-check: The caption's '👮 நடவடிக்கை' and '🚨' emojis add no factual claims beyond the article.
+  fact-check: reel_script says '19.22 லட்சம் ரூபாய்' value — accurate.
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261028-2233","first":"RN-170"}
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  reel_script says the 8.57 tonnes ban was in 'சேலம், ஆத்தூர் பகுதிகள்' (Salem, Attur areas), which omits Pethanaickenpalayam and is a slightly different place framing than the article's three taluks
+  reel_script says the inspection was done on 'அக்டோபர் 27ஆம் தேதி' and 'நேற்று' - the article says 'நேற்று (அக்.,27)', so this is consistent; however the caption's date line '27 அக்டோபர் 2026' adds a year not stated in the article
+  caption states the year 2026, which is not in the article
+  slides_spec hl1 says '11 விதைக் கடைகளில்' whereas the article calls them விதை விற்பனை நிலையங்கள், a minor wording shift, not a factual error
+  the article says the inspection team was led by Chitra, Salem-Namakkal seed inspection deputy director; reel_script says 'சேலம், நாமக்கல் மாவட்ட விதை ஆய்வு துணை இயக்குனர்' which matches
+  caption says the shops were 'கடைகளுக்கு விற்பனைத் தடை' in headline, while the article says sale of seeds was banned at the outlets - acceptable wording
+claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: reel_script says the 8.57 tonnes ban was in 'சேலம், ஆத்தூர் பகுதிகள்' (Salem, Attur areas), which omits Pethanaickenpalayam and is a slightly different place framing than the article's three taluks
+  fact-check: reel_script says the inspection was done on 'அக்டோபர் 27ஆம் தேதி' and 'நேற்று' - the article says 'நேற்று (அக்.,27)', so this is consistent; however the caption's date line '27 அக்டோபர் 2026' adds a year not stated in the article
+  fact-check: caption states the year 2026, which is not in the article
+  fact-check: slides_spec hl1 says '11 விதைக் கடைகளில்' whereas the article calls them விதை விற்பனை நிலையங்கள், a minor wording shift, not a factual error
+  fact-check: the article says the inspection team was led by Chitra, Salem-Namakkal seed inspection deputy director; reel_script says 'சேலம், நாமக்கல் மாவட்ட விதை ஆய்வு துணை இயக்குனர்' which matches
+  fact-check: caption says the shops were 'கடைகளுக்கு விற்பனைத் தடை' in headline, while the article says sale of seeds was banned at the outlets - acceptable wording
+ok anthropic/claude-haiku-5-5
+free fact-check unavailable, using Claude: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says the sales ban covers the 11 outlets in Attur, Peththanaickenpalayam and Salem blocks, but the article only says the inspected outlets were in those blocks; the ban location wording is slightly broader than the source
+  reel_script says 'அக்டோபர் 27ஆம் தேதி' — the article says நேற்று (அக்.,27), which is consistent, but reel_script omits that the inspection was conducted by the Salem–Namakkal seed inspection team led by Chitra as deputy director, which is included; no error here
+  slides_spec and caption describe the ban as covering 8.57 tonnes of seeds at 11 outlets, but the article says the ban was on 8.57 tonnes across the 11 outlets, which is accurate
+  reel_script's first sentence lists 'ஆத்தூர், பெத்தநாயக்கன்பாளையம், சேலம் வட்டாரங்களில் 11 விதை விற்பனை நிலையங்களுக்கு விற்பனைத் தடை விதிக்கப்பட்டது' — the article says 11 outlets were inspected and 11 found in violation; the reel wording conflates inspected and banned outlets, which is a mild misstatement
+  caption's English footer 'Hundreds of seed outlets inspected' is an invented claim — the article mentions only 11 outlets, not hundreds
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script says the sales ban covers the 11 outlets in Attur, Peththanaickenpalayam and Salem blocks, but the article only says the inspected outlets were in those blocks; the ban location wording is slightly broader than the source
+  fact-check: reel_script says 'அக்டோபர் 27ஆம் தேதி' — the article says நேற்று (அக்.,27), which is consistent, but reel_script omits that the inspection was conducted by the Salem–Namakkal seed inspection team led by Chitra as deputy director, which is included; no error here
+  fact-check: slides_spec and caption describe the ban as covering 8.57 tonnes of seeds at 11 outlets, but the article says the ban was on 8.57 tonnes across the 11 outlets, which is accurate
+  fact-check: reel_script's first sentence lists 'ஆத்தூர், பெத்தநாயக்கன்பாளையம், சேலம் வட்டாரங்களில் 11 விதை விற்பனை நிலையங்களுக்கு விற்பனைத் தடை விதிக்கப்பட்டது' — the article says 11 outlets were inspected and 11 found in violation; the reel wording conflates inspected and banned outlets, which is a mild misstatement
+  fact-check: caption's English footer 'Hundreds of seed outlets inspected' is an invented claim — the article mentions only 11 outlets, not hundreds
+proofread skipped: free models not efficient (6 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 3 for 'Sale of 8.57 tonnes of seeds banned at 1'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261028-2233","first":"RN-171"}
 earlier stories still waiting for images: []
-instagram check: 72 recent posts read from both pages
-write round: 10 news waiting in the queue (written in priority order)
-candidate filter: collected=6, already filed=4
-to write: 1 Rasipuram + 5 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 5 Namakkal; time left 29 min
-try (R) manual=False: ராசிபுரம் பகுதியில் ரேஷன் அரிசி பதுக்கிய பெண் கைது; 150 கிலோ
-try (N) manual=False: தீபாவளி பண்டிகையையொட்டி இனிப்பு, காரம் தயாரித்து விற்க உரிமம
-try (N) manual=False: சர்வீஸ் சாலையில் குவிக்கும் குப்பையால் சுகாதார சீர்கேடு
-skip (N) similar to a filed story: தீபாவளி பண்டிகையையொட்டி இனிப்பு, காரம் தயாரித்து வ
-try (N) manual=False: முதியவர் தீக்குளிக்க முயற்சி கலெக்டர் ஆபீசில் பரபரப்பு
-skip (N) similar to a filed story: சர்வீஸ் சாலையில் குவிக்கும் குப்பையால் சுகாதார சீர
-try (N) manual=False: கணவர் இறந்ததாக சான்றிதழ் மனைவி மீது வழக்கு
-skip (N) similar to a filed story: முதியவர் தீக்குளிக்க முயற்சி கலெக்டர் ஆபீசில் பரபர
-try (N) manual=False: 30ல் விவசாயிகள் குறைதீர் கூட்டம்
-skip (N) similar to a filed story: கணவர் இறந்ததாக சான்றிதழ் மனைவி மீது வழக்கு
-skip (N) similar to a filed story: 30ல் விவசாயிகள் குறைதீர் கூட்டம்
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 2})
+instagram check: 73 recent posts read from both pages
+write round: 5 news waiting in the queue (written in priority order)
+candidate filter: collected=5
+to write: 0 Rasipuram + 5 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 5 Namakkal; time left 29 min
+try (N) manual=False: தொடர் மழையிலும் நீர்நிலைகள் வறட்சி பள்ளிப்பாளையம் விவசாயிகள்
+try (N) manual=False: ஆன்லைனில் குறைந்த விலையில் பட்டாசு விற்பனை: நாமக்கல் பகுதியி
+try (N) manual=False: நாமக்கல்லில் நவ.1ல் டிஎன்பிஎஸ்சி குரூப் 2 தேர்வு: 14,199 பேர
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 4})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 5}, done={'R': 1, 'N': 0}, time left 22 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)
+try (N) manual=False: மாவட்டத்தில் நடைபெறும் மத்திய அரசின் திட்டங்களை விரைந்து முட
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'fal-ai/flux/schnell': 6})
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3, 'fal-ai/flux/schnell': 8})
+try (N) manual=False: 11 விற்பனை நிலையங்களில் 8.57 டன் விதை விற்க தடை
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 4, 'fal-ai/flux/schnell': 10})
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 5, 'fal-ai/flux/schnell': 12})
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 5}, done={'R': 0, 'N': 5}, time left 25 min
+carousel for 0 of 5 stories, the rest reel only
+filed: 0 Rasipuram + 5 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+All News sheet: {"ok":true,"added":0,"updated":5} 
+stories: 5
