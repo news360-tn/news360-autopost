@@ -63,6 +63,7 @@ python3 poster/website.py backfill --from RN-1   # (Actions: website-backfill) r
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-28 | `98bdd3f` | Reels: full news detail from the source (every fact, 130-170 words; examples and rules no longer push short scripts), at most 90 seconds (voice read up to 1.2x faster instead of cutting facts) |
 | 2026-10-27 | `1fd4cb5` | PROJECT_CONTEXT.md: how the pipeline works, owner rules, files, secrets; recent changes updated automatically after every code commit |
 | 2026-10-27 | `e9deebe` | Reels: no double reading of the opening, full dates (month added), short pauses in long lists, everyday Tamil Nadu words (பஸ், டூவீலர், போலீசார், கலெக்டர்) in voice, subtitles and cards |
 | 2026-10-27 | `2bfa658` | Reel opening: the most striking fact is spoken first (~2-4 s) while the big headline and number are on screen |
@@ -92,5 +93,4 @@ python3 poster/website.py backfill --from RN-1   # (Actions: website-backfill) r
 | 2026-10-26 | `b4a33d7` | Posting job: install step limited to 10 min per try, retried once |
 | 2026-10-26 | `50bc8cf` | Runs always use the newest main; saving data can no longer fail on a conflict |
 | 2026-10-26 | `abdd685` | Duplicate check: headlines with different numbers are different events |
-| 2026-10-26 | `a468bd1` | Never write a news twice: match the same event in different words |
 <!-- recent-changes:end -->
