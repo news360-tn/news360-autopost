@@ -242,7 +242,8 @@ class ReelOpening(unittest.TestCase):
         self.assertEqual("90,703 குழந்தைகளுக்கு வைட்டமின் ஏ முகாம்!", ns["punch_line"]({"hook": ["குழந்தைகளுக்கு வைட்டமின் ஏ முகாம்", "<b>90,703</b>"]}))
         self.assertEqual("நாளை மின் தடை!", ns["punch_line"]({"hook": ["நாளை மின் தடை", "9 பகுதிகளில் மின் தடை - முழுப் பட்டியல் கீழே பாருங்கள்"]}))
         self.assertEqual("எழுத்தாளர் வரி", ns["punch_line"]({"punch": "<b>எழுத்தாளர்</b> வரி", "hook": ["x", "1"]}))
-        self.assertTrue(json.loads((ROOT / "poster" / "config.json").read_text()).get("reel_punch"))
+        # owner 28 Oct: the reel opens with the one-line story itself (first 2-3 s), not a separate punch line
+        self.assertFalse(json.loads((ROOT / "poster" / "config.json").read_text()).get("reel_punch"))
 
 
 class ReelWords(unittest.TestCase):
@@ -360,6 +361,26 @@ class Proofread(unittest.TestCase):
         d = dict(json.loads((ROOT / "research_free" / "examples.json").read_text(encoding="utf-8"))[1]["output"])
         d["reel_script"] = "வீராச்சாமி தனது மகன் ராஜா, 12, பள்ளிக்குச் செல்லவில்லை. " + validate.LAST
         self.assertTrue([p for p in validate.validate(d, "") if "ages" in p])
+
+
+class ClearReading(unittest.TestCase):
+    """owner 28 Oct: one-line story in the first 2-3 seconds; every number heard with its meaning (age, count, date with month)"""
+
+    def problems(self, script):
+        import validate
+        d = dict(json.loads((ROOT / "research_free" / "examples.json").read_text(encoding="utf-8"))[0]["output"])
+        d["reel_script"] = script + " " + validate.LAST
+        return validate.validate(d, "")
+
+    def test_long_opening_sent_back(self):
+        self.assertTrue([p for p in self.problems("பள்ளிக்குச் செல்லாமல் பிறந்த நாள் கொண்டாடச் சென்ற மூன்று மாணவர்கள் குமாரபாளையம் பஸ் நிலையத்தில் போலீசாரால் மீட்கப்பட்டனர்.") if p.startswith("sentence 1")])
+        self.assertFalse([p for p in self.problems("குமாரபாளையத்தில் மூன்று மாணவர்கள் மீட்பு.") if p.startswith("sentence 1")])
+
+    def test_bare_numbers_sent_back(self):
+        self.assertTrue([p for p in self.problems("மாணவர்கள் மீட்பு. கவுசிக், 14, ஸ்ரீதர், 15, காணவில்லை.") if "without their meaning" in p])
+        for ok in ("மாணவர்கள் மீட்பு. 14 வயது கவுசிக் காணவில்லை.", "மாணவர்கள் மீட்பு. அக்டோபர் 28, 2026 அன்று கூட்டம்.",
+                   "மாணவர்கள் மீட்பு. 30 பாட்டில்கள், ரூ.5,000 பறிமுதல்.", "மாணவர்கள் மீட்பு. விலை 5.70 ரூபாய்."):
+            self.assertFalse([p for p in self.problems(ok) if "without their meaning" in p], ok)
 
 
 if __name__ == "__main__":

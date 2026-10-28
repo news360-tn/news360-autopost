@@ -143,6 +143,14 @@ def validate(d, article, today_digits=("2026",)):
     ages = re.findall(r"[\u0B80-\u0BFF]+,\s?\d{1,2},", rs)
     if ages:      # owner 28 Oct (RN-158): "ராஜா, 12," is newspaper shorthand; read aloud it is confusing
         p.append(f"reel_script writes ages as newspaper shorthand ({', '.join(ages[:3])}); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'")
+    first = rs.split(".")[0].split()
+    if len(first) > 11:      # owner 28 Oct: the one-line story is heard in the first 2-3 seconds, then the explanation
+        p.append(f"sentence 1 (one-line story) has {len(first)} words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences")
+    MONTHS = "ஜனவரி|பிப்ரவரி|மார்ச்|ஏப்ரல்|மே|ஜூன்|ஜூலை|ஆகஸ்ட்|செப்டம்பர்|அக்டோபர்|நவம்பர்|டிசம்பர்"
+    bare = [m.group(0).strip() for m in re.finditer(r"(?:^|[\s,(])(\d{1,3}(?:,\d{3})*)(?=\s*[,.)](?:\s|$))", rs)
+            if not re.search(rf"({MONTHS}|வயது)[\s\d,]*$", rs[max(0, m.start(1) - 30):m.start(1)])]      # "அக்டோபர் 13, 14, 15", "வயது 40" are clear
+    if bare:      # owner 28 Oct: "ஸ்ரீதர், 15," - a number with no word is not understood when it is heard
+        p.append(f"reel_script has numbers without their meaning ({', '.join(bare[:4])}); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'")
     if "வணக்கம்" in rs.split(".")[0]:
         p.append("reel_script must not start with a greeting")
     cap = d["caption"]
