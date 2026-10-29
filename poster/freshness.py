@@ -210,3 +210,47 @@ def follow_up(old, new, days=2):
         return False
     text = lambda r: (r.get("headline_ta") or "") + " " + (r.get("headline_en") or "")
     return bool(FOLLOW.search(text(new))) and not FOLLOW.search(text(old))
+
+
+# owner 29 Oct (RN-189 egg price): a story that only says the article has no facts is NOT news and is never filed or posted.
+# The writer sometimes "explains" a page it could not read (price in an image, wrong text scraped) instead of reporting news.
+NO_NEWS_TA = ("கட்டுரையில் இல்லை", "கட்டுரையில் குறிப்பிடப்படவில்லை", "கட்டுரையில் வெளியிடப்படவில்லை", "இந்தக் கட்டுரையில்",
+              "விவரம் இன்னும் தெரியவரவில்லை", "விவரம் தெரியவரவில்லை", "விவரம் இன்னும் தெரியவில்லை", "தகவல் இல்லை",
+              "எண்ணோ தகவலோ இல்லை", "விவரம் கிடைத்ததும் பகிரப்படும்", "தெரியவந்ததும் பகிரப்படும்", "தொடர்புடையது அல்ல", "தொடர்பில்லை")
+NO_NEWS_EN = ("not in the article", "not mentioned in the article", "article does not", "article doesn't", "no details available",
+              "details not available", "details are not available", "will be shared when", "not related to")
+
+
+def _meta(sentence):
+    low = sentence.lower()
+    return [x for x in NO_NEWS_TA if x in sentence] + [x for x in NO_NEWS_EN if x in low]
+
+
+def _sentences(text):
+    import re as _re
+    return [x.strip() for x in _re.split(r"(?<=[.!?\u0964])\s+|\n+", str(text or "")) if x.strip()]
+
+
+def no_news(headline, reel_script="", caption=""):
+    """'' = real news. Otherwise why the story is only about missing facts: the headline/hook says so, or at least
+    40% of the reel script's news sentences (the follow line not counted) talk about details that are missing."""
+    found = _meta(str(headline or ""))
+    if found:
+        return f"not news: the headline says the details are missing ({found[0]})"
+    sents = [x for x in _sentences(reel_script) if "பின்தொடரு" not in x and "follow" not in x.lower()]
+    bad = [x for x in sents if _meta(x)]
+    if sents and len(bad) / len(sents) >= 0.4:
+        return f"not news: {len(bad)} of {len(sents)} sentences only say the article has no details"
+    return ""
+
+
+def strip_no_news(text):
+    """remove the sentences/lines that only say a detail is missing from the article (the rest of a real story stays)"""
+    import re as _re
+    out = []
+    for line in str(text or "").split("\n"):
+        keep = [x for x in _re.split(r"(?<=[.!?\u0964])\s+", line) if not _meta(x)]
+        if line.strip() and not "".join(keep).strip():
+            continue
+        out.append(" ".join(keep))
+    return "\n".join(out)

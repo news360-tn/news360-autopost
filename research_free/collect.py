@@ -616,6 +616,14 @@ def file_story(art, res, errors_log, recent, scenes=None):
         why = freshness.stale_reason(d.get("tamil_headline", ""), d.get("english_headline", ""), d.get("category", ""), art.get("published", ""))
         if why:
             return None, "stale: " + why
+        spec_ = d.get("slides_spec") if isinstance(d.get("slides_spec"), dict) else {}
+        why = freshness.no_news(" ".join([d.get("tamil_headline", ""), str(spec_.get("hl1", "")), str(spec_.get("hl2", ""))]),
+                                d.get("reel_script", ""), d.get("instagram_caption", "") or d.get("caption", ""))
+        if why:      # owner 29 Oct (RN-189): a draft that only says "the article has no details" is not news
+            return None, why
+        for k_ in ("reel_script", "caption"):      # a real story keeps its facts; only the "not in the article" sentences go (RN-112)
+            if d.get(k_):
+                d[k_] = freshness.strip_no_news(d[k_])
     except ImportError:
         pass
     if is_dup(art, d, recent):

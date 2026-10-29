@@ -185,6 +185,15 @@ def skip_reason(row):
     why = freshness.power_cut_over(row.get("headline_ta") or "", row.get("headline_en") or "", row.get("published") or (nd.isoformat() if nd else ""))
     if why:
         return "stale: " + why
+    if not is_ready_reel(row):      # owner 29 Oct (RN-189): never post a story that only says the article has no details
+        try:
+            spec_ = json.loads(row.get("slides_spec") or "{}")
+        except Exception:
+            spec_ = {}
+        why = freshness.no_news(" ".join([row.get("headline_ta") or "", str(spec_.get("hl1", "")), str(spec_.get("hl2", ""))]),
+                                row.get("reel_script") or "", row.get("caption") or "")
+        if why:
+            return why
     why = "" if same_day else freshness.stale_reason(row.get("headline_ta") or "", row.get("headline_en") or "", row.get("category") or "", row.get("published") or "")
     if why:
         return "stale: " + why

@@ -468,3 +468,37 @@ class ReelTooLong(unittest.TestCase):
     def test_short_script_unchanged(self):
         s = "ஒன்று. இரண்டு. மேலும் செய்திகளுக்கு பின்தொடருங்கள்."
         self.assertEqual(post.shorten_script(s, 0.5), s)
+
+
+class NotNews(unittest.TestCase):
+    """owner 29 Oct (RN-189 egg price): a story that only says the article has no details is never filed or posted;
+    a real story with one such sentence keeps its facts and loses only that sentence (RN-112)"""
+    EMPTY = ("முட்டை விலை நிலவரம் குறித்த விவரம் இந்தக் கட்டுரையில் வெளியிடப்படவில்லை. கட்டுரையில் முட்டை விலை எவ்வளவு என்ற எண்ணோ தகவலோ இல்லை. "
+             "வேறு ஒரு செய்தி உள்ளது. அந்தச் செய்தி முட்டை விலையுடன் தொடர்புடையது அல்ல. முட்டை விலை விவரம் தெரியவந்ததும் பகிரப்படும். "
+             "மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.")
+    REAL = ("நாமக்கல்லில் ஓய்வு பெற்றோர் நலச்சங்கக் கூட்டம் நடைபெற்றது. அகவிலைப்படியுடன் ஓய்வூதியம் வழங்க வேண்டும் என கோரிக்கை விடுக்கப்பட்டது. "
+            "மாவட்டத் தலைவர் தலைமை வகித்தார். 2003க்குப் பின் பணியில் சேர்ந்தோர் இக்கோரிக்கையின் கீழ் வருகின்றனர். "
+            "மொத்தப் பண பலன்கள் குறித்த முழு விவரம் இன்னும் தெரியவரவில்லை. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.")
+
+    def setUp(self):
+        import freshness
+        self.f = freshness
+
+    def test_empty_story_rejected(self):
+        self.assertTrue(self.f.no_news("முட்டை விலை நிலவரம்", self.EMPTY, "").startswith("not news"))
+
+    def test_headline_saying_no_detail_rejected(self):
+        self.assertTrue(self.f.no_news("முட்டை விலை - விவரம் இன்னும் தெரியவில்லை", "", ""))
+
+    def test_real_story_kept_and_cleaned(self):
+        self.assertEqual(self.f.no_news("ஓய்வு பெற்றோர் நலச்சங்கக் கூட்டம்", self.REAL, ""), "")
+        out = self.f.strip_no_news(self.REAL)
+        self.assertNotIn("தெரியவரவில்லை", out)
+        self.assertIn("அகவிலைப்படியுடன்", out)
+        self.assertTrue(out.endswith("பின்தொடருங்கள்."))
+
+    def test_posting_gate_blocks_it(self):
+        row = {"story_id": "RN-189", "headline_ta": "முட்டை விலை நிலவரம்", "headline_en": "Egg price update", "category": "Business & Prices",
+               "published": post.datetime.now(post.IST).isoformat(), "researched": post.datetime.now(post.IST).strftime("%d %b %Y, %H:%M"),
+               "reel_script": self.EMPTY, "caption": "", "slides_spec": "{}"}
+        self.assertTrue(post.skip_reason(row).startswith("not news"))
