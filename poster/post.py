@@ -468,7 +468,32 @@ def final_caption(row):
         if k not in seen:
             seen.add(k); tags.append(t.rstrip(".,!"))
     tags = [TAG] + [t for t in tags if t != TAG][:4]
+    reach = CONFIG.get("reach") or {}
+    if reach.get("hashtag_pattern"):      # owner 29 Oct: page + district + town/area + topic + broad tag (no junk tags)
+        try:
+            sys.path.insert(0, str(ROOT / "research_free"))
+            import learned
+            where = " ".join(str(row.get(k) or "") for k in ("headline_ta", "location", "headline_en")) + " " + cap.split("\n")[0]
+            place = next((t for k, t in (reach.get("place_tags") or {}).items() if k in where), "")
+            topic = (reach.get("topic_tags") or {}).get(learned.topic(row.get("headline_ta") or ""), "") or (reach.get("topic_tags") or {}).get("other", "")
+            own = [t for t in tags[1:] if re.fullmatch(r"#[A-Za-z][A-Za-z0-9]{2,}", t)]      # the writer's clean English tags as fillers
+            want = [TAG, reach.get("district_tag", ""), place, topic, reach.get("broad_tag", "")] + own + [reach.get("extra_tag", "")]
+            seen2, tags = set(), []
+            for t in want:
+                if t and t.lower() not in seen2 and len(tags) < 5:
+                    seen2.add(t.lower()); tags.append(t)
+        except Exception as e:
+            log("hashtag pattern skipped (the writer's tags are used):", e)
     body = "\n".join(re.sub(r"#[^\s#]+", "", l).rstrip() for l in cap.split("\n")).rstrip()
+    en = re.sub(r"\s+", " ", str(row.get("headline_en") or "")).strip()
+    if (CONFIG.get("reach") or {}).get("english_search_line") and en and not any(
+            len(re.findall(r"[A-Za-z]{3,}", l)) >= 2 and not re.search(r"\b(Follow|Share)\b", l) for l in body.split("\n")):
+        en = en if len(en) <= 90 else en[:90].rsplit(" ", 1)[0].rstrip(" ,;:-")      # never cut a word in the middle
+        line = en + " | " + (CONFIG.get("reach") or {}).get("search_suffix", "news")      # owner 29 Oct: people search in English too
+        bl = body.split("\n")
+        k = next((i for i, l in enumerate(bl) if l.strip().startswith("📍")), len(bl))
+        bl[k:k] = [line]
+        body = "\n".join(bl)
     body = re.sub(r"\n{3,}", "\n\n", body)
     cap = body + "\n\n" + " ".join(tags[1:] + [TAG])
     if CONFIG.get("ai_label", True) and "AI" not in cap.split("#")[0][-300:]:

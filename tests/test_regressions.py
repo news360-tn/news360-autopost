@@ -335,20 +335,20 @@ class FullDetail(unittest.TestCase):
 
     def test_short_reel_of_long_article_is_rewritten(self):
         self.assertTrue(self.length_problems(70, 300))
-        self.assertFalse(self.length_problems(150, 300))
+        self.assertFalse(self.length_problems(95, 300))      # owner 29 Oct: at most 60 s / 105 words; the caption keeps the rest
 
     def test_short_article_keeps_a_short_reel(self):
         self.assertFalse(self.length_problems(70, 80))
 
-    def test_never_more_words_than_90_seconds(self):
-        self.assertTrue(self.length_problems(200, 400))
+    def test_never_more_words_than_60_seconds(self):
+        self.assertTrue(self.length_problems(130, 400))
 
     def test_examples_are_full_detail(self):
         for e in json.loads((ROOT / "research_free" / "examples.json").read_text(encoding="utf-8")):
             self.assertGreaterEqual(len(e["output"]["reel_script"].split()), 80)
 
     def test_reel_max_seconds(self):
-        self.assertEqual(json.loads((ROOT / "poster" / "config.json").read_text())["reel_max_seconds"], 90)
+        self.assertEqual(json.loads((ROOT / "poster" / "config.json").read_text())["reel_max_seconds"], 60)      # owner 29 Oct
         self.assertIn("fit_max(work, len(texts), lead, gap)", (ROOT / "reel" / "reel4.py").read_text(encoding="utf-8"))
 
 class Proofread(unittest.TestCase):
@@ -751,4 +751,41 @@ class KnownIssuesNeverRepeat(unittest.TestCase):
             fixed = dict(row, **{k: verify.clean_text(row.get(k) or "") for k in ("headline_ta", "reel_script", "caption")})
             repaired = iid not in [x for x, _ in known_issues.problems(fixed)]      # e.g. stray letters of another script are repaired
             self.assertTrue(repaired or f"known issue {iid}" in post.skip_reason(row), f"{iid} would be posted again")
+
+
+class ReachPlan29Oct(unittest.TestCase):
+    """owner 29 Oct views plan: 60 s reels, full details in the caption, English search line, 5 focused hashtags, location tags"""
+    ROW = {"headline_ta": "ராசிபுரத்தில் பைக் திருட்டு: வாலிபர் கைது", "headline_en": "Youth arrested for bike thefts in Rasipuram", "location": "ராசிபுரம், நாமக்கல்",
+           "caption": "🚨 ராசிபுரத்தில் பைக் திருட்டு: வாலிபர் கைது\n\n📰 முழு விவரம்:\nராசிபுரத்தில் தொடர்ந்து பைக்குகள் திருடப்பட்டன.\n\n"
+                      "📍 ராசிபுரம், நாமக்கல் | 29 அக்டோபர் 2026\n\n#Namakkal360 #Namakkal #ராசிபுரம்திருட்டு #NamakkalNews"}
+
+    def tags(self, page_tag):
+        old = post.TAG
+        post.TAG = page_tag
+        try:
+            out = post.final_caption(dict(self.ROW))
+        finally:
+            post.TAG = old
+        return out, out.strip().split("\n")[-1].split()
+
+    def test_five_focused_hashtags_both_pages(self):
+        for page_tag in ("#Namakkal360", "#Rasipuram360"):
+            out, tags = self.tags(page_tag)
+            self.assertEqual(5, len(tags), tags)
+            for t in (page_tag, "#Namakkal", "#Rasipuram", "#CrimeNews", "#NamakkalNews"):
+                self.assertIn(t, tags)
+
+    def test_english_search_line_added_whole_words(self):
+        out, _ = self.tags("#Namakkal360")
+        self.assertIn("Youth arrested for bike thefts in Rasipuram | Namakkal news", out)
+        row = dict(self.ROW, headline_en="Rasipuram substation maintenance: today's power cut shortened to 9 AM-2 PM instead of the usual full day schedule")
+        line = next(l for l in post.final_caption(row).split("\n") if l.endswith("| Namakkal news"))
+        self.assertTrue(line.split(" | ")[0].split()[-1].isalpha() or line.split(" | ")[0][-1].isdigit(), line)
+
+    def test_switches(self):
+        c = json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))
+        self.assertEqual(60, c["reel_max_seconds"])
+        self.assertTrue(c["location_tags"])
+        self.assertTrue(c["locations"].get("default") and c["locations"].get("rasipuram"))
+        self.assertIn("no brand names", collect.IMG_TEMPLATE)
 

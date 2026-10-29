@@ -59,7 +59,7 @@ CATEGORY GUIDE: accident = the vehicles after the crash on that road, police and
  school or exam = students in Tamil Nadu school uniform from behind; temple festival = the temple gopuram, chariot, devotees;
  seized goods (liquor, gutka, ganja, sand) = the goods laid out on a table or a lorry with police in khaki behind; civic problem = the problem
  itself (garbage heap, pothole with rain water, overflowing drain, broken street light, people waiting with water pots, workers fixing it).
-NEVER: readable text, letters, numbers, signboards, logos, watermarks, a recognisable face of any real person or politician, blood, injuries,
+NEVER: readable text, letters, numbers, signboards, logos, brand or company names, product labels, watermarks, a recognisable face of any real person or politician, blood, injuries,
  dead bodies, weapons pointed at people, collages or split frames. People only from behind, far away or slightly blurred.
 Return ONLY JSON: {"facts": "...", "scenes": ["scene 1", "scene 2", "scene 3"]}"""
 
@@ -68,7 +68,7 @@ IMG_TEMPLATE = ("{scene} "
                 "Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), "
                 "tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, "
                 "true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, "
-                "no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).")
+                "no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).")
 
 
 _STOP = {"the", "a", "an", "of", "in", "on", "at", "to", "for", "and", "with", "near", "by", "from", "as", "is", "are", "was", "were", "after",

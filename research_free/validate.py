@@ -106,6 +106,31 @@ META = ["கட்டுரை", "தகவல் இல்லை", "விவ�
         "குறிப்பிடப்படவில்லை", "the article", "this article", "not mentioned in", "no information"]
 
 
+def _reach():
+    """owner 29 Oct views plan: poster/config.json "reach" switches ({} = the old behaviour)"""
+    try:
+        from pathlib import Path
+        return json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text(encoding="utf-8")).get("reach") or {}
+    except Exception:
+        return {}
+
+
+def caption_problems(cap, reach=None):
+    """the caption carries the FULL story (viewers ask for 'full details') and one English search line"""
+    reach = _reach() if reach is None else reach
+    p = []
+    lines = [l.strip() for l in str(cap or "").split("\n")]
+    if reach.get("caption_full_details"):
+        if not any("முழு விவரம்" in l for l in lines):
+            p.append('caption has no "📰 முழு விவரம்:" block - put the whole story (every fact) in the caption')
+        else:
+            i = next(k for k, l in enumerate(lines) if "முழு விவரம்" in l)
+            body = [l for l in lines[i + 1:] if len(l.split()) >= 4 and not l.startswith("#")]
+            if len(body) < 3:
+                p.append("caption full details are too short - at least 3-4 sentences with every fact of the article")
+    return p      # the English search line is ADDED at posting when missing (poster/post.py final_caption) - no rewrite needed
+
+
 def validate(d, article, today_digits=("2026",)):
     p = []
     if not isinstance(d, dict):
@@ -148,9 +173,12 @@ def validate(d, article, today_digits=("2026",)):
     if not rs.endswith(LAST):
         p.append("reel_script must end with exactly: " + LAST)
     wc = len(rs.split())
+    maxw = int(_reach().get("script_max_words") or 170)      # owner 29 Oct: reels at most 60 s (105 words); the caption keeps every detail
     need = min(130, int(len(_tamil_words(article)) * 0.55)) if article else 60      # owner 28 Oct: full detail - a longer article needs a longer reel
-    if not max(60, need) <= wc <= 175:      # owner 28 Oct: a reel is at most 90 s (~170 words with the outro)
-        p.append(f"reel_script has {wc} words; need {max(60, need)}-170 (full detail in at most 90 seconds: every fact of the article, each said once)")
+    need = min(need, maxw - 20)
+    if not max(60, need) <= wc <= maxw + 5:
+        p.append(f"reel_script has {wc} words; need {max(60, need)}-{maxw} (the key facts once each, in at most {60 if maxw <= 110 else 90} seconds; "
+                 "every other detail goes in the caption's 📰 முழு விவரம் block)")
     ages = re.findall(r"[\u0B80-\u0BFF]+,\s?\d{1,2},", rs)
     if ages:      # owner 28 Oct (RN-158): "ராஜா, 12," is newspaper shorthand; read aloud it is confusing
         p.append(f"reel_script writes ages as newspaper shorthand ({', '.join(ages[:3])}); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'")
@@ -197,6 +225,7 @@ def validate(d, article, today_digits=("2026",)):
             p += tamil_sequence_problems(t) or []
     except Exception:
         pass
+    p += caption_problems(d.get("caption"))
     try:      # owner 29 Oct: every known issue is checked here AND right before posting (research_free/known_issues.py)
         import known_issues
         seen = " ".join(p)
