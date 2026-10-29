@@ -335,8 +335,8 @@ def verify_candidates(items, state, log):
                 stt["n"] = stt.get("n", 0) + 1
                 kept["open"] += 1
                 continue
-            if len(art["text"]) < 20:
-                n["status"], stt["s"] = "article text too short / blocked", "notext"; kept["notext"] += 1
+            if len(art["text"]) < 20 or len(body_words(art)) < HEADLINE_ONLY_MIN:      # empty page, or only the headline (RN-12)
+                n["status"], stt["s"] = "article has no text beyond its headline", "notext"; kept["notext"] += 1
                 continue
             if not fresh(art["published"]) and not n.get("manual"):
                 n["status"], stt["s"] = "old", "old"; kept["old"] += 1
@@ -633,6 +633,16 @@ def trigger_posting(log=None):
         log.append(msg)
 
 
+def body_words(art):
+    """owner 29 Oct (RN-12 Coimbatore, K.N. Nehru raid): words of the article BEYOND its headline. A page that is only a headline
+    (breaking-news stub, video page) gives the writer nothing to report, so it invents details."""
+    title = set(re.findall(r"\w+", (art.get("title") or "").lower()))
+    return [w for w in re.findall(r"\w+", (art.get("text") or "").lower()) if w not in title and len(w) > 1]
+
+
+HEADLINE_ONLY_MIN = 12      # fewer new words than this after the headline = nothing to report (a 2-line police brief has ~20)
+
+
 def file_story(art, res, errors_log, recent, scenes=None):
     """quality gate for one written story; returns the story dict, or (None, reason)"""
     if isinstance(res, Exception):
@@ -646,6 +656,12 @@ def file_story(art, res, errors_log, recent, scenes=None):
     # owner 25 Oct: a draft is NOT rejected for length, word count or validator problems. It is rewritten by the models (free, then Claude),
     # and whatever is left goes out with the problems written in its verification note for the owner to see.
     hard = list(errors)
+    # owner 29 Oct (RN-12): a draft whose words mostly do NOT come from a Tamil article is made up -> never filed (fake news rule).
+    # Only for Tamil articles: an English article has no Tamil words to compare with, so the check would always fail there.
+    m_ = next((re.search(r"not grounded: only (\d+)%", e) for e in errors if "not grounded: only" in e), None)
+    tamil_words = len(re.findall(r"[\u0B80-\u0BFF]{4,}", art.get("text") or ""))
+    if m_ and int(m_.group(1)) < 50 and tamil_words >= 60:
+        return None, f"not news: draft not grounded in the article (only {m_.group(1)}% of its words come from it) - likely made up"
     try:
         sys.path.insert(0, str(HERE.parent / "poster"))
         import freshness
@@ -846,8 +862,9 @@ def main():
             return {"skip": f"could not open the article: {str(e)[:60]}", "log": f"skip ({area}) could not open: {n['title'][:50]} [{n['url'][:60]}] {str(e)[:80]}"}
         if url in seen_src or any(r.get("source") == url for r in recent):
             return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) already filed: {art['title'][:50]}"}
-        if len(art["text"]) < 20:      # owner 25 Oct: only an empty article is skipped, never by length
-            return {"skip": "article text too short / blocked", "s": "notext", "log": f"skip ({area}) no article text ({len(art['text'])} chars): {art['title'][:50]} [{url[:60]}]"}
+        bw = len(body_words(art))
+        if len(art["text"]) < 20 or bw < HEADLINE_ONLY_MIN:      # owner 25 Oct: never skipped for length - but a page with only a headline has no facts (RN-12)
+            return {"skip": "article has no text beyond its headline", "s": "notext", "log": f"skip ({area}) only a headline, {bw} words of text: {art['title'][:50]} [{url[:60]}]"}
         if not fresh(art["published"]) and not n.get("manual"):      # a link the owner gives by hand is written whatever its date
             return {"skip": "old", "s": "old", "log": f"skip ({area}) too old ({art['published'] or 'no date'}): {art['title'][:50]}"}
         if ((not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300])

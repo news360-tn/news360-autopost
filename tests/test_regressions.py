@@ -592,3 +592,26 @@ class NewsImagePrompt(unittest.TestCase):
         self.assertFalse(collect.scene_ok("A quiet village road in Tamil Nadu with trees and houses in daylight. " * 4, head))
         self.assertFalse(collect.scene_ok("Police seize liquor bottles from a lorry.", head))      # too short
 
+
+
+class HeadlineOnlyAndMadeUp(unittest.TestCase):
+    """owner 29 Oct (RN-12 Coimbatore, K.N. Nehru raid): a page that is only a headline is not written (the writer invented
+    the rest), and a draft whose words mostly do not come from a Tamil article is not filed. Short real briefs still pass."""
+    def test_headline_only_page_has_no_body(self):
+        a = {"title": "KN Nehru Raid| எதிர்பாரா ட்விஸ்ட்டாக கோவையிலும்.. அதிரும் சிங்காநல்லூர்",
+             "text": "KN Nehru Raid| எதிர்பாரா ட்விஸ்ட்டாக கோவையிலும்.. அதிரும் சிங்காநல்லூர் எதிர்பாரா ட்விஸ்ட்டாக கோவையிலும்"}
+        self.assertLess(len(collect.body_words(a)), collect.HEADLINE_ONLY_MIN)
+
+    def test_short_real_brief_passes(self):
+        a = {"title": "சூதாட்டம் ஆடிய 6 பேருக்கு காப்பு",
+             "text": "சூதாட்டம் ஆடிய 6 பேருக்கு காப்பு. பரமத்தி வேலூர் போலீசார் ரோந்து சென்றபோது பணம் வைத்து சூதாடிய ஆறு பேரை கைது செய்து ரூ.11,600 பறிமுதல் செய்தனர். அனைவரும் ஜாமீனில் விடுவிக்கப்பட்டனர்."}
+        self.assertGreaterEqual(len(collect.body_words(a)), collect.HEADLINE_ONLY_MIN)
+
+    def test_made_up_draft_rejected(self):
+        art = {"url": "https://example.com/a", "title": "t", "published": collect.datetime.datetime.now(collect.IST).isoformat(),
+               "text": " ".join(["நாமக்கல்லில்", "போலீசார்", "விசாரணை", "நடத்தினர்", "பொதுமக்கள்", "கோரிக்கை"] * 15)}
+        d = {"tamil_headline": "நாமக்கல் செய்தி", "english_headline": "x", "category": "c", "location": "l", "scenes": ["s"],
+             "reel_script": "", "caption": "", "slides_spec": {}}
+        story, why = collect.file_story(art, (d, "test", ["not grounded: only 37% of the words come from the article"], 1), [], [])
+        self.assertIsNone(story)
+        self.assertIn("likely made up", why)
