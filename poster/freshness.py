@@ -42,6 +42,12 @@ def dates_in(text, year):
 def pub_date(s):
     """date of the 'published' cell: ISO or '21 Oct 2026, 05:24 IST'"""
     s = str(s or "")
+    try:      # owner 29 Oct: an ISO time with a zone ('...T22:17:23Z' = 03:47 next morning in IST) is read in IST, not by its UTC date
+        t = datetime.datetime.fromisoformat(s.strip().replace("Z", "+00:00"))
+        if t.tzinfo is not None:
+            return t.astimezone(IST).date()
+    except ValueError:
+        pass
     m = re.search(r"(\d{4})-(\d{2})-(\d{2})", s)
     if m:
         return datetime.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
