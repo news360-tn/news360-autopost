@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-29 | `d04afbd` | A story whose first lines name another district (and no Namakkal place in the headline) is not filed or posted (RN-195 Erode onion prices); Pallipalayam/Kokkarayanpettai spellings with ப் count as Namakkal places |
 | 2026-10-29 | `85d02eb` | Topic / tag / author / page-N listing pages are never written or posted as a news story (RN-194: abplive topic page gave a Cuddalore story) |
 | 2026-10-29 | `5ff36f3` | Writer started by the collector waits for the queue instead of skipping; same event from another outlet is not written again (RN-193 = RN-168) |
 | 2026-10-29 | `d60d546` | Publish times with a time zone are read in IST (a 22:17 UTC story is the next day in IST, not the day before) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-27 | `316bfed` | Prime-time posting: urgent news at once, other reels made ahead and posted in 9-12 / 18-21:30 IST; nothing dropped (max 12 h wait) |
 | 2026-10-27 | `48dc44f` | Google Charon voice for every reel while free (stops at 700,000 characters a month, then Valluvar); Valluvar whenever Google fails |
 | 2026-10-27 | `029fe0e` | Website: each posted story goes to www.namakkal360.workers.dev with English version and all details; Sheet 'posted_rows' view + one-time backfill workflow |
-| 2026-10-27 | `9c96409` | Regression test pack from real cases (23 tests) + GitHub check on every code change |
 <!-- recent-changes:end -->
