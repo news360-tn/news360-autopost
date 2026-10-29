@@ -5,18 +5,16 @@ import base64, json, os, sys, time, requests
 
 GEN = "https://ai.api.nvidia.com/v1/genai/"
 # (model path, request body builder). FLUX only accepts sizes that are multiples of 64 inside 768..1344 -> 768x1344 is 9:16.
-MODELS = [
-    ("black-forest-labs/flux.1-dev", lambda p, s: {"prompt": p, "mode": "base", "cfg_scale": 3.5, "width": 768, "height": 1344, "seed": s, "steps": 40}),
+MODELS = [      # 29 Oct: schnell first (dev timed out at 100 s); SDXL-lightning / SD3-medium answered 404 and were removed
     ("black-forest-labs/flux.1-schnell", lambda p, s: {"prompt": p, "width": 768, "height": 1344, "seed": s, "steps": 4}),
-    ("bytedance/stable-diffusion-xl-lightning", lambda p, s: {"prompt": p, "width": 768, "height": 1344, "seed": s, "steps": 4}),
-    ("stabilityai/stable-diffusion-3-medium", lambda p, s: {"prompt": p, "aspect_ratio": "9:16", "seed": s, "steps": 40, "cfg_scale": 5, "negative_prompt": "text, letters, watermark, logo, collage, blurry"}),
+    ("black-forest-labs/flux.1-dev", lambda p, s: {"prompt": p, "mode": "base", "cfg_scale": 3.5, "width": 768, "height": 1344, "seed": s, "steps": 28}),
 ]
 DEAD = set()
 USED = {}
 
 
 def _one(model, body, key):
-    r = requests.post(GEN + model, json=body, timeout=100,
+    r = requests.post(GEN + model, json=body, timeout=150,
                       headers={"Authorization": "Bearer " + key, "Accept": "application/json"})
     if r.status_code != 200:
         raise RuntimeError(f"{model} {r.status_code}: {r.text[:300]}")
@@ -146,9 +144,30 @@ def generate(prompt, seed=0, key=None, cheap=False):
 
 
 def _generate(prompt, seed=0, key=None, cheap=False):
-    """fal.ai first (paid, cheap), then Cloudflare Workers AI (free daily allowance), then NVIDIA."""
+    """owner 29 Oct: FREE first - Cloudflare Workers AI FLUX schnell, then NVIDIA FLUX (free credits); only when both fail, fal.ai
+    (cover: FLUX dev; scenes 2-3: FLUX schnell, dev as backup). Cloudinary only stores the picture."""
     tok, acct = os.environ.get("CLOUDFLARE_API_TOKEN"), os.environ.get("CLOUDFLARE_ACCOUNT_ID")
     last = None
+    if tok and acct:
+        for model, build in CF_MODELS:
+            if model in DEAD:
+                continue
+            try:
+                img = _cf(model, build(prompt, seed), tok, acct)
+                USED[model] = USED.get(model, 0) + 1
+                return img
+            except Exception as e:
+                last = e
+                m = str(e)
+                print("imagegen:", m[:220], file=sys.stderr)
+                if any(c in m for c in (" 401", " 403", " 404", " 400", " 422", "no image", "daily free allocation")) or "Timeout" in type(e).__name__:
+                    DEAD.add(model)      # the daily free neurons are used up: not tried again for every picture of this run
+    nkey = key or os.environ.get("NVIDIA_API_KEY")
+    if nkey:
+        try:
+            return generate_nvidia(prompt, seed, nkey)
+        except Exception as e:
+            last = e
     fkey = os.environ.get("FAL_KEY")
     for fm in ([FAL_SCENE_MODEL, FAL_MODEL] if cheap and FAL_SCENE_MODEL != FAL_MODEL else [FAL_MODEL]):
         if not fkey or fm in DEAD:
@@ -163,32 +182,10 @@ def _generate(prompt, seed=0, key=None, cheap=False):
                 m = str(e)
                 print("imagegen:", m[:220], file=sys.stderr)
                 if any(c in m for c in (" 401", " 403", " 404", " 422")):
-                    DEAD.add(fm)     # bad key / no balance / wrong model id: use the backups for the rest of this run
+                    DEAD.add(fm)     # bad key / no balance / wrong model id
                     break
                 time.sleep(3)
-    if os.environ.get("NVIDIA_API_KEY"):      # owner 25 Oct: NVIDIA (free credits) before Cloudflare, whose daily allowance runs out early
-        try:
-            return generate_nvidia(prompt, seed, os.environ.get("NVIDIA_API_KEY"))
-        except Exception as e:
-            last = e
-    if tok and acct:
-        for model, build in CF_MODELS:
-            if model in DEAD:
-                continue
-            try:
-                img = _cf(model, build(prompt, seed), tok, acct)
-                USED[model] = USED.get(model, 0) + 1
-                return img
-            except Exception as e:
-                last = e
-                m = str(e)
-                print("imagegen:", m[:220], file=sys.stderr)
-                if any(c in m for c in (" 401", " 403", " 404", " 400", " 422", "no image")) or "Timeout" in type(e).__name__:
-                    DEAD.add(model)
-    try:
-        return generate_nvidia(prompt, seed, key)
-    except Exception as e:
-        raise RuntimeError(f"all image models failed: {last or ''} | {e}")
+    raise RuntimeError(f"all image models failed: {last or 'no image service configured'}")
 
 
 def generate_nvidia(prompt, seed=0, key=None):

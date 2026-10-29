@@ -537,3 +537,39 @@ class OwnerFixes29Oct(unittest.TestCase):
     def test_claude_model_exists(self):
         self.assertIn('os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5")', (ROOT / "research_free" / "llm.py").read_text())
 
+
+class FreeImagesFirst(unittest.TestCase):
+    """owner 29 Oct: Cloudflare and NVIDIA (free) first; FAL only when they fail (cover dev, scenes schnell)"""
+
+    def order(self, fail, cheap=False):
+        import imagegen
+        calls = []
+        def src(name):
+            def f(*a, **k):
+                calls.append(name)
+                if name in fail:
+                    raise RuntimeError(name + " 429: daily free allocation used")
+                return b"img"
+            return f
+        saved = {k: getattr(imagegen, k) for k in ("_cf", "generate_nvidia", "_fal", "to_story_size")}
+        env = {k: os.environ.get(k) for k in ("FAL_KEY", "NVIDIA_API_KEY", "CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID")}
+        imagegen._cf, imagegen.generate_nvidia, imagegen.to_story_size = src("cloudflare"), src("nvidia"), (lambda b: b)
+        imagegen._fal = lambda p, s, k, model=None: src(model)()
+        os.environ.update({k: "test" for k in env})
+        imagegen.DEAD.clear()
+        try:
+            imagegen.generate("p", 1, cheap=cheap)
+        finally:
+            for k, v in saved.items():
+                setattr(imagegen, k, v)
+            for k, v in env.items():
+                os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
+            imagegen.DEAD.clear()
+        return calls
+
+    def test_free_first_then_fal(self):
+        self.assertEqual(["cloudflare"], self.order(set()))
+        self.assertEqual(["cloudflare", "nvidia"], self.order({"cloudflare"}))
+        self.assertEqual(["cloudflare", "nvidia", "fal-ai/flux/dev"], self.order({"cloudflare", "nvidia"}))      # cover
+        self.assertEqual(["cloudflare", "nvidia", "fal-ai/flux/schnell"], self.order({"cloudflare", "nvidia"}, cheap=True))      # scenes 2-3
+
