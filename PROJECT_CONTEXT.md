@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-29 | `835cfb9` | News pictures (owner): the scene of THIS news first in every prompt; cover = the main event, each scene 100-150 words with 3+ article facts; seized-goods and civic-problem guides; a generic or short cover plan is sent back once |
 | 2026-10-29 | `8c1ced1` | Pictures free first (owner): Cloudflare FLUX schnell, then NVIDIA FLUX (schnell first); FAL only when both fail (cover dev, scenes schnell); Cloudflare daily limit not retried per picture; NVIDIA models answering 404 removed |
 | 2026-10-29 | `f4eb7be` | Proofread: a fix must keep the word's grammatical ending - a verb is never turned into a noun (Coimbatore RN-1 நிர்வாகிக்க -> நிர்வாகம்) |
 | 2026-10-29 | `9ecb5d5` | Owner fixes 29 Oct: a script that talks about the article instead of the news is refused (RN-189, deleted); one egg/gold/fuel price post a day (RN-188 + RN-189); Claude backup model id claude-haiku-4-5 (claude-haiku-5-5 does not exist) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-27 | `0dc701a` | Search more: other Rasipuram spelling, smaller towns, English reports and English papers |
 | 2026-10-27 | `6781c29` | No missed news: full Dinamalar Namakkal list, paper's Namakkal page counts as district news, word-based duplicate check; recheck wrongly skipped items once |
 | 2026-10-27 | `3a3cf23` | Power cuts: different place or older notice is not a duplicate; never post a cut that ends within the hour |
-| 2026-10-27 | `e6b2973` | Reel: never show <b> tags on screen; rebuild ready reels made before this fix |
 <!-- recent-changes:end -->
