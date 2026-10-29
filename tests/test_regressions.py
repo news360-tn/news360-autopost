@@ -502,3 +502,34 @@ class NotNews(unittest.TestCase):
                "published": post.datetime.now(post.IST).isoformat(), "researched": post.datetime.now(post.IST).strftime("%d %b %Y, %H:%M"),
                "reel_script": self.EMPTY, "caption": "", "slides_spec": "{}"}
         self.assertTrue(post.skip_reason(row).startswith("not news"))
+
+
+class OwnerFixes29Oct(unittest.TestCase):
+    """29 Oct: RN-189 (deleted by the owner) wrote about the article; RN-188 + RN-189 were both today's egg price; Claude backup model id"""
+
+    def test_script_about_the_article_refused(self):
+        import validate
+        d = dict(json.loads((ROOT / "research_free" / "examples.json").read_text(encoding="utf-8"))[0]["output"])
+        d["reel_script"] = ("முட்டை விலை நிலவரம் குறித்த விவரம் இந்தக் கட்டுரையில் வெளியிடப்படவில்லை. "
+                            "முட்டை விலை விவரம் தெரியவந்ததும் பகிரப்படும். " + validate.LAST)
+        self.assertTrue([x for x in validate.validate(d, "") if "talks about the article" in x])
+        d = dict(json.loads((ROOT / "research_free" / "examples.json").read_text(encoding="utf-8"))[0]["output"])
+        self.assertFalse([x for x in validate.validate(d, "") if "talks about the article" in x])
+
+    def test_one_egg_price_a_day(self):
+        now = f"{TODAY:%d %b %Y}, 06:40"
+        a = {"story_id": "RN-188", "researched": now, "headline_ta": "நாமக்கல் மண்டலத்தில் முட்டை விலை ரூ.5.70-ஆக நீடிப்பு", "headline_en": "Egg price stays"}
+        b = {"story_id": "RN-189", "researched": now, "headline_ta": "முட்டை விலை நிலவரம்", "headline_en": ""}
+        self.assertEqual("egg", fr.same_day_recurring(a, b))
+        y = dict(a, researched=f"{TODAY - datetime.timedelta(days=1):%d %b %Y}, 06:40")
+        self.assertEqual("", fr.same_day_recurring(y, b))      # tomorrow's price is a new post
+        self.assertEqual("", fr.same_day_recurring(a, {"researched": now, "headline_ta": "ராசிபுரத்தில் பைக் திருட்டு"}))
+        post.ALL_ROWS = [dict(a, post_status="Posted")]
+        try:
+            self.assertIn("one egg price post a day", post.skip_reason(dict(b, source="", category="", published=f"{TODAY}", notes="", batch="", review="Auto")))
+        finally:
+            post.ALL_ROWS = []
+
+    def test_claude_model_exists(self):
+        self.assertIn('os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5")', (ROOT / "research_free" / "llm.py").read_text())
+

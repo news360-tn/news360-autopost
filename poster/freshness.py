@@ -139,6 +139,26 @@ def recurring(text):
     return bool(RECUR.search(text or ""))
 
 
+RECUR_TOPICS = {"egg": re.compile(r"முட்டை\s*(விலை|கொள்முதல்)|egg\s*(price|rate)", re.I),
+                "gold": re.compile(r"தங்கம்\s*விலை|gold\s*(rate|price)", re.I),
+                "fuel": re.compile(r"பெட்ரோல்\s*விலை|டீசல்\s*விலை|petrol|diesel", re.I)}
+
+
+def recur_topic(*texts):
+    t = " ".join(x or "" for x in texts)
+    return next((k for k, rx in RECUR_TOPICS.items() if rx.search(t)), "")
+
+
+def same_day_recurring(old, new, today=None):
+    """29 Oct (RN-188 + RN-189 both egg price): a daily price topic is posted ONCE a day, whatever the headline words"""
+    k = recur_topic(old.get("headline_ta"), old.get("headline_en"))
+    if not k or k != recur_topic(new.get("headline_ta"), new.get("headline_en")):
+        return ""
+    d_old = pub_date(old.get("researched"))
+    d_new = pub_date(new.get("researched")) or today or datetime.datetime.now(IST).date()
+    return k if d_old and d_old == d_new else ""
+
+
 def different_numbers(a, b):
     """both headlines give numbers and none of them match: a different event (8 arrested / Rs 1,47,000 is not 6 people / Rs 11,600)"""
     na = set(re.findall(r"\d+", (a or "").replace(",", "")))

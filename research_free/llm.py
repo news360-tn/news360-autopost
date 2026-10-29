@@ -291,7 +291,7 @@ def ask_claude(system, user, max_tokens=4000):
     """returns (data, model_name); raises when the key is missing, the budget guard is hit or the API fails (the caller then falls back to the free chain)"""
     if not claude_available():
         raise RuntimeError("claude not available")
-    model = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-5-5")
+    model = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5")      # 29 Oct: "claude-haiku-5-5" does not exist (every backup call failed)
     CLAUDE_CALLS[0] += 1
     sysb, usr = system, user
     cut = user.find("\n\nTODAY (IST):")

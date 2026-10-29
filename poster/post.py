@@ -204,6 +204,8 @@ def skip_reason(row):
         went_out = o.get("rasipuram_link") or o.get("namakkal_link") or o.get("reel_link") or str(o.get("post_status") or "").lower().startswith(("posted", "partly"))
         if o.get("story_id") == row.get("story_id") or not went_out:
             continue
+        if freshness.same_day_recurring(o, row):
+            return f"duplicate of {o.get('story_id')} (one {freshness.same_day_recurring(o, row)} price post a day)"
         if (freshness.similar(o.get("headline_ta") or "", row.get("headline_ta") or "", 0.62, o.get("researched"))
                 or freshness.similar((o.get("headline_en") or "").lower(), (row.get("headline_en") or "").lower(), 0.65, o.get("researched"))):
             if freshness.follow_up(o, row):

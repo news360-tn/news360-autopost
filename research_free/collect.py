@@ -821,6 +821,8 @@ def main():
         if not n.get("manual") and any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched"))
                                        or same_news(r.get("headline_ta", ""), art["title"], r.get("researched")) for r in recent):      # already posted / written
             return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) similar to a filed story: {art['title'][:50]}"}
+        if not n.get("manual") and any(_fr().same_day_recurring(r, {"headline_ta": art["title"]}) for r in recent):      # 29 Oct: one egg price a day
+            return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) today's price is already filed: {art['title'][:50]}"}
         area = allnews.area_of_story(art["title"], art["text"])      # Rasipuram page only for Rasipuram and the villages around it
         art["interest"] = interest(art)
         print(f"writing [{area}]: {art['title'][:60]}", flush=True)

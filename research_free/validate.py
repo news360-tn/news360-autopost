@@ -102,6 +102,10 @@ def autofix(d):
     return d
 
 
+META = ["கட்டுரை", "தகவல் இல்லை", "விவரம் இல்லை", "தெரியவந்ததும் பகிரப்படும்", "தொடர்புடையது அல்ல", "செய்தியில் இல்லை",
+        "குறிப்பிடப்படவில்லை", "the article", "this article", "not mentioned in", "no information"]
+
+
 def validate(d, article, today_digits=("2026",)):
     p = []
     if not isinstance(d, dict):
@@ -111,6 +115,13 @@ def validate(d, article, today_digits=("2026",)):
             p.append(f"missing key: {k}")
     if p:
         return p
+    # 29 Oct (RN-189, deleted by the owner): the paper's page had no news, and the model wrote ABOUT the article ("the price is not given
+    # in this article ... will be shared when known") and mixed in another story. A news reel never talks about "the article".
+    for k in ("reel_script", "caption", "tamil_headline"):
+        t = re.sub(r"கட்டுரைப்?\s*போட்டி", " ", str(d.get(k) or ""))      # an essay competition is real school news
+        hit = [w for w in META if w.lower() in t.lower()]
+        if hit:
+            p.append(f"{k} talks about the article instead of the news ({hit[0]}) - if the article has no real news, return an empty reel_script")
     sp = d["slides_spec"]
     if sp.get("v") != 3:
         p.append("slides_spec.v must be 3")
