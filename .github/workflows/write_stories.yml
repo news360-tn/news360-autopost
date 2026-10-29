@@ -24,7 +24,19 @@ jobs:
           go=yes
           n=$(gh api "repos/${{ github.repository }}/actions/workflows/research_free.yml/runs?status=in_progress" -q '.total_count' 2>/dev/null || echo 0)
           q=$(gh api "repos/${{ github.repository }}/actions/workflows/research_free.yml/runs?status=queued" -q '.total_count' 2>/dev/null || echo 0)
-          if [ "${n:-0}" != "0" ] || [ "${q:-0}" != "0" ]; then go=no; echo "collection is running - the writer skips this round"; fi
+          if [ "${n:-0}" != "0" ] || [ "${q:-0}" != "0" ]; then
+            if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+              # 29 Oct: the collector starts this writer just before it saves the queue - wait for it (max 12 min) and read the new queue
+              for i in $(seq 1 24); do
+                n=$(gh api "repos/${{ github.repository }}/actions/workflows/research_free.yml/runs?status=in_progress" -q '.total_count' 2>/dev/null || echo 0)
+                [ "${n:-0}" = "0" ] && break
+                echo "collection still saving - waiting ($i)"; sleep 30
+              done
+              git pull -q origin main || true
+            else
+              go=no; echo "collection is running - the writer skips this round"
+            fi
+          fi
           if [ "${{ github.event_name }}" = "schedule" ] && [ ! -f research_free/ENABLED ]; then go=no; fi
           if [ ! -s research_free/archive/queue.json ] || [ "$(tr -d '[:space:]' < research_free/archive/queue.json)" = "[]" ]; then go=no; echo "queue empty"; fi
           echo "go=$go" >> $GITHUB_OUTPUT

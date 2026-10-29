@@ -259,6 +259,36 @@ def same_news(a, b, filed=None, days=3):
     return shared >= 3 and shared / min(len(x), len(y)) >= 0.5
 
 
+_EVENT_DF = {}
+
+
+def same_event_filed(art, recent, days=1):
+    """story id of a story filed in the last `days` day(s) that reports the same event as this article (shared rare word stems of
+    the article text and that story's reel script), else ''. 29 Oct: RN-193 (tamilwire, '2 நாட்களில் 25 பேர் ரூ.1.50 லட்சம் இழப்பு')
+    was written again after RN-168 (posted 28 Oct) because the headlines differ by one number."""
+    fr = _fr()
+    scripts = [r.get("reel_script") or "" for r in recent if r.get("reel_script")]
+    if not scripts:
+        return ""
+    key = len(scripts)
+    if key not in _EVENT_DF:
+        _EVENT_DF.clear()
+        _EVENT_DF[key] = fr.event_df(scripts)
+    df = _EVENT_DF[key]
+    mine = fr.pub_date(art.get("published")) or datetime.datetime.now(fr.IST).date()
+    text = (art.get("title") or "") + " " + (art.get("text") or "")[:2500]
+    for r in recent:
+        s = r.get("reel_script") or ""
+        if not s:
+            continue
+        od = fr.pub_date(r.get("researched")) or fr.pub_date(r.get("published"))
+        if od and abs((mine - od).days) > days:
+            continue
+        if fr.same_event(s, text, df):
+            return r.get("story_id") or "a filed story"
+    return ""
+
+
 def open_article(n):
     """resolved link + article (title, date, text) of a news item; raises when it cannot be opened"""
     links = [u for u in [n["url"]] + n.get("alts", []) if u]
@@ -897,6 +927,9 @@ def main():
             return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) similar to a filed story: {art['title'][:50]}"}
         if not n.get("manual") and any(_fr().same_day_recurring(r, {"headline_ta": art["title"]}) for r in recent):      # 29 Oct: one egg price a day
             return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) today's price is already filed: {art['title'][:50]}"}
+        dup = "" if n.get("manual") else same_event_filed(art, recent)
+        if dup:      # 29 Oct (RN-193 = RN-168): the same event from another outlet under another headline is not written again
+            return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) same event as {dup}: {art['title'][:50]}"}
         area = allnews.area_of_story(art["title"], art["text"])      # Rasipuram page only for Rasipuram and the villages around it
         art["interest"] = interest(art)
         print(f"writing [{area}]: {art['title'][:60]}", flush=True)

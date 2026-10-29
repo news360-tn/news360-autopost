@@ -669,3 +669,31 @@ class OldEventAndSameEvent(unittest.TestCase):
         df = freshness.event_df([a, b] + other)
         self.assertTrue(freshness.same_event(a, b, df))
         self.assertFalse(freshness.same_event(a, other[0] * 3, df))
+
+
+class SameEventAtWriteTime(unittest.TestCase):
+    """29 Oct RN-193: the online cracker scam (posted as RN-168 on 28 Oct) was written again from another outlet,
+    because the headlines differ by one number ('2 நாட்களில்') - the article text is now checked against filed reel scripts"""
+    RN168 = 'ஆன்லைனில் குறைந்த விலை பட்டாசு என்ற போலி விளம்பரங்களை நம்பி நாமக்கல் மாவட்டத்தில் 25 பேர் ஏமாந்துள்ளனர். 2 நாட்களில் அவர்கள் மொத்தம் ரூ.1.50 லட்சம் இழந்துள்ளனர். தீபாவளி பண்டிகை நவம்பர் 8ஆம் தேதி கொண்டாடப்படுகிறது. இதையொட்டி பொதுமக்கள் பட்டாசுகளை ஆன்லைனில் ஆர்டர் செய்கின்றனர். இதை பயன்படுத்தி மோசடி கும்பல்கள் போலி இணையதளங்கள் மற்றும் சமூக வலைதளங்களில் விளம்பரம் செய்கின்றன. சிவகாசி பட்டாசுகளுக்கு 75 முதல் 80 சதவீதம் வரை தள்ளுபடி என்று கூறி ஏமாற்றுகின்றனர். முதலீடு செய்தால் இரட்டிப்பு பணம் கிடைக்கும் என்றும் ஆசை காட்டுகின்றனர். நாமக்கல் மாவட்ட சைபர் கிரைம் போலீஸ் ஏடிஎஸ்பி விஜயராகவன், பட்டாசு ஆர்டர் செய்வதற்கு முன் இணையதளம் அல்லது நிறுவனத்தின் நம்பகத்தன்மையை உறுதி செய்ய வேண்டும் என அறிவுறுத்தியுள்ளார்.'
+    ART = 'ஆன்லைன் பட்டாசு விளம்பரத்தை நம்பி நாமக்கல் மாவட்டத்தில் 25 பேர் ரூ.1.50 லட்சம் பணத்தை இழந்துள்ள சம்பவம் பெரும் பரபரப்பை ஏற்படுத்தியுள்ளது. வரும் நவம்பர் 8ஆம் தேதி தீபாவளி பண்டிகை கொண்டாடப்பட உள்ள நிலையில், சிவகாசியில் இருந்து ஆன்லைன் மூலம் பொதுமக்கள் பட்டாசுகளைத் தேர்வு செய்து ஆர்டர் செய்து வருகின்றனர். இதைப் பயன்படுத்திக் கொள்ளும் மோசடிக் கும்பல்கள், போலி இணையதளங்கள் மற்றும் சமூக வலைதளங்கள் மூலம் விளம்பரம் செய்து பொதுமக்களை ஏமாற்றி வருகின்றன. குறிப்பாக, சிவகாசி பட்டாசுகளுக்கு 75 முதல் 80 சதவீதம் வரை தள்ளுபடி தருவதாகக் கூறி போலி விளம்பரங்கள் வாயிலாகப் பணம் பறிக்கப்படுகிறது. இது குறித்து எச்சரிக்கை விடுத்துள்ள நாமக்கல் மாவட்ட சைபர் கிரைம் காவல் கூடுதல் கண்காணிப்பாளர் விஜயராகவன், பொதுமக்கள் பட்டாசு ஆர்டர் செய்யும் முன் இணையதளத்தின் நம்பகத்தன்மையை உறுதி செய்ய வேண்டும் எனத் தெரிவித்துள்ளார்.'
+    OTHER = [("RN-%d" % i, "நாமக்கல் %s சாலை பணி %d கோடி ரூபாய் ஒதுக்கீடு செய்யப்பட்டு பணிகள் தொடக்கம் ஊராட்சி தலைவர் தகவல்" % (w, i))
+             for i, w in enumerate(["மோகனூர்", "சேந்தமங்கலம்", "எருமப்பட்டி", "கொல்லிமலை", "பரமத்தி", "வெண்ணந்தூர்"], 1)]
+
+    def recent(self, when):
+        rows = [{"story_id": "RN-168", "researched": when, "reel_script": self.RN168}]
+        rows += [{"story_id": s, "researched": when, "reel_script": t} for s, t in self.OTHER]
+        return rows
+
+    def test_same_event_other_outlet_is_not_written(self):
+        art = {"title": "ஆன்லைன் பட்டாசு மோகம்: நாமக்கல்லில் 2 நாட்களில் 25 பேர் ரூ.1.50 லட்சம் இழப்பு", "text": self.ART,
+               "published": TODAY.isoformat()}
+        y = (TODAY - datetime.timedelta(days=1)).strftime("%d %b %Y, 22:32")
+        self.assertEqual(collect.same_event_filed(art, self.recent(y)), "RN-168")
+
+    def test_old_story_or_other_news_is_not_a_duplicate(self):
+        art = {"title": "x", "text": self.ART, "published": TODAY.isoformat()}
+        old = (TODAY - datetime.timedelta(days=5)).strftime("%d %b %Y, 22:32")
+        self.assertEqual(collect.same_event_filed(art, self.recent(old)), "")
+        other = {"title": "ராசிபுரம் ஏரியில் கழிவுநீர்", "text": self.OTHER[0][1], "published": TODAY.isoformat()}
+        rows = [r for r in self.recent(TODAY.strftime("%d %b %Y, 10:00")) if r["story_id"] != "RN-1"]
+        self.assertEqual(collect.same_event_filed(other, rows), "")
