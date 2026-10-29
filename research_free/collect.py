@@ -40,12 +40,15 @@ STEP 1 - "facts": read the article and list ONLY what a camera could see, copied
  police station, temple, lake, farm field, market, poultry farm, textile/power-loom unit, house, hill road), the people by role and their number,
  vehicles, objects, animals, crops, buildings, weather, time of day. Write "unknown" for anything the article does not say. Never invent.
 
-STEP 2 - "scenes": 3 different photographs of THIS event, each 70-120 words of plain English:
- 1. WIDE establishing shot: the real place type with Namakkal / Tamil Nadu character, the event visible in it.
- 2. MEDIUM shot of the event itself: the main action exactly as the article describes it (what the people do, what the objects show).
- 3. DETAIL close-up of the one object or sign of the event that tells the story (the damaged vehicle part, the egg trays, the water on the road,
-    the paddy crop, the transformer, the closed shop shutter, the handed-over documents) - no faces.
-Every scene: name the place type, the action, the people (by role, number, clothes), the light and weather, the camera angle and lens.
+STEP 2 - "scenes": 3 different photographs of THIS event, each 100-150 words of plain English (owner 29 Oct: a reader who sees only the
+ cover must already know WHICH news it is):
+ 1. COVER - the main event itself: the main action exactly as the article describes it, in its real place (this is the picture people see first).
+ 2. WIDE establishing shot: the real place type with Namakkal / Tamil Nadu character, the event visible in it.
+ 3. DETAIL close-up of the one object or sign of the event that tells the story (the damaged vehicle part, the seized goods, the egg trays, the
+    water on the road, the paddy crop, the transformer, the closed shop shutter, the handed-over documents) - no faces.
+Every scene is written in THIS order: SUBJECT + ACTION of this news in the first sentence; PLACE (type and look); PEOPLE (role, number, clothes,
+ what they do; from behind or far away); VEHICLES / OBJECTS (exact types from the article); TIME + LIGHT + WEATHER; CAMERA (angle, 35 mm).
+ Every scene MUST contain at least THREE concrete facts from STEP 1 (place type, action, objects, numbers) - never a generic scene.
 REGIONAL REALISM (always): Tamil Nadu town or village - red-tiled and concrete houses, coconut and palm trees, neem trees, dry red-brown soil,
  narrow tar roads, TNSTC buses, two-wheelers, autorickshaws; men in shirts with veshti or trousers, women in sarees or salwar;
  Tamil Nadu police in khaki uniform; TNEB linemen; Namakkal poultry farms, lorries, Kolli hills, Cauvery river at Paramathi / Pallipalayam / Mohanur.
@@ -53,28 +56,61 @@ CATEGORY GUIDE: accident = the vehicles after the crash on that road, police and
  the place only (house exterior, police vehicle, police station gate), never a body or weapon; power cut = substation / transformer / linemen /
  a dark street; rain or flood = water on that road or field, people wading; prices or market = the goods and the market stalls; protest = a crowd
  with flags or placards seen from behind; government scheme or meeting = officials at a table in a government hall, people queuing;
- school or exam = students in Tamil Nadu school uniform from behind; temple festival = the temple gopuram, chariot, devotees.
+ school or exam = students in Tamil Nadu school uniform from behind; temple festival = the temple gopuram, chariot, devotees;
+ seized goods (liquor, gutka, ganja, sand) = the goods laid out on a table or a lorry with police in khaki behind; civic problem = the problem
+ itself (garbage heap, pothole with rain water, overflowing drain, broken street light, people waiting with water pots, workers fixing it).
 NEVER: readable text, letters, numbers, signboards, logos, watermarks, a recognisable face of any real person or politician, blood, injuries,
  dead bodies, weapons pointed at people, collages or split frames. People only from behind, far away or slightly blurred.
 Return ONLY JSON: {"facts": "...", "scenes": ["scene 1", "scene 2", "scene 3"]}"""
 
-IMG_TEMPLATE = ("Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), "
+# owner 29 Oct: the news scene comes FIRST (some image models read only the start of a long prompt), the photo style after it
+IMG_TEMPLATE = ("{scene} "
+                "Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), "
                 "tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, "
-                "true-to-life colours, documentary photojournalism. {scene} No text, no letters, no numbers, no signboards, no logos, no watermarks, "
+                "true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, "
                 "no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).")
 
 
+_STOP = {"the", "a", "an", "of", "in", "on", "at", "to", "for", "and", "with", "near", "by", "from", "as", "is", "are", "was", "were", "after",
+         "over", "into", "namakkal", "rasipuram", "tamil", "nadu", "district", "news", "says", "said", "held", "two", "three", "four"}
+
+
+def _key_words(t):
+    return {w for w in re.findall(r"[a-z]{4,}", (t or "").lower()) if w not in _STOP}
+
+
+def scene_ok(scene, headline):
+    """the scene shows THIS news: long enough and it names at least two main words of the headline (or all when the headline is short)"""
+    if len((scene or "").split()) < 60:
+        return False
+    need = _key_words(headline)
+    if not need:
+        return True
+    have = _key_words(scene) | {w.rstrip("s") for w in _key_words(scene)}
+    return sum(1 for w in need if w in have or w.rstrip("s") in have) >= min(2, len(need))
+
+
 def image_scenes(art, d):
-    """detailed image prompts built from the article itself (not a generic scene)"""
+    """detailed image prompts built from the article itself (not a generic scene). owner 29 Oct: when the COVER scene is too short or does
+    not name the main things of the headline, the plan is sent back once."""
     user = f"HEADLINE: {d.get('english_headline', '')}\nPLACE: {d.get('location', '')}\nCATEGORY: {d.get('category', '')}\nARTICLE:\n{(art.get('text') or '')[:3000]}"
-    try:
-        data, _ = llm.ask_json(BRIEF_SYSTEM, user)
-    except Exception:
-        if not llm.claude_available():
-            raise
-        data, _ = llm.ask_claude(BRIEF_SYSTEM, user, max_tokens=1500)
-    sc = [s.strip() for s in (data.get("scenes") or []) if isinstance(s, str) and len(s.strip()) > 40]
-    return sc[:3]
+    best = []
+    for attempt in range(2):
+        try:
+            data, _ = llm.ask_json(BRIEF_SYSTEM, user)
+        except Exception:
+            if not llm.claude_available():
+                if best:
+                    break
+                raise
+            data, _ = llm.ask_claude(BRIEF_SYSTEM, user, max_tokens=2500)
+        sc = [s.strip() for s in (data.get("scenes") or []) if isinstance(s, str) and len(s.strip()) > 40][:3]
+        if sc and scene_ok(sc[0], d.get("english_headline", "")):
+            return sc
+        best = best or sc
+        user += ("\n\nYOUR COVER SCENE WAS TOO GENERIC OR TOO SHORT. Scene 1 must start with the main event of THIS headline and name its "
+                 "place type, people, vehicles or objects; every scene 100-150 words.")
+    return best
 
 
 def bridge(action, **kw):

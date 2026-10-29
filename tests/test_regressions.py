@@ -573,3 +573,22 @@ class FreeImagesFirst(unittest.TestCase):
         self.assertEqual(["cloudflare", "nvidia", "fal-ai/flux/dev"], self.order({"cloudflare", "nvidia"}))      # cover
         self.assertEqual(["cloudflare", "nvidia", "fal-ai/flux/schnell"], self.order({"cloudflare", "nvidia"}, cheap=True))      # scenes 2-3
 
+
+class NewsImagePrompt(unittest.TestCase):
+    """owner 29 Oct: a clean, detailed prompt so the picture shows THIS news - the scene first, generic covers sent back"""
+    GOOD = ("Two police constables in khaki unload seized liquor bottles from a white mini lorry onto a long table outside the Pallipalayam "
+            "police station while four men in shirts and veshti stand in a line nearby; the bottles are stacked in cartons, a police jeep is "
+            "parked behind, neem trees shade the station compound, late morning sunlight, light clouds, eye-level 35 mm wide shot showing the "
+            "table, the lorry and the station gate.")
+
+    def test_scene_first(self):
+        p = collect.IMG_TEMPLATE.format(scene=self.GOOD)
+        self.assertTrue(p.startswith("Two police constables"))
+        self.assertIn("No text", p)
+
+    def test_generic_cover_sent_back(self):
+        head = "Police seize 120 liquor bottles from a mini lorry near Pallipalayam"
+        self.assertTrue(collect.scene_ok(self.GOOD, head))
+        self.assertFalse(collect.scene_ok("A quiet village road in Tamil Nadu with trees and houses in daylight. " * 4, head))
+        self.assertFalse(collect.scene_ok("Police seize liquor bottles from a lorry.", head))      # too short
+

@@ -1275,7 +1275,7 @@ def missing_setup():
 
 
 def auto_images():
-    """stories whose owner did not answer within 2 hours: new AI pictures only (fal.ai, then Cloudflare, then NVIDIA; earlier pictures are never reused);
+    """stories whose owner did not answer within 2 hours: new AI pictures only (free first: Cloudflare, NVIDIA; then fal.ai) (NVIDIA; earlier pictures are never reused);
     if neither works, the reel is made without pictures (setImages with NOIMAGE). Credit guard: at most 40 images per run."""
     pend = bridge_get("autoPending").get("rows", [])
     if not pend:
