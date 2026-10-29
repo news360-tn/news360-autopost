@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-29 | `d24107f` | Not news is never filed or posted: a story that only says the article has no details is rejected at writing and at posting; a real story loses only such a sentence (RN-189 egg price, RN-112) |
 | 2026-10-28 | `3a47d79` | Reel longer than 90 s: shorten the script automatically and render again instead of holding the story (RN-153) |
 | 2026-10-28 | `0cc5340` | Priority: power cuts and jobs are their own topics with a plus weight (they were -0.5 as civic / education_jobs although our most watched news: 17,328 and 17,209 views, page median 374); exam/election no longer counted as temple; insights relabels older posts |
 | 2026-10-28 | `e034b52` | No missed news: writer duplicate check needs 3 shared words and only compares with stories of the last 3 days (28 Oct: rain 140 mm, service-road garbage, farmers' meeting were wrongly skipped); picture check works again (gemini-2.5-flash retired: uses the live model list, next model on timeout/busy) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-26 | `7d65259` | Heartbeat |
 | 2026-10-26 | `d63fc7b` | Posting install: ffmpeg from GitHub (checksum checked), Ubuntu only as backup; cached browser |
 | 2026-10-26 | `ed03ef0` | Reel: viewer feedback - logo top-right, footer, one-line story opening, news voice |
-| 2026-10-26 | `d17fa3c` | Posting gate: a headline that names another district is never posted |
 <!-- recent-changes:end -->
