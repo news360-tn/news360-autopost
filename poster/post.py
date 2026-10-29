@@ -172,6 +172,27 @@ def spec_has_carousel(row):
 _SKIPPED = set()
 
 
+_EVENT_DF = None
+_SCRIPTS = None
+
+
+def script_of(o):
+    """the reel script of an earlier story: from the row, else from its saved prebuilt file (the bridge's 'recent' rows carry
+    no script)"""
+    global _SCRIPTS
+    if o.get("reel_script"):
+        return o["reel_script"]
+    if _SCRIPTS is None:
+        _SCRIPTS = {}
+        for f in CACHE.glob("RN-*.json"):
+            try:
+                sid = f.stem.split("_")[0]
+                _SCRIPTS.setdefault(sid, json.loads(f.read_text(encoding="utf-8")).get("reel_script") or "")
+            except Exception:
+                pass
+    return _SCRIPTS.get(o.get("story_id") or "", "")
+
+
 def skip_reason(row):
     """'' = fine to post. Otherwise why this story must not go out: its announced date has passed (power cut, job fair, 'today' news ...),
     or the same news was already posted under another story id."""
@@ -194,6 +215,23 @@ def skip_reason(row):
                                 row.get("reel_script") or "", row.get("caption") or "")
         if why:
             return why
+        why = freshness.old_event((row.get("headline_ta") or "") + " " + (row.get("reel_script") or ""))
+        if why:      # owner 29 Oct (RN-29): an old event re-told in a new article
+            return why
+        if row.get("reel_script"):      # owner 29 Oct (RN-13/RN-24): the same event from another outlet, in other words
+            global _EVENT_DF
+            if _EVENT_DF is None:
+                _EVENT_DF = freshness.event_df([script_of(o) for o in ALL_ROWS])
+            mine = freshness.pub_date(row.get("researched"))
+            for o in ALL_ROWS:
+                went = o.get("rasipuram_link") or o.get("namakkal_link") or o.get("reel_link") or str(o.get("post_status") or "").lower().startswith(("posted", "partly"))
+                if o.get("story_id") == row.get("story_id") or not went or not script_of(o):
+                    continue
+                od = freshness.pub_date(o.get("researched"))
+                if mine and od and abs((mine - od).days) > 1:
+                    continue
+                if freshness.same_event(script_of(o), row["reel_script"], _EVENT_DF) and not freshness.follow_up(o, row):
+                    return f"duplicate of {o.get('story_id')} (same event, other outlet)"
     why = "" if same_day else freshness.stale_reason(row.get("headline_ta") or "", row.get("headline_en") or "", row.get("category") or "", row.get("published") or "")
     if why:
         return "stale: " + why

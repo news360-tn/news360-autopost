@@ -274,3 +274,55 @@ def strip_no_news(text):
             continue
         out.append(" ".join(keep))
     return "\n".join(out)
+
+
+# owner 29 Oct (Coimbatore RN-29, a 2025 wedding re-told in a new article): a story whose every dated fact is months old and that
+# has no sign of anything happening now (today / yesterday / a weekday / "so far" / an arrest or verdict) is an old event.
+RECENT_WORDS = ("இன்று", "நேற்று", "நேற்றிரவு", "முன்தினம்", "இன்றிரவு", "இந்த வாரம்", "நாளை", "இதுவரை", "தற்போது", "இன்னும்",
+                "சமீபத்தில்", "திங்கள்", "செவ்வாய்", "புதன்", "வியாழ", "வெள்ளிக்கிழமை", "சனிக்கிழமை", "ஞாயிற்று")
+
+
+def old_event(text, today=None):
+    t = text or ""
+    today = today or datetime.datetime.now(IST).date()
+    if any(w in t for w in RECENT_WORDS) or FOLLOW.search(t):
+        return ""
+    if any(abs((d - today).days) <= 7 for d in dates_in(t, today.year)):
+        return ""
+    tam = {**TA_ABB, **TA_FULL}
+    mon = "|".join(sorted(tam, key=len, reverse=True))
+    olds = []
+    for m in re.finditer(r"(\d{1,2})?\s*(%s)\.?\s*,?\s*(20\d\d)" % mon, t):
+        try:
+            olds.append(datetime.date(int(m.group(3)), tam[m.group(2)], int(m.group(1) or 1)))
+        except (ValueError, KeyError):
+            pass
+    if olds and all((today - d).days >= 60 for d in olds):
+        return f"old event: the story is about {max(olds):%d %b %Y}, nothing in it happened in the last days"
+    return ""
+
+
+# owner 29 Oct (Coimbatore RN-13 / RN-24 bus fight, Namakkal RN-86 / RN-115 Collector wall): the same event reported by two outlets
+# in different words. Compared on the DISTINCTIVE words of the two reel scripts (words that appear in few other stories: names,
+# places, numbers), not on the headline wording.
+def _event_stems(t):
+    t = re.sub(r"மேலும் செய்திகளுக்கு.*$", "", t or "")
+    return {w[:5] for w in re.findall(r"[஀-௿]{5,}", t)} | set(re.findall(r"\d{2,}", t))
+
+
+def event_df(scripts):
+    import collections
+    df = collections.Counter()
+    for s in scripts:
+        df.update(_event_stems(s))
+    return df, max(1, len(scripts))
+
+
+def same_event(a, b, df_n):
+    df, n = df_n
+    rare = lambda t: {s for s in _event_stems(t) if df[s] <= max(2, n * 0.05)}
+    x, y = rare(a), rare(b)
+    if len(x) < 4 or len(y) < 4:
+        return False
+    shared = len(x & y)
+    return shared >= 9 and shared / min(len(x), len(y)) >= 0.45
