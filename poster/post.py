@@ -263,6 +263,8 @@ def not_namakkal(row):
     src, head = (row.get("source") or "").strip(), row.get("headline_ta") or ""
     if not src.startswith("http"):
         return ""
+    if getattr(allnews, "is_listing", lambda u: False)(src):      # 29 Oct RN-194: a topic page, not one article
+        return "not one news article (the source is a topic / listing page)"
     cap = (row.get("caption") or "")[:600]
     if allnews.other_district(head):
         return "not Namakkal district news (the headline names another district)"

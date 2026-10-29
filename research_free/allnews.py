@@ -100,9 +100,20 @@ NON_NEWS = ("weekly-supplements", "/cinema", "/entertainment", "/lifestyle", "/r
             "/astrology", "/photogallery", "/videos/", "/video/", "/sports/", "/world/", "/national/", "/trending/", "/web-stories")
 
 
+LISTING = re.compile(r"/(topic|topics|tag|tags|author|authors|search)/|/page-?\d+(/|$)|[?&]page=\d", re.I)
+
+
+def is_listing(url):
+    """a topic / tag / author / search page lists many stories from everywhere - it is not one news article
+    (29 Oct RN-194: tamil.abplive.com/topic/missing-girl/page-2 gave a Panruti (Cuddalore) story to Namakkal 360)"""
+    return bool(LISTING.search(url or ""))
+
+
 def local_ok(url, title):
     """the link and headline allow this to be Namakkal-district news: not filed under another district, not a supplement / cinema / recipe
     page, no other district or state-wide wording in the headline - unless the headline itself names a Namakkal-district place"""
+    if is_listing(url):
+        return False
     if other_district(title):
         return False
     if has_place(title):

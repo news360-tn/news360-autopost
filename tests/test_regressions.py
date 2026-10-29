@@ -697,3 +697,15 @@ class SameEventAtWriteTime(unittest.TestCase):
         other = {"title": "ராசிபுரம் ஏரியில் கழிவுநீர்", "text": self.OTHER[0][1], "published": TODAY.isoformat()}
         rows = [r for r in self.recent(TODAY.strftime("%d %b %Y, 10:00")) if r["story_id"] != "RN-1"]
         self.assertEqual(collect.same_event_filed(other, rows), "")
+
+
+class ListingPagesAreNotArticles(unittest.TestCase):
+    """29 Oct RN-194: tamil.abplive.com/topic/missing-girl/page-2 (a list of stories from all districts) was written as one story"""
+    def test_listing_urls(self):
+        for u in ("https://tamil.abplive.com/topic/missing-girl/page-2/amp", "https://www.example.com/tag/namakkal",
+                  "https://tamil.news18.com/author/x/", "https://site.in/news?page=3"):
+            self.assertTrue(allnews.is_listing(u), u)
+            self.assertFalse(allnews.local_ok(u, "நாமக்கல்லில் சிறுமி மீட்பு"), u)
+        for u in ("https://www.dinamani.com/all-editions/edition-dharmapuri/namakkal/2026/Oct/29/x",
+                  "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/pallipalayam-farmers-worr/1"):
+            self.assertFalse(allnews.is_listing(u), u)
