@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-29 | `85d02eb` | Topic / tag / author / page-N listing pages are never written or posted as a news story (RN-194: abplive topic page gave a Cuddalore story) |
 | 2026-10-29 | `5ff36f3` | Writer started by the collector waits for the queue instead of skipping; same event from another outlet is not written again (RN-193 = RN-168) |
 | 2026-10-29 | `d60d546` | Publish times with a time zone are read in IST (a 22:17 UTC story is the next day in IST, not the day before) |
 | 2026-10-29 | `c2df785` | Collection is never cancelled by the story writer: each has its own queue; the collector waits while a writer runs, the writer skips its round while a collection runs (Coimbatore lost 2 collections on 29 Oct) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-27 | `48dc44f` | Google Charon voice for every reel while free (stops at 700,000 characters a month, then Valluvar); Valluvar whenever Google fails |
 | 2026-10-27 | `029fe0e` | Website: each posted story goes to www.namakkal360.workers.dev with English version and all details; Sheet 'posted_rows' view + one-time backfill workflow |
 | 2026-10-27 | `9c96409` | Regression test pack from real cases (23 tests) + GitHub check on every code change |
-| 2026-10-27 | `5093f5a` | Posting gate: only today's or yesterday's news is posted; publish date also read from the news link (late power-cut notice and a 2-day-old story went out) |
 <!-- recent-changes:end -->
