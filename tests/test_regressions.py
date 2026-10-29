@@ -723,3 +723,10 @@ class WrittenForAnotherDistrict(unittest.TestCase):
         self.assertEqual(allnews.written_elsewhere("நாமக்கல்லில் தர்ணா", "சேலம் சாலையில் நாமக்கல்லில் தர்ணா நடந்தது."), "")
         self.assertEqual(allnews.written_elsewhere("தெருநாய் தொல்லை", "பள்ளிப்பாளையம் யூனியன் பகுதியில் தெருநாய் தொல்லை அதிகரித்து வருகிறது."), "")
         self.assertTrue(allnews.has_place("கொக்கராயன்பேட்டையில் பயிற்சி"))
+
+
+class CaptionCleanRuns(unittest.TestCase):
+    """29 Oct: clean_caption used verify without importing it - every post job crashed with NameError for ~2.5 hours"""
+    def test_clean_caption_runs(self):
+        out = post.clean_caption({"caption": "செய்தி வரி ஒன்று\n\n#News", "headline_ta": "செய்தி", "story_id": "RN-1"})
+        self.assertIn(out, (True, False, None) if not isinstance(out, str) else (out,))      # it must simply run
