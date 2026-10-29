@@ -366,6 +366,10 @@ class Proofread(unittest.TestCase):
                       ("மீட்கப்பட்டனர்.", "மீட்டப்பட்டனர்."), ("மனைப்பட்டா,", "மனப்பெட்டா,"), ("பரமத்தி வேலூர்", "ப.வேலுார்")]:
             self.assertTrue(self.T.unsafe(w, ok, art), f"{w} -> {ok} must be refused")
 
+    def test_verb_not_turned_into_noun(self):      # 29 Oct Coimbatore RN-1: 'அரசு நிர்வாகிக்க' -> 'அரசு நிர்வாகம்'
+        self.assertTrue(self.T.unsafe("அரசு நிர்வாகிக்க", "அரசு நிர்வாகம்", ""))
+        self.assertEqual(self.T.unsafe("அரசு நிர்வாகிக்க", "அரசு நிர்வகிக்க", ""), "")      # the real spelling fix still goes in
+
     def test_real_spelling_fixes_still_go_in(self):
         for w, ok in [("வெளியிட்டுுள்ளார்.", "வெளியிட்டுள்ளார்."), ("இயக்குனர்", "இயக்குநர்"), ("கீழ்கண்ட", "கீழ்க்கண்ட")]:
             self.assertEqual(self.T.unsafe(w, ok, ""), "")

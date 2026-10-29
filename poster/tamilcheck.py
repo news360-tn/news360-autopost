@@ -54,6 +54,9 @@ def _article(row):
         return ""
 
 
+VERB_ENDS = ("க்க", "க்கும்", "க்கப்", "ப்பட்டது", "ப்பட்ட", "த்து", "ந்து", "ட்டு", "ற்று")
+
+
 def unsafe(w, ok, article=""):
     """why a proposed fix must NOT be applied ('' = safe). 28 Oct: the proofreader turned மீட்கப்பட்டனர் into மீட்டப்பட்டனர்,
     நாமக்கல் into நம்மக்கல், 'வர வேண்டிய' into 'வரத் தேவையற்ற', deleted facts and doubled words - only small spelling fixes go in."""
@@ -69,6 +72,10 @@ def unsafe(w, ok, article=""):
         return "meaning flipped"
     if abs(len(ok.split()) - len(w.split())) > 1 or difflib.SequenceMatcher(None, w, ok).ratio() < 0.6:
         return "rewrite, not a spelling fix"
+    # 29 Oct (Coimbatore RN-1): 'நிர்வாகிக்க' (a verb, misspelt) became 'நிர்வாகம்' (a noun) - a fix must keep the word's grammatical ending
+    lw, lo = w.split()[-1].strip(".,;:!?()\"'"), ok.split()[-1].strip(".,;:!?()\"'")
+    if any(lw.endswith(e) and not lo.endswith(e) for e in VERB_ENDS):
+        return "word form changed (verb into another word)"
     words = [x.strip(".,;:!?()\"'") for x in w.split()]
     if article and all(_whole(x).search(article) for x in words if x):
         return "the article itself writes it this way"
