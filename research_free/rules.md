@@ -45,7 +45,7 @@ reel_script rules
 
 caption rules
 - Instagram search reads the caption, so the FIRST line is a hook that already contains the place name and the key fact (max 110 characters), with 1 emoji, e.g. "🥚 நாமக்கல்லில் முட்டை விலை 10 காசு உயர்வு - இன்றைய விலை 560 காசு". Numbers, times and dates are written as digits in the caption.
-- FULL DETAILS (viewers keep commenting "விவரம் வேண்டும்" - the caption must answer every question the article answers). After the hook line:
+- FULL DETAILS - NOTHING MISSED (owner 29 Oct: every number, date, time, age, amount, place, name of office and action in the article must be in the caption; a caption that leaves one out is sent back) (viewers keep commenting "விவரம் வேண்டும்" - the caption must answer every question the article answers). After the hook line:
   1. A blank line, then "📰 முழு விவரம்:" and a clear paragraph of 4-7 short sentences that tells the WHOLE story from the article in order:
      what happened, exact place (village / road / area + town + taluk), date and time, who was involved (by role), how it happened,
      every number / amount / count, what police, officials or the government did, and what happens next. One fact per sentence.

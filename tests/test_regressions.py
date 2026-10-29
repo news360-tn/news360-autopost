@@ -789,3 +789,22 @@ class ReachPlan29Oct(unittest.TestCase):
         self.assertTrue(c["locations"].get("default") and c["locations"].get("rasipuram"))
         self.assertIn("no brand names", collect.IMG_TEMPLATE)
 
+
+class CaptionAllFacts(unittest.TestCase):
+    """owner 29 Oct: the caption must hold ALL the information of the news (Namakkal RN-175, 178, 181: a date, ages, a percentage were missing)"""
+    ART = ("ராசிபுரம், அக்.29: ராசிபுரம் பகுதியில் தொடர்ந்து பைக்குகள் திருடப்பட்டு வந்தன. "
+           "அதை தொடர்ந்து, கடந்த 17ல், பேளுக்குறிச்சி முத்துராஜ் என்பவரின் பைக் திருடப்பட்டது; அந்த திருட்டிலும் வாலிபர் சம்பந்தப்பட்டார். "
+           "பைக் திருட்டு வழக்கில் போலீசார் 23 வயது வாலிபரை கைது செய்தனர். "
+           "நாமக்கல்லில் நவ.1ல் குரூப் 2 தேர்வு: 14,199 பேர் பங்கேற்பு")      # the last line is another headline on the same page
+    STORY = "ராசிபுரத்தில் பைக் திருட்டு: வாலிபர் கைது. பேளுக்குறிச்சி முத்துராஜ் பைக் திருடப்பட்டது. போலீசார் வாலிபரை கைது செய்தனர்."
+
+    def test_missing_fact_found(self):
+        import validate
+        miss = validate.caption_missing_facts("📰 முழு விவரம்:\nபைக் திருட்டு வழக்கில் 23 வயது வாலிபர் கைது.", self.ART, self.STORY)
+        self.assertTrue(any(m.startswith("17") for m in miss), miss)
+
+    def test_other_headlines_and_dateline_ignored(self):
+        import validate
+        cap = "📰 முழு விவரம்:\nராசிபுரத்தில் 17ஆம் தேதி பைக் திருடப்பட்டது; பைக் திருட்டு வழக்கில் 23 வயது வாலிபர் கைது."
+        self.assertEqual([], validate.caption_missing_facts(cap, self.ART, self.STORY))
+

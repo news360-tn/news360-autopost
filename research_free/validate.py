@@ -131,6 +131,43 @@ def caption_problems(cap, reach=None):
     return p      # the English search line is ADDED at posting when missing (poster/post.py final_caption) - no rewrite needed
 
 
+def _stems4(t):
+    return {w[:4] for w in re.findall(r"[\u0B80-\u0BFF]{4,}", t or "")}
+
+
+GENERIC4 = {"நாமக்", "மாவட", "கோவை", "கோயம", "ராசி", "இராச", "செய்", "தெரி", "இந்த", "அந்த", "பகுத", "மேலு", "நடைப", "வருக", "உள்ள", "என்ற",
+            "அதிக", "போலீ", "தமிழ", "அரசு", "மக்க", "இதனா", "அருக", "நகரா", "ஊராட"}
+
+
+def caption_missing_facts(cap, article, story):
+    """owner 29 Oct: the caption must hold ALL the information of the news. Every number and place in the article sentences that are
+    about THIS story (they share 2+ words with the headline / script - other headlines on the same web page are ignored) must be in the caption."""
+    if not article or not cap:
+        return []
+    ref = _stems4(story) - GENERIC4      # district / filler words link every headline on a page - they do not mark THIS story
+    capd = set(n.replace(",", "") for n in re.findall(r"\d[\d,]*", cap))
+    try:
+        import allnews
+        places = [w for w in getattr(allnews, "COIMBATORE_WORDS", None) or getattr(allnews, "NAMAKKAL_WORDS", []) if not w.isascii()]
+    except Exception:
+        places = []
+    miss = []
+    for sent in re.split(r"(?<=[.!?])\s+|\n+", article[:4000]):
+        sent = re.sub(r"^[\u0B80-\u0BFF.\s]+,\s*[\u0B80-\u0BFF]+\.?\s*\d{1,2}\s*:", "", sent.strip())      # dateline 'சேந்தமங்கலம், அக்.29:'
+        if len(ref & _stems4(sent)) < 3:
+            continue
+        for n in re.findall(r"\d[\d,]*", sent):
+            k = n.replace(",", "")
+            if k in ("0", "00") or (len(k) == 4 and k.startswith("20")) or k in capd:
+                continue
+            miss.append(f"{n} ('{sent.strip()[:60]}')")
+        for w in places:
+            stem = w[:-1] if w.endswith("ம்") else w
+            if stem in sent and stem not in cap:
+                miss.append(f"{w} ('{sent.strip()[:60]}')")
+    return list(dict.fromkeys(miss))
+
+
 def validate(d, article, today_digits=("2026",)):
     p = []
     if not isinstance(d, dict):
@@ -226,6 +263,10 @@ def validate(d, article, today_digits=("2026",)):
     except Exception:
         pass
     p += caption_problems(d.get("caption"))
+    if _reach().get("caption_all_facts"):
+        miss = caption_missing_facts(d.get("caption"), article, " ".join(str(d.get(k) or "") for k in ("tamil_headline", "reel_script")))
+        if miss:
+            p.append("caption misses facts of the article (put every one in 📰 முழு விவரம்): " + "; ".join(miss[:6]))
     try:      # owner 29 Oct: every known issue is checked here AND right before posting (research_free/known_issues.py)
         import known_issues
         seen = " ".join(p)
