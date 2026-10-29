@@ -197,6 +197,13 @@ def skip_reason(row):
     """'' = fine to post. Otherwise why this story must not go out: its announced date has passed (power cut, job fair, 'today' news ...),
     or the same news was already posted under another story id."""
     import difflib, freshness
+    if not is_ready_reel(row):      # owner 29 Oct: an issue found once never goes out again (research_free/known_issues.py)
+        sys.path.insert(0, str(ROOT / "research_free"))
+        import known_issues, verify
+        fixed = dict(row, **{k: verify.clean_text(row.get(k) or "") for k in ("headline_ta", "reel_script", "caption")})      # what the post will really say
+        ki = known_issues.problems(fixed)
+        if ki:
+            return f"known issue {ki[0][0]}: {ki[0][1]}"
     f = filed_at(row)
     same_day = bool(f and f.date() == datetime.now(IST).date())      # filed today: it goes out today, whatever the clock says
     nd = freshness.news_date(row.get("published"), row.get("source"), f)

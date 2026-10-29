@@ -505,7 +505,7 @@ class NotNews(unittest.TestCase):
         row = {"story_id": "RN-189", "headline_ta": "முட்டை விலை நிலவரம்", "headline_en": "Egg price update", "category": "Business & Prices",
                "published": post.datetime.now(post.IST).isoformat(), "researched": post.datetime.now(post.IST).strftime("%d %b %Y, %H:%M"),
                "reel_script": self.EMPTY, "caption": "", "slides_spec": "{}"}
-        self.assertTrue(post.skip_reason(row).startswith("not news"))
+        self.assertTrue(post.skip_reason(row).startswith(("not news", "known issue meta_article")))      # blocked either way
 
 
 class OwnerFixes29Oct(unittest.TestCase):
@@ -730,3 +730,25 @@ class CaptionCleanRuns(unittest.TestCase):
     def test_clean_caption_runs(self):
         out = post.clean_caption({"caption": "செய்தி வரி ஒன்று\n\n#News", "headline_ta": "செய்தி", "story_id": "RN-1"})
         self.assertIn(out, (True, False, None) if not isinstance(out, str) else (out,))      # it must simply run
+
+
+class KnownIssuesNeverRepeat(unittest.TestCase):
+    """owner 29 Oct: once an issue is found it must never repeat - every entry of research_free/known_issues.py catches its own
+    bad example and lets its good example through, at writing (validate) and at posting (skip_reason)"""
+
+    def test_every_issue_catches_its_example(self):
+        import known_issues
+        for iid, seen, check, bad, good in known_issues.ISSUES:
+            self.assertIn(iid, [x for x, _ in known_issues.problems(bad)], f"{iid} ({seen}) no longer caught")
+            self.assertNotIn(iid, [x for x, _ in known_issues.problems(good)], f"{iid} blocks a good story")
+
+    def test_checked_at_posting(self):
+        import known_issues
+        post.ALL_ROWS = []
+        for iid, seen, check, bad, good in known_issues.ISSUES:
+            row = dict(bad, story_id="RN-T", source="", published="", researched="", notes="", batch="", review="Auto")
+            import verify
+            fixed = dict(row, **{k: verify.clean_text(row.get(k) or "") for k in ("headline_ta", "reel_script", "caption")})
+            repaired = iid not in [x for x, _ in known_issues.problems(fixed)]      # e.g. stray letters of another script are repaired
+            self.assertTrue(repaired or f"known issue {iid}" in post.skip_reason(row), f"{iid} would be posted again")
+

@@ -197,4 +197,12 @@ def validate(d, article, today_digits=("2026",)):
             p += tamil_sequence_problems(t) or []
     except Exception:
         pass
+    try:      # owner 29 Oct: every known issue is checked here AND right before posting (research_free/known_issues.py)
+        import known_issues
+        seen = " ".join(p)
+        for iid, why in known_issues.problems(d):
+            if why not in seen:
+                p.append(f"known issue {iid}: {why} - rewrite so it does not happen again")
+    except ImportError:
+        pass
     return p
