@@ -535,7 +535,10 @@ class OwnerFixes29Oct(unittest.TestCase):
             post.ALL_ROWS = []
 
     def test_claude_model_exists(self):
-        self.assertIn('os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5")', (ROOT / "research_free" / "llm.py").read_text())
+        # owner 29 Oct: the newest Haiku by default, with the older one only as an automatic fallback if the name is refused
+        src = (ROOT / "research_free" / "llm.py").read_text()
+        self.assertIn('os.environ.get("ANTHROPIC_MODEL") or "claude-haiku-5-5"', src)
+        self.assertIn('model = body["model"] = "claude-haiku-4-5"', src)
 
 
 class FreeImagesFirst(unittest.TestCase):
@@ -631,3 +634,16 @@ class OtherScriptLetters(unittest.TestCase):
         self.assertNotRegex(verify.clean_text("தேனி சிறை탈출்க்குப் பின்னர்"), "[가-힯]")
         s = "சாதாரண தமிழ் வாக்கியம்: ரூ.1,109 கட்டணம், 26ஆம் தேதி."
         self.assertEqual(verify.clean_text(s), s)
+
+
+class TamilSourcesOnly(unittest.TestCase):
+    """owner 29 Oct: news only from Tamil-language articles; English pages are skipped (a hand-given link still goes)"""
+    def test_english_article_skipped(self):
+        a = {"title": "Coimbatore court sentences six to 10 years in prison in 2015 child trafficking case",
+             "text": "A Coimbatore court on Wednesday sentenced six people to ten years in prison in a 2015 case of selling a one-year-old girl. " * 4}
+        self.assertFalse(collect.tamil_source(a))
+
+    def test_tamil_article_kept(self):
+        a = {"title": "கோவையில் விளக்கேற்றும்போது சேலை தீப்பிடித்து மூதாட்டி உயிரிழப்பு",
+             "text": "சாய்பாபா காலனி, கே.கே.புதூர் 7ஆம் வீதியில் வசிக்கும் லட்சுமி பூஜை அறையில் விளக்கேற்றியபோது சேலையில் தீ பற்றியது. Coimbatore."}
+        self.assertTrue(collect.tamil_source(a))

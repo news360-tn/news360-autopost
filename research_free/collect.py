@@ -338,6 +338,9 @@ def verify_candidates(items, state, log):
             if len(art["text"]) < 20 or len(body_words(art)) < HEADLINE_ONLY_MIN:      # empty page, or only the headline (RN-12)
                 n["status"], stt["s"] = "article has no text beyond its headline", "notext"; kept["notext"] += 1
                 continue
+            if not tamil_source(art) and not n.get("manual"):      # owner 29 Oct: Tamil sources only
+                n["status"], stt["s"] = "not a Tamil-language article", "notext"; kept["notext"] += 1
+                continue
             if not fresh(art["published"]) and not n.get("manual"):
                 n["status"], stt["s"] = "old", "old"; kept["old"] += 1
                 continue
@@ -640,6 +643,15 @@ def body_words(art):
     return [w for w in re.findall(r"\w+", (art.get("text") or "").lower()) if w not in title and len(w) > 1]
 
 
+def tamil_source(art):
+    """owner 29 Oct: news is taken ONLY from Tamil-language articles. English pages (New Indian Express, DT Next, Times of India ...)
+    gave the worst reels: the writer's translation was garbled and the facts could not be checked against the article."""
+    t = (art.get("text") or "") + " " + (art.get("title") or "")
+    ta = len(re.findall(r"[\u0B80-\u0BFF]", t))
+    en = len(re.findall(r"[A-Za-z]", t))
+    return ta >= max(40, en)          # mostly Tamil letters
+
+
 HEADLINE_ONLY_MIN = 12      # fewer new words than this after the headline = nothing to report (a 2-line police brief has ~20)
 
 
@@ -869,6 +881,8 @@ def main():
         bw = len(body_words(art))
         if len(art["text"]) < 20 or bw < HEADLINE_ONLY_MIN:      # owner 25 Oct: never skipped for length - but a page with only a headline has no facts (RN-12)
             return {"skip": "article has no text beyond its headline", "s": "notext", "log": f"skip ({area}) only a headline, {bw} words of text: {art['title'][:50]} [{url[:60]}]"}
+        if not tamil_source(art) and not n.get("manual"):      # owner 29 Oct: Tamil sources only (a link given by hand is still written)
+            return {"skip": "not a Tamil-language article", "s": "notext", "log": f"skip ({area}) not a Tamil article: {art['title'][:50]} [{url[:60]}]"}
         if not fresh(art["published"]) and not n.get("manual"):      # a link the owner gives by hand is written whatever its date
             return {"skip": "old", "s": "old", "log": f"skip ({area}) too old ({art['published'] or 'no date'}): {art['title'][:50]}"}
         if ((not (allnews.has_place(n["title"]) or allnews.has_place(art["title"]) or allnews.has_place(art["text"][:300])

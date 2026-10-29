@@ -291,7 +291,10 @@ def ask_claude(system, user, max_tokens=4000):
     """returns (data, model_name); raises when the key is missing, the budget guard is hit or the API fails (the caller then falls back to the free chain)"""
     if not claude_available():
         raise RuntimeError("claude not available")
-    model = os.environ.get("ANTHROPIC_MODEL", "claude-haiku-4-5")      # 29 Oct: "claude-haiku-5-5" does not exist (every backup call failed)
+    # owner 29 Oct: always the newest Haiku. claude-haiku-5-5 answered 379 calls in the Namakkal logs; the Coimbatore failures
+    # that day were "401 invalid x-api-key" (a wrong key), not a missing model. If a model name is ever refused (404),
+    # the call is repeated once with the older Haiku so the story is still written.
+    model = os.environ.get("ANTHROPIC_MODEL") or "claude-haiku-5-5"
     CLAUDE_CALLS[0] += 1
     sysb, usr = system, user
     cut = user.find("\n\nTODAY (IST):")
@@ -304,6 +307,10 @@ def ask_claude(system, user, max_tokens=4000):
     r = requests.post("https://api.anthropic.com/v1/messages", headers=hdr, json=body, timeout=120)
     if r.status_code == 400 and "thinking" in r.text.lower():
         body.pop("thinking"); body["max_tokens"] = max(max_tokens, 12000)
+        r = requests.post("https://api.anthropic.com/v1/messages", headers=hdr, json=body, timeout=120)
+    if r.status_code == 404 and "model" in r.text.lower() and model != "claude-haiku-4-5":
+        _log(f"anthropic model {model} refused ({r.text[:120]}), using claude-haiku-4-5 for this call")
+        model = body["model"] = "claude-haiku-4-5"
         r = requests.post("https://api.anthropic.com/v1/messages", headers=hdr, json=body, timeout=120)
     if r.status_code >= 400:
         raise RuntimeError(f"anthropic {r.status_code} {r.text[:200]}")
