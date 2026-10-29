@@ -615,3 +615,19 @@ class HeadlineOnlyAndMadeUp(unittest.TestCase):
         story, why = collect.file_story(art, (d, "test", ["not grounded: only 37% of the words come from the article"], 1), [], [])
         self.assertIsNone(story)
         self.assertIn("likely made up", why)
+
+
+class OtherScriptLetters(unittest.TestCase):
+    """owner 29 Oct (Coimbatore RN-5, 7, 17, 20, 22): letters of another script inside Tamil words are repaired, so the voice
+    reads the word and the card shows Tamil letters; Chinese/Korean letters are removed"""
+    def test_indic_letters_become_tamil(self):
+        import verify
+        self.assertEqual(verify.fix_scripts("ஒண்டிப்புதூர் மின்பிரிவில்".replace("ர்", "র்", 1)), "ஒண்டிப்புதூர் மின்பிரிவில்")
+        self.assertEqual(verify.clean_text("நির்देசம்"), "நிர்தேசம்")
+        self.assertEqual(verify.clean_text("போலீस் நிலையம்"), "போலீஸ் நிலையம்")
+
+    def test_cjk_removed_and_tamil_untouched(self):
+        import verify
+        self.assertNotRegex(verify.clean_text("தேனி சிறை탈출்க்குப் பின்னர்"), "[가-힯]")
+        s = "சாதாரண தமிழ் வாக்கியம்: ரூ.1,109 கட்டணம், 26ஆம் தேதி."
+        self.assertEqual(verify.clean_text(s), s)

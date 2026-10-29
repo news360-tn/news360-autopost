@@ -676,6 +676,10 @@ def file_story(art, res, errors_log, recent, scenes=None):
         for k_ in ("reel_script", "caption"):      # a real story keeps its facts; only the "not in the article" sentences go (RN-112)
             if d.get(k_):
                 d[k_] = freshness.strip_no_news(d[k_])
+        import verify as verify_
+        for k_ in ("tamil_headline", "reel_script", "caption", "location", "slides_spec"):      # other-script letters -> Tamil (29 Oct)
+            if d.get(k_):
+                d[k_] = verify_.clean_obj(d[k_])
     except ImportError:
         pass
     if is_dup(art, d, recent):

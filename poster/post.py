@@ -362,7 +362,7 @@ def clean_caption(row):
     if len(tags) > 30:
         extra = set(tags[30:])
         cap = "\n".join(" ".join(w for w in l.split() if w not in extra) for l in lines)
-    cap = cap[:2150]
+    cap = verify.clean_text(cap)[:2150]      # owner 29 Oct: letters of other scripts fixed in the caption too
     if not cap.strip():
         cap = (row.get("headline_ta") or "") + "\n" + (row.get("location") or "")
     row["caption"] = cap.strip()

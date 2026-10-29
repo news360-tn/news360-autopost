@@ -187,6 +187,10 @@ def validate(d, article, today_digits=("2026",)):
     if stray:
         p.append("numbers not found in the article: " + ", ".join(stray[:6]))
     p += grounding_problems(d, article)
+    blob_all = " ".join([d.get("tamil_headline", ""), rs, cap, json.dumps(sp, ensure_ascii=False)])
+    foreign = sorted(set(re.findall(r"[\u0900-\u0B7F\u0C00-\u0D7F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]", blob_all)))
+    if foreign:      # owner 29 Oct: letters of another script inside Tamil words (Coimbatore RN-5, RN-20 ...)
+        p.append("letters of another script inside Tamil words: " + " ".join(foreign[:8]) + " - write every word only in Tamil letters")
     try:
         from verify import tamil_sequence_problems
         for t in [d["tamil_headline"], rs, _tags(cap)]:

@@ -151,12 +151,46 @@ def check_reel(mp4, spoken_lines):
     return probs
 
 
+INDIC_BASES = (0x0900, 0x0980, 0x0A00, 0x0A80, 0x0B00, 0x0C00, 0x0C80, 0x0D00)      # Devanagari, Bengali, Gurmukhi, Gujarati, Oriya, Telugu, Kannada, Malayalam
+TAMIL_OK = {c for c in range(0x0B80, 0x0C00) if __import__("unicodedata").name(chr(c), "")}
+CJK_ETC = r"[\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF\u1100-\u11FF\u0E00-\u0E7F]"
+
+
+def fix_scripts(t):
+    """owner 29 Oct (Coimbatore RN-5, 7, 20, 22 ...): the writer model sometimes types a letter of another script inside a Tamil
+    word (நির்देசம், ஒண்டிப்புதூর், சிறை탈출). The voice then misreads the word and the card shows a wrong letter.
+    Indian scripts share Tamil's letter order, so each such letter becomes the same Tamil letter (aspirated/voiced -> plain:
+    द -> த, র -> ர); Chinese/Japanese/Korean/Thai letters are removed."""
+    if not isinstance(t, str) or not t:
+        return t
+    import re as _re
+    out = []
+    for ch in t:
+        c = ord(ch)
+        base = next((b for b in INDIC_BASES if b <= c < b + 0x80), None)
+        if base is None:
+            out.append(ch)
+            continue
+        off = c - base
+        for lo in (0x15, 0x1A, 0x1F, 0x24, 0x2A):          # ka, ca, tta, ta, pa rows: 2nd-4th letter -> 1st (Tamil has no aspirates/voiced)
+            if lo < off <= lo + 3:
+                off = lo
+        cand = 0x0B80 + off
+        if cand in TAMIL_OK:
+            out.append(chr(cand))
+        elif off in (0x3C,):                                  # nukta: no Tamil sign, drop
+            continue
+        # anything else without a Tamil twin is dropped
+    t = "".join(out)
+    return _re.sub(CJK_ETC, "", t)
+
+
 def clean_text(t):
     """owner 25 Oct: Tamil text problems are FIXED, never a reason to skip a story. Removes broken characters, stray Tamil
     vowel signs/pulli (no consonant before them) and characters the fonts cannot draw."""
     if not isinstance(t, str) or not t:
         return t
-    t = t.replace("\ufffd", "")
+    t = fix_scripts(t.replace("\ufffd", ""))
     out, prev = [], None
     for ch in t:
         c = ord(ch)
