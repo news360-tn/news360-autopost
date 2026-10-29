@@ -700,6 +700,13 @@ def file_story(art, res, errors_log, recent, scenes=None):
     hard = list(errors)
     # owner 29 Oct (RN-12): a draft whose words mostly do NOT come from a Tamil article is made up -> never filed (fake news rule).
     # Only for Tamil articles: an English article has no Tamil words to compare with, so the check would always fail there.
+    if not art.get("manual"):
+        try:
+            why = allnews.written_elsewhere(d.get("tamil_headline") or "", d.get("reel_script") or "")
+        except Exception:
+            why = ""
+        if why:      # 29 Oct RN-195: Erode onion prices were written for Namakkal 360
+            return None, why
     m_ = next((re.search(r"not grounded: only (\d+)%", e) for e in errors if "not grounded: only" in e), None)
     tamil_words = len(re.findall(r"[\u0B80-\u0BFF]{4,}", art.get("text") or ""))
     if m_ and int(m_.group(1)) < 50 and tamil_words >= 60:

@@ -266,6 +266,9 @@ def not_namakkal(row):
     if getattr(allnews, "is_listing", lambda u: False)(src):      # 29 Oct RN-194: a topic page, not one article
         return "not one news article (the source is a topic / listing page)"
     cap = (row.get("caption") or "")[:600]
+    why = allnews.written_elsewhere(head, row.get("reel_script") or "")
+    if why:      # 29 Oct RN-195 (Erode onion prices)
+        return why
     if allnews.other_district(head):
         return "not Namakkal district news (the headline names another district)"
     if allnews.has_place(head):

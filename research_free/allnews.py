@@ -147,7 +147,8 @@ RASI_NEAR = ["சேந்தமங்கலம்", "எருமப்பட�
 # Tamil joins a place name to its ending (சேந்தமங்கலம் -> சேந்தமங்கலத்தில், திருச்செங்கோடு -> திருச்செங்கோட்டில்), so match the stems too
 PLACE_STEMS = [w[:-1] if w.endswith("ம்") else w for w in NAMAKKAL_WORDS if not w.isascii()] + [
     "திருச்செங்கோட்", "ராசிபுரத்", "குமாரபாளையத்", "பள்ளிபாளையத்", "ப.வேலூ", "ப.வேலு", "பொத்தனூ", "பொத்தனு", "தும்மங்குறிச்சி", "பேளுக்குறிச்சி",
-    "தலைமலை", "கபிலக்குறிச்சி", "அணியாபுரம்", "ஆண்டகளூர்", "பிள்ளாநல்லுார்", "பரமத்தி", "சீராப்பள்ளி", "மல்லசமுத்திர", "நாமகிரிப்பேட்", "வெண்ணந்துார்"]
+    "தலைமலை", "கபிலக்குறிச்சி", "அணியாபுரம்", "ஆண்டகளூர்", "பிள்ளாநல்லுார்", "பரமத்தி", "சீராப்பள்ளி", "மல்லசமுத்திர", "நாமகிரிப்பேட்", "வெண்ணந்துார்",
+    "பள்ளிப்பாளைய", "குமாரப்பாளைய", "எலச்சிப்பாளைய", "கொக்கராயன்பேட்"]      # 29 Oct: spellings with ப் (பள்ளிப்பாளையம்) were not found
 
 
 # owner 26 Oct (final): ONLY Namakkal-district news - no towns outside the district (the nearby-area lists were removed)
@@ -158,6 +159,18 @@ def has_place(text):
     t = text or ""
     return (any(w in t for w in PLACE_STEMS) or any(w in t for w in NAMAKKAL_WORDS if w.isascii())
             or any(w[:-1] in t if w.endswith("ர்") else w in t for w in NEAR_RASIPURAM + NEAR_NAMAKKAL))
+
+
+def written_elsewhere(headline, script):
+    """a written story whose headline names no Namakkal-district place and whose first two sentences name another district / town /
+    the whole state is not Namakkal news (29 Oct RN-195: Erode onion prices at Punjai Puliyampatti; earlier Sankagiri, Attur, Pollachi)"""
+    if has_place(headline or ""):
+        return ""
+    body = re.sub(r"மேலும் செய்திகளுக்கு.*$", "", script or "")
+    first2 = " ".join(re.split(r"(?<=[.!?])\s+", body.strip())[:2])
+    if first2 and other_district(first2):
+        return "not Namakkal district news (the story's first lines name another place and no Namakkal place)"
+    return ""
 
 
 def outside_district(text, via=""):

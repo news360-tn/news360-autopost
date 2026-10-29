@@ -709,3 +709,17 @@ class ListingPagesAreNotArticles(unittest.TestCase):
         for u in ("https://www.dinamani.com/all-editions/edition-dharmapuri/namakkal/2026/Oct/29/x",
                   "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/pallipalayam-farmers-worr/1"):
             self.assertFalse(allnews.is_listing(u), u)
+
+
+class WrittenForAnotherDistrict(unittest.TestCase):
+    """29 Oct RN-195: Erode (Punjai Puliyampatti) onion prices were written for Namakkal 360; spellings with ப் were not seen as ours"""
+    def test_other_place_in_first_lines(self):
+        s = "சின்ன வெங்காயம் விலை கிலோ ரூ.150 வரை உயர்ந்துள்ளது. ஈரோடு மாவட்டம் புஞ்சை புளியம்பட்டி வாரச்சந்தையில் இன்று விற்பனையானது."
+        self.assertTrue(allnews.written_elsewhere("சின்ன வெங்காயம் விலை கிடுகிடு உயர்வு", s))
+        self.assertTrue(post.not_namakkal({"source": "https://www.dailythanthi.com/news/tamilnadu/x", "headline_ta": "சின்ன வெங்காயம் விலை உயர்வு",
+                                           "reel_script": s, "caption": s}))
+
+    def test_namakkal_stories_pass(self):
+        self.assertEqual(allnews.written_elsewhere("நாமக்கல்லில் தர்ணா", "சேலம் சாலையில் நாமக்கல்லில் தர்ணா நடந்தது."), "")
+        self.assertEqual(allnews.written_elsewhere("தெருநாய் தொல்லை", "பள்ளிப்பாளையம் யூனியன் பகுதியில் தெருநாய் தொல்லை அதிகரித்து வருகிறது."), "")
+        self.assertTrue(allnews.has_place("கொக்கராயன்பேட்டையில் பயிற்சி"))
