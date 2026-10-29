@@ -15,7 +15,11 @@ _cov = None
 def font_coverage():
     global _cov
     if _cov is None:
-        from fontTools.ttLib import TTFont
+        try:
+            from fontTools.ttLib import TTFont
+        except ImportError:      # the story writer and the test runner have no fontTools: letters are still repaired, only the font check is skipped
+            _cov = {}
+            return _cov
         per = {}
         for pkg, sub, weights in FONT_FILES:
             for w in weights:
