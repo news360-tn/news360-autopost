@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-29 | `0b28615` | No old events and no same-event repeats: an old event re-told in a new article is not filed or posted (Coimbatore RN-29); the same event from another outlet in other words is not posted twice (RN-13/24, RN-86/115) |
 | 2026-10-29 | `92f5cc4` | Font check optional: the writer and test runner have no fontTools, so letter repair still runs and tests pass on GitHub (Python 3.11) |
 | 2026-10-29 | `4d3e179` | Newest Haiku (claude-haiku-5-5) for Claude calls, older Haiku only if the name is ever refused; news only from Tamil-language articles |
 | 2026-10-29 | `17a77ac` | Letters of another script inside Tamil words are repaired (voice and cards), flagged for rewrite, and cleaned in captions (Coimbatore RN-5, 7, 20, 22) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-27 | `714694e` | Second check really happens: the old 'rejected' mark is removed so the writer does not skip the item |
 | 2026-10-27 | `5acd002` | Two news voices: Google Chirp 3 HD Charon for even stories only while it is free (stops at 800,000 characters a month), otherwise Valluvar |
 | 2026-10-27 | `a04e2ce` | Back to one news voice: Valluvar for every reel (Google voice removed) |
-| 2026-10-27 | `f46f9b9` | Two news voices take turns: odd stories Valluvar, even stories Google Chirp 3 HD (falls back to Valluvar if not set up) |
 <!-- recent-changes:end -->
