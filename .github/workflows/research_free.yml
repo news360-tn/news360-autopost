@@ -15,12 +15,20 @@ on:
 permissions:
   contents: write
   actions: write      # starts the posting job as soon as a story is saved
-concurrency: research-free
+concurrency: research-free-collect      # owner 29 Oct: own queue - a story-writer run can no longer replace (cancel) a waiting collection
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 65
+    timeout-minutes: 80
     steps:
+      - name: Wait while the story writer is running (they must not save the queue at the same time)
+        env: {GH_TOKEN: "${{ github.token }}"}
+        run: |
+          for i in $(seq 1 30); do
+            n=$(gh api "repos/${{ github.repository }}/actions/workflows/write_stories.yml/runs?status=in_progress" -q '.total_count' 2>/dev/null || echo 0)
+            [ "${n:-0}" = "0" ] && break
+            echo "story writer is running - waiting ($i/30)"; sleep 30
+          done
       - uses: actions/checkout@v4
         with: {ref: main}
       - name: Check switch

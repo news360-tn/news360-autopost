@@ -9,7 +9,7 @@ on:
 permissions:
   contents: write
   actions: write      # starts the posting job as soon as a story is saved
-concurrency: research-free      # never at the same time as the collector (both update the queue and the archive)
+concurrency: research-free-write      # owner 29 Oct: own queue (it used to cancel waiting collections); it skips its round while a collection runs
 jobs:
   write:
     runs-on: ubuntu-latest
@@ -19,8 +19,12 @@ jobs:
         with: {ref: main}
       - name: Check switch and queue
         id: sw
+        env: {GH_TOKEN: "${{ github.token }}"}
         run: |
           go=yes
+          n=$(gh api "repos/${{ github.repository }}/actions/workflows/research_free.yml/runs?status=in_progress" -q '.total_count' 2>/dev/null || echo 0)
+          q=$(gh api "repos/${{ github.repository }}/actions/workflows/research_free.yml/runs?status=queued" -q '.total_count' 2>/dev/null || echo 0)
+          if [ "${n:-0}" != "0" ] || [ "${q:-0}" != "0" ]; then go=no; echo "collection is running - the writer skips this round"; fi
           if [ "${{ github.event_name }}" = "schedule" ] && [ ! -f research_free/ENABLED ]; then go=no; fi
           if [ ! -s research_free/archive/queue.json ] || [ "$(tr -d '[:space:]' < research_free/archive/queue.json)" = "[]" ]; then go=no; echo "queue empty"; fi
           echo "go=$go" >> $GITHUB_OUTPUT
