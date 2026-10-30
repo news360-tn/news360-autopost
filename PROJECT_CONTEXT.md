@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-30 | `8c8ebec` | Known issues are repaired, not lost (owner): a card cut mid-phrase, a sentence or word said twice, a sentence about 'the article' are fixed before posting; only what cannot be fixed is held (RN-199, RN-203 held for a cut card); repeated-sentence check no longer splits at 'ரூ.2.50' / 'ஹெச்.பி.' (RN-200 false alarm) |
 | 2026-10-29 | `3614b3b` | Caption holds ALL the news (owner): every number, date, age, amount and place in the article sentences about this story must be in the caption, else the writer adds it (RN-175, 178, 181, 185, 186 missed one); other headlines on the page and datelines ignored; never drops a story; switch reach.caption_all_facts |
 | 2026-10-29 | `dff5d94` | Reach plan for Namakkal + Rasipuram (owner): reels at most 60 s (70-105 words; every detail stays in the caption's full-details block, checked at writing), English search line added at posting (whole words), 5 focused hashtags (page + #Namakkal + town + topic + broad), location tags on (24 known places), no brand names/logos in pictures; all behind poster/config.json reach switches |
 | 2026-10-29 | `6b5a4e6` | Known issues never repeat (owner): one list (research_free/known_issues.py) checked when a story is written AND right before posting - script about the article, letters of another script (repaired first), English words the voice skips, card cut mid-phrase, words said twice; every entry has a real bad and good example run by the tests |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-28 | `5025c7a` | Proofread no longer damages reels: only whole-word small spelling fixes, never names/page/follow line/article words/meaning (RN-158 doubled words, RN-155 நம்மக்கல்); ages said as a news reader; repost workflow for a removed reel |
 | 2026-10-28 | `98bdd3f` | Reels: full news detail from the source (every fact, 130-170 words; examples and rules no longer push short scripts), at most 90 seconds (voice read up to 1.2x faster instead of cutting facts) |
 | 2026-10-27 | `1fd4cb5` | PROJECT_CONTEXT.md: how the pipeline works, owner rules, files, secrets; recent changes updated automatically after every code commit |
-| 2026-10-27 | `e9deebe` | Reels: no double reading of the opening, full dates (month added), short pauses in long lists, everyday Tamil Nadu words (பஸ், டூவீலர், போலீசார், கலெக்டர்) in voice, subtitles and cards |
 <!-- recent-changes:end -->
