@@ -2,7 +2,7 @@ writing [N]: தினப்படியை உயர்த்த கோரி �
 writing [N]: எஸ்.ஐ.ஆர்., போராட்டம் குறித்த கருத்தரங்கு
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
 gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {
   "error": {
@@ -38,8 +38,8 @@ fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message"
 dead for this round: groq/openai/gpt-oss-120b
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 dead for this round: groq/openai/gpt-oss-120b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
 dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast
 fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {"errors":[{"message":"AiError: AiError: you have used up your 
@@ -56,21 +56,32 @@ free models unavailable: no free model answered: mistral mistral-small-latest 42
 fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate_limited","param":null,"
 switching away from mistral/mistral-small-latest for 10 min
 free models unavailable: no free model answered: mistral mistral-small-latest 429: {"object":"error","message":"Rate limit exceeded","type":"rate
-ok anthropic/claude-haiku-5-5
-claude answer not JSON (Expecting ',' delimiter: line 1 column 2968 (char 2967)); stop_reason=end_turn blocks=['text'] usage={'input_tokens': 585, 'cache_creation_input_tokens': 12188, 'cache_read_input_tokens': 0, 'cache_creation': {'ephemeral_5m_input_tokens': 12188, 'ephemeral_1h_input_tokens': 0}, 'output_tokens': 1783, 'output_tokens_details': {'thinking_tokens': 0}, 'service_tier': 'standard', 'inference_geo': 'global', 'speed': 'standard'} head='```json\n{"tamil_headline": "தினப்படியை உயர்த்தக் கோரி ஈரோட்டில் தொமுச ஆர்ப்பாட்டம்", "english_headline": "TOMUCHA protest in Erode demanding higher daily allowance for workers", "category": "Governmen'
-claude rewrite failed: Expecting ',' delimiter: line 1 column 2968 (char 2967)
 ok anthropic/claude-haiku-5-5
 claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
   slides must have 3 or 4 items
-  reel_script has 34 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  reel_script has 30 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  reel_script has 42 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  not grounded: only 42% of the words come from the article (e.g. காவல், உதவி, ஆய்வாளர்ஆர், நடைபெற்றுள்ளது, இந்தக்); use the article's own words and facts
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  slides must have 3 or 4 items
+  reel_script has 43 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  slides must have 3 or 4 items
+  reel_script has 38 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  not grounded: only 47% of the words come from the article (e.g. காவல், உதவி, ஆய்வாளர்ஆர், நடைபெற்றது, மற்றும்); use the article's own words and facts
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 45 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
   slides must have 3 or 4 items
-  reel_script has 38 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  reel_script has 36 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+proofread skipped: free models not efficient (18 failures in a row): using Claude
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  slides must have 3 or 4 items
+  reel_script has 46 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
 proofread skipped: free models not efficient (18 failures in a row): using Claude
 ok anthropic/claude-haiku-5-5
 earlier stories still waiting for images: []
@@ -81,8 +92,8 @@ to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)
 candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min
 try (N) manual=False: எஸ்.ஐ.ஆர்., போராட்டம் குறித்த கருத்தரங்கு
 try (N) manual=False: தினப்படியை உயர்த்த கோரி தொமுச ஆர்ப்பாட்டம்
-NOT filed (N) தினப்படியை உயர்த்த கோரி தொமுச ஆர்ப்பாட்டம்: all free models failed: no usable answer from the models
 NOT filed (N) எஸ்.ஐ.ஆர்., போராட்டம் குறித்த கருத்தரங்கு: not Namakkal district news (the story's first lines name another place and no Namakkal place)
+NOT filed (N) தினப்படியை உயர்த்த கோரி தொமுச ஆர்ப்பாட்டம்: not Namakkal district news (the story's first lines name another place and no Namakkal place)
 candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 0}, time left 29 min
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
