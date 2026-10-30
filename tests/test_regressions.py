@@ -824,3 +824,32 @@ class RepairNotLose(unittest.TestCase):
         post.ALL_ROWS = []
         self.assertNotIn("known issue", post.skip_reason(dict(row, story_id="RN-T", source="", published="", researched="", review="Auto")))
 
+
+class CodeBugsNeverRepeat(unittest.TestCase):
+    """owner 30 Oct: a bug fixed once must never come back. 29 Oct every posting job crashed: 'verify' was used in clean_caption without
+    being imported. (1) No file may use a name that is not defined (checked by pyflakes on GitHub). (2) The caption and posting-check
+    steps are run end to end on a sample story, so a crash there fails the tests, not the live posting."""
+
+    def test_no_undefined_names(self):
+        try:
+            from pyflakes import api, reporter
+        except ImportError:
+            self.skipTest("pyflakes is installed by tests.yml on GitHub")
+        import io, glob
+        out, err = io.StringIO(), io.StringIO()
+        for f in sorted(glob.glob(str(ROOT / "poster" / "*.py")) + glob.glob(str(ROOT / "research_free" / "*.py")) + glob.glob(str(ROOT / "reel" / "*.py"))):
+            api.checkPath(f, reporter.Reporter(out, err))
+        bad = [l for l in out.getvalue().splitlines() if "undefined name" in l or "referenced before assignment" in l]
+        self.assertEqual([], bad)
+
+    def test_posting_text_steps_run(self):
+        post.ALL_ROWS = []
+        row = {"story_id": "RN-T", "headline_ta": "சோதனை செய்தி: சாலை விபத்து", "headline_en": "Road accident test", "category": "Accident",
+               "location": "", "source": "", "published": "", "researched": "", "notes": "", "batch": "", "review": "Auto", "post_to": "",
+               "caption": "🚗 சோதனை செய்தி\n\n📰 முழு விவரம்:\nசாலையில் விபத்து நடந்தது.\n\n#Test",
+               "reel_script": "சாலையில் விபத்து நடந்தது. மேலும் செய்திகளுக்கு பின்தொடருங்கள்.", "slides_spec": json.dumps({"v": 3, "slides": []})}
+        post.clean_caption(dict(row))
+        post.final_caption(dict(row))
+        post.check_text(dict(row), json.loads(row["slides_spec"]))
+        post.skip_reason(dict(row))
+
