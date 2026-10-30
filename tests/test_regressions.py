@@ -952,7 +952,7 @@ class FreeWriters30Oct(unittest.TestCase):
                       "OPENROUTER_API_KEY", "NVIDIA_API_KEY", "CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID")
         ch = self.build(everything)
         providers = list(dict.fromkeys(p for p, _ in ch))
-        self.assertEqual(["gemini", "sarvam", "groq"], providers)      # Gemma ready but not live until proven (30 Oct test: 503/500)
+        self.assertEqual(["gemini", "groq"], providers)      # Sarvam off until writer-compare proves it (30 Oct: empty answers)      # Gemma ready but not live until proven (30 Oct test: 503/500)
         self.assertEqual(("gemini", "gemini-3.6-flash"), ch[0])
         import llm
         self.assertFalse(hasattr(llm, "_cerebras"))      # 30 Oct: Cerebras needs a card - paid, not used
