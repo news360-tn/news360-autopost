@@ -56,7 +56,7 @@ def _fal(prompt, seed, key, model=None):
 
 CF = "https://api.cloudflare.com/client/v4/accounts/{}/ai/run/@cf/"
 CF_MODELS = [
-    ("black-forest-labs/flux-1-schnell", lambda p, s: {"prompt": p, "steps": 8}),
+    ("black-forest-labs/flux-1-schnell", lambda p, s: {"prompt": p, "steps": int(os.environ.get("CF_IMAGE_STEPS", "4"))}),      # 30 Oct: 4 (was 8) = ~230 free pictures/day
 ]
 
 
@@ -143,6 +143,81 @@ def generate(prompt, seed=0, key=None, cheap=False):
     return to_story_size(_generate(prompt, seed, key, cheap))
 
 
+
+# ---- owner 30 Oct: more FREE picture services, tried after Cloudflare and before NVIDIA / paid FAL.
+# Each is skipped when its key (GitHub secret) is not set, so nothing changes until the owner adds the key.
+# Request shapes from the official API docs (SiliconFlow images/generations, Together images/generations, Pollinations gen API).
+def _siliconflow(prompt, seed, key):
+    r = requests.post("https://api.siliconflow.com/v1/images/generations", timeout=60, headers={"Authorization": "Bearer " + key},
+                      json={"model": "black-forest-labs/FLUX.1-schnell", "prompt": prompt[:1800], "image_size": "576x1024", "seed": seed % 9999999999})
+    if r.status_code != 200:
+        raise RuntimeError(f"siliconflow {r.status_code}: {r.text[:200]}")
+    url = ((r.json().get("images") or [{}])[0]).get("url")
+    if not url:
+        raise RuntimeError(f"siliconflow no image: {r.text[:200]}")
+    d = requests.get(url, timeout=60)
+    d.raise_for_status()
+    return d.content
+
+
+def _together(prompt, seed, key):
+    body = {"model": os.environ.get("TOGETHER_IMAGE_MODEL", "black-forest-labs/FLUX.1-schnell-Free"), "prompt": prompt[:1800],
+            "width": 768, "height": 1344, "steps": 4, "n": 1, "seed": seed, "response_format": "base64"}
+    r = requests.post("https://api.together.ai/v1/images/generations", json=body, timeout=60, headers={"Authorization": "Bearer " + key})
+    if r.status_code == 400 and "height" in r.text.lower():      # a size the free model does not take: the 9:16 size it does
+        body.update(width=576, height=1024)
+        r = requests.post("https://api.together.ai/v1/images/generations", json=body, timeout=60, headers={"Authorization": "Bearer " + key})
+    if r.status_code != 200:
+        raise RuntimeError(f"together {r.status_code}: {r.text[:200]}")
+    item = (r.json().get("data") or [{}])[0]
+    if item.get("b64_json"):
+        return base64.b64decode(item["b64_json"])
+    if item.get("url"):
+        d = requests.get(item["url"], timeout=60)
+        d.raise_for_status()
+        return d.content
+    raise RuntimeError(f"together no image: {r.text[:200]}")
+
+
+def _pollinations(prompt, seed, key):
+    import urllib.parse
+    r = requests.get("https://gen.pollinations.ai/image/" + urllib.parse.quote(prompt[:1500]), timeout=90,
+                     params={"width": 768, "height": 1344, "seed": seed, "model": os.environ.get("POLLINATIONS_MODEL", "flux"), "nologo": "true"},
+                     headers={"Authorization": "Bearer " + key})
+    if r.status_code != 200 or not r.headers.get("content-type", "").startswith("image/"):
+        raise RuntimeError(f"pollinations {r.status_code}: {r.text[:200] if not r.headers.get('content-type','').startswith('image/') else ''}")
+    return r.content
+
+
+EXTRA_FREE = [("siliconflow", "SILICONFLOW_API_KEY", _siliconflow), ("together", "TOGETHER_API_KEY", _together),
+              ("pollinations", "POLLINATIONS_API_KEY", _pollinations)]
+
+
+def _extra_free(prompt, seed):
+    """the free services after Cloudflare; a service that refuses the key, is out of its free limit or keeps failing is not tried again this run"""
+    last = None
+    for name, env, fn in EXTRA_FREE:
+        key = os.environ.get(env)
+        if not key or name in DEAD:
+            continue
+        for k in range(2):
+            try:
+                img = fn(prompt, seed + k, key)
+                USED[name] = USED.get(name, 0) + 1
+                return img, None
+            except Exception as e:
+                last = e
+                m = str(e)
+                print("imagegen:", m[:220], file=sys.stderr)
+                if any(c in m for c in (" 401", " 402", " 403", " 404")) or (" 429" in m and k == 1):
+                    DEAD.add(name)      # no access / out of the free limit: the next service for the rest of this run
+                    break
+                time.sleep(8 if " 429" in m else 2)
+        else:
+            DEAD.add(name)      # failed twice: the next service
+    return None, last
+
+
 def _generate(prompt, seed=0, key=None, cheap=False):
     """owner 29 Oct: FREE first - Cloudflare Workers AI FLUX schnell, then NVIDIA FLUX (free credits); only when both fail, fal.ai
     (cover: FLUX dev; scenes 2-3: FLUX schnell, dev as backup). Cloudinary only stores the picture."""
@@ -162,6 +237,10 @@ def _generate(prompt, seed=0, key=None, cheap=False):
                 print("imagegen:", m[:220], file=sys.stderr)
                 if any(c in m for c in (" 401", " 403", " 404", " 400", " 422", "no image", "daily free allocation")) or "Timeout" in type(e).__name__:
                     DEAD.add(model)      # the daily free neurons are used up: not tried again for every picture of this run
+    img, err = _extra_free(prompt, seed)      # owner 30 Oct: SiliconFlow, Together, Pollinations (free) before NVIDIA and paid FAL
+    if img:
+        return img
+    last = err or last
     nkey = key or os.environ.get("NVIDIA_API_KEY")
     if nkey:
         try:

@@ -40,12 +40,12 @@ STEP 1 - "facts": read the article and list ONLY what a camera could see, copied
  police station, temple, lake, farm field, market, poultry farm, textile/power-loom unit, house, hill road), the people by role and their number,
  vehicles, objects, animals, crops, buildings, weather, time of day. Write "unknown" for anything the article does not say. Never invent.
 
-STEP 2 - "scenes": 3 different photographs of THIS event, each 100-150 words of plain English (owner 29 Oct: a reader who sees only the
- cover must already know WHICH news it is):
+STEP 2 - "scenes": 2 different photographs of THIS event, each 100-150 words of plain English (owner 30 Oct: 2 pictures per reel; a reader who
+ sees only the cover must already know WHICH news it is):
  1. COVER - the main event itself: the main action exactly as the article describes it, in its real place (this is the picture people see first).
- 2. WIDE establishing shot: the real place type with Namakkal / Tamil Nadu character, the event visible in it.
- 3. DETAIL close-up of the one object or sign of the event that tells the story (the damaged vehicle part, the seized goods, the egg trays, the
-    water on the road, the paddy crop, the transformer, the closed shop shutter, the handed-over documents) - no faces.
+ 2. DETAIL - a close-up of the one object or sign of the event that tells the story (the damaged vehicle part, the seized goods, the egg trays,
+    the water on the road, the paddy crop, the transformer, the closed shop shutter, the handed-over documents) - no faces; if the news has no
+    such object, a WIDE shot of the real place with the event visible in it.
 Every scene is written in THIS order: SUBJECT + ACTION of this news in the first sentence; PLACE (type and look); PEOPLE (role, number, clothes,
  what they do; from behind or far away); VEHICLES / OBJECTS (exact types from the article); TIME + LIGHT + WEATHER; CAMERA (angle, 35 mm).
  Every scene MUST contain at least THREE concrete facts from STEP 1 (place type, action, objects, numbers) - never a generic scene.
@@ -61,7 +61,7 @@ CATEGORY GUIDE: accident = the vehicles after the crash on that road, police and
  itself (garbage heap, pothole with rain water, overflowing drain, broken street light, people waiting with water pots, workers fixing it).
 NEVER: readable text, letters, numbers, signboards, logos, brand or company names, product labels, watermarks, a recognisable face of any real person or politician, blood, injuries,
  dead bodies, weapons pointed at people, collages or split frames. People only from behind, far away or slightly blurred.
-Return ONLY JSON: {"facts": "...", "scenes": ["scene 1", "scene 2", "scene 3"]}"""
+Return ONLY JSON: {"facts": "...", "scenes": ["cover scene", "detail scene"]}"""
 
 # owner 29 Oct: the news scene comes FIRST (some image models read only the start of a long prompt), the photo style after it
 IMG_TEMPLATE = ("{scene} "
@@ -90,6 +90,14 @@ def scene_ok(scene, headline):
     return sum(1 for w in need if w in have or w.rstrip("s") in have) >= min(2, len(need))
 
 
+def pictures_per_reel():
+    """poster/config.json free_images.pictures_per_reel (owner 30 Oct: 2 on every page)"""
+    try:
+        return max(1, int(json.loads((HERE.parent / "poster" / "config.json").read_text(encoding="utf-8")).get("free_images", {}).get("pictures_per_reel", 3)))
+    except Exception:
+        return 3
+
+
 def image_scenes(art, d):
     """detailed image prompts built from the article itself (not a generic scene). owner 29 Oct: when the COVER scene is too short or does
     not name the main things of the headline, the plan is sent back once."""
@@ -104,7 +112,7 @@ def image_scenes(art, d):
                     break
                 raise
             data, _ = llm.ask_claude(BRIEF_SYSTEM, user, max_tokens=2500)
-        sc = [s.strip() for s in (data.get("scenes") or []) if isinstance(s, str) and len(s.strip()) > 40][:3]
+        sc = [s.strip() for s in (data.get("scenes") or []) if isinstance(s, str) and len(s.strip()) > 40][:pictures_per_reel()]
         if sc and scene_ok(sc[0], d.get("english_headline", "")):
             return sc
         best = best or sc
@@ -744,7 +752,7 @@ def file_story(art, res, errors_log, recent, scenes=None):
         except Exception as e:
             print("image brief failed, using the writer's scenes:", str(e)[:120], flush=True)
             scenes = d["scenes"]
-    prompts = "\n---\n".join(IMG_TEMPLATE.format(scene=s.strip()) for s in scenes)
+    prompts = "\n---\n".join(IMG_TEMPLATE.format(scene=s.strip()) for s in scenes[:pictures_per_reel()])      # owner 30 Oct: 2 pictures per reel
     ver = f"FREE-MODEL DRAFT ({model}) - not checked by Claude yet" + (f"; validator problems: {'; '.join(errors)}" if errors else "")
     return {"tamil_headline": d["tamil_headline"], "english_headline": d["english_headline"], "category": d["category"], "location": d["location"],
             "importance": d["importance"], "scope": d.get("scope", ""), "post_to": d["post_to"], "slides_spec": d["slides_spec"], "reel_script": d["reel_script"],

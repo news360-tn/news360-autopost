@@ -853,3 +853,72 @@ class CodeBugsNeverRepeat(unittest.TestCase):
         post.check_text(dict(row), json.loads(row["slides_spec"]))
         post.skip_reason(dict(row))
 
+
+class FreePicturesFirst30Oct(unittest.TestCase):
+    """owner 30 Oct: free pictures first - Cloudflare (pictures only) -> SiliconFlow -> Together -> Pollinations -> NVIDIA -> FAL last;
+    2 pictures per reel; a service without its key is skipped (nothing changes until the owner adds it)"""
+
+    def run_order(self, fail, keys):
+        import imagegen
+        calls = []
+        def src(name):
+            def f(*a, **k):
+                calls.append(name)
+                if name in fail:
+                    raise RuntimeError(name + " 429: daily limit (per day)")
+                return b"img"
+            return f
+        saved = {k: getattr(imagegen, k) for k in ("_cf", "generate_nvidia", "_fal", "to_story_size", "EXTRA_FREE")}
+        names = ("CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "NVIDIA_API_KEY", "FAL_KEY", "SILICONFLOW_API_KEY", "TOGETHER_API_KEY", "POLLINATIONS_API_KEY")
+        env = {k: os.environ.get(k) for k in names}
+        imagegen._cf, imagegen.generate_nvidia, imagegen.to_story_size = src("cloudflare"), src("nvidia"), (lambda b: b)
+        imagegen._fal = lambda p, s, k, model=None: src("fal")()
+        imagegen.EXTRA_FREE = [(n, e, src(n)) for n, e, _ in saved["EXTRA_FREE"]]
+        for k in names:
+            os.environ.pop(k, None)
+        os.environ.update({k: "test" for k in ("CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "NVIDIA_API_KEY", "FAL_KEY") + keys})
+        imagegen.DEAD.clear()
+        real_sleep, imagegen.time.sleep = imagegen.time.sleep, (lambda *a: None)      # no real waiting between retries in tests
+        try:
+            imagegen.generate("A police jeep at Rasipuram bus stand", 1)
+        except Exception:
+            pass
+        finally:
+            imagegen.time.sleep = real_sleep
+            for k, v in saved.items():
+                setattr(imagegen, k, v)
+            for k, v in env.items():
+                os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
+            imagegen.DEAD.clear()
+        return calls
+
+    def test_order_with_all_keys(self):
+        all3 = ("SILICONFLOW_API_KEY", "TOGETHER_API_KEY", "POLLINATIONS_API_KEY")
+        self.assertEqual(["cloudflare"], self.run_order(set(), all3))
+        self.assertEqual("siliconflow", self.run_order({"cloudflare"}, all3)[-1])
+        self.assertEqual("together", self.run_order({"cloudflare", "siliconflow"}, all3)[-1])
+        calls = self.run_order({"cloudflare", "siliconflow", "together", "pollinations", "nvidia"}, all3)
+        self.assertEqual("fal", calls[-1], calls)      # paid FAL only after every free one
+        self.assertNotIn("fal", self.run_order({"cloudflare"}, all3))
+
+    def test_missing_key_means_skipped(self):
+        calls = self.run_order({"cloudflare"}, ())
+        self.assertNotIn("siliconflow", calls)
+        self.assertEqual("nvidia", calls[-1])      # without the new keys the order is exactly as before
+
+    def test_cloudflare_kept_for_pictures(self):
+        import llm
+        old = {k: os.environ.get(k) for k in ("CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "GEMINI_API_KEY", "GROQ_API_KEY", "GH_MODELS_TOKEN", "NVIDIA_API_KEY", "MISTRAL_API_KEY", "OPENROUTER_API_KEY")}
+        for k in old:
+            os.environ.pop(k, None)
+        os.environ.update(CLOUDFLARE_API_TOKEN="t", CLOUDFLARE_ACCOUNT_ID="a")
+        try:
+            self.assertFalse([c for c in llm.chain() if c[0] == "cloudflare"])
+        finally:
+            for k, v in old.items():
+                os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
+
+    def test_two_pictures_per_reel(self):
+        self.assertEqual(2, collect.pictures_per_reel())
+        self.assertEqual(2, json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))["free_images"]["pictures_per_reel"])
+

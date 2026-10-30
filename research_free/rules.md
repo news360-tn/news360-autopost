@@ -18,7 +18,7 @@ OUTPUT JSON KEYS
  "slides_spec": {"v":3, "cat":"short Tamil tag e.g. மழை எச்சரிக்கை", "loc":"Tamil place", "hl1":"cover headline, max 40 characters, strong and clear", "hl2":"cover key fact in yellow, max 28 characters", "slides":[{"title":"Tamil title, max 18 characters","lines":["fact line 1","fact line 2","optional line 3"]}]},
  "reel_script": "FULL-DETAIL Tamil news-reader script with EVERY fact of the article, 8-11 short sentences, 70-105 words, max 60 seconds (see REEL DETAIL below)",
  "caption": "Instagram caption",
- "scenes": ["English scene for image 1 (cover)", "scene for image 2", "..."]
+ "scenes": ["English scene for image 1 (cover: the main event)", "scene for image 2 (detail of THIS news)"]
 }
 
 slides_spec rules
@@ -60,7 +60,7 @@ caption rules
 - No links, no source names, no clickbait, no false urgency.
 
 scenes rules
-- One English scene description per image: 4 for a small story, 5 for a normal story (number of scenes = number of slides + 1). Scene 1 is the cover: the most representative wide scene. Every scene must show the SPECIFIC subject of THIS story (the exact object, event or place named in the article, e.g. the cobra on a two-wheeler, egg trays at a farm, the farmers' market stalls) - never a generic filler picture; each scene shows a different angle or moment of the same story. Describe what is visible in the Namakkal / Tamil Nadu setting, time of day, weather, objects. People only from behind or far away. For crime/accident show only symbolic scenes (police vehicle at night, empty road). Never ask for text, signs, logos or real faces. Keep every scene in the same light and colour mood. Do NOT write the technical photo wording; the system adds it.
+- Exactly 2 English scene descriptions (owner 30 Oct: 2 pictures per reel): 1 = the cover, the main event of THIS news; 2 = a close-up detail of the key object of THIS news. Scene 1 is the cover: the most representative wide scene. Every scene must show the SPECIFIC subject of THIS story (the exact object, event or place named in the article, e.g. the cobra on a two-wheeler, egg trays at a farm, the farmers' market stalls) - never a generic filler picture; each scene shows a different angle or moment of the same story. Describe what is visible in the Namakkal / Tamil Nadu setting, time of day, weather, objects. People only from behind or far away. For crime/accident show only symbolic scenes (police vehicle at night, empty road). Never ask for text, signs, logos or real faces. Keep every scene in the same light and colour mood. Do NOT write the technical photo wording; the system adds it.
 
 BEFORE ANSWERING, re-read the article once and tick off every sentence of the reel_script and every slide line against it. Delete anything the article does not say. PROOFREAD:  Tamil spelling and sandhi, place names (ராசிபுரம், நாமகிரிப்பேட்டை, திருச்செங்கோடு, சேந்தமங்கலம், கொல்லிமலை, மல்லசமுத்திரம், புதுச்சத்திரம், பரமத்தி வேலூர், குமாரபாளையம், பள்ளிப்பாளையம், மோகனூர், எருமப்பட்டி, வெண்ணந்தூர்), and that every fact and number is in the article.
 

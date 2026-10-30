@@ -185,6 +185,16 @@ def _cloudflare(model, system, user, key):
     return r.json()["choices"][0]["message"]["content"]
 
 
+def _cf_for_writing():
+    """poster/config.json free_images.cloudflare_for_writing (default false): the 10,000 free daily neurons go to news pictures"""
+    try:
+        from pathlib import Path
+        c = json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text(encoding="utf-8"))
+        return bool((c.get("free_images") or {}).get("cloudflare_for_writing", False))
+    except Exception:
+        return False
+
+
 def chain():
     out = []
     g, q, o = os.environ.get("GEMINI_API_KEY"), os.environ.get("GROQ_API_KEY"), os.environ.get("OPENROUTER_API_KEY")
@@ -199,7 +209,7 @@ def chain():
     if q:
         out += [("groq", m, _groq, q) for m in groq_models(q)]
     ck = os.environ.get("CLOUDFLARE_API_TOKEN")
-    if ck and os.environ.get("CLOUDFLARE_ACCOUNT_ID"):
+    if ck and os.environ.get("CLOUDFLARE_ACCOUNT_ID") and _cf_for_writing():      # owner 30 Oct: Cloudflare's free quota is kept for pictures
         out += [("cloudflare", m, _cloudflare, ck) for m in CF_MODELS]
     mk = os.environ.get("MISTRAL_API_KEY")
     if mk:  # small Mistral models are the weakest (break the format rules) -> tried last

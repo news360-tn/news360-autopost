@@ -1371,7 +1371,7 @@ def auto_images():
     cap = int(os.environ.get("IMG_MAX_PER_RUN", "40"))
     made_total = 0
     for r in pend:
-        prompts = [p.strip() for p in str(r.get("prompts", "")).split("\n---\n") if p.strip()]
+        prompts = [p.strip() for p in str(r.get("prompts", "")).split("\n---\n") if p.strip()][:int((CONFIG.get("free_images") or {}).get("pictures_per_reel", 3))]      # owner 30 Oct: 2 per reel
         if not prompts:
             continue
         if time.time() > budget:
@@ -1400,6 +1400,9 @@ def auto_images():
                         break
                     log("picture does not match the news, generating again:", r.get("story_id"), k)
                 if data is None:
+                    if urls:      # owner 30 Oct: the cover (and any picture already made) is kept - only the extra picture is missing
+                        log("picture", k, "not made for", r.get("story_id"), "- the reel uses the", len(urls), "made:", str(last_err)[:120])
+                        break
                     raise RuntimeError(str(last_err))
                 f = work / f"auto_{k}.jpg"
                 f.write_bytes(data)
