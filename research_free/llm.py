@@ -172,7 +172,7 @@ def _openai_style(name, url, headers, model, system, user, extra, timeout=120):
 def _sarvam(model, system, user, key):
     """Sarvam AI (Indian, built for Tamil and 21 more Indian languages) - api.sarvam.ai chat completions (official docs, 30 Oct)"""
     return _openai_style("sarvam", "https://api.sarvam.ai/v1/chat/completions", {"api-subscription-key": key, "Authorization": f"Bearer {key}"},
-                         model, system, user, {"max_tokens": 16000, "reasoning_effort": writers_cfg().get("sarvam_reasoning", "none")})
+                         model, system, user, {"max_tokens": 16000, "reasoning_effort": writers_cfg().get("sarvam_reasoning", "low")})
 
 
 
