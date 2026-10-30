@@ -1036,7 +1036,9 @@ def main():
                 story["post_to"] = "Namakkal 360"
             story["_area"], story["_score"] = area, n["score"]
             out.append(story)
-            recent.append({"headline_ta": story["tamil_headline"], "source": art["url"]})
+            recent.append({"headline_ta": story["tamil_headline"], "source": art["url"], "reel_script": story.get("reel_script") or "",      # 30 Oct RN-214 = RN-209,
+                           "story_id": story.get("story_id") or "a story filed this round",                                                    # filed 20 min apart in one round
+                           "researched": datetime.datetime.now(_fr().IST).strftime("%d %b %Y, %H:%M")})
             filed_titles.append(art["title"])
             n["status"], n["story"], stt["s"] = "filed", story["tamil_headline"], "filed"
             done[area] += 1

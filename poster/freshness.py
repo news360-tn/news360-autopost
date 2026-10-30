@@ -331,4 +331,7 @@ def same_event(a, b, df_n):
     if len(x) < 4 or len(y) < 4:
         return False
     shared = len(x & y)
-    return shared >= 9 and shared / min(len(x), len(y)) >= 0.45
+    r = shared / min(len(x), len(y))
+    # 30 Oct RN-214 = RN-209 (short scripts, 8 shared rare stems, 0.62): short reports of one event share fewer words.
+    # In 80 filed Namakkal stories no two different events shared more than 5 rare stems.
+    return (shared >= 9 and r >= 0.45) or (shared >= 6 and r >= 0.55)

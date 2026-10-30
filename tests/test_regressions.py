@@ -1028,3 +1028,26 @@ class FreeWriters30Oct(unittest.TestCase):
                 llm._sarvam("sarvam-105b", "s", "u", "k")
         finally:
             llm.requests.post = old
+
+
+class SameEventShortScripts(unittest.TestCase):
+    """30 Oct RN-214 = RN-209: the Salem-road poultry-feed godown fire from two outlets, short scripts, 8 shared rare words.
+    The poster picked RN-214 eight times and its last check refused it every time (same news on Instagram)"""
+    A = ("நாமக்கல்லில் கோழித்தீவன குடோனில் திடீர் தீ விபத்து ஏற்பட்டது. நாமக்கல்-சேலம் சாலையில் கண்ணன் என்பவருக்குச் சொந்தமான குடோன் உள்ளது. "
+         "கோழித்தீவன மூலப்பொருள் மூட்டைகள் அடுக்கி வைக்கப்பட்டிருந்த குடோனில் புகை வந்தது. தகவல் அறிந்த நாமக்கல் தீயணைப்புத் துறையினர் "
+         "விரைந்து சென்று தீயை அணைத்தனர். இந்த தீ விபத்தில் 10 மூட்டைகள் மட்டும் சேதமடைந்தன.")
+    B = ("நாமக்கல் சேலம் சாலை சுவாமி நகரில் கோழித்தீவன குடோனில் தீ விபத்து ஏற்பட்டது. இதில் ரூ.5 லட்சம் மதிப்புள்ள பொருட்கள் எரிந்து நாசமடைந்தன. "
+         "கண்ணன் (48 வயது) என்பவர் இந்தக் குடோனை நடத்தி வருகிறார். இங்கு கோழித்தீவன மூலப்பொருட்கள் சேகரித்து வைக்கப்பட்டிருந்தன. "
+         "தகவல் அறிந்து தீயணைப்பு வீரர்கள் சம்பவ இடத்திற்கு வந்தனர். பின்னர் தீயணைப்பு வீரர்கள் தீயை அணைத்தனர்.")
+    OTHER = ["மோகனூர் சாலையில் புதிய பேருந்து நிழற்குடை திறப்பு விழா நடைபெற்றது ஊராட்சி தலைவர் திறந்து வைத்தார் பயணிகள் மகிழ்ச்சி",
+             "ராசிபுரம் உழவர் சந்தையில் தக்காளி வரத்து அதிகரிப்பு விலை சரிவு விவசாயிகள் கவலை வியாபாரிகள் தகவல்",
+             "கொல்லிமலை அரப்பளீஸ்வரர் கோவிலில் ஐப்பசி திருவிழா கொடியேற்றம் பக்தர்கள் திரளாக பங்கேற்பு சிறப்பு பூஜை"]
+
+    def test_short_reports_of_one_event(self):
+        self.assertTrue(fr.same_event(self.A, self.B, fr.event_df([self.A, self.B] + self.OTHER * 3)))
+
+    def test_writer_sees_stories_of_its_own_round(self):
+        today = datetime.datetime.now(IST).strftime("%d %b %Y, %H:%M")
+        recent = [{"story_id": "a story filed this round", "researched": today, "reel_script": self.A}] + \
+                 [{"story_id": f"RN-{i}", "researched": today, "reel_script": t} for i, t in enumerate(self.OTHER * 3)]
+        self.assertTrue(collect.same_event_filed({"title": "குடோனில் தீ", "text": self.B, "published": TODAY.isoformat()}, recent))
