@@ -1015,3 +1015,16 @@ class FreeWriters30Oct(unittest.TestCase):
         self.assertEqual(2, len(sent))
         self.assertTrue(sent[1].startswith("TODAY (IST)") and "EXAMPLE" not in sent[1])
 
+    def test_empty_answer_is_explained(self):
+        import llm
+        class R:
+            status_code = 200
+            def json(self):
+                return {"choices": [{"finish_reason": "length", "message": {"content": None, "reasoning_content": "x" * 50}}]}
+        old = llm.requests.post
+        llm.requests.post = lambda *a, **k: R()
+        try:
+            with self.assertRaisesRegex(RuntimeError, "empty answer .*length"):
+                llm._sarvam("sarvam-105b", "s", "u", "k")
+        finally:
+            llm.requests.post = old

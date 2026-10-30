@@ -161,13 +161,18 @@ def _openai_style(name, url, headers, model, system, user, extra, timeout=120):
                                  "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, **extra))
     if r.status_code != 200:
         raise RuntimeError(f"{name} {model} {r.status_code}: {r.text[:700]}")
-    return r.json()["choices"][0]["message"]["content"]
+    ch = r.json()["choices"][0]
+    out = (ch.get("message") or {}).get("content") or ""
+    if not out.strip():      # 30 Oct Sarvam: an empty answer said only 'Expecting value' - now the log says why (e.g. finish_reason length)
+        raise RuntimeError(f"{name} {model} empty answer (finish_reason {ch.get('finish_reason')}, "
+                           f"reasoning {len(str((ch.get('message') or {}).get('reasoning_content') or ''))} chars)")
+    return out
 
 
 def _sarvam(model, system, user, key):
     """Sarvam AI (Indian, built for Tamil and 21 more Indian languages) - api.sarvam.ai chat completions (official docs, 30 Oct)"""
     return _openai_style("sarvam", "https://api.sarvam.ai/v1/chat/completions", {"api-subscription-key": key, "Authorization": f"Bearer {key}"},
-                         model, system, user, {"max_tokens": 8000, "reasoning_effort": "low"})
+                         model, system, user, {"max_tokens": 16000, "reasoning_effort": writers_cfg().get("sarvam_reasoning", "none")})
 
 
 
