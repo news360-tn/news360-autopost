@@ -925,7 +925,8 @@ class FreePicturesFirst30Oct(unittest.TestCase):
 
 
 class FreeWriters30Oct(unittest.TestCase):
-    """owner 30 Oct: only free writing models that really work - Gemini 3.6/3.5 first (3.8/3.7 skipped), Sarvam, Cerebras, Gemma 4, Groq;
+    """owner 30 Oct: only free writing models that really work - Gemini 3.6/3.5 first (3.8/3.7 skipped), Sarvam, Gemma 4, Groq;
+    Cerebras removed (needs a card);
     GitHub Models, Mistral, OpenRouter, NVIDIA text removed; a provider without its key is skipped; Claude (paid) only after all of them"""
     KEYS = ("GEMINI_API_KEY", "SARVAM_API_KEY", "CEREBRAS_API_KEY", "GROQ_API_KEY", "CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID",
             "GH_MODELS_TOKEN", "MISTRAL_API_KEY", "OPENROUTER_API_KEY", "NVIDIA_API_KEY")
@@ -951,12 +952,14 @@ class FreeWriters30Oct(unittest.TestCase):
                       "OPENROUTER_API_KEY", "NVIDIA_API_KEY", "CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID")
         ch = self.build(everything)
         providers = list(dict.fromkeys(p for p, _ in ch))
-        self.assertEqual(["gemini", "sarvam", "cerebras", "groq"], providers)      # Gemma ready but not live until proven (30 Oct test: 503/500)
+        self.assertEqual(["gemini", "sarvam", "groq"], providers)      # Gemma ready but not live until proven (30 Oct test: 503/500)
         self.assertEqual(("gemini", "gemini-3.6-flash"), ch[0])
+        import llm
+        self.assertFalse(hasattr(llm, "_cerebras"))      # 30 Oct: Cerebras needs a card - paid, not used
 
     def test_without_new_keys_same_as_before(self):
         providers = list(dict.fromkeys(p for p, _ in self.build(("GEMINI_API_KEY", "GROQ_API_KEY"))))
-        self.assertEqual(["gemini", "groq"], providers)      # Sarvam / Cerebras skipped until their keys exist
+        self.assertEqual(["gemini", "groq"], providers)      # Sarvam skipped until its key exists
         os.environ["WRITERS_ORDER"] = "gemma"
         try:
             self.assertEqual(["gemma"], list(dict.fromkeys(p for p, _ in self.build(("GEMINI_API_KEY",)))))      # writer-compare can test one

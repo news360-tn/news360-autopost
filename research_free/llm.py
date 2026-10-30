@@ -1,7 +1,6 @@
 """Free-model chain (owner 30 Oct: only free models that really work, in this order - poster/config.json "writers"):
  - Google Gemini (AI Studio key; 3.6 / 3.5 flash first)      GEMINI_API_KEY
  - Sarvam AI (Indian, built for Tamil)                        SARVAM_API_KEY     (skipped until the key is set)
- - Cerebras (gpt-oss-120b / qwen)                             CEREBRAS_API_KEY   (skipped until the key is set)
  - Google Gemma 4 (same Gemini key, its own quota)            GEMINI_API_KEY
  - Groq (free tier; shorter prompt when ours is too large)    GROQ_API_KEY
 Removed 30 Oct (never answered usefully): GitHub Models, Mistral, OpenRouter, NVIDIA text. Claude (paid) is only the last backup (ask_claude).
@@ -171,23 +170,16 @@ def _sarvam(model, system, user, key):
                          model, system, user, {"max_tokens": 8000, "reasoning_effort": "low"})
 
 
-def _cerebras(model, system, user, key):
-    """Cerebras (free: about 1M tokens / 1,000 messages a day) - api.cerebras.ai chat completions (official docs, 30 Oct)"""
-    return _openai_style("cerebras", "https://api.cerebras.ai/v1/chat/completions", {"Authorization": f"Bearer {key}"},
-                         model, system, user, {"max_completion_tokens": 8000})
-
 
 def chain():
     """the FREE writing models in the owner's order (poster/config.json writers.order); a provider without its key is skipped"""
     w = writers_cfg()
     out = []
-    for name in w.get("order", ["gemini", "sarvam", "cerebras", "gemma", "groq", "cloudflare"]):
+    for name in w.get("order", ["gemini", "sarvam", "gemma", "groq", "cloudflare"]):
         if name == "gemini" and os.environ.get("GEMINI_API_KEY"):
             out += [("gemini", m, _gemini, os.environ["GEMINI_API_KEY"]) for m in gemini_models(os.environ["GEMINI_API_KEY"])]
         elif name == "sarvam" and os.environ.get("SARVAM_API_KEY"):
             out += [("sarvam", m, _sarvam, os.environ["SARVAM_API_KEY"]) for m in w.get("sarvam_models", ["sarvam-105b"])]
-        elif name == "cerebras" and os.environ.get("CEREBRAS_API_KEY"):
-            out += [("cerebras", m, _cerebras, os.environ["CEREBRAS_API_KEY"]) for m in w.get("cerebras_models", ["gpt-oss-120b", "qwen-3.8-27b"])]
         elif name == "gemma" and os.environ.get("GEMINI_API_KEY"):
             out += [("gemma", m, _gemma, os.environ["GEMINI_API_KEY"]) for m in w.get("gemma_models", ["gemma-4-26b-a4b-it", "gemma-4-31b-it"])]
         elif name == "groq" and os.environ.get("GROQ_API_KEY"):

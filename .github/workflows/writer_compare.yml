@@ -10,7 +10,7 @@ on:
         required: true
       providers:
         description: "models to compare, comma separated"
-        default: "gemini,gemma,sarvam,cerebras,groq"
+        default: "gemini,gemma,sarvam,groq"
 permissions:
   contents: write
 jobs:
@@ -26,7 +26,6 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
-          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           CLAUDE_MAX_CALLS: "0"      # Claude never used here - only the free model under test
         run: |
