@@ -748,7 +748,7 @@ class KnownIssuesNeverRepeat(unittest.TestCase):
         for iid, seen, check, bad, good in known_issues.ISSUES:
             row = dict(bad, story_id="RN-T", source="", published="", researched="", notes="", batch="", review="Auto")
             import verify
-            fixed = dict(row, **{k: verify.clean_text(row.get(k) or "") for k in ("headline_ta", "reel_script", "caption")})
+            fixed = known_issues.repair(dict(row, **{k: verify.clean_text(row.get(k) or "") for k in ("headline_ta", "reel_script", "caption")}))
             repaired = iid not in [x for x, _ in known_issues.problems(fixed)]      # e.g. stray letters of another script are repaired
             self.assertTrue(repaired or f"known issue {iid}" in post.skip_reason(row), f"{iid} would be posted again")
 
@@ -807,4 +807,20 @@ class CaptionAllFacts(unittest.TestCase):
         import validate
         cap = "📰 முழு விவரம்:\nராசிபுரத்தில் 17ஆம் தேதி பைக் திருடப்பட்டது; பைக் திருட்டு வழக்கில் 23 வயது வாலிபர் கைது."
         self.assertEqual([], validate.caption_missing_facts(cap, self.ART, self.STORY))
+
+
+class RepairNotLose(unittest.TestCase):
+    """owner 30 Oct: RN-199, RN-200, RN-203 were held back for a card cut mid-phrase / a sentence said twice - repair them, never lose the news"""
+
+    def test_card_and_repeat_repaired(self):
+        import known_issues
+        row = {"headline_ta": "பயிற்சி வகுப்பு", "caption": "📰 முழு விவரம்:\nவிவரம் இங்கே.",
+               "reel_script": "இன்று பயிற்சி வகுப்பு தொடங்கியது. இன்று பயிற்சி வகுப்பு தொடங்கியது. மாணவர்கள் கலந்துகொண்டனர்.",
+               "slides_spec": json.dumps({"slides": [{"lines": ["மாணவர்களுக்கு இலவச பயிற்சி வகுப்புகளுக்குப்", "நாளை தொடக்கம்"]}]}, ensure_ascii=False)}
+        fixed = known_issues.repair(row)
+        self.assertEqual([], known_issues.problems(fixed))
+        self.assertEqual(1, fixed["reel_script"].count("இன்று பயிற்சி வகுப்பு தொடங்கியது"))
+        self.assertIn("மாணவர்கள் கலந்துகொண்டனர்", fixed["reel_script"])
+        post.ALL_ROWS = []
+        self.assertNotIn("known issue", post.skip_reason(dict(row, story_id="RN-T", source="", published="", researched="", review="Auto")))
 

@@ -200,7 +200,7 @@ def skip_reason(row):
     if not is_ready_reel(row):      # owner 29 Oct: an issue found once never goes out again (research_free/known_issues.py)
         sys.path.insert(0, str(ROOT / "research_free"))
         import known_issues, verify
-        fixed = dict(row, **{k: verify.clean_text(row.get(k) or "") for k in ("headline_ta", "reel_script", "caption")})      # what the post will really say
+        fixed = known_issues.repair(dict(row, **{k: verify.clean_text(row.get(k) or "") for k in ("headline_ta", "reel_script", "caption")}))      # what the post will really say (repairable issues fixed)
         ki = known_issues.problems(fixed)
         if ki:
             return f"known issue {ki[0][0]}: {ki[0][1]}"
@@ -1077,6 +1077,14 @@ def run_story_page(row, page):
     row["reel_script"] = names.spoken(row.get("reel_script") or "")
     row["caption"] = names.full_places(row.get("caption") or "")
     row["slides_spec"] = names.full_places(row["slides_spec"])
+    try:      # owner 30 Oct: repairable known issues (card cut mid-phrase, a sentence said twice, a sentence about 'the article') are fixed, not lost
+        import known_issues
+        rep = known_issues.repair(row)
+        if any(rep.get(k) != row.get(k) for k in ("reel_script", "caption", "slides_spec")):
+            log("known issues repaired before posting")
+        row.update({k: rep[k] for k in ("reel_script", "caption", "slides_spec") if rep.get(k)})
+    except Exception as e:
+        log("known-issue repair skipped:", e)
     spec = json.loads(row["slides_spec"])
     if spec.get("ready_reel"):
         return run_ready_reel(row, page)
