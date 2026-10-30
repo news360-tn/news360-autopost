@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-30 | `5caf346` | SiliconFlow removed (owner): not free for this account ('balance insufficient'); picture order Cloudflare -> Pollinations -> NVIDIA -> FAL |
+| 2026-10-30 | `af5c2ae` | image test output |
 | 2026-10-30 | `db908ee` | imagegen-test: each free picture service tested on its own (Cloudflare, SiliconFlow, Pollinations, NVIDIA) - nothing posted |
 | 2026-10-30 | `73a8041` | Free pictures first (owner 30 Oct): Cloudflare kept for pictures (not writing, 4 steps = ~230 free pictures/day) -> SiliconFlow free FLUX -> Together free FLUX -> Pollinations -> NVIDIA -> FAL only when all fail (each new service skipped until its key is set); 2 news-specific pictures per reel on every page (cover = main event, 2nd = detail); the cover is kept if the 2nd picture fails; switches in config.json free_images |
 | 2026-10-30 | `a07407b` | Code bugs never repeat (owner): tests fail on any undefined name in poster/research_free/reel (pyflakes on GitHub - would have stopped the 29 Oct 'verify' posting crash) and run the caption + posting-check steps end to end on a sample story |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-28 | `e034b52` | No missed news: writer duplicate check needs 3 shared words and only compares with stories of the last 3 days (28 Oct: rain 140 mm, service-road garbage, farmers' meeting were wrongly skipped); picture check works again (gemini-2.5-flash retired: uses the live model list, next model on timeout/busy) |
 | 2026-10-28 | `916a2f8` | README: current automatic flow (collect, write, post, insights), switches, secrets; LIVE file stops posting |
 | 2026-10-28 | `bc8f0cf` | Ages read clearly: newspaper shorthand 'செல்வம், 47,' / 'செல்வம் (47)' becomes 'செல்வம் (47 வயது)' in voice, subtitles, cards and caption, also for stories written earlier (RN-156) |
-| 2026-10-28 | `c2f3cbf` | No missed news: an arrest/verdict/rescue reported days after the event is new news, not a duplicate (RN-159); the paper's Namakkal page counts as Namakkal news at posting too (RN-161); All News sheet no longer fails on a link listed twice |
-| 2026-10-28 | `e30419b` | Clear news reading: the reel opens with the one-line story (6-9 words, first 2-3 s) then the explanation; every number said with its meaning (age, count, date with month) - bare numbers like 'ராஜா, 12,' are rewritten |
 <!-- recent-changes:end -->
