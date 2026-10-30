@@ -1,7 +1,10 @@
-"""Free-model chain. HARD RULE: only free models are ever called.
- - Google Gemini (AI Studio key, free tier)         GEMINI_API_KEY
- - Groq (free tier)                                  GROQ_API_KEY      (optional)
- - OpenRouter, ONLY models whose id ends in ':free' and whose listed price is 0     OPENROUTER_API_KEY
+"""Free-model chain (owner 30 Oct: only free models that really work, in this order - poster/config.json "writers"):
+ - Google Gemini (AI Studio key; 3.6 / 3.5 flash first)      GEMINI_API_KEY
+ - Sarvam AI (Indian, built for Tamil)                        SARVAM_API_KEY     (skipped until the key is set)
+ - Cerebras (gpt-oss-120b / qwen)                             CEREBRAS_API_KEY   (skipped until the key is set)
+ - Google Gemma 4 (same Gemini key, its own quota)            GEMINI_API_KEY
+ - Groq (free tier; shorter prompt when ours is too large)    GROQ_API_KEY
+Removed 30 Oct (never answered usefully): GitHub Models, Mistral, OpenRouter, NVIDIA text. Claude (paid) is only the last backup (ask_claude).
 Every call goes through ask_json(); a model is tried in order, the next one is used when a limit/error is hit.
 """
 import json, os, re, time
@@ -9,7 +12,6 @@ import requests
 
 GEMINI_MODELS = ["gemini-3.6-flash", "gemini-3.5-flash"]      # only used when the model list cannot be read (2.5 retired 28 Oct)
 GROQ_MODELS = ["llama-3.3-70b-versatile"]
-OR_PREFER = ["gemma", "llama-3.3", "qwen", "deepseek", "mistral", "gpt-oss"]
 OR_BLOCK = ["flint", "recursive", "lite", "tiny", "mini", "1b", "3b", "7b", "8b"]   # weak models write broken Tamil
 LOG = []
 
@@ -53,54 +55,14 @@ def _groq(model, system, user, key):
                       headers={"Authorization": f"Bearer {key}"},
                       json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
                             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=60)
+    if r.status_code == 413 or (r.status_code == 429 and "request too large" in r.text.lower()):
+        cut = user.find("\n\nTODAY (IST):")      # owner 30 Oct: Groq rejects our long prompt - the same rules and article, without the examples
+        if cut > 0:
+            r = requests.post("https://api.groq.com/openai/v1/chat/completions", headers={"Authorization": f"Bearer {key}"}, timeout=60,
+                              json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
+                                    "messages": [{"role": "system", "content": system}, {"role": "user", "content": user[cut:].lstrip()}]})
     if r.status_code != 200:
         raise RuntimeError(f"groq {model} {r.status_code}: {r.text[:700]}")
-    return r.json()["choices"][0]["message"]["content"]
-
-
-NVIDIA_MODELS = []     # every NIM model we tried now answers 404/410 (gone / not on this plan): skipped so rounds do not lose minutes on them
-
-
-def _nvidia(model, system, user, key):
-    """NVIDIA NIM hosted API (build.nvidia.com): free developer credits/rate-limited tier, no card."""
-    r = requests.post("https://integrate.api.nvidia.com/v1/chat/completions",
-                      headers={"Authorization": f"Bearer {key}"},
-                      json={"model": model, "temperature": 0.3, "max_tokens": 4096,
-                            "messages": [{"role": "system", "content": system + "\nReturn ONLY the JSON object."},
-                                         {"role": "user", "content": user}]}, timeout=70)
-    if r.status_code != 200:
-        raise RuntimeError(f"nvidia {model} {r.status_code}: {r.text[:700]}")
-    return r.json()["choices"][0]["message"]["content"]
-
-
-_or_free = None
-
-
-def openrouter_free_models(key):
-    """free models only: id ends in ':free' AND prompt/completion price is 0"""
-    global _or_free
-    if _or_free is None:
-        r = requests.get("https://openrouter.ai/api/v1/models", headers={"Authorization": f"Bearer {key}"}, timeout=60)
-        r.raise_for_status()
-        out = []
-        for m in r.json().get("data", []):
-            pr = m.get("pricing", {})
-            if m["id"].endswith(":free") and float(pr.get("prompt", 1)) == 0 and float(pr.get("completion", 1)) == 0:
-                out.append(m["id"])
-        out = [i for i in out if any(p in i for p in OR_PREFER) and not any(b in i for b in OR_BLOCK)]   # only known-good families
-        out.sort(key=lambda i: min([k for k, p in enumerate(OR_PREFER) if p in i] or [99]))
-        _or_free = out
-    return _or_free
-
-
-def _openrouter(model, system, user, key):
-    assert model.endswith(":free"), "refusing to call a non-free OpenRouter model"
-    r = requests.post("https://openrouter.ai/api/v1/chat/completions",
-                      headers={"Authorization": f"Bearer {key}"},
-                      json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
-                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=70)
-    if r.status_code != 200:
-        raise RuntimeError(f"openrouter {model} {r.status_code}: {r.text[:700]}")
     return r.json()["choices"][0]["message"]["content"]
 
 
@@ -115,6 +77,9 @@ def gemini_models(key):
             m = re.search(r"(\d+(?:\.\d+)?)", n)
             return float(m.group(1)) if m else 0
         fl.sort(key=lambda n: ("lite" in n, -ver(n)))
+        w = writers_cfg()      # owner 30 Oct: logs show 3.6 / 3.5 answer, 3.8 / 3.7 always time out - real results decide the order
+        first = [m for m in w.get("gemini_first", GEMINI_MODELS) if m in fl]
+        fl = first + [m for m in fl if m not in first and m not in set(w.get("gemini_skip", []))]
         _log("gemini models: " + ", ".join(fl[:6]))
         return fl[:3] or GEMINI_MODELS
     except Exception as e:
@@ -141,36 +106,6 @@ DEAD = {}   # (provider, model) -> time until which it is skipped
 DEADLINE = [None]   # unix time after which no more model calls are made
 
 
-MISTRAL_MODELS = ["mistral-small-latest"]   # open-mistral-nemo removed: 9 of 9 stories it wrote on 23 Oct had 1-7 format/number errors
-
-
-_LAST_MISTRAL = [0.0]
-
-
-def _mistral(model, system, user, key):
-    time.sleep(max(0.0, 1.6 - (time.time() - _LAST_MISTRAL[0])))     # the free tier allows about one request per second
-    _LAST_MISTRAL[0] = time.time()
-    r = requests.post("https://api.mistral.ai/v1/chat/completions", headers={"Authorization": f"Bearer {key}"},
-                      json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
-                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=90)
-    if r.status_code != 200:
-        raise RuntimeError(f"mistral {model} {r.status_code}: {r.text[:700]}")
-    return r.json()["choices"][0]["message"]["content"]
-
-
-GHM_MODELS = []   # removed: every model returned a non-JSON reply on every run (owner request 24 Oct)
-
-
-def _ghmodels(model, system, user, key):
-    r = requests.post("https://models.github.ai/inference/chat/completions",
-                      headers={"Authorization": f"Bearer {key}", "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"},
-                      json={"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
-                            "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, timeout=90)
-    if r.status_code != 200:
-        raise RuntimeError(f"ghmodels {model} {r.status_code}: {r.text[:700]}")
-    return r.json()["choices"][0]["message"]["content"]
-
-
 CF_MODELS = ["@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/mistralai/mistral-small-3.1-24b-instruct"]
 
 
@@ -195,36 +130,76 @@ def _cf_for_writing():
         return False
 
 
+def writers_cfg():
+    """poster/config.json "writers" (owner 30 Oct): order of the free writing models and the Gemini models that answer"""
+    try:
+        from pathlib import Path
+        w = json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text(encoding="utf-8")).get("writers") or {}
+    except Exception:
+        w = {}
+    if os.environ.get("WRITERS_ORDER"):      # test-only (writer-compare workflow): one provider at a time; never set in the live workflows
+        w = dict(w, order=[x.strip() for x in os.environ["WRITERS_ORDER"].split(",") if x.strip()])
+    return w
+
+
+def _gemma(model, system, user, key):
+    """Gemma 4 on the same Gemini key, its own free quota (tested 30 Oct: gemma-4-26b-a4b-it answers Tamil JSON). The model first sends
+    its thinking as a separate part - only the answer parts are used."""
+    r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                      headers={"x-goog-api-key": key, "Content-Type": "application/json"},
+                      json={"systemInstruction": {"parts": [{"text": system}]}, "contents": [{"role": "user", "parts": [{"text": user}]}],
+                            "generationConfig": {"temperature": 0.3, "responseMimeType": "application/json"}}, timeout=90)
+    if r.status_code != 200:
+        raise RuntimeError(f"gemma {model} {r.status_code}: {r.text[:700]}")
+    parts = r.json()["candidates"][0]["content"]["parts"]
+    answer = [p.get("text", "") for p in parts if not p.get("thought")]
+    return (answer[-1] if answer else parts[-1].get("text", ""))
+
+
+def _openai_style(name, url, headers, model, system, user, extra, timeout=120):
+    r = requests.post(url, headers=headers, timeout=timeout,
+                      json=dict({"model": model, "temperature": 0.3, "response_format": {"type": "json_object"},
+                                 "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}, **extra))
+    if r.status_code != 200:
+        raise RuntimeError(f"{name} {model} {r.status_code}: {r.text[:700]}")
+    return r.json()["choices"][0]["message"]["content"]
+
+
+def _sarvam(model, system, user, key):
+    """Sarvam AI (Indian, built for Tamil and 21 more Indian languages) - api.sarvam.ai chat completions (official docs, 30 Oct)"""
+    return _openai_style("sarvam", "https://api.sarvam.ai/v1/chat/completions", {"api-subscription-key": key, "Authorization": f"Bearer {key}"},
+                         model, system, user, {"max_tokens": 8000, "reasoning_effort": "low"})
+
+
+def _cerebras(model, system, user, key):
+    """Cerebras (free: about 1M tokens / 1,000 messages a day) - api.cerebras.ai chat completions (official docs, 30 Oct)"""
+    return _openai_style("cerebras", "https://api.cerebras.ai/v1/chat/completions", {"Authorization": f"Bearer {key}"},
+                         model, system, user, {"max_completion_tokens": 8000})
+
+
 def chain():
+    """the FREE writing models in the owner's order (poster/config.json writers.order); a provider without its key is skipped"""
+    w = writers_cfg()
     out = []
-    g, q, o = os.environ.get("GEMINI_API_KEY"), os.environ.get("GROQ_API_KEY"), os.environ.get("OPENROUTER_API_KEY")
-    if g:
-        out += [("gemini", m, _gemini, g) for m in gemini_models(g)]
-    n = os.environ.get("NVIDIA_API_KEY")
-    if n:
-        out += [("nvidia", m, _nvidia, n) for m in NVIDIA_MODELS]
-    gk = os.environ.get("GH_MODELS_TOKEN")
-    if gk:
-        out += [("ghmodels", m, _ghmodels, gk) for m in GHM_MODELS]
-    if q:
-        out += [("groq", m, _groq, q) for m in groq_models(q)]
-    ck = os.environ.get("CLOUDFLARE_API_TOKEN")
-    if ck and os.environ.get("CLOUDFLARE_ACCOUNT_ID") and _cf_for_writing():      # owner 30 Oct: Cloudflare's free quota is kept for pictures
-        out += [("cloudflare", m, _cloudflare, ck) for m in CF_MODELS]
-    mk = os.environ.get("MISTRAL_API_KEY")
-    if mk:  # small Mistral models are the weakest (break the format rules) -> tried last
-        out += [("mistral", m, _mistral, mk) for m in MISTRAL_MODELS]
-    if o and os.environ.get("OPENROUTER_ENABLE") == "1":   # removed from the chain (quota 429 on every run, owner request 24 Oct); set OPENROUTER_ENABLE=1 to use again
-        try:
-            out += [("openrouter", m, _openrouter, o) for m in openrouter_free_models(o)[:8]]
-        except Exception as e:
-            _log(f"openrouter model list failed: {e}")
+    for name in w.get("order", ["gemini", "sarvam", "cerebras", "gemma", "groq", "cloudflare"]):
+        if name == "gemini" and os.environ.get("GEMINI_API_KEY"):
+            out += [("gemini", m, _gemini, os.environ["GEMINI_API_KEY"]) for m in gemini_models(os.environ["GEMINI_API_KEY"])]
+        elif name == "sarvam" and os.environ.get("SARVAM_API_KEY"):
+            out += [("sarvam", m, _sarvam, os.environ["SARVAM_API_KEY"]) for m in w.get("sarvam_models", ["sarvam-105b"])]
+        elif name == "cerebras" and os.environ.get("CEREBRAS_API_KEY"):
+            out += [("cerebras", m, _cerebras, os.environ["CEREBRAS_API_KEY"]) for m in w.get("cerebras_models", ["gpt-oss-120b", "qwen-3.8-27b"])]
+        elif name == "gemma" and os.environ.get("GEMINI_API_KEY"):
+            out += [("gemma", m, _gemma, os.environ["GEMINI_API_KEY"]) for m in w.get("gemma_models", ["gemma-4-26b-a4b-it", "gemma-4-31b-it"])]
+        elif name == "groq" and os.environ.get("GROQ_API_KEY"):
+            out += [("groq", m, _groq, os.environ["GROQ_API_KEY"]) for m in groq_models(os.environ["GROQ_API_KEY"])]
+        elif name == "cloudflare" and os.environ.get("CLOUDFLARE_API_TOKEN") and os.environ.get("CLOUDFLARE_ACCOUNT_ID") and _cf_for_writing():
+            out += [("cloudflare", m, _cloudflare, os.environ["CLOUDFLARE_API_TOKEN"]) for m in CF_MODELS]
     return out
 
 
 CLAUDE_FIRST = os.environ.get("CLAUDE_FIRST", "0") == "1"      # 0 (default) = free models first; Claude only when free models fail, are slow, or hit the limit. 1 = Claude for everything
 FREE_FAILS = [0]                                              # failures of free models in a row (slow, poor or refused answers)
-FREE_FAIL_LIMIT = int(os.environ.get("LLM_FREE_FAIL_LIMIT", "3"))
+FREE_FAIL_LIMIT = int(os.environ.get("LLM_FREE_FAIL_LIMIT", "1000000000"))      # owner 30 Oct (all pages): EVERY free model is tried; Claude only when all of them failed / are out of quota
 
 
 def ask_json(system, user, tries_per_model=1):

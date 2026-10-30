@@ -18,9 +18,10 @@ jobs:
       - name: Run free-model test (does not touch the live sheet)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}      # owner 30 Oct: free writers (skipped until the key is set)
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
           mkdir -p research_free/results
           python -u research_free/run.py ${{ github.event.inputs.urls }} > research_free/results/run.log 2>&1 || echo "exit $?" >> research_free/results/run.log

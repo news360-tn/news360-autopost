@@ -152,5 +152,33 @@
     "note": "owner 30 Oct: pictures from free services first (Cloudflare -> Pollinations -> NVIDIA), FAL only when all fail",
     "cloudflare_for_writing": false,
     "pictures_per_reel": 2
+  },
+  "writers": {
+    "note": "owner 30 Oct: free writing models in this order; a provider without its key is skipped; Claude (paid) only after all of them. Gemma 4 is ready but NOT in the order: 30 Oct test on a real story gave 503 (high demand) / 500 - add \"gemma\" here once writer-compare proves it",
+    "order": [
+      "gemini",
+      "sarvam",
+      "cerebras",
+      "groq"
+    ],
+    "gemini_first": [
+      "gemini-3.6-flash",
+      "gemini-3.5-flash"
+    ],
+    "gemini_skip": [
+      "gemini-3.8-flash",
+      "gemini-3.7-flash"
+    ],
+    "gemma_models": [
+      "gemma-4-26b-a4b-it",
+      "gemma-4-31b-it"
+    ],
+    "sarvam_models": [
+      "sarvam-105b"
+    ],
+    "cerebras_models": [
+      "gpt-oss-120b",
+      "qwen-3.8-27b"
+    ]
   }
 }

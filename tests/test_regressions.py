@@ -923,3 +923,92 @@ class FreePicturesFirst30Oct(unittest.TestCase):
         self.assertEqual(2, collect.pictures_per_reel())
         self.assertEqual(2, json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))["free_images"]["pictures_per_reel"])
 
+
+class FreeWriters30Oct(unittest.TestCase):
+    """owner 30 Oct: only free writing models that really work - Gemini 3.6/3.5 first (3.8/3.7 skipped), Sarvam, Cerebras, Gemma 4, Groq;
+    GitHub Models, Mistral, OpenRouter, NVIDIA text removed; a provider without its key is skipped; Claude (paid) only after all of them"""
+    KEYS = ("GEMINI_API_KEY", "SARVAM_API_KEY", "CEREBRAS_API_KEY", "GROQ_API_KEY", "CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID",
+            "GH_MODELS_TOKEN", "MISTRAL_API_KEY", "OPENROUTER_API_KEY", "NVIDIA_API_KEY")
+
+    def build(self, keys):
+        import llm
+        old = {k: os.environ.get(k) for k in self.KEYS}
+        saved = (llm.gemini_models, llm.groq_models)
+        for k in self.KEYS:
+            os.environ.pop(k, None)
+        os.environ.update({k: "t" for k in keys})
+        llm.gemini_models = lambda key: ["gemini-3.6-flash", "gemini-3.5-flash"]
+        llm.groq_models = lambda key: ["openai/gpt-oss-120b"]
+        try:
+            return [(p, m) for p, m, _, _ in llm.chain()]
+        finally:
+            llm.gemini_models, llm.groq_models = saved
+            for k, v in old.items():
+                os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v)
+
+    def test_order_and_removed(self):
+        everything = ("GEMINI_API_KEY", "SARVAM_API_KEY", "CEREBRAS_API_KEY", "GROQ_API_KEY", "GH_MODELS_TOKEN", "MISTRAL_API_KEY",
+                      "OPENROUTER_API_KEY", "NVIDIA_API_KEY", "CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID")
+        ch = self.build(everything)
+        providers = list(dict.fromkeys(p for p, _ in ch))
+        self.assertEqual(["gemini", "sarvam", "cerebras", "groq"], providers)      # Gemma ready but not live until proven (30 Oct test: 503/500)
+        self.assertEqual(("gemini", "gemini-3.6-flash"), ch[0])
+
+    def test_without_new_keys_same_as_before(self):
+        providers = list(dict.fromkeys(p for p, _ in self.build(("GEMINI_API_KEY", "GROQ_API_KEY"))))
+        self.assertEqual(["gemini", "groq"], providers)      # Sarvam / Cerebras skipped until their keys exist
+        os.environ["WRITERS_ORDER"] = "gemma"
+        try:
+            self.assertEqual(["gemma"], list(dict.fromkeys(p for p, _ in self.build(("GEMINI_API_KEY",)))))      # writer-compare can test one
+        finally:
+            os.environ.pop("WRITERS_ORDER", None)
+
+    def test_gemini_never_answering_models_last(self):
+        import llm
+        class R:
+            status_code = 200
+            def raise_for_status(self): pass
+            def json(self):
+                return {"models": [{"name": "models/" + n, "supportedGenerationMethods": ["generateContent"]}
+                                   for n in ("gemini-3.8-flash", "gemini-3.7-flash", "gemini-3.6-flash", "gemini-3.5-flash")]}
+        real = llm.requests.get
+        llm.requests.get = lambda *a, **k: R()
+        try:
+            got = llm.gemini_models("k")
+        finally:
+            llm.requests.get = real
+        self.assertEqual(["gemini-3.6-flash", "gemini-3.5-flash"], got[:2])
+        self.assertNotIn("gemini-3.8-flash", got)
+
+    def test_gemma_reads_the_answer_not_the_thinking(self):
+        import llm
+        class R:
+            status_code = 200
+            text = ""
+            def json(self):
+                return {"candidates": [{"content": {"parts": [{"text": "thinking...", "thought": True}, {"text": '{"ta": "சரி"}'}]}}]}
+        real = llm.requests.post
+        llm.requests.post = lambda *a, **k: R()
+        try:
+            self.assertEqual('{"ta": "சரி"}', llm._gemma("gemma-4-26b-a4b-it", "s", "u", "k"))
+        finally:
+            llm.requests.post = real
+
+    def test_groq_retries_shorter_prompt_on_413(self):
+        import llm
+        sent = []
+        class R:
+            def __init__(self, code): self.status_code, self.text = code, "Request too large"
+            def json(self): return {"choices": [{"message": {"content": "{}"}}]}
+        def post(url, headers=None, json=None, timeout=None):
+            sent.append(json["messages"][1]["content"])
+            return R(413 if len(sent) == 1 else 200)
+        real = llm.requests.post
+        llm.requests.post = post
+        try:
+            llm._groq("m", "rules", "EXAMPLE ARTICLE: long example\n\nTODAY (IST): 30 Oct\nARTICLE: news", "k")
+        finally:
+            llm.requests.post = real
+        self.assertEqual(2, len(sent))
+        self.assertTrue(sent[1].startswith("TODAY (IST)") and "EXAMPLE" not in sent[1])
+

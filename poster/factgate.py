@@ -20,7 +20,7 @@ def _body(cap):
 
 def check(row):
     url = (row.get("source") or "").strip()
-    if not url.startswith("http") or not os.environ.get("ANTHROPIC_API_KEY") and not os.environ.get("NVIDIA_API_KEY") and not os.environ.get("GEMINI_API_KEY") and not os.environ.get("OPENROUTER_API_KEY"):
+    if not url.startswith("http") or not os.environ.get("ANTHROPIC_API_KEY") and not os.environ.get("NVIDIA_API_KEY") and not os.environ.get("GEMINI_API_KEY") and not os.environ.get("GROQ_API_KEY") and not os.environ.get("SARVAM_API_KEY") and not os.environ.get("CEREBRAS_API_KEY"):
         return []
     try:
         import allnews, run
