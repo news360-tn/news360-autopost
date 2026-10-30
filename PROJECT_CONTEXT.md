@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-30 | `cec615a` | Same event from two outlets in one writer round is caught (stories filed this round join the check), and short reports of one event count as the same (RN-214 = RN-209) |
 | 2026-10-30 | `84e663c` | Writer/collector: the Sheet bridge is tried 3 times when Apps Script does not answer (writer crashed once at 09:00 UTC 30 Oct on a 120 s timeout) |
 | 2026-10-30 | `ba06b8e` | Sarvam out of the live writer order until writer-compare proves it |
 | 2026-10-30 | `e033529` | writer compare output |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-29 | `4d3e179` | Newest Haiku (claude-haiku-5-5) for Claude calls, older Haiku only if the name is ever refused; news only from Tamil-language articles |
 | 2026-10-29 | `17a77ac` | Letters of another script inside Tamil words are repaired (voice and cards), flagged for rewrite, and cleaned in captions (Coimbatore RN-5, 7, 20, 22) |
 | 2026-10-29 | `b4f47be` | No made-up stories: skip a page that is only a headline, and never file a draft mostly not grounded in its Tamil article (RN-12 Coimbatore, K.N. Nehru raid) |
-| 2026-10-29 | `835cfb9` | News pictures (owner): the scene of THIS news first in every prompt; cover = the main event, each scene 100-150 words with 3+ article facts; seized-goods and civic-problem guides; a generic or short cover plan is sent back once |
 <!-- recent-changes:end -->
