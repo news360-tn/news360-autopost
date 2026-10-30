@@ -1,0 +1,11 @@
+imagegen: siliconflow 402: {"code":30001,"message":"Sorry, your account balance is insufficient","data":null}
+Traceback (most recent call last):
+  File "/home/runner/work/news360-autopost/news360-autopost/research_free/imagegen.py", line 302, in <module>
+    data = generate(sys.argv[2] if len(sys.argv) > 2 else "Photorealistic news photo, tall vertical, a rural road in Namakkal, Tamil Nadu at dawn, police jeep parked, mist, sharp detail")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/news360-autopost/news360-autopost/research_free/imagegen.py", line 143, in generate
+    return to_story_size(_generate(prompt, seed, key, cheap))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/news360-autopost/news360-autopost/research_free/imagegen.py", line 267, in _generate
+    raise RuntimeError(f"all image models failed: {last or 'no image service configured'}")
+RuntimeError: all image models failed: siliconflow 402: {"code":30001,"message":"Sorry, your account balance is insufficient","data":null}
