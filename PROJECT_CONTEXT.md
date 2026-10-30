@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-30 | `cdbdc9a` | Remove Cerebras writer: it now needs a card (paid after $5 trial) |
 | 2026-10-30 | `b12e4a4` | Free writers: Gemini 3.6/3.5 first, Sarvam + Cerebras (skipped until keys), Gemma ready (off), Groq short retry on 413; remove GitHub Models, Mistral, OpenRouter, NVIDIA text; writer-compare test workflow |
 | 2026-10-30 | `5caf346` | SiliconFlow removed (owner): not free for this account ('balance insufficient'); picture order Cloudflare -> Pollinations -> NVIDIA -> FAL |
 | 2026-10-30 | `af5c2ae` | image test output |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-28 | `3a47d79` | Reel longer than 90 s: shorten the script automatically and render again instead of holding the story (RN-153) |
 | 2026-10-28 | `0cc5340` | Priority: power cuts and jobs are their own topics with a plus weight (they were -0.5 as civic / education_jobs although our most watched news: 17,328 and 17,209 views, page median 374); exam/election no longer counted as temple; insights relabels older posts |
 | 2026-10-28 | `e034b52` | No missed news: writer duplicate check needs 3 shared words and only compares with stories of the last 3 days (28 Oct: rain 140 mm, service-road garbage, farmers' meeting were wrongly skipped); picture check works again (gemini-2.5-flash retired: uses the live model list, next model on timeout/busy) |
-| 2026-10-28 | `916a2f8` | README: current automatic flow (collect, write, post, insights), switches, secrets; LIVE file stops posting |
 <!-- recent-changes:end -->
