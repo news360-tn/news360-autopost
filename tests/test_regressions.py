@@ -1051,3 +1051,47 @@ class SameEventShortScripts(unittest.TestCase):
         recent = [{"story_id": "a story filed this round", "researched": today, "reel_script": self.A}] + \
                  [{"story_id": f"RN-{i}", "researched": today, "reel_script": t} for i, t in enumerate(self.OTHER * 3)]
         self.assertTrue(collect.same_event_filed({"title": "குடோனில் தீ", "text": self.B, "published": TODAY.isoformat()}, recent))
+
+
+class RefusedNotWrittenAgain(unittest.TestCase):
+    """30 Oct (Namakkal): 'தினப்படியை உயர்த்த கோரி தொமுச ஆர்ப்பாட்டம்' and 'எஸ்.ஐ.ஆர்., போராட்டம் குறித்த கருத்தரங்கு' were written and refused
+    as 'not Namakkal district news' 9 and 8 times - a refused story went back to the queue every round (a free-model call each time)"""
+    NOT_HERE = "not Namakkal district news (the story's first lines name another place and no Namakkal place)"
+
+    def blocked(self, st):
+        # the rule at the start of every round: an item with one of these verdicts is 'checked earlier' and never queued again
+        return st.get("s") in ("filed", "dup", "notext", "old", "notdistrict")
+
+    def test_not_namakkal_gets_one_more_try_then_stops(self):
+        st = {"n": 1}
+        self.assertEqual("", collect.refusal_verdict(self.NOT_HERE, st))      # the model's wording may have hidden the Namakkal place
+        self.assertEqual("notdistrict", collect.refusal_verdict(self.NOT_HERE, st))
+        st["s"] = "notdistrict"
+        self.assertTrue(self.blocked(st))
+
+    def test_date_old_event_and_duplicate_stop_at_once(self):
+        for why, v in (("stale: announced date 28 Oct has passed", "old"), ("old event: the story is about 12 Mar 2024", "old"),
+                       ("duplicate after write", "dup")):
+            self.assertEqual(v, collect.refusal_verdict(why, {}), why)
+
+    def test_not_news_gets_one_more_try(self):
+        st = {}
+        why = "not news: draft not grounded in the article (only 30% of its words come from it) - likely made up"
+        self.assertEqual("", collect.refusal_verdict(why, st))
+        self.assertEqual("notext", collect.refusal_verdict(why, st))
+
+    def test_model_failures_are_always_tried_again(self):
+        st = {}
+        for _ in range(5):
+            self.assertEqual("", collect.refusal_verdict("all free models failed: no usable answer from the models", st))
+            self.assertEqual("", collect.refusal_verdict("bad draft: 'scenes'", st))
+        self.assertFalse(self.blocked(st))
+
+    def test_every_refusal_of_file_story_is_known(self):
+        # a new refusal added to file_story must be sorted here too (final / one more try / model failure)
+        src = (ROOT / "research_free" / "collect.py").read_text(encoding="utf-8")
+        body = src[src.index("def file_story("):src.index("\ndef ", src.index("def file_story(") + 10)]
+        fixed = [m for m in re.findall(r'return None, f?"([^"{:]+)', body)]
+        known = [k for k, _ in collect.REFUSED_FINAL + collect.REFUSED_ONCE_MORE] + ["all free models failed", "bad draft"]
+        for r in fixed:
+            self.assertTrue(any(r.startswith(k.rstrip(":")) or k.startswith(r) for k in known), r)
