@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-30 | `84e663c` | Writer/collector: the Sheet bridge is tried 3 times when Apps Script does not answer (writer crashed once at 09:00 UTC 30 Oct on a 120 s timeout) |
 | 2026-10-30 | `ba06b8e` | Sarvam out of the live writer order until writer-compare proves it |
 | 2026-10-30 | `e033529` | writer compare output |
 | 2026-10-30 | `401f8a5` | Sarvam: reasoning low (API accepts low/medium/high only) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-29 | `17a77ac` | Letters of another script inside Tamil words are repaired (voice and cards), flagged for rewrite, and cleaned in captions (Coimbatore RN-5, 7, 20, 22) |
 | 2026-10-29 | `b4f47be` | No made-up stories: skip a page that is only a headline, and never file a draft mostly not grounded in its Tamil article (RN-12 Coimbatore, K.N. Nehru raid) |
 | 2026-10-29 | `835cfb9` | News pictures (owner): the scene of THIS news first in every prompt; cover = the main event, each scene 100-150 words with 3+ article facts; seized-goods and civic-problem guides; a generic or short cover plan is sent back once |
-| 2026-10-29 | `8c1ced1` | Pictures free first (owner): Cloudflare FLUX schnell, then NVIDIA FLUX (schnell first); FAL only when both fail (cover dev, scenes schnell); Cloudflare daily limit not retried per picture; NVIDIA models answering 404 removed |
 <!-- recent-changes:end -->
