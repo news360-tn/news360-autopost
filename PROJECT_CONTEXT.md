@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-30 | `ba06b8e` | Sarvam out of the live writer order until writer-compare proves it |
+| 2026-10-30 | `e033529` | writer compare output |
 | 2026-10-30 | `401f8a5` | Sarvam: reasoning low (API accepts low/medium/high only) |
 | 2026-10-30 | `f495008` | writer compare output |
 | 2026-10-30 | `761c232` | Sarvam: thinking off, bigger answer budget; empty answers logged with the reason |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-29 | `b4f47be` | No made-up stories: skip a page that is only a headline, and never file a draft mostly not grounded in its Tamil article (RN-12 Coimbatore, K.N. Nehru raid) |
 | 2026-10-29 | `835cfb9` | News pictures (owner): the scene of THIS news first in every prompt; cover = the main event, each scene 100-150 words with 3+ article facts; seized-goods and civic-problem guides; a generic or short cover plan is sent back once |
 | 2026-10-29 | `8c1ced1` | Pictures free first (owner): Cloudflare FLUX schnell, then NVIDIA FLUX (schnell first); FAL only when both fail (cover dev, scenes schnell); Cloudflare daily limit not retried per picture; NVIDIA models answering 404 removed |
-| 2026-10-29 | `f4eb7be` | Proofread: a fix must keep the word's grammatical ending - a verb is never turned into a noun (Coimbatore RN-1 நிர்வாகிக்க -> நிர்வாகம்) |
-| 2026-10-29 | `9ecb5d5` | Owner fixes 29 Oct: a script that talks about the article instead of the news is refused (RN-189, deleted); one egg/gold/fuel price post a day (RN-188 + RN-189); Claude backup model id claude-haiku-4-5 (claude-haiku-5-5 does not exist) |
 <!-- recent-changes:end -->
