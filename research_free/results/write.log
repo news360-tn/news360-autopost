@@ -1,76 +1,263 @@
-Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/urllib3/connectionpool.py", line 540, in _make_request
-    response = conn.getresponse()
-               ^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/urllib3/connection.py", line 638, in getresponse
-    httplib_response = super().getresponse()
-                       ^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/http/client.py", line 1443, in getresponse
-    response.begin()
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/http/client.py", line 337, in begin
-    version, status, reason = self._read_status()
-                              ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/http/client.py", line 298, in _read_status
-    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/socket.py", line 718, in readinto
-    return self._sock.recv_into(b)
-           ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/ssl.py", line 1327, in recv_into
-    return self.read(nbytes, buffer)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/ssl.py", line 1179, in read
-    return self._sslobj.read(len, buffer)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TimeoutError: The read operation timed out
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/requests/adapters.py", line 696, in send
-    resp = conn.urlopen(
-           ^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/urllib3/connectionpool.py", line 847, in urlopen
-    retries = retries.increment(
-              ^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/urllib3/util/retry.py", line 510, in increment
-    raise reraise(type(error), error, _stacktrace)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/urllib3/util/util.py", line 39, in reraise
-    raise value
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/urllib3/connectionpool.py", line 793, in urlopen
-    response = self._make_request(
-               ^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/urllib3/connectionpool.py", line 542, in _make_request
-    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/urllib3/connectionpool.py", line 373, in _raise_timeout
-    raise ReadTimeoutError(
-urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='script.google.com', port=443): Read timed out. (read timeout=120)
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/runner/work/news360-autopost/news360-autopost/research_free/collect.py", line 1119, in <module>
-    main()
-  File "/home/runner/work/news360-autopost/news360-autopost/research_free/collect.py", line 812, in main
-    rr = bridge("recent")
-         ^^^^^^^^^^^^^^^^
-  File "/home/runner/work/news360-autopost/news360-autopost/research_free/collect.py", line 125, in bridge
-    r = requests.get(BRIDGE_URL, params={"action": action, "key": BRIDGE_KEY, **kw}, timeout=120)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/requests/api.py", line 87, in get
-    return request("get", url, params=params, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/requests/api.py", line 71, in request
-    return session.request(method=method, url=url, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/requests/sessions.py", line 651, in request
-    resp = self.send(prep, **send_kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/requests/sessions.py", line 784, in send
-    r = adapter.send(request, **kwargs)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/requests/adapters.py", line 742, in send
-    raise ReadTimeout(e, request=request)
-requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='script.google.com', port=443): Read timed out. (read timeout=120)
-exit 1
+writing [N]: விண்ணை முட்டும் சின்ன வெங்காயம்!
+writing [N]: லஞ்ச ஒழிப்பு விழிப்புணர்வு பேரணி
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (15s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (18s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): பரமத்தி ('பள்ளியில் துவங்கிய பேரணி, பரமத்தி சாலை, கோட்டை சாலை, பூங்சா ')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+ok gemini/gemini-3-flash-preview (21s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (28s)
+factcheck by gemini/gemini-3-flash-preview: 4 problems
+  The caption includes an invented date and year (October 29, 2026) not found in the article.
+  The draft states 200+ female students participated, but the article says 200+ people in total, including teachers and officers.
+  The draft refers to students only as 'மாணவிகள்' (female students), while the article mentions 'மாணவ, மாணவியர்' (male and female students).
+  The reel_script omits the fact that Headmistress Sumathi presided over the event.
+attempt 2 gemini/gemini-3-flash-preview: 4 problems
+  fact-check: The caption includes an invented date and year (October 29, 2026) not found in the article.
+  fact-check: The draft states 200+ female students participated, but the article says 200+ people in total, including teachers and officers.
+  fact-check: The draft refers to students only as 'மாணவிகள்' (female students), while the article mentions 'மாணவ, மாணவியர்' (male and female students).
+  fact-check: The reel_script omits the fact that Headmistress Sumathi presided over the event.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (37s)
+factcheck by gemini/gemini-3-flash-preview: 2 problems
+  The location 'Namakkal district' is not mentioned in the article
+  The claim that cultivation is happening 'intensely in various parts of the district' is an invented detail not found in the article
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  fact-check: The location 'Namakkal district' is not mentioned in the article
+  fact-check: The claim that cultivation is happening 'intensely in various parts of the district' is an invented detail not found in the article
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (10s)
+attempt 3 gemini/gemini-3-flash-preview: 1 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (27s)
+attempt 2 gemini/gemini-3-flash-preview: 1 problems
+  numbers not found in the article: 100, 50, 60, 80
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (24s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (32s)
+attempt 3 gemini/gemini-3-flash-preview: 1 problems
+  numbers not found in the article: 100, 50, 60
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+ok groq/openai/gpt-oss-120b (4s)
+factcheck by groq/openai/gpt-oss-120b: 6 problems
+  Headline incorrectly specifies that over 200 female students (மாணவிகள்) participated, while the article only says over 200 participants of mixed gender (students, teachers, officials)
+  Reel script misidentifies Subashini’s rank as "காவல் துணை கண்காணிப்பாளர்" instead of the DSP (Deputy Superintendent of Police) mentioned in the article
+  Reel script claims "200-க்கும் மேற்பட்ட மாணவிகள் மற்றும் ஆசிரியர்கள்" participated, omitting other participants (SI, Balan, other officials) and incorrectly gender‑specific
+  Reel script omits the important fact that Headmaster Sumathi led the rally, which is stated in the article
+  Slide 2 line "200-க்கும் மேற்பட்ட மாணவிகள், ஆசிரியர்கள்" repeats the unsupported gender‑specific claim
+  Slide 2 line "காவல் துணை கண்காணிப்பாளர் சுபாஷினி" uses the wrong title for Subashini
+attempt 4 gemini/gemini-3-flash-preview: 6 problems
+  fact-check: Headline incorrectly specifies that over 200 female students (மாணவிகள்) participated, while the article only says over 200 participants of mixed gender (students, teachers, officials)
+  fact-check: Reel script misidentifies Subashini’s rank as "காவல் துணை கண்காணிப்பாளர்" instead of the DSP (Deputy Superintendent of Police) mentioned in the article
+  fact-check: Reel script claims "200-க்கும் மேற்பட்ட மாணவிகள் மற்றும் ஆசிரியர்கள்" participated, omitting other participants (SI, Balan, other officials) and incorrectly gender‑specific
+  fact-check: Reel script omits the important fact that Headmaster Sumathi led the rally, which is stated in the article
+  fact-check: Slide 2 line "200-க்கும் மேற்பட்ட மாணவிகள், ஆசிரியர்கள்" repeats the unsupported gender‑specific claim
+  fact-check: Slide 2 line "காவல் துணை கண்காணிப்பாளர் சுபாஷினி" uses the wrong title for Subashini
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+ok groq/qwen/qwen3.8-27b (4s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 8 problems
+  reel_script says Inspector Prabhu 'முன்னிலை வகித்தார்' (presided) alone, but the article says Prabhu and S.S.I. Periyasamy both 'முன்னிலை வகித்தனர்' — the reel_script then repeats the same role for Periyasamy as a separate sentence, which is a mixed/duplicated fact.
+  reel_script calls the S.S.I. Periyasamy 'சிறப்பு உதவி ஆய்வாளர்', an expansion not in the article (article only says 'எஸ்.எஸ்.ஐ.').
+  reel_script calls Subhashini 'காவல் துணை கண்காணிப்பாளர்' — the article only says 'டி.எஸ்.பி.', so the expansion is an added detail (though it is a standard abbreviation, it is not stated in the article).
+  reel_script calls Balan 'காவல் உதவி ஆய்வாளர்' whereas the article says 'லஞ்ச ஒழிப்புத்துறை எஸ்.ஐ., பாலன்'; the reel_script drops the Anti-Corruption Department attribution in that sentence, making the role ambiguous/incorrect.
+  reel_script route description is garbled: 'பரமத்தி சாலை வழியாக சென்றது. கோட்டை சாலை, பூங்சா சாலை வழியாக சென்றது. மணிக்கூண்டு வழியாக சென்று துவங்கிய இடத்தில் முடிந்தது' splits and repeats the route in a way that is not a faithful, clear rendering of the article's sequence.
+  slides_spec lines for 'முன்னிலை வகித்தோர' are inconsistent with the article: 'மாவட்ட லஞ்ச ஒழிப்புத்துறை இன்ஸ்பெக்டர் பிரபு முன்னிலை' is cut mid-phrase and the line 'எஸ்.எஸ்.ஐ. பெரியசாமி முன்னிலை வகித்தார்' assigns presiding alone rather than jointly.
+  slides_spec 'பங்கேற்பு' line 'லஞ்ச ஒழிப்புத்துறை எஸ்.ஐ. பாலன், ஆசிரியர்கள், மாணவ' is truncated and ungrammatical as written.
+  The reel_script omits the important fact that the rally was part of the anti-corruption awareness week (it is mentioned only in the caption/slides), and omits the distribution of pamphlets' purpose of stressing the need to eradicate bribery — the reel_script does not convey the rally's core message about eliminating corruption.
+attempt 5 groq/qwen/qwen3.8-27b: 8 problems
+  fact-check: reel_script says Inspector Prabhu 'முன்னிலை வகித்தார்' (presided) alone, but the article says Prabhu and S.S.I. Periyasamy both 'முன்னிலை வகித்தனர்' — the reel_script then repeats the same role for Periyasamy as a separate sentence, which is a mixed/duplicated fact.
+  fact-check: reel_script calls the S.S.I. Periyasamy 'சிறப்பு உதவி ஆய்வாளர்', an expansion not in the article (article only says 'எஸ்.எஸ்.ஐ.').
+  fact-check: reel_script calls Subhashini 'காவல் துணை கண்காணிப்பாளர்' — the article only says 'டி.எஸ்.பி.', so the expansion is an added detail (though it is a standard abbreviation, it is not stated in the article).
+  fact-check: reel_script calls Balan 'காவல் உதவி ஆய்வாளர்' whereas the article says 'லஞ்ச ஒழிப்புத்துறை எஸ்.ஐ., பாலன்'; the reel_script drops the Anti-Corruption Department attribution in that sentence, making the role ambiguous/incorrect.
+  fact-check: reel_script route description is garbled: 'பரமத்தி சாலை வழியாக சென்றது. கோட்டை சாலை, பூங்சா சாலை வழியாக சென்றது. மணிக்கூண்டு வழியாக சென்று துவங்கிய இடத்தில் முடிந்தது' splits and repeats the route in a way that is not a faithful, clear rendering of the article's sequence.
+  fact-check: slides_spec lines for 'முன்னிலை வகித்தோர' are inconsistent with the article: 'மாவட்ட லஞ்ச ஒழிப்புத்துறை இன்ஸ்பெக்டர் பிரபு முன்னிலை' is cut mid-phrase and the line 'எஸ்.எஸ்.ஐ. பெரியசாமி முன்னிலை வகித்தார்' assigns presiding alone rather than jointly.
+  fact-check: slides_spec 'பங்கேற்பு' line 'லஞ்ச ஒழிப்புத்துறை எஸ்.ஐ. பாலன், ஆசிரியர்கள், மாணவ' is truncated and ungrammatical as written.
+  fact-check: The reel_script omits the important fact that the rally was part of the anti-corruption awareness week (it is mentioned only in the caption/slides), and omits the distribution of pamphlets' purpose of stressing the need to eradicate bribery — the reel_script does not convey the rally's core message about eliminating corruption.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+dead for this round: groq/qwen/qwen3.8-27b
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 49 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The reel_script and slides say the market received 300+ onion 'மூட்டைகள்' (sacks/bags), but the article only says 300+ onion (the unit is not stated in the visible text), so 'மூட்டைகள்' is an added detail.
+  The reel_script and slides say the 'நாமக்கல்' weekly market; the article text does not name Namakkal, so the location is not supported by the article.
+  The reel_script adds that farmers 'continue to store and sell' because of the price rise, which goes beyond what the article states (the article only says they are happy and storing in anticipation of Diwali price rise).
+  The slides say 'வெங்காய விலை மிக அதிகமாக உயர்ந்துள்ளது' and the headline says 'விண்ணை முட்டுகிறது', while the article gives no explicit price figure; the claim that prices rose sharply is only implied by the headline phrase, which is an overstated claim.
+  The slide says farmers 'விற்பனை செய்யாமல் இருப்பு வைத்துள்ளனர்' (not selling), which adds a cause-effect claim not clearly stated in the article.
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The reel_script and slides say the market received 300+ onion 'மூட்டைகள்' (sacks/bags), but the article only says 300+ onion (the unit is not stated in the visible text), so 'மூட்டைகள்' is an added detail.
+  fact-check: The reel_script and slides say the 'நாமக்கல்' weekly market; the article text does not name Namakkal, so the location is not supported by the article.
+  fact-check: The reel_script adds that farmers 'continue to store and sell' because of the price rise, which goes beyond what the article states (the article only says they are happy and storing in anticipation of Diwali price rise).
+  fact-check: The slides say 'வெங்காய விலை மிக அதிகமாக உயர்ந்துள்ளது' and the headline says 'விண்ணை முட்டுகிறது', while the article gives no explicit price figure; the claim that prices rose sharply is only implied by the headline phrase, which is an overstated claim.
+  fact-check: The slide says farmers 'விற்பனை செய்யாமல் இருப்பு வைத்துள்ளனர்' (not selling), which adds a cause-effect claim not clearly stated in the article.
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
+  reel_script talks about the article instead of the news (கட்டுரை) - if the article has no real news, return an empty reel_script
+  reel_script has 57 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  known issue meta_article: script talks about the article instead of the news ('கட்டுரை') - rewrite so it does not happen again
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  The reel_script and slides_spec describe Shri Subhashini as 'காவல் துணை கண்காணிப்பாளர்' (police deputy superintendent), which is an added role not stated in the article; the article only says 'டி.எஸ்.பி.'
+  The reel_script calls Periyasamy 'சிறப்பு உதவி ஆய்வாளர்' (SSI), an expansion of 'எஸ்.எஸ்.ஐ.' that the article does not spell out.
+  The reel_script and slides_spec omit the article's fact that Sub-Inspector Balan of the anti-corruption department attended the rally.
+  The reel_script says the rally ended 'மீண்டும் பள்ளியில்', which matches the article, but the slides_spec says 'சுபாஷினி' is the 'டி.எஸ்.பி.' while the reel_script names the post differently, creating an inconsistency in role description.
+  The reel_script says the rally was held 'நாமக்கல்லில்' and the headline says 'நாமக்கல் அரசு மகளிர் மேல்நிலைப்பள்ளியில்' — no conflict, but the slides_spec 'யார் பங்கேற்பு?' slide wrongly groups the 200+ attendees under the DSP's introduction, mixing two facts into one slide.
+  The slides_spec 'பேரணி பாதை' slide line 'பூங்சா சாலை' repeats the article's spelling without correction; the Tamil text 'பூங்சா' appears to be an unclear/unnatural place name carried over, and the reel_script repeats it.
+claude rewrite 1 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: The reel_script and slides_spec describe Shri Subhashini as 'காவல் துணை கண்காணிப்பாளர்' (police deputy superintendent), which is an added role not stated in the article; the article only says 'டி.எஸ்.பி.'
+  fact-check: The reel_script calls Periyasamy 'சிறப்பு உதவி ஆய்வாளர்' (SSI), an expansion of 'எஸ்.எஸ்.ஐ.' that the article does not spell out.
+  fact-check: The reel_script and slides_spec omit the article's fact that Sub-Inspector Balan of the anti-corruption department attended the rally.
+  fact-check: The reel_script says the rally ended 'மீண்டும் பள்ளியில்', which matches the article, but the slides_spec says 'சுபாஷினி' is the 'டி.எஸ்.பி.' while the reel_script names the post differently, creating an inconsistency in role description.
+  fact-check: The reel_script says the rally was held 'நாமக்கல்லில்' and the headline says 'நாமக்கல் அரசு மகளிர் மேல்நிலைப்பள்ளியில்' — no conflict, but the slides_spec 'யார் பங்கேற்பு?' slide wrongly groups the 200+ attendees under the DSP's introduction, mixing two facts into one slide.
+  fact-check: The slides_spec 'பேரணி பாதை' slide line 'பூங்சா சாலை' repeats the article's spelling without correction; the Tamil text 'பூங்சா' appears to be an unclear/unnatural place name carried over, and the reel_script repeats it.
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  Reel script calls the police officer 'காவல் துணை கண்காணிப்பாளர்' (DSP) but the article's rank mapping is fine; however the slides_spec 'யார் தொடங்கி' slide adds 'எஸ்.ஐ. பாலன் பங்கேற்றார்' which is a minor restatement, acceptable; main issue: the reel_script omits the article's note that the SI Balan (லஞ்ச ஒழிப்புத்துறை எஸ்.ஐ.) belongs to the anti-corruption department, and the caption says 'எஸ்.ஐ. பாலன் உள்ளிட்ட 200க்கும் மேற்பட்டோர்' which wrongly places SI Balan among the 200+ participants as a separate group rather than a participant alongside teachers and students
+  The slides_spec 'என்ன நடந்தது?' slide gives the date as '26 அக்டோபர் முதல்' but the article says the week runs from the 26th (last month) to Nov 1, and the reel_script's 'அக்டோபர் 26 முதல் நவம்பர் 1' is stated as the current year's dates, which the article does not specify with month names explicitly (it gives 'அக்., கடைசி வாரத்தில்' and 'நவ., 1'), so the month inference is not in the article
+  The reel_script states 'இந்த ஆண்டு அக்டோபர் 26 முதல்' while the article says 'கடந்த, 26 முதல்' (from the 26th of the past month), making the timeline slightly different from what the article says
+  The reel_script says the rally was held 'பள்ளியிலேயே முடிந்தது' which is consistent, but the reel_script omits that the rally started at the school as well (minor), and the important fact that the programme was organised as part of government offices and schools' oath-taking events is partly covered; the 'பரமத்தி சாலை, கோட்டை சாலை' route is consistent
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: Reel script calls the police officer 'காவல் துணை கண்காணிப்பாளர்' (DSP) but the article's rank mapping is fine; however the slides_spec 'யார் தொடங்கி' slide adds 'எஸ்.ஐ. பாலன் பங்கேற்றார்' which is a minor restatement, acceptable; main issue: the reel_script omits the article's note that the SI Balan (லஞ்ச ஒழிப்புத்துறை எஸ்.ஐ.) belongs to the anti-corruption department, and the caption says 'எஸ்.ஐ. பாலன் உள்ளிட்ட 200க்கும் மேற்பட்டோர்' which wrongly places SI Balan among the 200+ participants as a separate group rather than a participant alongside teachers and students
+  fact-check: The slides_spec 'என்ன நடந்தது?' slide gives the date as '26 அக்டோபர் முதல்' but the article says the week runs from the 26th (last month) to Nov 1, and the reel_script's 'அக்டோபர் 26 முதல் நவம்பர் 1' is stated as the current year's dates, which the article does not specify with month names explicitly (it gives 'அக்., கடைசி வாரத்தில்' and 'நவ., 1'), so the month inference is not in the article
+  fact-check: The reel_script states 'இந்த ஆண்டு அக்டோபர் 26 முதல்' while the article says 'கடந்த, 26 முதல்' (from the 26th of the past month), making the timeline slightly different from what the article says
+  fact-check: The reel_script says the rally was held 'பள்ளியிலேயே முடிந்தது' which is consistent, but the reel_script omits that the rally started at the school as well (minor), and the important fact that the programme was organised as part of government offices and schools' oath-taking events is partly covered; the 'பரமத்தி சாலை, கோட்டை சாலை' route is consistent
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+images made: 2 for 'Small onion prices soar at weekly market'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261030-1455","first":"RN-225"}
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  Draft calls Subhashini a 'காவல் துணை கண்காணிப்பாளர்' (police DSP) in reel_script; article only says 'டி.எஸ்.பி.' without specifying the force, so the designation is an added detail
+  Reel_script and slides say the rally was started by Subhashini and then 'Prabhu and Periyasamy presided' with Periyasamy as 'சிறப்பு உதவி ஆய்வாளர' (SSI) — the article names Prabhu as Anti-Corruption Dept inspector and Periyasamy as SSI, which is consistent, but the reel_script omits the Anti-Corruption Dept SI Balan who took part
+  Reel_script omits an important fact from the article: Anti-Corruption Dept SI Balan, teachers and students took part in the rally
+  Slide 'யார் தொடங்கி' places 'எஸ்.எஸ்.ஐ. பெரியசாமியும் முன்னிலை வகித்தார்' as a single-person presiding statement while the article says Prabhu and Periyasamy presided together; the slide also says 'முன்னிலை' only for Prabhu in the line before, a minor misstatement
+  Slide 'பங்கேற்றோர்' says 200 or more participated but the article lists SI Balan, teachers, students and others as participants, not a breakdown; acceptable, but the caption's 'காவல்' and 'Subhashini' wording mixes police ranks not in the article
+  Caption and reel describe the rally as 'விழிப்புணர்வுப் பேரணி' ending 'பள்ளியில்', consistent with the article; however the reel says the rally 'தொடங்கிய பேரணி ... பள்ளியிலேயே நிறைவடைந்தது' which matches the article
+claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: Draft calls Subhashini a 'காவல் துணை கண்காணிப்பாளர்' (police DSP) in reel_script; article only says 'டி.எஸ்.பி.' without specifying the force, so the designation is an added detail
+  fact-check: Reel_script and slides say the rally was started by Subhashini and then 'Prabhu and Periyasamy presided' with Periyasamy as 'சிறப்பு உதவி ஆய்வாளர' (SSI) — the article names Prabhu as Anti-Corruption Dept inspector and Periyasamy as SSI, which is consistent, but the reel_script omits the Anti-Corruption Dept SI Balan who took part
+  fact-check: Reel_script omits an important fact from the article: Anti-Corruption Dept SI Balan, teachers and students took part in the rally
+  fact-check: Slide 'யார் தொடங்கி' places 'எஸ்.எஸ்.ஐ. பெரியசாமியும் முன்னிலை வகித்தார்' as a single-person presiding statement while the article says Prabhu and Periyasamy presided together; the slide also says 'முன்னிலை' only for Prabhu in the line before, a minor misstatement
+  fact-check: Slide 'பங்கேற்றோர்' says 200 or more participated but the article lists SI Balan, teachers, students and others as participants, not a breakdown; acceptable, but the caption's 'காவல்' and 'Subhashini' wording mixes police ranks not in the article
+  fact-check: Caption and reel describe the rally as 'விழிப்புணர்வுப் பேரணி' ending 'பள்ளியில்', consistent with the article; however the reel says the rally 'தொடங்கிய பேரணி ... பள்ளியிலேயே நிறைவடைந்தது' which matches the article
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+posting job started at once
+ok anthropic/claude-haiku-5-5
+image match: False The placards feature Tamil text protesting against TASMAC (state-run liquor outlets), indicating an anti-alcohol rally r
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Anti-corruption awareness rally held in '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261030-1456","first":"RN-226"}
+earlier stories still waiting for images: []
+instagram check: 85 recent posts read from both pages
+write round: 8 news waiting in the queue (written in priority order)
+candidate filter: collected=4, already filed=4
+to write: 0 Rasipuram + 4 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 4 Namakkal; time left 29 min
+try (N) manual=False: மரவள்ளி முத்தரப்பு கூட்டம் ஒத்திவைப்பு
+try (N) manual=False: விண்ணை முட்டும் சின்ன வெங்காயம்!
+try (N) manual=False: பரமத்திவேலூர்: முருகன் கோவில்களில் கிருத்திகை  சிறப்பு அபிஷே
+skip (N) similar to a filed story: பரமத்திவேலூர்: முருகன் கோவில்களில் கிருத்திகை  சிற
+try (N) manual=False: லஞ்ச ஒழிப்பு விழிப்புணர்வு பேரணி
+skip (N) similar to a filed story: மரவள்ளி முத்தரப்பு கூட்டம் ஒத்திவைப்பு
+auto images: 1 of 1 stories ({'pollinations': 2})
+posting job started at once
+auto images: 1 of 1 stories ({'pollinations': 5})
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 2}, time left 24 min
+carousel for 0 of 2 stories, the rest reel only
+filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":2} 
+stories: 2
