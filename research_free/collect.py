@@ -122,9 +122,18 @@ def image_scenes(art, d):
 
 
 def bridge(action, **kw):
-    r = requests.get(BRIDGE_URL, params={"action": action, "key": BRIDGE_KEY, **kw}, timeout=120)
-    r.raise_for_status()
-    return r.json()
+    """30 Oct: the Apps Script sometimes does not answer within 120 s (the writer crashed once on 'recent'): tried 3 times"""
+    last = None
+    for i in range(3):
+        try:
+            r = requests.get(BRIDGE_URL, params={"action": action, "key": BRIDGE_KEY, **kw}, timeout=120)
+            r.raise_for_status()
+            return r.json()
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+            last = e
+            print(f"bridge '{action}' did not answer (try {i + 1} of 3): {str(e)[:120]}", flush=True)
+            time.sleep(10 * (i + 1))
+    raise last
 
 
 # what Namakkal readers care about most (higher = picked first, so it is never missed)
