@@ -2,321 +2,62 @@
  "log": [
   "earlier stories still waiting for images: []",
   "instagram check: 79 recent posts read from both pages",
-  "write round: 7 news waiting in the queue (written in priority order)",
-  "candidate filter: collected=7",
-  "to write: 2 Rasipuram + 5 other district candidates (max 200 + 200 stories)",
-  "candidates waiting: 2 Rasipuram, 5 Namakkal; time left 29 min",
-  "try (N) manual=False: இயற்கை வேளாண் விளைபொருள் உழவர் சந்தைகளில் விற்பனை",
-  "try (R) manual=False: பாவை பாலிடெக்னிக் கல்லூரி 24-வது பட்டமளிப்பு விழா",
-  "try (R) manual=False: நித்திய சுமங்கலி அம்மன் கோவில் விழாவில் பால்குட ஊர்வலம்",
-  "skip (R) similar to a filed story: நித்திய சுமங்கலி அம்மன் கோவில் விழாவில் பால்குட ஊர",
-  "try (N) manual=False: 154 கிலோ தரமற்ற விதைகளை விற்க தடை",
-  "auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 2})",
-  "posting job started at once",
+  "write round: 2 news waiting in the queue (written in priority order)",
+  "candidate filter: collected=2",
+  "to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)",
+  "candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min",
   "try (N) manual=False: எஸ்.ஐ.ஆர்., போராட்டம் குறித்த கருத்தரங்கு",
-  "auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'fal-ai/flux/schnell': 4})",
-  "auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3, 'fal-ai/flux/schnell': 6})",
-  "posting job started at once",
   "try (N) manual=False: தினப்படியை உயர்த்த கோரி தொமுச ஆர்ப்பாட்டம்",
-  "try (N) manual=False: வேம்பத்தி ஏரியை தூர்வார கோரிக்கை",
+  "NOT filed (N) தினப்படியை உயர்த்த கோரி தொமுச ஆர்ப்பாட்டம்: all free models failed: no usable answer from the models",
   "NOT filed (N) எஸ்.ஐ.ஆர்., போராட்டம் குறித்த கருத்தரங்கு: not Namakkal district news (the story's first lines name another place and no Namakkal place)",
-  "NOT filed (N) தினப்படியை உயர்த்த கோரி தொமுச ஆர்ப்பாட்டம்: not Namakkal district news (the story's first lines name another place and no Namakkal place)",
-  "auto images: 1 of 1 stories ({'fal-ai/flux/dev': 4, 'fal-ai/flux/schnell': 8})",
-  "candidate loop ended: left R=0 N=0, tried={'R': 2, 'N': 5}, done={'R': 1, 'N': 3}, time left 4 min",
-  "carousel for 0 of 4 stories, the rest reel only",
-  "filed: 1 Rasipuram + 3 Namakkal (targets 200 + 200)",
+  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 0}, time left 29 min",
+  "carousel for 0 of 0 stories, the rest reel only",
+  "filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)",
   "queue: 2 news waiting to be written",
-  "write_stories.yml started",
-  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":6}"
+  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":2}"
  ],
  "llm": [
   "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "dead for this round: gemini/gemini-3.8-flash",
   "fail gemini/gemini-3.8-flash: gemini gemini-3.8-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.8-flash",
   "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.7-flash",
+  "fail gemini/gemini-3.7-flash: gemini gemini-3.7-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "dead for this round: gemini/gemini-3.7-flash",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "dead for this round: gemini/gemini-3.6-flash",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.6-flash",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "dead for this round: groq/openai/gpt-oss-120b",
+  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
+  "dead for this round: groq/openai/gpt-oss-120b",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 413: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
+  "fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {\"errors\":[{\"message\":\"AiError: AiError: you have used up your ",
+  "dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast",
   "fail cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast: cloudflare @cf/meta/llama-3.3-70b-instruct-fp8-fast 429: {\"errors\":[{\"message\":\"AiError: AiError: you have used up your ",
   "dead for this round: cloudflare/@cf/meta/llama-3.3-70b-instruct-fp8-fast",
   "fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {\"errors\":[{\"message\":\"AiError: AiError: you have used up y",
   "dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct",
+  "fail cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct: cloudflare @cf/mistralai/mistral-small-3.1-24b-instruct 429: {\"errors\":[{\"message\":\"AiError: AiError: you have used up y",
+  "dead for this round: cloudflare/@cf/mistralai/mistral-small-3.1-24b-instruct",
   "fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
+  "fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"",
+  "fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"",
+  "switching away from mistral/mistral-small-latest for 10 min",
   "fail mistral/mistral-small-latest: mistral mistral-small-latest 429: {\"object\":\"error\",\"message\":\"Rate limit exceeded\",\"type\":\"rate_limited\",\"param\":null,\"",
   "switching away from mistral/mistral-small-latest for 10 min",
   "ok anthropic/claude-haiku-5-5",
   "ok anthropic/claude-haiku-5-5",
   "ok anthropic/claude-haiku-5-5",
   "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.8-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
   "ok anthropic/claude-haiku-5-5"
  ],
- "stories": [
-  {
-   "tamil_headline": "ராசிபுரம் பாவை பாலிடெக்னிக் கல்லூரியில் 24-வது பட்டமளிப்பு விழா",
-   "english_headline": "24th graduation ceremony held at Pavai Polytechnic College near Rasipuram",
-   "category": "Education",
-   "location": "Pavai Polytechnic College near Rasipuram, Namakkal district",
-   "importance": "Medium",
-   "scope": "local",
-   "post_to": "Rasipuram 360 (collab: Namakkal 360)",
-   "slides_spec": {
-    "v": 3,
-    "cat": "கல்வி",
-    "loc": "ராசிபுரம்",
-    "hl1": "ராசிபுரம் பாவை பாலிடெக்னிக் பட்டமளிப்பு",
-    "hl2": "24-வது பட்டமளிப்பு விழா",
-    "slides": [
-     {
-      "title": "விழா எங்கே?",
-      "lines": [
-       "ராசிபுரம் அருகே பாவை பாலிடெக்னிக் கல்லூரியில் விழா",
-       "<b>24-வது</b> பட்டமளிப்பு விழா நடைபெற்றது"
-      ]
-     },
-     {
-      "title": "பட்டயம் வழங்கல்",
-      "lines": [
-       "அனைத்துத் துறை மாணவர்களில் <b>100க்கும் மேற்பட்டோருக்கு</b>",
-       "கல்வி நிறுவனங்களின் நிறுவனர், தலைவர் ஆடிட்டர் நடராஜன்"
-      ]
-     },
-     {
-      "title": "அறிவுரை",
-      "lines": [
-       "கற்ற தொழில்நுட்பக் கல்வி செயலில் வெளிப்பட வேண்டும்",
-       "நேர்மையான குறிக்கோள், சரியான பாதை, விடாமுயற்சி அவசியம்"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "ராசிபுரம் அருகே பாவை பாலிடெக்னிக் கல்லூரியில் 24-வது பட்டமளிப்பு விழா நடைபெற்றது. இவ்விழாவில் நூற்றுக்கும் மேற்பட்ட மாணவ, மாணவியருக்குப் பட்டயம் வழங்கப்பட்டது. கல்வி நிறுவனங்களின் நிறுவனரும் தலைவருமான ஆடிட்டர் நடராஜன் சிறப்புரை ஆற்றினார். மாணவர்கள் பெற்றோர்களுக்கும் ஆசிரியர்களுக்கும் நன்றி தெரிவிக்க வேண்டும் என்று அவர் கூறினார். கற்ற கல்வி தொழில்நுட்பக் கல்வி என்றும், அதன் அறிவு எண்ணம், பார்வை, செயல் அனைத்திலும் வெளிப்பட வேண்டும் என்றும் அவர் குறிப்பிட்டார். நேர்மையான குறிக்கோள், சரியான பாதை, விடாமுயற்சி ஆகியவற்றின் அவசியத்தையும் அவர் வலியுறுத்தினார். கல்வி நிறுவனங்களின் முதன்மையர் ஜெயலெட்சுமி நன்றி கூறினார். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🎓 ராசிபுரம் பாவை பாலிடெக்னிக் கல்லூரியில் 24-வது பட்டமளிப்பு விழா\n\n📰 முழு விவரம்:\nராசிபுரம் அருகே உள்ள பாவை பாலிடெக்னிக் கல்லூரியில் 24-வது பட்டமளிப்பு விழா நடைபெற்றது. அனைத்துத் துறை மாணவ, மாணவியர் நூற்றுக்கும் மேற்பட்டோருக்குப் பட்டயம் வழங்கப்பட்டது.\nகல்வி நிறுவனங்களின் நிறுவனரும் தலைவருமான ஆடிட்டர் நடராஜன் சிறப்புரை ஆற்றினார். மாணவர்கள் தங்கள் பெற்றோருக்கும் ஆசிரியர்களுக்கும் நன்றி தெரிவிக்க வேண்டும் என அவர் கூறினார்.\nகற்ற தொழில்நுட்பக் கல்வி, மாணவர்களின் எண்ணம், பார்வை, செயல் அனைத்திலும் வெளிப்பட வேண்டும் என்றும், நேர்மையான குறிக்கோள், சரியான பாதை, விடாமுயற்சி ஆகியவை அவசியம் என்றும் அவர் வலியுறுத்தினார்.\nகல்வி நிறுவனங்களின் முதன்மையர் ஜெயலெட்சுமி நன்றி கூறினார்.\n\nPavai Polytechnic College 24th graduation ceremony near Rasipuram | Namakkal news\n📍 ராசிபுரம், நாமக்கல் மாவட்டம் | 30 அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Rasipuram #கல்வி #பட்டமளிப்பு #Namakkal",
-   "prompts": "Students of Pavai Polytechnic College near Rasipuram receive their diploma certificates on stage at the 24th graduation ceremony. Over a hundred male and female students in black gowns walk up one by one as the chairman Auditor Natarajan and principal Silambarasan hand over the rolled certificates. The stage is decorated with flower garlands and a podium with a microphone stands at the side. Seen from the audience at the back of a college auditorium in Namakkal district, the students wear formal dress, the men in shirts and trousers, the women in sarees or salwar kameez. Daytime light falls from tube lights and tall windows, giving a bright, warm and festive feel. Camera: 35 mm, eye-level from the rear of the hall, slightly wide, showing the stage and the line of graduates from behind and far away. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA wide view of Pavai Polytechnic College campus near Rasipuram in Namakkal district, Tamil Nadu. Red-tiled and concrete college buildings stand beside coconut and neem trees, with dry red-brown soil and a narrow tar road running past the gate. Inside the open-sided auditorium hall, rows of folding chairs face a stage with a podium, microphone and flower decorations, and parents and teachers sit watching the graduation ceremony. A few two-wheelers are parked near the gate. Bright daytime sun with a clear sky and a light breeze moving the palm fronds. Camera: 35 mm, wide angle from a slightly raised position, capturing the college building and the hall full of seated guests, all people seen from behind or far away. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA close-up of a rolled graduation diploma certificate tied with a ribbon, resting on a wooden table draped with a cloth beside a microphone and a bouquet of flowers. Out of focus behind it, a stage with a podium and the blurred shapes of students in gowns and a seated row of teachers. The paper of the certificate and the ribbon are the clear focus, showing the award of diplomas at the 24th graduation of Pavai Polytechnic College near Rasipuram. Soft indoor daylight from tube lights and windows with warm tones. Camera: 35 mm, shallow depth of field, close-up at table height, no faces visible. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/24th-convocation-of-pawai-polytechnic-college/4362970",
-   "published": "2026-10-30T06:08:00+05:30",
-   "verification": "FREE-MODEL DRAFT (anthropic/claude-haiku-5-5) - not checked by Claude yet; validator problems: numbers not found in the article: 100",
-   "note": "free-model draft anthropic/claude-haiku-5-5, 13 attempt(s), 1 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "R",
-   "_score": 8.5,
-   "images": [
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793326296/news360/rnhgauojr6h3jszk30ja.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793326442/news360/jjzssnpkbifgagzsucmx.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793326464/news360/jhzcbuqkp2zamxatojvc.jpg"
-   ]
-  },
-  {
-   "tamil_headline": "உழவர் சந்தைகளில் இயற்கை விளைபொருள் விற்பனை: நவ. 1 முதல் விண்ணப்பிக்கலாம்",
-   "english_headline": "Natural farm produce to be sold at farmers' markets from 1 Nov; natural farmers can apply",
-   "category": "Weather & Agriculture",
-   "location": "Sathy, Erode district (Sampath Nagar, Periyar Nagar, Gobi, Perundurai, Sathyamangalam, Thalavadi)",
-   "importance": "Medium",
-   "scope": "",
-   "post_to": "Namakkal 360 (collab: Rasipuram 360)",
-   "slides_spec": {
-    "v": 3,
-    "cat": "விவசாயம்",
-    "loc": "ஈரோடு மாவட்டம்",
-    "hl1": "இயற்கை விளைபொருள் உழவர் சந்தையில்",
-    "hl2": "நவ. 1 முதல் விண்ணப்பிக்கலாம்",
-    "slides": [
-     {
-      "title": "எங்கே?",
-      "lines": [
-       "ஆறு உழவர் சந்தைகளில் விற்பனை",
-       "சம்பத் நகர், பெரியார் நகர், கோபி",
-       "பெருந்துறை, சத்தியமங்கலம், தாளவாடி"
-      ]
-     },
-     {
-      "title": "எப்போது?",
-      "lines": [
-       "<b>நவ. 1</b> முதல் விற்பனை தொடங்கும்",
-       "விருப்பமுள்ள இயற்கை விவசாயிகள் விண்ணப்பிக்கலாம்",
-       "விண்ணப்பம் உழவர் சந்தைகளில் பெறலாம்"
-      ]
-     },
-     {
-      "title": "தொடர்புக்கு",
-      "lines": [
-       "சம்பத் நகர், பெரியார் நகர்: கலையரசி",
-       "பெருந்துறை, கோபி: கண்ணன்",
-       "சத்தியமங்கலம், தாளவாடி: கனிமொழி"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "இயற்கை விவசாயிகள் நவ. 1 முதல் உழவர் சந்தைகளில் விற்பனை செய்யலாம். ஈரோடு மாவட்டத்தில் சம்பத் நகர், பெரியார் நகர், கோபி, பெருந்துறை, சத்தி, தாளவாடி ஆகிய ஆறு இடங்களில் உழவர் சந்தைகள் இயங்கி வருகின்றன. விருப்பமுள்ள இயற்கை விவசாயிகள் உழவர் சந்தைகளில் விண்ணப்பிக்க வேண்டும். விவரங்களுக்கு வேளாண் அலுவலர்களைத் தொடர்புகொள்ளலாம். சம்பத் நகர், பெரியார் நகருக்கு கலையரசி, பெருந்துறை, கோபிக்கு கண்ணன், சத்தியமங்கலம், தாளவாடிக்கு கனிமொழி ஆகியோரை அணுகலாம். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🌾 நவ. 1 முதல் இயற்கை விளைபொருட்கள் உழவர் சந்தைகளில் விற்பனை\n\n📰 முழு விவரம்:\nஈரோடு மாவட்டத்தில் சம்பத் நகர், பெரியார் நகர், கோபி, பெருந்துறை, சத்தி, தாளவாடி ஆகிய ஆறு இடங்களில் உழவர் சந்தைகள் இயங்கி வருகின்றன. இங்கு நவ. 1 முதல் இயற்கை விளைபொருட்கள் விற்பனை செய்யப்படும். விருப்பமுள்ள இயற்கை விவசாயிகள் உழவர் சந்தைகளில் விண்ணப்பிக்கலாம்.\n📍 இடம்: சம்பத் நகர், பெரியார் நகர், கோபி, பெருந்துறை, சத்தி, தாளவாடி\n🗓️ நாள்: நவ. 1 முதல்\n📞 தொடர்புக்கு:\nசம்பத் நகர், பெரியார் நகர்: கலையரசி - 96777 32229\nபெருந்துறை, கோபி: கண்ணன் - 99441 54563\nசத்தியமங்கலம், தாளவாடி: கனிமொழி - 81445 28873\n\nNatural farm produce sale at farmers' markets from 1 Nov | Erode news\n📍 ஈரோடு மாவட்டம் | 30 அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Erode #உழவர்சந்தை #விவசாயம் #NamakkalNews",
-   "prompts": "Natural farmers from Erode district are being invited to sell their chemical-free produce at the government farmers' markets from 1 November. In an open-air uzhavar santhai in Gobi, a row of simple wooden and tin-roofed stalls is laid out with fresh green vegetables, bundles of greens, bananas and heaps of tomatoes and onions in woven baskets and gunny sacks. A few farmers in cotton shirts and veshti stand beside their stalls, while a farmer from behind holds a folded application form. Dry red-brown soil under the feet, a neem tree casting shade at one end, and a short parapet wall at the back. Mid-morning, bright sunlight with soft shadows. Camera at eye level, 35 mm, wide-angle framing across the stall row, no readable text on signboards. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nWIDE establishing shot of the uzhavar santhai at Sathyamangalam in Erode district, a government farmers' market with a long open shed of tin roofing on concrete pillars, a dirt and concrete yard, and a few palm and coconut trees beyond the boundary wall. Along the shed, women in cotton sarees and men in shirts and veshti sit or stand near baskets of natural produce, and an agriculture office building with a red-tiled roof is visible at one side. Two-wheelers and a small TNSTC-style bus are parked at the edge of the road outside. Morning light with a clear pale sky, the Kolli hills faintly visible in the far distance. Camera at a slightly elevated angle, 35 mm, showing the whole market yard and its daily activity. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nDETAIL close-up of a neatly stacked pile of freshly harvested natural produce on a woven palm-leaf mat in a farmers' market stall: small brinjals, green chillies, drumstick pods and a heap of unpolished red rice grains in a steel plate. Beside them lies a folded paper application form slightly curled at the edges, held by a weathered hand (no face visible). Soft morning light from the side, shallow depth of field, earthy tones of red soil and green leaves. Camera at a low angle, 35 mm macro-style framing, emphasising the chemical-free, natural quality of the produce and the act of applying. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/sale-of-organic-agricultural-produce-in-farmers-markets/4362986",
-   "published": "2026-10-30T06:23:00+05:30",
-   "verification": "FREE-MODEL DRAFT (anthropic/claude-haiku-5-5) - not checked by Claude yet; validator problems: reel_script has 57 words; need 60-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block); not grounded: location 'ஈரோடு' is not in the article",
-   "note": "free-model draft anthropic/claude-haiku-5-5, 12 attempt(s), 2 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 11.0,
-   "images": [
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793326617/news360/bus77uz212zznudizyit.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793326758/news360/vblnlwzfo17dtzgsy2pa.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793326767/news360/etdubzucnixm1wi5jju9.jpg"
-   ]
-  },
-  {
-   "tamil_headline": "154 கிலோ தரமற்ற விதைகளை விற்க தடை: நாமக்கல்லில் 5 மாதிரிகள் ஆய்வில் நடவடிக்கை",
-   "english_headline": "Sale of 154 kg substandard seeds banned in Namakkal district after testing of 5 samples",
-   "category": "Government & Services",
-   "location": "Tiruchengode and Paalapalayam blocks, Namakkal district",
-   "importance": "High",
-   "scope": "district",
-   "post_to": "Namakkal 360 (collab: Rasipuram 360)",
-   "slides_spec": {
-    "v": 3,
-    "cat": "விதை ஆய்வு",
-    "loc": "நாமக்கல் மாவட்டம்",
-    "hl1": "தரமற்ற விதைகள் விற்பனைக்குத் தடை",
-    "hl2": "154 கிலோ, ரூ.48,300 மதிப்பு",
-    "slides": [
-     {
-      "title": "என்ன நடந்தது?",
-      "lines": [
-       "நாமக்கல் மாவட்டத்தில் <b>154 கிலோ</b> தரமற்ற விதைகள் விற்க தடை",
-       "விதை ஆய்வு துணை இயக்குநர் சித்ரா செய்திக்குறிப்பில்",
-       "தடை செய்யப்பட்ட விதைகளின் மதிப்பு <b>ரூ.48,300</b>"
-      ]
-     },
-     {
-      "title": "எப்படி ஆய்வு?",
-      "lines": [
-       "திருச்செங்கோடு, பள்ளிப்பாளையம் வட்டாரங்களில் ஆய்வு",
-       "விதை ஆய்வாளர்கள் குழு விற்பனை நிலையங்களில் ஆய்வு செய்தது",
-       "முளைப்புத்திறன் அறிக்கை, பதிவுச்சான்று, விலைப்பட்டியல்"
-      ]
-     },
-     {
-      "title": "மாதிரிகள்",
-      "lines": [
-       "<b>5</b> விதை மாதிரிகள் எடுக்கப்பட்டு ஆய்வுக்கு அனுப்பப்பட்டன",
-       "ஆய்வு முடிவின்படி தரமற்ற விதைகள் கண்டறியப்பட்டன",
-       "தடை விதிக்கப்பட்ட விதைகள் விற்கப்படாது"
-      ]
-     },
-     {
-      "title": "விவசாயிகளுக்கு",
-      "lines": [
-       "நாமக்கல் மாவட்டத்தில் <b>441</b> விதை விற்பனை நிலையங்கள் உள்ளன",
-       "அரசு, அரசு சார்பு, தனியார் நிலையங்கள் இதில் அடங்கும்",
-       "விதை வாங்கும்போது ரசீது, பதிவுச்சான்று பெற்றுக்கொள்ளுங்கள்"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "நாமக்கல் மாவட்டத்தில் 154 கிலோ தரமற்ற விதைகளை விற்பனை செய்ய தடை விதிக்கப்பட்டுள்ளது. இதுகுறித்து விதை ஆய்வு துணை இயக்குநர் சித்ரா செய்திக்குறிப்பு வெளியிட்டுள்ளார். மாவட்டத்தில் 441 அரசு, அரசு சார்பு மற்றும் தனியார் விதை விற்பனை நிலையங்கள் மூலம் விவசாயிகளுக்கு விதைகள் விற்கப்படுகின்றன. திருச்செங்கோடு, பள்ளிப்பாளையம் வட்டாரங்களில் விதை ஆய்வாளர்கள் குழு ஆய்வு மேற்கொண்டது. விதை விற்பனையாளர்களின் முளைப்புத்திறன் அறிக்கை, பதிவுச்சான்று, விலைப்பட்டியல் மற்றும் இருப்பு விவரம் சரியாகப் பராமரிக்கப்படுகிறதா என்று சோதிக்கப்பட்டது. 5 விதை மாதிரிகள் எடுக்கப்பட்டு ஆய்வுக்கு அனுப்பப்பட்டன. ஆய்வின் முடிவில், ரூ.48,300 மதிப்பிலான 154 கிலோ தரமற்ற விதைகளுக்கு விற்பனை தடை விதிக்கப்பட்டது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🌾 நாமக்கல்லில் 154 கிலோ தரமற்ற விதைகளுக்கு விற்பனை தடை\n\n📰 முழு விவரம்:\nநாமக்கல் மாவட்டத்தில் 154 கிலோ தரமற்ற விதைகளை விற்பனை செய்ய தடை விதிக்கப்பட்டுள்ளது. விதை ஆய்வு துணை இயக்குநர் சித்ரா செய்திக்குறிப்பில் இதைத் தெரிவித்துள்ளார்.\nமாவட்டத்தில் 441 அரசு, அரசு சார்பு மற்றும் தனியார் விதை விற்பனை நிலையங்கள் மூலம் விவசாயிகளுக்கு விதை விற்கப்படுகிறது. திருச்செங்கோடு, பள்ளிப்பாளையம் வட்டாரங்களில் விதை ஆய்வாளர்கள் குழு ஆய்வு செய்தது. முளைப்புத்திறன் அறிக்கை, பதிவுச்சான்று, விலைப்பட்டியல், இருப்பு விவரம் ஆகியவை முறையாக பராமரிக்கப்படுகின்றனவா என்று சோதிக்கப்பட்டது. 5 விதை மாதிரிகள் எடுக்கப்பட்டு ஆய்வுக்கு அனுப்பப்பட்டன. அவற்றின் அடிப்படையில் ரூ.48,300 மதிப்பிலான 154 கிலோ தரமற்ற விதைகளுக்கு விற்பனை தடை விதிக்கப்பட்டது.\n📍 இடம்: திருச்செங்கோடு, பள்ளிப்பாளையம் வட்டாரங்கள்\n🗓️ நாள்: அக்டோபர் 30\n👮 நடவடிக்கை: தரமற்ற விதைகள் விற்பனை தடை\n📞 தொடர்புக்கு: விதை ஆய்வு துணை இயக்குநர் அலுவலகம்\nℹ️ மக்கள் கவனத்திற்கு: விதை வாங்கும்போது ரசீது மற்றும் பதிவுச்சான்றைக் கேட்டு பெறுங்கள்.\n\nSeed sale ban 154 kg substandard seeds Namakkal | Namakkal news\n📍 நாமக்கல் மாவட்டம் | 30 அக்டோபர் 2026\n\nதேவைப்படும் விவசாயிகளுக்கு Share செய்யுங்கள்.\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #Tiruchengode #விதை #NamakkalNews",
-   "prompts": "In a small agricultural seed shop in Tiruchengode block of Namakkal district, a seed inspector in a plain shirt and trousers kneels beside stacked gunny sacks of seeds, carefully taking a small sample from one bag into a sealed paper packet while a seed seller in a white shirt stands behind the counter with a stock register open. The shop is a modest ground-floor store with a tin-roofed front, plastic crates and sacks piled on wooden shelves, and a fan turning overhead. Two farmers in veshti and shirts stand quietly near the entrance, seen from behind and slightly out of focus. Bright midday light falls through the open shutter; the air looks warm and dry, with a faint red-brown dust in the sunlight. Camera: eye-level, 35 mm, medium-wide frame showing the inspector, the seed stacks and the counter together. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA wide view of a rural agricultural market street in Paalapalayam block, Namakkal district, with single-storey shops, concrete and red-tiled buildings, and a neem tree at the roadside. Along the narrow tar road, a few two-wheelers and a parked TNSTC-style bus are visible at a distance, and a small group of farmers in shirts, veshti and sarees walks past the seed outlets. Several seed shops have their shutters half open, with sacks visible inside, while a Tamil Nadu agriculture department official in a shirt and trousers stands at the doorway with a folder. The soil is dry red-brown and palm trees rise behind the rooftops. Morning light, clear sky, mild heat haze. Camera: elevated slightly, 35 mm, establishing shot showing the town character and the inspection in progress. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA close-up of a stack of woven gunny sacks inside a seed shop, the top sack partly opened to reveal dried seed grains spilling slightly onto a wooden shelf. Beside it lies a small sealed sample packet and a clipboard with a pen resting on a stock register, the pages blurred and unreadable. The light is soft and warm from a single window, with dust particles visible in the air and a faint shadow of a hand (no face) placing a label on the sack. The seeds show the uneven colour and texture of substandard stock. Camera: close, shallow depth of field, 35 mm, focused on the seed grains and the sealed sample packet. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinakaran.com/district/namakkal-30102026-03/amp",
-   "published": "2026-10-30T02:29:34+05:30",
-   "verification": "FREE-MODEL DRAFT (anthropic/claude-haiku-5-5) - not checked by Claude yet; validator problems: caption misses facts of the article (put every one in 📰 முழு விவரம்): பள்ளிபாளையம் ('அவ்வாறு விநியோகிக்கப்படும் விதைகளின் தரம் குறித்து விதை ஆய்வ')",
-   "note": "free-model draft anthropic/claude-haiku-5-5, 13 attempt(s), 1 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 4.0,
-   "images": [
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793326942/news360/wpgsxtbiw1zfqzrkyu7c.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793327076/news360/ttvoclnqruf1xdel3ens.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793327092/news360/xawwuv9z7ukfizz9jgsb.jpg"
-   ]
-  },
-  {
-   "tamil_headline": "வேம்பத்தி ஏரியை தூர்வார கோரிக்கை",
-   "english_headline": "Demand to desilt Vembathi lake at Thottakudiampalayam near Appakudal, Bhavani",
-   "category": "Civic Issues",
-   "location": "Thottakudiampalayam, Appakudal, Bhavani, Erode district",
-   "importance": "Medium",
-   "scope": "local",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "ஏரி பராமரிப்பு",
-    "loc": "தோட்டக்குடியாம்பாளையம், ஆப்பக்கூடல்",
-    "hl1": "வேம்பத்தி ஏரியை தூர்வார கோரிக்கை",
-    "hl2": "சீமைக்கருவேல மரங்களை அகற்ற",
-    "slides": [
-     {
-      "title": "எந்த ஏரி?",
-      "lines": [
-       "ஆப்பக்கூடல் அருகே தோட்டக்குடியாம்பாளையம்",
-       "வேம்பத்தி ஏரி <b>200 ஏக்கர்</b> பரப்பளவில் உள்ளது",
-       "தற்போது ஏரிக்கு தண்ணீர் வரத்து குறைந்துள்ளது"
-      ]
-     },
-     {
-      "title": "என்ன கோரிக்கை?",
-      "lines": [
-       "ஏரியில் உள்ள சீமைக்கருவேல மரங்களை முற்றிலும் அகற்ற வேண்டும்",
-       "மழைக்கு முன் இந்தப் பணியை செய்ய வலியுறுத்தல்",
-       "ஏரியைத் தூர்வார கோரிக்கை"
-      ]
-     },
-     {
-      "title": "ஏன் முக்கியம்?",
-      "lines": [
-       "நிலத்தடி நீர்மட்டம் வழக்கத்தை விடக் குறையக்கூடும் என்ற",
-       "பகுதிகளில் பெய்து வரும் மழையால் ஏரி நீர்மட்டம் உயர வாய்ப்பு",
-       "விவரம் இன்னும் முழுமையாகத் தெரியவரவில்லை"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "ஆப்பக்கூடல் அருகே வேம்பத்தி ஏரியைத் தூர்வார கோரிக்கை எழுந்துள்ளது. தோட்டக்குடியாம்பாளையத்தில் உள்ள இந்த ஏரி 200 ஏக்கர் பரப்பளவில் உள்ளது. தற்போது ஏரிக்குத் தண்ணீர் வரத்து குறைந்துள்ளது. இதனால் நிலத்தடி நீர்மட்டம் வழக்கத்தை விடக் குறையக்கூடும் என்ற அச்சம் நிலவுகிறது. ஏரியில் உள்ள சீமைக்கருவேல மரங்களை முற்றிலும் அகற்ற வேண்டும் என கோரிக்கை விடுக்கப்பட்டுள்ளது. மழைக்கு முன்பாக இந்தப் பணிகளை மேற்கொள்ள வலியுறுத்தப்படுகிறது. பகுதிகளில் பெய்து வரும் மழையால் ஏரி நீர்மட்டம் உயர வாய்ப்புள்ளது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🌊 ஆப்பக்கூடல் அருகே வேம்பத்தி ஏரியைத் தூர்வார கோரிக்கை\n\n📰 முழு விவரம்:\nஆப்பக்கூடல் அருகே தோட்டக்குடியாம்பாளையத்தில் 200 ஏக்கர் பரப்பளவில் வேம்பத்தி ஏரி உள்ளது. தற்போது ஏரிக்குத் தண்ணீர் வரத்து குறைந்துள்ளது. இதனால் நிலத்தடி நீர்மட்டம் வழக்கத்தை விடக் குறையக்கூடும் என்ற அச்சம் நிலவுகிறது.\nஏரியில் உள்ள சீமைக்கருவேல மரங்களை முற்றிலும் அகற்ற வேண்டும் என கோரிக்கை விடுக்கப்பட்டுள்ளது. மழைக்கு முன்பாக இந்தப் பணிகளை மேற்கொள்ள வலியுறுத்தப்படுகிறது.\nபகுதிகளில் பெய்து வரும் மழையால் ஏரி நீர்மட்டம் உயர வாய்ப்புள்ளது.\n📍 இடம்: தோட்டக்குடியாம்பாளையம், ஆப்பக்கூடல், பவானி\n\nVembathi lake desilting demand | Appakudal news\n📍 தோட்டக்குடியாம்பாளையம், ஆப்பக்கூடல் | 30 அக்டோபர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Bhavani #Appakudal #ஏரி #ErodeNews",
-   "prompts": "A dry village lake at Thottakudiampalayam near Appakudal in Bhavani, Erode district, where villagers are demanding that the silted Vembathi lake be desilted. The wide, cracked bed of the 200-acre tank shows a thin pool of stagnant water at its centre, with its banks thick with dense, thorny seemargavel trees. A small group of farmers in shirts and veshti stands on the mud bank, pointing toward the thorn-covered shoreline, seen from behind and at a distance. Early morning, soft golden light with a pale sky and a faint hint of distant rain clouds over the Kolli-side hills. Camera: wide angle at eye level, 35 mm, capturing the lake's full width and the tree line. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA wide establishing shot of the Thottakudiampalayam village tank on the outskirts of Appakudal, Bhavani, in Erode district, Tamil Nadu. The shallow, silted lake spreads across the flat landscape, its dry red-brown soil cracked at the edges, while dense seemargavel thorn bushes and tall palm trees crowd the banks. Beyond the lake lie paddy and sugarcane fields and a few red-tiled village houses with coconut trees. Two farmers on a motorbike stop on a narrow tar road beside the lake, seen from far away and from behind. Overcast midday light with a hazy sky suggesting coming rain. Camera: high wide shot from the bund, 35 mm, showing the lake's scale against the village. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA close-up detail of the dried, thorny seemargavel branches choking the edge of Vembathi lake at Thottakudiampalayam, Bhavani, Erode district. Thick, dark-green spiky stems and cracked grey-brown silt cover the foreground, with a patch of dry, caked mud showing the depth of the silting beneath. A few shallow puddles of stagnant water reflect the pale sky between the roots. A farmer's bare, dusty foot in a rubber chappal steps on the edge of the frame, with no face visible. Bright daytime light, dry and dusty air. Camera: low macro angle close to the ground, 35 mm, shallow depth of field. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/demand-for-desilting-of-vempati-lake/4362982",
-   "published": "2026-10-30T06:21:00+05:30",
-   "verification": "FREE-MODEL DRAFT (anthropic/claude-haiku-5-5) - not checked by Claude yet; validator problems: fact-check: The article's line 'தண்ணீர் வரத்து குறைந்து சூழ்ந்துள்ளது' is cut off and the sentence about groundwater level 'வழக்கத்தை விட குறைய' is incomplete; the draft fills in 'குறையக்கூடும் என்ற அச்சம் நிலவுகிறது' (fear of groundwater dropping), which is an invented detail not stated in the article.; fact-check: The article says the water level 'may rise' due to rain in the areas, but the draft states this as a sentence in reel_script and caption without the cause being clearly tied to the article, and the slides mix the groundwater-fear point with the rain point in the same 'ஏன் முக்கியம்?' slide, combining two different facts.; fact-check: The article does not state who made the demand (the request is attributed to no clear party), yet the draft's reel_script says 'கோரிக்கை எழுந்துள்ளது' and 'கோரிக்கை விடுக்கப்பட்டுள்ளது' implying a formal demand, and the caption's 'விவரம் இன்னும் தெரியவரவில்லை' claim is not supported as a fact in the article text.",
-   "note": "free-model draft anthropic/claude-haiku-5-5, 13 attempt(s), 3 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 3.0,
-   "images": [
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793327286/news360/dypkob7jpkbzsuflnnay.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793327447/news360/kv3e57tf2n732y9fnrh3.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793327454/news360/jetznf4v4od9gki5ucnv.jpg"
-   ]
-  }
- ]
+ "stories": []
 }
