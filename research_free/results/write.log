@@ -1,7 +1,8 @@
-writing [N]: 8 நாட்களுக்குப் பின் உயர்ந்தது முட்டை விலை:. ஒரு முட்டை ரூ. 
+writing [N]: மத்திய அரசு மீது பொய்யான குற்றச்சாட்டுகளை 
+தெரிவிக்கிறாா் ரா
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-writing [N]: தீபாவளியால் தேவை அதிகரிப்பு முட்டை விலை 20 காசு உயர்வு
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+writing [N]: கழிவுகளைச்சேகரிப்போர், மயான பணியாளர்களுக்கு மாநகராட்சி மூலம்
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
@@ -9,179 +10,142 @@ fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (17s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+ok gemini/gemini-3.5-flash (18s)
+attempt 1 gemini/gemini-3.5-flash: 1 problems
+  reel_script has 84 words; need 85-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-switching away from gemini/gemini-3.6-flash for 10 min
-ok gemini/gemini-3-flash-preview (10s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
 ok groq/qwen/qwen3.8-27b (3s)
+attempt 2 groq/qwen/qwen3.8-27b: 1 problems
+  reel_script has 65 words; need 85-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok gemini/gemini-3-flash-preview (36s)
+factcheck by gemini/gemini-3-flash-preview: 4 problems
+  The caption claims Rahul Gandhi 'tore' (கிழித்து) the ordinance, which is an invented detail not found in the article (it says he 'ridiculed' it).
+  The reel_script and caption describe the 2024 election result as a 'defeat' (தோல்வி), but the article states it was 'disappointing' (ஏமாற்றமானது).
+  The reel_script omits the mention of Rahul Gandhi ridiculing the ordinance, which is a significant part of the criticism mentioned in the article.
+  The date in the caption (30 அக்டோபர் 2026) is incorrect as it should be today's date (2024).
+attempt 1 gemini/gemini-3.6-flash: 4 problems
+  fact-check: The caption claims Rahul Gandhi 'tore' (கிழித்து) the ordinance, which is an invented detail not found in the article (it says he 'ridiculed' it).
+  fact-check: The reel_script and caption describe the 2024 election result as a 'defeat' (தோல்வி), but the article states it was 'disappointing' (ஏமாற்றமானது).
+  fact-check: The reel_script omits the mention of Rahul Gandhi ridiculing the ordinance, which is a significant part of the criticism mentioned in the article.
+  fact-check: The date in the caption (30 அக்டோபர் 2026) is incorrect as it should be today's date (2024).
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-ok gemini/gemini-3-flash-preview (40s)
-factcheck by gemini/gemini-3-flash-preview: 2 problems
-  The word 'daily' (தினமும்) is an invented detail not mentioned in the article regarding egg production.
-  The reel_script omits 'other states' (வெளி மாநிலங்கள்) from the distribution list mentioned in the article.
-attempt 1 gemini/gemini-3-flash-preview: 2 problems
-  fact-check: The word 'daily' (தினமும்) is an invented detail not mentioned in the article regarding egg production.
-  fact-check: The reel_script omits 'other states' (வெளி மாநிலங்கள்) from the distribution list mentioned in the article.
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 0 problems
+claude rewrite 1 anthropic/claude-haiku-5-5: 0 problems
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-dead for this round: groq/qwen/qwen3.8-27b
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-ok groq/qwen/qwen3.8-27b (2s)
-factcheck by groq/qwen/qwen3.8-27b: 14 problems
-  Slide 1, line 2 states '590 காசுக்கு விற்பனை' (Sale at 590 paise), but the article specifies 590 paise is the 'கொள்முதல் விலை' (purchase price), not the sale price.
-  Reel script and caption omit the specific mention of Hyderabad (ஐதராபாத்) as the primary example for the northern states' winter demand, which is a specific detail in the article, though 'வடமாநிலங்கள்' is a generalization. (Minor, but checking for missing important facts).
-  More critically, the article states the meeting was held 'இன்று (அக்.,30)' (Today, Oct 30). The draft caption includes '🗓️ நாள்: அக்டோபர் 30'. This is consistent. However, the reel script says 'இன்று நடந்தது' (Held today). This is consistent with the article's 'இன்று'.
-  Wait, let's re-read the 'NOT problems' section. 'The posting date is today's date, not a claim from the article.' The article says 'இன்று (அக்.,30)'. The draft uses 'அக்டோபர் 30'. This is fine.
-  Let's look for other issues. The article lists specific prices for other cities (Chennai 640, etc.). The draft does not include these. Is this a missing important fact? The prompt asks for 'an important fact of the article... that is missing'. The main focus is the Namakkal price increase. The other city prices are context. Probably not a 'problem' in the strict sense of a factual error in the draft's claims.
-  Let's check the chicken prices. Article: 'நாமக்கலில் நடந்த பண்ணையாளர், வியாபாரிகள் ஒருங்கிணைப்புக்குழு கூட்டத்தில், ஒரு கிலோ, முட்டைக்கோழி, 100 ரூபாய்... பல்லடத்தில் நடந்த உற்பத்தியாளர் ஒருங்கிணைப்புக்குழு கூட்டத்தில், ஒரு கிலோ கறிக்கோழி, 123 ரூபாய்'. Draft: 'நாமக்கலில் ஒரு கிலோ முட்டைக்கோழி விலை 100 ரூபாய்... பல்லடத்தில் ஒரு கிலோ கறிக்கோழி விலை 123 ரூபாய்'. This matches.
-  Let's check the egg production. Article: 'எட்டு கோடி முட்டைகள்'. Draft: 'எட்டு கோடி முட்டைகள்'. Matches.
-  Let's check the price increase amount. Article: '20 காசு உயர்த்தி, 590 காசாக'. Draft: '20 காசு உயர்வு', '590 காசு'. Matches.
-  Let's check the cause. Article: 'தீபாவளி... தேவை அதிகரிப்பு', 'வடமாநிலங்களில் குளிர்காலம்... நுகர்வு அதிகரிப்பு'. Draft: 'தீபாவளி... தேவை அதிகரிப்பு', 'வடமாநிலங்களில் குளிர்காலம்... நுகர்வு அதிகரிப்பு'. Matches.
-  Is there any grammatical issue? '590 காசுக்கு விற்பனை' in the slide is factually incorrect regarding the type of price (purchase vs sale). The article explicitly says 'கொள்முதல் விலை' (purchase price). The slide says 'விற்பனை' (sale). This is a factual discrepancy in the label of the price.
-  Another potential issue: The article mentions 'தமிழ்நாடு கோழிப்பண்ணையாளர்கள் சங்க செயலர் சுந்தரராஜன்' (Secretary Sundararajan) gave the statement. The draft does not mention him. Is this a missing important fact? Usually, the 'who said what' is important. The prompt says 'who did what... missing from the reel_script'. The reel script attributes the meeting to Singaraj (Chairman) but doesn't mention Sundararajan explaining the reason. This might be considered a missing detail, but often reels summarize. However, the 'Sale vs Purchase' error is definite.
-  Let's look at the headline: 'தீபாவளிக்கு முன்னர் நாமக்கல் முட்டை விலை 20 காசு உயர்வு'. Article: 'தீபாவளியால் தேவை அதிகரிப்பு முட்டை விலை 20 காசு உயர்வு'. The draft headline is accurate.
-  Let's look at the caption footer. '📍 place | posting-date line'. The draft has '🗓️ நாள்: அக்டோபர் 30'. The instruction says 'The posting date is today's date, not a claim from the article.' The article says 'இன்று (அக்.,30)'. So the date is in the article. The draft uses it. This is fine.
-  The main error is 'விற்பனை' (Sale) vs 'கொள்முதல்' (Purchase) in the slide spec. The article is very specific that the *purchase* price was raised to 590. The slide implies the *sale* price is 590. This is a factual error.
-attempt 1 groq/qwen/qwen3.8-27b: 14 problems
-  fact-check: Slide 1, line 2 states '590 காசுக்கு விற்பனை' (Sale at 590 paise), but the article specifies 590 paise is the 'கொள்முதல் விலை' (purchase price), not the sale price.
-  fact-check: Reel script and caption omit the specific mention of Hyderabad (ஐதராபாத்) as the primary example for the northern states' winter demand, which is a specific detail in the article, though 'வடமாநிலங்கள்' is a generalization. (Minor, but checking for missing important facts).
-  fact-check: More critically, the article states the meeting was held 'இன்று (அக்.,30)' (Today, Oct 30). The draft caption includes '🗓️ நாள்: அக்டோபர் 30'. This is consistent. However, the reel script says 'இன்று நடந்தது' (Held today). This is consistent with the article's 'இன்று'.
-  fact-check: Wait, let's re-read the 'NOT problems' section. 'The posting date is today's date, not a claim from the article.' The article says 'இன்று (அக்.,30)'. The draft uses 'அக்டோபர் 30'. This is fine.
-  fact-check: Let's look for other issues. The article lists specific prices for other cities (Chennai 640, etc.). The draft does not include these. Is this a missing important fact? The prompt asks for 'an important fact of the article... that is missing'. The main focus is the Namakkal price increase. The other city prices are context. Probably not a 'problem' in the strict sense of a factual error in the draft's claims.
-  fact-check: Let's check the chicken prices. Article: 'நாமக்கலில் நடந்த பண்ணையாளர், வியாபாரிகள் ஒருங்கிணைப்புக்குழு கூட்டத்தில், ஒரு கிலோ, முட்டைக்கோழி, 100 ரூபாய்... பல்லடத்தில் நடந்த உற்பத்தியாளர் ஒருங்கிணைப்புக்குழு கூட்டத்தில், ஒரு கிலோ கறிக்கோழி, 123 ரூபாய்'. Draft: 'நாமக்கலில் ஒரு கிலோ முட்டைக்கோழி விலை 100 ரூபாய்... பல்லடத்தில் ஒரு கிலோ கறிக்கோழி விலை 123 ரூபாய்'. This matches.
-  fact-check: Let's check the egg production. Article: 'எட்டு கோடி முட்டைகள்'. Draft: 'எட்டு கோடி முட்டைகள்'. Matches.
-  fact-check: Let's check the price increase amount. Article: '20 காசு உயர்த்தி, 590 காசாக'. Draft: '20 காசு உயர்வு', '590 காசு'. Matches.
-  fact-check: Let's check the cause. Article: 'தீபாவளி... தேவை அதிகரிப்பு', 'வடமாநிலங்களில் குளிர்காலம்... நுகர்வு அதிகரிப்பு'. Draft: 'தீபாவளி... தேவை அதிகரிப்பு', 'வடமாநிலங்களில் குளிர்காலம்... நுகர்வு அதிகரிப்பு'. Matches.
-  fact-check: Is there any grammatical issue? '590 காசுக்கு விற்பனை' in the slide is factually incorrect regarding the type of price (purchase vs sale). The article explicitly says 'கொள்முதல் விலை' (purchase price). The slide says 'விற்பனை' (sale). This is a factual discrepancy in the label of the price.
-  fact-check: Another potential issue: The article mentions 'தமிழ்நாடு கோழிப்பண்ணையாளர்கள் சங்க செயலர் சுந்தரராஜன்' (Secretary Sundararajan) gave the statement. The draft does not mention him. Is this a missing important fact? Usually, the 'who said what' is important. The prompt says 'who did what... missing from the reel_script'. The reel script attributes the meeting to Singaraj (Chairman) but doesn't mention Sundararajan explaining the reason. This might be considered a missing detail, but often reels summarize. However, the 'Sale vs Purchase' error is definite.
-  fact-check: Let's look at the headline: 'தீபாவளிக்கு முன்னர் நாமக்கல் முட்டை விலை 20 காசு உயர்வு'. Article: 'தீபாவளியால் தேவை அதிகரிப்பு முட்டை விலை 20 காசு உயர்வு'. The draft headline is accurate.
-  fact-check: Let's look at the caption footer. '📍 place | posting-date line'. The draft has '🗓️ நாள்: அக்டோபர் 30'. The instruction says 'The posting date is today's date, not a claim from the article.' The article says 'இன்று (அக்.,30)'. So the date is in the article. The draft uses it. This is fine.
-  fact-check: The main error is 'விற்பனை' (Sale) vs 'கொள்முதல்' (Purchase) in the slide spec. The article is very specific that the *purchase* price was raised to 590. The slide implies the *sale* price is 590. This is a factual error.
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1323. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free models unavailable: no free model answered: None
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The reel_script says the price was set to rise 20 paise to Rs 5.90 'today' with the 8-day gap, which matches the article; however, the slide 'எங்கே முடிவு?' states the consultation was held 'இன்று' and the reel_script says the 8-day gap ends 'இன்று' — this is consistent, so no issue there; but the caption's 'முட்டை விலை' headline line 'இன்றைய விலை ரூ.5.90' is acceptable.
-  The reel_script says 'நாமக்கல் மண்டலத்தில் இன்று நடைபெற்றது' and the article's consultation was at the Namakkal zone, consistent; no invented detail found in the body.
-  The caption's last line is an English summary ('Namakkal egg price up 20 paise to Rs 5.90 | Namakkal news'), which is a footer-type line and not a claim needing check.
 claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The reel_script says the price was set to rise 20 paise to Rs 5.90 'today' with the 8-day gap, which matches the article; however, the slide 'எங்கே முடிவு?' states the consultation was held 'இன்று' and the reel_script says the 8-day gap ends 'இன்று' — this is consistent, so no issue there; but the caption's 'முட்டை விலை' headline line 'இன்றைய விலை ரூ.5.90' is acceptable.
-  fact-check: The reel_script says 'நாமக்கல் மண்டலத்தில் இன்று நடைபெற்றது' and the article's consultation was at the Namakkal zone, consistent; no invented detail found in the body.
-  fact-check: The caption's last line is an English summary ('Namakkal egg price up 20 paise to Rs 5.90 | Namakkal news'), which is a footer-type line and not a claim needing check.
+  sentence 1 (one-line story) has 17 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  stray Tamil sign '்' after 'ா' in « தலைவா் கே»
+  stray Tamil sign '்' after 'ா' in « தலைவா் கே»
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 8
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 1 problems
-  reel_script says the price rise was announced today ('இன்று இந்த விலை உயர்வு அறிவிக்கப்பட்டது'), but the article says the price was raised after 8 days; the reel script wording 'நாமக்கல்லில் ... 8 நாட்களுக்குப் பின்' is ambiguous but the headline and slides also say 8 days after, so the reel_script's claim that the rise was announced today is consistent with the article only partially—the article does say 'இன்று'. (No mismatch for this.) Main problem: the reel_script states the rise applies to exports to 'வெளி மாநிலங்களுக்கும் ஏற்றுமதி செய்யப்படும் முட்டைகளுக்கும்', which is supported by the article, but the reel_script omits that the price was set by the Namakkal zone coordination committee's consultation after hearing farmers' views, which is only partly included.
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  fact-check: reel_script says the price rise was announced today ('இன்று இந்த விலை உயர்வு அறிவிக்கப்பட்டது'), but the article says the price was raised after 8 days; the reel script wording 'நாமக்கல்லில் ... 8 நாட்களுக்குப் பின்' is ambiguous but the headline and slides also say 8 days after, so the reel_script's claim that the rise was announced today is consistent with the article only partially—the article does say 'இன்று'. (No mismatch for this.) Main problem: the reel_script states the rise applies to exports to 'வெளி மாநிலங்களுக்கும் ஏற்றுமதி செய்யப்படும் முட்டைகளுக்கும்', which is supported by the article, but the reel_script omits that the price was set by the Namakkal zone coordination committee's consultation after hearing farmers' views, which is only partly included.
 ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  slides_spec title 'உயர்வுக்குக்' is an ungrammatical/incomplete Tamil word with no clear meaning
-  slides_spec 'மற்ற நகர விலைகள்' slide says ஐதராபாத் 575 காசு, பெங்களூரு 615 காசு, which is fine, but the reel_script omits the key result of the other cities list only partially; the reel_script omits Vijayawada, Parwada, Mysuru, which the slide also omits — minor
-  reel_script says the cause is both the North Indian winter consumption and North Indian price rise, mixing the 'winter/consumption' cause with the price rise in one sentence, which is not a clear cause statement
-  slides_spec 'கோழி விலை' slide and reel_script state that Namakkal chicken price is set at a 'farmers' coordination meeting' but the article says the Namakkal meeting was a farmers and traders coordination committee, and the 'இவை பண்ணையாளர் ஒருங்கிணைப்புக் கூட்டத்தில்' line merges the two meetings into one
-  slides_spec 'மற்ற நகர விலைகள்' slide lists Hyderabad 575 and Bengaluru 615 but the slide's 'ஐதராபாத்' line is already covered in the cause slide with a different price claim (20-30 காசு), mixing two different facts
-claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: slides_spec title 'உயர்வுக்குக்' is an ungrammatical/incomplete Tamil word with no clear meaning
-  fact-check: slides_spec 'மற்ற நகர விலைகள்' slide says ஐதராபாத் 575 காசு, பெங்களூரு 615 காசு, which is fine, but the reel_script omits the key result of the other cities list only partially; the reel_script omits Vijayawada, Parwada, Mysuru, which the slide also omits — minor
-  fact-check: reel_script says the cause is both the North Indian winter consumption and North Indian price rise, mixing the 'winter/consumption' cause with the price rise in one sentence, which is not a clear cause statement
-  fact-check: slides_spec 'கோழி விலை' slide and reel_script state that Namakkal chicken price is set at a 'farmers' coordination meeting' but the article says the Namakkal meeting was a farmers and traders coordination committee, and the 'இவை பண்ணையாளர் ஒருங்கிணைப்புக் கூட்டத்தில்' line merges the two meetings into one
-  fact-check: slides_spec 'மற்ற நகர விலைகள்' slide lists Hyderabad 575 and Bengaluru 615 but the slide's 'ஐதராபாத்' line is already covered in the cause slide with a different price claim (20-30 காசு), mixing two different facts
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  reel_script says the egg price is fixed in Namakkal but the article says it is the wholesale/farm-gate price set in Namakkal; the draft's slides and headline imply the Rs 5.90 price is the retail price, which the article does not state (retail is Rs 7, rising possibly to Rs 7.50)
-  The reel_script says the price 'is set in Namakkal itself' (நாமக்கல்லிலேயே நிர்ணயம்), which is a slight change from the article's wording, and the reel omits that the eggs are sent for school meal schemes in Tamil Nadu as well as other districts, states and countries in the same way as the article, which is fine; however the reel and caption say 'இன்று முதல்' (from today) in the caption headline, which is not stated in the article
-  The slide title 'ஏன் உயர்வு?' (why the rise) presents the reason as a meeting outcome, but the article does not give a cause for the increase beyond the meeting and farmers' opinions
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: reel_script says the egg price is fixed in Namakkal but the article says it is the wholesale/farm-gate price set in Namakkal; the draft's slides and headline imply the Rs 5.90 price is the retail price, which the article does not state (retail is Rs 7, rising possibly to Rs 7.50)
-  fact-check: The reel_script says the price 'is set in Namakkal itself' (நாமக்கல்லிலேயே நிர்ணயம்), which is a slight change from the article's wording, and the reel omits that the eggs are sent for school meal schemes in Tamil Nadu as well as other districts, states and countries in the same way as the article, which is fine; however the reel and caption say 'இன்று முதல்' (from today) in the caption headline, which is not stated in the article
-  fact-check: The slide title 'ஏன் உயர்வு?' (why the rise) presents the reason as a meeting outcome, but the article does not give a cause for the increase beyond the meeting and farmers' opinions
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok anthropic/claude-haiku-5-5
 imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 7 problems
+  The reel_script and slides_spec say the 2-year sentence and loss of MP seat, and the 'எதிர்க்கட்சித் தலைவர் அந்தஸ்தை இழந்தார்' claim, are reported as the article's claims, but the article states them as facts; the draft frames them as 'அறிக்கை கூறுகிறது/தகவல்' which is acceptable, but the slide 'எதிர்க்கட்சித் தலைவர் அந்தஸ்தை இழந்தார் என தகவல்' is consistent with the article.
+  The slides_spec 'loc' field states 'நாமக்கல் மாவட்டம்' (Namakkal district), which is not stated anywhere in the article.
+  The slides_spec slide 'என்ன' says the article claims Rahul Gandhi was 'நீதிமன்றத்தால் கண்டிக்கப்பட்டதாகக் கூறல்' while the reel_script says he was 'கண்டிக்கப்பட்டுள்ளார்' as fact in the reel; minor inconsistency between attribution in reel and slide.
+  The reel_script omits the article's key point that the Congress-related remark about the 'வாக்குத் திருட்டு' claim being rejected by the public, and omits the Manmohan Singh ordinance context which the caption includes; the reel does not mention the 2024 election result, a significant point of the article's argument.
+  The caption says 'மன்மோகன் சிங் பிரதமராக இருந்தபோது கொண்டுவந்த அவசரச் சட்டத்தையும் அறிக்கை குறிப்பிடுகிறது' which is accurate but the caption's headline 'பொய்யான குற்றச்சாட்டு என குற்றச்சாட்டு' is ungrammatical/redundant Tamil with no clear meaning.
+  The tamil_headline 'பொய்யான குற்றச்சாட்டு: ராகுல் காந்தி மீது பாஜக குற்றம்' and slides hl2 'பொய்யான குற்றச்சாட்டு' present the phrase as the headline when the article attributes the accusation to BJP spokesperson, making the headline's framing ambiguous rather than a clear claim attribution.
+  The slide 'யார் குற்றம்?' lines combine the BJP official's role and the accusation in a way that mixes two facts in one line ('ராகுல் காந்தி மீது குற்றச்சாட்டு' and 'அறிக்கையில் தெரிவித்துள்ளார்'), and the slide 'வாக்குத் திருட்டு' line 'காங்கிரஸ் கட்சி மீதும் ஊழல் குற்றச்சாட்டுகள் உள்ளதாக கூறல்' mixes Congress corruption allegations into a slide about the vote-theft claim, combining two different facts.
+claude rewrite 2 anthropic/claude-haiku-5-5: 7 problems
+  fact-check: The reel_script and slides_spec say the 2-year sentence and loss of MP seat, and the 'எதிர்க்கட்சித் தலைவர் அந்தஸ்தை இழந்தார்' claim, are reported as the article's claims, but the article states them as facts; the draft frames them as 'அறிக்கை கூறுகிறது/தகவல்' which is acceptable, but the slide 'எதிர்க்கட்சித் தலைவர் அந்தஸ்தை இழந்தார் என தகவல்' is consistent with the article.
+  fact-check: The slides_spec 'loc' field states 'நாமக்கல் மாவட்டம்' (Namakkal district), which is not stated anywhere in the article.
+  fact-check: The slides_spec slide 'என்ன' says the article claims Rahul Gandhi was 'நீதிமன்றத்தால் கண்டிக்கப்பட்டதாகக் கூறல்' while the reel_script says he was 'கண்டிக்கப்பட்டுள்ளார்' as fact in the reel; minor inconsistency between attribution in reel and slide.
+  fact-check: The reel_script omits the article's key point that the Congress-related remark about the 'வாக்குத் திருட்டு' claim being rejected by the public, and omits the Manmohan Singh ordinance context which the caption includes; the reel does not mention the 2024 election result, a significant point of the article's argument.
+  fact-check: The caption says 'மன்மோகன் சிங் பிரதமராக இருந்தபோது கொண்டுவந்த அவசரச் சட்டத்தையும் அறிக்கை குறிப்பிடுகிறது' which is accurate but the caption's headline 'பொய்யான குற்றச்சாட்டு என குற்றச்சாட்டு' is ungrammatical/redundant Tamil with no clear meaning.
+  fact-check: The tamil_headline 'பொய்யான குற்றச்சாட்டு: ராகுல் காந்தி மீது பாஜக குற்றம்' and slides hl2 'பொய்யான குற்றச்சாட்டு' present the phrase as the headline when the article attributes the accusation to BJP spokesperson, making the headline's framing ambiguous rather than a clear claim attribution.
+  fact-check: The slide 'யார் குற்றம்?' lines combine the BJP official's role and the accusation in a way that mixes two facts in one line ('ராகுல் காந்தி மீது குற்றச்சாட்டு' and 'அறிக்கையில் தெரிவித்துள்ளார்'), and the slide 'வாக்குத் திருட்டு' line 'காங்கிரஸ் கட்சி மீதும் ஊழல் குற்றச்சாட்டுகள் உள்ளதாக கூறல்' mixes Congress corruption allegations into a slide about the vote-theft claim, combining two different facts.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
+  reel_script has 80 words; need 85-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  sentence 1 (one-line story) has 16 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  not grounded: location 'தமிழ்நாடு' is not in the article
+  known issue card_cut_mid_phrase: card cut off mid-phrase ('ர்சனத்துக்கு உள்ளாவதாகக்') - rewrite so it does not happen again
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-image match: False The image shows a meeting inside a room with a conference table and teapots, without any visual depiction or elements re
-image match check unavailable: gemini-3.5-flash: 503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models
-images made: 1 for 'Namakkal egg price rises after 8 days to'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261030-2230","first":"RN-228"}
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+image match: False The image is an AI-generated depiction showing a close-up of generic ID cards on a desk, rather than an actual news phot
+ok anthropic/claude-haiku-5-5
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for '39 sanitation workers in Namakkal munici'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261031-0219","first":"RN-230"}
 posting job started at once
 image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
 image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Namakkal egg purchase price up 20 paise '
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261030-2230","first":"RN-229"}
+images made: 2 for 'BJP's K.P. Ramalingam accuses Rahul Gand'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261031-0219","first":"RN-231"}
 earlier stories still waiting for images: []
 instagram check: 85 recent posts read from both pages
-write round: 8 news waiting in the queue (written in priority order)
-candidate filter: already filed=5, collected=3
-to write: 0 Rasipuram + 3 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 3 Namakkal; time left 29 min
+write round: 5 news waiting in the queue (written in priority order)
+candidate filter: collected=4, already filed=1
+to write: 0 Rasipuram + 4 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 4 Namakkal; time left 29 min
+try (N) manual=False: ரூ. 5.90 ஆனது முட்டை விலை:
+20 காசுகள் உயா்வு
 try (N) manual=False: நாமக்கல்: முட்டை கொள்முதல் விலை 20 காசுகள் உயர்வு.!
-try (N) manual=False: தீபாவளியால் தேவை அதிகரிப்பு முட்டை விலை 20 காசு உயர்வு
-try (N) manual=False: 8 நாட்களுக்குப் பின் உயர்ந்தது முட்டை விலை:. ஒரு முட்டை ரூ. 
+try (N) manual=False: மத்திய அரசு மீது பொய்யான குற்றச்சாட்டுகளை 
+தெரிவிக்கிறாா் ரா
 skip (N) similar to a filed story: நாமக்கல்: முட்டை கொள்முதல் விலை 20 காசுகள் உயர்வு.
-auto images: 1 of 1 stories ({'pollinations': 2})
+try (N) manual=False: கழிவுகளைச்சேகரிப்போர், மயான பணியாளர்களுக்கு மாநகராட்சி மூலம்
+skip (N) similar to a filed story: ரூ. 5.90 ஆனது முட்டை விலை:
+20 காசுகள் உயா்வு
+auto images: 1 of 1 stories ({'pollinations': 3})
 posting job started at once
-auto images: 1 of 1 stories ({'pollinations': 4})
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 3}, done={'R': 0, 'N': 2}, time left 26 min
+auto images: 1 of 1 stories ({'pollinations': 5})
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 2}, time left 27 min
 carousel for 0 of 2 stories, the rest reel only
 filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
