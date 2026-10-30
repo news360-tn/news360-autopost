@@ -146,20 +146,7 @@ def generate(prompt, seed=0, key=None, cheap=False):
 
 # ---- owner 30 Oct: more FREE picture services, tried after Cloudflare and before NVIDIA / paid FAL.
 # Each is skipped when its key (GitHub secret) is not set, so nothing changes until the owner adds the key.
-# Request shapes from the official API docs (SiliconFlow images/generations, Together images/generations, Pollinations gen API).
-def _siliconflow(prompt, seed, key):
-    r = requests.post("https://api.siliconflow.com/v1/images/generations", timeout=60, headers={"Authorization": "Bearer " + key},
-                      json={"model": "black-forest-labs/FLUX.1-schnell", "prompt": prompt[:1800], "image_size": "576x1024", "seed": seed % 9999999999})
-    if r.status_code != 200:
-        raise RuntimeError(f"siliconflow {r.status_code}: {r.text[:200]}")
-    url = ((r.json().get("images") or [{}])[0]).get("url")
-    if not url:
-        raise RuntimeError(f"siliconflow no image: {r.text[:200]}")
-    d = requests.get(url, timeout=60)
-    d.raise_for_status()
-    return d.content
-
-
+# Request shapes from the official API docs (Together images/generations, Pollinations gen API).
 def _together(prompt, seed, key):
     body = {"model": os.environ.get("TOGETHER_IMAGE_MODEL", "black-forest-labs/FLUX.1-schnell-Free"), "prompt": prompt[:1800],
             "width": 768, "height": 1344, "steps": 4, "n": 1, "seed": seed, "response_format": "base64"}
@@ -189,7 +176,7 @@ def _pollinations(prompt, seed, key):
     return r.content
 
 
-EXTRA_FREE = [("siliconflow", "SILICONFLOW_API_KEY", _siliconflow), ("together", "TOGETHER_API_KEY", _together),
+EXTRA_FREE = [("together", "TOGETHER_API_KEY", _together),      # owner 30 Oct: SiliconFlow removed (not free: "balance insufficient"); Together only with a key (not set)
               ("pollinations", "POLLINATIONS_API_KEY", _pollinations)]
 
 
@@ -237,7 +224,7 @@ def _generate(prompt, seed=0, key=None, cheap=False):
                 print("imagegen:", m[:220], file=sys.stderr)
                 if any(c in m for c in (" 401", " 403", " 404", " 400", " 422", "no image", "daily free allocation")) or "Timeout" in type(e).__name__:
                     DEAD.add(model)      # the daily free neurons are used up: not tried again for every picture of this run
-    img, err = _extra_free(prompt, seed)      # owner 30 Oct: SiliconFlow, Together, Pollinations (free) before NVIDIA and paid FAL
+    img, err = _extra_free(prompt, seed)      # owner 30 Oct: Pollinations (free) before NVIDIA and paid FAL
     if img:
         return img
     last = err or last

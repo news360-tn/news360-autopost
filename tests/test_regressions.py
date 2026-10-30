@@ -869,7 +869,7 @@ class FreePicturesFirst30Oct(unittest.TestCase):
                 return b"img"
             return f
         saved = {k: getattr(imagegen, k) for k in ("_cf", "generate_nvidia", "_fal", "to_story_size", "EXTRA_FREE")}
-        names = ("CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "NVIDIA_API_KEY", "FAL_KEY", "SILICONFLOW_API_KEY", "TOGETHER_API_KEY", "POLLINATIONS_API_KEY")
+        names = ("CLOUDFLARE_API_TOKEN", "CLOUDFLARE_ACCOUNT_ID", "NVIDIA_API_KEY", "FAL_KEY", "TOGETHER_API_KEY", "POLLINATIONS_API_KEY")
         env = {k: os.environ.get(k) for k in names}
         imagegen._cf, imagegen.generate_nvidia, imagegen.to_story_size = src("cloudflare"), src("nvidia"), (lambda b: b)
         imagegen._fal = lambda p, s, k, model=None: src("fal")()
@@ -892,18 +892,19 @@ class FreePicturesFirst30Oct(unittest.TestCase):
             imagegen.DEAD.clear()
         return calls
 
-    def test_order_with_all_keys(self):
-        all3 = ("SILICONFLOW_API_KEY", "TOGETHER_API_KEY", "POLLINATIONS_API_KEY")
-        self.assertEqual(["cloudflare"], self.run_order(set(), all3))
-        self.assertEqual("siliconflow", self.run_order({"cloudflare"}, all3)[-1])
-        self.assertEqual("together", self.run_order({"cloudflare", "siliconflow"}, all3)[-1])
-        calls = self.run_order({"cloudflare", "siliconflow", "together", "pollinations", "nvidia"}, all3)
+    def test_order_with_all_keys(self):      # owner 30 Oct: Cloudflare -> Pollinations -> NVIDIA -> FAL (SiliconFlow removed, Together not used)
+        keys = ("POLLINATIONS_API_KEY",)
+        self.assertEqual(["cloudflare"], self.run_order(set(), keys))
+        self.assertEqual("pollinations", self.run_order({"cloudflare"}, keys)[-1])
+        calls = self.run_order({"cloudflare", "pollinations", "nvidia"}, keys)
         self.assertEqual("fal", calls[-1], calls)      # paid FAL only after every free one
-        self.assertNotIn("fal", self.run_order({"cloudflare"}, all3))
+        self.assertNotIn("fal", self.run_order({"cloudflare"}, keys))
+        import imagegen
+        self.assertNotIn("siliconflow", [n for n, _, _ in imagegen.EXTRA_FREE])
 
     def test_missing_key_means_skipped(self):
         calls = self.run_order({"cloudflare"}, ())
-        self.assertNotIn("siliconflow", calls)
+        self.assertNotIn("pollinations", calls)
         self.assertEqual("nvidia", calls[-1])      # without the new keys the order is exactly as before
 
     def test_cloudflare_kept_for_pictures(self):

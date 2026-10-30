@@ -16,7 +16,6 @@ jobs:
         env:
           CF_T: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CF_A: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          SF: ${{ secrets.SILICONFLOW_API_KEY }}
           PO: ${{ secrets.POLLINATIONS_API_KEY }}
           NV: ${{ secrets.NVIDIA_API_KEY }}
         run: |
@@ -31,7 +30,6 @@ jobs:
             fi
           }
           [ -n "$CF_T" ] && one cloudflare CLOUDFLARE_API_TOKEN="$CF_T" CLOUDFLARE_ACCOUNT_ID="$CF_A" || echo "SKIP cloudflare (no key)"
-          [ -n "$SF" ] && one siliconflow SILICONFLOW_API_KEY="$SF" || echo "SKIP siliconflow (no key)"
           [ -n "$PO" ] && one pollinations POLLINATIONS_API_KEY="$PO" || echo "SKIP pollinations (no key)"
           [ -n "$NV" ] && one nvidia NVIDIA_API_KEY="$NV" || echo "SKIP nvidia (no key)"
           python - <<'PY' | tee research_free/results/img/summary.txt
