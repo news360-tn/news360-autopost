@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-31 | `de6fa35` | rasipalan: test runs keep the slides and log on a preview branch |
 | 2026-10-31 | `2fa30af` | Daily rasipalan carousel for Rasipuram 360 (7:31 AM, temple design, festival themes, collab Namakkal 360) |
 | 2026-10-31 | `99f4f39` | Real photos: one Gemini 'too many requests' (429) stops the photo check for 30 min - the free quota stays for the writer (owner 31 Oct) |
 | 2026-10-31 | `53e4015` | Headline-only pages are never written; one prison escape is one event; 'details not yet known' scripts are not news (owner 31 Oct) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-30 | `a07407b` | Code bugs never repeat (owner): tests fail on any undefined name in poster/research_free/reel (pyflakes on GitHub - would have stopped the 29 Oct 'verify' posting crash) and run the caption + posting-check steps end to end on a sample story |
 | 2026-10-30 | `8c8ebec` | Known issues are repaired, not lost (owner): a card cut mid-phrase, a sentence or word said twice, a sentence about 'the article' are fixed before posting; only what cannot be fixed is held (RN-199, RN-203 held for a cut card); repeated-sentence check no longer splits at 'ரூ.2.50' / 'ஹெச்.பி.' (RN-200 false alarm) |
 | 2026-10-29 | `3614b3b` | Caption holds ALL the news (owner): every number, date, age, amount and place in the article sentences about this story must be in the caption, else the writer adds it (RN-175, 178, 181, 185, 186 missed one); other headlines on the page and datelines ignored; never drops a story; switch reach.caption_all_facts |
-| 2026-10-29 | `dff5d94` | Reach plan for Namakkal + Rasipuram (owner): reels at most 60 s (70-105 words; every detail stays in the caption's full-details block, checked at writing), English search line added at posting (whole words), 5 focused hashtags (page + #Namakkal + town + topic + broad), location tags on (24 known places), no brand names/logos in pictures; all behind poster/config.json reach switches |
 <!-- recent-changes:end -->
