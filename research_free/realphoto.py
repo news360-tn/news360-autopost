@@ -7,14 +7,15 @@ Steps (any failure -> [] and the story gets its AI pictures exactly as before):
      logo or graphic borders are cut away - e.g. a Thanthi TV thumbnail is half red text box)
   4. too small to be presentable (< MIN_SIDE px after the cut) -> not used
   5. small / soft photo -> AI super-resolution (OpenCV FSRCNN, free, < 1 s) + gentle sharpening and contrast
-  6. a 9:16 picture: the photo on a blurred copy of itself, with a small 'Photo: <paper>' credit
+  6. a 9:16 picture: the photo on a blurred copy of itself (owner 31 Oct: no credit on it; the watermark / channel logo printed on
+     the photo is removed - cut off at an edge, painted over inside)
 Pictures for a reel: the cover is the best photo; the next ones are other relevant photos of the page, else a closer crop of the cover.
 """
 import base64, datetime, html, io, json, os, re, sys, time
 from urllib.parse import urljoin, urlparse
 
 import requests
-from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps, ImageStat
+from PIL import Image, ImageEnhance, ImageFilter, ImageFont, ImageOps, ImageStat
 
 try:      # some outlets serve AVIF only
     import pillow_avif  # noqa: F401
@@ -178,6 +179,8 @@ def vision(im, headline, key=None):
               'a screenshot of text), "match": true only if the photograph shows THIS news (its place, event, people or objects) - '
               'false for a generic or stock picture, "box_2d": [ymin, xmin, ymax, xmax] (0-1000) of the largest area that is ONLY the real '
               'photograph - leave out any text panel, big headline text, channel logo, watermark band or graphic border, '
+              '"marks": [[ymin, xmin, ymax, xmax], ...] (0-1000) of EVERY watermark, channel / newspaper logo, website name, '
+              'copyright text, date stamp or caption text that is printed ON the photograph itself ([] if none), '
               '"why": "short reason"}')
     body = {"contents": [{"parts": [{"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(_jpeg(small, 88)).decode()}},
                                     {"text": prompt}]}],
@@ -191,13 +194,19 @@ def vision(im, headline, key=None):
             j = json.loads(r.json()["candidates"][0]["content"]["parts"][0]["text"])
             if isinstance(j, list):
                 j = j[0] if j else {}
-            box = None
-            b = j.get("box_2d")
-            if isinstance(b, list) and len(b) == 4:
-                y0, x0, y1, x1 = [max(0, min(1000, float(v))) for v in b]
-                if x1 > x0 and y1 > y0:
-                    box = [round(x0 * im.width / 1000), round(y0 * im.height / 1000), round(x1 * im.width / 1000), round(y1 * im.height / 1000)]
-            return {"match": bool(j.get("match")), "real_photo": bool(j.get("real_photo", True)), "box": box, "why": str(j.get("why", ""))[:160]}
+            def px(b):
+                if not (isinstance(b, list) and len(b) == 4):
+                    return None
+                try:
+                    y0, x0, y1, x1 = [max(0, min(1000, float(v))) for v in b]
+                except Exception:
+                    return None
+                if x1 <= x0 or y1 <= y0:
+                    return None
+                return [round(x0 * im.width / 1000), round(y0 * im.height / 1000), round(x1 * im.width / 1000), round(y1 * im.height / 1000)]
+            marks = [m for m in (px(b) for b in (j.get("marks") or [])[:8] if isinstance(j.get("marks"), list)) if m]
+            return {"match": bool(j.get("match")), "real_photo": bool(j.get("real_photo", True)), "box": px(j.get("box_2d")), "marks": marks,
+                    "why": str(j.get("why", ""))[:160]}
         except Exception as e:
             last = e
     print("real photo: vision check unavailable:", str(last)[:120], flush=True)
@@ -213,6 +222,54 @@ def cut(im, box):
         return im
     pad = 4      # stay just inside the edge of the photo (no line of the text panel)
     return im.crop((min(x1, x0 + pad), min(y1, y0 + pad), max(x0, x1 - pad), max(y0, y1 - pad)))
+
+
+def remove_marks(ph, marks, origin=(0, 0)):
+    """owner 31 Oct: the source's watermark / channel logo / printed text is removed from the photo. A mark at an edge is cut away with that
+    edge strip; one inside the photo is painted over from its surroundings (OpenCV inpainting). None when the photo cannot be cleaned
+    (marks cover too much of it, or a mark inside it and no OpenCV) - that photo is then not used."""
+    ox, oy = origin
+    w, h = ph.size
+    inner = []
+    l = t = 0
+    r, b = w, h
+    for x0, y0, x1, y1 in marks or []:
+        x0, y0, x1, y1 = max(0, x0 - ox), max(0, y0 - oy), min(w, x1 - ox), min(h, y1 - oy)
+        if x1 <= x0 or y1 <= y0:
+            continue      # outside the part that is kept
+        bw, bh = x1 - x0, y1 - y0
+        # at an edge and thin compared with the photo: cut that strip off (the cheapest, cleanest removal)
+        ex, ey = max(3, 0.04 * w), max(3, 0.04 * h)      # 'at the edge' allows a small gap
+        if y1 >= h - ey and bh <= 0.18 * h:
+            b = min(b, y0 - 2); continue
+        if y0 <= ey and bh <= 0.18 * h:
+            t = max(t, y1 + 2); continue
+        if x0 <= ex and bw <= 0.18 * w:
+            l = max(l, x1 + 2); continue
+        if x1 >= w - ex and bw <= 0.18 * w:
+            r = min(r, x0 - 2); continue
+        inner.append((x0, y0, x1, y1))
+    if r - l < 0.6 * w or b - t < 0.6 * h:
+        return None
+    ph = ph.crop((l, t, r, b))
+    inner = [(x0 - l, y0 - t, x1 - l, y1 - t) for x0, y0, x1, y1 in inner]
+    inner = [(max(0, x0), max(0, y0), min(ph.width, x1), min(ph.height, y1)) for x0, y0, x1, y1 in inner if x1 > l and y1 > t]
+    if not inner:
+        return ph
+    if sum((x1 - x0) * (y1 - y0) for x0, y0, x1, y1 in inner) > 0.10 * ph.width * ph.height:
+        return None      # too much would be painted: it would not look like a real photo any more
+    try:
+        import cv2
+        import numpy as np
+    except Exception:
+        return None
+    a = cv2.cvtColor(np.array(ph), cv2.COLOR_RGB2BGR)
+    mask = np.zeros(a.shape[:2], np.uint8)
+    for x0, y0, x1, y1 in inner:
+        pad = max(3, round(0.08 * max(x1 - x0, y1 - y0)))
+        mask[max(0, y0 - pad):y1 + pad, max(0, x0 - pad):x1 + pad] = 255
+    out = cv2.inpaint(a, mask, 5, cv2.INPAINT_TELEA)
+    return Image.fromarray(cv2.cvtColor(out, cv2.COLOR_BGR2RGB))
 
 
 _SR = {}
@@ -278,7 +335,7 @@ def _font(size):
 
 def compose(photo, credit, zoom=1.0):
     """9:16 picture: the whole photo (or a closer crop of it with zoom > 1) on a blurred, darkened copy of itself, photo in the upper
-    middle (the reel's headline and subtitles sit lower), a small 'Photo: <paper>' credit on the photo's corner"""
+    middle (the reel's headline and subtitles sit lower). Owner 31 Oct: nothing is written on the picture (no source credit)."""
     if zoom > 1:
         cw, ch = round(photo.width / zoom), round(photo.height / zoom)
         photo = photo.crop(((photo.width - cw) // 2, (photo.height - ch) // 3, (photo.width - cw) // 2 + cw, (photo.height - ch) // 3 + ch))
@@ -293,14 +350,6 @@ def compose(photo, credit, zoom=1.0):
         fg = ImageOps.fit(photo.resize((w, round(photo.height * w / photo.width)), Image.LANCZOS), (W, h), Image.LANCZOS)
         y = round(H * 0.40 - h / 2)
     bg.paste(fg, (0, max(0, y)))
-    if credit:
-        d = ImageDraw.Draw(bg)
-        f = _font(30)
-        t = f"Photo: {credit}"
-        tw = d.textlength(t, font=f)
-        x, ty = W - 34 - tw, max(0, y) + fg.height - 52
-        d.rounded_rectangle((x - 14, ty - 8, x + tw + 14, ty + 40), radius=12, fill=(12, 12, 12))
-        d.text((x, ty), t, font=f, fill=(255, 255, 255))
     return bg
 
 
@@ -341,6 +390,14 @@ def for_story(url, headline, n=2, published=None, page=None, fetch=None, log=pri
                 log(f"real photo not this news ({v['why'][:80]}): {u[:80]}")
                 continue
             ph = cut(im, v and v["box"])
+            if v and v.get("marks"):
+                kept = v["box"] if v["box"] and ph.size != im.size else None
+                clean = remove_marks(ph, v["marks"], (kept[0] + 4, kept[1] + 4) if kept else (0, 0))
+                if clean is None:
+                    log(f"real photo has a watermark / logo that cannot be removed cleanly: {u[:80]}")
+                    continue
+                log(f"real photo: {len(v['marks'])} watermark / logo mark(s) removed")
+                ph = clean
             if min(ph.size) < MIN_SIDE:
                 log(f"real photo too small to be presentable ({ph.width}x{ph.height}): {u[:80]}")
                 continue

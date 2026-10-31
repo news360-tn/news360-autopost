@@ -134,3 +134,34 @@ class WiredInBothSteps(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class WatermarksRemovedNoCredit(unittest.TestCase):
+    """owner 31 Oct 18:15: a watermark / channel logo on the source photo is removed; 18:16: no source credit on the picture"""
+
+    def test_logo_at_the_edge_is_cut_away(self):      # Thanthi TV logo, bottom-left of its thumbnail photo
+        ph = photo(462, 337)
+        c = R.remove_marks(ph, [[10, 588, 92, 665]], (4, 334))
+        self.assertIsNotNone(c)
+        self.assertEqual(337, c.height)
+        self.assertLess(c.width, 462)
+
+    def test_mark_inside_is_painted_over_or_the_photo_is_dropped(self):
+        ph = photo(800, 600)
+        c = R.remove_marks(ph, [[380, 280, 440, 310]])
+        try:
+            import cv2  # noqa: F401
+            self.assertEqual(ph.size, c.size)
+        except ImportError:
+            self.assertIsNone(c)      # without OpenCV a photo with a mark inside is not used (AI pictures instead)
+
+    def test_too_much_marked_is_not_used(self):
+        self.assertIsNone(R.remove_marks(photo(800, 600), [[100, 100, 700, 300]]))
+
+    def test_marks_outside_the_kept_part_are_ignored(self):
+        ph = photo(462, 337)
+        self.assertEqual(ph.size, R.remove_marks(ph, [[700, 50, 900, 200]], (4, 334)).size)
+
+    def test_no_credit_written_on_the_picture(self):
+        e = R.enhance(photo(1280, 720))
+        self.assertEqual(R.compose(e, "Dinamalar").tobytes(), R.compose(e, "").tobytes())
