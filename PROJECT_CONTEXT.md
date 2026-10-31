@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-31 | `9391e60` | Writing order from our own Instagram insights (owner 31 Oct) |
 | 2026-10-31 | `0f65b11` | Prime time off: a reel posts as soon as it is written (owner 31 Oct) |
 | 2026-10-30 | `383d9b4` | Heartbeat |
 | 2026-10-30 | `499e23a` | Refused stories are not written again and again (owner 30 Oct) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-29 | `d60d546` | Publish times with a time zone are read in IST (a 22:17 UTC story is the next day in IST, not the day before) |
 | 2026-10-29 | `c2df785` | Collection is never cancelled by the story writer: each has its own queue; the collector waits while a writer runs, the writer skips its round while a collection runs (Coimbatore lost 2 collections on 29 Oct) |
 | 2026-10-29 | `0b28615` | No old events and no same-event repeats: an old event re-told in a new article is not filed or posted (Coimbatore RN-29); the same event from another outlet in other words is not posted twice (RN-13/24, RN-86/115) |
-| 2026-10-29 | `92f5cc4` | Font check optional: the writer and test runner have no fontTools, so letter repair still runs and tests pass on GitHub (Python 3.11) |
 <!-- recent-changes:end -->
