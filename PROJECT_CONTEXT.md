@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-31 | `84f0b0b` | Real news photos: only our page's branding - source watermarks / channel logos removed, no source credit (owner 31 Oct) |
 | 2026-10-31 | `8f263cd` | Real news photos: the source article's own photo is used when it shows this news, enhanced to a presentable picture; else AI pictures (owner 31 Oct) |
 | 2026-10-31 | `7b131dd` | The same event is never posted twice: incidents matched by name / distinctive number; posted scripts read (owner 31 Oct) |
 | 2026-10-31 | `8bb3535` | Location tags: only ids Instagram accepts are used; ig-probe checks them (owner 31 Oct) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-29 | `a29cddd` | Fix: every post job crashed with NameError (verify not imported in clean_caption) since 13:00 UTC 29 Oct |
 | 2026-10-29 | `d04afbd` | A story whose first lines name another district (and no Namakkal place in the headline) is not filed or posted (RN-195 Erode onion prices); Pallipalayam/Kokkarayanpettai spellings with ப் count as Namakkal places |
 | 2026-10-29 | `85d02eb` | Topic / tag / author / page-N listing pages are never written or posted as a news story (RN-194: abplive topic page gave a Cuddalore story) |
-| 2026-10-29 | `5ff36f3` | Writer started by the collector waits for the queue instead of skipping; same event from another outlet is not written again (RN-193 = RN-168) |
 <!-- recent-changes:end -->
