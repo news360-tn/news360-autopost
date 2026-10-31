@@ -1109,3 +1109,21 @@ class RefusedNotWrittenAgain(unittest.TestCase):
         known = [k for k, _ in collect.REFUSED_FINAL + collect.REFUSED_ONCE_MORE] + ["all free models failed", "bad draft"]
         for r in fixed:
             self.assertTrue(any(r.startswith(k.rstrip(":")) or k.startswith(r) for k in known), r)
+
+
+class PriorityFromInsights(unittest.TestCase):
+    """owner 31 Oct: the writing order follows our own Instagram insights (193 posts): power cut > weather, crime > accident > jobs
+    > notices, roads, prices > temple, civic > school / college. Before, prices were 9 and crime / accidents 4 - crime (most shared)
+    waited behind every egg-price story"""
+    def s(self, t):
+        return collect.interest({"title": t, "text": ""})
+
+    def test_order(self):
+        cut, rain = self.s("காளப்பநாயக்கன்பட்டியில் நாளை மின் தடை"), self.s("நாமக்கல் மாவட்டத்தில் 4 நாள்களுக்கு கனமழை வாய்ப்பு")
+        crime, acc = self.s("எருமப்பட்டியில் தொடர் கைவரிசை: 4 வாலிபர்கள் கைது"), self.s("தனியார் பேருந்து மோதி தொழிலாளி உயிரிழப்பு")
+        jobs, price = self.s("தனியார் வேலைவாய்ப்பு முகாம்"), self.s("முட்டை விலை ரூ.5.70 ஆக நீடிப்பு")
+        temple, school = self.s("அரப்பளீஸ்வரர் கோவில் திருவிழா"), self.s("அரசு பள்ளியில் ஆண்டு விழா")
+        self.assertTrue(cut > rain >= crime > acc > jobs > price > temple > school, (cut, rain, crime, acc, jobs, price, temple, school))
+
+    def test_exam_and_election_are_not_temple_news(self):      # 'தேர்' (temple car) is inside தேர்வு / தேர்தல்
+        self.assertNotIn("தேர்", [k for score, keys in collect.INTEREST for k in keys])
