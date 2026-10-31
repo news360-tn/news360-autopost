@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-31 | `99f4f39` | Real photos: one Gemini 'too many requests' (429) stops the photo check for 30 min - the free quota stays for the writer (owner 31 Oct) |
 | 2026-10-31 | `53e4015` | Headline-only pages are never written; one prison escape is one event; 'details not yet known' scripts are not news (owner 31 Oct) |
 | 2026-10-31 | `e274b44` | Namakkal: repeats within 2 days, fights and collapses are incidents (the Coimbatore fix, owner 31 Oct) |
 | 2026-10-31 | `84f0b0b` | Real news photos: only our page's branding - source watermarks / channel logos removed, no source credit (owner 31 Oct) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-29 | `3614b3b` | Caption holds ALL the news (owner): every number, date, age, amount and place in the article sentences about this story must be in the caption, else the writer adds it (RN-175, 178, 181, 185, 186 missed one); other headlines on the page and datelines ignored; never drops a story; switch reach.caption_all_facts |
 | 2026-10-29 | `dff5d94` | Reach plan for Namakkal + Rasipuram (owner): reels at most 60 s (70-105 words; every detail stays in the caption's full-details block, checked at writing), English search line added at posting (whole words), 5 focused hashtags (page + #Namakkal + town + topic + broad), location tags on (24 known places), no brand names/logos in pictures; all behind poster/config.json reach switches |
 | 2026-10-29 | `6b5a4e6` | Known issues never repeat (owner): one list (research_free/known_issues.py) checked when a story is written AND right before posting - script about the article, letters of another script (repaired first), English words the voice skips, card cut mid-phrase, words said twice; every entry has a real bad and good example run by the tests |
-| 2026-10-29 | `a29cddd` | Fix: every post job crashed with NameError (verify not imported in clean_caption) since 13:00 UTC 29 Oct |
 <!-- recent-changes:end -->
