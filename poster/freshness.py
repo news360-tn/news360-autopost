@@ -342,7 +342,8 @@ def same_event(a, b, df_n):
 # escape). An INCIDENT is the same event when both reports name the same person or the same distinctive number - or share many rare words.
 INCIDENT = {"escape": r"தப்பி", "arrest": r"கைது", "verdict": r"தண்டனை", "accident": r"விபத்து|மோதி", "death": r"உயிரிழ|பலி|சடலம",
             "fire": r"தீப்பிடி|தீப்பற்|தீ விபத்து", "transfer": r"இடமாற்ற", "seizure": r"பறிமுதல்", "fraud": r"மோசடி", "theft": r"திருட|கொள்ளை",
-            "murder": r"கொலை"}
+            "murder": r"கொலை", "fight": r"அடிதடி|கைகலப்பு|தாக்கிக்கொண்|மோதிக்கொண்",
+            "collapse": r"இடிந்து|இடிந்த|சரிந்து விழு"}      # owner 31 Oct: Namakkal RN-115 = RN-86 (collector bungalow wall, two outlets)      # owner 31 Oct: Coimbatore RN-13 = RN-24 (one fight, two outlets)
 _NAME = (re.compile(r"([஀-௿]{3,})\s*\(\d{1,3}\)"), re.compile(r"([஀-௿]{3,})\s+(?:என்பவ|என்ற\s)"),
          re.compile(r"\d{1,3}\s*வயது(?:டைய|ான|ுடைய)?\s+([஀-௿]{3,})"))
 
@@ -378,4 +379,6 @@ def same_incident(a, b, df_n, shared=None, r=None):
         return True
     if any("." in x or df[x] <= 3 for x in _numbers(a) & _numbers(b)):
         return True
-    return shared is not None and shared >= 9 and r >= 0.3
+    # owner 31 Oct: one incident told by two outlets with 7+ shared rare words (r >= 0.45) - on all posted stories of both pages this
+    # matched no two different incidents
+    return shared is not None and ((shared >= 9 and r >= 0.3) or (shared >= 7 and r >= 0.45))

@@ -1226,3 +1226,21 @@ class SameEventNeverTwice(unittest.TestCase):
                 self.assertEqual("எருமப்பட்டியில் தீ விபத்து.", collect._filed_script({"story_id": "RN-999"}))
             finally:
                 post.CACHE, post._SCRIPTS = old_cache, old_scripts
+
+
+class RepeatsWithinTwoDays(unittest.TestCase):
+    """owner 31 Oct: RN-115 repeated RN-86 (collector wall, 24 h 8 min later); a fight told by two outlets is one incident"""
+
+    def test_two_day_window(self):
+        src = (Path(__file__).resolve().parents[1] / "research_free" / "collect.py").read_text(encoding="utf-8")
+        self.assertIn("abs((today - od).days) <= 2)", src)
+
+    def test_fight_is_an_incident(self):
+        self.assertIn("fight", fr._incidents("பேருந்து ஓட்டுநர்கள் நடுரோட்டில் அடிதடி"))
+
+
+class CollapseIsAnIncident(unittest.TestCase):
+    """owner 31 Oct: Namakkal RN-86 = RN-115, one wall collapse told by Dinamani and Dinamalar a day apart"""
+
+    def test_collapse(self):
+        self.assertIn("collapse", fr._incidents("நாமக்கல் கலெக்டர் குடியிருப்பின் சுற்றுச்சுவர் கனமழையால் இடிந்து விழுந்தது"))
