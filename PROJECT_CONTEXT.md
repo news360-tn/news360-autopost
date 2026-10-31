@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-31 | `0f65b11` | Prime time off: a reel posts as soon as it is written (owner 31 Oct) |
+| 2026-10-30 | `383d9b4` | Heartbeat |
 | 2026-10-30 | `499e23a` | Refused stories are not written again and again (owner 30 Oct) |
 | 2026-10-30 | `cec615a` | Same event from two outlets in one writer round is caught (stories filed this round join the check), and short reports of one event count as the same (RN-214 = RN-209) |
 | 2026-10-30 | `84e663c` | Writer/collector: the Sheet bridge is tried 3 times when Apps Script does not answer (writer crashed once at 09:00 UTC 30 Oct on a 120 s timeout) |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-29 | `c2df785` | Collection is never cancelled by the story writer: each has its own queue; the collector waits while a writer runs, the writer skips its round while a collection runs (Coimbatore lost 2 collections on 29 Oct) |
 | 2026-10-29 | `0b28615` | No old events and no same-event repeats: an old event re-told in a new article is not filed or posted (Coimbatore RN-29); the same event from another outlet in other words is not posted twice (RN-13/24, RN-86/115) |
 | 2026-10-29 | `92f5cc4` | Font check optional: the writer and test runner have no fontTools, so letter repair still runs and tests pass on GitHub (Python 3.11) |
-| 2026-10-29 | `4d3e179` | Newest Haiku (claude-haiku-5-5) for Claude calls, older Haiku only if the name is ever refused; news only from Tamil-language articles |
-| 2026-10-29 | `17a77ac` | Letters of another script inside Tamil words are repaired (voice and cards), flagged for rewrite, and cleaned in captions (Coimbatore RN-5, 7, 20, 22) |
 <!-- recent-changes:end -->
