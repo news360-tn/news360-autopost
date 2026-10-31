@@ -379,18 +379,19 @@ def article_any(url):
     if not pub:
         m = re.search(r'property="article:published_time"\s+content="([^"]+)"', h)
         pub = m.group(1) if m else ""
-    if len(body) < 200:
-        h2 = re.sub(r"<(style|script|noscript|svg)[^>]*>.*?</\1>", " ", h, flags=re.S)
-        # owner 31 Oct (Coimbatore RN-102, a Thanthi TV 'breaking' page with only a headline, a video and hashtags): the 'Also Read' /
-        # related-story cards (other stories' headlines) and headings were taken as the article's text. They are not the story.
-        h2 = re.split(r">\s*(?:Also Read|Related (?:News|Stories|Articles)|Read More|இதையும் படிக்க|இதையும் படியுங்கள்|தொடர்புடைய செய்திகள்|மேலும் படிக்க)\s*<", h2, maxsplit=1)[0]
-        h2 = re.sub(r"<(h[1-6]|a|figcaption|time|button|nav|header|footer)\b[^>]*>.*?</\1>", " ", h2, flags=re.S | re.I)
-        paras = [re.sub(r"\s+", " ", html.unescape(x)).strip() for x in re.sub(r"<[^>]+>", "\n", h2).split("\n")]
-        paras = [x for x in paras if len(x) > 60 and re.search(r"[஀-௿]", x) and "{" not in x and "css-" not in x]
-        seen, out = set(), []
-        for x in paras:
-            if x not in seen:
-                seen.add(x)
-                out.append(x)
-        body = "\n".join(out)
+    body = dinamalar.clean_body(body) if body else ""
+    if len(body) < 200:      # owner 31 Oct: the paragraphs INSIDE the article body (short ones too, never side columns / other stories)
+        body = max(body, dinamalar.article_paragraphs(h), key=len)
+    if len(body) < 200:      # last resort: the page's long Tamil lines
+        body = max(body, dinamalar.long_lines(h), key=len)
     return {"url": url, "title": html.unescape(title).strip(), "published": pub, "text": html.unescape(body).strip()}
+
+
+SENTENCE_END = re.compile(r"[.!?।\u0964\u201d\"')\]]\s*$")
+
+
+def incomplete(text):
+    """owner 31 Oct: an article that stops in the middle of a sentence (RN-241: '... அரசு பஸ்சை') or is only a few lines - the writer
+    must not write a reel from a fragment"""
+    t = (text or "").strip()
+    return len(re.findall(r"[஀-௿]", t)) < 120 or not SENTENCE_END.search(t)

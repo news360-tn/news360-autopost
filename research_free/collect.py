@@ -845,6 +845,9 @@ def file_story(art, res, errors_log, recent, scenes=None):
         for k_ in ("reel_script", "caption"):      # a real story keeps its facts; only the "not in the article" sentences go (RN-112)
             if d.get(k_):
                 d[k_] = freshness.strip_no_news(d[k_])
+        for sl_ in (d.get("slides_spec") or {}).get("slides") or [] if isinstance(d.get("slides_spec"), dict) else []:      # 31 Oct: cards too
+            kept_ = [ln_ for ln_ in sl_.get("lines") or [] if not freshness._meta(re.sub(r"<[^>]+>", "", str(ln_)))]
+            sl_["lines"] = kept_ or sl_.get("lines")
         import verify as verify_
         for k_ in ("tamil_headline", "reel_script", "caption", "location", "slides_spec"):      # other-script letters -> Tamil (29 Oct)
             if d.get(k_):
@@ -1034,6 +1037,18 @@ def main():
                     art[k] = art[k].replace("ுா", "ூ")
             art["title"] = art.get("title") or n["title"]
             art["published"] = art.get("published") or n["published"]
+            if allnews.incomplete(art.get("text", "")):      # owner 31 Oct: never write from a fragment - the same story at its other outlets
+                for alt in [u for u in links if u != url][:3]:
+                    try:
+                        u2 = allnews.resolve(alt)
+                        a2 = allnews.article_any(u2)
+                    except Exception:
+                        continue
+                    if len(a2.get("text", "")) > len(art.get("text", "")):
+                        art.update(text=a2["text"], url=u2, title=a2.get("title") or art["title"], published=a2.get("published") or art["published"])
+                        url = u2
+                    if not allnews.incomplete(art["text"]):
+                        break
         except Exception as e:
             return {"skip": f"could not open the article: {str(e)[:60]}", "log": f"skip ({area}) could not open: {n['title'][:50]} [{n['url'][:60]}] {str(e)[:80]}"}
         if url in seen_src or any(r.get("source") == url for r in recent):

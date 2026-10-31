@@ -168,6 +168,26 @@ def caption_missing_facts(cap, article, story):
     return list(dict.fromkeys(miss))
 
 
+
+# owner 31 Oct: what finally happened, as the article's last lines tell it - a reel must never stop before the end of the story.
+# Matched by MEANING (any verb form: விடுவித்தனர் / விடுவிக்கப்பட்டது / விடுவத்தனர் are all 'released')
+OUTCOME = {"complaint": r"புகார்", "promise": r"உறுதியளி|உறுதி\s*அளி|உறுதி\s*கூறி", "released": r"விடுவி|விடுவத்|விடுதலை",
+           "arrest": r"கைது", "case": r"வழக்குப்?\s*பதிவு", "jail": r"சிறையில்\s*அடை", "seizure": r"பறிமுதல்", "fine": r"அபராத",
+           "rescue": r"மீட்க|மீட்ட", "order": r"உத்தரவிட்|உத்தரவு\s*பிறப்பி", "action": r"நடவடிக்கை", "traffic": r"போக்குவரத்து\s*(?:பாதி|சீரா|நெரிசல்)",
+           "handed": r"ஒப்படை", "dispersed": r"கலைந்து", "fire_out": r"தீயை\s*அணை|தீ\s*அணைக்கப்", "treatment": r"சிகிச்சை", "death": r"உயிரிழ|பலியான"}
+
+
+def _outcomes(t):
+    return {k for k, p in OUTCOME.items() if re.search(p, t or "")}
+
+
+def ending_missing(script, article):
+    """'' or the article's ending sentence when it tells an outcome and the reel script mentions none of it"""
+    sents = [x.strip() for x in re.split(r"(?<=[.!?])\s+", (article or "").strip()) if len(x.strip()) > 15]
+    want = _outcomes(" ".join(sents[-2:]))
+    return sents[-1] if want and not (want & _outcomes(script)) else ""
+
+
 def validate(d, article, today_digits=("2026",)):
     p = []
     if not isinstance(d, dict):
@@ -212,13 +232,17 @@ def validate(d, article, today_digits=("2026",)):
     wc = len(rs.split())
     maxw = int(_reach().get("script_max_words") or 170)      # owner 29 Oct: reels at most 60 s (105 words); the caption keeps every detail
     need = min(130, int(len(_tamil_words(article)) * 0.55)) if article else 60      # owner 28 Oct: full detail - a longer article needs a longer reel
-    need = min(need, maxw - 20)
+    need = min(need, maxw - 20, 100)      # owner 31 Oct: up to 90 s for the full news, but a long article never FORCES more than ~100 words
     if not max(60, need) <= wc <= maxw + 5:
         p.append(f"reel_script has {wc} words; need {max(60, need)}-{maxw} (the key facts once each, in at most {60 if maxw <= 110 else 90} seconds; "
                  "every other detail goes in the caption's 📰 முழு விவரம் block)")
     ages = re.findall(r"[\u0B80-\u0BFF]+,\s?\d{1,2},", rs)
     if ages:      # owner 28 Oct (RN-158): "ராஜா, 12," is newspaper shorthand; read aloud it is confusing
         p.append(f"reel_script writes ages as newspaper shorthand ({', '.join(ages[:3])}); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'")
+    end = ending_missing(rs, article)
+    if end:      # owner 31 Oct (RN-241 stopped before 'the depot manager promised action, the bus was released, 15 min traffic'): tell how it ended
+        p.append(f"reel_script must tell how the story ENDED, as the article's last lines say ('{end[:160]}') - say what finally happened "
+                 "(complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown")
     first = rs.split(".")[0].split()
     if len(first) > 11:      # owner 28 Oct: the one-line story is heard in the first 2-3 seconds, then the explanation
         p.append(f"sentence 1 (one-line story) has {len(first)} words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences")

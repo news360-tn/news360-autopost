@@ -12,6 +12,11 @@ DANGLING = re.compile(r"(க்|ச்|த்|ப்)$")
 FOREIGN = re.compile(r"[ঀ-૿ఀ-෿　-鿿가-힯Ѐ-ӿ؀-ۿ]")
 META = ["கட்டுரை", "தகவல் இல்லை", "விவரம் இல்லை", "தெரியவந்ததும் பகிரப்படும்", "தொடர்புடையது அல்ல", "செய்தியில் இல்லை",
         "குறிப்பிடப்படவில்லை", "the article", "this article", "not mentioned in", "no information"]
+# owner 31 Oct (Namakkal RN-241 "மேலும் விவரங்கள் இன்னும் தெரியவரவில்லை", card "செய்தியில் உள்ள விவரங்கள் இவ்வளவுதான்"): a line saying the details
+# are unknown / that is all is a note about the article, never news - in any form (plural, மேலும் / இன்னும்), in the script, cards or caption.
+# A fact like "தீ விபத்துக்கான காரணம் தெரியவில்லை" (the police do not know the cause yet) is news and stays.
+NO_DETAILS = re.compile(r"(?:விவரம்|விவரங்கள்|விவரங்களும்|தகவல்|தகவல்கள்)\S*\s+(?:(?:மேலும்|இன்னும்)\s+)*"
+                        r"(?:தெரியவரவில்லை|தெரியவில்லை|வெளியாகவில்லை|வெளியிடப்படவில்லை|கிடைக்கவில்லை|தெரியவரும்)|இவ்வளவுதான்|இவ்வளவே")
 
 
 def texts(story):
@@ -28,9 +33,9 @@ def texts(story):
 
 
 def _meta(t):
-    for k in ("headline", "script", "caption"):
-        s = re.sub(r"கட்டுரைப்?\s*போட்டி", " ", t[k])      # an essay competition is real school news
-        hit = next((w for w in META if w.lower() in s.lower()), "")
+    for k in ("headline", "script", "caption", "cards"):      # 31 Oct: the cards too (RN-241 card 'செய்தியில் உள்ள விவரங்கள் இவ்வளவுதான்')
+        s = re.sub(r"கட்டுரைப்?\s*போட்டி", " ", "\n".join(t[k]) if k == "cards" else t[k])      # an essay competition is real school news
+        hit = next((w for w in META if w.lower() in s.lower()), "") or (lambda m: m.group(0) if m else "")(NO_DETAILS.search(s))
         if hit:
             return f"{k} talks about the article instead of the news ('{hit}')"
     return ""
@@ -119,7 +124,7 @@ def repair(story):
             keep, seen = [], set()
             for sent in _sentences(line) or [line]:
                 low = re.sub(r"கட்டுரைப்?\s*போட்டி", " ", sent).lower()
-                if any(w.lower() in low for w in META) and len(_sentences(t)) > 2:
+                if (any(w.lower() in low for w in META) or NO_DETAILS.search(sent)) and len(_sentences(t)) > 2:
                     continue      # a sentence that only talks about the article
                 key = sent.strip()
                 if len(key) > 15 and key in seen:
@@ -142,6 +147,8 @@ def repair(story):
             new = []
             for ln in sl.get("lines") or []:
                 plain = re.sub(r"<[^>]+>", "", str(ln)).strip()
+                if (NO_DETAILS.search(plain) or any(w.lower() in plain.lower() for w in META)) and len(sl.get("lines") or []) > 1:
+                    continue      # 31 Oct: a card line about missing details is dropped (the slide keeps its real lines)
                 if DANGLING.search(plain.strip(" .,;:")):
                     ws = plain.split()
                     while len(ws) > 1 and DANGLING.search(ws[-1].strip(" .,;:")):

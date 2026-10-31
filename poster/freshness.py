@@ -250,9 +250,14 @@ NO_NEWS_EN = ("not in the article", "not mentioned in the article", "article doe
               "details not available", "details are not available", "will be shared when", "not related to")
 
 
+# owner 31 Oct (RN-241 'மேலும் விவரங்கள் இன்னும் தெரியவரவில்லை'): every form - plural, மேலும் / இன்னும், 'இவ்வளவுதான்' (that is all)
+NO_DETAILS = re.compile(r"(?:விவரம்|விவரங்கள்|விவரங்களும்|தகவல்|தகவல்கள்)\S*\s+(?:(?:மேலும்|இன்னும்)\s+)*"
+                        r"(?:தெரியவரவில்லை|தெரியவில்லை|வெளியாகவில்லை|வெளியிடப்படவில்லை|கிடைக்கவில்லை|தெரியவரும்)|இவ்வளவுதான்|இவ்வளவே")
+
+
 def _meta(sentence):
     low = sentence.lower()
-    return [x for x in NO_NEWS_TA if x in sentence] + [x for x in NO_NEWS_EN if x in low]
+    return [x for x in NO_NEWS_TA if x in sentence] + [x for x in NO_NEWS_EN if x in low] + [m.group(0) for m in NO_DETAILS.finditer(sentence)]
 
 
 def _sentences(text):

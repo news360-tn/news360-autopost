@@ -349,20 +349,21 @@ class FullDetail(unittest.TestCase):
 
     def test_short_reel_of_long_article_is_rewritten(self):
         self.assertTrue(self.length_problems(70, 300))
-        self.assertFalse(self.length_problems(95, 300))      # owner 29 Oct: at most 60 s / 105 words; the caption keeps the rest
+        self.assertFalse(self.length_problems(100, 300))      # owner 31 Oct: a long article needs ~100 words, never forced to 130+
+        self.assertFalse(self.length_problems(135, 300))      # owner 31 Oct: at most 90 s / 160 words (29 Oct: 60 s / 105); the caption keeps the rest
 
     def test_short_article_keeps_a_short_reel(self):
         self.assertFalse(self.length_problems(70, 80))
 
     def test_never_more_words_than_60_seconds(self):
-        self.assertTrue(self.length_problems(130, 400))
+        self.assertTrue(self.length_problems(175, 400))      # owner 31 Oct: never more words than 90 seconds
 
     def test_examples_are_full_detail(self):
         for e in json.loads((ROOT / "research_free" / "examples.json").read_text(encoding="utf-8")):
             self.assertGreaterEqual(len(e["output"]["reel_script"].split()), 80)
 
     def test_reel_max_seconds(self):
-        self.assertEqual(json.loads((ROOT / "poster" / "config.json").read_text())["reel_max_seconds"], 60)      # owner 29 Oct
+        self.assertEqual(json.loads((ROOT / "poster" / "config.json").read_text())["reel_max_seconds"], 88)      # owner 29 Oct
         self.assertIn("fit_max(work, len(texts), lead, gap)", (ROOT / "reel" / "reel4.py").read_text(encoding="utf-8"))
 
 class Proofread(unittest.TestCase):
@@ -798,7 +799,7 @@ class ReachPlan29Oct(unittest.TestCase):
 
     def test_switches(self):
         c = json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))
-        self.assertEqual(60, c["reel_max_seconds"])
+        self.assertEqual(88, c["reel_max_seconds"])      # owner 31 Oct: 90 s (88 = under the 90 s check)
         self.assertTrue(c["location_tags"])
         self.assertTrue(c["locations"].get("default") and c["locations"].get("rasipuram"))
         self.assertIn("no brand names", collect.IMG_TEMPLATE)
