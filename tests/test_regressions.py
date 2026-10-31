@@ -1166,3 +1166,63 @@ class LocationTags(unittest.TestCase):
         body = src[src.index("def check_locations"):]
         self.assertIn('f"{uid}/media"', body)
         self.assertNotIn("media_publish", body)      # a container is only created, never published
+
+
+class SameEventNeverTwice(unittest.TestCase):
+    """31 Oct: the same event from two outlets was posted twice - Coimbatore RN-96 = RN-95 (prisoner Raghavan's escape, written in one round),
+    RN-39 = RN-76 (courts moved to Tatabad), RN-17 = RN-54 (child-sale verdict), Namakkal RN-184 = RN-215 (Pavithram worker's shirt fire).
+    Word overlap alone cannot tell one event from one KIND of story (two temple poojas share as many rare words), so an incident is the same
+    event when both reports name the same person or the same distinctive number"""
+    A = ("கோவை மத்திய சிறை நுழைவுவாயிலில் வழிப்பறி வழக்கு கைதி ஒருவர் போலீசாரின் பிடியில் இருந்து தப்பியோடியுள்ளார். அன்னூர் போலீசார் "
+         "வழிப்பறி வழக்கில் ராகவன் என்பவரைக் கைது செய்திருந்தனர். நீதிமன்றக் காவலில் சிறையில் அடைக்க நீதிபதி உத்தரவிட்டார்.")
+    B = ("கோவை அன்னூர் போலீஸ் நிலைய வழக்கில் கைது செய்யப்பட்ட ராகவன் (25), சிறை வாசலில் இருந்து தப்பி ஓடியுள்ளார். "
+         "கர்நாடக போலீசார் அழைத்து வந்தனர். தனிப்படை அமைத்து தேடி வருகின்றனர்.")
+    OTHER = ["பீளமேட்டில் பைக் திருட்டு வழக்கில் 4 பேர் கைது செய்யப்பட்டனர்", "சிங்காநல்லூரில் தெருநாய் கடித்து சிறுவன் காயமடைந்தான்",
+             "உக்கடம் பேருந்து நிலையத்தில் புதிய நிழற்குடை திறக்கப்பட்டது", "மருதமலை கோவிலில் கந்தசஷ்டி விழா தொடங்கியது"] * 3
+
+    def df(self, *texts):
+        return fr.event_df(list(texts) + self.OTHER)
+
+    def test_same_escape_from_two_outlets(self):
+        self.assertTrue(fr.same_event(self.A, self.B, self.df(self.A, self.B)))
+
+    def test_same_verdict_by_its_year(self):
+        a = "2015ஆம் ஆண்டு ஒரு வயதுக் குழந்தையை விற்ற வழக்கில் தந்தை உட்பட 6 பேருக்கு தலா 10 ஆண்டுகள் சிறை தண்டனை விதித்து நீதிமன்றம் தீர்ப்பளித்தது."
+        b = "குழந்தையை ரூ.2.25 லட்சத்துக்கு விற்ற கணவன் உட்பட 6 பேருக்கு 10 ஆண்டு சிறை தண்டனை. இந்த வழக்கு 2015ஆம் ஆண்டு பதிவு செய்யப்பட்டது."
+        self.assertTrue(fr.same_event(a, b, self.df(a, b)))
+
+    def test_two_poojas_are_not_one_event(self):      # no incident: never matched by name / number
+        a = "உக்கடம் ஜலகண்டேஸ்வரர் சித்தர் பீடத்தில் வாராஹி அம்மனுக்கு சிறப்பு அபிஷேகம், பூஜைகள், அலங்காரம் நடைபெற்றது. ஏராளமான பக்தர்கள் வழிபட்டனர்."
+        b = "கணபதி சூலக்கல் மாரியம்மன் கோவிலில் சிறப்பு அபிஷேகம், பூஜைகள், அலங்காரம் நடைபெற்றது. ஏராளமான பக்தர்கள் வழிபட்டனர்."
+        self.assertFalse(fr.same_incident(a, b, self.df(a, b)))
+
+    def test_role_words_and_round_amounts_are_no_identity(self):
+        self.assertEqual(set(), fr._names("இளைஞர் (25) கைது. பெண் (40) காயம். 32 வயதுடைய தொழிலாளி"))
+        self.assertIn("ராகவன", fr._names(self.B))
+        self.assertEqual({"2015", "2.25"}, fr._numbers("2015ஆம் ஆண்டு, ரூ.2.25 லட்சம், 1,000 போலீசார், ரூ.500"))
+
+    def test_different_arrests_stay_different(self):
+        a = "பீளமேட்டில் பைக் திருடிய வழக்கில் கார்த்திக் (24) என்பவர் கைது செய்யப்பட்டார்."
+        b = "சூலூரில் நகை பறித்த வழக்கில் சுரேஷ் (31) என்பவர் கைது செய்யப்பட்டார்."
+        self.assertFalse(fr.same_event(a, b, self.df(a, b)))
+
+    def test_writer_refuses_the_same_event_filed_earlier_this_round(self):
+        today = datetime.datetime.now(IST).strftime("%d %b %Y, %H:%M")
+        recent = [{"story_id": "a story filed this round", "headline_ta": "கோவை மத்திய சிறை வாசலில் கைதி தப்பியோட்டம்", "researched": today,
+                   "source": "https://a", "reel_script": self.A}] + [{"story_id": f"RN-{i}", "researched": today, "reel_script": t, "source": f"https://o{i}"}
+                                                                     for i, t in enumerate(self.OTHER)]
+        art = {"url": "https://b", "title": "கைதி தப்பியோட்டம்!", "published": TODAY.isoformat()}
+        self.assertTrue(collect.is_dup(art, {"tamil_headline": "அன்னூர் சிறை வாசலில் கைதி ராகவன் தப்பி ஓட்டம்", "reel_script": self.B}, recent))
+        self.assertFalse(collect.is_dup(art, {"tamil_headline": "உக்கடத்தில் புதிய சாலை", "reel_script": "உக்கடத்தில் புதிய சாலை அமைக்கும் பணி தொடங்கியது."}, recent))
+
+    def test_posted_script_is_not_hidden_by_the_media_file(self):      # 75 of 113 Namakkal scripts were missed by the same-event check
+        old_cache, old_scripts = post.CACHE, post._SCRIPTS
+        with tempfile.TemporaryDirectory() as d:
+            (Path(d) / "RN-999.json").write_text(json.dumps({"reel": "x"}), encoding="utf-8")
+            (Path(d) / "RN-999_namakkal_text.json").write_text(json.dumps({"reel_script": "எருமப்பட்டியில் தீ விபத்து."}), encoding="utf-8")
+            post.CACHE, post._SCRIPTS = Path(d), None
+            try:
+                self.assertEqual("எருமப்பட்டியில் தீ விபத்து.", post.script_of({"story_id": "RN-999"}))
+                self.assertEqual("எருமப்பட்டியில் தீ விபத்து.", collect._filed_script({"story_id": "RN-999"}))
+            finally:
+                post.CACHE, post._SCRIPTS = old_cache, old_scripts

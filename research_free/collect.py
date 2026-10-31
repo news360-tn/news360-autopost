@@ -206,6 +206,17 @@ def is_dup(art, d, recent):
             return True
         if _fr().similar(r.get("headline_ta", ""), (d or {}).get("tamil_headline", art["title"]), 0.72, r.get("researched")):
             return True
+    # 31 Oct (Coimbatore RN-96 = RN-95: one escape, two outlets, written in the same round; RN-39 = RN-76): the new SCRIPT against every story
+    # filed in the last day - this round's included - so the same event in other words is never filed twice
+    s = (d or {}).get("reel_script") or ""
+    if s:
+        today = datetime.datetime.now(_fr().IST).date()
+        olds = [o for o in (_filed_script(r) for r in recent
+                            if (lambda od: od is None or abs((today - od).days) <= 1)(_fr().pub_date(r.get("researched")))) if o]
+        if olds:
+            df = _fr().event_df(olds + [s])
+            if any(_fr().same_event(o, s, df) for o in olds):
+                return True
     return False
 
 
@@ -285,12 +296,25 @@ def same_news(a, b, filed=None, days=3):
 _EVENT_DF = {}
 
 
+def _filed_script(r):
+    """the reel script of a filed story. 31 Oct: the Sheet's 'recent' rows carry no script, so the same-event check never ran - the script is
+    read from the saved prebuilt file, as post.py does"""
+    if r.get("reel_script"):
+        return r["reel_script"]
+    try:
+        sys.path.insert(0, str(HERE.parent / "poster"))
+        import post
+        return post.script_of(r)
+    except Exception:
+        return ""
+
+
 def same_event_filed(art, recent, days=1):
     """story id of a story filed in the last `days` day(s) that reports the same event as this article (shared rare word stems of
     the article text and that story's reel script), else ''. 29 Oct: RN-193 (tamilwire, '2 நாட்களில் 25 பேர் ரூ.1.50 லட்சம் இழப்பு')
     was written again after RN-168 (posted 28 Oct) because the headlines differ by one number."""
     fr = _fr()
-    scripts = [r.get("reel_script") or "" for r in recent if r.get("reel_script")]
+    scripts = [s for s in (_filed_script(r) for r in recent) if s]
     if not scripts:
         return ""
     key = len(scripts)
@@ -301,7 +325,7 @@ def same_event_filed(art, recent, days=1):
     mine = fr.pub_date(art.get("published")) or datetime.datetime.now(fr.IST).date()
     text = (art.get("title") or "") + " " + (art.get("text") or "")[:2500]
     for r in recent:
-        s = r.get("reel_script") or ""
+        s = _filed_script(r)
         if not s:
             continue
         od = fr.pub_date(r.get("researched")) or fr.pub_date(r.get("published"))

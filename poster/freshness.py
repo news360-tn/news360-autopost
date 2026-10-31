@@ -334,4 +334,48 @@ def same_event(a, b, df_n):
     r = shared / min(len(x), len(y))
     # 30 Oct RN-214 = RN-209 (short scripts, 8 shared rare stems, 0.62): short reports of one event share fewer words.
     # In 80 filed Namakkal stories no two different events shared more than 5 rare stems.
-    return (shared >= 9 and r >= 0.45) or (shared >= 6 and r >= 0.55)
+    return (shared >= 9 and r >= 0.45) or (shared >= 6 and r >= 0.55) or same_incident(a, b, df_n, shared, r)
+
+
+# 31 Oct (Coimbatore RN-96 = RN-95, one prisoner's escape told by two outlets; earlier RN-39 = RN-76, RN-17 = RN-54 posted twice):
+# word overlap cannot tell "the same event" from "the same kind of story" (two temple poojas share as many rare words as two reports of one
+# escape). An INCIDENT is the same event when both reports name the same person or the same distinctive number - or share many rare words.
+INCIDENT = {"escape": r"தப்பி", "arrest": r"கைது", "verdict": r"தண்டனை", "accident": r"விபத்து|மோதி", "death": r"உயிரிழ|பலி|சடலம",
+            "fire": r"தீப்பிடி|தீப்பற்|தீ விபத்து", "transfer": r"இடமாற்ற", "seizure": r"பறிமுதல்", "fraud": r"மோசடி", "theft": r"திருட|கொள்ளை",
+            "murder": r"கொலை"}
+_NAME = (re.compile(r"([஀-௿]{3,})\s*\(\d{1,3}\)"), re.compile(r"([஀-௿]{3,})\s+(?:என்பவ|என்ற\s)"),
+         re.compile(r"\d{1,3}\s*வயது(?:டைய|ான|ுடைய)?\s+([஀-௿]{3,})"))
+
+
+def _incidents(t):
+    return {k for k, p in INCIDENT.items() if re.search(p, t or "")}
+
+
+# role words written like a name before an age ('இளைஞர் (25)', 'பெண் (40)') - not a person's name
+_ROLES = ("இளைஞ", "வாலிப", "பெண்", "முதிய", "மூதாட", "தொழில", "விவசா", "மாணவ", "சிறுவ", "சிறுமி", "கணவர", "மனைவ", "டிரைவ", "ஓட்டுந",
+          "கூலித", "ஒருவர", "நபர்", "தந்தை", "தாய்", "மகன்", "மகள்", "குழந்", "நண்பர", "உறவின", "ஊழியர", "காவலர", "போலீஸ", "அதிகா")
+
+
+def _names(t):
+    return {m.group(1)[:5] for p in _NAME for m in p.finditer(t or "") if not m.group(1).startswith(_ROLES)}
+
+
+def _numbers(t):
+    """distinctive numbers: 3+ digits or with a decimal point (2015, 2.25, 11.15) - not this year or last year, not round amounts"""
+    y = datetime.datetime.now(IST).year
+    t = re.sub(r"(?<=\d),(?=\d)", "", t or "")
+    return {n for n in re.findall(r"\d+(?:\.\d+)?", t)
+            if (len(n) >= 3 or "." in n) and n not in (str(y), str(y - 1)) and not ("." not in n and int(n) % 100 == 0)}      # 1,000 police / Rs 500 are not distinctive
+
+
+def same_incident(a, b, df_n, shared=None, r=None):
+    """two reports of one incident: a common incident type AND (the same rarely seen person's name, the same rarely seen distinctive number,
+    or 8+ shared rare words). Two different poojas / health tips / recipes are no incident, so they are never matched here."""
+    if not (_incidents(a) & _incidents(b)):
+        return False
+    df, n = df_n
+    if any(df[x] <= 3 for x in _names(a) & _names(b)):
+        return True
+    if any("." in x or df[x] <= 3 for x in _numbers(a) & _numbers(b)):
+        return True
+    return shared is not None and shared >= 9 and r >= 0.3

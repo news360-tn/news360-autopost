@@ -187,7 +187,9 @@ def script_of(o):
         for f in CACHE.glob("RN-*.json"):
             try:
                 sid = f.stem.split("_")[0]
-                _SCRIPTS.setdefault(sid, json.loads(f.read_text(encoding="utf-8")).get("reel_script") or "")
+                s = json.loads(f.read_text(encoding="utf-8")).get("reel_script") or ""
+                if s:      # 31 Oct: RN-x.json has no script - it must not hide the one in RN-x_namakkal_text.json (75 of 113 stories were missed)
+                    _SCRIPTS.setdefault(sid, s)
             except Exception:
                 pass
     return _SCRIPTS.get(o.get("story_id") or "", "")
