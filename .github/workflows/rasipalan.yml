@@ -56,7 +56,10 @@ jobs:
           python -c "from playwright.sync_api import sync_playwright as s; p=s().start(); p.chromium.launch().close(); p.stop()" ||
             sudo "$(command -v python)" -m playwright install-deps chromium
       - name: Collect, write, check, render and post
-        run: python rasipalan/rasi_daily.py
+        run: |
+          mkdir -p out/rasipalan/rasipuram
+          set -o pipefail
+          python rasipalan/rasi_daily.py 2>&1 | tee out/rasipalan/rasipuram/log.txt
       - name: Slides for review
         if: always()
         uses: actions/upload-artifact@v4
@@ -64,6 +67,15 @@ jobs:
           name: rasipalan-rasipuram
           path: out/rasipalan/rasipuram
           if-no-files-found: ignore
+      - name: Preview branch (test runs only, for checking the slides)
+        if: always() && env.DRY_RUN == '1'
+        run: |
+          [ -d out/rasipalan/rasipuram ] || exit 0
+          rm -f out/rasipalan/rasipuram/*.png out/rasipalan/rasipuram/*.html
+          git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
+          git checkout -q --orphan rasipalan-preview-rasipuram
+          git rm -rq --cached . >/dev/null
+          git add -f out/rasipalan/rasipuram && git commit -qm "preview" && git push -qf origin rasipalan-preview-rasipuram
       - name: Remember today's post (no second post today)
         if: always()
         run: |
