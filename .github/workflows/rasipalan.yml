@@ -1,0 +1,73 @@
+name: rasipalan
+# Daily rasipalan carousel on இராசிபுரம் 360 (temple design, நாமக்கல் 360 invited as collaborator).
+# owner 31 Oct: collect sharply at 7:31 AM IST and post as soon as it is ready. GitHub can start scheduled jobs late, so the job is
+# scheduled for 7:00 AM and waits until 7:31; a second start at 7:45 AM is a backup (the run stops at once if today is already posted).
+on:
+  schedule:
+    - cron: "30 1 * * *"      # 07:00 IST - waits until 07:31
+    - cron: "15 2 * * *"      # 07:45 IST backup
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: "1 = build the slides only, do not post"
+        default: "1"
+      date:
+        description: "test only: YYYY-MM-DD (empty = today)"
+        default: ""
+permissions:
+  contents: write
+concurrency:
+  group: rasipalan-rasipuram
+  cancel-in-progress: false
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 170
+    env:
+      PAGE: rasipuram
+      DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry || '' }}
+      RASI_DATE: ${{ github.event_name == 'workflow_dispatch' && inputs.date || '' }}
+      BRIDGE_URL: ${{ secrets.BRIDGE_URL }}
+      BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
+      CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
+      CLOUDINARY_PRESET: ${{ secrets.CLOUDINARY_PRESET }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - name: Browser (cached)
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-rasipalan-1.56.0
+      - name: Install
+        timeout-minutes: 15
+        run: |
+          pip install -q requests==2.32.5 pillow==11.3.0 playwright==1.56.0 pyswisseph==2.10.3.2
+          python -m playwright install chromium
+          python -c "from playwright.sync_api import sync_playwright as s; p=s().start(); p.chromium.launch().close(); p.stop()" ||
+            sudo "$(command -v python)" -m playwright install-deps chromium
+      - name: Collect, write, check, render and post
+        run: python rasipalan/rasi_daily.py
+      - name: Slides for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rasipalan-rasipuram
+          path: out/rasipalan/rasipuram
+          if-no-files-found: ignore
+      - name: Remember today's post (no second post today)
+        if: always()
+        run: |
+          [ -n "$(git status --porcelain rasipalan/state)" ] || exit 0
+          git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
+          git add rasipalan/state && git commit -qm "rasipalan posted"
+          for i in 1 2 3 4 5; do git pull -q --rebase -X theirs && git push -q && break; git rebase --abort 2>/dev/null; sleep 5; done
