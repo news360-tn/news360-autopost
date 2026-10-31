@@ -1393,6 +1393,20 @@ def auto_images():
             break
         work = OUT / r["story_id"]
         work.mkdir(parents=True, exist_ok=True)
+        try:      # owner 31 Oct: the source article's own relevant photo first (enhanced when small); else the AI pictures below
+            import realphoto
+            pics, credit = realphoto.for_story(r.get("source") or "", r.get("headline_en") or "", n=len(prompts), log=log)
+            if pics:
+                urls = []
+                for k, b in enumerate(pics, 1):
+                    f = work / f"real_{k}.jpg"
+                    f.write_bytes(b)
+                    urls.append(upload(f, "image"))
+                bridge_post("setImages", {"row": r["row"], "story_id": r["story_id"], "images": urls})
+                log("real photos queued:", r["story_id"], len(urls), credit)
+                continue
+        except Exception as e:
+            log("real photo step skipped:", r.get("story_id"), str(e)[:120])
         try:
             urls = []
             for k, pr in enumerate(prompts, 1):

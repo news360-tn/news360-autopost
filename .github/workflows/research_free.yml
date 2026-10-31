@@ -40,6 +40,9 @@ jobs:
         with: {python-version: "3.11"}
       - run: pip install requests googlenewsdecoder==0.2.2 pillow
         if: steps.sw.outputs.go == 'yes'
+      - name: Optional photo tools (real news photos - super-resolution, AVIF); the story is written without them if this fails
+        run: pip install -q opencv-contrib-python-headless==4.10.0.84 pillow-avif-plugin==1.4.6 || echo 'photo tools not installed'
+        if: steps.sw.outputs.go == 'yes'
       - name: Collect, write, validate, send
         if: steps.sw.outputs.go == 'yes'
         env:

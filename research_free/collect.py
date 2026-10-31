@@ -562,6 +562,29 @@ def make_images(group, log=None):
             msg = f"image cap {IMG_MAX} per run reached (credit guard): the remaining stories get their images in the posting job"
             print(msg); log is not None and log.append(msg)
             break
+        # owner 31 Oct: the news's OWN photo from the source article first (only a photo that shows this news, enhanced to a presentable
+        # picture when small); no relevant / presentable photo -> the AI pictures exactly as before
+        try:
+            import realphoto
+            pub = None
+            try:
+                pub = datetime.datetime.fromisoformat(str(st.get("published", ""))).date()
+            except Exception:
+                pass
+            notes = []
+            pics, credit = realphoto.for_story(st.get("source", ""), st.get("english_headline", ""), n=len(prompts), published=pub,
+                                               fetch=lambda u: allnews._get(u, timeout=40).text, log=notes.append)
+            for m in notes:
+                print(m, flush=True)
+            if pics:
+                st["images"] = [_upload_image(b) for b in pics]
+                st["real_photo"] = credit
+                print(f"real photos used for '{sid}' ({credit})")
+                if log is not None:
+                    log.append(f"real photo from the source ({credit}) for '{sid}'")
+                continue
+        except Exception as e:
+            print(f"real photo step skipped for '{sid}': {str(e)[:120]}")
         reused = reuse_images(st, len(prompts))
         if reused:
             st["images"] = reused

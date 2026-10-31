@@ -60,6 +60,7 @@ jobs:
             echo "Setup not finished. BRIDGE_URL_set=[${BRIDGE_URL:+yes}]" | tee .last_check
           else
             pip install -q requests==2.32.5 pillow==11.3.0
+            pip install -q opencv-contrib-python-headless==4.10.0.84 pillow-avif-plugin==1.4.6 || echo 'photo tools not installed'      # owner 31 Oct: real news photos
             python poster/post.py check 2>&1 | tee .last_check
           fi
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
