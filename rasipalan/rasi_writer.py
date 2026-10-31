@@ -16,7 +16,7 @@ LABELS = {"work": "தொழில்", "money": "பணம்", "family": "க�
 REMEDY = {"மேஷம்": "முருகன் வழிபாடு", "விருச்சிகம்": "முருகன் வழிபாடு", "ரிஷபம்": "மகாலட்சுமி வழிபாடு", "துலாம்": "மகாலட்சுமி வழிபாடு",
           "மிதுனம்": "பெருமாள் வழிபாடு", "கன்னி": "பெருமாள் வழிபாடு", "கடகம்": "அம்மன் வழிபாடு", "சிம்மம்": "சூரிய நமஸ்காரம்",
           "தனுசு": "குரு பகவான் வழிபாடு", "மீனம்": "குரு பகவான் வழிபாடு", "மகரம்": "சனீஸ்வரர் வழிபாடு", "கும்பம்": "ஆஞ்சநேயர் வழிபாடு"}
-FEAR = ("மரண", "சாவு", "உயிரிழ", "விபத்து நேர", "ஆபத்து", "கண்டம்", "துரதிர்ஷ்ட", "சாபம்", "பில்லி", "சூனிய", "ஆபரேஷன்", "நோய் தீவிர")
+FEAR = ("கெட்ட", "மரண", "சாவு", "உயிரிழ", "விபத்து நேர", "ஆபத்து", "கண்டம்", "துரதிர்ஷ்ட", "சாபம்", "பில்லி", "சூனிய", "ஆபரேஷன்", "நோய் தீவிர")
 MAX_CHARS = 30      # code points; the renderer also shrinks a line that is still too wide
 
 SYSTEM = """You are a senior Tamil astrology editor writing a daily rasipalan for a Tamil Instagram page read by Tamil Nadu families.
@@ -106,6 +106,10 @@ def check(data, sources, chandra):
     return errs
 
 
+def sandhi_key(t):
+    return re.sub(r"[கசதப]்|\s", "", t or "")
+
+
 def proofread(rs, log=print):
     lines = {f"{i}.{f}": item[f] for i, item in enumerate(rs) for f in FIELDS}
     try:
@@ -115,16 +119,16 @@ def proofread(rs, log=print):
         return 0
     fixes = (res or {}).get("fixes", {}) if isinstance(res, dict) else {}
     n = 0
-    import difflib
     for key, new in (fixes or {}).items():
         if key not in lines or not isinstance(new, str):
             continue
         new = new.strip().rstrip(".")
         old = lines[key]
-        neg = ("இல்லை", "வேண்டாம்", "கூடாது", "அல்ல", "இன்றி", "மாட்டா")
-        if (not new or new == old or re.search(r"[A-Za-z]", new) or len(new) > MAX_CHARS + 6
-                or difflib.SequenceMatcher(None, old, new).ratio() < 0.6
-                or any((x in new) != (x in old) for x in neg) or any(x in new for x in FEAR)):
+        # only sandhi / spacing fixes are applied (a doubled க்/ச்/த்/ப் added or removed, words joined or split): a proofreader once
+        # turned "கேட்ட சலுகை" (asked-for concession) into "கெட்ட சலுகை" (bad concession) - a changed letter is never applied blindly
+        if new == old or sandhi_key(new) != sandhi_key(old) or any(x in new for x in FEAR):
+            if new != old:
+                log(f"  proofread suggestion NOT applied ({RASI[int(key.split('.')[0])]}): '{old}' -> '{new}'")
             continue
         i, f = key.split(".")
         rs[int(i)][f] = new

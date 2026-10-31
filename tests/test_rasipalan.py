@@ -75,6 +75,11 @@ class WriterChecks(unittest.TestCase):
         self.assertIn("English", errs)
         self.assertIn("fear", errs)
 
+    def test_proofreader_may_only_fix_sandhi(self):
+        import rasi_writer as writer
+        self.assertEqual(writer.sandhi_key("நிலுவை தொகை"), writer.sandhi_key("நிலுவைத் தொகை"))
+        self.assertNotEqual(writer.sandhi_key("கேட்ட சலுகை"), writer.sandhi_key("கெட்ட சலுகை"))      # 31 Oct test run
+
     def test_missing_rasi(self):
         import rasi_writer as writer
         d = self.good()
@@ -89,6 +94,8 @@ class Sources(unittest.TestCase):
         rs = sources.split_rasis(text)
         self.assertEqual(len(rs), 12)
         self.assertTrue(all(v.startswith("இன்று") for v in rs.values()))
+        tv9 = "\n".join(f"{sources.STEM[r]} ராசிக்காரர்களுக்கு இன்று நல்ல நாள். பணியில் முன்னேற்றம் உண்டு." for r in sources.RASI)
+        self.assertEqual(len(sources.split_rasis(tv9)), 12)
 
     def test_date_tokens_match_real_urls(self):
         import rasi_sources as sources
