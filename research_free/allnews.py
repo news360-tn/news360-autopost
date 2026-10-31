@@ -381,6 +381,10 @@ def article_any(url):
         pub = m.group(1) if m else ""
     if len(body) < 200:
         h2 = re.sub(r"<(style|script|noscript|svg)[^>]*>.*?</\1>", " ", h, flags=re.S)
+        # owner 31 Oct (Coimbatore RN-102, a Thanthi TV 'breaking' page with only a headline, a video and hashtags): the 'Also Read' /
+        # related-story cards (other stories' headlines) and headings were taken as the article's text. They are not the story.
+        h2 = re.split(r">\s*(?:Also Read|Related (?:News|Stories|Articles)|Read More|இதையும் படிக்க|இதையும் படியுங்கள்|தொடர்புடைய செய்திகள்|மேலும் படிக்க)\s*<", h2, maxsplit=1)[0]
+        h2 = re.sub(r"<(h[1-6]|a|figcaption|time|button|nav|header|footer)\b[^>]*>.*?</\1>", " ", h2, flags=re.S | re.I)
         paras = [re.sub(r"\s+", " ", html.unescape(x)).strip() for x in re.sub(r"<[^>]+>", "\n", h2).split("\n")]
         paras = [x for x in paras if len(x) > 60 and re.search(r"[஀-௿]", x) and "{" not in x and "css-" not in x]
         seen, out = set(), []

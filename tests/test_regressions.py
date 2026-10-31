@@ -1244,3 +1244,61 @@ class CollapseIsAnIncident(unittest.TestCase):
 
     def test_collapse(self):
         self.assertIn("collapse", fr._incidents("நாமக்கல் கலெக்டர் குடியிருப்பின் சுற்றுச்சுவர் கனமழையால் இடிந்து விழுந்தது"))
+
+
+class HeadlineOnlyPageIsNotNews(unittest.TestCase):
+    """owner 31 Oct (Coimbatore RN-102): a Thanthi TV 'breaking' page with only its headline, a video and hashtags was written as a
+    story - the 'Also Read' cards (other stories' headlines) were taken as its text"""
+
+    THANTHI = ('<html><head><title>கோவை சிறை தப்பியோட்டம்: மீண்டும் கைதி தப்பியதால் எஸ்பி அதிரடி நடவடிக்கை.</title></head><body>'
+               '<h1 class="header-card__Headline">Kovai Prison Escape| மீண்டும் ஒரு கைதி தப்பியோட்டம்.. எஸ்பி எடுத்த அதிரடி முடிவு</h1>'
+               '<h2 class="header-card__SubHeadline"> மீண்டும் ஒரு கைதி தப்பியோட்டம்.. எஸ்பி எடுத்த அதிரடி முடிவு</h2>'
+               '<amp-youtube data-videoid="QTFvezMm97g"></amp-youtube><div class="text"><p>#kovaiprisonescape #prisonescapeissue  </p></div>'
+               '<h2 class="related-stories__Heading">Also Read</h2><div><a href="https://www.thanthitv.com/news/breaking/x">'
+               '<h1 class="related-story-card__Headline">Vellore Girls Missing | வேலூரில் காணாமல் போன 2 மாணவிகளும் சென்னையில் மீட்பு</h1></a>'
+               '<a href="https://www.thanthitv.com/news/breaking/y"><h1>Krishnagiri | Crime | ரத்த வெள்ளத்தில் சடலமாக கிடந்த மூதாட்டி.. நள்ளிரவில் கொடூர சம்பவம்</h1></a>'
+               '<a href="https://www.thanthitv.com/news/breaking/z"><h1>Breaking | Thoothukudi | Jail | தேனியில் கைதிகள் தப்பியோடிய சம்பவம் | திடீரென மூடப்பட்ட பழமையான சிறை</h1></a>'
+               '</div></body></html>')
+    ARTICLE = ('<html><head><title>சிறை கதவருகே போலீசாரை ஏமாற்றி தப்பிய கைதி</title></head><body><h1>சிறை கதவருகே போலீசாரை ஏமாற்றி தப்பிய கைதி</h1>'
+               '<p>கோவை மாவட்டம் அன்னூர் காவல் எல்லைக்குட்பட்ட பகுதியில் நடைபெற்ற வழிப்பறி வழக்கு தொடர்பாக ராகவன் என்பவரை அன்னூர் போலீசார் கைது செய்தனர்.</p>'
+               '<p>சிறையின் நுழைவுவாயிலை அடைந்ததும், காவல்துறையினரின் கவனத்தைத் திசைதிருப்பி ராகவன் மின்னல் வேகத்தில் தப்பியோடினார். '
+               '<a href="/tags/chennai">சென்னை</a> புழல் சிறையிலிருந்து கடந்த வாரம் இரு கைதிகள் தப்பி ஓடினார்கள்.</p></body></html>')
+
+    def _art(self, page, url):
+        class R:
+            text = page
+        old = allnews._get
+        allnews._get = lambda u, timeout=40, headers=None: R()
+        try:
+            return allnews.article_any(url)
+        finally:
+            allnews._get = old
+
+    def test_breaking_stub_has_no_text(self):
+        art = self._art(self.THANTHI, "https://www.thanthitv.com/amp/story/news/breaking/another-prisoner-escapes-sp-takes-swift-action")
+        self.assertLess(len(collect.body_words(art)), collect.HEADLINE_ONLY_MIN)
+
+    def test_real_article_keeps_its_text(self):
+        art = self._art(self.ARTICLE, "https://tamil.indianexpress.com/tamilnadu/x-12770329")
+        self.assertGreater(len(collect.body_words(art)), 25)
+        self.assertIn("ராகவன்", art["text"])
+
+
+class SamePrisonEscapeAndEmptyFollowUps(unittest.TestCase):
+    """owner 31 Oct (Coimbatore RN-102 / RN-103 = RN-95): the follow-ups of one escape named no prisoner"""
+
+    A = ("கோவை மத்திய சிறை வாசலில் போலீசாரை ஏமாற்றி கைதி தப்பியோட்டம். அன்னூர் போலீசார் வழிப்பறி வழக்கில் ராகவன் என்பவரைக் கைது செய்திருந்தனர்.")
+    B = "கோவை சிறையில் மீண்டும் ஒரு கைதி தப்பியோடியுள்ளார். இதையடுத்து கோவை மாவட்ட எஸ்பி அதிரடி நடவடிக்கை எடுத்துள்ளார்."
+    C = "கோவை மத்தியச் சிறையில் இருந்து ஒரு கைதி தப்பிச் சென்றுள்ளார். புழல், தேனி சிறைகளைத் தொடர்ந்து இந்தச் சம்பவம் நடந்துள்ளது."
+    D = "சேலம் மத்திய சிறையில் இருந்து கைதி தப்பியோட்டம். போலீசார் தேடுதல்."
+
+    def test_same_town_prison_escape(self):
+        df = fr.event_df([self.A, self.B, self.C, self.D])
+        self.assertTrue(fr.same_event(self.A, self.B, df))
+        self.assertTrue(fr.same_event(self.A, self.C, df))
+        self.assertFalse(fr.same_event(self.A, self.D, df))
+
+    def test_details_not_yet_known_is_no_news(self):
+        s = ("கோவை சிறையில் மீண்டும் ஒரு கைதி தப்பியோடியுள்ளார். இதையடுத்து கோவை மாவட்ட எஸ்பி அதிரடி நடவடிக்கை எடுத்துள்ளார். "
+             "தப்பியோடிய கைதி குறித்த முழு விவரங்கள் இன்னும் தெரியவரவில்லை. சிறைப் பாதுகாப்பு குறித்த மேலும் தகவல்கள் வெளியானதும் தெரிவிக்கப்படும்.")
+        self.assertTrue(fr.no_news("கோவை சிறையில் மீண்டும் கைதி தப்பியோட்டம்", s))

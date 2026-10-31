@@ -242,7 +242,10 @@ def follow_up(old, new, days=2):
 # The writer sometimes "explains" a page it could not read (price in an image, wrong text scraped) instead of reporting news.
 NO_NEWS_TA = ("கட்டுரையில் இல்லை", "கட்டுரையில் குறிப்பிடப்படவில்லை", "கட்டுரையில் வெளியிடப்படவில்லை", "இந்தக் கட்டுரையில்",
               "விவரம் இன்னும் தெரியவரவில்லை", "விவரம் தெரியவரவில்லை", "விவரம் இன்னும் தெரியவில்லை", "தகவல் இல்லை",
-              "எண்ணோ தகவலோ இல்லை", "விவரம் கிடைத்ததும் பகிரப்படும்", "தெரியவந்ததும் பகிரப்படும்", "தொடர்புடையது அல்ல", "தொடர்பில்லை")
+              "எண்ணோ தகவலோ இல்லை", "விவரம் கிடைத்ததும் பகிரப்படும்",
+              # owner 31 Oct (Coimbatore RN-102: "முழு விவரங்கள் இன்னும் தெரியவரவில்லை ... வெளியானதும் தெரிவிக்கப்படும்")
+              "விவரங்கள் இன்னும் தெரியவரவில்லை", "விவரங்கள் தெரியவரவில்லை", "இன்னும் தெரியவரவில்லை", "வெளியானதும் தெரிவிக்கப்படும்",
+              "வெளியானதும் பகிரப்படும்", "தெரியவந்ததும் தெரிவிக்கப்படும்", "முழுமையாக வெளியிடப்படவில்லை", "விவரங்களுக்கு காத்திருங்கள்", "தெரியவந்ததும் பகிரப்படும்", "தொடர்புடையது அல்ல", "தொடர்பில்லை")
 NO_NEWS_EN = ("not in the article", "not mentioned in the article", "article does not", "article doesn't", "no details available",
               "details not available", "details are not available", "will be shared when", "not related to")
 
@@ -381,4 +384,15 @@ def same_incident(a, b, df_n, shared=None, r=None):
         return True
     # owner 31 Oct: one incident told by two outlets with 7+ shared rare words (r >= 0.45) - on all posted stories of both pages this
     # matched no two different incidents
+    # owner 31 Oct (Coimbatore RN-102 / RN-103 = RN-95): an escape of a prisoner from the same town's prison is one event, however it is
+    # told (the follow-ups named no prisoner)
+    if "escape" in _incidents(a) & _incidents(b) and "கைதி" in a and "கைதி" in b and _prison_towns(a) & _prison_towns(b):
+        return True
     return shared is not None and ((shared >= 9 and r >= 0.3) or (shared >= 7 and r >= 0.45))
+
+
+_PRISON = re.compile(r"([஀-௿]{2,})\s+(?:மத்திய(?:ச்)?\s+|மாவட்ட(?:ச்)?\s+|கிளை(?:ச்)?\s+|பெண்கள்\s+)?சிறை")
+
+
+def _prison_towns(t):
+    return {m.group(1)[:4] for m in _PRISON.finditer(t or "") if not m.group(1).startswith(("மத்திய", "மாவட்ட", "இந்த", "அந்த", "எந்த"))}
