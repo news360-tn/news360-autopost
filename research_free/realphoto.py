@@ -160,10 +160,17 @@ def _jpeg(im, q=92):
     return b.getvalue()
 
 
+VISION_DOWN = [0.0]      # owner 31 Oct: when Gemini says 'too many requests' (429) the photo check rests 30 min - the free quota is the writer's
+
+
+def vision_resting():
+    return time.time() - VISION_DOWN[0] < float(os.environ.get("REAL_PHOTO_VISION_REST", "1800"))
+
+
 def vision(im, headline, key=None):
     """{"match": bool, "real_photo": bool, "box": [x0,y0,x1,y1] in px or None, "why": str} from a free Gemini vision model; None if unavailable"""
     key = key or os.environ.get("GEMINI_API_KEY")
-    if not key:
+    if not key or vision_resting():
         return None
     try:
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -209,6 +216,9 @@ def vision(im, headline, key=None):
                     "why": str(j.get("why", ""))[:160]}
         except Exception as e:
             last = e
+            if "429" in str(e) or "Too Many Requests" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
+                VISION_DOWN[0] = time.time()      # one 429 is enough: no other model / picture is asked now
+                break
     print("real photo: vision check unavailable:", str(last)[:120], flush=True)
     return None
 
@@ -383,6 +393,9 @@ def for_story(url, headline, n=2, published=None, page=None, fetch=None, log=pri
                 continue
             if min(im.size) < 200 or im.width / im.height > 3.2 or im.height / im.width > 3.2:
                 continue      # icon / strip / banner
+            if key and vision_resting():
+                log("real photo: vision check resting (free quota busy) -> AI pictures")
+                return [], ""
             v = vision(im, headline, key) if key else None
             if v is None and (key or not main):
                 continue      # without the vision check only the page's own main picture is trusted (still never a file photo)

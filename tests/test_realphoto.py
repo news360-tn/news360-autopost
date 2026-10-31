@@ -165,3 +165,29 @@ class WatermarksRemovedNoCredit(unittest.TestCase):
     def test_no_credit_written_on_the_picture(self):
         e = R.enhance(photo(1280, 720))
         self.assertEqual(R.compose(e, "Dinamalar").tobytes(), R.compose(e, "").tobytes())
+
+
+class VisionQuotaIsSpared(unittest.TestCase):
+    """owner 31 Oct: Gemini 429 'too many requests' - the photo check stops at once (the free quota is the writer's) and rests 30 min"""
+
+    def test_one_429_stops_everything(self):
+        calls = []
+
+        class Resp:
+            def raise_for_status(self):
+                raise RuntimeError("429 Client Error: Too Many Requests")
+
+        old_post, old_dl = R.requests.post, R.download
+        R.requests.post = lambda *a, **k: calls.append(1) or Resp()
+        R.download = lambda u, timeout=30: photo(1200, 800)
+        os.environ["GEMINI_API_KEY"] = "test"
+        R.VISION_DOWN[0] = 0.0
+        try:
+            page = "".join(f'<img src="https://images.dinamalar.com/data/large_2025/p{i}.jpg">' for i in range(5))
+            self.assertEqual(([], ""), R.for_story("https://www.dinamalar.com/x", "h", page=page, published=TODAY, log=lambda *a: None))
+            self.assertEqual(1, len(calls))
+            self.assertTrue(R.vision_resting())
+        finally:
+            R.requests.post, R.download = old_post, old_dl
+            os.environ.pop("GEMINI_API_KEY", None)
+            R.VISION_DOWN[0] = 0.0
