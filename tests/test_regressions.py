@@ -236,7 +236,21 @@ class Images(unittest.TestCase):
 
 
 class PrimeTime(unittest.TestCase):
-    """owner 27 Oct: non-urgent reels wait for 9-12 / 18-21:30; urgent news never waits; nothing is ever dropped"""
+    """owner 31 Oct: prime time OFF - a reel posts as soon as it is written (27 Oct rule, kept behind the switch: non-urgent reels wait
+    for 9-12 / 18-21:30; urgent news never waits; nothing is ever dropped)"""
+    def setUp(self):      # the tests below check the switch still works when it is turned on again
+        self._pt = post.CONFIG.get("prime_time")
+        post.CONFIG["prime_time"] = dict(self._pt or {}, enabled=True)
+
+    def tearDown(self):
+        post.CONFIG["prime_time"] = self._pt
+
+    def test_off_by_default_posts_at_once(self):
+        self.assertFalse(json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))["prime_time"]["enabled"])
+        post.CONFIG["prime_time"] = self._pt
+        for h in (3, 14, 23):
+            self.assertEqual("", post.prime_wait(self.row("கோவில் கும்பாபிஷேக விழா"), self.at(h)), h)
+
     def at(self, h, m=0):
         return datetime.datetime.combine(TODAY, datetime.time(h, m), IST)
 
