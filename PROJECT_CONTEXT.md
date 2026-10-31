@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-10-31 | `7b131dd` | The same event is never posted twice: incidents matched by name / distinctive number; posted scripts read (owner 31 Oct) |
 | 2026-10-31 | `8bb3535` | Location tags: only ids Instagram accepts are used; ig-probe checks them (owner 31 Oct) |
 | 2026-10-31 | `9391e60` | Writing order from our own Instagram insights (owner 31 Oct) |
 | 2026-10-31 | `0f65b11` | Prime time off: a reel posts as soon as it is written (owner 31 Oct) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-29 | `85d02eb` | Topic / tag / author / page-N listing pages are never written or posted as a news story (RN-194: abplive topic page gave a Cuddalore story) |
 | 2026-10-29 | `5ff36f3` | Writer started by the collector waits for the queue instead of skipping; same event from another outlet is not written again (RN-193 = RN-168) |
 | 2026-10-29 | `d60d546` | Publish times with a time zone are read in IST (a 22:17 UTC story is the next day in IST, not the day before) |
-| 2026-10-29 | `c2df785` | Collection is never cancelled by the story writer: each has its own queue; the collector waits while a writer runs, the writer skips its round while a collection runs (Coimbatore lost 2 collections on 29 Oct) |
 <!-- recent-changes:end -->
