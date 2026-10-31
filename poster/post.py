@@ -702,11 +702,20 @@ def ig_account(token):
 LOC_ID = ""   # Instagram location (place) id for the story being posted; set in run_story
 
 
+def verified_locations():
+    """location ids the ig-probe workflow found valid (poster/probe/locations_ok.json); none until it has run - then no location is tried"""
+    try:
+        return {str(x) for x in json.loads((Path(__file__).resolve().parent / "probe" / "locations_ok.json").read_text())}
+    except Exception:
+        return set()
+
+
 def pick_location(row, spec):
     """Instagram place id from config.json "locations" (keyword -> id).
     The place named FIRST in the Tamil headline wins, then the English headline, then the story's location fields;
     the district-wide 'namakkal' tags are used only when no town, temple or hill is named."""
-    locs = CONFIG.get("locations") or {}
+    ok = verified_locations()      # owner 31 Oct: only ids Instagram accepted in the ig-probe check (all 30 tries on 30-31 Oct were refused)
+    locs = {k: v for k, v in (CONFIG.get("locations") or {}).items() if str(v).strip() in ok}
     generic = {"namakkal", "நாமக்கல்"}
     fields = [row.get("headline_ta", ""), row.get("headline_en", ""), spec.get("loc", ""), row.get("location", "")]
     for specific_only in (True, False):

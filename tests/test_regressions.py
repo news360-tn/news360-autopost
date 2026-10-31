@@ -1127,3 +1127,42 @@ class PriorityFromInsights(unittest.TestCase):
 
     def test_exam_and_election_are_not_temple_news(self):      # 'தேர்' (temple car) is inside தேர்வு / தேர்தல்
         self.assertNotIn("தேர்", [k for score, keys in collect.INTEREST for k in keys])
+
+
+class LocationTags(unittest.TestCase):
+    """31 Oct: every location tag was refused ('Param location_id is not a valid location page ID') - 30 of 30 posts on 30-31 Oct, both
+    accounts, 10 different ids: config.json held old Instagram explore ids, the API wants the Facebook Page id of the place. Only ids the
+    ig-probe check found valid are used; none until then (no more refused calls)."""
+    ROW = {"headline_ta": "ராசிபுரம் அருகே சாலை விபத்து", "headline_en": "", "location": ""}
+
+    def with_ok(self, ids):
+        real = post.verified_locations
+        post.verified_locations = lambda: set(ids)
+        return real
+
+    def test_no_location_until_an_id_is_verified(self):
+        real = self.with_ok(set())
+        try:
+            self.assertEqual("", post.pick_location(self.ROW, {}))
+        finally:
+            post.verified_locations = real
+
+    def test_verified_id_is_used_and_town_wins_over_district(self):
+        real = self.with_ok({post.CONFIG["locations"]["rasipuram"], post.CONFIG["locations"]["namakkal"]})
+        try:
+            self.assertEqual(post.CONFIG["locations"]["rasipuram"], post.pick_location(self.ROW, {}))
+        finally:
+            post.verified_locations = real
+
+    def test_refused_id_is_never_tried(self):
+        real = self.with_ok({post.CONFIG["locations"]["namakkal"]})      # Rasipuram's id refused -> the district tag, never the bad id
+        try:
+            self.assertEqual(post.CONFIG["locations"]["namakkal"], post.pick_location(self.ROW, {}))
+        finally:
+            post.verified_locations = real
+
+    def test_probe_checks_without_publishing(self):
+        src = (ROOT / "poster" / "ig_probe.py").read_text(encoding="utf-8")
+        body = src[src.index("def check_locations"):]
+        self.assertIn('f"{uid}/media"', body)
+        self.assertNotIn("media_publish", body)      # a container is only created, never published

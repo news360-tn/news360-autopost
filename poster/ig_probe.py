@@ -37,6 +37,43 @@ for page in ("rasipuram", "namakkal"):
             r["account_reach"] = "ERR " + str(e)[:160]
     except Exception as e:
         r["error"] = str(e)[:300]
+
+
+def check_locations(out):
+    """owner 31 Oct: which config.json "locations" ids does Instagram accept? (30-31 Oct: all 30 tries were refused - 'not a valid location
+    page ID': the ids were old Instagram explore ids, the API wants the Facebook Page id of the place). One UNPUBLISHED image container per id
+    - nothing is posted, unused containers expire by themselves. Accepted ids -> probe/locations_ok.json; posting uses only those."""
+    import glob
+    ids = sorted({str(v).strip() for k, v in (post.CONFIG.get("locations") or {}).items() if str(v).strip().isdigit()})
+    covers = [json.load(open(f)).get("cover") for f in sorted(glob.glob(os.path.join(os.path.dirname(__file__), "prebuilt", "RN-*.json")))]
+    image = next((c for c in reversed(covers) if c), "")
+    res = out["locations"] = {}
+    if not ids or not image:
+        res["note"] = "no location ids in config.json" if not ids else "no picture to test with"
+        return []
+    for page in ("namakkal", "rasipuram"):      # an id valid for one account is valid for all
+        try:
+            tok = post.bridge_get("token", page=page)["token"]
+            uid, _ = post.ig_account(tok)
+            break
+        except Exception as e:
+            res["note"] = f"no token for {page} ({type(e).__name__})"      # no message text: a bridge error can carry its URL
+    else:
+        return []
+    ok = []
+    for pid in ids:
+        try:
+            post.ig("POST", f"{uid}/media", tok, image_url=image, caption="location check - not published", location_id=pid)
+            res[pid] = "ok"
+            ok.append(pid)
+        except Exception as e:
+            res[pid] = "refused: " + str(e)[:140]
+    return ok
+
+
+ok_ids = check_locations(out)
 os.makedirs(os.path.join(os.path.dirname(__file__), "probe"), exist_ok=True)
+if "note" not in out.get("locations", {}):
+    json.dump(ok_ids, open(os.path.join(os.path.dirname(__file__), "probe", "locations_ok.json"), "w"))
 json.dump(out, open(os.path.join(os.path.dirname(__file__), "probe", "ig_probe.json"), "w"), ensure_ascii=False, indent=1)
 print(json.dumps(out, ensure_ascii=False)[:1500])
