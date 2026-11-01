@@ -917,7 +917,7 @@ def story_catchup(max_new=6):
             feed = ig("GET", f"{uid}/media", token, fields="id,media_type,media_url,timestamp,owner,children{media_type,media_url}", limit=40).get("data", [])
             stories = sorted(t for t in (_ts(x.get("timestamp", "")) for x in ig("GET", f"{uid}/stories", token, fields="id,timestamp").get("data", [])) if t)
             now = datetime.now(timezone.utc)
-            made = 0
+            made = tries = 0
             log(f"story catch-up {pg}: quota {used}/{total}, {len(feed)} recent posts, {len(stories)} live stories, owner ids {sorted(mine)}")
             for m in sorted(feed, key=lambda x: x.get("timestamp", "")):
                 t = _ts(m.get("timestamp", ""))
@@ -941,7 +941,17 @@ def story_catchup(max_new=6):
                     url, kind = m.get("media_url"), ("video" if m.get("media_type") == "VIDEO" else "image")
                 if not url:
                     continue
+                if tries >= max_new * 2:
+                    break
+                tries += 1
                 try:
+                    if kind == "video":      # 1 Nov: Instagram refuses its own CDN video link for a story - the file is hosted again first
+                        import tempfile
+                        tmp = Path(tempfile.mkdtemp()) / "story.mp4"
+                        rr = requests.get(url, timeout=180)
+                        rr.raise_for_status()
+                        tmp.write_bytes(rr.content)
+                        url = upload(tmp, "video")
                     prm = dict(media_type="STORIES")
                     prm["video_url" if kind == "video" else "image_url"] = url
                     cid = ig("POST", f"{uid}/media", token, **prm)["id"]

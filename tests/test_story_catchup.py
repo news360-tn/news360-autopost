@@ -36,12 +36,14 @@ class StoryCatchUp(unittest.TestCase):
             return {"id": "p"}
         with mock.patch.object(post, "DRY", False), mock.patch.object(post, "LABEL", {"x": "X"}), \
                 mock.patch.object(post, "bridge_get", return_value={"token": "t"}), mock.patch.object(post, "ig_account", return_value=("U", "u")), \
-                mock.patch.object(post, "ig", side_effect=ig), mock.patch.object(post, "wait_ready"):
+                mock.patch.object(post, "ig", side_effect=ig), mock.patch.object(post, "wait_ready"), \
+                mock.patch.object(post, "upload", side_effect=lambda p, k: "https://cloud/" + Path(p).name), \
+                mock.patch.object(post.requests, "get", return_value=mock.Mock(content=b"x", raise_for_status=lambda: None)):
             post.story_catchup()
         return made
 
     def test_missing_stories_are_made(self):
-        self.assertEqual(self.run_catchup(10), ["https://cdn/s1.jpg", "https://cdn/v3.mp4"])
+        self.assertEqual(self.run_catchup(10), ["https://cdn/s1.jpg", "https://cloud/story.mp4"])      # a video is hosted again first
 
     def test_news_posts_keep_room(self):
         self.assertEqual(self.run_catchup(45), [])      # 45 + 1 > 50 - 5: the last 5 posts of the day stay for news
