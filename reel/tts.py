@@ -19,13 +19,30 @@ def fix_config():
             c["model_args"]["speakers_file"] = sp
         cfg.write_text(json.dumps(c, ensure_ascii=False, indent=1))
 
+DASH = "-\u2010\u2011\u2012\u2013\u2014\u2015\u2212\uFE58\uFE63\uFF0D"      # hyphen, en/em dash, minus sign and look-alikes
+ROUTE = r"(ரயில்|ரெயில்|பேருந்து|பஸ்|விமான)"
+
+
+def dashes(t):
+    """a dash between words is never read out ('சேலம் - நாமக்கல் மாவட்ட எல்லை' -> 'சேலம், நாமக்கல் மாவட்ட எல்லை');
+    a route is read 'கோவை முதல் நாகர்கோவில் வரை ரயில்'; a dash inside a word ('டி-20', 'கோவை-திருச்சி') becomes a space"""
+    d = "[" + re.escape(DASH) + "]"
+    w = r"([\u0B80-\u0BFFA-Za-z]+)"
+    t = re.sub(w + r"\s*" + d + r"\s*" + w + r"(\s+)" + ROUTE, r"\1 முதல் \2 வரை\3\4", t)
+    t = re.sub(r"\s+" + d + r"+\s*|\s*" + d + r"+\s+", ", ", t)      # spaced dash -> a short pause
+    t = re.sub(d + "+", " ", t)                                         # dash inside a word -> space
+    return re.sub(r"(,\s*){2,}", ", ", t)
+
+
 def clean(t):
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from tamilnum import speak_numbers
-    t = speak_numbers(t)          # whole numbers in Tamil words (was: every digit read separately, "56" -> "ஐந்து ஆறு")
+    t = speak_numbers(t)          # whole numbers in Tamil words (was: every digit read separately, "56" -> "ஐந்து ஆறு"); 10-15 -> 10 முதல் 15
     t = re.sub(r"\d", lambda m: ONES[int(m.group())] or "பூஜ்ஜியம்", t)
-    t = t.replace("—", ", ").replace("–", ", ").replace("!", ".").replace("?", ".")
-    allowed = set(" ,.0ஃஅஆஇஈஉஊஎஏஐஒஓஔகஙசஜஞடணதநனபமயரறலளழவஷஸஹாிீுூெேைொோௌ்ௗ!¡'(),-.:;¿?")
+    t = dashes(t)
+    t = t.replace("!", ".").replace("?", ".")
+    # no dash of any kind reaches the voice (owner 1 Nov, RN-256: 'சேலம் - நாமக்கல்' was read 'சேலம் மைனஸ் நாமக்கல்')
+    allowed = set(" ,.0ஃஅஆஇஈஉஊஎஏஐஒஓஔகஙசஜஞடணதநனபமயரறலளழவஷஸஹாிீுூெேைொோௌ்ௗ¡'(),.:;¿")
     return re.sub(r"\s+", " ", "".join(ch for ch in t if ch in allowed)).strip()
 
 def main(lines_path, outdir, voice="female"):
