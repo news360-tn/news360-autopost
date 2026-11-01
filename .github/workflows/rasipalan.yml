@@ -17,6 +17,9 @@ on:
       date:
         description: "test only: YYYY-MM-DD (empty = today)"
         default: ""
+      repost:
+        description: "1 = post today again (waits until the old post is deleted on Instagram)"
+        default: "0"
 permissions:
   contents: write
 concurrency:
@@ -30,6 +33,7 @@ jobs:
       PAGE: rasipuram
       DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry || '' }}
       RASI_DATE: ${{ github.event_name == 'workflow_dispatch' && inputs.date || '' }}
+      REPOST: ${{ github.event_name == 'workflow_dispatch' && inputs.repost || '0' }}
       BRIDGE_URL: ${{ secrets.BRIDGE_URL }}
       BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
       CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}

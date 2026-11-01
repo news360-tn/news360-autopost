@@ -24,6 +24,7 @@ START_AT = os.environ.get("START_AT", "07:31")      # owner 31 Oct: collect shar
 ONE_SOURCE_AT = os.environ.get("ONE_SOURCE_AT", "09:30")
 GIVE_UP_AT = os.environ.get("GIVE_UP_AT", "12:30")
 MIN_SOURCES = int(os.environ.get("MIN_SOURCES", "2"))
+REPOST = os.environ.get("REPOST", "") == "1"      # by hand: today's post was deleted by the owner - post it again (state file ignored)
 FORCE_DATE = os.environ.get("RASI_DATE", "")      # testing only: YYYY-MM-DD
 PAGES = {
     "rasipuram": {"brand": "இராசிபுரம் 360", "town": "இராசிபுரம்", "design": "temple", "logo": "logo_rasipuram.png",
@@ -92,6 +93,8 @@ def date_line(p):
 
 def already_posted(day, p, token=None):
     try:
+        if REPOST:
+            raise ValueError("repost: state file ignored")
         st = json.loads(STATE.read_text(encoding="utf-8"))
         if st.get("date") == day.isoformat() and st.get("media_id"):
             return f"state file: posted {st.get('permalink')}"
@@ -180,6 +183,13 @@ def main():
     if not DRY:
         token = bridge_get("token", page=PAGE)["token"]
     done = already_posted(day, p, token)
+    if done and REPOST:      # wait (max 2 hours) until the owner has deleted the old post, then post again
+        for _ in range(60):
+            log("REPOST: waiting for the old post to be deleted -", done)
+            time.sleep(120)
+            done = already_posted(day, p, token)
+            if not done:
+                break
     if done:
         log("already posted today -", done)
         return 0
