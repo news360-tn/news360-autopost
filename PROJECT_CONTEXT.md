@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-01 | `d25ab08` | story catch-up: video re-hosted on Cloudinary first (Instagram refused its own CDN link: container ERROR); tries capped per run |
 | 2026-11-01 | `cced927` | story catch-up: a post's owner id is the account's app id - every post was taken for the other page's collab |
 | 2026-11-01 | `0b4cd01` | story catch-up: log quota / posts / stories seen |
 | 2026-11-01 | `93c6f33` | stories: every post (news reel, carousel, rasipalan, any job) also goes to the story - fixed 25-post cut removed, missing stories caught up every run, last 5 of the 50/day kept for news |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-30 | `499e23a` | Refused stories are not written again and again (owner 30 Oct) |
 | 2026-10-30 | `cec615a` | Same event from two outlets in one writer round is caught (stories filed this round join the check), and short reports of one event count as the same (RN-214 = RN-209) |
 | 2026-10-30 | `84e663c` | Writer/collector: the Sheet bridge is tried 3 times when Apps Script does not answer (writer crashed once at 09:00 UTC 30 Oct on a 120 s timeout) |
-| 2026-10-30 | `ba06b8e` | Sarvam out of the live writer order until writer-compare proves it |
 <!-- recent-changes:end -->
