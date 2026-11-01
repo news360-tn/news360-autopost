@@ -30,6 +30,10 @@ class HoldBeforePosting(unittest.TestCase):
     def test_town_and_district_is_fine(self):
         self.assertNotIn("held:", post.skip_reason(self.row(location="Tiruchengode town, Namakkal district")))
 
+    def test_ready_reel_is_held_too(self):
+        r = self.row(caption="இடம்: தெரியவில்லை", location="Namakkal district")
+        self.assertTrue(post.news_hold(r).startswith("held:"))
+
 
 if __name__ == "__main__":
     unittest.main()

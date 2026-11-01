@@ -330,7 +330,7 @@ def ready(row):
     pg = pages_of(row)
     if all(page_done(row, p) for p in pg):
         return False
-    why = "" if is_ready_reel(row) else skip_reason(row)    # owner reels: posted as they are, no news checks
+    why = news_hold(row) if is_ready_reel(row) else skip_reason(row)    # owner reels: no news checks, but the fact-check / location hold always applies
     if why:
         if row.get("story_id") not in _SKIPPED:
             _SKIPPED.add(row.get("story_id"))
@@ -1653,19 +1653,21 @@ if __name__ == "__main__":
     main()
 
 
-def skip_reason(row):
-    """owner 2 Nov (RN-272): after the usual checks, a story is NOT posted when its fact-check found any problem, or when its
-    location is unknown. It is held and the reason is in the log."""
-    why = _skip_reason_base(row)
-    if why:
-        return why
+def news_hold(row):
+    """owner 2 Nov (RN-272): a story with any fact-check problem, or whose location is unknown or only a district, is held"""
     v_ = str(row.get("verification") or "")
     if "NOT CLEAN" in v_:
         return "held: fact-check problems - " + v_[:200]
     loc_ = str(row.get("location") or "").strip()
-    txt_ = " ".join([str(row.get("caption") or ""), str(row.get("reel_script") or "")])
-    if re.fullmatch(r"[^,]*\b(district|மாவட்டம்)\.?", loc_, re.I):      # owner 2 Nov: a district alone is not a place
+    if re.fullmatch(r"[^,]*\b(district|மாவட்டம்)\.?", loc_, re.I):      # a district alone is not a place
         return "held: location is only the district - the town from the article is missing"
+    txt_ = " ".join([str(row.get("caption") or ""), str(row.get("reel_script") or "")])
     if loc_.lower() in ("unknown", "தெரியவில்லை") or re.search(r"இடம்\W*தெரியவில்லை|Location unknown", txt_, re.I):
         return "held: location unknown"
     return ""
+
+
+def skip_reason(row):
+    """owner 2 Nov (RN-272): the usual checks first, then the news hold"""
+    why = _skip_reason_base(row)
+    return why or news_hold(row)
