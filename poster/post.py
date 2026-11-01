@@ -898,6 +898,9 @@ def _ts(s):
         return None
 
 
+SHARED = Path(__file__).resolve().parent / "story_shared.json"      # post id -> story id of the catch-up (committed by post.yml's check step)
+
+
 def story_catchup(max_new=6):
     """owner 1 Nov: every post of the page - news reel, carousel, the daily rasipalan, a post made by any other job - also goes to the
     story. A post less than 20 hours old with no story made within 30 minutes after it gets its story now (while the 24-hour limit
@@ -906,6 +909,12 @@ def story_catchup(max_new=6):
         log("story catch-up off (test run or post_stories false)")
         return
     reserve = int(CONFIG.get("story_reserve", 5))
+    try:
+        shared = json.loads(SHARED.read_text(encoding="utf-8"))
+    except Exception:
+        shared = {}
+    cut = (datetime.now(timezone.utc) - timedelta(days=2)).isoformat()
+    shared = {k: v for k, v in shared.items() if v.get("at", "") >= cut}
     for pg in LABEL:
         try:
             token = bridge_get("token", page=pg)["token"]
@@ -923,8 +932,9 @@ def story_catchup(max_new=6):
                 t = _ts(m.get("timestamp", ""))
                 if not t or str((m.get("owner") or {}).get("id") or uid) not in mine:
                     continue      # a collab post of the other page: that page shares it
-                if not timedelta(minutes=20) <= now - t <= timedelta(hours=20):
-                    continue
+                tkey = f"t:{pg}:{t:%Y-%m-%dT%H:%M}"
+                if not timedelta(minutes=20) <= now - t <= timedelta(hours=20) or m.get("id") in shared or tkey in shared:
+                    continue      # (1 Nov: a late story is not inside the 30-minute window - the rasipalan got a 2nd story)
                 hit = next((s for s in stories if t - timedelta(minutes=2) <= s <= t + timedelta(minutes=30)), None)
                 if hit:
                     stories.remove(hit)      # one story belongs to one post
@@ -959,11 +969,16 @@ def story_catchup(max_new=6):
                     sid = ig("POST", f"{uid}/media_publish", token, creation_id=cid)["id"]
                     used += 1
                     made += 1
+                    shared[m.get("id")] = shared[tkey] = {"story": sid, "page": pg, "at": now.isoformat()}
                     log(f"story catch-up {pg}: story {sid} for the post of {t:%d %b %H:%M} UTC ({m.get('media_type')})")
                 except Exception as e:
                     log(f"story catch-up {pg}: post {m.get('id')} not shared ({str(e)[:150]}) - tried again next run")
         except Exception as e:
             log(f"story catch-up {pg} skipped:", str(e)[:200])
+    try:
+        SHARED.write_text(json.dumps(shared, indent=1), encoding="utf-8")
+    except Exception as e:
+        log("story list not saved:", e)
 
 
 def story_image(jpg, dst):

@@ -65,6 +65,8 @@ jobs:
           fi
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
           if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then git add -f .last_check && git commit -qm "check log" && { git pull -q --rebase -X theirs && git push -q || git rebase --abort 2>/dev/null; } || true; fi
+          # owner 1 Nov: the list of posts already shared to the story (never twice) is saved after every check
+          if [ -f poster/story_shared.json ]; then git add -f poster/story_shared.json && git commit -qm "stories shared" && { git pull -q --rebase -X theirs && git push -q || git rebase --abort 2>/dev/null; } || true; fi
       - name: Watchdog - restart an overdue collection or writer (GitHub sometimes skips scheduled runs)
         if: github.event_name == 'schedule' && env.BRIDGE_URL != ''
         env:

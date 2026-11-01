@@ -43,10 +43,23 @@ class StoryCatchUp(unittest.TestCase):
         return made
 
     def test_missing_stories_are_made(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(post, "SHARED", Path(d) / "s.json"):
+            got = self.run_catchup(10)
+        self.assertEqual(got, ["https://cdn/s1.jpg", "https://cloud/story.mp4"])
+        return
         self.assertEqual(self.run_catchup(10), ["https://cdn/s1.jpg", "https://cloud/story.mp4"])      # a video is hosted again first
 
+    def test_a_post_gets_one_story_only(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(post, "SHARED", Path(d) / "s.json"):
+            self.assertEqual(len(self.run_catchup(10)), 2)
+            self.assertEqual(self.run_catchup(10), [])      # next run: the late stories are remembered, not made again
+
     def test_news_posts_keep_room(self):
-        self.assertEqual(self.run_catchup(45), [])      # 45 + 1 > 50 - 5: the last 5 posts of the day stay for news
+        import tempfile
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(post, "SHARED", Path(d) / "s.json"):
+            self.assertEqual(self.run_catchup(45), [])      # 45 + 1 > 50 - 5: the last 5 posts of the day stay for news
 
     def test_no_fixed_25_limit(self):
         src = (ROOT / "poster" / "post.py").read_text(encoding="utf-8")
