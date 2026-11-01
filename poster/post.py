@@ -860,14 +860,22 @@ def first_comment(token, media_id, sid, k=0):
         log("first comment not added (post itself is fine):", e)
 
 
+def _story_room():
+    """owner 1 Nov: EVERY post also goes to the story. Only the last few posts of Instagram's 24-hour limit are kept for news posts
+    (config story_reserve, default 5); a story that has to wait is posted later by story_catchup() - never lost."""
+    reserve = int(CONFIG.get("story_reserve", 5))
+    if USED.get(PAGE) is None or PAGE not in TOTAL:
+        return True
+    return USED[PAGE] + 1 <= TOTAL[PAGE] - reserve
+
+
 def publish_story(token, media_url, kind):
     """Instagram Story (image or video) on the same account. Never raises: a story problem must not undo the post."""
     try:
         if not CONFIG.get("post_stories", True):
             return ""
-        spare = int(CONFIG.get("stories_below_quota", 25))
-        if USED.get(PAGE) is not None and USED[PAGE] + 1 >= spare:
-            log(f"story skipped: {USED[PAGE]} posts in 24 h - the limit of {IG_LIMIT} is kept for news posts (stories only below {spare})")
+        if not _story_room():
+            log(f"story waits: {USED[PAGE]}/{TOTAL[PAGE]} posts in 24 h - posted by the story catch-up when the limit allows")
             return ""
         uid, _ = ig_account(token)
         prm = dict(media_type="STORIES")
@@ -879,8 +887,69 @@ def publish_story(token, media_url, kind):
         log("story posted", kind, mid)
         return mid
     except Exception as e:
-        log("story not posted (post itself is fine):", e)
+        log("story not posted (post itself is fine - the story catch-up tries again):", e)
         return ""
+
+
+def _ts(s):
+    try:
+        return datetime.strptime(s, "%Y-%m-%dT%H:%M:%S%z")
+    except Exception:
+        return None
+
+
+def story_catchup(max_new=6):
+    """owner 1 Nov: every post of the page - news reel, carousel, the daily rasipalan, a post made by any other job - also goes to the
+    story. A post less than 20 hours old with no story made within 30 minutes after it gets its story now (while the 24-hour limit
+    leaves room for news posts). Never raises."""
+    if DRY or not CONFIG.get("post_stories", True):
+        return
+    reserve = int(CONFIG.get("story_reserve", 5))
+    for pg in LABEL:
+        try:
+            token = bridge_get("token", page=pg)["token"]
+            uid, _ = ig_account(token)
+            q = (ig("GET", f"{uid}/content_publishing_limit", token, fields="quota_usage,config").get("data") or [{}])[0]
+            used, total = int(q.get("quota_usage", 0)), min(int((q.get("config") or {}).get("quota_total", 50) or 50), IG_LIMIT)
+            feed = ig("GET", f"{uid}/media", token, fields="id,media_type,media_url,timestamp,owner,children{media_type,media_url}", limit=40).get("data", [])
+            stories = sorted(t for t in (_ts(x.get("timestamp", "")) for x in ig("GET", f"{uid}/stories", token, fields="id,timestamp").get("data", [])) if t)
+            now = datetime.now(timezone.utc)
+            made = 0
+            for m in sorted(feed, key=lambda x: x.get("timestamp", "")):
+                t = _ts(m.get("timestamp", ""))
+                if not t or (m.get("owner") or {}).get("id", uid) != uid:
+                    continue      # a collab post of the other page: that page shares it
+                if not timedelta(minutes=20) <= now - t <= timedelta(hours=20):
+                    continue
+                hit = next((s for s in stories if t - timedelta(minutes=2) <= s <= t + timedelta(minutes=30)), None)
+                if hit:
+                    stories.remove(hit)      # one story belongs to one post
+                    continue
+                if used + 1 > total - reserve:
+                    log(f"story catch-up {pg}: {used}/{total} posts in 24 h - the rest waits for room")
+                    break
+                if made >= max_new:
+                    break
+                if m.get("media_type") == "CAROUSEL_ALBUM":
+                    ch = ((m.get("children") or {}).get("data") or [{}])[0]
+                    url, kind = ch.get("media_url"), ("video" if ch.get("media_type") == "VIDEO" else "image")
+                else:
+                    url, kind = m.get("media_url"), ("video" if m.get("media_type") == "VIDEO" else "image")
+                if not url:
+                    continue
+                try:
+                    prm = dict(media_type="STORIES")
+                    prm["video_url" if kind == "video" else "image_url"] = url
+                    cid = ig("POST", f"{uid}/media", token, **prm)["id"]
+                    wait_ready(cid, token, 8)
+                    sid = ig("POST", f"{uid}/media_publish", token, creation_id=cid)["id"]
+                    used += 1
+                    made += 1
+                    log(f"story catch-up {pg}: story {sid} for the post of {t:%d %b %H:%M} UTC ({m.get('media_type')})")
+                except Exception as e:
+                    log(f"story catch-up {pg}: post {m.get('id')} not shared ({str(e)[:150]}) - tried again next run")
+        except Exception as e:
+            log(f"story catch-up {pg} skipped:", str(e)[:200])
 
 
 def story_image(jpg, dst):
@@ -1500,6 +1569,7 @@ def main():
             log("recent rows not available (duplicate check uses the queue only):", e)
         n = len(pick_all(rows))
     if mode == "check":
+        story_catchup()      # owner 1 Nov: no post without its story
         log(f"{len(rows)} stories in the queue, ready to post: {n}")
         if rows:
             log("  keys:", sorted(rows[0].keys()))
