@@ -4,6 +4,7 @@ Each source: a listing page where today's article link appears (matched by today
 (JSON-LD articleBody first, then the page paragraphs), and a check that it really is TODAY's palan for all 12 rasis.
 Also fetches the day's Maalaimalar panchangam / important-events article, used only to confirm festivals (festivals.py)."""
 import html, json, re
+from datetime import datetime, timedelta, timezone
 import requests
 
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
@@ -36,9 +37,15 @@ def links(page_html, base):
 def date_tokens(day):
     m = MONTHS[day.month - 1]
     d, y = day.day, day.year
-    return [f"{m}-{d}-{y}", f"{d}-{m}-{y}", f"{d:02d}-{m}-{y}", f"{d}{m}{y}", f"{d:02d}{day.month:02d}{y}", f"{d}-{day.month}-{y}",
-            f"{y}-{day.month:02d}-{d:02d}", f"{d}st-{m}-{y}", f"{d}nd-{m}-{y}", f"{d}rd-{m}-{y}", f"{d}th-{m}-{y}",
-            f"tns{y % 100:02d}{day.month:02d}{d:02d}"]
+    out = []
+    for dd in dict.fromkeys([str(d), f"{d:02d}"]):      # 1 Nov: TV9 writes november-01-2026
+        out += [f"{m}-{dd}-{y}", f"{dd}-{m}-{y}", f"{dd}{m}{y}", f"{dd}-{day.month}-{y}", f"{dd}-{day.month:02d}-{y}"]
+    out += [f"{d:02d}{day.month:02d}{y}", f"{y}-{day.month:02d}-{d:02d}", f"tns{y % 100:02d}{day.month:02d}{d:02d}"]
+    out += [f"{d}{suf}-{m}-{y}" for suf in ("st", "nd", "rd", "th")]
+    return out
+
+
+DATED = re.compile(r"(\d{1,2}-(?:%s)|(?:%s)-\d{1,2}|\d{6,8})" % ("|".join(MONTHS), "|".join(MONTHS)))
 
 
 SOURCES = [
@@ -53,17 +60,30 @@ SOURCES = [
 
 
 def find_url(src, day, log=print):
+    """today's article link: a rasipalan link with today's date in its address; else (1 Nov: Maalaimalar's link was
+    'today-rasipalan-in-tamil-november-18', no usable date) the newest rasipalan links are opened and the one PUBLISHED today is used"""
     name, pages, words, base = src
     toks = date_tokens(day)
+    maybe = []
     for pg in pages:
         try:
             for u in links(get(pg), base):
                 low = u.lower()
-                if any(w in low for w in words) and any(t in low for t in toks) and "weekly" not in low and "monthly" not in low \
-                        and "week" not in low.split("/")[-1][:12] and "tomorrow" not in low:
+                tail = low.rsplit("/", 1)[-1]
+                if not any(w in low for w in words) or any(x in tail for x in ("weekly", "week", "monthly", "month-", "tomorrow", "yearly", "-year")):
+                    continue
+                if any(t in low for t in toks):
                     return u
+                if u not in maybe:
+                    maybe.append(u)
         except Exception as e:
             log(f"  {name}: listing {pg} failed: {str(e)[:120]}")
+    for u in maybe[:4]:      # newest first on every listing page
+        try:
+            if is_today(article(u), day, by_url=False):
+                return u
+        except Exception:
+            continue
     if name == "Maalaimalar":      # the usual address, tried directly
         return f"https://www.maalaimalar.com/spirituality/today-rasi-palan-in-tamil-{day.day}-{MONTHS[day.month - 1]}-{day.year}"
     return ""
@@ -127,10 +147,20 @@ def split_rasis(text):
     return out
 
 
-def is_today(art, day):
-    pub = art.get("published", "")
-    if pub[:10] == day.isoformat():
-        return True
+def is_today(art, day, by_url=True):
+    """published today in INDIA (a 2 AM IST article carries yesterday's date in UTC)"""
+    pub = art.get("published", "") or ""
+    try:
+        t = datetime.fromisoformat(pub.replace("Z", "+00:00"))
+        if t.tzinfo:
+            t = t.astimezone(timezone(timedelta(hours=5, minutes=30)))
+        if t.date() == day:
+            return True
+    except Exception:
+        if pub[:10] == day.isoformat():
+            return True
+    if not by_url:
+        return False
     u = art["url"].lower()
     return any(t in u for t in date_tokens(day))
 

@@ -123,6 +123,20 @@ class CaptionRules(unittest.TestCase):
             self.assertNotIn("கமெண்ட்", cap)
             self.assertLess(len(cap), 2200)
 
+class DateLinks1Nov(unittest.TestCase):
+    """1 Nov 2026: nothing posted - TV9 wrote the day as 01 and Maalaimalar's link had no date"""
+    def test_zero_padded_day(self):
+        import rasi_sources as rs
+        from datetime import date
+        toks = rs.date_tokens(date(2026, 11, 1))
+        self.assertTrue(any(t in "daily-horoscope-november-01-2026-predictions" for t in toks))
+
+    def test_published_today_in_india(self):
+        import rasi_sources as rs
+        from datetime import date
+        self.assertTrue(rs.is_today({"published": "2026-10-31T20:31:00Z", "url": "x"}, date(2026, 11, 1)))
+        self.assertFalse(rs.is_today({"published": "2026-10-31T10:00:00Z", "url": "x"}, date(2026, 11, 1)))
+
 
 if __name__ == "__main__":
     unittest.main()
