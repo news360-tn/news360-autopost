@@ -155,6 +155,7 @@ def check(it, today, now):
         return None, f"could not open ({str(e)[:40]})"
     title = re.sub(r"\s+", " ", (art.get("title") or title_hint).replace("ுா", "ூ")).strip()
     text = art.get("text") or ""
+    it["_title"] = title
     if not F.is_power_cut(title):
         return None, "not a power cut"
     if not (allnews.has_place(title) or allnews.has_place(text[:800]) or any(d in it["url"] for d in DISTRICT_URL)):
@@ -201,9 +202,12 @@ def cmd_find():
         if old and old.get("power_cut") and u in {v["url"] for v in st["done"].values()}:
             continue
         n, why = check(it, today, now)
-        st["seen"][u] = {"at": now.isoformat(), "power_cut": bool(n) or why.startswith(("cut day", "power cut ends")), "why": why}
+        st["seen"][u] = {"at": now.isoformat(), "power_cut": bool(n) or why.startswith(("cut day", "power cut ends")), "why": why,
+                         "title": it.get("_title", it.get("title", ""))}
         if not n:
             reasons[why] = reasons.get(why, 0) + 1
+            if why in ("not this district", "other district", "cut day unknown"):
+                log(f"  {why}: {st['seen'][u].get('title', '')[:70]} <{u}>")
             continue
         if any(same_cut(n, d) for d in list(st["done"].values()) + posted + found):
             reasons["already written / posted"] = reasons.get("already written / posted", 0) + 1
