@@ -429,6 +429,10 @@ def verify_candidates(items, state, log):
                     or allnews.outside_district(art["title"])):      # 27 Oct: a story on the paper's own Namakkal page is Namakkal news even when it names no town
                 n["status"], stt["s"] = "not Namakkal district news (article names no Namakkal place)", "notdistrict"; kept["notdistrict"] += 1
                 continue
+            why = "" if n.get("manual") else never_written(art["title"], art["text"])
+            if why:
+                n["status"], stt["s"] = why, "notdistrict"; kept["notdistrict"] += 1
+                continue
             n.update(url=art["url"], title=art["title"], published=art["published"], verified=True)
             n["area"] = allnews.area_of_story(art["title"], art["text"])
             n["score"] = local_score(n, art["text"])
@@ -753,12 +757,33 @@ def tamil_source(art):
     return ta >= max(40, en)          # mostly Tamil letters
 
 
+
+# owner 1 Nov (Namakkal 360 / Rasipuram 360): RN-251 (a Salem suicide filed on Dinamalar's Namakkal page) and RN-255 (a silk shop's
+# Rs.10 saree sale) went out. These are never written: a shop's sale / offer, a suicide, an article whose opening lines are about
+# another district (even on the paper's Namakkal page).
+SHOP = re.compile(r"சில்க்ஸ்|டெக்ஸ்டைல்ஸ்|ஜூவல்லர|ஜுவல்லர|ஜுவல்லரி|ஸ்வீட்ஸ்|பேக்கரி|மொபைல்ஸ்|ஷோரூம்|ஹைப்பர் ?மார்க்கெட்|சூப்பர் ?மார்க்கெட்|ரெடிமேட்ஸ்|எலக்ட்ரானிக்ஸ்|பர்னிச்சர்")
+OFFER = re.compile(r"தள்ளுபடி|ஆஃபர்|ஆபர்|சலுகை விலை|சிறப்பு விற்பனை|விற்பனை தொடக்கம்|க்கு விற்பனை|புதிய கிளை|கிளை திறப்பு|திறப்பு விழா|அள்ளுங்க|மெகா சேல்|offer|sale", re.I)
+SUICIDE = re.compile(r"தற்கொலை|தூக்கிட்டு|தூக்கில் தொங்கி|தூக்குப்போட்டு|தீக்குளித்து|தீக்குளிக்க|விஷம் குடித்து|பூச்சிக்கொல்லி மருந்தை குடித்து|suicide", re.I)
+
+
+def never_written(title, text=""):
+    """'' or why this article is never written (shop offer, suicide, another district's news) - owner 1 Nov"""
+    t = title or ""
+    if SHOP.search(t) and OFFER.search(t) or re.search(r"(?:சேலை|புடவை|சட்டை|வேட்டி)\s*(?:ஒன்று|ஒரு)?\s*ரூ\.?\s*\d+\s*க்கு", t):
+        return "shop offer / advertisement - not news"
+    if SUICIDE.search(t) or SUICIDE.search((text or "")[:200]):
+        return "suicide - not posted"
+    head = f"{t} {(text or '')[:300]}"
+    if not allnews.has_place(t) and allnews.other_district(head):
+        return "not Namakkal district news (the article is about another district)"
+    return ""
+
 # owner 30 Oct: a story refused for a reason in the ARTICLE is not written again and again - two 'not Namakkal district' articles were
 # written and refused 8-9 times on 30 Oct (a free-model call each time, until the 10-try limit). Final at once: a stale date, an old
 # event, a duplicate cannot change. One more try: the place / 'not news' verdicts depend on the model's wording. A model failure
 # ('all free models failed', 'bad draft') is always tried again.
 REFUSED_FINAL = (("stale:", "old"), ("old event", "old"), ("duplicate", "dup"))
-REFUSED_ONCE_MORE = (("not Namakkal district news", "notdistrict"), ("not news:", "notext"))
+REFUSED_ONCE_MORE = (("not Namakkal district news", "notdistrict"), ("not news:", "notext"), ("shop offer", "notdistrict"), ("suicide", "notdistrict"))
 
 
 def refusal_verdict(why, st):
@@ -1024,6 +1049,9 @@ def main():
                   or allnews.url_district(art["url"]) == "namakkal") and n.get("via", "") != "dinamalar-list")
                 or not allnews.local_ok(art["url"], art["title"])) and not n.get("manual"):
             return {"skip": "not Namakkal district news (article names no Namakkal place)", "s": "notdistrict", "log": f"skip ({area}) no Namakkal place in article: {art['title'][:50]}"}
+        why = "" if n.get("manual") else never_written(art["title"], art["text"])
+        if why:
+            return {"skip": why, "s": "notdistrict", "log": f"skip ({area}) {why}: {art['title'][:50]}"}
         if not n.get("manual") and any(_fr().similar(r.get("headline_ta", ""), art["title"], 0.55, r.get("researched"))
                                        or same_news(r.get("headline_ta", ""), art["title"], r.get("researched")) for r in recent):      # already posted / written
             return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) similar to a filed story: {art['title'][:50]}"}
