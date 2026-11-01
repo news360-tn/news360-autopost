@@ -903,6 +903,7 @@ def story_catchup(max_new=6):
     story. A post less than 20 hours old with no story made within 30 minutes after it gets its story now (while the 24-hour limit
     leaves room for news posts). Never raises."""
     if DRY or not CONFIG.get("post_stories", True):
+        log("story catch-up off (test run or post_stories false)")
         return
     reserve = int(CONFIG.get("story_reserve", 5))
     for pg in LABEL:
@@ -915,6 +916,7 @@ def story_catchup(max_new=6):
             stories = sorted(t for t in (_ts(x.get("timestamp", "")) for x in ig("GET", f"{uid}/stories", token, fields="id,timestamp").get("data", [])) if t)
             now = datetime.now(timezone.utc)
             made = 0
+            log(f"story catch-up {pg}: quota {used}/{total}, {len(feed)} recent posts, {len(stories)} live stories")
             for m in sorted(feed, key=lambda x: x.get("timestamp", "")):
                 t = _ts(m.get("timestamp", ""))
                 if not t or (m.get("owner") or {}).get("id", uid) != uid:
