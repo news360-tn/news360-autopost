@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-01 | `0e7d218` | rasipalan writer: 5 tries, best draft kept, only the lines still wrong are replaced (1 Nov Coimbatore repost failed over 1 line) |
+| 2026-11-01 | `5a606f6` | rasipalan posted |
 | 2026-11-01 | `09f5a62` | rasipalan: repost input - post today again once the old post is deleted |
 | 2026-11-01 | `5770aa7` | rasipalan: நல்ல நேரம், சூலம் (+பரிகாரம்), சுபமுகூர்த்த நாள் on the panchangam slide and caption; ஞாயிற்றுக்கிழமை spelling; overlap check |
 | 2026-11-01 | `34e6836` | voice: no dash ever reaches the voice - 'சேலம் - நாமக்கல்' was read as minus (RN-256); routes read முதல் ... வரை |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-30 | `f495008` | writer compare output |
 | 2026-10-30 | `761c232` | Sarvam: thinking off, bigger answer budget; empty answers logged with the reason |
 | 2026-10-30 | `2c68b07` | writer compare output |
-| 2026-10-30 | `cdbdc9a` | Remove Cerebras writer: it now needs a card (paid after $5 trial) |
-| 2026-10-30 | `b12e4a4` | Free writers: Gemini 3.6/3.5 first, Sarvam + Cerebras (skipped until keys), Gemma ready (off), Groq short retry on 413; remove GitHub Models, Mistral, OpenRouter, NVIDIA text; writer-compare test workflow |
 <!-- recent-changes:end -->
