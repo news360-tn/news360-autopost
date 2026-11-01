@@ -87,7 +87,7 @@ def clock(hhmm, day):
 
 
 def date_line(p):
-    return f"இன்றைய ராசி பலன் | {p['date_ta']}, {p['weekday']}க்கிழமை ({p['tamil_month']} {p['tamil_day']})"
+    return f"இன்றைய ராசி பலன் | {p['date_ta']}, {p.get('weekday_full') or p['weekday'] + 'க்கிழமை'} ({p['tamil_month']} {p['tamil_day']})"
 
 
 def already_posted(day, p, token=None):
@@ -101,7 +101,7 @@ def already_posted(day, p, token=None):
         try:
             uid = ig("GET", "me", token, fields="user_id")["user_id"]
             for m in ig("GET", f"{uid}/media", token, fields="caption,timestamp,permalink", limit=15).get("data", []):
-                if date_line(p) in (m.get("caption") or ""):
+                if f"இன்றைய ராசி பலன் | {p['date_ta']}," in (m.get("caption") or ""):      # (day-name spelling changed 1 Nov)
                     return f"Instagram already has today's post {m.get('permalink')}"
         except Exception as e:
             log("could not read recent posts:", str(e)[:150])
@@ -124,7 +124,8 @@ def caption(cfg, p, fest, notes, rs):
     L.append("")
     for i, r in enumerate(rs):
         L.append(f"{render.GLYPH[i]} {r['rasi']} {'⭐' * r['stars']} – {r['work']}")
-    L += ["", f"🕘 ராகு காலம் {p['rahu']} | எமகண்டம் {p['emagandam']} | குளிகை {p['kuligai']}",
+    L += ["", f"✨ நல்ல நேரம்: காலை {p['nalla_morning']}, மாலை {p['nalla_evening']}" if p.get("nalla_morning") else "",
+          f"🕘 ராகு காலம் {p['rahu']} | எமகண்டம் {p['emagandam']} | குளிகை {p['kuligai']}",
           "👉 ஸ்வைப் செய்து உங்கள் ராசியின் முழு பலனைப் பாருங்கள். குடும்பத்தினருடன் பகிருங்கள்.",
           f"Today Rasi Palan in Tamil | {datetime.fromisoformat(p['date']).strftime('%d %B %Y')} | Daily Horoscope", ""]
     tags = list(cfg["tags"])
@@ -202,6 +203,7 @@ def main():
     if len(got) < MIN_SOURCES:
         log(f"posting with {len(got)} source - the others did not publish today's rasipalan in time")
     art = sources.panchang_article(day, log)
+    sources.panchang_extras(art, p, log)
     fest, notes, why = festivals.today(day, p, art)
     if why:
         log(why)

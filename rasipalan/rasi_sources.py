@@ -204,3 +204,34 @@ def panchang_article(day, log=print):
         except Exception as e:
             log(f"  panchangam listing failed: {str(e)[:120]}")
     return ""
+
+
+def _hm(x):
+    x = x.replace(".", ":")
+    return x if ":" in x else x + ":00"
+
+
+def panchang_extras(art, p, log=print):
+    """நல்ல நேரம், சூலம், சுபமுகூர்த்த நாள் from the day's Maalaimalar panchangam text (the weekday table stays when it is not found)"""
+    if not art:
+        log("  panchangam article not found - நல்ல நேரம் / சூலம் from the weekday table")
+        return p
+    t = re.sub(r"\s+", " ", art)
+    n = r"(\d{1,2}(?:[.:]\d{2})?)"
+    m = re.search(r"(?<!கௌரி )நல்ல நேரம்\s*:?\s*காலை\s*" + n + r"\s*மணி\s*முதல்\s*" + n + r"\s*மணி\s*வரை\s*,?\s*(?:மாலை|பிற்பகல்|மதியம்)\s*"
+                  + n + r"\s*மணி\s*முதல்\s*" + n + r"\s*மணி\s*வரை", t)
+    if m:
+        mo, ev = f"{_hm(m.group(1))} – {_hm(m.group(2))}", f"{_hm(m.group(3))} – {_hm(m.group(4))}"
+        if (mo, ev) != (p["nalla_morning"], p["nalla_evening"]):
+            log(f"  நல்ல நேரம் from the article: காலை {mo}, மாலை {ev} (table: {p['nalla_morning']}, {p['nalla_evening']})")
+        p["nalla_morning"], p["nalla_evening"] = mo, ev
+    else:
+        log("  நல்ல நேரம் not in the article - weekday table used")
+    m = re.search(r"சூலம்\s*:?\s*(கிழக்கு|மேற்கு|வடக்கு|தெற்கு)", t)
+    if m and m.group(1) != p["sulam"]:
+        log(f"  சூலம் from the article: {m.group(1)} (table: {p['sulam']})")
+        p["sulam"] = m.group(1)
+        p["sulam_parigaram"] = {"கிழக்கு": "தயிர்", "மேற்கு": "வெல்லம்", "வடக்கு": "பால்", "தெற்கு": "தைலம்"}[m.group(1)]
+    p["subha_muhurtham"] = "சுபமுகூர்த்த" in t or "சுப முகூர்த்த" in t
+    return p
+

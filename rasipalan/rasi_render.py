@@ -209,17 +209,19 @@ body{{position:relative;font-family:'Mukta','BalooL',sans-serif;color:#3a1408;ba
         D, G = s.c[0], s.c[2]
         p = s.x["p"]
         tiles = ""
+        small = len(s.x["prows"]) > 8      # 10 rows since 1 Nov (நல்ல நேரம், சூலம்): smaller tiles so nothing hides behind the சந்திராஷ்டமம் bar
+        pad, fl, fv, fs = ("7px 22px", 22, 34, 19) if small else ("12px 24px", 25, 40, 21)
         for label, val, sub, col in s.x["prows"]:
             colr = {"bad": "#c62828", "good": "#2e7d32"}.get(col, D)
-            tiles += (f'<div style="background:#fffdf7;border:2.5px solid {G};border-radius:22px;padding:12px 24px;border-left:12px solid {colr}">'
-                      f'<div style="font-weight:700;font-size:25px;color:{colr}">{label}</div>'
-                      f'<div class="h fit" style="font-size:40px;line-height:1.2">{val}</div>'
-                      f'<div class="fit" style="font-weight:600;font-size:21px;color:#7b5a3c">{sub}</div></div>')
+            tiles += (f'<div style="background:#fffdf7;border:2.5px solid {G};border-radius:22px;padding:{pad};border-left:12px solid {colr}">'
+                      f'<div style="font-weight:700;font-size:{fl}px;color:{colr}">{label}</div>'
+                      f'<div class="h fit" style="font-size:{fv}px;line-height:1.2">{val}</div>'
+                      + (f'<div class="fit" style="font-weight:600;font-size:{fs}px;color:#7b5a3c">{sub}</div>' if sub or not small else "") + '</div>')
         ch = p["chandrashtamam"] + (f' ({p["chandrashtamam_end"]}, பின் {p["chandrashtamam_next"]})' if p["chandrashtamam_end"] else "")
         inner = f'''{s.header()}
         <div class="h nw" style="position:absolute;top:278px;left:0;right:0;text-align:center;font-size:66px;color:{D};text-shadow:0 3px 0 {G}">இன்றைய பஞ்சாங்கம்</div>
-        <div style="position:absolute;top:370px;left:62px;right:62px;display:grid;grid-template-columns:1fr 1fr;gap:14px">{tiles}</div>
-        <div class="pill" style="position:absolute;top:1100px;left:62px;right:62px;border-radius:22px;padding:14px 30px;display:flex;align-items:center;gap:20px">
+        <div data-stack="top" style="position:absolute;top:370px;left:62px;right:62px;display:grid;grid-template-columns:1fr 1fr;gap:{10 if small else 14}px">{tiles}</div>
+        <div data-stack="below" class="pill" style="position:absolute;top:1100px;left:62px;right:62px;border-radius:22px;padding:14px 30px;display:flex;align-items:center;gap:20px">
           <div class="nw" style="font-weight:700;font-size:27px;color:#fde7b0">சந்திராஷ்டமம்</div><div class="h goldtxt fit" style="font-size:40px;flex:1">{ch}</div></div>
         {s.footer(2)}'''
         return s.base(inner)
@@ -313,7 +315,7 @@ body{{position:relative;font-family:'Mukta','BalooL',sans-serif;color:#1c1c1c;ba
         body = f'''<div class="sheet">{s.top()}{s.brand()}{emb}
           <div style="position:absolute;top:230px;left:0;right:0;text-align:center">
             <div style="font-family:BalooL;font-weight:800;font-size:300px;line-height:1;color:{s.RED}">{int(p["date"][8:])}</div>
-            <div class="h nw" style="font-size:58px">{p["tamil_month"]} {p["tamil_day"]} · {p["weekday"]}க்கிழமை</div>
+            <div class="h nw" style="font-size:58px">{p["tamil_month"]} {p["tamil_day"]} · {p.get("weekday_full") or p["weekday"] + "க்கிழமை"}</div>
             <div class="nw" style="font-weight:700;font-size:28px;color:#555;margin-top:4px">{p["date_ta"].split(" ", 1)[1]} · {p["tithi"]} · {p["nakshatra"]}</div></div>
           {f'<div class="h fit" style="position:absolute;top:735px;left:56px;right:56px;text-align:center;font-size:44px;color:{s.RED}">{greet}</div>' if greet else ""}
           <div style="position:absolute;top:810px;left:56px;right:56px;border-top:3px solid #1c1c1c;border-bottom:3px solid #1c1c1c;padding:18px 0;text-align:center">
@@ -326,16 +328,19 @@ body{{position:relative;font-family:'Mukta','BalooL',sans-serif;color:#1c1c1c;ba
 
     def panchang(s):
         p = s.x["p"]
-        rows = "".join(f'<div style="display:grid;grid-template-columns:290px 1fr;align-items:center;padding:7px 0;border-bottom:1.5px solid #e5dccb">'
-                       f'<div style="font-weight:700;font-size:30px;color:{ {"bad": s.RED, "good": "#2e7d32"}.get(col, "#1c1c1c") }">{label}</div>'
-                       f'<div style="min-width:0"><div class="h fit" style="font-size:38px;line-height:1.15">{val}</div><div class="fit" style="font-weight:600;font-size:22px;color:#666">{sub}</div></div></div>'
+        small = len(s.x["prows"]) > 8
+        pad, fl, fv, fs = (2, 27, 31, 19) if small else (7, 30, 38, 22)
+        rows = "".join(f'<div style="display:grid;grid-template-columns:290px 1fr;align-items:center;padding:{pad}px 0;border-bottom:1.5px solid #e5dccb">'
+                       f'<div style="font-weight:700;font-size:{fl}px;color:{ {"bad": s.RED, "good": "#2e7d32"}.get(col, "#1c1c1c") }">{label}</div>'
+                       f'<div style="min-width:0"><div class="h fit" style="font-size:{fv}px;line-height:1.15">{val}</div>'
+                       + (f'<div class="fit" style="font-weight:600;font-size:{fs}px;color:#666">{sub}</div>' if sub or not small else "") + '</div></div>'
                        for label, val, sub, col in s.x["prows"])
         ch = p["chandrashtamam"] + (f' ({p["chandrashtamam_end"]}, பின் {p["chandrashtamam_next"]})' if p["chandrashtamam_end"] else "")
         body = f'''<div class="sheet">{s.top()}{s.brand()}
           <div style="position:absolute;top:220px;left:0;right:0;height:110px;background:{s.RED};display:flex;align-items:center;justify-content:center">
             <div class="h nw" style="font-size:64px;color:#fff">இன்றைய பஞ்சாங்கம்</div></div>
-          <div style="position:absolute;top:345px;left:56px;right:56px">{rows}</div>
-          <div style="position:absolute;bottom:110px;left:56px;right:56px;border:3px solid {s.RED};padding:14px 24px;display:flex;align-items:center;gap:22px">
+          <div data-stack="top" style="position:absolute;top:{335 if small else 345}px;left:56px;right:56px">{rows}</div>
+          <div data-stack="below" style="position:absolute;bottom:110px;left:56px;right:56px;border:3px solid {s.RED};padding:14px 24px;display:flex;align-items:center;gap:22px">
             <div class="nw" style="font-weight:700;font-size:30px;color:{s.RED}">சந்திராஷ்டமம்</div><div class="h fit" style="font-size:38px;flex:1">{ch}</div></div>
           {s.foot(2)}</div>'''
         return page(s.css, body)
@@ -375,14 +380,22 @@ body{{position:relative;font-family:'Mukta','BalooL',sans-serif;color:#1c1c1c;ba
 
 
 def panchang_rows(p, town):
-    return [("தமிழ் தேதி", f'{p["tamil_month"]} {p["tamil_day"]}', f'{p["weekday"]}க்கிழமை', ""),
+    day = p.get("weekday_full") or p["weekday"] + "க்கிழமை"
+    if p.get("subha_muhurtham"):
+        day += " · சுபமுகூர்த்த நாள்"
+    rows = [("தமிழ் தேதி", f'{p["tamil_month"]} {p["tamil_day"]}', day, ""),
             ("திதி", p["tithi"], f'{p["paksha"]} · {p["tithi_end"]} · பின் {p["tithi_next"]}', ""),
             ("நட்சத்திரம்", p["nakshatra"], f'{p["nakshatra_end"]} · பின் {p["nakshatra_next"]}', ""),
             ("யோகம்", p["yogam"], p["yogam_end"], ""),
-            ("சூரிய உதயம்", p["sunrise"].split(" ", 1)[1], f'{town} · அஸ்தமனம் {p["sunset"].split(" ", 1)[1]}', "good"),
-            ("ராகு காலம்", p["rahu"], "", "bad"),
-            ("எமகண்டம்", p["emagandam"], "", "bad"),
-            ("குளிகை", p["kuligai"], "", "bad")]
+            ("சூரிய உதயம்", p["sunrise"].split(" ", 1)[1], f'{town} · அஸ்தமனம் {p["sunset"].split(" ", 1)[1]}', "good")]
+    if p.get("nalla_morning"):      # owner 1 Nov: நல்ல நேரம் and சூலம் too
+        rows.append(("நல்ல நேரம்", f'காலை {p["nalla_morning"]}', f'மாலை {p["nalla_evening"]}', "good"))
+    rows += [("ராகு காலம்", p["rahu"], "", "bad"),
+             ("எமகண்டம்", p["emagandam"], "", "bad"),
+             ("குளிகை", p["kuligai"], "", "bad")]
+    if p.get("sulam"):
+        rows.append(("சூலம்", p["sulam"], f'பரிகாரம்: {p["sulam_parigaram"]}', ""))
+    return rows
 
 
 def slides_html(design, ctx):
@@ -407,6 +420,10 @@ def render(design, ctx, out_dir):
             pg.wait_for_timeout(150)
             bad = pg.evaluate("[...document.querySelectorAll('.fit')].filter(e=>e.scrollWidth>e.clientWidth+1).map(e=>e.textContent.trim())")
             problems += [f"slide {n}: '{b}' does not fit" for b in bad]
+            # a block must end above the bar under it (1 Nov: 10 panchangam rows ran under the சந்திராஷ்டமம் bar)
+            if pg.evaluate("(()=>{const a=document.querySelector('[data-stack=top]'),b=document.querySelector('[data-stack=below]');"
+                           "return !!(a&&b&&a.getBoundingClientRect().bottom>b.getBoundingClientRect().top-4)})()"):
+                problems.append(f"slide {n}: the panchangam rows run under the bar below them")
             png = out_dir / f"slide_{n:02d}.png"
             pg.screenshot(path=str(png))
             jpg = out_dir / f"slide_{n:02d}.jpg"

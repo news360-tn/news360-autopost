@@ -149,6 +149,45 @@ class NeverMiss(unittest.TestCase):
         for s in ('"30 1 * * *"', '"15 2 * * *"', '"15 4 * * *"', '"15 6 * * *"', "timeout-minutes: 340"):
             self.assertIn(s, wf)
 
+class NallaNeram(unittest.TestCase):
+    """owner 1 Nov: நல்ல நேரம் and சூலம் on the panchangam slide and in the caption; the day name spelt right"""
+    ART = ("இன்றைய பஞ்சாங்கம்பராபவ ஆண்டு, ஐப்பசி - 15 (ஞாயிற்றுக்கிழமை)ராகுகாலம் : மாலை 4.30 மணி முதல் 6 மணி வரைசூலம் : மேற்கு"
+           "நல்ல நேரம் : காலை 7 மணி முதல் 8 மணி வரை, மாலை 3 மணி முதல் 4 மணி வரை ஆஞ்சனேயருக்கு திருமஞ்சனம்சுபமுகூர்த்த தினம்.")
+
+    def test_weekday_table_matches_maalaimalar_week(self):
+        import rasi_panchang as P
+        # Maalaimalar 26 Oct (Mon) .. 1 Nov (Sun) 2026
+        want = [("6:00 – 7:00", "3:00 – 4:00", "கிழக்கு"), ("8:00 – 9:00", "5:00 – 6:00", "வடக்கு"), ("6:00 – 7:00", "4:00 – 5:00", "வடக்கு"),
+                ("9:00 – 10:00", "4:00 – 5:00", "தெற்கு"), ("6:00 – 7:00", "5:00 – 6:00", "மேற்கு"), ("7:00 – 8:00", "5:00 – 6:00", "கிழக்கு"),
+                ("7:00 – 8:00", "3:00 – 4:00", "மேற்கு")]
+        self.assertEqual([(a, b, c[0]) for (a, b), c in zip(P.NALLA, P.SULAM)], want)
+        self.assertEqual(P.WEEKDAY_FULL[6], "ஞாயிற்றுக்கிழமை")
+        self.assertEqual(P.WEEKDAY_FULL[0], "திங்கட்கிழமை")
+
+    def test_article_read(self):
+        import rasi_sources as S
+        p = {"nalla_morning": "x", "nalla_evening": "y", "sulam": "கிழக்கு", "sulam_parigaram": "தயிர்"}
+        S.panchang_extras(self.ART, p, lambda *a: None)
+        self.assertEqual((p["nalla_morning"], p["nalla_evening"], p["sulam"], p["sulam_parigaram"], p["subha_muhurtham"]),
+                         ("7:00 – 8:00", "3:00 – 4:00", "மேற்கு", "வெல்லம்", True))
+
+    def test_rows_and_caption(self):
+        import rasi_render as R, rasi_daily as run, rasi_writer as writer
+        p = {"date": "2026-11-01", "date_ta": "1 நவம்பர் 2026", "weekday": "ஞாயிறு", "weekday_full": "ஞாயிற்றுக்கிழமை", "tamil_month": "ஐப்பசி",
+             "tamil_day": 15, "tithi": "சப்தமி", "paksha": "தேய்பிறை", "tithi_end": "x", "tithi_next": "அஷ்டமி", "nakshatra": "பூசம்",
+             "nakshatra_end": "x", "nakshatra_next": "ஆயில்யம்", "yogam": "சாத்தியம்", "yogam_end": "x", "sunrise": "காலை 6:10",
+             "sunset": "மாலை 5:51", "rahu": "4:30 – 6:00", "emagandam": "12:00 – 1:30", "kuligai": "3:00 – 4:30", "chandrashtamam": "தனுசு",
+             "nalla_morning": "7:00 – 8:00", "nalla_evening": "3:00 – 4:00", "sulam": "மேற்கு", "sulam_parigaram": "வெல்லம்", "subha_muhurtham": True}
+        labels = [r[0] for r in R.panchang_rows(p, "இராசிபுரம்")]
+        self.assertIn("நல்ல நேரம்", labels)
+        self.assertIn("சூலம்", labels)
+        self.assertIn("சுபமுகூர்த்த நாள்", R.panchang_rows(p, "x")[0][2])
+        rs = [{"rasi": r, "stars": 3, "work": "w"} for r in writer.RASI]
+        cap = run.caption(run.PAGES["rasipuram"], p, None, [], rs)
+        self.assertIn("நல்ல நேரம்: காலை 7:00 – 8:00, மாலை 3:00 – 4:00", cap)
+        self.assertIn("ஞாயிற்றுக்கிழமை", cap)
+        self.assertNotIn("ஞாயிறுக்கிழமை", cap)
+
 
 if __name__ == "__main__":
     unittest.main()

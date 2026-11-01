@@ -23,11 +23,19 @@ YOGAM = ["விஷ்கம்பம்", "பிரீதி", "ஆயுஷ�
          "விருத்தி", "துருவம்", "வியாகாதம்", "ஹர்ஷணம்", "வஜ்ரம்", "சித்தி", "வியதீபாதம்", "வரியான்", "பரிகம்", "சிவம்", "சித்தம்",
          "சாத்தியம்", "சுபம்", "சுப்பிரம்", "பிராம்யம்", "ஐந்திரம்", "வைதிருதி"]
 WEEKDAY = ["திங்கள்", "செவ்வாய்", "புதன்", "வியாழன்", "வெள்ளி", "சனி", "ஞாயிறு"]      # datetime.weekday() order
+# owner 1 Nov: the full day name as written ('ஞாயிறுக்கிழமை' was printed - wrong; it is ஞாயிற்றுக்கிழமை)
+WEEKDAY_FULL = ["திங்கட்கிழமை", "செவ்வாய்க்கிழமை", "புதன்கிழமை", "வியாழக்கிழமை", "வெள்ளிக்கிழமை", "சனிக்கிழமை", "ஞாயிற்றுக்கிழமை"]
 MONTH_EN_TA = ["ஜனவரி", "பிப்ரவரி", "மார்ச்", "ஏப்ரல்", "மே", "ஜூன்", "ஜூலை", "ஆகஸ்ட்", "செப்டம்பர்", "அக்டோபர்", "நவம்பர்", "டிசம்பர்"]
 
 # fixed weekday periods printed in Tamil calendars (Monday first)
 RAHU = ["7:30 – 9:00", "3:00 – 4:30", "12:00 – 1:30", "1:30 – 3:00", "10:30 – 12:00", "9:00 – 10:30", "4:30 – 6:00"]
 EMA = ["10:30 – 12:00", "9:00 – 10:30", "7:30 – 9:00", "6:00 – 7:30", "3:00 – 4:30", "1:30 – 3:00", "12:00 – 1:30"]
+# நல்ல நேரம் (morning, evening) and சூலம் (direction, பரிகாரம்) by weekday - as printed in Maalaimalar's daily panchangam
+# (checked against its articles 26 Oct - 1 Nov 2026); the day's article, when found, overrides these
+NALLA = [("6:00 – 7:00", "3:00 – 4:00"), ("8:00 – 9:00", "5:00 – 6:00"), ("6:00 – 7:00", "4:00 – 5:00"), ("9:00 – 10:00", "4:00 – 5:00"),
+         ("6:00 – 7:00", "5:00 – 6:00"), ("7:00 – 8:00", "5:00 – 6:00"), ("7:00 – 8:00", "3:00 – 4:00")]
+SULAM = [("கிழக்கு", "தயிர்"), ("வடக்கு", "பால்"), ("வடக்கு", "பால்"), ("தெற்கு", "தைலம்"), ("மேற்கு", "வெல்லம்"), ("கிழக்கு", "தயிர்"),
+         ("மேற்கு", "வெல்லம்")]
 KULIGAI = ["1:30 – 3:00", "12:00 – 1:30", "10:30 – 12:00", "9:00 – 10:30", "7:30 – 9:00", "6:00 – 7:30", "3:00 – 4:30"]
 
 
@@ -130,7 +138,7 @@ def compute(day, page="rasipuram"):
     chandra = RASI[(m_sign - 7) % 12]
     chandra_next = RASI[(m_sign + 1 - 7) % 12]
     return {
-        "date": day.isoformat(), "weekday": WEEKDAY[wd], "weekday_idx": wd,
+        "date": day.isoformat(), "weekday": WEEKDAY[wd], "weekday_idx": wd, "weekday_full": WEEKDAY_FULL[wd],
         "date_ta": f"{day.day} {MONTH_EN_TA[day.month - 1]} {day.year}",
         "tamil_month": month, "tamil_day": mday, "sun_sign": sun_sign,
         "tithi": t_name, "tithi_idx": t_i, "paksha": paksha, "tithi_end": until(t_end, day), "tithi_next": nt_name,
@@ -141,6 +149,7 @@ def compute(day, page="rasipuram"):
         "chandrashtamam_next": chandra_next if m_end.date() == day else "",
         "sunrise": hm(from_jd(rise)), "sunset": hm(from_jd(sset)),
         "rahu": RAHU[wd], "emagandam": EMA[wd], "kuligai": KULIGAI[wd],
+        "nalla_morning": NALLA[wd][0], "nalla_evening": NALLA[wd][1], "sulam": SULAM[wd][0], "sulam_parigaram": SULAM[wd][1], "subha_muhurtham": False,
     }
 
 
