@@ -241,6 +241,7 @@ def score(n):
 # collect / write split (owner 26 Oct): the 4-hourly round only COLLECTS and queues every eligible news by priority;
 # the writer round (every 20 min) takes the queue in priority order, writes the story, and the posting job posts it at once.
 MODE = os.environ.get("COLLECT_MODE", "both")      # collect | write | both
+PICK_ONLY = os.environ.get("PICK_ONLY", "") == "1"      # owner 1 Nov: write ONLY the MANUAL_URL links (power-cut fast lane, powercut.py) - nothing else is collected or queued
 QUEUE = ARCHIVE / "queue.json"
 QFIELDS = ("key", "url", "title", "source", "published", "via", "query", "snippet", "outlets", "alts", "mentions", "area", "score", "queued_at", "verified")
 
@@ -912,6 +913,9 @@ def main():
     if MODE == "write":
         news = [n for n in load_queue() if n.get("verified") and allnews.local_ok(n["url"], n.get("title", ""))]
         log.append(f"write round: {len(news)} news waiting in the queue (written in priority order)")
+    elif PICK_ONLY:      # power-cut fast lane: the normal collection, queue and round times are not touched
+        news = []
+        log.append("power-cut lane: only the given links are written (research_free/powercut.py)")
     else:
         news = allnews.collect(log)                               # EVERY item from every source
         have = {n["key"] for n in news}
@@ -1136,10 +1140,12 @@ def main():
     # A link that could not be opened is not queued - the next collection finds it again and checks it then.
     waiting = [n for n in news if str(n["status"]).startswith(("collected", "could not open", "not filed"))
                and (n.get("verified") or n.get("manual")) and allnews.local_ok(n["url"], n.get("title", ""))]
-    for k in (["collect"] if MODE == "collect" else ["write"] if MODE == "write" else ["collect", "write"]):
-        mark_run(k)
+    for k in ([] if PICK_ONLY else ["collect"] if MODE == "collect" else ["write"] if MODE == "write" else ["collect", "write"]):
+        mark_run(k)      # (the power-cut lane never counts as a collection round - the watchdog still restarts an overdue one)
     left = 0
     try:
+        if PICK_ONLY:
+            raise RuntimeError("power-cut lane: the queue is left as it is")
         left = save_queue(waiting)
         log.append(f"queue: {left} news waiting to be written")
     except Exception as e:

@@ -195,6 +195,27 @@ def script_of(o):
     return _SCRIPTS.get(o.get("story_id") or "", "")
 
 
+_LANE = None
+
+
+def owner_picked(row):
+    """owner 1 Nov: a power-shutdown notice of the fast lane (research_free/powercut.py) is posted at once - no other news check holds it
+    (every other story goes through the checks exactly as before)"""
+    global _LANE
+    if _LANE is None:
+        try:
+            _LANE = set(json.loads((ROOT / "research_free" / "archive" / "powercut_state.json").read_text(encoding="utf-8")).get("done", {}))
+        except Exception:
+            _LANE = set()
+    u = str(row.get("source") or "").strip()
+    if not u or not _LANE:
+        return False
+    import hashlib
+    forms = {u, u.replace("://www.dinamalar", "://l-www.dinamalar"), u.replace("://l-www.dinamalar", "://www.dinamalar"),
+             u.replace("/amp/story/", "/"), u.rstrip("/")}
+    return any("C" + hashlib.sha1(x.encode()).hexdigest()[:7] in _LANE for x in forms)
+
+
 def skip_reason(row):
     """'' = fine to post. Otherwise why this story must not go out: its announced date has passed (power cut, job fair, 'today' news ...),
     or the same news was already posted under another story id."""
@@ -206,6 +227,8 @@ def skip_reason(row):
         ki = known_issues.problems(fixed)
         if ki:
             return f"known issue {ki[0][0]}: {ki[0][1]}"
+    if owner_picked(row):
+        return ""
     f = filed_at(row)
     same_day = bool(f and f.date() == datetime.now(IST).date())      # filed today: it goes out today, whatever the clock says
     nd = freshness.news_date(row.get("published"), row.get("source"), f)
