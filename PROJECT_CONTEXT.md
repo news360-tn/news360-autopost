@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-01 | `5770aa7` | rasipalan: நல்ல நேரம், சூலம் (+பரிகாரம்), சுபமுகூர்த்த நாள் on the panchangam slide and caption; ஞாயிற்றுக்கிழமை spelling; overlap check |
 | 2026-11-01 | `34e6836` | voice: no dash ever reaches the voice - 'சேலம் - நாமக்கல்' was read as minus (RN-256); routes read முதல் ... வரை |
 | 2026-11-01 | `7520454` | rasipalan posted |
 | 2026-11-01 | `9f9ff6a` | rasipalan: never miss a day - 1 source enough after 9:30, keep trying until 12:30, backups 9:45 and 11:45 |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-30 | `cdbdc9a` | Remove Cerebras writer: it now needs a card (paid after $5 trial) |
 | 2026-10-30 | `b12e4a4` | Free writers: Gemini 3.6/3.5 first, Sarvam + Cerebras (skipped until keys), Gemma ready (off), Groq short retry on 413; remove GitHub Models, Mistral, OpenRouter, NVIDIA text; writer-compare test workflow |
 | 2026-10-30 | `5caf346` | SiliconFlow removed (owner): not free for this account ('balance insufficient'); picture order Cloudflare -> Pollinations -> NVIDIA -> FAL |
-| 2026-10-30 | `af5c2ae` | image test output |
 <!-- recent-changes:end -->
