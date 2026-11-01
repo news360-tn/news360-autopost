@@ -1,134 +1,16 @@
-writing [N]: சட்டம் ஒழுங்கு சீர்கேடை கண்டித்து தி.மு.க., மகளிரணி ஆர்ப்பாட
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, plea
-dead for this round: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
-ok groq/qwen/qwen3.8-27b (3s)
-attempt 1 groq/qwen/qwen3.8-27b: 2 problems
-  numbers not found in the article: 01
-  not grounded: location 'நகரம்' is not in the article
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-writing [N]: விளைநிலங்களில் மழைநீர்  தற்காலிக தீர்வால் விவசாயிகள் போராட்ட
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  not grounded: location 'பரமத்தி' is not in the article
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 72, ('இப்பகுதியை சேர்ந்த மதிவாணன், 72, நடராஜன், 78, மகாதேவன், 64, '); 78, ('இப்பகுதியை சேர்ந்த மதிவாணன், 72, நடராஜன், 78, மகாதேவன், 64, '); 64, ('இப்பகுதியை சேர்ந்த மதிவாணன், 72, நடராஜன், 78, மகாதேவன், 64, '); 54, ('இப்பகுதியை சேர்ந்த மதிவாணன், 72, நடராஜன், 78, மகாதேவன், 64, '); ௨௯ ('இப்போராட்ட அறிவிப்பை தொடர்ந்து, கடந்த, ௨௯ இரவு, மோகனூர் தாசி')
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
-  reel_script has 77 words; need 85-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  numbers not found in the article: 29
-  not grounded: location 'பரமத்தி' is not in the article
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): ௨௯ ('இப்போராட்ட அறிவிப்பை தொடர்ந்து, கடந்த, ௨௯ இரவு, மோகனூர் தாசி')
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  reel_script has 84 words; need 85-105 (the key facts once each, in at most 60 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  numbers not found in the article: 29
-  not grounded: location 'பரமத்தி' is not in the article
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 72, ('இப்பகுதியை சேர்ந்த மதிவாணன், 72, நடராஜன், 78, மகாதேவன், 64, '); 78, ('இப்பகுதியை சேர்ந்த மதிவாணன், 72, நடராஜன், 78, மகாதேவன், 64, '); 64, ('இப்பகுதியை சேர்ந்த மதிவாணன், 72, நடராஜன், 78, மகாதேவன், 64, '); 54, ('இப்பகுதியை சேர்ந்த மதிவாணன், 72, நடராஜன், 78, மகாதேவன், 64, '); ௨௯ ('இப்போராட்ட அறிவிப்பை தொடர்ந்து, கடந்த, ௨௯ இரவு, மோகனூர் தாசி')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: HTTPSConnectionPool(host='api.groq.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: groq/qwen/qwen3.8-27b
-free models unavailable: no free model answered: HTTPSConnectionPool(host='api.groq.com', port=443): Read timed out. (read timeout=60)
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
-imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
-imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs ~0.0020 pollen, but your available balance is 0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 01
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 01
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The article says the protest was led by Kanimozhi under Stalin's instruction, and that Gowri presided, but the reel_script and caption say Kanimozhi led it; the article's wording is ambiguous, and the draft's 'கனிமொழி தலைமையில்' sentence conflicts with 'அமைப்பாளர் கவுரி தலைமை வகித்தார்' as a second presiding role not clearly stated in the source.
-  The article's ARTICLE text is cut off, so 'நாமக்கல் தி.மு.க. தலைவர் ஸ்டாலின்' is presented as Namakkal DMK leader, but the article says 'தலைவர் ஸ்டாலின் ஆணைக்கிணங்க' (on the instruction of party president Stalin); the draft mislabels Stalin as the Namakkal DMK head.
-  The draft's Tamil headline and reel_script say the protest was held in Namakkal town, but the article only mentions Namakkal district (east and west districts); the specific location 'நாமக்கல்' is not clearly stated as the protest venue.
-  The reel_script omits the article's key distinction that the event was organized by the district-level units covering Namakkal east and west districts; it only mentions attendees generically, dropping the source's full attribution.
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The article says the protest was led by Kanimozhi under Stalin's instruction, and that Gowri presided, but the reel_script and caption say Kanimozhi led it; the article's wording is ambiguous, and the draft's 'கனிமொழி தலைமையில்' sentence conflicts with 'அமைப்பாளர் கவுரி தலைமை வகித்தார்' as a second presiding role not clearly stated in the source.
-  fact-check: The article's ARTICLE text is cut off, so 'நாமக்கல் தி.மு.க. தலைவர் ஸ்டாலின்' is presented as Namakkal DMK leader, but the article says 'தலைவர் ஸ்டாலின் ஆணைக்கிணங்க' (on the instruction of party president Stalin); the draft mislabels Stalin as the Namakkal DMK head.
-  fact-check: The draft's Tamil headline and reel_script say the protest was held in Namakkal town, but the article only mentions Namakkal district (east and west districts); the specific location 'நாமக்கல்' is not clearly stated as the protest venue.
-  fact-check: The reel_script omits the article's key distinction that the event was organized by the district-level units covering Namakkal east and west districts; it only mentions attendees generically, dropping the source's full attribution.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
-imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Farmers withdraw protest at Olapalayam a'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261101-1037","first":"RN-261"}
-posting job started at once
-real photo: vision check resting (free quota busy) -> AI pictures
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'DMK women's wing protest in Namakkal aga'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261101-1044","first":"RN-262"}
 earlier stories still waiting for images: []
 instagram check: 88 recent posts read from both pages
-write round: 8 news waiting in the queue (written in priority order)
-candidate filter: collected=6, already filed=2
-to write: 1 Rasipuram + 5 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 5 Namakkal; time left 29 min
-try (N) manual=False: விளைநிலங்களில் மழைநீர்  தற்காலிக தீர்வால் விவசாயிகள் போராட்ட
-try (R) manual=False: மூதாட்டி வீட்டில் தீ விபத்து ரூ.2 லட்சம், 2.5 பவுன் நாசம்
+write round: 4 news waiting in the queue (written in priority order)
+candidate filter: collected=2, already filed=2
+to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min
 try (N) manual=False: முட்டை விலை மேலும் 20 காசுகள் உயா்வு: ரூ. 6.10-ஆக நிா்ணயம்
+try (N) manual=False: எல்பிஜி, டேங்கர் சங்க தலைவர் மீது குற்றச்சாட்டு: உறுப்பினர்க
 skip (N) similar to a filed story: முட்டை விலை மேலும் 20 காசுகள் உயா்வு: ரூ. 6.10-ஆக 
-try (N) manual=False: சட்டம் ஒழுங்கு சீர்கேடை கண்டித்து தி.மு.க., மகளிரணி ஆர்ப்பாட
-skip (R) similar to a filed story: மூதாட்டி வீட்டில் தீ விபத்து ரூ.2 லட்சம், 2.5 பவுன
-try (N) manual=False: செல்வம் தொழில்நுட்ப கல்லூரி கபடி போட்டியில் சாம்பியன்
-skip (N) similar to a filed story: செல்வம் தொழில்நுட்ப கல்லூரி கபடி போட்டியில் சாம்பி
-try (N) manual=False: லஞ்ச ஒழிப்பு விழிப்புணர்வு
-skip (N) similar to a filed story: லஞ்ச ஒழிப்பு விழிப்புணர்வு
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 1})
-posting job started at once
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'fal-ai/flux/schnell': 2})
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 5}, done={'R': 0, 'N': 2}, time left 14 min
-carousel for 0 of 2 stories, the rest reel only
-filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":2} 
-stories: 2
+skip (N) could not open: எல்பிஜி, டேங்கர் சங்க தலைவர் மீது குற்றச்சாட்டு: உ [https://l-www.dinamalar.com/news/tamil-nadu-district-news-na] 502 Server Error: Bad Gateway for url: https://l-www.dinamalar.com/news/tamil-na
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 0}, time left 29 min
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 1 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 0
