@@ -1,11 +1,14 @@
 name: rasipalan
 # Daily rasipalan carousel on இராசிபுரம் 360 (temple design, நாமக்கல் 360 invited as collaborator).
 # owner 31 Oct: collect sharply at 7:31 AM IST and post as soon as it is ready. GitHub can start scheduled jobs late, so the job is
-# scheduled for 7:00 AM and waits until 7:31; a second start at 7:45 AM is a backup (the run stops at once if today is already posted).
+# scheduled for 7:00 AM and waits until 7:31; backups at 7:45, 9:45 and 11:45 AM (a run stops at once if today is already posted).
+# owner 1 Nov: never miss a day - 2 sources wanted, 1 is enough after 9:30 AM, trying continues until 12:30 PM.
 on:
   schedule:
     - cron: "30 1 * * *"      # 07:00 IST - waits until 07:31
     - cron: "15 2 * * *"      # 07:45 IST backup
+    - cron: "15 4 * * *"      # 09:45 IST backup (a run stops at once if today is already posted)
+    - cron: "15 6 * * *"      # 11:45 IST last backup
   workflow_dispatch:
     inputs:
       dry:
@@ -22,7 +25,7 @@ concurrency:
 jobs:
   post:
     runs-on: ubuntu-latest
-    timeout-minutes: 170
+    timeout-minutes: 340      # 7:00 AM start can keep trying until 12:30
     env:
       PAGE: rasipuram
       DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry || '' }}

@@ -19,7 +19,10 @@ import rasi_festivals as festivals, rasi_sources as sources, rasi_writer as writ
 PAGE = os.environ.get("PAGE", "rasipuram")
 DRY = os.environ.get("DRY_RUN", "") in ("1", "true", "yes")
 START_AT = os.environ.get("START_AT", "07:31")      # owner 31 Oct: collect sharply at 7:31 AM
-GIVE_UP_AT = os.environ.get("GIVE_UP_AT", "09:30")
+# owner 1 Nov: never miss a day - post as soon as the sources have it. 2 sources wanted; after ONE_SOURCE_AT one source is enough;
+# trying continues until GIVE_UP_AT (only then the run fails and GitHub e-mails the owner)
+ONE_SOURCE_AT = os.environ.get("ONE_SOURCE_AT", "09:30")
+GIVE_UP_AT = os.environ.get("GIVE_UP_AT", "12:30")
 MIN_SOURCES = int(os.environ.get("MIN_SOURCES", "2"))
 FORCE_DATE = os.environ.get("RASI_DATE", "")      # testing only: YYYY-MM-DD
 PAGES = {
@@ -188,12 +191,16 @@ def main():
     while True:
         log("collecting today's rasipalan")
         got = sources.collect(day, log)
-        if len(got) >= MIN_SOURCES or FORCE_DATE or datetime.now(P.IST) >= clock(GIVE_UP_AT, day):
+        t = datetime.now(P.IST)
+        need = MIN_SOURCES if t < clock(ONE_SOURCE_AT, day) else 1
+        if len(got) >= need or (FORCE_DATE and got):
             break
-        log(f"only {len(got)} source(s) so far - trying again in 4 minutes")
+        if FORCE_DATE or t >= clock(GIVE_UP_AT, day):
+            raise SystemExit(f"no source had today's rasipalan by {GIVE_UP_AT} - nothing posted")
+        log(f"only {len(got)} source(s) so far (need {need}) - trying again in 4 minutes")
         time.sleep(240)
     if len(got) < MIN_SOURCES:
-        raise SystemExit(f"only {len(got)} source(s) had today's rasipalan by {GIVE_UP_AT} - nothing posted (needs {MIN_SOURCES})")
+        log(f"posting with {len(got)} source - the others did not publish today's rasipalan in time")
     art = sources.panchang_article(day, log)
     fest, notes, why = festivals.today(day, p, art)
     if why:

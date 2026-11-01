@@ -137,6 +137,18 @@ class DateLinks1Nov(unittest.TestCase):
         self.assertTrue(rs.is_today({"published": "2026-10-31T20:31:00Z", "url": "x"}, date(2026, 11, 1)))
         self.assertFalse(rs.is_today({"published": "2026-10-31T10:00:00Z", "url": "x"}, date(2026, 11, 1)))
 
+class NeverMiss(unittest.TestCase):
+    """owner 1 Nov: never miss a day - one source is enough after 9:30, trying until 12:30, backups through the morning"""
+    def test_rules(self):
+        from pathlib import Path
+        root = Path(__file__).resolve().parent.parent
+        src = (root / "rasipalan" / "rasi_daily.py").read_text(encoding="utf-8")
+        for s in ('ONE_SOURCE_AT = os.environ.get("ONE_SOURCE_AT", "09:30")', 'GIVE_UP_AT = os.environ.get("GIVE_UP_AT", "12:30")'):
+            self.assertIn(s, src)
+        wf = (root / ".github" / "workflows" / "rasipalan.yml").read_text(encoding="utf-8")
+        for s in ('"30 1 * * *"', '"15 2 * * *"', '"15 4 * * *"', '"15 6 * * *"', "timeout-minutes: 340"):
+            self.assertIn(s, wf)
+
 
 if __name__ == "__main__":
     unittest.main()
