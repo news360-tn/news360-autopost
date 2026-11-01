@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-01 | `155ae71` | Namakkal: never written - another district's story (even on the paper's Namakkal page), a shop offer, a suicide (RN-251, RN-255) |
 | 2026-11-01 | `b25f824` | story catch-up: a post shared once is remembered (poster/story_shared.json) - the rasipalan got a 2nd story |
 | 2026-11-01 | `d25ab08` | story catch-up: video re-hosted on Cloudinary first (Instagram refused its own CDN link: container ERROR); tries capped per run |
 | 2026-11-01 | `cced927` | story catch-up: a post's owner id is the account's app id - every post was taken for the other page's collab |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-31 | `0f65b11` | Prime time off: a reel posts as soon as it is written (owner 31 Oct) |
 | 2026-10-30 | `383d9b4` | Heartbeat |
 | 2026-10-30 | `499e23a` | Refused stories are not written again and again (owner 30 Oct) |
-| 2026-10-30 | `cec615a` | Same event from two outlets in one writer round is caught (stories filed this round join the check), and short reports of one event count as the same (RN-214 = RN-209) |
 <!-- recent-changes:end -->
