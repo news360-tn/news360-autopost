@@ -862,7 +862,7 @@ def file_story(art, res, errors_log, recent, scenes=None):
             print("image brief failed, using the writer's scenes:", str(e)[:120], flush=True)
             scenes = d["scenes"]
     prompts = "\n---\n".join(IMG_TEMPLATE.format(scene=s.strip()) for s in scenes[:pictures_per_reel()])      # owner 30 Oct: 2 pictures per reel
-    ver = f"FREE-MODEL DRAFT ({model}) - not checked by Claude yet" + (f"; validator problems: {'; '.join(errors)}" if errors else "")
+    ver = f"DRAFT ({model}) - fact-check: no problems found" if not errors else f"DRAFT ({model}) - NOT CLEAN, held from posting - problems: {'; '.join(errors)}"
     return {"tamil_headline": d["tamil_headline"], "english_headline": d["english_headline"], "category": d["category"], "location": d["location"],
             "importance": d["importance"], "scope": d.get("scope", ""), "post_to": d["post_to"], "slides_spec": d["slides_spec"], "reel_script": d["reel_script"],
             "caption": d["caption"], "prompts": prompts, "source": art["url"], "published": art["published"], "verification": ver,

@@ -216,7 +216,7 @@ def owner_picked(row):
     return any("C" + hashlib.sha1(x.encode()).hexdigest()[:7] in _LANE for x in forms)
 
 
-def skip_reason(row):
+def _skip_reason_base(row):
     """'' = fine to post. Otherwise why this story must not go out: its announced date has passed (power cut, job fair, 'today' news ...),
     or the same news was already posted under another story id."""
     import difflib, freshness
@@ -1651,3 +1651,19 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+def skip_reason(row):
+    """owner 2 Nov (RN-272): after the usual checks, a story is NOT posted when its fact-check found any problem, or when its
+    location is unknown. It is held and the reason is in the log."""
+    why = _skip_reason_base(row)
+    if why:
+        return why
+    v_ = str(row.get("verification") or "")
+    if "NOT CLEAN" in v_:
+        return "held: fact-check problems - " + v_[:200]
+    loc_ = str(row.get("location") or "").strip()
+    txt_ = " ".join([str(row.get("caption") or ""), str(row.get("reel_script") or "")])
+    if loc_.lower() in ("unknown", "தெரியவில்லை") or re.search(r"இடம்\W*தெரியவில்லை|Location unknown", txt_, re.I):
+        return "held: location unknown"
+    return ""
