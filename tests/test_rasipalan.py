@@ -188,6 +188,33 @@ class NallaNeram(unittest.TestCase):
         self.assertIn("ஞாயிற்றுக்கிழமை", cap)
         self.assertNotIn("ஞாயிறுக்கிழமை", cap)
 
+class WriterNeverFailsOnOneLine(unittest.TestCase):
+    """1 Nov (Coimbatore repost): 3 drafts each had 1 bad line -> the whole post failed. Now the best draft is used and only the
+    bad lines are replaced by own safe lines."""
+    def test_one_bad_line_is_repaired(self):
+        import rasi_writer as W
+        from unittest import mock
+        src = [{"name": "A", "rasis": {r: "குடும்ப வாழ்க்கை அமைதியாக இருக்கும் நாள்" for r in W.RASI}}]
+        def draft():
+            rs = [{"rasi": r, "stars": 4, "work": "பணியில் முன்னேற்றம் உண்டு", "money": "வருமானம் சீராக இருக்கும்",
+                   "family": "வீட்டில் சந்தோஷம் நிறையும்", "health": "உடல்நலம் சீராக இருக்கும்"} for r in W.RASI]
+            rs[1]["family"] = "குடும்ப வாழ்க்கை அமைதியாக இருக்கும்"      # copied
+            rs[0]["money"] = "பணம் " * 12                                # too long
+            return {"rasis": rs}
+        with mock.patch.object(W, "ask", side_effect=lambda *a: (draft(), "m")), mock.patch.object(W, "proofread", return_value=0):
+            rs = W.write(src, "தனுசு", lambda *a: None)
+        self.assertEqual(len(rs), 12)
+        self.assertEqual(W.check({"rasis": rs}, src, "தனுசு"), [])
+        self.assertIn(rs[1]["family"], W.SAFE["family"]["good"])
+
+    def test_safe_lines_are_clean(self):
+        import rasi_writer as W
+        for lv in W.SAFE.values():
+            for xs in lv.values():
+                for x in xs:
+                    self.assertLessEqual(len(x), W.MAX_CHARS + 6)
+                    self.assertFalse(any(z in x for z in W.FEAR))
+
 
 if __name__ == "__main__":
     unittest.main()

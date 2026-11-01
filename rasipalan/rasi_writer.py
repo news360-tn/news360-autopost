@@ -137,27 +137,93 @@ def proofread(rs, log=print):
     return n
 
 
-def write(sources, chandra, log=print):
+# own-wording lines used only for a field the models still got wrong after every try (owner 1 Nov: the post must never be missed
+# because one line of 48 was 8 letters too long). By star level: good (4-5), steady (3), careful (1-2).
+SAFE = {
+    "work": {"good": ["பணியில் நல்ல முன்னேற்றம்", "தொழிலில் புதிய வாய்ப்பு", "முயற்சிக்கு பாராட்டு கிடைக்கும்", "வேலையில் உற்சாகம் கூடும்"],
+             "mid": ["பணிகள் சீராக நடக்கும்", "தொழிலில் நிதானம் நல்லது", "வேலையில் பொறுமை தேவை", "திட்டமிட்டு செயல்படுங்கள்"],
+             "low": ["பணியில் கவனம் தேவை", "முக்கிய முடிவை தள்ளிப்போடுங்கள்", "வேலையில் அவசரம் வேண்டாம்", "நிதானமாக செயல்படுங்கள்"]},
+    "money": {"good": ["பண வரவு திருப்தி தரும்", "எதிர்பார்த்த தொகை கைக்கு வரும்", "வருமானம் உயர வாய்ப்பு", "சேமிப்பு கூடும் நாள்"],
+              "mid": ["வரவும் செலவும் சமமாக இருக்கும்", "செலவுகளை திட்டமிடுங்கள்", "பணவரவு சீராக இருக்கும்", "சிக்கனம் நல்லது"],
+              "low": ["தேவையற்ற செலவை தவிருங்கள்", "கடன் கொடுப்பதை தவிருங்கள்", "பண விஷயத்தில் கவனம்", "பெரிய செலவை தள்ளிப்போடுங்கள்"]},
+    "family": {"good": ["வீட்டில் மகிழ்ச்சி நிலவும்", "உறவினர் வருகை மகிழ்விக்கும்", "குடும்பத்தில் ஒற்றுமை கூடும்", "நல்ல செய்தி வந்து சேரும்"],
+               "mid": ["குடும்பத்தில் அமைதி நிலவும்", "பெரியோர் ஆலோசனை உதவும்", "வீட்டில் சுமுக நிலை", "உறவுகளுடன் இணக்கம்"],
+               "low": ["பேச்சில் பொறுமை தேவை", "வீண் விவாதம் தவிருங்கள்", "குடும்பத்தினருடன் அனுசரணை", "கோபத்தை குறைத்துக்கொள்ளுங்கள்"]},
+    "health": {"good": ["உடல்நலம் சிறப்பாக இருக்கும்", "உற்சாகமும் சுறுசுறுப்பும்", "ஆரோக்கியம் சீராக இருக்கும்", "மனதில் புத்துணர்ச்சி"],
+               "mid": ["உடல்நலம் சீராக இருக்கும்", "போதுமான ஓய்வு எடுங்கள்", "உணவில் கவனம் நல்லது", "நீர் அதிகம் அருந்துங்கள்"],
+               "low": ["ஓய்வுக்கு நேரம் ஒதுக்குங்கள்", "உணவில் கட்டுப்பாடு தேவை", "அலைச்சலை குறையுங்கள்", "தூக்கம் சரியாக இருக்கட்டும்"]},
+}
+
+
+def _level(item):
+    try:
+        st = int(item.get("stars"))
+    except Exception:
+        st = 3
+    return "good" if st >= 4 else "mid" if st == 3 else "low"
+
+
+def repair(data, errs, sources, chandra, log=print):
+    """replace only the fields that still fail with a SAFE line (never one that a source used); stars default to 3"""
+    src = " ".join(" ".join(words(t)) for s in sources for t in s["rasis"].values())
+    rs = data["rasis"]
+    for e in errs:
+        m = re.match(r"(\S+?)\.(work|money|family|health):", e)
+        if m:
+            k = RASI.index(m.group(1)) if m.group(1) in RASI else -1
+            if k < 0:
+                continue
+            item, f = rs[k], m.group(2)
+            used = {x.get(f) for x in rs}
+            opts = SAFE[f][_level(item)]
+            pick = next((o for i in range(len(opts)) for o in [opts[(k + i) % len(opts)]] if o not in used and not copied(o, src)), opts[k % len(opts)])
+            log(f"  {m.group(1)}.{f}: '{item.get(f)}' -> '{pick}' (own safe line)")
+            item[f] = pick
+        elif ": stars must be 1-5" in e:
+            r = e.split(":")[0]
+            if r in RASI:
+                rs[RASI.index(r)]["stars"] = 3
+    return check(data, sources, chandra)
+
+
+def _structural(errs):
+    return any(e.startswith("need exactly") or e.startswith("item ") for e in errs)
+
+
+def write(sources, chandra, log=print, tries=5):
     """-> list of 12 dicts {rasi, stars, work, money, family, health, remedy}"""
     src = {s["name"]: s["rasis"] for s in sources}
     user = "TODAY'S SOURCES (one block per outlet):\n" + json.dumps(src, ensure_ascii=False)
     note = ""
-    for attempt in range(3):
-        data, model = ask(SYSTEM, user + note, log)
+    best, best_errs = None, None
+    for attempt in range(tries):
+        try:
+            data, model = ask(SYSTEM, user + note, log)
+        except Exception as e:
+            log(f"  draft {attempt + 1}: no model answered ({str(e)[:120]})")
+            continue
         errs = check(data, sources, chandra)
         log(f"  draft {attempt + 1} by {model}: {len(errs)} problem(s)")
+        if not _structural(errs) and (best is None or len(errs) < len(best_errs)):
+            best, best_errs = json.loads(json.dumps(data, ensure_ascii=False)), errs
         if not errs:
-            rs = data["rasis"]
-            proofread(rs, log)
-            if check({"rasis": rs}, sources, chandra):
-                log("  a proofread fix broke a check; using the draft as written")
-                rs = data["rasis"]
-            for item in rs:
-                item["remedy"] = REMEDY[item["rasi"]]
-                item["stars"] = int(item["stars"])
-            return rs
+            break
         for e in errs[:15]:
             log("   -", e)
         note = "\n\nYOUR PREVIOUS ANSWER HAD THESE PROBLEMS - fix all of them:\n" + "\n".join(errs[:40]) + \
                "\nPREVIOUS ANSWER:\n" + json.dumps(data, ensure_ascii=False)[:6000]
-    raise RuntimeError("the rasipalan could not be written cleanly in 3 tries")
+    if best is None:
+        raise RuntimeError(f"the rasipalan could not be written in {tries} tries (no complete 12-rasi draft)")
+    if best_errs:      # a few lines still wrong: only those lines are replaced (1 Nov: the whole post failed over 1 line)
+        left = repair(best, best_errs, sources, chandra, log)
+        if left:
+            raise RuntimeError("the rasipalan still has problems after repair: " + "; ".join(left[:5]))
+    rs = json.loads(json.dumps(best["rasis"], ensure_ascii=False))
+    proofread(rs, log)
+    if check({"rasis": rs}, sources, chandra):
+        log("  a proofread fix broke a check; using the draft as written")
+        rs = best["rasis"]
+    for item in rs:
+        item["remedy"] = REMEDY[item["rasi"]]
+        item["stars"] = int(item["stars"])
+    return rs
