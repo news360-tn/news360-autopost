@@ -22,6 +22,8 @@ class StoryCatchUp(unittest.TestCase):
         made = []
 
         def ig(method, path, token, **kw):
+            if path == "me":
+                return {"id": "U", "user_id": "UU"}
             if path.endswith("content_publishing_limit"):
                 return {"data": [{"quota_usage": used, "config": {"quota_total": 50}}]}
             if path.endswith("/media") and method == "GET":

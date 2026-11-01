@@ -910,16 +910,18 @@ def story_catchup(max_new=6):
         try:
             token = bridge_get("token", page=pg)["token"]
             uid, _ = ig_account(token)
+            me = ig("GET", "me", token, fields="id,user_id")
+            mine = {str(x) for x in (uid, me.get("id"), me.get("user_id")) if x}      # 1 Nov: a post's owner id is the app id, not user_id
             q = (ig("GET", f"{uid}/content_publishing_limit", token, fields="quota_usage,config").get("data") or [{}])[0]
             used, total = int(q.get("quota_usage", 0)), min(int((q.get("config") or {}).get("quota_total", 50) or 50), IG_LIMIT)
             feed = ig("GET", f"{uid}/media", token, fields="id,media_type,media_url,timestamp,owner,children{media_type,media_url}", limit=40).get("data", [])
             stories = sorted(t for t in (_ts(x.get("timestamp", "")) for x in ig("GET", f"{uid}/stories", token, fields="id,timestamp").get("data", [])) if t)
             now = datetime.now(timezone.utc)
             made = 0
-            log(f"story catch-up {pg}: quota {used}/{total}, {len(feed)} recent posts, {len(stories)} live stories")
+            log(f"story catch-up {pg}: quota {used}/{total}, {len(feed)} recent posts, {len(stories)} live stories, owner ids {sorted(mine)}")
             for m in sorted(feed, key=lambda x: x.get("timestamp", "")):
                 t = _ts(m.get("timestamp", ""))
-                if not t or (m.get("owner") or {}).get("id", uid) != uid:
+                if not t or str((m.get("owner") or {}).get("id") or uid) not in mine:
                     continue      # a collab post of the other page: that page shares it
                 if not timedelta(minutes=20) <= now - t <= timedelta(hours=20):
                     continue
