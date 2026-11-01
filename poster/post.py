@@ -1664,6 +1664,8 @@ def skip_reason(row):
         return "held: fact-check problems - " + v_[:200]
     loc_ = str(row.get("location") or "").strip()
     txt_ = " ".join([str(row.get("caption") or ""), str(row.get("reel_script") or "")])
+    if re.fullmatch(r"[^,]*\b(district|மாவட்டம்)\.?", loc_, re.I):      # owner 2 Nov: a district alone is not a place
+        return "held: location is only the district - the town from the article is missing"
     if loc_.lower() in ("unknown", "தெரியவில்லை") or re.search(r"இடம்\W*தெரியவில்லை|Location unknown", txt_, re.I):
         return "held: location unknown"
     return ""

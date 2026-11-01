@@ -8,7 +8,7 @@ class HoldBeforePosting(unittest.TestCase):
     """owner 2 Nov (RN-272): a draft with fact-check problems, or an unknown location, is never posted"""
 
     def row(self, **kw):
-        base = dict(verification="DRAFT (m) - fact-check: no problems found", location="Namakkal district", caption="x", reel_script="y",
+        base = dict(verification="DRAFT (m) - fact-check: no problems found", location="Tiruchengode town, Namakkal district", caption="x", reel_script="y",
                     source="", published="", headline_ta="", category="", notes="", batch="", review="Auto")
         base.update(kw)
         return base
@@ -23,6 +23,12 @@ class HoldBeforePosting(unittest.TestCase):
 
     def test_clean_row_is_not_held_by_the_new_rules(self):
         self.assertNotIn("held:", post.skip_reason(self.row()))
+
+    def test_district_only_location_is_held(self):
+        self.assertTrue(post.skip_reason(self.row(location="Namakkal district")).startswith("held: location is only the district"))
+
+    def test_town_and_district_is_fine(self):
+        self.assertNotIn("held:", post.skip_reason(self.row(location="Tiruchengode town, Namakkal district")))
 
 
 if __name__ == "__main__":
