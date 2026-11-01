@@ -235,3 +235,60 @@ def panchang_extras(art, p, log=print):
     p["subha_muhurtham"] = "சுபமுகூர்த்த" in t or "சுப முகூர்த்த" in t
     return p
 
+TITHI_W = ("பிரதமை", "துவிதியை", "திருதியை", "சதுர்த்தி", "பஞ்சமி", "சஷ்டி", "சப்தமி", "அஷ்டமி", "நவமி", "தசமி", "ஏகாதசி", "துவாதசி",
+           "திரயோதசி", "சதுர்த்தசி", "பவுர்ணமி", "பௌர்ணமி", "அமாவாசை")
+STAR_W = ("அசுவினி", "அஸ்வினி", "பரணி", "கார்த்திகை", "கிருத்திகை", "ரோகிணி", "மிருகசீர்ஷம்", "மிருகசீரிடம்", "திருவாதிரை", "புனர்பூசம்", "பூசம்",
+          "ஆயில்யம்", "மகம்", "பூரம்", "உத்திரம்", "அஸ்தம்", "ஹஸ்தம்", "சித்திரை", "சுவாதி", "விசாகம்", "அனுஷம்", "கேட்டை", "மூலம்", "பூராடம்",
+          "உத்திராடம்", "திருவோணம்", "அவிட்டம்", "சதயம்", "பூரட்டாதி", "உத்திரட்டாதி", "ரேவதி")
+_DAYPART = r"(அதிகாலை|காலை|முற்பகல்|நண்பகல்|மதியம்|பிற்பகல்|மாலை|இரவு|பின்னிரவு|நள்ளிரவு)"
+
+
+def _segment(t, label, nxt):
+    m = re.search(label + r"\s*:?\s*(.*?)(?=" + "|".join(nxt) + r"|$)", t)
+    return m.group(1).strip() if m else ""
+
+
+def _first(seg, words):
+    hits = [(seg.find(w), w) for w in words if w in seg]
+    return min(hits)[1] if hits else ""
+
+
+def _vakya(seg, words):
+    """'சப்தமி இரவு 7.19 மணி வரை பிறகு அஷ்டமி' -> ('சப்தமி', 'இரவு 7:19 வரை', 'அஷ்டமி'); '' parts when not printed"""
+    name = _first(seg, words)
+    if not name:
+        return "", "", ""
+    m = re.search(_DAYPART + r"\s*(\d{1,2})(?:[.:](\d{2}))?\s*(?:மணி)?\s*வரை", seg)
+    end = f"{m.group(1)} {int(m.group(2))}:{m.group(3) or '00'} வரை" if m else ""
+    after = seg.split("பிறகு", 1)[1] if "பிறகு" in seg else ""
+    return name, end, _first(after, words)
+
+
+def panchang_vakya(art, p, log=print):
+    """owner 1 Nov: திதி, நட்சத்திரம், யோகம் and பிறை exactly as Maalaimalar's daily panchangam prints them (the Vakya panchangam of
+    Tamil daily calendars) - our own calculation (Thirukanitham) stays only when the article or a value is not found"""
+    if not art:
+        log("  panchangam article not found - திதி / நட்சத்திரம் from our own calculation")
+        return p
+    t = re.sub(r"\s+", " ", art)
+    labels = [r"திதி", r"நட்சத்திரம்", r"யோகம்", r"ராகு\s*காலம்", r"எமகண்டம்", r"சூலம்", r"நல்ல நேரம்"]
+    tithi = _vakya(_segment(t, r"திதி", labels[1:]), TITHI_W)
+    star = _vakya(_segment(t, r"நட்சத்திரம்", labels[2:]), STAR_W)
+    yog = _segment(t, r"யோகம்", labels[3:])
+    yog = re.sub(r"\s*/\s*", " / ", yog.split(" ")[0] if " / " not in yog and "/" not in yog else yog).strip()[:30]
+    paksha = re.search(r"பிறை\s*:?\s*(வளர்பிறை|தேய்பிறை)", t)
+    changed = []
+    if tithi[0]:
+        p["tithi"], p["tithi_end"], p["tithi_next"] = tithi[0], tithi[1] or "நாள் முழுவதும்", tithi[2] or p.get("tithi_next", "")
+        changed.append(f"திதி {tithi[0]} {tithi[1]}")
+    if star[0]:
+        p["nakshatra"], p["nakshatra_end"], p["nakshatra_next"] = star[0], star[1] or "நாள் முழுவதும்", star[2] or p.get("nakshatra_next", "")
+        changed.append(f"நட்சத்திரம் {star[0]} {star[1]}")
+    if yog and "யோக" in yog:
+        p["yogam"], p["yogam_end"] = yog, ""
+        changed.append(f"யோகம் {yog}")
+    if paksha:
+        p["paksha"] = paksha.group(1)
+    log("  Vakya (Maalaimalar): " + ("; ".join(changed) if changed else "nothing read - our own calculation stays"))
+    return p
+

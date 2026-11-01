@@ -214,6 +214,7 @@ def main():
         log(f"posting with {len(got)} source - the others did not publish today's rasipalan in time")
     art = sources.panchang_article(day, log)
     sources.panchang_extras(art, p, log)
+    sources.panchang_vakya(art, p, log)      # owner 1 Nov: திதி / நட்சத்திரம் as Tamil daily calendars print them
     fest, notes, why = festivals.today(day, p, art)
     if why:
         log(why)

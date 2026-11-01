@@ -215,6 +215,24 @@ class WriterNeverFailsOnOneLine(unittest.TestCase):
                     self.assertLessEqual(len(x), W.MAX_CHARS + 6)
                     self.assertFalse(any(z in x for z in W.FEAR))
 
+class VakyaFromMaalaimalar(unittest.TestCase):
+    """owner 1 Nov: திதி / நட்சத்திரம் / யோகம் as Maalaimalar's daily panchangam (Vakya) prints them"""
+    def test_read(self):
+        import rasi_sources as S
+        art = ("பிறை : தேய்பிறைதிதி : சப்தமி இரவு 7.19 மணி வரை பிறகு அஷ்டமி நட்சத்திரம் : புனர்பூசம் காலை 10.32 வரை பிறகு பூசம் "
+               "யோகம் : சித்தயோகம்ராகுகாலம் : மாலை 4.30 மணி முதல் 6 மணி வரை")
+        p = {"tithi": "x", "nakshatra": "y", "yogam": "z"}
+        S.panchang_vakya(art, p, lambda *a: None)
+        self.assertEqual((p["tithi"], p["tithi_end"], p["tithi_next"]), ("சப்தமி", "இரவு 7:19 வரை", "அஷ்டமி"))
+        self.assertEqual((p["nakshatra"], p["nakshatra_end"], p["nakshatra_next"]), ("புனர்பூசம்", "காலை 10:32 வரை", "பூசம்"))
+        self.assertEqual((p["yogam"], p["paksha"]), ("சித்தயோகம்", "தேய்பிறை"))
+
+    def test_no_article_keeps_ours(self):
+        import rasi_sources as S
+        p = {"tithi": "சப்தமி", "tithi_end": "மதியம் 2:52 வரை"}
+        S.panchang_vakya("", p, lambda *a: None)
+        self.assertEqual(p["tithi_end"], "மதியம் 2:52 வரை")
+
 
 if __name__ == "__main__":
     unittest.main()
