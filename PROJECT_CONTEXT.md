@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-01 | `0b4cd01` | story catch-up: log quota / posts / stories seen |
 | 2026-11-01 | `93c6f33` | stories: every post (news reel, carousel, rasipalan, any job) also goes to the story - fixed 25-post cut removed, missing stories caught up every run, last 5 of the 50/day kept for news |
 | 2026-11-01 | `ed69875` | powercut: log the title of a power cut skipped as another district |
 | 2026-11-01 | `889f623` | powercut: Namakkal district power-shutdown notices posted at once - hourly, Dinamani + Dinamalar Namakkal, never twice, never late, fails loudly; the normal collection is untouched |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-30 | `84e663c` | Writer/collector: the Sheet bridge is tried 3 times when Apps Script does not answer (writer crashed once at 09:00 UTC 30 Oct on a 120 s timeout) |
 | 2026-10-30 | `ba06b8e` | Sarvam out of the live writer order until writer-compare proves it |
 | 2026-10-30 | `e033529` | writer compare output |
-| 2026-10-30 | `401f8a5` | Sarvam: reasoning low (API accepts low/medium/high only) |
 <!-- recent-changes:end -->
