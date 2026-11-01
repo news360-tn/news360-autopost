@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-01 | `1da681a` | rasipalan: திதி / நட்சத்திரம் / யோகம் as Maalaimalar's daily panchangam (Vakya) prints them; own calculation only when not found |
+| 2026-11-01 | `df9539f` | stories shared |
 | 2026-11-01 | `155ae71` | Namakkal: never written - another district's story (even on the paper's Namakkal page), a shop offer, a suicide (RN-251, RN-255) |
 | 2026-11-01 | `b25f824` | story catch-up: a post shared once is remembered (poster/story_shared.json) - the rasipalan got a 2nd story |
 | 2026-11-01 | `d25ab08` | story catch-up: video re-hosted on Cloudinary first (Instagram refused its own CDN link: container ERROR); tries capped per run |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-31 | `8bb3535` | Location tags: only ids Instagram accepts are used; ig-probe checks them (owner 31 Oct) |
 | 2026-10-31 | `9391e60` | Writing order from our own Instagram insights (owner 31 Oct) |
 | 2026-10-31 | `0f65b11` | Prime time off: a reel posts as soon as it is written (owner 31 Oct) |
-| 2026-10-30 | `383d9b4` | Heartbeat |
-| 2026-10-30 | `499e23a` | Refused stories are not written again and again (owner 30 Oct) |
 <!-- recent-changes:end -->
