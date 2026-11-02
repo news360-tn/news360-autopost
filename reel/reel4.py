@@ -347,6 +347,14 @@ def everyday(t):
     return t
 
 
+def abbr_on():
+    """config "reel_english_abbreviations" (default on): MLA / LPG / DSP shown in English letters on the reel"""
+    try:
+        return bool(json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text()).get("reel_english_abbreviations", True))
+    except Exception:
+        return True
+
+
 def everyday_on():
     try:
         return bool(json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text()).get("reel_everyday_words", True))
@@ -519,7 +527,7 @@ window.renderAt=function(t){{
   // progress segments: one per sentence
   // hook: frame 1 -> hook_end, then the mini headline stays
   const h=document.getElementById('hook'), hin=back(cl(t/0.3)), hout=cl((t-(D.hook_end-0.25))/0.25);
-  h.style.opacity=(t<D.hook_end)?cl(t/0.12)*(1-hout):0; h.style.transform='translateY('+(30*(1-Math.min(1,hin)))+'px)';
+  h.style.opacity=(t<D.hook_end)?(1-hout):0; h.style.transform='translateY('+(30*(1-Math.min(1,hin)))+'px)';
   const m=document.getElementById('mini'), min_=ease(cl((t-D.hook_end)/0.35));
   m.style.opacity=(t>=D.hook_end&&t<D.end_t)?min_:0; m.style.transform='translateX('+(-(1-min_)*60)+'px)';
   // pin + header always (until the end card)
@@ -587,6 +595,8 @@ def fit_max(work, n, lead, gap):
 
 
 def main(spec_path, out_mp4, page_key="namakkal"):
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "research_free"))
+    import names      # owner 2 Nov: screen abbreviations (names.latin_abbr) - the voice functions import it on their own
     R.PAGE = R.PAGES[page_key]; R.LOGO = R.KIT / R.PAGE["logo"]
     if page_key == "rasipuram":
         V3.OUTRO_EN = "Follow Rasipuram Three Sixty for more local news."
@@ -608,6 +618,19 @@ def main(spec_path, out_mp4, page_key="namakkal"):
                 x[k] = dict(v, text=everyday(fix_dates(v["text"])))
     if spec.get("summary"):
         spec["summary"] = [dict(r, text=everyday(r.get("text", ""))) if isinstance(r, dict) else r for r in spec["summary"]]
+    if abbr_on():      # owner 2 Nov: the screen shows MLA / LPG / DSP in English letters (the voice still says them in Tamil)
+        spec["hook"] = [names.latin_abbr(h) for h in spec["hook"]]
+        if spec.get("mini"):
+            spec["mini"] = names.latin_abbr(spec["mini"])
+        for x in sents:
+            for k in ("fact", "card"):
+                v = x.get(k)
+                if isinstance(v, str):
+                    x[k] = names.latin_abbr(v)
+                elif isinstance(v, dict) and v.get("text"):
+                    x[k] = dict(v, text=names.latin_abbr(v["text"]))
+        if spec.get("summary"):
+            spec["summary"] = [dict(r, text=names.latin_abbr(r.get("text", ""))) if isinstance(r, dict) else r for r in spec["summary"]]
     punch = everyday(punch_line(spec)) if punch_on() else ""
     if punch and sents and repeats(punch, sents[0]["say"]):
         print("opening: the one-line story already says it - read at once with the big headline (no double reading):", punch)
@@ -656,6 +679,8 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     caps = []
     for i, s in enumerate(sents):
         wt = V3.word_times(to_digits(s["say"]), starts[i], ends[i])
+        if abbr_on():
+            wt = names.latin_abbr_words(wt)      # subtitles only - the voice track is already made from s["say"]
         for g in phrases(wt):
             caps.append({"a": g[0][1], "b": g[-1][2], "words": g})
     snaps = [w[1] for g in caps for w in g["words"]]
@@ -684,7 +709,10 @@ def main(spec_path, out_mp4, page_key="namakkal"):
         pg.evaluate("document.getElementById('cap').style.display='none';document.getElementById('hook').style.opacity=1;")
         pg.screenshot(path=str(Path(out_mp4).with_name(Path(out_mp4).stem + "_cover.jpg")), type="jpeg", quality=95)
         b.close()
-    enc.stdin.close(); enc.wait()
+    enc.stdin.close()
+    rc = enc.wait()
+    if rc:      # owner 2 Nov (review): a failed encode must fail here, not later as an unclear 'Build failed'
+        raise SystemExit(f"ffmpeg encoder failed (exit {rc})")
     print(f"done {out_mp4} {total:.1f}s")
 
 

@@ -43,6 +43,14 @@ jobs:
       - name: Optional photo tools (real news photos - super-resolution, AVIF); the story is written without them if this fails
         run: pip install -q opencv-contrib-python-headless==4.10.0.84 pillow-avif-plugin==1.4.6 || echo 'photo tools not installed'
         if: steps.sw.outputs.go == 'yes'
+      - name: Read the latest Instagram insights (this round's news follow what viewers watch and share now)
+        if: steps.sw.outputs.go == 'yes'
+        timeout-minutes: 8
+        env:
+          BRIDGE_URL: ${{ secrets.BRIDGE_URL }}
+          BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
+        run: |      # owner 2 Nov: before EVERY collection (was once a day at 02:10); not readable -> the last weights are used
+          python -u poster/insights.py 2>&1 | tail -4 || true
       - name: Collect, write, validate, send
         if: steps.sw.outputs.go == 'yes'
         env:
@@ -83,7 +91,7 @@ jobs:
         if: always() && steps.sw.outputs.go == 'yes'
         run: |
           git config user.name "news360-bot"; git config user.email "bot@users.noreply.github.com"
-          git add -f research_free/results research_free/archive
+          git add -f research_free/results research_free/archive poster/insights research_free/learned.json
           git commit -m "free collector log" || echo none
           for i in 1 2 3 4 5; do git pull --rebase -X theirs --autostash origin main && git push && break; git rebase --abort 2>/dev/null; sleep $((i*4)); done || true
       - name: Fail loudly if the collector crashed (GitHub then emails the repo owner)

@@ -8,6 +8,7 @@ name: powercut
 on:
   schedule:
     - cron: "20 0-16 * * *"      # 05:50 ... 21:50 IST, every hour
+    - cron: "50 0-16 * * *"      # owner 2 Nov (review): GitHub skips scheduled runs (6 of 10 ran) - a second chance every hour
   workflow_dispatch:
     inputs:
       dry:
@@ -82,7 +83,7 @@ jobs:
         if: always() && env.POWERCUT_DRY != '1'
         run: |
           git config user.name "news360-bot"; git config user.email "bot@users.noreply.github.com"
-          git add -f research_free/archive/powercut_state.json research_free/results/powercut.log research_free/results/powercut_write.log 2>/dev/null || true
+          for f in research_free/archive/powercut_state.json research_free/results/powercut.log research_free/results/powercut_write.log; do [ -f "$f" ] && git add -f "$f"; done; true      # owner 2 Nov (review): one missing file made the whole add fail - the state was never saved
           git commit -qm "powercut: notices written" || true
           for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash origin main && git push -q && break; git rebase --abort 2>/dev/null; sleep $((i*4)); done || true
       - name: Check every power cut is on Instagram (else post again; after 40 minutes fail loudly)

@@ -61,14 +61,15 @@ jobs:
           else
             pip install -q requests==2.32.5 pillow==11.3.0
             pip install -q opencv-contrib-python-headless==4.10.0.84 pillow-avif-plugin==1.4.6 || echo 'photo tools not installed'      # owner 31 Oct: real news photos
-            python poster/post.py check 2>&1 | tee .last_check
+            set +e; python poster/post.py check 2>&1 | tee .last_check; CHECK_RC=${PIPESTATUS[0]}; set -e      # owner 2 Nov: a crash must not look green
           fi
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
-          if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then git add -f .last_check && git commit -qm "check log" && { git pull -q --rebase -X theirs && git push -q || git rebase --abort 2>/dev/null; } || true; fi
+          if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then git add -f .last_check && git commit -qm "check log" && { for i in 1 2 3 4; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null; sleep $((i*3)); done; } || true; fi
           # owner 1 Nov: the list of posts already shared to the story (never twice) is saved after every check
-          if [ -f poster/story_shared.json ]; then git add -f poster/story_shared.json && git commit -qm "stories shared" && { git pull -q --rebase -X theirs && git push -q || git rebase --abort 2>/dev/null; } || true; fi
+          if [ -f poster/story_shared.json ]; then git add -f poster/story_shared.json && git commit -qm "stories shared" && { for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null; sleep $((i*3)); done; } || true; fi
+          if [ "${CHECK_RC:-0}" != "0" ]; then echo "::error::post.py check crashed (exit $CHECK_RC) - nothing was posted in this run"; exit 1; fi
       - name: Watchdog - restart an overdue collection or writer (GitHub sometimes skips scheduled runs)
-        if: github.event_name == 'schedule' && env.BRIDGE_URL != ''
+        if: always() && github.event_name == 'schedule' && env.BRIDGE_URL != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -92,7 +93,7 @@ jobs:
           case "$todo" in *write*) gh workflow run write_stories.yml && echo "queued news waiting: story writer started now";; esac
           true
       - name: Keep the schedule alive (daily heartbeat)
-        if: github.event_name == 'schedule' && env.BRIDGE_URL != ''
+        if: always() && github.event_name == 'schedule' && env.BRIDGE_URL != ''
         run: |
           if [ "$(date -u +%H)" = "18" ] && [ "$(date -u +%M)" -lt 20 ]; then
             date -u +"%Y-%m-%d %H:%M UTC" > .heartbeat

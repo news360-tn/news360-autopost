@@ -54,12 +54,60 @@ def _tamil_words(t):
 
 
 def _stem(w):
-    return w[:4]
+    return w.replace("\u0bc1\u0bbe", "\u0bc2")[:4]      # Dinamalar writes ூ as ுா ('வேலுார்' = 'வேலூர்')
+
+
+def _initial(w):
+    """the first letter of a word as papers abbreviate it: 'பரமத்தி' -> 'ப', 'திருச்செங்கோடு' -> 'தி'"""
+    return w[:2] if len(w) > 1 and "\u0bbe" <= w[1] <= "\u0bcd" else w[:1]
+
+
+def _initials(article):
+    """{('ப', stem of 'வேலுார்')} for every 'ப.வேலுார்' in the article (owner 2 Nov, RN-284: 'பரமத்தி வேலூர்' was 'not in the article')"""
+    return {(m.group(1), _stem(m.group(2))) for m in re.finditer(r"(?<![\u0B80-\u0BFF])([\u0B85-\u0BB9][\u0BBE-\u0BCD]?)\.\s*([\u0B80-\u0BFF]{3,})", article or "")}
+
+
+NO_PLACE = re.compile(r"விவரம்|தெரியவில்லை|இல்லை|குறிப்பிடப்பட|unknown", re.I)
+NOT_A_PLACE = {"மாவட்டம்", "மாவட்டத்தில்", "மாவட்ட", "அருகே", "அருகில்", "பகுதி", "பகுதியில்", "பகுதிகள்", "மற்றும்"}
+
+
+def place_words(loc):
+    """the town / village / area words of slides_spec.loc ('பள்ளிப்பாளையம், குமாரபாளையம்' -> both; 'நாமக்கல் மாவட்டம்' -> district only)"""
+    return [w for w in re.findall(r"[\u0B80-\u0BFF]+", loc or "") if len(w) >= 3 and w not in NOT_A_PLACE]
+
+
+def district_only(loc):
+    return bool(re.search(r"மாவட்ட", loc or "")) and len(place_words(loc)) <= 1 and "," not in (loc or "")
+
+
+def names_place(text, loc):
+    t = (text or "").replace("\u0bc1\u0bbe", "\u0bc2")
+    return any(_stem(w) in t for w in place_words(loc))
+
+
+def place_problems(d):
+    """owner 2 Nov: people share news of THEIR area - the place is on the first screen. loc = the town / village / area (never only the
+    district, never 'not known'); hl1 / hl2 (the headline the reel opens with) name that place"""
+    sp = d.get("slides_spec") or {}
+    loc = sp.get("loc", "") if isinstance(sp, dict) else ""
+    if not loc.strip() or NO_PLACE.search(loc):
+        return []      # reported by grounding_problems
+    if district_only(loc):
+        return [f"slides_spec.loc '{loc}' is only the district: write the town / village / area the article names (people share news of their own area)"]
+    if not names_place(sp.get("hl1", "") + " " + sp.get("hl2", ""), loc):
+        return [f"hl1 (the first headline on screen) must name the place '{loc.split(',')[0].strip()}', e.g. '{loc.split(',')[0].strip()}: ...' or "
+                f"'{loc.split(',')[0].strip()}-இல் ...' - viewers share news of their own area"]
+    return []
 
 
 def grounding_problems(d, article):
     """a draft built from the article re-uses the article's words. Invented places/garbled words do not appear in it."""
     art_words = _tamil_words(article)
+    try:      # owner 2 Nov (review): 'கு.பாளையம்' / 'மே.பாளையம்' in the article = 'குமாரபாளையம்' / 'மேட்டுப்பாளையம்' in the draft
+        import names
+        art_words = art_words + _tamil_words(names.full_places(article))
+    except Exception:
+        pass
     stems = {_stem(w) for w in art_words}
     out = []
     # 1) the place named in the headline / location must be in the article
@@ -68,7 +116,14 @@ def grounding_problems(d, article):
             if re.search(r"(ூர்|புரம்|பாளையம்|பட்டி|பேட்டை|கோடு|மலை|நகர்|பாளை|ம்பட்டி)", w) and _stem(w) not in stems:
                 out.append(f"not grounded: place word '{w}' is not in the article")
     loc = (d.get("slides_spec") or {}).get("loc", "")
-    for w in _tamil_words(loc):
+    if NO_PLACE.search(loc):      # owner 2 Nov (RN-289: loc 'விவரம் இல்லை') - a location never says that it is not known
+        out.append(f"not grounded: location '{loc}' is not a place: write the town or village the article names (never 'விவரம் இல்லை' / unknown)")
+        loc = ""
+    loc_words = re.findall(r"[\u0B80-\u0BFF]+", loc)
+    inits = _initials(article)
+    for i, w in enumerate(loc_words):
+        if len(w) < 4 or (i + 1 < len(loc_words) and (_initial(w), _stem(loc_words[i + 1])) in inits):
+            continue      # 'பரமத்தி வேலூர்' when the article writes 'ப.வேலுார்'
         if _stem(w) not in stems and w not in ("மாவட்டம்", "நாமக்கல்"):
             out.append(f"not grounded: location '{w}' is not in the article")
     # 2) most words of the reel script and slides must come from the article
@@ -84,13 +139,19 @@ def grounding_problems(d, article):
     return out
 
 
+DANGLING = re.compile(r"(க்|ச்|த்|ப்)$")      # a Tamil word ending in a doubling consonant always runs into the next word
+
+
 def _cut(text, n):
     """shorten to at most n characters at a word boundary (keeps the words that fit; the facts stay whole)"""
     t = (text or "").strip()
     if len(t) <= n:
         return t
     c = t[:n]
-    return (c[:c.rfind(" ")] if " " in c else c).rstrip(" ,;:-")
+    c = (c[:c.rfind(" ")] if " " in c else c).rstrip(" ,;:-")
+    while " " in c and DANGLING.search(c):      # never end on a word that joins the next one ('சிறந்த 3 இறுதிப்')
+        c = c[:c.rfind(" ")].rstrip(" ,;:-")
+    return c
 
 
 def autofix(d):
@@ -102,6 +163,11 @@ def autofix(d):
     if isinstance(sp, dict):
         sp["v"] = 3
         sp["hl1"] = _cut(sp.get("hl1", ""), 40)
+        loc_ = str(sp.get("loc") or "")
+        town = loc_.split(",")[0].strip()
+        if town and place_words(town) and not NO_PLACE.search(loc_) and not district_only(loc_) \
+                and ":" not in sp["hl1"] and not names_place(sp["hl1"] + " " + str(sp.get("hl2") or ""), loc_) and len(town) + 2 + len(sp["hl1"]) <= 40:
+            sp["hl1"] = f"{town}: {sp['hl1']}"      # owner 2 Nov: the place is in the first headline on screen
         sp["hl2"] = _cut(sp.get("hl2", ""), 28)
         sl = sp.get("slides") or []
         sl = sl[:4]
@@ -239,6 +305,8 @@ def validate(d, article, today_digits=("2026",)):
         for j, l in enumerate(ln, 1):
             if len(_tags(l)) > 60:
                 p.append(f"slide {i} line {j} longer than 60 characters")
+            if DANGLING.search(_tags(l).strip(" .,;:")):
+                p.append(f"slide {i} line {j} is cut off mid-phrase ('{_tags(l)[-20:]}') - write a complete short phrase")
     # scenes: the reel is built from reel_script, so the count of scenes does not block a story
     rs = d["reel_script"].strip()
     if re.search(r"[A-Za-z]", rs):
@@ -292,6 +360,7 @@ def validate(d, article, today_digits=("2026",)):
     if stray:
         p.append("numbers not found in the article: " + ", ".join(stray[:6]))
     p += grounding_problems(d, article)
+    p += place_problems(d)
     blob_all = " ".join([d.get("tamil_headline", ""), rs, cap, json.dumps(sp, ensure_ascii=False)])
     foreign = sorted(set(re.findall(r"[\u0900-\u0B7F\u0C00-\u0D7F\u3040-\u30FF\u3400-\u9FFF\uAC00-\uD7AF]", blob_all)))
     if foreign:      # owner 29 Oct: letters of another script inside Tamil words (Coimbatore RN-5, RN-20 ...)

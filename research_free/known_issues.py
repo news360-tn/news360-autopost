@@ -110,11 +110,23 @@ def _sentences(t):
     return [x for x in re.split(r"(?<=[.!?])\s+", t.strip()) if x]
 
 
+LOOKALIKE = dict(zip("аеорсухкмтіјвнАВЕКМНОРСТХІЈЅοΟαΑεΕτΤνΝ", "aeopcyxkmtijbhABEKMHOPCTXIJSoOaAeEtTvN"))
+_LOOKALIKE_IN_WORD = re.compile("(?<=[A-Za-z])[%s]|[%s](?=[A-Za-z])" % ((("".join(LOOKALIKE)),) * 2))
+
+
+def latin_lookalikes(s):
+    """owner 2 Nov (RN-288 'Mahа' with a Russian 'а'): a look-alike letter inside an English word -> the English letter"""
+    return _LOOKALIKE_IN_WORD.sub(lambda m: LOOKALIKE[m.group(0)], s) if isinstance(s, str) else s
+
+
 def repair(story):
     """owner 29 Oct: an issue that CAN be fixed is fixed, not a reason to lose the news. Returns a copy with: sentences about 'the article'
     removed, a word or sentence said twice said once, card lines cut mid-phrase trimmed to whole words. What cannot be fixed (letters of
     another script left after verify.clean_text, English words in the voice) is still caught by problems()."""
     out = dict(story)
+    for k in ("headline_ta", "headline_en", "tamil_headline", "english_headline", "reel_script", "caption", "slides_spec"):
+        if isinstance(out.get(k), str):
+            out[k] = latin_lookalikes(out[k])
     for k in ("reel_script", "caption"):
         t = str(out.get(k) or "")
         if not t:

@@ -210,12 +210,25 @@ def shares_words(a, b):
     return difflib.SequenceMatcher(None, n(a), n(b)).ratio() >= 0.75
 
 
+def different_places(a, b):
+    """owner 2 Nov (review): two headlines naming different towns of the district are two news (research_free/allnews.places_in)"""
+    try:
+        import sys as _sys, pathlib as _pl
+        p = str(_pl.Path(__file__).resolve().parent.parent / "research_free")
+        if p not in _sys.path:
+            _sys.path.append(p)
+        import allnews
+        return allnews.different_places(a, b)
+    except Exception:
+        return False
+
+
 def similar(a, b, thr, other_filed=None, today=None):
     """True when headline a and b are the same news. A repeating-price topic (e.g. today's egg price) counts as the same
     only when the other story was filed the same day - tomorrow's price is a new post."""
     import difflib
     if (not a or not b or difflib.SequenceMatcher(None, a, b).ratio() <= thr or different_numbers(a, b)
-            or different_power_cut(a, b, other_filed, today) or not shares_words(a, b)):
+            or different_power_cut(a, b, other_filed, today) or not shares_words(a, b) or different_places(a, b)):
         return False
     if recurring(a) or recurring(b):
         today = today or datetime.datetime.now(IST).date()

@@ -646,7 +646,7 @@ function autoPending_() {
   sh.getRange(2, 1, last - 1, NCOLS).getValues().forEach(function (v, i) {
     var r = rowObj_(v, i + 2);
     if (r.post_status === 'Auto images' && r.prompts) {
-      out.push({ row: r.row, story_id: r.story_id, prompts: String(r.prompts), category: r.category, location: r.location, post_to: r.post_to, headline_ta: r.headline_ta, headline_en: r.headline_en, researched: r.researched });
+      out.push({ row: r.row, story_id: r.story_id, source: r.source, prompts: String(r.prompts), category: r.category, location: r.location, post_to: r.post_to, headline_ta: r.headline_ta, headline_en: r.headline_en, researched: r.researched });
     }
   });
   return out;

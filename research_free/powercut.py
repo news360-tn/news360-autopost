@@ -93,6 +93,7 @@ def save(st):
     cut = (datetime.datetime.now(IST) - datetime.timedelta(days=4)).isoformat()
     st["seen"] = {u: v for u, v in st.get("seen", {}).items() if v.get("at", "") >= cut}      # 4 days of opened links
     st["done"] = {k: v for k, v in st.get("done", {}).items() if v.get("at", "") >= cut}
+    st["retried"] = {k: v for k, v in st.get("retried", {}).items() if v.get("at", "") >= cut}
     STATE.parent.mkdir(parents=True, exist_ok=True)
     STATE.write_text(json.dumps(st, ensure_ascii=False, indent=1), encoding="utf-8")
 
@@ -193,6 +194,19 @@ def cmd_find():
     for p in posted:
         d, _ = fr().cut_day(p["title"], p["published"])
         p["cut_day"] = d.isoformat() if d else ""
+    # owner 2 Nov (review): a notice found earlier whose story never reached the Sheet (the writer failed) is tried again
+    try:
+        rows_all = list(recent) + list(bridge_get("queue").get("rows", []))
+    except Exception:
+        rows_all = list(recent)
+    for k, v in list(st.get("done", {}).items()):
+        age_min = (now - datetime.datetime.fromisoformat(v.get("at") or now.isoformat())).total_seconds() / 60
+        tries = (st.setdefault("retried", {}).get(k) or {}).get("n", 0)
+        if 30 < age_min < 12 * 60 and tries < 2 and rows_all and status([k], rows_all).get(k) == "not written":
+            st["retried"][k] = {"n": tries + 1, "at": now.isoformat()}      # owner 2 Nov (review): a notice the writer refuses is not retried for ever
+            log(f"not written last time - tried again ({tries + 1}/2): {v.get('title', '')[:70]}")
+            st["done"].pop(k, None)
+            st["seen"].pop(v.get("url", ""), None)
     found, reasons = [], {}
     for it in sorted(links(), key=lambda x: site_rank(x["url"])):
         u = it["url"]
@@ -202,6 +216,9 @@ def cmd_find():
         if old and old.get("power_cut") and u in {v["url"] for v in st["done"].values()}:
             continue
         n, why = check(it, today, now)
+        if why.startswith("could not open"):      # owner 2 Nov (review): a 502 is not 'not a power cut' - opened again next run
+            reasons[why[:14]] = reasons.get(why[:14], 0) + 1
+            continue
         st["seen"][u] = {"at": now.isoformat(), "power_cut": bool(n) or why.startswith(("cut day", "power cut ends")), "why": why,
                          "title": it.get("_title", it.get("title", ""))}
         if not n:

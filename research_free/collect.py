@@ -5,7 +5,7 @@ from pathlib import Path
 import requests
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-import llm, sources, run, allnews
+import llm, run, allnews
 
 IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 BRIDGE_URL, BRIDGE_KEY = os.environ.get("BRIDGE_URL", ""), os.environ.get("BRIDGE_KEY", "")
@@ -141,18 +141,21 @@ def bridge(action, **kw):
 # power cut 23,720 / 863 / 10.8 > weather 1,804 / 117 / 10.0 > crime 882 / 235 / 10.2 > accident 792 / 68 / 9.6 > jobs ~300-450 / 49 / 6.9
 # > politics, temple, prices 290-512 / 4-13 / 6-7 > school-college, civic 390-423 / 0.6-2 / 4.6-5.3. (Before: prices 9, school 7, crime 4.)
 # learned.boost (insights weights, updated daily) is still added on top.
+# owner 2 Nov (insights, 234 reels, median views / watch / shares): crime 3,713 / 13.5 s / 7,056 > weather 2,933 / 8.7 s / 1,206 >
+# accident 506 / 7.9 s > school 408, prices 331-403, camps 385, temple 377, civic 325 (all ~5 s watch, almost no shares).
+# Crime 9 -> 10 (with power cuts), jobs 7 -> 6, notices / roads 5 -> 4, prices 5 -> 3, temple / civic 4 -> 3.
 INTEREST = [
     (10, ("மின்தடை", "மின் தடை", "மின்நிறுத்த", "மின் நிறுத்த", "மின் வெட்டு", "மின்வெட்டு", "மின் விநியோகம் நிறுத்தம்")),
     (9, ("மழை", "வானிலை", "புயல்", "வெள்ளம்", "வெப்பம்", "பள்ளி விடுமுறை", "விடுமுறை")),
-    (9, ("கொலை", "கைது", "திருட்டு", "திருடிய", "கொள்ளை", "மோசடி", "வழிப்பறி", "நகை பறிப்பு", "பறிமுதல்", "போலீசார்", "போலீஸ்",
+    (10, ("கொலை", "கைது", "திருட்டு", "திருடிய", "கொள்ளை", "மோசடி", "வழிப்பறி", "நகை பறிப்பு", "பறிமுதல்", "போலீசார்", "போலீஸ்",
          "தற்கொலை", "மணல் கடத்தல்")),
     (8, ("விபத்து", "மோதி", "பலி", "உயிரிழ", "தீ விபத்து", "தீப்பிடி", "கவிழ்ந்", "மீட்பு")),
-    (7, ("வேலைவாய்ப்பு", "வேலை வாய்ப்பு", "முகாம்", "தேர்வு", "ஆட்சேர்ப்பு", "பணியிடம்")),
-    (5, ("ரேஷன்", "மகளிர் உரிமை", "ஓய்வூதியம்", "திட்டம்", "மானியம்", "ஆட்சியர்", "அறிவிப்பு", "சிறப்பு முகாம்")),
-    (5, ("பேருந்து", "சாலை", "போக்குவரத்து", "ரயில்", "பாலம்", "போக்குவரத்து மாற்றம்")),
-    (5, ("முட்டை விலை", "விலை", "காய்கறி", "தக்காளி", "கறிக்கோழி", "மஞ்சள்", "உழவர் சந்தை", "சந்தை")),
-    (4, ("திருவிழா", "கோவில்", "கொல்லிமலை", "சுற்றுலா")),
-    (4, ("குடிநீர்", "கொசு", "குப்பை", "சாக்கடை", "பாதாளச் சாக்கடை", "தண்ணீர்")),
+    (6, ("வேலைவாய்ப்பு", "வேலை வாய்ப்பு", "முகாம்", "தேர்வு", "ஆட்சேர்ப்பு", "பணியிடம்")),
+    (4, ("ரேஷன்", "மகளிர் உரிமை", "ஓய்வூதியம்", "திட்டம்", "மானியம்", "ஆட்சியர்", "அறிவிப்பு", "சிறப்பு முகாம்")),
+    (4, ("பேருந்து", "சாலை", "போக்குவரத்து", "ரயில்", "பாலம்", "போக்குவரத்து மாற்றம்")),
+    (3, ("முட்டை விலை", "விலை", "காய்கறி", "தக்காளி", "கறிக்கோழி", "மஞ்சள்", "உழவர் சந்தை", "சந்தை")),
+    (3, ("திருவிழா", "கோவில்", "கொல்லிமலை", "சுற்றுலா")),
+    (3, ("குடிநீர்", "கொசு", "குப்பை", "சாக்கடை", "பாதாளச் சாக்கடை", "தண்ணீர்")),
     (3, ("பள்ளி", "கல்லூரி", "மாணவ", "தேர்வு முடிவு", "உதவித்தொகை", "சேர்க்கை")),
 ]
 
@@ -285,7 +288,7 @@ def same_news(a, b, filed=None, days=3):
     28 Oct: two shared words in short headlines matched old, other news ('140 மி.மீ. மழை' ~ RN-58, 'சர்வீஸ் சாலை குப்பை' ~ RN-69,
     '30ல் விவசாயிகள் குறைதீர் கூட்டம்' ~ RN-140): at least 3 shared stems, and only against stories filed in the last `days` days"""
     x, y = _stems(a), _stems(b)
-    if len(x) < 3 or len(y) < 3 or _fr().different_numbers(a, b) or _fr().different_power_cut(a, b):
+    if len(x) < 3 or len(y) < 3 or _fr().different_numbers(a, b) or _fr().different_power_cut(a, b) or allnews.different_places(a, b):
         return False
     f = _fr().pub_date(filed) if filed else None
     if f and (datetime.datetime.now(_fr().IST).date() - f).days > days:
@@ -319,10 +322,11 @@ def same_event_filed(art, recent, days=1):
     if not scripts:
         return ""
     key = len(scripts)
-    if key not in _EVENT_DF:
+    df = _EVENT_DF.get(key)
+    if df is None:      # owner 2 Nov (review): 3 writer threads share this cache - never clear-then-read (KeyError)
+        df = fr.event_df(scripts)
         _EVENT_DF.clear()
-        _EVENT_DF[key] = fr.event_df(scripts)
-    df = _EVENT_DF[key]
+        _EVENT_DF[key] = df
     mine = fr.pub_date(art.get("published")) or datetime.datetime.now(fr.IST).date()
     text = (art.get("title") or "") + " " + (art.get("text") or "")[:2500]
     for r in recent:
@@ -811,10 +815,8 @@ def file_story(art, res, errors_log, recent, scenes=None):
         d["scenes"], d["tamil_headline"]
     except Exception as e:
         return None, f"bad draft: {e}"
-    HARD = ("not grounded", "numbers not found", "fact-check", "source/outlet", "not a JSON", "missing key")
     # owner 25 Oct: a draft is NOT rejected for length, word count or validator problems. It is rewritten by the models (free, then Claude),
     # and whatever is left goes out with the problems written in its verification note for the owner to see.
-    hard = list(errors)
     # owner 29 Oct (RN-12): a draft whose words mostly do NOT come from a Tamil article is made up -> never filed (fake news rule).
     # Only for Tamil articles: an English article has no Tamil words to compare with, so the check would always fail there.
     if not art.get("manual"):
@@ -1109,7 +1111,7 @@ def main():
     from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
     workers = max(1, int(os.environ.get("WRITE_WORKERS", "3")))      # stories written at the same time (the models answer in parallel)
     reserve = int(os.environ.get("RESERVE_MIN", "6")) * 60           # no new story is started this close to the deadline
-    turn, filed_titles, unsent = [0], [], []
+    filed_titles, unsent = [], []
     running = {}
     pool = ThreadPoolExecutor(max_workers=workers)
     while True:

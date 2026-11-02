@@ -1,4 +1,4 @@
-import os, sys, imagegen
+import os, imagegen
 P = "Photorealistic documentary news photograph, tall vertical 9:16, a police jeep parked on a misty rural road in Namakkal Tamil Nadu at dawn, sharp detail, natural colours, no text"
 for model, build in imagegen.CF_MODELS:
     try:

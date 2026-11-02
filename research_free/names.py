@@ -85,3 +85,133 @@ def spoken(text):
     for a, b in (("ர்வும்", "ரும்"), ("ர்வின்", "ரின்"), ("ர்வுக்கு", "ருக்கு")):      # the ending that followed the abbreviation (ஆர்.டி.ஓ.,வும்)
         text = text.replace(a, b)
     return text
+
+
+# ---- owner 2 Nov: SCREEN text shows the English abbreviations people know (MLA, LPG, DSP ...); the VOICE is not changed.
+# Tamil spells D and T the same (டி) and B and P the same (பி): a word is shown in English ONLY when one of its readings is a known
+# abbreviation below - an unknown one stays in Tamil (a wrong English abbreviation is worse than the Tamil spelling).
+KNOWN_ABBR = {
+    "MLA", "MP", "DSP", "ADSP", "SP", "ASP", "SI", "SSI", "DIG", "IG", "DGP", "VAO", "RDO", "BDO", "DRO", "RTO", "IAS", "IPS", "CBI", "CBCID",
+    "NIA", "TNPSC", "TNEB", "EB", "TNSTC", "LPG", "CNG", "GST", "CCTV", "ATM", "IT", "AC", "TV", "AI", "GH", "ICU", "MBBS", "MD",
+    "PG", "UG", "SSLC", "ITI", "IIT", "NSS", "NCC", "LIC", "SBI", "UPI", "OTP", "KYC", "EMI", "SIM", "PDF", "USB", "PWD", "NH", "CEO",
+    "DMK", "ADMK", "BJP", "PMK", "AIADMK", "TVK", "SIPCOT", "SIDCO", "TIDEL", "COVID", "HIV", "DNA", "CM", "PM", "RTI", "FIR", "ESI", "PF",
+}
+_LETTER_OPTS = {}
+for _k, _v in LATIN.items():
+    _LETTER_OPTS.setdefault(_v, []).append(_k)
+_LETTER_OPTS.update({"எச்": ["H"], "எப்": ["F"], "ஜெட்": ["Z"]})
+LETTER = {k: v[0] for k, v in _LETTER_OPTS.items()}      # a Tamil letter name (used to find runs of spoken letters)
+_LET = "|".join(sorted(map(re.escape, _LETTER_OPTS), key=len, reverse=True))
+DISPLAY_ROLES = [      # the voice says the role in Tamil (spoken() above); the screen shows the abbreviation - longest first
+    ("கூடுதல் காவல் கண்காணிப்பாளர்", "ADSP"), ("காவல் துணை கண்காணிப்பாளர்", "DSP"), ("காவல் கண்காணிப்பாளர்", "SP"),
+    ("சிறப்பு உதவி ஆய்வாளர்", "SSI"), ("காவல் உதவி ஆய்வாளர்", "SI"), ("சட்டமன்ற உறுப்பினர்", "MLA"), ("நாடாளுமன்ற உறுப்பினர்", "MP"),
+    ("கிராம நிர்வாக அலுவலர்", "VAO"), ("வருவாய் கோட்டாட்சியர்", "RDO"), ("வட்டார வளர்ச்சி அலுவலர்", "BDO"), ("மாவட்ட வருவாய் அலுவலர்", "DRO"),
+]
+
+
+# owner 2 Nov: an abbreviation that is also a Tamil word is shown in English only when the next / previous word shows the meaning
+# ('ஏசி பஸ்' = AC bus; 'ஏசி பேசினார்' = scolded - stays Tamil)
+CONTEXT = {"AC": ("பஸ்", "பேருந்து", "அறை", "வசதி", "இயந்திர", "மெஷின்", "ரயில்", "பெட்டி", "மெக்கானிக்", "கடை", "பழுது", "ஓட்டல்", "தியேட்டர்", "திரையரங்க", "காற்று")}
+
+
+def _context_ok(en, prev, nxt):
+    words = CONTEXT.get(en)
+    return not words or any(w and any(w.startswith(c) for c in words) for w in (prev, nxt))
+
+
+def _readings(parts):
+    out = [""]
+    for p in parts:
+        out = [o + x for o in out for x in _LETTER_OPTS[p]]
+        if len(out) > 64:
+            return []
+    return out
+
+
+def _known(parts):
+    """the known abbreviation these Tamil letter names spell ('டி','எஸ்','பி' -> 'DSP'), else ''"""
+    if len(parts) < 2 or not all(p in _LETTER_OPTS for p in parts):
+        return ""
+    return next((r for r in _readings(parts) if r in KNOWN_ABBR), "")
+
+
+def _split_letters(tok):
+    out, i = [], 0
+    while i < len(tok):
+        m = re.match(_LET, tok[i:])
+        if not m:
+            return []
+        out.append(m.group(0))
+        i += len(m.group(0))
+    return out
+
+
+def _abbr_token(tok, prev="", nxt=""):
+    """one screen word: 'எல்பிஜி' / 'டி.எஸ்.பி.' / 'எம்எல்ஏ-வின்' -> 'LPG' / 'DSP' / 'MLA-வின்' (else unchanged)"""
+    m = re.match(r"^([\u0B80-\u0BFF.]+?)(-[\u0B80-\u0BFF]+)?([,.!?:;]*)$", tok)
+    if not m:
+        return tok
+    core, suf, punct = m.group(1), m.group(2) or "", m.group(3)
+    dotted = "." in core or punct.startswith(".")
+    parts = [p for p in core.split(".") if p] if "." in core else _split_letters(core)
+    en = _known(parts)
+    if en and not _context_ok(en, prev, nxt):
+        return tok
+    if en and dotted and punct.startswith(".") and len(parts) >= 2 and "." in core:
+        punct = punct[1:]      # 'டி.எஸ்.பி.' -> 'DSP' (the last dot belongs to the abbreviation)
+    return (en + suf + punct) if en else tok
+
+
+def latin_abbr(text):
+    """screen text (headline, fact cards, summary): Tamil-spelled English abbreviations -> English letters"""
+    if not text:
+        return text
+    for ta, en in DISPLAY_ROLES:
+        text = re.sub(re.escape(ta) + r"(?=$|[\s,.!?:;])", en, text)
+    toks = text.split(" ")
+    out, run = [], []
+    def flush():
+        en = _known(run) if len(run) >= 2 else ""
+        out.extend([en] if en else run)
+        run.clear()
+    for k, t in enumerate(toks):
+        if t in _LETTER_OPTS:
+            run.append(t)
+            continue
+        flush()
+        out.append(_abbr_token(t, toks[k - 1] if k else "", toks[k + 1] if k + 1 < len(toks) else ""))
+    flush()
+    return " ".join(out)
+
+
+def latin_abbr_words(words):
+    """timed subtitle words [(word, start, end)]: spoken letters ('எல்', 'பி', 'ஜி') shown as one word 'LPG' over the same time,
+    the voice's role words shown as the abbreviation, other words through _abbr_token"""
+    out, i = [], 0
+    strip = lambda w: w.rstrip(",.!?:;")
+    while i < len(words):
+        hit = None
+        for ta, en in DISPLAY_ROLES:
+            n = len(ta.split())
+            seg = [w[0] for w in words[i:i + n]]
+            if len(seg) == n and strip(" ".join(seg)) == ta:
+                hit = (en + seg[-1][len(strip(seg[-1])):], n)
+                break
+        if hit:
+            out.append((hit[0], words[i][1], words[i + hit[1] - 1][2]))
+            i += hit[1]
+            continue
+        j = i
+        while j < len(words) and strip(words[j][0]) in _LETTER_OPTS:
+            j += 1
+            if words[j - 1][0] != strip(words[j - 1][0]):
+                break
+        en = _known([strip(w[0]) for w in words[i:j]]) if j - i >= 2 else ""
+        if en:
+            last = words[j - 1][0]
+            out.append((en + last[len(strip(last)):], words[i][1], words[j - 1][2]))
+            i = j
+            continue
+        out.append((_abbr_token(words[i][0], words[i - 1][0] if i else "", words[i + 1][0] if i + 1 < len(words) else ""), words[i][1], words[i][2]))
+        i += 1
+    return out

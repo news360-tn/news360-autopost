@@ -496,6 +496,328 @@ class DateLineNotAStrayNumber(unittest.TestCase):
         row["verification"] = "DRAFT - NOT CLEAN, held from posting - problems: numbers not found in the article: 02, 1000"
         self.assertIn("1000", post.news_hold(row))
 
+
+
+class HoldsOnlyRealProblems(unittest.TestCase):
+    """owner 2 Nov: a missing detail, an abbreviated town, a look-alike letter must not stop good news; a fresh hold is visible"""
+
+    def test_caption_missing_a_fact_posts(self):
+        row = {"verification": "DRAFT - NOT CLEAN, held from posting - problems: caption misses facts of the article (put every one in 📰 முழு விவரம்): 60",
+               "location": "கோவை மாநகராட்சி"}
+        self.assertEqual(post.news_hold(row), "")
+        row["verification"] += "; fact-check: wrong name"
+        self.assertIn("wrong name", post.news_hold(row))
+
+    def test_abbreviated_town_is_grounded(self):
+        import validate
+        art = "நாமக்கல் மாவட்டம், ப.வேலுார் அருகே பாண்டமங்கலத்தில் உள்ள கோவில். பாண்டமங்கலம் மக்கள் திரண்டனர்."
+        d = {"slides_spec": {"loc": "பாண்டமங்கலம், பரமத்தி வேலூர்"}, "tamil_headline": "", "reel_script": "", "caption": ""}
+        self.assertFalse([p for p in validate.grounding_problems(d, art) if "location" in p])
+        d["slides_spec"]["loc"] = "பாண்டமங்கலம், திருச்செங்கோடு"
+        self.assertTrue([p for p in validate.grounding_problems(d, art) if "திருச்செங்கோடு" in p])
+        d["slides_spec"]["loc"] = "விவரம் இல்லை"
+        self.assertTrue([p for p in validate.grounding_problems(d, art) if "not a place" in p])
+
+    def test_lookalike_letters_repaired(self):
+        import known_issues
+        fixed = known_issues.repair({"caption": "Mah\u0430 Kumbabhishekam", "reel_script": "", "slides_spec": "{}"})
+        self.assertEqual(fixed["caption"], "Maha Kumbabhishekam")
+        self.assertEqual(known_issues.latin_lookalikes("\u041c\u043e\u0441\u043a\u0432\u0430"), "\u041c\u043e\u0441\u043a\u0432\u0430")      # a whole Russian word is left alone
+
+    def test_fresh_hold_warns_on_the_run_page(self):
+        src = (ROOT / "poster" / "post.py").read_text(encoding="utf-8")
+        self.assertIn("::warning title=Held from posting", src)
+
+
+
+class LocationOnTheFirstScreen(unittest.TestCase):
+    """owner 2 Nov: people share news of their own area - the town is in loc and in the headline the reel opens with"""
+
+    def test_district_only_and_missing_place_are_reported(self):
+        import validate
+        d = {"slides_spec": {"loc": "நாமக்கல் மாவட்டம்", "hl1": "கும்பாபிஷேகம் விழா", "hl2": ""}}
+        self.assertTrue(validate.place_problems(d))
+        d["slides_spec"]["loc"] = "குமாரபாளையம்"
+        self.assertTrue([p for p in validate.place_problems(d) if "hl1" in p])
+        d["slides_spec"]["hl1"] = "குமாரபாளையம்த்தில் கும்பாபிஷேகம்" if "குமாரபாளையம்".endswith("ம்") else "குமாரபாளையம்யில் கும்பாபிஷேகம்"
+        self.assertEqual(validate.place_problems(d), [])
+
+    def test_autofix_puts_the_town_in_front(self):
+        import validate
+        d = {"slides_spec": {"loc": "குமாரபாளையம்", "hl1": "கணபதி ஆலய கும்பாபிஷேகம்", "hl2": "நாளை காலை", "slides": []}}
+        sp = validate.autofix(d)["slides_spec"]
+        self.assertTrue(sp["hl1"].startswith("குமாரபாளையம்: "))
+        self.assertLessEqual(len(sp["hl1"]), 40)
+        d = {"slides_spec": {"loc": "நாமக்கல் மாவட்டம்", "hl1": "கணபதி ஆலய கும்பாபிஷேகம்", "hl2": "", "slides": []}}
+        self.assertEqual(validate.autofix(d)["slides_spec"]["hl1"], "கணபதி ஆலய கும்பாபிஷேகம்")      # a district is not put in front
+
+
+
+class OldLocationNoteJudgedAgain(unittest.TestCase):
+    """owner 2 Nov (RN-284): a 'location not in the article' note written before the check was fixed does not hold the story for ever"""
+
+    def test_note_lifted_when_the_article_has_the_place(self):
+        from unittest import mock
+        import allnews
+        row = {"story_id": "RN-284", "source": "https://www.dinamalar.com/news/x/1", "location": "Pandamangalam near P.Velur",
+               "verification": "DRAFT - NOT CLEAN, held from posting - problems: not grounded: location 'பரமத்தி' is not in the article",
+               "slides_spec": json.dumps({"loc": "பாண்டமங்கலம், பரமத்தி வேலூர்"}, ensure_ascii=False)}
+        art = "நாமக்கல் மாவட்டம், ப.வேலுார் அருகே பாண்டமங்கலத்தில் உள்ள கோவில் இடிப்பு. " * 6
+        post._ARTICLE_TEXT.clear()
+        with mock.patch.object(allnews, "article_any", return_value={"text": art}):
+            self.assertEqual(post.news_hold(row), "")
+        post._ARTICLE_TEXT.clear()
+        with mock.patch.object(allnews, "article_any", return_value={"text": art.replace("ப.வேலுார்", "மோகனூர்")}):
+            self.assertIn("பரமத்தி", post.news_hold(row))
+        post._ARTICLE_TEXT.clear()
+        with mock.patch.object(allnews, "article_any", side_effect=OSError("offline")):
+            self.assertIn("held", post.news_hold(row))      # article not readable: stays held
+        post._ARTICLE_TEXT.clear()
+
+
+
+class ReviewFixes2Nov(unittest.TestCase):
+    """owner 2 Nov: every fix of the full review stays fixed"""
+
+    def wf(self, name):
+        return (ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
+
+    def test_a_crashed_check_is_red_and_saves_are_retried(self):
+        y = self.wf("post.yml")
+        self.assertIn("CHECK_RC=${PIPESTATUS[0]}", y)
+        self.assertIn('if [ "${CHECK_RC:-0}" != "0" ]; then echo "::error::post.py check crashed', y)
+        self.assertIn("--autostash && git push -q && break", y)
+
+    def test_power_cut_state_is_saved_and_runs_twice_an_hour(self):
+        y = self.wf("powercut.yml")
+        self.assertIn('for f in research_free/archive/powercut_state.json', y)
+        self.assertIn('- cron: "50 0-16 * * *"', y)
+        src = (ROOT / "research_free" / "powercut.py").read_text(encoding="utf-8")
+        self.assertIn('if why.startswith("could not open"):', src)      # a 502 is not 'not a power cut'
+        self.assertIn('not written last time - tried again', src)
+
+    def test_long_reel_drops_the_least_informative_sentence_and_keeps_it_in_the_caption(self):
+        s = ("கோவையில் லாரி மோதி இருவர் பலி. இந்த சம்பவம் அப்பகுதியில் பரபரப்பை ஏற்படுத்தியது. விபத்து காலை 7 மணிக்கு நடந்தது. "
+             "போலீசார் ஓட்டுநரை கைது செய்தனர். மேலும் செய்திகளுக்கு பக்கத்தை பின்தொடருங்கள்.")
+        out, dropped = post.shorten_script_detail(s, 0.8)
+        self.assertTrue(out.startswith("கோவையில் லாரி மோதி இருவர் பலி."))      # the one-line story stays
+        self.assertEqual(dropped, ["இந்த சம்பவம் அப்பகுதியில் பரபரப்பை ஏற்படுத்தியது."])      # no number, no outcome: goes first
+        self.assertIn("7 மணிக்கு", out)
+        self.assertIn("கைது", out)
+        cap = post.add_to_caption("📰 முழு விவரம்:\nவிபத்து\n#Kovai #News", dropped)
+        self.assertLess(cap.index("பரபரப்பை"), cap.index("#Kovai"))
+
+    def test_spaced_posting_and_quota_count_the_story(self):
+        src = (ROOT / "poster" / "post.py").read_text(encoding="utf-8")
+        self.assertIn('per_story = 2 if CONFIG.get("post_stories", True) else 1', src)
+        self.assertIn('minutes_since_last_post(p) < spacing', src)
+        self.assertNotIn('"slot": k * 6, "prebuild": ""} for k, i in enumerate(ids)', src)      # no 12-story runs sleeping for an hour
+        post.IG_RECENT["testpage"] = [("2026-11-02T09:00:00+0000", "x")]
+        self.assertGreater(post.minutes_since_last_post("testpage"), 0)
+        post.IG_RECENT["testpage"] = []
+        self.assertEqual(post.minutes_since_last_post("testpage"), 1e9)
+        post.IG_RECENT.pop("testpage", None)
+
+    def test_no_publish_when_the_sheet_cannot_be_read(self):
+        from unittest import mock
+        with mock.patch.object(post, "bridge_get", side_effect=OSError("down")), mock.patch.object(post.time, "sleep"):
+            self.assertFalse(post.still_needed("RN-1", "x", "reel"))
+
+    def test_posted_is_recorded_right_after_publishing(self):
+        src = (ROOT / "poster" / "post.py").read_text(encoding="utf-8")
+        i = src.index("mid, link, collab_ok, why = publish_reel(token, url, caption, collab, cover_url)")
+        seg = src[i:i + 1200]
+        self.assertLess(seg.index('bridge_post("posted"'), seg.index("first_comment(token, mid, sid, 1)"))
+        self.assertIn("NOT posted again", src)
+
+    def test_story_room_reads_the_quota_fresh(self):
+        src = (ROOT / "poster" / "post.py").read_text(encoding="utf-8")
+        self.assertIn("LIMIT.pop(PAGE, None)", src)
+
+    def test_photo_fixes(self):
+        rp = (ROOT / "research_free" / "realphoto.py").read_text(encoding="utf-8")
+        self.assertIn("if x1 > 0 and y1 > 0]", rp)      # marks inside the kept photo are removed
+        self.assertIn("NEEDS_RETRY[0] = True", rp)
+        self.assertIn("real photo check out of free quota", (ROOT / "poster" / "post.py").read_text(encoding="utf-8"))
+        r4 = (ROOT / "reel" / "reel4.py").read_text(encoding="utf-8")
+        self.assertIn("h.style.opacity=(t<D.hook_end)?(1-hout):0;", r4)      # headline from frame 0
+        self.assertIn("ffmpeg encoder failed", r4)
+
+    def test_different_towns_are_different_news(self):
+        a, b = "வெண்ணந்தூர் அருகே லாரி மோதி பைக்கில் சென்றவர் பலி", "மோகனூர் அருகே லாரி மோதி பைக்கில் சென்றவர் பலி"
+        self.assertFalse(fr.similar(a, b, 0.55))
+        self.assertTrue(fr.similar(a, a.replace("அருகே", "அருகில்"), 0.55))
+        self.assertTrue(allnews.different_places(a, b))
+        self.assertFalse(collect.same_news(a + " போலீஸ் விசாரணை", b + " போலீஸ் விசாரணை"))
+
+    def test_short_town_names_are_grounded(self):
+        import validate
+        d = {"slides_spec": {"loc": "குமாரபாளையம்"}, "tamil_headline": "", "reel_script": "", "caption": ""}
+        self.assertFalse([p for p in validate.grounding_problems(d, "கு.பாளையம் அருகே லாரி மோதி விபத்து. இருவர் காயம். போலீசார் விசாரணை. பள்ளிபாளையம் சாலையில் நடந்தது.") if "location" in p])
+
+    def test_writer_rules_tell_the_full_news(self):
+        rules = (ROOT / "research_free" / "rules.md").read_text(encoding="utf-8")
+        self.assertNotIn('say "விவரம் இன்னும் தெரியவரவில்லை"', rules)
+        self.assertNotIn("Say the KEY facts once each", rules)
+        self.assertIn("Tell EVERY fact of the article once each", rules)
+        self.assertNotIn("ராஜா\", \"14 வயதான கவுசிக்", rules)
+        run_py = (ROOT / "research_free" / "run.py").read_text(encoding="utf-8")
+        self.assertIn("70-160 words: the reel is at most 90 seconds", run_py)
+        self.assertNotIn("the reel is at most 60 seconds", run_py)
+
+    def test_event_cache_is_thread_safe_and_followers_tracked(self):
+        src = (ROOT / "research_free" / "collect.py").read_text(encoding="utf-8")
+        self.assertIn("df = _EVENT_DF.get(key)", src)
+        self.assertIn('fields="followers_count,media_count"', (ROOT / "poster" / "insights.py").read_text(encoding="utf-8"))
+
+    def test_namakkal_place_endings_and_rasipuram_pin(self):
+        self.assertTrue(allnews.has_place("மோகனூரில் விபத்து"))
+        self.assertTrue(allnews.has_place("வெண்ணந்தூரில் கிராம சபை"))
+        self.assertIn("ஆர்.புதுப்பட்டி", allnews.RASIPURAM)
+        self.assertIn('("இராசிபுரம்" if PAGE == "rasipuram" else "நாமக்கல்")', (ROOT / "poster" / "post.py").read_text(encoding="utf-8"))
+
+
+
+class SpacedPostingMatrix(unittest.TestCase):
+    """owner 2 Nov (review): one story per page per run, 12+ minutes after the page's last post; urgent news never waits;
+    a reel + its story count 2 in Instagram's 50"""
+
+    def run_check(self, since):
+        from unittest import mock
+        import tempfile as _t
+        rows = [{"story_id": f"RN-{i}", "row": i} for i in (1, 2, 3)]
+        out = _t.NamedTemporaryFile("w+", delete=False)
+        patches = [mock.patch.object(post, n, v) for n, v in {
+            "live_allowed": lambda: True, "missing_setup": lambda: False, "story_catchup": lambda *a, **k: None,
+            "bridge_get": lambda a, **k: {"rows": rows if a == "queue" else []}, "pick_all": lambda rs: list(rows),
+            "pages_of": lambda r: ["pg"], "page_done": lambda r, p: False, "limit_reached": lambda p: False,
+            "prime_wait": lambda r, now=None: "", "is_urgent": lambda r: r["story_id"] == "RN-3",
+            "minutes_since_last_post": lambda p: since, "ready": lambda r: False, "set_started": lambda r: True,
+            "age_hours": lambda r: 1.0, "auto_images": lambda: None, "PREBUILD": "", "TOTAL": {"pg": 50}, "USED": {"pg": 10},
+        }.items()]
+        for p in patches:
+            p.start()
+        try:
+            with mock.patch.dict(os.environ, {"GITHUB_OUTPUT": out.name}), mock.patch.object(sys, "argv", ["post.py", "check"]):
+                post.main()
+        finally:
+            for p in patches:
+                p.stop()
+        txt = open(out.name).read()
+        os.unlink(out.name)
+        return json.loads(txt.split("matrix=", 1)[1].split("\n")[0])["include"]
+
+    def test_one_per_page_and_urgent_news_never_waits(self):
+        inc = self.run_check(1e9)
+        self.assertEqual([(x["story"], x["slot"]) for x in inc], [("RN-1", 0), ("RN-3", 6)])      # RN-2 waits for the next run
+
+    def test_nothing_but_urgent_news_inside_the_gap(self):
+        inc = self.run_check(5.0)
+        self.assertEqual([(x["story"], x["slot"]) for x in inc], [("RN-3", 0)])
+
+
+
+class EnglishAbbreviationsOnScreen(unittest.TestCase):
+    """owner 2 Nov: the reel SHOWS MLA / LPG / DSP in English letters; the VOICE still says them in Tamil"""
+
+    def test_screen_text(self):
+        import names
+        cases = {"எம்எல்ஏ ராமலிங்கம் ஆய்வு": "MLA ராமலிங்கம் ஆய்வு", "எல்பிஜி சிலிண்டர் விலை": "LPG சிலிண்டர் விலை",
+                 "டி.எஸ்.பி. விசாரணை": "DSP விசாரணை", "டிஎஸ்பி விசாரணை": "DSP விசாரணை", "எம்எல்ஏ-வின் அலுவலகம்": "MLA-வின் அலுவலகம்",
+                 "காவல் துணை கண்காணிப்பாளர் விசாரணை": "DSP விசாரணை", "சிசிடிவி கேமரா": "CCTV கேமரா", "ஜிஎஸ்டி மோசடி": "GST மோசடி",
+                 "பிடிஓ அலுவலகம்": "BDO அலுவலகம்", "டிஎன்இபி அறிவிப்பு": "TNEB அறிவிப்பு"}
+        for ta, shown in cases.items():
+            self.assertEqual(names.latin_abbr(ta), shown, ta)
+
+    def test_tamil_words_are_never_changed(self):
+        import names
+        for t in ("இடி மின்னலுடன் மழை", "பிடி வாரண்ட்", "ஓடி வந்தார்", "கேடி கைது", "தி.மு.க. கூட்டம்"):
+            self.assertEqual(names.latin_abbr(t), t)
+
+    def test_subtitles_keep_their_timing_and_the_voice_is_unchanged(self):
+        import names
+        w = [(x, i, i + 1) for i, x in enumerate("டி என் பி எஸ் சி தேர்வு எல் பி ஜி. காவல் துணை கண்காணிப்பாளர் கூறினார்".split())]
+        out = names.latin_abbr_words(w)
+        self.assertEqual([x[0] for x in out], ["TNPSC", "தேர்வு", "LPG.", "DSP", "கூறினார்"])
+        self.assertEqual((out[0][1], out[0][2]), (0, 5))      # 'TNPSC' shown while the 5 letters are spoken
+        self.assertEqual(names.spoken("டி.எஸ்.பி. விசாரணை"), "காவல் துணை கண்காணிப்பாளர் விசாரணை")      # the voice is not changed
+        src = (ROOT / "reel" / "reel4.py").read_text(encoding="utf-8")
+        self.assertIn("wt = names.latin_abbr_words(wt)", src)
+        self.assertIn('spec["hook"] = [names.latin_abbr(h) for h in spec["hook"]]', src)
+
+
+
+class IndependentReviewFixes(unittest.TestCase):
+    """owner 2 Nov: the second (independent) review's findings stay fixed"""
+
+    def test_a_failed_article_fetch_is_fetched_once(self):
+        from unittest import mock
+        calls = []
+        row = {"story_id": "RN-9", "source": "https://x.example/a", "slides_spec": "{}"}
+        post._ARTICLE_TEXT.clear()
+        with mock.patch.object(allnews, "article_any", side_effect=lambda u: calls.append(u) or (_ for _ in ()).throw(OSError("down"))):
+            for _ in range(4):
+                self.assertTrue(post._location_still_wrong(row, "not grounded: location 'x' is not in the article"))
+        self.assertEqual(len(calls), 1)
+        post._ARTICLE_TEXT.clear()
+
+    def test_over_the_cap_only_urgent_news_is_scheduled(self):
+        from unittest import mock
+        with mock.patch.object(post, "SOFT_CAP", 10):
+            inc = SpacedPostingMatrix.run_check(self, 1e9)
+        self.assertEqual([x["story"] for x in inc], ["RN-3"])
+
+    def test_cache_caption_watchdog_powercut_photos(self):
+        src = (ROOT / "poster" / "post.py").read_text(encoding="utf-8")
+        self.assertIn("save_cache(sid, key, dict(media, caption=caption), checks)", src)
+        self.assertIn('caption = cached.get("caption") or caption', src)
+        self.assertIn('srcs = {x.get("story_id"): x.get("source") for x in bridge_get("queue")', src)
+        y = (ROOT / ".github" / "workflows" / "post.yml").read_text(encoding="utf-8")
+        self.assertEqual(y.count("if: always() && github.event_name == 'schedule' && env.BRIDGE_URL != ''"), 2)
+        pc = (ROOT / "research_free" / "powercut.py").read_text(encoding="utf-8")
+        self.assertIn("tries < 2", pc)
+        rp = (ROOT / "research_free" / "realphoto.py").read_text(encoding="utf-8")
+        self.assertIn("never a stale flag from the story before", rp)
+        self.assertIn("source: r.source", (ROOT / "apps_script" / "Code.gs").read_text(encoding="utf-8"))
+
+
+
+class RasipuramAreaCovered(unittest.TestCase):
+    """owner 2 Nov: all of Rasipuram taluk goes to Rasipuram 360 - endings and paper spellings included (RN-211, RN-252, RN-273, RN-287
+    went to Namakkal 360); the villages are searched too (1 Rasipuram candidate vs 76 others per round)"""
+
+    def test_villages_with_endings_and_spellings_go_to_rasipuram(self):
+        for t in ("மல்லசமுத்திரத்தில் லாட்டரி விற்ற வாலிபர் கைது", "புதுச்சத்திரத்தில் 4 கடைகளுக்கு சீல்",
+                  "ஆண்டகலூர் கேட்டில் சர்வீஸ் சாலை பணி", "பிள்ளாநல்லூரில் குடிநீர் தட்டுப்பாடு", "குருசாமிபாளையத்தில் நெசவாளர்கள் போராட்டம்",
+                  "வெண்ணந்தூரில் கிராம சபை", "ராசிபுரத்தில் விபத்து", "பட்டணம் பேரூராட்சியில் சாலை பணி", "வடுகம் கிராமத்தில் விழா"):
+            self.assertEqual(allnews.area_of_story(t, ""), "R", t)
+
+    def test_other_places_stay_on_namakkal(self):
+        for t in ("மோகனூரில் விபத்து", "திருச்செங்கோட்டில் விபத்து", "சென்னைப் பட்டணம் போல மாறும் நாமக்கல்", "நாமக்கல் மாவட்டத்தில் கனமழை",
+                  "வடுகப்பட்டியில் கொலை"):
+            self.assertEqual(allnews.area_of_story(t, ""), "N", t)
+
+    def test_village_searches(self):
+        for q in ("பிள்ளாநல்லூர்", "ஆர்.புதுப்பட்டி", "அத்தனூர்", "சீராப்பள்ளி", "ஆண்டகளூர்", "குருசாமிபாளையம்", "முள்ளுக்குறிச்சி"):
+            self.assertIn(q, allnews.QUERIES)
+
+
+
+class InsightsBeforeEveryRound(unittest.TestCase):
+    """owner 2 Nov: before every collection round the latest Instagram insights are read, so the round's news follow what viewers
+    watch and share now (was once a day at 02:10)"""
+
+    def test_insights_step_runs_before_collecting_and_is_saved(self):
+        y = (ROOT / ".github" / "workflows" / "research_free.yml").read_text(encoding="utf-8")
+        i, j = y.index("Read the latest Instagram insights"), y.index("- name: Collect, write, validate, send")
+        self.assertLess(i, j)
+        self.assertIn("python -u poster/insights.py 2>&1 | tail -4 || true", y)      # never stops the round
+        self.assertIn("research_free/learned.json", y[j:])
+
+    def test_one_call_per_reel(self):
+        src = (ROOT / "poster" / "insights.py").read_text(encoding="utf-8")
+        self.assertIn('metric=",".join(MET)', src)
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -1154,7 +1476,8 @@ class PriorityFromInsights(unittest.TestCase):
         crime, acc = self.s("எருமப்பட்டியில் தொடர் கைவரிசை: 4 வாலிபர்கள் கைது"), self.s("தனியார் பேருந்து மோதி தொழிலாளி உயிரிழப்பு")
         jobs, price = self.s("தனியார் வேலைவாய்ப்பு முகாம்"), self.s("முட்டை விலை ரூ.5.70 ஆக நீடிப்பு")
         temple, school = self.s("அரப்பளீஸ்வரர் கோவில் திருவிழா"), self.s("அரசு பள்ளியில் ஆண்டு விழா")
-        self.assertTrue(cut > rain >= crime > acc > jobs > price > temple > school, (cut, rain, crime, acc, jobs, price, temple, school))
+        # owner 2 Nov (insights, 234 reels): crime is the most watched and shared after power cuts; prices / temple / school last
+        self.assertTrue(cut >= crime > rain > acc > jobs > price and jobs > temple and jobs > school, (cut, rain, crime, acc, jobs, price, temple, school))
 
     def test_exam_and_election_are_not_temple_news(self):      # 'தேர்' (temple car) is inside தேர்வு / தேர்தல்
         self.assertNotIn("தேர்", [k for score, keys in collect.INTEREST for k in keys])

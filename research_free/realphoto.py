@@ -43,6 +43,8 @@ CREDIT = [("dinamalar", "Dinamalar"), ("dinamani", "Dinamani"), ("dinakaran", "D
           ("bbc", "BBC Tamil"), ("tamilmaninewstoday", "Tamilmani News")]
 
 
+NEEDS_RETRY = [False]      # True when for_story() gave up only because the Gemini photo check was out of quota
+
 def credit_of(url):
     host = (urlparse(url or "").netloc or "").lower()
     for k, name in CREDIT:
@@ -263,7 +265,7 @@ def remove_marks(ph, marks, origin=(0, 0)):
         return None
     ph = ph.crop((l, t, r, b))
     inner = [(x0 - l, y0 - t, x1 - l, y1 - t) for x0, y0, x1, y1 in inner]
-    inner = [(max(0, x0), max(0, y0), min(ph.width, x1), min(ph.height, y1)) for x0, y0, x1, y1 in inner if x1 > l and y1 > t]
+    inner = [(max(0, x0), max(0, y0), min(ph.width, x1), min(ph.height, y1)) for x0, y0, x1, y1 in inner if x1 > 0 and y1 > 0]      # owner 2 Nov (review): x1 > l dropped real marks
     if not inner:
         return ph
     if sum((x1 - x0) * (y1 - y0) for x0, y0, x1, y1 in inner) > 0.10 * ph.width * ph.height:
@@ -366,6 +368,7 @@ def compose(photo, credit, zoom=1.0):
 def for_story(url, headline, n=2, published=None, page=None, fetch=None, log=print):
     """up to n 9:16 JPEG pictures (bytes) made from the source article's own relevant photos, and the credit; ([], "") when none fits.
     Never raises: the caller falls back to AI pictures."""
+    NEEDS_RETRY[0] = False      # owner 2 Nov (review): never a stale flag from the story before
     if os.environ.get("REAL_PHOTOS", "1") != "1" or not url or not url.startswith("http"):
         return [], ""
     t0 = time.time()
@@ -378,6 +381,7 @@ def for_story(url, headline, n=2, published=None, page=None, fetch=None, log=pri
             return [], ""
         credit = credit_of(url)
         key = os.environ.get("GEMINI_API_KEY")
+        NEEDS_RETRY[0] = False
         good = []
         for u, cap, main in cands[:MAX_CANDIDATES]:
             if time.time() - t0 > float(os.environ.get("REAL_PHOTO_SECONDS", "120")):
@@ -394,9 +398,14 @@ def for_story(url, headline, n=2, published=None, page=None, fetch=None, log=pri
             if min(im.size) < 200 or im.width / im.height > 3.2 or im.height / im.width > 3.2:
                 continue      # icon / strip / banner
             if key and vision_resting():
-                log("real photo: vision check resting (free quota busy) -> AI pictures")
+                NEEDS_RETRY[0] = True      # owner 2 Nov (review): the article HAS a photo - checked again in a later run
+                log("real photo: vision check resting (free quota busy)")
                 return [], ""
             v = vision(im, headline, key) if key else None
+            if v is None and key and vision_resting():
+                NEEDS_RETRY[0] = True
+                log("real photo: vision check out of free quota")
+                return [], ""
             if v is None and (key or not main):
                 continue      # without the vision check only the page's own main picture is trusted (still never a file photo)
             if v is not None and not (v["match"] and v["real_photo"]):

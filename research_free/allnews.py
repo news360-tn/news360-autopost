@@ -16,7 +16,9 @@ IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 # Rasipuram town + its taluk villages (same list as rules.md) -> posted on Namakkal 360 + Rasipuram 360 (collab)
 RASIPURAM = ["ராசிபுரம்", "நாமகிரிப்பேட்டை", "வெண்ணந்தூர்", "புதுச்சத்திரம்", "மெட்டாலா", "ஆயில்பட்டி", "சீராப்பள்ளி",
              "சிங்களாந்தபுரம்", "ஆண்டகளூர்", "அத்தனூர்", "மல்லசமுத்திரம்", "குருக்கபுரம்", "அணைப்பாளையம்", "முத்துக்காளிப்பட்டி",
-             "காக்காவேரி", "வடுகம்", "ராசிபுரத்தில்", "ராசிபுரம்"]
+             "காக்காவேரி", "வடுகம்", "ஆர்.புதுப்பட்டி", "ராசிபுரத்தில்", "ராசிபுரம்",
+             # owner 2 Nov: the rest of Rasipuram taluk + the spellings papers use (RN-273 "ஆண்டகலூர் கேட்" went to Namakkal 360)
+             "ஆண்டகலூர்", "பிள்ளாநல்லூர்", "பிள்ளாநல்லுார்", "குருசாமிபாளையம்", "முள்ளுக்குறிச்சி", "பட்டணம் பேரூராட்சி"]
 # searches that cover the whole district (every taluk and big town)
 QUERIES = ["நாமக்கல்", "ராசிபுரம்", "திருச்செங்கோடு", "பரமத்தி வேலூர்", "குமாரபாளையம்", "பள்ளிபாளையம்", "சேந்தமங்கலம்", "கொல்லிமலை",
            "மோகனூர்", "நாமகிரிப்பேட்டை", "வெண்ணந்தூர்", "எருமப்பட்டி", "நாமக்கல் மாவட்டம்", "நாமக்கல் முட்டை விலை",
@@ -25,7 +27,10 @@ QUERIES = ["நாமக்கல்", "ராசிபுரம்", "திர
            "நாமக்கல் ஆட்சியர் அறிவிப்பு", "நாமக்கல் மாவட்ட நிர்வாகம்", "நாமக்கல் வேலைவாய்ப்பு முகாம்", "நாமக்கல் ஆட்சேர்ப்பு",
            "நாமக்கல் சிறப்பு முகாம்", "நாமக்கல் குறைதீர் கூட்டம்", "Namakkal power shutdown", "Namakkal collector",
            # 27 Oct cross-check: the other spelling, smaller towns and English reports are searched too
-           "இராசிபுரம்", "பரமத்தி", "புதுச்சத்திரம்", "மல்லசமுத்திரம்", "கபிலர்மலை", "ஜேடர்பாளையம்", "வேலகவுண்டம்பட்டி", "எலச்சிபாளையம்",
+           "இராசிபுரம்", "பரமத்தி", "புதுச்சத்திரம்", "மல்லசமுத்திரம்",
+           # owner 2 Nov: Rasipuram taluk villages - their news often does not name Rasipuram (1 Rasipuram candidate vs 76 per round)
+           "பிள்ளாநல்லூர்", "ஆர்.புதுப்பட்டி", "அத்தனூர்", "சீராப்பள்ளி", "ஆண்டகளூர்", "சிங்களாந்தபுரம்", "குருசாமிபாளையம்",
+           "முள்ளுக்குறிச்சி", "மெட்டாலா", "ஆயில்பட்டி", "பட்டணம் ராசிபுரம்", "கபிலர்மலை", "ஜேடர்பாளையம்", "வேலகவுண்டம்பட்டி", "எலச்சிபாளையம்",
            "Namakkal", "Rasipuram", "Tiruchengode", "Kumarapalayam", "Pallipalayam", "Paramathi Velur", "Kolli Hills"]
 # every outlet is also searched on its own (so a channel like News7 Tamil or NDTV Tamil is never missed)
 SITES = {"நியூஸ்7 தமிழ்": "news7tamil.live", "என்டிடிவி தமிழ்": "ndtv.com/tamil", "மாலைமலர்": "maalaimalar.com", "தினத்தந்தி": "dailythanthi.com",
@@ -40,9 +45,23 @@ OUTLET_WORDS = ["தினமலர்", "தினத்தந்தி", "த�
 
 
 def _get(url, timeout=40, headers=None):
-    r = requests.get(url, headers=headers or UA, timeout=timeout, allow_redirects=True)
-    r.raise_for_status()
-    return r
+    """owner 2 Nov (review): 38 of 77 articles 'could not be opened' in one round - a server error / timeout is tried again (3 tries)"""
+    last = None
+    for k in range(3):
+        try:
+            r = requests.get(url, headers=headers or UA, timeout=timeout, allow_redirects=True)
+            r.raise_for_status()
+            return r
+        except requests.HTTPError as e:
+            last = e
+            if e.response is not None and e.response.status_code < 500 and e.response.status_code != 429:
+                raise      # 403 / 404: trying again does not help
+        except (requests.ConnectionError, requests.Timeout) as e:
+            last = e
+            if k >= 1:
+                break      # a server that timed out twice is given up (a round must not wait minutes per link)
+        time.sleep(3 * (k + 1))
+    raise last
 
 
 # Namakkal district places (town / taluk / union / well-known villages). A story that names none of them AND names a state-wide or
@@ -151,6 +170,22 @@ PLACE_STEMS = [w[:-1] if w.endswith("ம்") else w for w in NAMAKKAL_WORDS if 
     "பள்ளிப்பாளைய", "குமாரப்பாளைய", "எலச்சிப்பாளைய", "கொக்கராயன்பேட்"]      # 29 Oct: spellings with ப் (பள்ளிப்பாளையம்) were not found
 
 
+def _stem_forms(w):
+    """a Tamil place name and the stem it keeps before an ending (மோகனூர் -> மோகனூரில், சேந்தமங்கலம் -> சேந்தமங்கலத்தில்),
+    plus the old print spelling some outlets use (மோகனுார்) - the same rule as the Coimbatore copy"""
+    if w.endswith("ம்") and len(w) > 4:
+        st = w[:-2]
+    elif w.endswith(("\u0bcd", "\u0bc1")) and len(w) > 3:
+        st = w[:-1]
+    else:
+        st = w
+    return list(dict.fromkeys([st, st.replace("\u0bc2", "\u0bc1\u0bbe")]))
+
+
+# owner 2 Nov (review): 'மோகனூரில்', 'பிள்ளாநல்லூரில்', 'வெண்ணந்தூரில்' were not recognised as Namakkal places
+PLACE_STEMS += [f for w in NAMAKKAL_WORDS + RASIPURAM if not w.isascii() for f in _stem_forms(w) if len(f) >= 5 and f not in PLACE_STEMS]
+
+
 # owner 26 Oct (final): ONLY Namakkal-district news - no towns outside the district (the nearby-area lists were removed)
 NEAR_RASIPURAM, NEAR_NAMAKKAL = [], []
 
@@ -190,8 +225,10 @@ def outside_district(text, via=""):
 
 
 def area_of(text, default="N"):
-    stem = lambda w: w[:-1] if w.endswith(("ர்", "ம்")) else w      # மல்லூர் -> மல்லூரில், ராசிபுரம் -> ராசிபுரத்தில்
-    return "R" if any(stem(k) in text for k in RASIPURAM + NEAR_RASIPURAM) else default
+    """owner 2 Nov: 'புதுச்சத்திரத்தில்', 'குருசாமிபாளையத்தில்' were missed (the old stem cut only the last letter of a -ம் name)"""
+    t = _place_norm(text or "")
+    forms = lambda k: [k] + [f for f in _stem_forms(k) if len(f) >= 5]      # 'வடுக' (4 letters) would catch வடுகப்பட்டி of other districts
+    return "R" if any(_place_norm(f) in t for k in RASIPURAM + NEAR_RASIPURAM for f in forms(k)) else default
 
 
 def area_of_story(title, lead):
@@ -395,3 +432,33 @@ def incomplete(text):
     must not write a reel from a fragment"""
     t = (text or "").strip()
     return len(re.findall(r"[஀-௿]", t)) < 120 or not SENTENCE_END.search(t)
+
+
+def _place_norm(t):
+    return (t or "").replace("\u0bc1\u0bbe", "\u0bc2").replace("ப்ப", "ப")      # மோகனுார் = மோகனூர், பள்ளிப்பாளையம் = பள்ளிபாளையம்
+
+
+CANON_PLACES = [w for w in dict.fromkeys(NAMAKKAL_WORDS + RASIPURAM + RASI_NEAR) if not w.isascii() and w not in ("நாமக்கல்", "ராசிபுரத்தில்")]
+
+
+def places_in(text):
+    """the district's towns / villages a text names (the district / city name itself is not counted) - owner 2 Nov (review)"""
+    t = text or ""
+    try:
+        import names
+        t = names.full_places(t)      # ப.வேலூர் -> பரமத்தி வேலூர், மே.பாளையம் -> மேட்டுப்பாளையம்
+    except Exception:
+        pass
+    for w in globals().get("NOT_PLACE", []):
+        t = t.replace(w, " ")
+    if "_no_city_roads" in globals():
+        t = globals()["_no_city_roads"](t)      # 'மேட்டுப்பாளையம் சாலை' is a road inside the city
+    t = _place_norm(t)
+    return {w for w in CANON_PLACES if any(_place_norm(f) in t for f in _stem_forms(w) if len(f) >= 4)}
+
+
+def different_places(a, b):
+    """True when both headlines name a town / village of the district and they share none: 'வெண்ணந்தூர் கிராம சபை' and
+    'மோகனூர் கிராம சபை' are two news, never one (owner 2 Nov review: 30 of ~40 writer skips were such false duplicates)"""
+    x, y = places_in(a), places_in(b)
+    return bool(x and y and not (x & y))
