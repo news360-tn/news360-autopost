@@ -1,245 +1,78 @@
-writing [N]: 30 கிலோ குட்கா பறிமுதல்
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-writing [N]: நாமக்கல் மாவட்டத்தில் கல்லறை திருநாள்: கிறிஸ்தவர்கள் சிறப்பு
+writing [R]: ரூ.200க்கு 10 மளிகை பொருட்கள் விற்பனையை தொடங்கி வைத்த அமைச்ச
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-writing [R]: எஸ்.ஐ.,க்களை இடமாற்றம் செய்யக்கோரி வக்கீல்கள் கோர்ட் புறக்கண
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (19s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): சேந்தமங்கலம் ('விழாவில், நாமக்கல் த.வெ.க., – எம்.எல்.ஏ., திலீப், சேந்தமங்கல')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (28s)
+attempt 2 gemini/gemini-3.6-flash: 1 problems
+  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.5-flash (20s)
+attempt 3 gemini/gemini-3.5-flash: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): சேந்தமங்கலம் ('விழாவில், நாமக்கல் த.வெ.க., – எம்.எல்.ஏ., திலீப், சேந்தமங்கல')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-ok gemini/gemini-3-flash-preview (9s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-ok gemini/gemini-3-flash-preview (6s)
-factcheck by gemini/gemini-3-flash-preview: 0 problems
-attempt 1 gemini/gemini-3-flash-preview: 0 problems
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, plea
 dead for this round: gemini/gemini-3-flash-preview
-ok groq/openai/gpt-oss-120b (5s)
-proofread rejected (3 problems)
-  sentence 1 (one-line story) has 20 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/qwen/qwen3.8-27b (4s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 400: {"error":{"message":"Failed to generate JSON. Please adjust your prompt. See 'failed_generati
+ok groq/openai/gpt-oss-120b (4s)
+factcheck by groq/openai/gpt-oss-120b: 0 problems
+attempt 4 groq/qwen/qwen3.8-27b: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok groq/openai/gpt-oss-120b (6s)
+proofread rejected (2 problems)
   caption must contain the exact follow line
   caption has no "📰 முழு விவரம்:" block - put the whole story (every fact) in the caption
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3-flash-preview (9s)
-attempt 1 gemini/gemini-3-flash-preview: 1 problems
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-ok groq/openai/gpt-oss-120b (1s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-real photo: no picture on the source page -> AI pictures
-ok gemini/gemini-3-flash-preview (11s)
-attempt 1 gemini/gemini-3-flash-preview: 1 problems
-  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+ok groq/qwen/qwen3.8-27b (1s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
 image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for '30 kg of Gutka and tobacco products seiz'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261102-2243","first":"RN-298"}
+images made: 2 for 'Minister launches Rs.200 grocery pack sa'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261102-2248","first":"RN-301"}
 posting job started at once
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-switching away from groq/openai/gpt-oss-120b for 10 min
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-switching away from groq/openai/gpt-oss-120b for 10 min
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-ok groq/qwen/qwen3.8-27b (4s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 2 problems
-  The slides_spec headline hl1 says 'மோகனூரில்' (in Mohanur) and loc is 'மோகனூர், நாமக்கல்', which narrows the event to Mohanur, while the article covers all of Namakkal district (Mohanur and R.C. Pettappalayam, plus the district as a whole).
-  The slides_spec line 'மாவட்டம் முழுவதும் பிரார்த்தனை' and the reel_script sentence claiming prayers across the whole district are supported, but the slide framing as Mohanur-centred mixes two different locations into one headline.
-attempt 2 groq/qwen/qwen3.8-27b: 2 problems
-  fact-check: The slides_spec headline hl1 says 'மோகனூரில்' (in Mohanur) and loc is 'மோகனூர், நாமக்கல்', which narrows the event to Mohanur, while the article covers all of Namakkal district (Mohanur and R.C. Pettappalayam, plus the district as a whole).
-  fact-check: The slides_spec line 'மாவட்டம் முழுவதும் பிரார்த்தனை' and the reel_script sentence claiming prayers across the whole district are supported, but the slide framing as Mohanur-centred mixes two different locations into one headline.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 7 problems
-  reel_script and slides_spec call Manoharan and Siva 'காவல் உதவி ஆய்வாளர்' (sub-inspector), which matches the article's 'எஸ்.ஐ.' — acceptable, no problem
-  reel_script says 'வழக்காடிகளை அழைத்துச் செல்லும்போது' — accurate; no issue
-  caption says the complaints came 'இதுகுறித்து வக்கீல்களிடம் இருந்து தொடர்ந்து புகார்கள் வந்ததாகக் கூறப்படுகிறது' — article says complaints kept coming among lawyers, consistent
-  caption says the protest was at 'ராசிபுரம் நீதிமன்றத்தில்' (at Rasipuram court) — the article does not say where the protest took place, only that it was held in Rasipuram
-  caption says 'நேற்று' and the date line gives 'நவம்பர் 2, 2026' — the article says 'நேற்று' (yesterday) but gives no actual date; the specific date is not from the article
-  caption says 'Namakkal news' — not a claim from the article but an added label, minor
-  reel_script omits the detail that the complaint was against two SIs in different stations combined with the 'ஒருமையில் பேசுவது' point — included, so no omission; the article's main facts are covered
-claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
-  fact-check: reel_script and slides_spec call Manoharan and Siva 'காவல் உதவி ஆய்வாளர்' (sub-inspector), which matches the article's 'எஸ்.ஐ.' — acceptable, no problem
-  fact-check: reel_script says 'வழக்காடிகளை அழைத்துச் செல்லும்போது' — accurate; no issue
-  fact-check: caption says the complaints came 'இதுகுறித்து வக்கீல்களிடம் இருந்து தொடர்ந்து புகார்கள் வந்ததாகக் கூறப்படுகிறது' — article says complaints kept coming among lawyers, consistent
-  fact-check: caption says the protest was at 'ராசிபுரம் நீதிமன்றத்தில்' (at Rasipuram court) — the article does not say where the protest took place, only that it was held in Rasipuram
-  fact-check: caption says 'நேற்று' and the date line gives 'நவம்பர் 2, 2026' — the article says 'நேற்று' (yesterday) but gives no actual date; the specific date is not from the article
-  fact-check: caption says 'Namakkal news' — not a claim from the article but an added label, minor
-  fact-check: reel_script omits the detail that the complaint was against two SIs in different stations combined with the 'ஒருமையில் பேசுவது' point — included, so no omission; the article's main facts are covered
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The reel_script says the 'Namakkal district' special worship happened today (November 2), but the article only gives the date as the cemetery festival; it does not explicitly state the date as 2 November in the reel's wording — this is consistent with the article's 'கல்லறை திருநாள்' on Nov 2, so this is not a problem. Ignore this item.
-  The reel_script omits the important fact that the special mass was held at 7:30 AM before the cemetery visits in an ordered way — this is present, so no issue.
-  The slides_spec 'எங்கே?' slide says 'மோகனூர் பகுதி கிறிஸ்தவர்கள், காட்டுப்புத்தூர் ரோடு ஆலய' which is an incomplete/ungrammatical phrase with no clear meaning in Tamil (the cemetery of St. Selvanayagiyammal church is cut off).
-  The slides_spec 'எப்போது?' slide line 'கிறிஸ்தவர்கள் உறவினர்களின் கல்லறைக்கு சென்று வழிபட்டனர்' is grammatically fine, but the slide 'எங்கே?' line 'நாமக்கல் மாவட்டம் முழுவதும் கல்லறைகளில் வழிபாடு' is acceptable; however the caption states the cemetery prayers at Mohanur, while the caption's first line headline 'மோகனூரில் கல்லறை திருநாள்' narrows the district-wide event to Mohanur only, which mixes two facts (the event was district-wide per the article).
-  The slides_spec hl1 'மோகனூரில் கல்லறை திருநாள் வழிபாடு' narrows the district-wide event to Mohanur, inconsistent with the article saying Christians across Namakkal district prayed at cemeteries.
-claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The reel_script says the 'Namakkal district' special worship happened today (November 2), but the article only gives the date as the cemetery festival; it does not explicitly state the date as 2 November in the reel's wording — this is consistent with the article's 'கல்லறை திருநாள்' on Nov 2, so this is not a problem. Ignore this item.
-  fact-check: The reel_script omits the important fact that the special mass was held at 7:30 AM before the cemetery visits in an ordered way — this is present, so no issue.
-  fact-check: The slides_spec 'எங்கே?' slide says 'மோகனூர் பகுதி கிறிஸ்தவர்கள், காட்டுப்புத்தூர் ரோடு ஆலய' which is an incomplete/ungrammatical phrase with no clear meaning in Tamil (the cemetery of St. Selvanayagiyammal church is cut off).
-  fact-check: The slides_spec 'எப்போது?' slide line 'கிறிஸ்தவர்கள் உறவினர்களின் கல்லறைக்கு சென்று வழிபட்டனர்' is grammatically fine, but the slide 'எங்கே?' line 'நாமக்கல் மாவட்டம் முழுவதும் கல்லறைகளில் வழிபாடு' is acceptable; however the caption states the cemetery prayers at Mohanur, while the caption's first line headline 'மோகனூரில் கல்லறை திருநாள்' narrows the district-wide event to Mohanur only, which mixes two facts (the event was district-wide per the article).
-  fact-check: The slides_spec hl1 'மோகனூரில் கல்லறை திருநாள் வழிபாடு' narrows the district-wide event to Mohanur, inconsistent with the article saying Christians across Namakkal district prayed at cemeteries.
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  reel_script says the Rasipuram and Namakkipettai SIs were the subject of complaints and says the transfer demand covers both; the article does not say the protest was over both names being transferred specifically to a different place beyond 'வேறு இடத்திற்கு பணியிட மாற்றம்' — this matches, so no issue there; however, the reel_script and slides say 'இரண்டு காவல் உதவி ஆய்வாளர்க்கள்' and 'இரு காவல் உதவி ஆய்வாளர்க்களையும்' which uses the ungrammatical plural form 'ஆய்வாளர்க்கள்' instead of 'ஆய்வாளர்கள்'
-  reel_script says the protest was in Rasipuram ('ராசிபுரத்தில் வக்கீல்கள் நீதிமன்றப் பணிகளைப் புறக்கணித்து போராட்டம் நடத்தினர்') which matches the article, but the reel_script omits that the complaints were that the SIs were hitting and threatening litigants ('தாக்கி அச்சுறுத்துவதாகவும்') as a separate accusation mixed with the summons-related speech accusation into one sentence, combining two distinct allegations in one sentence
-  slides_spec slide 'என்ன' has the line 'வழக்காடிகளைத் தாக்கி அச்சுறுத்துவதாகவும் குற்றச்சாட்டு' which is an ungrammatical fragment with no clear subject or verb, and the headline 'எஸ்.ஐ.,க்களை இடமாற்றம் கோரி' is ungrammatical in Tamil phrasing relative to the article's 'இடமாற்றம் செய்யக்கோரி'
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: reel_script says the Rasipuram and Namakkipettai SIs were the subject of complaints and says the transfer demand covers both; the article does not say the protest was over both names being transferred specifically to a different place beyond 'வேறு இடத்திற்கு பணியிட மாற்றம்' — this matches, so no issue there; however, the reel_script and slides say 'இரண்டு காவல் உதவி ஆய்வாளர்க்கள்' and 'இரு காவல் உதவி ஆய்வாளர்க்களையும்' which uses the ungrammatical plural form 'ஆய்வாளர்க்கள்' instead of 'ஆய்வாளர்கள்'
-  fact-check: reel_script says the protest was in Rasipuram ('ராசிபுரத்தில் வக்கீல்கள் நீதிமன்றப் பணிகளைப் புறக்கணித்து போராட்டம் நடத்தினர்') which matches the article, but the reel_script omits that the complaints were that the SIs were hitting and threatening litigants ('தாக்கி அச்சுறுத்துவதாகவும்') as a separate accusation mixed with the summons-related speech accusation into one sentence, combining two distinct allegations in one sentence
-  fact-check: slides_spec slide 'என்ன' has the line 'வழக்காடிகளைத் தாக்கி அச்சுறுத்துவதாகவும் குற்றச்சாட்டு' which is an ungrammatical fragment with no clear subject or verb, and the headline 'எஸ்.ஐ.,க்களை இடமாற்றம் கோரி' is ungrammatical in Tamil phrasing relative to the article's 'இடமாற்றம் செய்யக்கோரி'
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The draft's headline and reel_script place the event in Mohanur area only, while the article says it happened across Namakkal district (Mohanur was one example); the draft's opening sentence and headline frame it as Mohanur-specific.
-  The reel_script says 'இன்று நவம்பர் 2ஆம் தேதி' as if the date were a claim, which is acceptable only because the article states Nov 2 is Cemetery Day; no problem there, but the slide 'எங்கே?' presents the location as 'மோகனூர் பகுதி' while the article describes the whole district, creating an inconsistency.
-  The slides_spec 'சிறப்புத்' title is an incomplete/ungrammatical heading that has no clear meaning in Tamil.
-  The slide line 'காட்டுப்புத்தூர் ரோட்டில் புனித செல்வநாயகியம்மாள் ஆலய கல்லறை' and 'சிறப்புத் திருப்பலி... நாமக்கல் மாவட்டம் முழுவதும் பிரார்த்தனை' mix separate facts (the Mohanur cemetery location and the district-wide prayer) into one slide section that misrepresents the scope.
-  The caption says Christians in Namakkal district prayed and then the headline says 'மோகனூரில்', an inconsistency in the stated location of the event.
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The draft's headline and reel_script place the event in Mohanur area only, while the article says it happened across Namakkal district (Mohanur was one example); the draft's opening sentence and headline frame it as Mohanur-specific.
-  fact-check: The reel_script says 'இன்று நவம்பர் 2ஆம் தேதி' as if the date were a claim, which is acceptable only because the article states Nov 2 is Cemetery Day; no problem there, but the slide 'எங்கே?' presents the location as 'மோகனூர் பகுதி' while the article describes the whole district, creating an inconsistency.
-  fact-check: The slides_spec 'சிறப்புத்' title is an incomplete/ungrammatical heading that has no clear meaning in Tamil.
-  fact-check: The slide line 'காட்டுப்புத்தூர் ரோட்டில் புனித செல்வநாயகியம்மாள் ஆலய கல்லறை' and 'சிறப்புத் திருப்பலி... நாமக்கல் மாவட்டம் முழுவதும் பிரார்த்தனை' mix separate facts (the Mohanur cemetery location and the district-wide prayer) into one slide section that misrepresents the scope.
-  fact-check: The caption says Christians in Namakkal district prayed and then the headline says 'மோகனூரில்', an inconsistency in the stated location of the event.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The reel_script and slides_spec state the SIs are 'காவல் உதவி ஆய்வாளர்' (sub-inspector), which matches; however the article says the SIs are working at 'போலீஸ் ஸ்டேஷன்கள்' and the draft says 'காவல் நிலையத்தில் பணிபுரியும்' — consistent. No clear invented fact here, but the slide 'என்ன' title with lines 'வக்கீல்களை ஒருமையில் பேசுவதாகப் புகார்' is grammatically unclear as a heading.
-  The slides_spec line 'இருவரையும் வேறு இடத்திற்கு இடமாற்றம் கோரிக்கை' is ungrammatical and has no clear meaning in Tamil.
-  The reel_script says the complaints 'எழுந்துள்ளன' against the SIs and then the accusation sentence attributes 'வழக்காடிகளை தாக்கி அச்சுறுத்துவதாகவும்' to both officers without the article's distinction that this was alleged generally; the article states both were accused of both acts, so this is consistent, but the caption's 'எச்சரிக்கை' line mixes the demand for action and the threat of siege/statewide protest into one sentence, combining two different facts.
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The reel_script and slides_spec state the SIs are 'காவல் உதவி ஆய்வாளர்' (sub-inspector), which matches; however the article says the SIs are working at 'போலீஸ் ஸ்டேஷன்கள்' and the draft says 'காவல் நிலையத்தில் பணிபுரியும்' — consistent. No clear invented fact here, but the slide 'என்ன' title with lines 'வக்கீல்களை ஒருமையில் பேசுவதாகப் புகார்' is grammatically unclear as a heading.
-  fact-check: The slides_spec line 'இருவரையும் வேறு இடத்திற்கு இடமாற்றம் கோரிக்கை' is ungrammatical and has no clear meaning in Tamil.
-  fact-check: The reel_script says the complaints 'எழுந்துள்ளன' against the SIs and then the accusation sentence attributes 'வழக்காடிகளை தாக்கி அச்சுறுத்துவதாகவும்' to both officers without the article's distinction that this was alleged generally; the article states both were accused of both acts, so this is consistent, but the caption's 'எச்சரிக்கை' line mixes the demand for action and the threat of siege/statewide protest into one sentence, combining two different facts.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-ok anthropic/claude-haiku-5-5
-real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
-real photo: vision check out of free quota
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-ok anthropic/claude-haiku-5-5
-images made: 2 for 'Cemetery festival in Namakkal district: '
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261102-2245","first":"RN-299"}
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Lawyers boycott court in Rasipuram deman'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261102-2245","first":"RN-300"}
-write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 94 recent posts read from both pages
-write round: 13 news waiting in the queue (written in priority order)
-candidate filter: collected=9, already filed=4
-to write: 2 Rasipuram + 7 other district candidates (max 200 + 200 stories)
-candidates waiting: 2 Rasipuram, 7 Namakkal; time left 29 min
-try (R) manual=False: எஸ்.ஐ.,க்களை இடமாற்றம் செய்யக்கோரி வக்கீல்கள் கோர்ட் புறக்கண
-try (N) manual=False: 30 கிலோ குட்கா பறிமுதல்
-try (N) manual=False: நாமக்கல்லில் 3 நாட்களில் முட்டை விலை 50 பைசா உயர்வு
-skip (N) similar to a filed story: நாமக்கல்லில் 3 நாட்களில் முட்டை விலை 50 பைசா உயர்வ
-try (N) manual=False: முட்டை விலை தொடர்ந்து உயர்வு
-skip (N) similar to a filed story: முட்டை விலை தொடர்ந்து உயர்வு
-try (N) manual=False: இயற்கை காய்கறிகள் அங்காடி விற்பனை மையம் திறப்பு
-skip (N) similar to a filed story: இயற்கை காய்கறிகள் அங்காடி விற்பனை மையம் திறப்பு
-try (N) manual=False: தொடர்ந்து உயர்ந்து வரும் முட்டை விலை - நாமக்கல்லில் முட்டை வ
-skip (N) similar to a filed story: தொடர்ந்து உயர்ந்து வரும் முட்டை விலை - நாமக்கல்லில
-try (N) manual=False: நாமக்கல் மாவட்டத்தில்டாஸ்மாக் கடைகளை மூடி ஊழியர்கள் போராட்டம
-skip (N) same event as RN-278: நாமக்கல் மாவட்டத்தில்டாஸ்மாக் கடைகளை மூடி ஊழியர்கள
-try (N) manual=False: நாமக்கல் மாவட்டத்தில் கல்லறை திருநாள்: கிறிஸ்தவர்கள் சிறப்பு
+write round: 1 news waiting in the queue (written in priority order)
+candidate filter: collected=1
+to write: 1 Rasipuram + 0 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 0 Namakkal; time left 29 min
+try (R) manual=False: ரூ.200க்கு 10 மளிகை பொருட்கள் விற்பனையை தொடங்கி வைத்த அமைச்ச
 auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
 posting job started at once
-try (R) manual=False: ரூ.200க்கு 10 மளிகை பொருட்கள் விற்பனையை தொடங்கி வைத்த அமைச்ச
-skip (R) could not open: ரூ.200க்கு 10 மளிகை பொருட்கள் விற்பனையை தொடங்கி வை [https://www.dinamalar.com/news/tamil-nadu-news/rs-minister-i] HTTPSConnectionPool(host='www.dinamalar.com', port=443): Read timed out. (read t
-auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 4})
-auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 6})
-candidate loop ended: left R=0 N=0, tried={'R': 2, 'N': 7}, done={'R': 1, 'N': 2}, time left 27 min
-carousel for 0 of 3 stories, the rest reel only
-filed: 1 Rasipuram + 2 Namakkal (targets 200 + 200)
-queue: 1 news waiting to be written
-write_stories.yml started
-All News sheet: {"ok":true,"added":0,"updated":4} 
-stories: 3
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 0}, done={'R': 1, 'N': 0}, time left 27 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 1
