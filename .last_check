@@ -11,6 +11,6 @@ Traceback (most recent call last):
     c = [r for r in rows if ready(r) and (set_started(r) or is_urgent(r))]
                             ^^^^^^^^
   File "/home/runner/work/news360-autopost/news360-autopost/poster/post.py", line 333, in ready
-    why = "" if is_ready_reel(row) else skip_reason(row)    # owner reels: posted as they are, no news checks
-                                        ^^^^^^^^^^^
+    why = news_hold(row) if is_ready_reel(row) else skip_reason(row)    # owner reels: no news checks, but the fact-check / location hold always applies
+                                                    ^^^^^^^^^^^
 NameError: name 'skip_reason' is not defined
