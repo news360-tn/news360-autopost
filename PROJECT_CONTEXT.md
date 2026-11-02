@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-02 | `3fb0892` | the fact-check hold stops only FACTUAL problems; formatting-only flags (word count, line length, cut-off slide text) post - owner-ticked news must not be held for them |
+| 2026-11-02 | `c9cfe06` | stories shared |
 | 2026-11-02 | `2491698` | post.py: the entry point ran main() before the new skip_reason/news_hold were defined (NameError, every post run failed); entry point moved to the end + a test |
 | 2026-11-02 | `fe1d6f3` | rasipalan posted |
 | 2026-11-01 | `7c9a922` | the fact-check / location hold also applies to owner ready reels (they skipped every news check before); RN-272 repost path |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-31 | `de6fa35` | rasipalan: test runs keep the slides and log on a preview branch |
 | 2026-10-31 | `2fa30af` | Daily rasipalan carousel for Rasipuram 360 (7:31 AM, temple design, festival themes, collab Namakkal 360) |
 | 2026-10-31 | `99f4f39` | Real photos: one Gemini 'too many requests' (429) stops the photo check for 30 min - the free quota stays for the writer (owner 31 Oct) |
-| 2026-10-31 | `53e4015` | Headline-only pages are never written; one prison escape is one event; 'details not yet known' scripts are not news (owner 31 Oct) |
-| 2026-10-31 | `e274b44` | Namakkal: repeats within 2 days, fights and collapses are incidents (the Coimbatore fix, owner 31 Oct) |
 <!-- recent-changes:end -->
