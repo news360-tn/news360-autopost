@@ -1649,8 +1649,6 @@ def main():
     log("finished:", done or "nothing posted")
 
 
-if __name__ == "__main__":
-    main()
 
 
 def news_hold(row):
@@ -1671,3 +1669,6 @@ def skip_reason(row):
     """owner 2 Nov (RN-272): the usual checks first, then the news hold"""
     why = _skip_reason_base(row)
     return why or news_hold(row)
+
+if __name__ == "__main__":
+    main()

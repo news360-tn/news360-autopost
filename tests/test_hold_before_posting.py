@@ -35,5 +35,15 @@ class HoldBeforePosting(unittest.TestCase):
         self.assertTrue(post.news_hold(r).startswith("held:"))
 
 
+class EntryPointLast(unittest.TestCase):
+    """the posting job runs main() when the file is executed: every function it uses must be defined above that line (2 Nov, NameError)"""
+
+    def test_main_block_is_the_last_statement(self):
+        import ast
+        tree = ast.parse(Path(post.__file__).read_text(encoding="utf-8"))
+        self.assertIsInstance(tree.body[-1], ast.If)
+        self.assertIn("skip_reason", [n.name for n in tree.body if isinstance(n, ast.FunctionDef)])
+
+
 if __name__ == "__main__":
     unittest.main()
