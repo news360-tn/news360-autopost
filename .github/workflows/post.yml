@@ -35,6 +35,10 @@ env:
   NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
   GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}   # picture check: does the AI image show the news?
   SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}      # owner 30 Oct: free writers (skipped until the key is set)
+  FB_PAGE_ID_NAMAKKAL: ${{ secrets.FB_PAGE_ID_NAMAKKAL }}      # owner 2 Nov: the same reels also go to the Facebook pages
+  FB_TOKEN_NAMAKKAL: ${{ secrets.FB_TOKEN_NAMAKKAL }}
+  FB_PAGE_ID_RASIPURAM: ${{ secrets.FB_PAGE_ID_RASIPURAM }}
+  FB_TOKEN_RASIPURAM: ${{ secrets.FB_TOKEN_RASIPURAM }}
   DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
   PREBUILD: ${{ github.event_name == 'workflow_dispatch' && inputs.prebuild && '1' || '' }}
   PAUSED: ${{ vars.PAUSED }}
@@ -68,6 +72,16 @@ jobs:
           # owner 1 Nov: the list of posts already shared to the story (never twice) is saved after every check
           if [ -f poster/story_shared.json ]; then git add -f poster/story_shared.json && git commit -qm "stories shared" && { for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null; sleep $((i*3)); done; } || true; fi
           if [ "${CHECK_RC:-0}" != "0" ]; then echo "::error::post.py check crashed (exit $CHECK_RC) - nothing was posted in this run"; exit 1; fi
+      - name: Facebook - try failed reels again (at most 2 more times, within 24 h)
+        if: always() && env.BRIDGE_URL != '' && env.DRY_RUN == ''
+        continue-on-error: true
+        timeout-minutes: 12
+        run: |
+          [ -n "$(ls poster/fb_posted 2>/dev/null)" ] || exit 0
+          pip install -q requests==2.32.5
+          python poster/facebook.py retry
+          git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
+          git add -f poster/fb_posted && git commit -qm "facebook retry" && { for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null; sleep $((i*3)); done; } || true
       - name: Watchdog - restart an overdue collection or writer (GitHub sometimes skips scheduled runs)
         if: always() && github.event_name == 'schedule' && env.BRIDGE_URL != ''
         env:
@@ -191,6 +205,10 @@ jobs:
         run: |
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
           if [ -n "$(ls poster/prebuilt 2>/dev/null)" ]; then
-            git add -f poster/prebuilt && git commit -qm "prebuilt ${{ matrix.story }}" || exit 0
-            for i in 1 2 3 4 5; do git pull -q --rebase -X theirs && git push -q && break; git rebase --abort 2>/dev/null; sleep 5; done
+            git add -f poster/prebuilt && git commit -qm "prebuilt ${{ matrix.story }}" || true
+          fi
+          # owner 2 Nov: the Facebook record (posted / failed) - a reel is never posted to Facebook twice
+          if [ -n "$(ls poster/fb_posted 2>/dev/null)" ]; then git add -f poster/fb_posted && git commit -qm "facebook ${{ matrix.story }}" || true; fi
+          if [ -n "$(git log origin/main..HEAD --oneline 2>/dev/null)" ]; then
+            for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null; sleep 5; done
           fi

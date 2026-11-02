@@ -243,6 +243,12 @@ def main():
                                  "festival": fest, "sources": [g["name"] for g in got]}, ensure_ascii=False, indent=1), encoding="utf-8")
     if collab_ok:
         accept_collab(mid)
+    try:      # owner 2 Nov: the same carousel + a story also go to the page's Facebook page (never touches the Instagram post)
+        sys.path.insert(0, str(ROOT / "poster"))
+        import facebook
+        facebook.share(PAGE, f"rasipalan-{day.isoformat()}", "photos", urls, cap, cfg["tags"][-1], tags=cfg["tags"][:2])
+    except Exception as e:
+        log("Facebook step skipped:", str(e)[:150])
     return 0
 
 

@@ -483,6 +483,29 @@ def _digits_in_spec(spec):
         sl["lines"] = [to_digits(x) for x in sl.get("lines", [])]
 
 
+def hashtags_for(row, cap, reach, prof):
+    """owner 2 Nov (hashtag review): the writer's own tags gave #AndagalurGate (5 views), #Trichy on a Namakkal reel, Namakkal page tags
+    on Rasipuram reels and two spellings of one town. Now every tag comes from config: page, area, the town the story names
+    (the earliest one in the headline; a village maps to its town tag), the local topic (rain / power cut) else the page's news tag,
+    and the Tamil place tag. Always exactly 5."""
+    sys.path.insert(0, str(ROOT / "research_free"))
+    import learned
+    head = str(row.get("headline_ta") or "")
+    where = head + " " + str(row.get("location") or "") + " " + (cap.split("\n")[0] if cap else "")
+    hits = []
+    for k, t in (reach.get("place_tags") or {}).items():
+        i = where.find(k)
+        if i >= 0 and t.lower() not in (prof["page"].lower(), prof["area"].lower()):
+            hits.append((i, -len(k), t))
+    place = min(hits)[2] if hits else ""
+    topic = (prof.get("topic") or {}).get(learned.topic(head), "") or prof["news"]
+    out, seen = [], set()
+    for t in (prof["page"], prof["area"], place or prof["fallback"], topic, prof["tamil"], prof["news"], prof["fallback"]):
+        if t and t.lower() not in seen and len(out) < 5:
+            seen.add(t.lower()); out.append(t)
+    return out
+
+
 def final_caption(row):
     sys.path.insert(0, str(REEL))
     from digits import to_digits
@@ -496,7 +519,14 @@ def final_caption(row):
             seen.add(k); tags.append(t.rstrip(".,!"))
     tags = [TAG] + [t for t in tags if t != TAG][:4]
     reach = CONFIG.get("reach") or {}
-    if reach.get("hashtag_pattern"):      # owner 29 Oct: page + district + town/area + topic + broad tag (no junk tags)
+    prof = (reach.get("hashtag_profiles") or {}).get(TAG.lower())
+    if prof:      # owner 2 Nov: 5 tags from fixed lists only - page + area + town + local topic + Tamil place
+        try:
+            tags = hashtags_for(row, cap, reach, prof)
+        except Exception as e:
+            log("hashtag profile skipped (old pattern used):", e)
+            prof = None
+    if not prof and reach.get("hashtag_pattern"):      # owner 29 Oct: page + district + town/area + topic + broad tag (no junk tags)
         try:
             sys.path.insert(0, str(ROOT / "research_free"))
             import learned
@@ -1249,6 +1279,7 @@ def run_ready_reel(row, page):
             publish_story(token, url, "video")
         except Exception as e:
             log("story not made (post itself is fine):", e)
+        share_facebook(sid, "reel", [url], caption)
         bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "permalink": link, "media_id": mid, "media_urls": [url],
                                "caption": caption, "voice": "ready-made", "collab": False, "checks": "ready reel posted as received (owner verified; no duplicate check)"})
         return [("reel", link)]
@@ -1480,6 +1511,7 @@ def run_story_page(row, page):
                 log("DRY RUN carousel - not publishing", urls)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "dry_run": True, "permalink": "",
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab, "checks": note})
+                share_facebook(sid, "photos", urls, caption, dry=True)
             elif not still_needed(sid, PAGE, "carousel"):
                 log("carousel no longer needed (sheet changed) - not publishing", sid, PAGE)
             else:
@@ -1496,6 +1528,9 @@ def run_story_page(row, page):
                         publish_story(token, media["story"], "image")
                 except Exception as e:
                     log("story image not made (post itself is fine):", e)
+                fb = share_facebook(sid, "photos", urls, caption)
+                if fb:
+                    done.append(("facebook", fb))
         except Exception as e:
             if is_limit_error(e):
                 LIMIT[PAGE] = True
@@ -1513,6 +1548,7 @@ def run_story_page(row, page):
                 log("DRY RUN reel - not publishing", url)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "dry_run": True, "permalink": "",
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab, "checks": note})
+                share_facebook(sid, "reel", [url], caption, dry=True)
             elif not still_needed(sid, PAGE, "reel"):
                 log("reel no longer needed (sheet changed) - not publishing", sid, PAGE)
             else:
@@ -1532,6 +1568,9 @@ def run_story_page(row, page):
                     website.send(row, link)
                 except Exception as e:
                     log("website step skipped:", str(e)[:150])
+                fb = share_facebook(sid, "reel", [url], caption)
+                if fb:
+                    done.append(("facebook", fb))
         except Exception as e:
             if published:      # owner 2 Nov (review): it IS on Instagram - never "tried again in the next run"
                 log("ERROR after the reel was published (it is on Instagram, NOT posted again):", sid, str(e)[:200])
@@ -1545,6 +1584,17 @@ def run_story_page(row, page):
                 log("ERROR reel", sid, e)
                 bridge_post("error", {"row": row["row"], "page": PAGE, "kind": "reel", "error": str(e)[:900]})
     return done
+
+
+def share_facebook(sid, kind, media, caption, dry=False):
+    """owner 2 Nov: everything posted on Instagram also goes to this page's Facebook page, with a Facebook story
+    (Rasipuram posts -> Rasipuram 360 Facebook). kind 'reel' or 'photos'. Never raises - Instagram is never touched."""
+    try:
+        import facebook
+        return facebook.share(PAGE, sid, kind, media, caption, TAG, dry=dry)
+    except Exception as e:
+        log("Facebook step skipped:", str(e)[:150])
+        return ""
 
 
 def live_allowed():

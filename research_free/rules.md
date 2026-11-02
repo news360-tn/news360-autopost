@@ -56,7 +56,7 @@ caption rules
   3. End with ONE short save/share prompt that fits the story (e.g. "தேவைப்படுவோருக்கு Share செய்யுங்கள்"). NEVER ask people to comment (no "கமெண்டில் சொல்லுங்கள்", no questions to the audience).
   Every sentence in correct, formal written Tamil (proper spelling and sandhi), no colloquial forms, nothing the article does not say.
 - Then ONE short English search line (REQUIRED) so people searching in English find the post, e.g. "Namakkal egg price today | Namakkal news". Then a line "📍 exact place, Namakkal | date" naming the town or village. Then exactly: உள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏
-- Then exactly 5 hashtags (Instagram allows at most 5): #Namakkal360 + #Namakkal + ONE for the exact town/place (English or Tamil) + ONE for the topic + #NamakkalNews (for Rasipuram-area stories use #Rasipuram instead of #NamakkalNews; for power shutdowns the topic tag is #மின்தடை).
+- Then exactly 5 hashtags (Instagram allows at most 5; owner 2 Nov - the system sets them from fixed lists, write them like this): #Namakkal360 #Namakkal + the town the story names (#Tiruchengode, #Mohanur ...) + #NamakkalNews (#NamakkalRain for rain, #NamakkalPowerCut for power cuts) + #நாமக்கல். A Rasipuram-area story: #Rasipuram360 #Rasipuram + its village town tag (#Namagiripettai, #Vennandur ... else #Namakkal) + #RasipuramNews + #ராசிபுரம் - never a Namakkal page tag. Never invent a tag (no #AndagalurGate), never another district's tag, never #TamilNews / #TamilNadu.
 - No links, no source names, no clickbait, no false urgency.
 
 scenes rules

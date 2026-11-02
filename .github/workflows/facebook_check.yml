@@ -1,0 +1,20 @@
+name: Facebook check
+# owner 2 Nov: run by hand - shows whether each page's Facebook secrets work and which Facebook page they point to (never prints a token)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      FB_PAGE_ID_NAMAKKAL: ${{ secrets.FB_PAGE_ID_NAMAKKAL }}
+      FB_TOKEN_NAMAKKAL: ${{ secrets.FB_TOKEN_NAMAKKAL }}
+      FB_PAGE_ID_RASIPURAM: ${{ secrets.FB_PAGE_ID_RASIPURAM }}
+      FB_TOKEN_RASIPURAM: ${{ secrets.FB_TOKEN_RASIPURAM }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install -q requests==2.32.5 && python poster/facebook.py status namakkal rasipuram | tee -a "$GITHUB_STEP_SUMMARY"

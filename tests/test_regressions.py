@@ -818,6 +818,123 @@ class InsightsBeforeEveryRound(unittest.TestCase):
         src = (ROOT / "poster" / "insights.py").read_text(encoding="utf-8")
         self.assertIn('metric=",".join(MET)', src)
 
+
+
+class HashtagPattern2Nov(unittest.TestCase):
+    """owner 2 Nov: 5 tags from fixed lists - page + area + town + local topic + Tamil place; never the writer's own tags;
+    a Rasipuram reel never carries a Namakkal page tag; a village maps to its town tag (no #AndagalurGate)"""
+
+    def tags(self, page_tag, head, cap_tags="#Namakkal360 #TamilNews #Trichy #AndagalurGate #இராசிபுரம்"):
+        row = {"headline_ta": head, "headline_en": "x", "location": "", "caption": head + "\n\n📍 நாமக்கல் | 2 நவம்பர் 2026\n\n" + cap_tags}
+        old = post.TAG
+        post.TAG = page_tag
+        try:
+            return post.final_caption(row).strip().split("\n")[-1].split()
+        finally:
+            post.TAG = old
+
+    def test_rasipuram_reel(self):
+        t = self.tags("#Rasipuram360", "ஆண்டகலூர் கேட்டில் சர்வீஸ் சாலை பணி முடியாததால் விபத்துகள்")
+        self.assertEqual(sorted(t), sorted(["#Rasipuram360", "#Rasipuram", "#Namakkal", "#RasipuramNews", "#ராசிபுரம்"]))
+        self.assertIn("#Namagiripettai", self.tags("#Rasipuram360", "நாமகிரிப்பேட்டையில் விபத்து"))
+        self.assertIn("#RasipuramPowerCut", self.tags("#Rasipuram360", "ராசிபுரத்தில் நாளை மின் தடை"))
+
+    def test_namakkal_reel(self):
+        t = self.tags("#Namakkal360", "திருச்செங்கோட்டில் கனமழை: வீடுகளுக்குள் வெள்ளம்")
+        self.assertEqual(sorted(t), sorted(["#Namakkal360", "#Namakkal", "#Tiruchengode", "#NamakkalRain", "#நாமக்கல்"]))
+        t = self.tags("#Namakkal360", "நாமக்கல்லில் லாரி மோதி இருவர் பலி")
+        self.assertIn("#NamakkalDistrict", t)
+        for bad in ("#TamilNews", "#Trichy", "#AndagalurGate", "#இராசிபுரம்", "#Rasipuram360"):
+            self.assertNotIn(bad, t)
+
+
+class FacebookEverything2Nov(unittest.TestCase):
+    """owner 2 Nov: every Instagram post (reel, carousel, ready reel, rasipalan) also goes to the page's Facebook page with a story;
+    never twice, never breaks Instagram, failed ones tried again at most 2 more times, location line first, 3 hashtags"""
+
+    def setUp(self):
+        import facebook
+        self.fb = facebook
+        self.tmp = tempfile.mkdtemp()
+        self.old = (facebook.STATE, dict(os.environ))
+        facebook.STATE = Path(self.tmp)
+        os.environ.update(FB_PAGE_ID_RASIPURAM="111", FB_TOKEN_RASIPURAM="tok")
+        os.environ.pop("FB_PAGE_ID_NAMAKKAL", None)
+        self.calls = []
+
+    def tearDown(self):
+        self.fb.STATE = self.old[0]
+        os.environ.clear(); os.environ.update(self.old[1])
+
+    CAP = "நாமகிரிப்பேட்டையில் விபத்து\n\n📍 நாமகிரிப்பேட்டை | 2 நவம்பர் 2026\n\n#Namakkal #Namagiripettai #RasipuramNews #ராசிபுரம் #Rasipuram360"
+
+    def test_caption_location_first_three_tags(self):
+        c = self.fb.fb_caption(self.CAP, "#Rasipuram360")
+        self.assertTrue(c.startswith("நாமகிரிப்பேட்டையில்"))
+        self.assertIn("📍 நாமகிரிப்பேட்டை", c)
+        self.assertEqual(c.split("\n")[-1].split(), ["#Namagiripettai", "#RasipuramNews", "#Rasipuram360"])
+        self.assertEqual(self.fb.fb_caption("x\n\n#ராசிபலன் #RasiPalan #a #b #Rasipuram360", "#Rasipuram360", tags=["#ராசிபலன்", "#RasiPalan"]).split("\n")[-1],
+                         "#ராசிபலன் #RasiPalan #Rasipuram360")
+
+    def _fake(self, fail=False):
+        fb = self
+        def reel(pid, tok, url, cap):
+            fb.calls.append(("reel", pid, url))
+            if fail:
+                raise RuntimeError("Facebook down")
+            return "v1", "https://www.facebook.com/reel/v1"
+        def photos(pid, tok, urls, cap):
+            fb.calls.append(("photos", pid, tuple(urls)))
+            return "p1", "https://www.facebook.com/p1", "ph1"
+        self.fb.publish_reel, self.fb.publish_photos = reel, photos
+        self.fb.story_video = lambda pid, tok, url: fb.calls.append(("story_video", url)) or "s1"
+        self.fb.story_photo = lambda pid, tok, image_url="", photo_id="": fb.calls.append(("story_photo", photo_id)) or "s2"
+
+    def tearDown_fns(self):
+        import importlib
+        importlib.reload(self.fb)
+
+    def test_reel_and_story_once(self):
+        self.addCleanup(self.tearDown_fns)
+        self._fake()
+        link = self.fb.share("rasipuram", "RN-1", "reel", ["https://v/1.mp4"], self.CAP, "#Rasipuram360")
+        self.assertEqual(link, "https://www.facebook.com/reel/v1")
+        self.assertEqual([c[0] for c in self.calls], ["reel", "story_video"])
+        self.assertEqual(self.fb.share("rasipuram", "RN-1", "reel", ["https://v/1.mp4"], self.CAP, "#Rasipuram360"), link)
+        self.assertEqual(len(self.calls), 2)      # never posted twice
+
+    def test_carousel_photos_and_story(self):
+        self.addCleanup(self.tearDown_fns)
+        self._fake()
+        self.fb.share("rasipuram", "RN-2", "photos", ["a.jpg", "b.jpg"], self.CAP, "#Rasipuram360")
+        self.assertEqual(self.calls, [("photos", "111", ("a.jpg", "b.jpg")), ("story_photo", "ph1")])
+
+    def test_not_set_up_page_and_dry_run_post_nothing(self):
+        self.addCleanup(self.tearDown_fns)
+        self._fake()
+        self.assertEqual(self.fb.share("namakkal", "RN-3", "reel", ["v"], self.CAP, "#Namakkal360"), "")
+        self.assertEqual(self.fb.share("rasipuram", "RN-3", "reel", ["v"], self.CAP, "#Rasipuram360", dry=True), "")
+        self.assertEqual(self.calls, [])
+
+    def test_failure_is_retried_at_most_twice_and_never_raises(self):
+        self.addCleanup(self.tearDown_fns)
+        self._fake(fail=True)
+        self.assertEqual(self.fb.share("rasipuram", "RN-4", "reel", ["v"], self.CAP, "#Rasipuram360"), "")
+        for _ in range(4):
+            self.fb.retry_failed()
+        self.assertEqual(len(self.calls), 3)      # first try + 2 retries
+        self.assertEqual(self.fb.state("rasipuram", "RN-4", "reel")["status"], "failed")
+
+    def test_post_py_shares_every_instagram_post(self):
+        src = (ROOT / "poster" / "post.py").read_text(encoding="utf-8")
+        self.assertEqual(src.count('share_facebook(sid, "reel"'), 3)      # news reel (live + dry) and the ready reel
+        self.assertEqual(src.count('share_facebook(sid, "photos"'), 2)    # news carousel (live + dry)
+        self.assertIn("facebook.share(", (ROOT / "rasipalan" / "rasi_daily.py").read_text(encoding="utf-8"))
+        wf = (ROOT / ".github" / "workflows" / "post.yml").read_text(encoding="utf-8")
+        for k in ("FB_TOKEN_NAMAKKAL", "FB_TOKEN_RASIPURAM", "facebook.py retry", "git add -f poster/fb_posted"):
+            self.assertIn(k, wf)
+
+
 if __name__ == "__main__":
     unittest.main()
 
@@ -1136,11 +1253,10 @@ class ReachPlan29Oct(unittest.TestCase):
         return out, out.strip().split("\n")[-1].split()
 
     def test_five_focused_hashtags_both_pages(self):
-        for page_tag in ("#Namakkal360", "#Rasipuram360"):
+        for page_tag, want in (("#Namakkal360", ("#Namakkal360", "#Namakkal", "#Rasipuram", "#NamakkalNews", "#நாமக்கல்")),
+                               ("#Rasipuram360", ("#Rasipuram360", "#Rasipuram", "#Namakkal", "#RasipuramNews", "#ராசிபுரம்"))):
             out, tags = self.tags(page_tag)
-            self.assertEqual(5, len(tags), tags)
-            for t in (page_tag, "#Namakkal", "#Rasipuram", "#CrimeNews", "#NamakkalNews"):
-                self.assertIn(t, tags)
+            self.assertEqual(sorted(want), sorted(tags), page_tag)      # owner 2 Nov pattern
 
     def test_english_search_line_added_whole_words(self):
         out, _ = self.tags("#Namakkal360")
