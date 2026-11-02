@@ -65,6 +65,11 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-02 | `8b3875d` | Facebook record keeps the story id (fb_story was overwritten by the news id) (owner 2 Nov) |
+| 2026-11-02 | `da756a7` | powercut: notices written |
+| 2026-11-02 | `fa10937` | powercut: notices written |
+| 2026-11-02 | `f5cc18f` | facebook RN-295 |
+| 2026-11-02 | `d83f828` | stories shared |
 | 2026-11-02 | `7672100` | Facebook: every Instagram post (news reel, carousel, ready reel, rasipalan) also posted to the page's Facebook page with a story; hashtags from fixed lists (owner 2 Nov) |
 | 2026-11-02 | `8af757f` | powercut: notices written |
 | 2026-11-02 | `755205d` | Full review fixes: clear full-detail reels, spaced posting, town-aware duplicates, Rasipuram area, insights every round (owner 2 Nov) |
@@ -90,9 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-01 | `889f623` | powercut: Namakkal district power-shutdown notices posted at once - hourly, Dinamani + Dinamalar Namakkal, never twice, never late, fails loudly; the normal collection is untouched |
 | 2026-11-01 | `0e7d218` | rasipalan writer: 5 tries, best draft kept, only the lines still wrong are replaced (1 Nov Coimbatore repost failed over 1 line) |
 | 2026-11-01 | `5a606f6` | rasipalan posted |
-| 2026-11-01 | `09f5a62` | rasipalan: repost input - post today again once the old post is deleted |
-| 2026-11-01 | `5770aa7` | rasipalan: நல்ல நேரம், சூலம் (+பரிகாரம்), சுபமுகூர்த்த நாள் on the panchangam slide and caption; ஞாயிற்றுக்கிழமை spelling; overlap check |
-| 2026-11-01 | `34e6836` | voice: no dash ever reaches the voice - 'சேலம் - நாமக்கல்' was read as minus (RN-256); routes read முதல் ... வரை |
-| 2026-11-01 | `7520454` | rasipalan posted |
-| 2026-11-01 | `9f9ff6a` | rasipalan: never miss a day - 1 source enough after 9:30, keep trying until 12:30, backups 9:45 and 11:45 |
 <!-- recent-changes:end -->
