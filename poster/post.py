@@ -1655,7 +1655,11 @@ def news_hold(row):
     """owner 2 Nov (RN-272): a story with any fact-check problem, or whose location is unknown or only a district, is held"""
     v_ = str(row.get("verification") or "")
     if "NOT CLEAN" in v_:
-        return "held: fact-check problems - " + v_[:200]
+        # owner 2 Nov: only FACTUAL problems hold a story; formatting-only flags (word count, line length, cut-off slide text) do not
+        probs_ = v_.split("problems:", 1)[1] if "problems:" in v_ else v_
+        facts_ = [p.strip() for p in probs_.split("; ") if re.search(r"fact-check|misses facts|numbers not found|not grounded|invented|made up|wrong|contradict", p, re.I)]
+        if facts_:
+            return "held: fact-check problems - " + "; ".join(facts_)[:200]
     loc_ = str(row.get("location") or "").strip()
     if re.fullmatch(r"[^,]*\b(district|மாவட்டம்)\.?", loc_, re.I):      # a district alone is not a place
         return "held: location is only the district - the town from the article is missing"

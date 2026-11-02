@@ -35,6 +35,22 @@ class HoldBeforePosting(unittest.TestCase):
         self.assertTrue(post.news_hold(r).startswith("held:"))
 
 
+class FormattingOnlyPosts(unittest.TestCase):
+    """owner 2 Nov: formatting-only fact-check flags do not hold a story; factual flags do"""
+
+    def row(self, verification):
+        return dict(verification=verification, location="Tiruchengode town, Namakkal district", caption="x", reel_script="y",
+                    source="", published="", headline_ta="", category="", notes="", batch="", review="Auto")
+
+    def test_formatting_only_posts(self):
+        r = self.row("DRAFT (m) - NOT CLEAN, held from posting - problems: reel_script has 84 words; need 85-105; sentence 1 has 14 words")
+        self.assertEqual(post.news_hold(r), "")
+
+    def test_factual_problem_is_held(self):
+        r = self.row("DRAFT (m) - NOT CLEAN, held from posting - problems: reel_script has 84 words; fact-check: caption misses facts of the article")
+        self.assertTrue(post.news_hold(r).startswith("held: fact-check problems"))
+
+
 class EntryPointLast(unittest.TestCase):
     """the posting job runs main() when the file is executed: every function it uses must be defined above that line (2 Nov, NameError)"""
 
