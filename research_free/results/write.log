@@ -1,109 +1,285 @@
-writing [N]: ஐப்பசி தேய்பிறை அஷ்டமி.. சிவாலயங்களில் கால பைரவருக்கு சிறப்ப
+writing [N]: திருச்செங்கோட்டில் கஞ்சா, போதை மாத்திரைகள் பதுக்கி விற்பனை: 
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (23s)
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+writing [N]: சேவல் சண்டை 3 வாலிபர் கைது
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+writing [N]: கஞ்சா, போதை மாத்திரை விற்ற அண்ணன், தம்பிக்கு காப்பு
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (18s)
 attempt 1 gemini/gemini-3.6-flash: 1 problems
-  sentence 1 (one-line story) has 16 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (18s)
-attempt 2 gemini/gemini-3.6-flash: 4 problems
-  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
-  reel_script has 96 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  numbers not found in the article: 02
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): ஜேடர்பாளையம் ('நன்செய் இடையாரில் உள்ள திருவேலீஸ்வரர் கோவில், பரமத்திவேலூர் ')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (27s)
-attempt 3 gemini/gemini-3.6-flash: 2 problems
-  sentence 1 (one-line story) has 15 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  numbers not found in the article: 02
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (22s)
-attempt 4 gemini/gemini-3.6-flash: 2 problems
-  reel_script has 85 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): பாண்டமங்கலம் ('நன்செய் இடையாரில் உள்ள திருவேலீஸ்வரர் கோவில், பரமத்திவேலூர் '); ஜேடர்பாளையம் ('நன்செய் இடையாரில் உள்ள திருவேலீஸ்வரர் கோவில், பரமத்திவேலூர் ')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (18s)
-attempt 5 gemini/gemini-3.6-flash: 2 problems
-  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  numbers not found in the article: 02
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (20s)
-attempt 6 gemini/gemini-3.6-flash: 1 problems
-  reel_script has 75 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (21s)
-attempt 7 gemini/gemini-3.6-flash: 1 problems
-  numbers not found in the article: 02
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
 ok gemini/gemini-3.6-flash (17s)
-attempt 8 gemini/gemini-3.6-flash: 3 problems
-  reel_script has 90 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  numbers not found in the article: 02
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (16s)
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  letters of another script inside Tamil words: प ल स ा ि ो - write every word only in Tamil letters
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (6s)
-factcheck by gemini/gemini-3.6-flash: 0 problems
-attempt 9 gemini/gemini-3.6-flash: 0 problems
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+ok gemini/gemini-3-flash-preview (12s)
+attempt 1 gemini/gemini-3-flash-preview: 2 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 36 ('திருச்செங்கோட்டில் தடை செய்யப்பட்டபுகையிலைப் பொருள்கள், கஞ்ச'); 35 ('இதையடுத்து ஊரக காவல் உதவியாளா் செல்லதுரை தலைமையில் காவல் துற'); 33 ('இதையடுத்து ஊரக காவல் உதவியாளா் செல்லதுரை தலைமையில் காவல் துற')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok groq/qwen/qwen3.8-27b (3s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (20s)
-proofread rejected (1 problems)
-  reel_script has 75 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  reel_script says the brothers were 'arrested' for selling ganja in the opening line, but the article only says police found ganja and tablets and arrested them; minor framing but acceptable
+  slides_spec line 'சோமசுந்தரம், 35, இடமிருந்து 60 போதை மாத்திரை' contains a garbled word 'இடமிருந்து' (should be 'இடமிருந்து' meaning 'from', but the phrase 'தம்பி சுரேஷ், 33, இடமிருந்து 60 போதை மாத்திரை பறிமுதல்' is ungrammatical and unclear in Tamil)
+  reel_script states 'போலீசாருக்கு கஞ்சா, போதை மாத்திரை பதுக்கி விற்பனை செய்வதாக தகவல் கிடைத்தது' which is accurate, but the caption's 'நடவடிக்கை' line adds 'கார் பறிமுதல்' correctly; no invented facts found otherwise
+  reel_script says 'சோமசுந்தரம், 35 வயது நபரின் வீட்டில் சோதனை செய்யப்பட்டது' while the article says the search was at Kandasamy Nagar in Devanankurichi; the house location is stated in the article, so this is consistent
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: reel_script says the brothers were 'arrested' for selling ganja in the opening line, but the article only says police found ganja and tablets and arrested them; minor framing but acceptable
+  fact-check: slides_spec line 'சோமசுந்தரம், 35, இடமிருந்து 60 போதை மாத்திரை' contains a garbled word 'இடமிருந்து' (should be 'இடமிருந்து' meaning 'from', but the phrase 'தம்பி சுரேஷ், 33, இடமிருந்து 60 போதை மாத்திரை பறிமுதல்' is ungrammatical and unclear in Tamil)
+  fact-check: reel_script states 'போலீசாருக்கு கஞ்சா, போதை மாத்திரை பதுக்கி விற்பனை செய்வதாக தகவல் கிடைத்தது' which is accurate, but the caption's 'நடவடிக்கை' line adds 'கார் பறிமுதல்' correctly; no invented facts found otherwise
+  fact-check: reel_script says 'சோமசுந்தரம், 35 வயது நபரின் வீட்டில் சோதனை செய்யப்பட்டது' while the article says the search was at Kandasamy Nagar in Devanankurichi; the house location is stated in the article, so this is consistent
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  slide 4 must have 2-3 lines
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The reel_script says the police team included 'காவல் உதவி ஆய்வாளர் சீனிவாசன்' (SI Srinivasan) but omits the other SIs (Selvam, Subramaniyan) and the other police; the article says SI Srinivasan led the team with SIs Selvam and Subramaniyan participating.
+  The reel_script says Bharathi is from Attur and then adds 'வயது', but the article says Bharathi, 23, is from Attur (Karur district), which is only partly stated; Karur district mention is missing for Attur in the script.
+  The reel_script states 'கரூரை சேர்ந்த பாலசுப்ரமணி, 28 வயது மற்றும் விக்னேஷ், 28 வயது ஆகியோர் கைது செய்யப்பட்டனர்' - the article says Vignesh's residence is not given, but the script's sentence structure mixes ages of Balasubramani and Vignesh with the Karur attribution, implying Vignesh is from Karur, which the article does not state.
+  The reel_script omits the detail that the three arrested were identified during investigation (விசாரணையில்) and that the gambling involved money being wagered (பணம் வைத்து), which the caption includes; the script only mentions 'சேவல் சண்டை' without the wagering detail.
+  The slides_spec slide 2 line 'கரூர் மாவட்டத்தை சேர்ந்தவர்கள்' generalizes that all three are from Karur district, but Bharathi is from Attur, a different detail from the article's clear per-person residence; and 'தப்பி ஓடியவர்களில் 3 பேர் கைது' is a claim about the escapees that is ambiguous and mixes two facts.
+attempt 2 groq/qwen/qwen3.8-27b: 5 problems
+  fact-check: The reel_script says the police team included 'காவல் உதவி ஆய்வாளர் சீனிவாசன்' (SI Srinivasan) but omits the other SIs (Selvam, Subramaniyan) and the other police; the article says SI Srinivasan led the team with SIs Selvam and Subramaniyan participating.
+  fact-check: The reel_script says Bharathi is from Attur and then adds 'வயது', but the article says Bharathi, 23, is from Attur (Karur district), which is only partly stated; Karur district mention is missing for Attur in the script.
+  fact-check: The reel_script states 'கரூரை சேர்ந்த பாலசுப்ரமணி, 28 வயது மற்றும் விக்னேஷ், 28 வயது ஆகியோர் கைது செய்யப்பட்டனர்' - the article says Vignesh's residence is not given, but the script's sentence structure mixes ages of Balasubramani and Vignesh with the Karur attribution, implying Vignesh is from Karur, which the article does not state.
+  fact-check: The reel_script omits the detail that the three arrested were identified during investigation (விசாரணையில்) and that the gambling involved money being wagered (பணம் வைத்து), which the caption includes; the script only mentions 'சேவல் சண்டை' without the wagering detail.
+  fact-check: The slides_spec slide 2 line 'கரூர் மாவட்டத்தை சேர்ந்தவர்கள்' generalizes that all three are from Karur district, but Bharathi is from Attur, a different detail from the article's clear per-person residence; and 'தப்பி ஓடியவர்களில் 3 பேர் கைது' is a claim about the escapees that is ambiguous and mixes two facts.
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (14s)
+free models unavailable: no free model answered: None
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+free models unavailable: no free model answered: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read t
+ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-real photo used (1192x667, sharpness 80.4, The photograph shows decorated idols of Lord Kala Bhairavar ): https://media.assettype.com/dailythanthi%2F2026-11-02%2F2mpcsdtf%2FKala-Bhairavar.jpg?w=12
-real photo used (1192x667, sharpness 80.4, The photo shows the decorated deity of Lord Bhairavar during): https://media.assettype.com/dailythanthi/2026-11-02/2mpcsdtf/Kala-Bhairavar.jpg?w=1200&h=6
-real photos used for 'Aippasi Theypirai Ashtami special pujas ' (Daily Thanthi)
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261102-1444","first":"RN-294"}
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  slide 1 line 1 longer than 60 characters
+  slide 2 line 1 longer than 60 characters
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  slides_spec.hl1 says 'மோகனூரில் சேவல் சண்டை: 3 பேர் கைது' and the draft's tamil_headline says 'மூவரும்'-style claims are fine, but slides_spec 'எங்கே?' slide says the cockfight took place in 'மோகனூர் டவுன் பஞ்சாயத்து, மணியங்காளிப்பட்டி' — accurate; however the 'என்ன நடந்தது?' slide says 'சிலர் தப்பி ஓடினர்' while the article says those involved fled and went into hiding (தலைமறைவாகினர்), which the caption renders as 'தப்பி ஓடி தலைமறைவாயினர' — no issue there.
+  slides_spec 'கைது' slide states 'மூவரும் கரூர் மாவட்டத்தைச் சேர்ந்தவர்கள்' but the article says Bharathi is from Athur in Karur district and the other two from Karur — this is consistent, so not a problem; however the slide's 'போலீசார் விசாரணை தொடர்கிறது' (investigation continues) is an invented detail not stated in the article.
+  The reel_script states the police 'முறியடித்து' (foiled) the cockfight, a characterization not in the article, which only says they conducted a search and arrested people.
+  The reel_script's 'ரூ.300 பணத்தையும்' and the phrase 'சேவல்களையும்' are fine, but the reel_script says the arrested were 'வாலிபர்கள' in the headline; the article does not specify their age group beyond ages 23–28, so calling them 'வாலிபர்கள' is acceptable wording rather than a factual error.
+  The reel_script omits that the people who fled went into hiding (தலைமறைவாகினர்) and that the 3 arrested were caught after being surrounded — the surround detail is present, but the important fact that the cockfight participants fled and hid is only partially conveyed.
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: slides_spec.hl1 says 'மோகனூரில் சேவல் சண்டை: 3 பேர் கைது' and the draft's tamil_headline says 'மூவரும்'-style claims are fine, but slides_spec 'எங்கே?' slide says the cockfight took place in 'மோகனூர் டவுன் பஞ்சாயத்து, மணியங்காளிப்பட்டி' — accurate; however the 'என்ன நடந்தது?' slide says 'சிலர் தப்பி ஓடினர்' while the article says those involved fled and went into hiding (தலைமறைவாகினர்), which the caption renders as 'தப்பி ஓடி தலைமறைவாயினர' — no issue there.
+  fact-check: slides_spec 'கைது' slide states 'மூவரும் கரூர் மாவட்டத்தைச் சேர்ந்தவர்கள்' but the article says Bharathi is from Athur in Karur district and the other two from Karur — this is consistent, so not a problem; however the slide's 'போலீசார் விசாரணை தொடர்கிறது' (investigation continues) is an invented detail not stated in the article.
+  fact-check: The reel_script states the police 'முறியடித்து' (foiled) the cockfight, a characterization not in the article, which only says they conducted a search and arrested people.
+  fact-check: The reel_script's 'ரூ.300 பணத்தையும்' and the phrase 'சேவல்களையும்' are fine, but the reel_script says the arrested were 'வாலிபர்கள' in the headline; the article does not specify their age group beyond ages 23–28, so calling them 'வாலிபர்கள' is acceptable wording rather than a factual error.
+  fact-check: The reel_script omits that the people who fled went into hiding (தலைமறைவாகினர்) and that the 3 arrested were caught after being surrounded — the surround detail is present, but the important fact that the cockfight participants fled and hid is only partially conveyed.
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 7 problems
+  slides_spec line 'சோமசுந்தரம், 35 வீட்டு நிறுத்திய காரில் 2 கிலோ கஞ்சா' is ungrammatical and unclear in Tamil, and mixes the owner's house with the car in a confusing way
+  slides_spec line 'சுரேஷ், 33 வசம் 60 போதை மாத்திரைகள்' is ungrammatical; it does not clearly state the tablets were seized from Suresh
+  slides_spec line 'இருவர் மீதும் சேலம், நாமக்கல், ஈரோடு மாவட்டங்களில் பல' is truncated and has no clear meaning (missing 'வழக்குகள்')
+  slides_spec line 'போதை மாத்திரைகளுடன் சுரேஷ் கைது' and 'போதைப்பொருள் விற்பனை குறித்து போலீசார் விசாரணை' are not supported by the article: the article does not mention an investigation into drug sales
+  slides_spec line 'கைதான இருவரும் அண்ணன், தம்பி' is fine, but the slide title 'இருவரும் அண்ணன்' combined with the investigation claim introduces an unsupported detail
+  reel_script states 'கஞ்சா விற்ற அண்ணன், தம்பி கைது' while the article says both were arrested for storing/selling; the article's headline says 'விற்ற' but the body only describes possession and arrest, a minor overstatement of the sale activity by the brothers as a confirmed fact
+  reel_script says 'அவரது தம்பி சுரேஷ், 33 என்பவரிடமிருந்து' but the reel_script omits that the car was seized and that Somasundaram was arrested with the car, which is partly present; the seizure of the car is missing from the reel_script
+claude rewrite 3 anthropic/claude-haiku-5-5: 7 problems
+  fact-check: slides_spec line 'சோமசுந்தரம், 35 வீட்டு நிறுத்திய காரில் 2 கிலோ கஞ்சா' is ungrammatical and unclear in Tamil, and mixes the owner's house with the car in a confusing way
+  fact-check: slides_spec line 'சுரேஷ், 33 வசம் 60 போதை மாத்திரைகள்' is ungrammatical; it does not clearly state the tablets were seized from Suresh
+  fact-check: slides_spec line 'இருவர் மீதும் சேலம், நாமக்கல், ஈரோடு மாவட்டங்களில் பல' is truncated and has no clear meaning (missing 'வழக்குகள்')
+  fact-check: slides_spec line 'போதை மாத்திரைகளுடன் சுரேஷ் கைது' and 'போதைப்பொருள் விற்பனை குறித்து போலீசார் விசாரணை' are not supported by the article: the article does not mention an investigation into drug sales
+  fact-check: slides_spec line 'கைதான இருவரும் அண்ணன், தம்பி' is fine, but the slide title 'இருவரும் அண்ணன்' combined with the investigation claim introduces an unsupported detail
+  fact-check: reel_script states 'கஞ்சா விற்ற அண்ணன், தம்பி கைது' while the article says both were arrested for storing/selling; the article's headline says 'விற்ற' but the body only describes possession and arrest, a minor overstatement of the sale activity by the brothers as a confirmed fact
+  fact-check: reel_script says 'அவரது தம்பி சுரேஷ், 33 என்பவரிடமிருந்து' but the reel_script omits that the car was seized and that Somasundaram was arrested with the car, which is partly present; the seizure of the car is missing from the reel_script
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+real photo: no picture on the source page -> AI pictures
+imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs ~0.0020 pollen, but your available balance is 0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  slide 2 line 1 longer than 60 characters
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  Reel script states the date as 2 November 2026 (2026 நவம்பர் 2ஆம் தேதி), which is not in the article; the article gives no event date.
+  Reel script says 'போலீசார் 3 சேவல்களையும் ரூ.300 பணத்தையும் பறிமுதல் செய்தனர்' is fine, but the slide and caption refer to 'காவல் உதவி ஆய்வாளர்' / 'எஸ்.ஐ.' – acceptable; however the caption gives Bharathi's age only as '23 (ஆத்தூர்)' and places Bharathi in Karur district without the article distinguishing that Athur is in Karur district – minor, but the caption's 'கரூர் மாவட்டத்தைச் சேர்ந்த பாரதி, 23 (ஆத்தூர்)' is a clear rendering of the article's location.
+  Reel script says the accused were from 'கரூர் மாவட்டத்தைச் சேர்ந்த பாரதி (23 வயது), பாலசுப்ரமணி (28 வயது), விக்னேஷ், 28 ஆகியோர்' – the article says Bharathi is from Athur, Karur district, and Balasubramani is from Karur; the reel script omits Bharathi's town (Athur) and labels all three as from Karur district, which is a misstatement for Bharathi's origin.
+  Slides spec states 'பாரதி, 23 (ஆத்தூர், கரூர் மாவட்டம்)' and 'பாலசுப்ரமணி, 28; விக்னேஷ், 28 (கரூர்)' – these are consistent with the article; no problem here.
+  Reel script omits the key fact that the cockfight was conducted in an unauthorized manner for betting at the cremation ground (the place is mentioned, but 'பணம் வைத்து' betting is mentioned only in passing) – minor, not required.
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: Reel script states the date as 2 November 2026 (2026 நவம்பர் 2ஆம் தேதி), which is not in the article; the article gives no event date.
+  fact-check: Reel script says 'போலீசார் 3 சேவல்களையும் ரூ.300 பணத்தையும் பறிமுதல் செய்தனர்' is fine, but the slide and caption refer to 'காவல் உதவி ஆய்வாளர்' / 'எஸ்.ஐ.' – acceptable; however the caption gives Bharathi's age only as '23 (ஆத்தூர்)' and places Bharathi in Karur district without the article distinguishing that Athur is in Karur district – minor, but the caption's 'கரூர் மாவட்டத்தைச் சேர்ந்த பாரதி, 23 (ஆத்தூர்)' is a clear rendering of the article's location.
+  fact-check: Reel script says the accused were from 'கரூர் மாவட்டத்தைச் சேர்ந்த பாரதி (23 வயது), பாலசுப்ரமணி (28 வயது), விக்னேஷ், 28 ஆகியோர்' – the article says Bharathi is from Athur, Karur district, and Balasubramani is from Karur; the reel script omits Bharathi's town (Athur) and labels all three as from Karur district, which is a misstatement for Bharathi's origin.
+  fact-check: Slides spec states 'பாரதி, 23 (ஆத்தூர், கரூர் மாவட்டம்)' and 'பாலசுப்ரமணி, 28; விக்னேஷ், 28 (கரூர்)' – these are consistent with the article; no problem here.
+  fact-check: Reel script omits the key fact that the cockfight was conducted in an unauthorized manner for betting at the cremation ground (the place is mentioned, but 'பணம் வைத்து' betting is mentioned only in passing) – minor, not required.
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  reel_script says the 50 kg tobacco products were found 'in the house' area — article says they were in the upper floor (மாடி) of the house; minor but the caption is consistent with article. (Not a real error — see below.)
+  reel_script says Ranjith Kumar 'வீட்டின் மாடியில்' which matches the article; however the reel_script and slides_spec omit the rural police assistant (ஊரக காவல் உதவியாளா் செல்லதுரை) who led the raid — not a required fact.
+  caption states Ranjith Kumar's arrest after the search 'ஊரக காவல் துறையினர் சோதனை நடத்தி' — matches article; no issue.
+  caption and reel_script say 'தடை செய்யப்பட்ட புகையிலை' was 'விற்ற' in the reel for Somasundaram, but article says he sold tobacco products and the cannabis was seized from him — consistent.
+  slides_spec slide 1 says Ranjith Kumar was arrested for 'வீட்டு' storage, slide text 'ரஞ்சித் குமார் கைது' is consistent with article.
+  tamil_headline and caption lead with 'கஞ்சா, போதை மாத்திரை விற்பனை' while the first arrest involved only tobacco; this is a framing of the combined case, not a factual error.
+claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: reel_script says the 50 kg tobacco products were found 'in the house' area — article says they were in the upper floor (மாடி) of the house; minor but the caption is consistent with article. (Not a real error — see below.)
+  fact-check: reel_script says Ranjith Kumar 'வீட்டின் மாடியில்' which matches the article; however the reel_script and slides_spec omit the rural police assistant (ஊரக காவல் உதவியாளா் செல்லதுரை) who led the raid — not a required fact.
+  fact-check: caption states Ranjith Kumar's arrest after the search 'ஊரக காவல் துறையினர் சோதனை நடத்தி' — matches article; no issue.
+  fact-check: caption and reel_script say 'தடை செய்யப்பட்ட புகையிலை' was 'விற்ற' in the reel for Somasundaram, but article says he sold tobacco products and the cannabis was seized from him — consistent.
+  fact-check: slides_spec slide 1 says Ranjith Kumar was arrested for 'வீட்டு' storage, slide text 'ரஞ்சித் குமார் கைது' is consistent with article.
+  fact-check: tamil_headline and caption lead with 'கஞ்சா, போதை மாத்திரை விற்பனை' while the first arrest involved only tobacco; this is a framing of the combined case, not a factual error.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The reel_script says the cockfight 'was taking place' (நடந்து வந்தது), which is an interpretation not stated in the article; the article only says it was taking place when police arrived (less significant, but the phrasing 'நடந்து வந்தது' implies ongoing activity over time).
+  The reel_script and slides say the suspects came from 'ஆத்தூர், கரூர் மாவட்டத்தைச் சேர்ந்த' and 'ஆத்தூர், கரூர் மாவட்டம்' — the article says Bharathi is from Aathur in Karur district, which is consistent, but the reel_script omits that Balasubramani and Vignesh are from Karur without stating the district is the same; minor, not an error.
+  The slide 'போலீசார் மேல் விசாரணை நடக்கிறது' (investigation against the police is underway) is invented: the article says nothing about any investigation, and it misrepresents the matter as an inquiry into the police.
+  The reel_script says 'காவல் உதவி ஆய்வாளர் சீனிவாசன்' (Sub-Inspector Srinivasan), which matches the article's 'எஸ்.ஐ.' but the article also names SIs Selvam and Subramanian; the reel_script omits them, which is acceptable but not a claim error.
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The reel_script says the cockfight 'was taking place' (நடந்து வந்தது), which is an interpretation not stated in the article; the article only says it was taking place when police arrived (less significant, but the phrasing 'நடந்து வந்தது' implies ongoing activity over time).
+  fact-check: The reel_script and slides say the suspects came from 'ஆத்தூர், கரூர் மாவட்டத்தைச் சேர்ந்த' and 'ஆத்தூர், கரூர் மாவட்டம்' — the article says Bharathi is from Aathur in Karur district, which is consistent, but the reel_script omits that Balasubramani and Vignesh are from Karur without stating the district is the same; minor, not an error.
+  fact-check: The slide 'போலீசார் மேல் விசாரணை நடக்கிறது' (investigation against the police is underway) is invented: the article says nothing about any investigation, and it misrepresents the matter as an inquiry into the police.
+  fact-check: The reel_script says 'காவல் உதவி ஆய்வாளர் சீனிவாசன்' (Sub-Inspector Srinivasan), which matches the article's 'எஸ்.ஐ.' but the article also names SIs Selvam and Subramanian; the reel_script omits them, which is acceptable but not a claim error.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Brothers arrested in Devanankurichi near'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261102-1849","first":"RN-295"}
 posting job started at once
+real photo: no picture on the source page -> AI pictures
+writing [N]: சாய துணி அலசியவர்கள் போலீசில் ஒப்படைப்பு
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slides must have 3 or 4 items
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  reel_script has 47 words; need 60-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  hl1 (the first headline on screen) must name the place 'பள்ளிப்பாளையம்', e.g. 'பள்ளிப்பாளையம்: ...' or 'பள்ளிப்பாளையம்-இல் ...' - viewers share news of their own area
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Three youths from Karur arrested for ill'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261102-1849","first":"RN-296"}
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  slides must have 3 or 4 items
+  reel_script has 44 words; need 60-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+real photo: no picture on the source page -> AI pictures
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'People washing dye-soaked cloth in a riv'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261102-1850","first":"RN-297"}
+write_stories.yml started
 earlier stories still waiting for images: []
-instagram check: 92 recent posts read from both pages
-write round: 8 news waiting in the queue (written in priority order)
-candidate filter: collected=6, already filed=2
-to write: 1 Rasipuram + 5 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 5 Namakkal; time left 29 min
+instagram check: 94 recent posts read from both pages
+write round: 10 news waiting in the queue (written in priority order)
+candidate filter: collected=7, already filed=3
+to write: 0 Rasipuram + 7 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 7 Namakkal; time left 29 min
 try (N) manual=False: திருச்செங்கோட்டில் கஞ்சா, போதை மாத்திரைகள் பதுக்கி விற்பனை: 
-try (N) manual=False: இயற்கை காய்கறிகள் அங்காடி விற்பனை மையம் திறப்பு - Dinakaran
-try (R) manual=False: கிராம சபை கூட்டத்தில் குடிநீர் வழங்க கோரிக்கை
-skip (N) similar to a filed story: திருச்செங்கோட்டில் கஞ்சா, போதை மாத்திரைகள் பதுக்கி
-try (N) manual=False: ஐப்பசி தேய்பிறை அஷ்டமி.. சிவாலயங்களில் கால பைரவருக்கு சிறப்ப
-skip (N) similar to a filed story: இயற்கை காய்கறிகள் அங்காடி விற்பனை மையம் திறப்பு - 
+try (N) manual=False: சேவல் சண்டை 3 வாலிபர் கைது
+try (N) manual=False: நாமக்கல் மாவட்டத்தில் முட்டை கொள்முதல் விலை ரூ.6.20 ஆக நிர்ண
+skip (N) similar to a filed story: நாமக்கல் மாவட்டத்தில் முட்டை கொள்முதல் விலை ரூ.6.2
+try (N) manual=False: இயற்கை காய்கறிகள் அங்காடி விற்பனை மையம் திறப்பு
+skip (N) similar to a filed story: இயற்கை காய்கறிகள் அங்காடி விற்பனை மையம் திறப்பு
 try (N) manual=False: தியாகராஜ பாகவதர் 67வது நினைவு நாள்
 skip (N) similar to a filed story: தியாகராஜ பாகவதர் 67வது நினைவு நாள்
-try (N) manual=False: இயற்கை பூச்சி விரட்டி நீமாஸ்திரா தயாரிக்க விவசாயிகளுக்கு பயி
-skip (R) similar to a filed story: கிராம சபை கூட்டத்தில் குடிநீர் வழங்க கோரிக்கை
-skip (N) similar to a filed story: இயற்கை பூச்சி விரட்டி நீமாஸ்திரா தயாரிக்க விவசாயிக
-real photo from the source (Daily Thanthi) for 'Aippasi Theypirai Ashtami special pujas '
-auto images: 1 of 1 stories ({})
+try (N) manual=False: கஞ்சா, போதை மாத்திரை விற்ற அண்ணன், தம்பிக்கு காப்பு
+auto images: 1 of 1 stories ({'black-forest-labs/flux.1-dev': 2})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 5}, done={'R': 0, 'N': 1}, time left 24 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+try (N) manual=False: சாய துணி அலசியவர்கள் போலீசில் ஒப்படைப்பு
+NOT filed (N) திருச்செங்கோட்டில் கஞ்சா, போதை மாத்திரைகள் பதுக்கி: duplicate after write
+auto images: 1 of 1 stories ({'black-forest-labs/flux.1-dev': 4})
+auto images: 1 of 1 stories ({'black-forest-labs/flux.1-dev': 6})
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 7}, done={'R': 0, 'N': 3}, time left 23 min
+carousel for 0 of 3 stories, the rest reel only
+filed: 0 Rasipuram + 3 Namakkal (targets 200 + 200)
+queue: 1 news waiting to be written
+write_stories.yml started
+All News sheet: {"ok":true,"added":0,"updated":4} 
+stories: 3
