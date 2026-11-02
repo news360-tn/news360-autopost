@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-02 | `2491698` | post.py: the entry point ran main() before the new skip_reason/news_hold were defined (NameError, every post run failed); entry point moved to the end + a test |
+| 2026-11-02 | `fe1d6f3` | rasipalan posted |
 | 2026-11-01 | `7c9a922` | the fact-check / location hold also applies to owner ready reels (they skipped every news check before); RN-272 repost path |
 | 2026-11-01 | `65b0ed4` | writer must name the town or village from the article in location (a district alone is not allowed); a story whose location is only the district is held from posting (RN-272) |
 | 2026-11-01 | `5cc8699` | hold a story from posting when its fact-check found any problem or its location is unknown (RN-272); the verification label now shows the real check result instead of a fixed 'not checked by Claude yet' |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-10-31 | `99f4f39` | Real photos: one Gemini 'too many requests' (429) stops the photo check for 30 min - the free quota stays for the writer (owner 31 Oct) |
 | 2026-10-31 | `53e4015` | Headline-only pages are never written; one prison escape is one event; 'details not yet known' scripts are not news (owner 31 Oct) |
 | 2026-10-31 | `e274b44` | Namakkal: repeats within 2 days, fights and collapses are incidents (the Coimbatore fix, owner 31 Oct) |
-| 2026-10-31 | `84f0b0b` | Real news photos: only our page's branding - source watermarks / channel logos removed, no source credit (owner 31 Oct) |
-| 2026-10-31 | `8f263cd` | Real news photos: the source article's own photo is used when it shows this news, enhanced to a presentable picture; else AI pictures (owner 31 Oct) |
 <!-- recent-changes:end -->
