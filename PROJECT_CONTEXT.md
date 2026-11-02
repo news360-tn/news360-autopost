@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-02 | `e3ab956` | A zero-padded date is not an invented number: '02 நவம்பர் 2026' in the caption held every story on 1-9 Nov (owner 2 Nov) |
 | 2026-10-31 | `f2e4fe7` | Every reel from the FULL article, told like a news reader; reels up to 90 s (owner 31 Oct) |
 | 2026-11-02 | `3fb0892` | the fact-check hold stops only FACTUAL problems; formatting-only flags (word count, line length, cut-off slide text) post - owner-ticked news must not be held for them |
 | 2026-11-02 | `c9cfe06` | stories shared |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-01 | `55d6197` | rasipalan: find today's article when the day is written 01 or the link has no date (1 Nov nothing posted) |
 | 2026-10-31 | `2db8072` | rasipalan: proofreader may only fix sandhi/spacing (never a changed letter); TV9 'மேஷ ராசி' headings read |
 | 2026-10-31 | `de6fa35` | rasipalan: test runs keep the slides and log on a preview branch |
-| 2026-10-31 | `2fa30af` | Daily rasipalan carousel for Rasipuram 360 (7:31 AM, temple design, festival themes, collab Namakkal 360) |
 <!-- recent-changes:end -->
