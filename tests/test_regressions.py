@@ -866,6 +866,7 @@ class FacebookEverything2Nov(unittest.TestCase):
         self.fb.STATE = self.old[0]
         os.environ.clear(); os.environ.update(self.old[1])
 
+    PAGE_NAME = "rasipuram"
     CAP = "நாமகிரிப்பேட்டையில் விபத்து\n\n📍 நாமகிரிப்பேட்டை | 2 நவம்பர் 2026\n\n#Namakkal #Namagiripettai #RasipuramNews #ராசிபுரம் #Rasipuram360"
 
     def test_caption_location_first_three_tags(self):
@@ -902,6 +903,8 @@ class FacebookEverything2Nov(unittest.TestCase):
         self.assertEqual([c[0] for c in self.calls], ["reel", "story_video"])
         self.assertEqual(self.fb.share("rasipuram", "RN-1", "reel", ["https://v/1.mp4"], self.CAP, "#Rasipuram360"), link)
         self.assertEqual(len(self.calls), 2)      # never posted twice
+        rec = self.fb.state(self.calls and "%s" % self.PAGE_NAME, "RN-1", "reel")
+        self.assertEqual((rec["story"], rec["fb_story"]), ("RN-1", "s1"))      # 2 Nov: the Facebook story id was overwritten by the news id
 
     def test_carousel_photos_and_story(self):
         self.addCleanup(self.tearDown_fns)

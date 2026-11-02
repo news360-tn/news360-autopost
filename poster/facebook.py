@@ -227,8 +227,8 @@ def _attempt(page, sid, kind, media, caption, prev, story=True):
     log(f"posted to Facebook ({page} {sid} {kind}):", link)
     if story:      # the Facebook story of the same post (a story problem never changes the post record to failed)
         try:
-            rec["story"] = story_video(pid, tok, media[0]) if kind == "reel" else story_photo(pid, tok, photo_id=first)
-            log(f"Facebook story made ({page} {sid}):", rec["story"])
+            rec["fb_story"] = story_video(pid, tok, media[0]) if kind == "reel" else story_photo(pid, tok, photo_id=first)
+            log(f"Facebook story made ({page} {sid}):", rec["fb_story"])
         except Exception as e:
             rec["story_error"] = str(e)[:300]
             log(f"Facebook story not made ({page} {sid}; the post itself is fine):", str(e)[:200])
