@@ -1,13 +1,109 @@
+writing [N]: ஐப்பசி தேய்பிறை அஷ்டமி.. சிவாலயங்களில் கால பைரவருக்கு சிறப்ப
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (23s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  sentence 1 (one-line story) has 16 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (18s)
+attempt 2 gemini/gemini-3.6-flash: 4 problems
+  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
+  reel_script has 96 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  numbers not found in the article: 02
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): ஜேடர்பாளையம் ('நன்செய் இடையாரில் உள்ள திருவேலீஸ்வரர் கோவில், பரமத்திவேலூர் ')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (27s)
+attempt 3 gemini/gemini-3.6-flash: 2 problems
+  sentence 1 (one-line story) has 15 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  numbers not found in the article: 02
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (22s)
+attempt 4 gemini/gemini-3.6-flash: 2 problems
+  reel_script has 85 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): பாண்டமங்கலம் ('நன்செய் இடையாரில் உள்ள திருவேலீஸ்வரர் கோவில், பரமத்திவேலூர் '); ஜேடர்பாளையம் ('நன்செய் இடையாரில் உள்ள திருவேலீஸ்வரர் கோவில், பரமத்திவேலூர் ')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (18s)
+attempt 5 gemini/gemini-3.6-flash: 2 problems
+  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  numbers not found in the article: 02
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (20s)
+attempt 6 gemini/gemini-3.6-flash: 1 problems
+  reel_script has 75 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (21s)
+attempt 7 gemini/gemini-3.6-flash: 1 problems
+  numbers not found in the article: 02
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (17s)
+attempt 8 gemini/gemini-3.6-flash: 3 problems
+  reel_script has 90 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  numbers not found in the article: 02
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (16s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (6s)
+factcheck by gemini/gemini-3.6-flash: 0 problems
+attempt 9 gemini/gemini-3.6-flash: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (20s)
+proofread rejected (1 problems)
+  reel_script has 75 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (14s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+real photo used (1192x667, sharpness 80.4, The photograph shows decorated idols of Lord Kala Bhairavar ): https://media.assettype.com/dailythanthi%2F2026-11-02%2F2mpcsdtf%2FKala-Bhairavar.jpg?w=12
+real photo used (1192x667, sharpness 80.4, The photo shows the decorated deity of Lord Bhairavar during): https://media.assettype.com/dailythanthi/2026-11-02/2mpcsdtf/Kala-Bhairavar.jpg?w=1200&h=6
+real photos used for 'Aippasi Theypirai Ashtami special pujas ' (Daily Thanthi)
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261102-1444","first":"RN-294"}
+posting job started at once
 earlier stories still waiting for images: []
 instagram check: 92 recent posts read from both pages
-write round: 1 news waiting in the queue (written in priority order)
-candidate filter: collected=1
-to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
+write round: 8 news waiting in the queue (written in priority order)
+candidate filter: collected=6, already filed=2
+to write: 1 Rasipuram + 5 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 5 Namakkal; time left 29 min
+try (N) manual=False: திருச்செங்கோட்டில் கஞ்சா, போதை மாத்திரைகள் பதுக்கி விற்பனை: 
+try (N) manual=False: இயற்கை காய்கறிகள் அங்காடி விற்பனை மையம் திறப்பு - Dinakaran
+try (R) manual=False: கிராம சபை கூட்டத்தில் குடிநீர் வழங்க கோரிக்கை
+skip (N) similar to a filed story: திருச்செங்கோட்டில் கஞ்சா, போதை மாத்திரைகள் பதுக்கி
+try (N) manual=False: ஐப்பசி தேய்பிறை அஷ்டமி.. சிவாலயங்களில் கால பைரவருக்கு சிறப்ப
+skip (N) similar to a filed story: இயற்கை காய்கறிகள் அங்காடி விற்பனை மையம் திறப்பு - 
+try (N) manual=False: தியாகராஜ பாகவதர் 67வது நினைவு நாள்
+skip (N) similar to a filed story: தியாகராஜ பாகவதர் 67வது நினைவு நாள்
 try (N) manual=False: இயற்கை பூச்சி விரட்டி நீமாஸ்திரா தயாரிக்க விவசாயிகளுக்கு பயி
+skip (R) similar to a filed story: கிராம சபை கூட்டத்தில் குடிநீர் வழங்க கோரிக்கை
 skip (N) similar to a filed story: இயற்கை பூச்சி விரட்டி நீமாஸ்திரா தயாரிக்க விவசாயிக
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+real photo from the source (Daily Thanthi) for 'Aippasi Theypirai Ashtami special pujas '
+auto images: 1 of 1 stories ({})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 5}, done={'R': 0, 'N': 1}, time left 24 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 1
