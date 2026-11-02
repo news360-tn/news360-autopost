@@ -1651,6 +1651,16 @@ def main():
 
 
 
+def _real_numbers(problem):
+    """owner 2 Nov: 'numbers not found in the article: 02' was only the caption's date line ('📍 இடம் | 02 நவம்பர் 2026') - every story
+    written on 1-9 Nov was held. A zero-padded day (01-09) or '000' is not a stray number; the others still hold the story."""
+    m = re.match(r"(numbers not found in the article:\s*)(.*)$", problem)
+    if not m:
+        return problem
+    left = [n.strip() for n in m.group(2).split(",") if n.strip() and not re.fullmatch(r"0+|0[1-9]", n.strip())]
+    return m.group(1) + ", ".join(left) if left else ""
+
+
 def news_hold(row):
     """owner 2 Nov (RN-272): a story with any fact-check problem, or whose location is unknown or only a district, is held"""
     v_ = str(row.get("verification") or "")
@@ -1658,6 +1668,7 @@ def news_hold(row):
         # owner 2 Nov: only FACTUAL problems hold a story; formatting-only flags (word count, line length, cut-off slide text) do not
         probs_ = v_.split("problems:", 1)[1] if "problems:" in v_ else v_
         facts_ = [p.strip() for p in probs_.split("; ") if re.search(r"fact-check|misses facts|numbers not found|not grounded|invented|made up|wrong|contradict", p, re.I)]
+        facts_ = [f for f in (_real_numbers(p) for p in facts_) if f]
         if facts_:
             return "held: fact-check problems - " + "; ".join(facts_)[:200]
     loc_ = str(row.get("location") or "").strip()

@@ -23,6 +23,22 @@ def _digits_in(text):
     return set(re.findall(r"\d+", t)) | set(re.findall(r"\d+", re.sub(r"(?<=\d),(?=\d{2,3}\b)", "", t)))
 
 
+def _num(n):
+    """owner 2 Nov: a number by its value - '02' is 2 ('📍 இடம் | 02 நவம்பர் 2026' held every story on 1-9 Nov), '000' is 0"""
+    return n.lstrip("0") or "0"
+
+
+_SCALE = {"ஆயிரம்": 1000, "ஆயிர": 1000, "லட்சம்": 100000, "லட்ச": 100000, "கோடி": 10000000}
+
+
+def _scaled_digits(text):
+    """'10 ஆயிரம்' / '2 லட்சம்' / '1.5 கோடி' in the article: the script may write 10000 / 200000 / 15000000"""
+    out = set()
+    for m in re.finditer(r"(\d+(?:\.\d+)?)\s*(ஆயிர|லட்ச|கோடி)", text or ""):
+        out.add(str(int(round(float(m.group(1)) * _SCALE[m.group(2)]))))
+    return out
+
+
 def _calendar_digits():
     """today's / yesterday's / tomorrow's day, the month number and the year (IST): a story written today may name them"""
     import datetime as _dt
@@ -270,9 +286,9 @@ def validate(d, article, today_digits=("2026",)):
     if re.search(r"AI (image|generated)|AI பிரதிநிதித்துவ", blob, re.I):
         p.append("no AI-image notes allowed")
     # every number must come from the article
-    src = _digits_in(article) | set(today_digits) | _calendar_digits() | {"1", "2", "3", "4", "5"}
+    src = {_num(n) for n in _digits_in(article) | _scaled_digits(article) | set(today_digits) | _calendar_digits() | {"1", "2", "3", "4", "5"}}
     text = " ".join([d["tamil_headline"], d["english_headline"], _tags(json.dumps(sp, ensure_ascii=False)), cap.split("#")[0], rs])      # the spoken script too
-    stray = sorted(n for n in _digits_in(text) if n not in src and len(n) > 0 and n not in ("0", "360"))
+    stray = sorted(n for n in _digits_in(text) if _num(n) not in src and _num(n) not in ("0", "360"))
     if stray:
         p.append("numbers not found in the article: " + ", ".join(stray[:6]))
     p += grounding_problems(d, article)

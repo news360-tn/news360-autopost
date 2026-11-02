@@ -466,6 +466,36 @@ class Ages(unittest.TestCase):
         self.assertIn("(47 வயது)", names.spoken("வசிக்கும் செல்வம், 47, நிதி"))
 
 
+
+class DateLineNotAStrayNumber(unittest.TestCase):
+    """owner 2 Nov: '📍 இடம் | 02 நவம்பர் 2026' in every caption was 'numbers not found in the article: 02' - nothing posted on 1-9 Nov"""
+
+    def test_zero_padded_numbers_count_by_value(self):
+        import validate
+        self.assertEqual(validate._num("02"), "2")
+        self.assertEqual(validate._num("000"), "0")
+        self.assertEqual(validate._num("120"), "120")
+        self.assertIn("10000", validate._scaled_digits("ரூ.10 ஆயிரம் அபராதம்"))
+        self.assertIn("200000", validate._scaled_digits("2 லட்சம் மதிப்பு"))
+
+    def test_validate_does_not_flag_the_date_line(self):
+        import validate, inspect
+        src = inspect.getsource(validate.validate)
+        self.assertIn("_num(n) not in src", src)
+        self.assertIn("_scaled_digits(article)", src)
+
+    def test_hold_ignores_only_zero_padded_dates(self):
+        sys.path.insert(0, str(ROOT / "poster"))
+        import post
+        self.assertEqual(post._real_numbers("numbers not found in the article: 02"), "")
+        self.assertEqual(post._real_numbers("numbers not found in the article: 000, 01"), "")
+        self.assertEqual(post._real_numbers("numbers not found in the article: 02, 547, 9"), "numbers not found in the article: 547, 9")
+        self.assertEqual(post._real_numbers("fact-check: wrong name"), "fact-check: wrong name")
+        row = {"verification": "DRAFT - NOT CLEAN, held from posting - problems: numbers not found in the article: 02", "location": "கொல்லிமலை, நாமக்கல்"}
+        self.assertEqual(post.news_hold(row), "")
+        row["verification"] = "DRAFT - NOT CLEAN, held from posting - problems: numbers not found in the article: 02, 1000"
+        self.assertIn("1000", post.news_hold(row))
+
 if __name__ == "__main__":
     unittest.main()
 
