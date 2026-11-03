@@ -1,3 +1,262 @@
+writing [N]: நாமக்கல் தோட்டக்கலைத்துறை சார்பில் காளான் வளர்ப்பு தொழில்நுட
+writing [R]: மண் குவியலில் புதர் பொதுமக்கள் அச்சம்
+writing [R]: ஏ.கே.வி., பள்ளியில் கல்வி கண்காட்சி
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok gemini/gemini-3-flash-preview (10s)
+attempt 1 gemini/gemini-3-flash-preview: 1 problems
+  reel_script must tell how the story ENDED, as the article's last lines say ('மண் குவியலில் புதர் பொதுமக்கள் அச்சம்') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+ok gemini/gemini-3-flash-preview (10s)
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+attempt 1 gemini/gemini-3-flash-preview: 1 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+ok groq/qwen/qwen3.8-27b (4s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  reel_script says 'தாளாளர் முத்துசாமி முன்னிலை வகித்தார்' but the article says he presided alongside (முன்னிலை வகித்தனர் with secretary and treasurer), and the reel mislabels the roles: secretary குழந்தைவேலு 'கலந்துகொண்டார்' and treasurer பழனிசாமி 'முன்னிலை வகித்தார' are given inconsistent wording versus the article's grouping of அனைவர் as முன்னிலை வகித்தனர்
+  reel_script and slides_spec say the 'தமிழ் துறை' / 'ஆங்கில துறை' items were shown, but the article specifies the Tamil department's items were 'ஐவகை நிலங்கள், பழங்கால பொருட்கள், வில்லுப்பாட்டு, 63 நாயன்மார்கள், பாரம்பரிய கலைகள், தலவரலாறு' and the English department's was 'மகாபாரத நாடகம்' – the reel's 'தமிழ், ஆங்கில துறைகளின் படைப்புகள்' is a loose summary, while slides_spec 'தமிழ், ஆங்கில துறைகளின் படைப்புகள் காட்டப்பட்டன' is acceptable but the reel omits the 'சி.பி.எஸ்.இ. பள்ளியின்' attribution
+  reel_script says 'மாவட்ட கல்வி அலுவலர் சாந்தி உரை நிகழ்த்தினார்' and quotes her as 'இது மாணவர்களின் திறமையை வெளிப்படுத்தும் வாய்ப்பு' – the article describes her as 'தனியார் பள்ளிகளின் மாவட்ட கல்வி அலுவலர்', which the reel drops
+  caption and reel_script say 'எதிர்கால விஞ்ஞானிகளை உருவாக்கும் நிகழ்வாக இது அமைகிறது' attributed to the officer, which matches the article; however slides_spec headline 'லேர்ன்-2026 தலைப்பில்' drops the 'வோர்ல்டு ஆப் நாலெட்ஜ்' part, which is a minor omission
+  caption's 'மாணவர்களின் படைப்புகளை பாராட்டி ஆதரவளிப்பதன் மூலம் கல்வித் துறையை ஊக்குவிக்கலாம்' is an invented call-to-action not present in the article
+  reel_script's 'மாணவர்களின் உள்ளார்ந்த ஆக்கத் திறனை இது வெளிப்படுத்தியது' and similar sentences merge the exhibition's purpose with an unstated claim; the sentence 'பல்வேறு திறன்களை கற்றுக்கொள்ளும் வாய்ப்பு இது என தெரிவிக்கப்பட்டுள்ளது' is acceptable but 'ஆங்கில துறையின் மகாபாரத நாடகம் அமைந்தது' is grammatically unclear in Tamil (no clear meaning beyond 'was present')
+attempt 1 groq/qwen/qwen3.8-27b: 6 problems
+  fact-check: reel_script says 'தாளாளர் முத்துசாமி முன்னிலை வகித்தார்' but the article says he presided alongside (முன்னிலை வகித்தனர் with secretary and treasurer), and the reel mislabels the roles: secretary குழந்தைவேலு 'கலந்துகொண்டார்' and treasurer பழனிசாமி 'முன்னிலை வகித்தார' are given inconsistent wording versus the article's grouping of அனைவர் as முன்னிலை வகித்தனர்
+  fact-check: reel_script and slides_spec say the 'தமிழ் துறை' / 'ஆங்கில துறை' items were shown, but the article specifies the Tamil department's items were 'ஐவகை நிலங்கள், பழங்கால பொருட்கள், வில்லுப்பாட்டு, 63 நாயன்மார்கள், பாரம்பரிய கலைகள், தலவரலாறு' and the English department's was 'மகாபாரத நாடகம்' – the reel's 'தமிழ், ஆங்கில துறைகளின் படைப்புகள்' is a loose summary, while slides_spec 'தமிழ், ஆங்கில துறைகளின் படைப்புகள் காட்டப்பட்டன' is acceptable but the reel omits the 'சி.பி.எஸ்.இ. பள்ளியின்' attribution
+  fact-check: reel_script says 'மாவட்ட கல்வி அலுவலர் சாந்தி உரை நிகழ்த்தினார்' and quotes her as 'இது மாணவர்களின் திறமையை வெளிப்படுத்தும் வாய்ப்பு' – the article describes her as 'தனியார் பள்ளிகளின் மாவட்ட கல்வி அலுவலர்', which the reel drops
+  fact-check: caption and reel_script say 'எதிர்கால விஞ்ஞானிகளை உருவாக்கும் நிகழ்வாக இது அமைகிறது' attributed to the officer, which matches the article; however slides_spec headline 'லேர்ன்-2026 தலைப்பில்' drops the 'வோர்ல்டு ஆப் நாலெட்ஜ்' part, which is a minor omission
+  fact-check: caption's 'மாணவர்களின் படைப்புகளை பாராட்டி ஆதரவளிப்பதன் மூலம் கல்வித் துறையை ஊக்குவிக்கலாம்' is an invented call-to-action not present in the article
+  fact-check: reel_script's 'மாணவர்களின் உள்ளார்ந்த ஆக்கத் திறனை இது வெளிப்படுத்தியது' and similar sentences merge the exhibition's purpose with an unstated claim; the sentence 'பல்வேறு திறன்களை கற்றுக்கொள்ளும் வாய்ப்பு இது என தெரிவிக்கப்பட்டுள்ளது' is acceptable but 'ஆங்கில துறையின் மகாபாரத நாடகம் அமைந்தது' is grammatically unclear in Tamil (no clear meaning beyond 'was present')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The draft's slides_spec and reel_script say the camp was organised 'by the Namakkal block horticulture department and ATMA scheme' — the article says it was held jointly by the horticulture department and the Technology Management Agency (தொழில்நுட்ப மேலாண் முகமை); calling it the ATMA scheme is a slight mismatch but acceptable only if equivalent; however, the caption and reel_script also say 'அட்மா திட்டம்' correctly, so this is minor.
+  The draft says 'ஒருநாள் பயிற்சி' is held at the agricultural science station — accurate; but the slides say 'இளைஞர்களுக்கு மானியம்' (subsidy for youth) as the headline, while the article says subsidies exist in mushroom cultivation generally, not specifically for youth — an unsupported specific claim.
+  The reel_script says 'வல்லுனர்கள் நுணுக்கங்களை விளக்கினர்' and 'நுணுக்கங்கள் குறித்து தொழில் முனைவோருடன் கலந்துரையாடினார்' — the article says Ilavarasan discussed with entrepreneurs; the reel_script attributes this to the expert 'இளவரசன்' only in one place and the caption omits the 'சமவெளியில்' (plains) detail; not a factual error but the 'மொட்டு காளான்' and nuance are unevenly represented.
+  The reel_script omits the key fact that the article describes the camp being chaired/attended by named officials and that Yuvasenthilkumar welcomed attendees; this is not a critical omission.
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The draft's slides_spec and reel_script say the camp was organised 'by the Namakkal block horticulture department and ATMA scheme' — the article says it was held jointly by the horticulture department and the Technology Management Agency (தொழில்நுட்ப மேலாண் முகமை); calling it the ATMA scheme is a slight mismatch but acceptable only if equivalent; however, the caption and reel_script also say 'அட்மா திட்டம்' correctly, so this is minor.
+  fact-check: The draft says 'ஒருநாள் பயிற்சி' is held at the agricultural science station — accurate; but the slides say 'இளைஞர்களுக்கு மானியம்' (subsidy for youth) as the headline, while the article says subsidies exist in mushroom cultivation generally, not specifically for youth — an unsupported specific claim.
+  fact-check: The reel_script says 'வல்லுனர்கள் நுணுக்கங்களை விளக்கினர்' and 'நுணுக்கங்கள் குறித்து தொழில் முனைவோருடன் கலந்துரையாடினார்' — the article says Ilavarasan discussed with entrepreneurs; the reel_script attributes this to the expert 'இளவரசன்' only in one place and the caption omits the 'சமவெளியில்' (plains) detail; not a factual error but the 'மொட்டு காளான்' and nuance are unevenly represented.
+  fact-check: The reel_script omits the key fact that the article describes the camp being chaired/attended by named officials and that Yuvasenthilkumar welcomed attendees; this is not a critical omission.
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  reel_script says the exhibition was held at 'ஏ கே வி பள்ளிகள்' generally and the headline says 'ஏ.கே.வி. பள்ளியில' (singular); article says the exhibition was held at the AKV Public School, CBSE Senior Secondary and AKV Matric Higher Secondary schools, so the reel and headline omit/merge the school names inaccurately
+  reel_script and slides_spec say the Tamil department's exhibits included 'தலவரலாறு' and the English department's Mahabharata 'நாடகம் அரங்கேற்றப்பட்டது' in the reel_script, which is an unsupported stylistic addition ('அரங்கேற்றப்பட்டது' = staged) not in the article; article says only 'செய்து காட்டியிருந்தனர'
+  slides_spec slide 'அதிகாரி கருத்து' lists the quote 'எதிர்கால விஞ்ஞானிகளை உருவாக்கும் நிகழ்வு' attributed to the officer, but the quote is partially reworded and the reel_script mixes it with the statement about the exhibition being an opportunity to showcase talent
+  slides_spec slide 'யார் முன்னிலை?' says 'கல்வி இயக்குனர்கள் முன்னிலை' and merges it with 'பொருளாளர் பழனிசாமி' into one line, mixing separate groups of attendees into one sentence
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: reel_script says the exhibition was held at 'ஏ கே வி பள்ளிகள்' generally and the headline says 'ஏ.கே.வி. பள்ளியில' (singular); article says the exhibition was held at the AKV Public School, CBSE Senior Secondary and AKV Matric Higher Secondary schools, so the reel and headline omit/merge the school names inaccurately
+  fact-check: reel_script and slides_spec say the Tamil department's exhibits included 'தலவரலாறு' and the English department's Mahabharata 'நாடகம் அரங்கேற்றப்பட்டது' in the reel_script, which is an unsupported stylistic addition ('அரங்கேற்றப்பட்டது' = staged) not in the article; article says only 'செய்து காட்டியிருந்தனர'
+  fact-check: slides_spec slide 'அதிகாரி கருத்து' lists the quote 'எதிர்கால விஞ்ஞானிகளை உருவாக்கும் நிகழ்வு' attributed to the officer, but the quote is partially reworded and the reel_script mixes it with the statement about the exhibition being an opportunity to showcase talent
+  fact-check: slides_spec slide 'யார் முன்னிலை?' says 'கல்வி இயக்குனர்கள் முன்னிலை' and merges it with 'பொருளாளர் பழனிசாமி' into one line, mixing separate groups of attendees into one sentence
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The reel_script says the Namakkal horticulture department and the ATMA project were involved, but the article only names the Namakkal block horticulture department and the Technology Management Agency (தொழில்நுட்ப மேலாண் முகமை); 'ATMA' is attached in slides_spec, which is not stated in the article in those words, and the phrasing mixes the department's name with a separate project.
+  slides_spec line 'ஒருநாள் காளான் வளர்ப்பு தொழில்நுட்பப் பயிற்சி முகாம்' is fine, but the slide 'என்ன விளக்கம்?' states the deputy director 'தலைமை வகித்தார்' while the article says she presided and explained the schemes; this is consistent, but the slide 'பல அதிகாரிகளும் முன்னோடி விவசாயிகளும் பங்கேற்றனர' is missing the final 'ர்' (grammatical error in Tamil spelling).
+  The reel_script states that the Namakkal veterinary/agricultural science centre's expert 'இளவரசன்' trained on 'காளான் ரகங்கள்' and also that 'மொட்டு காளான் வளர்ப்பு குறித்து தொழில் முனைவோருடன் கலந்துரையாடினார்' — the article says he discussed 'மொட்டு காளான் வளர்ப்பு' with entrepreneurs, but the reel_script's sentence merges two separate facts (the expert's training and the discussion) into one sentence, which is acceptable only as a combined description, not an invented detail.
+  The caption states the event date as '2026 நவம்பர் 3', but the article contains no date of the event; this date is not supported by the article.
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The reel_script says the Namakkal horticulture department and the ATMA project were involved, but the article only names the Namakkal block horticulture department and the Technology Management Agency (தொழில்நுட்ப மேலாண் முகமை); 'ATMA' is attached in slides_spec, which is not stated in the article in those words, and the phrasing mixes the department's name with a separate project.
+  fact-check: slides_spec line 'ஒருநாள் காளான் வளர்ப்பு தொழில்நுட்பப் பயிற்சி முகாம்' is fine, but the slide 'என்ன விளக்கம்?' states the deputy director 'தலைமை வகித்தார்' while the article says she presided and explained the schemes; this is consistent, but the slide 'பல அதிகாரிகளும் முன்னோடி விவசாயிகளும் பங்கேற்றனர' is missing the final 'ர்' (grammatical error in Tamil spelling).
+  fact-check: The reel_script states that the Namakkal veterinary/agricultural science centre's expert 'இளவரசன்' trained on 'காளான் ரகங்கள்' and also that 'மொட்டு காளான் வளர்ப்பு குறித்து தொழில் முனைவோருடன் கலந்துரையாடினார்' — the article says he discussed 'மொட்டு காளான் வளர்ப்பு' with entrepreneurs, but the reel_script's sentence merges two separate facts (the expert's training and the discussion) into one sentence, which is acceptable only as a combined description, not an invented detail.
+  fact-check: The caption states the event date as '2026 நவம்பர் 3', but the article contains no date of the event; this date is not supported by the article.
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The reel_script says the road was 'வையப்பமலையில் இருந்து மல்லசமுத்திரம் செல்லும் சாலை' and the slide repeats this, but the phrase in the reel_script is fine; however the slide 'என்ன நடந்தது?' omits the subject of the road-widening work and the one-year timeframe, so the key fact (road widening by the highways department one year ago) is not clearly stated in slides_spec.
+  The caption line 'தேவைப்படுவோருக்கு Share செய்யுங்கள்' is outside the allowed footer exceptions and adds a call-to-action not in the article (minor, but not an article claim).
+  The reel_script states 'அப்போது அள்ளப்பட்ட மண் முறையாக அகற்றப்படாமல் அப்படியே விடப்பட்டது' which is accurate, but the reel_script's description 'மண் குவியல்களில் புற்கள் முளைத்து' is accurate; no major factual error found apart from the slide wording omitting the highways department from the event description.
+claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The reel_script says the road was 'வையப்பமலையில் இருந்து மல்லசமுத்திரம் செல்லும் சாலை' and the slide repeats this, but the phrase in the reel_script is fine; however the slide 'என்ன நடந்தது?' omits the subject of the road-widening work and the one-year timeframe, so the key fact (road widening by the highways department one year ago) is not clearly stated in slides_spec.
+  fact-check: The caption line 'தேவைப்படுவோருக்கு Share செய்யுங்கள்' is outside the allowed footer exceptions and adds a call-to-action not in the article (minor, but not an article claim).
+  fact-check: The reel_script states 'அப்போது அள்ளப்பட்ட மண் முறையாக அகற்றப்படாமல் அப்படியே விடப்பட்டது' which is accurate, but the reel_script's description 'மண் குவியல்களில் புற்கள் முளைத்து' is accurate; no major factual error found apart from the slide wording omitting the highways department from the event description.
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  Headline and caption say the exhibition was at 'ஏ.கே.வி. பள்ளிகள்' generally, but the reel_script/slides mention 'ஏ கே வி பள்ளிகள்' fine; however the slide 'எங்கே, எப்போது?' lists only 'ஏ.கே.வி. பப்ளிக் பள்ளி, சி.பி.எஸ்.இ. மற்றும்' and omits the matric higher secondary school, which is an incomplete location detail
+  reel_script says 'இது அமைந்திருந்தது' (it was) for the exhibition theme, and the slide says 'மாணவர்கள் செய்து' (students did) with the subject split across lines, making the sentence ambiguous; the article says the Tamil and English departments demonstrated these items, not 'students'
+  reel_script says the Tamil department showed 'தமிழர் பாரம்பரியக் கலைகள், தலவரலாறு' as part of the same sentence while the caption says these were shown by the CBSE school's Tamil department, which is consistent, but the reel_script omits that the English department performed the Mahabharata drama in the same sentence structure, mixing two departments' items into one sentence
+  reel_script omits the important fact that the Principal Palanivel welcomed attendees and the caption's mention of education directors, while the reel_script's 'முன்னிலை வகித்தனர்' list omits the psychology counsellor and education directors named in the article
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: Headline and caption say the exhibition was at 'ஏ.கே.வி. பள்ளிகள்' generally, but the reel_script/slides mention 'ஏ கே வி பள்ளிகள்' fine; however the slide 'எங்கே, எப்போது?' lists only 'ஏ.கே.வி. பப்ளிக் பள்ளி, சி.பி.எஸ்.இ. மற்றும்' and omits the matric higher secondary school, which is an incomplete location detail
+  fact-check: reel_script says 'இது அமைந்திருந்தது' (it was) for the exhibition theme, and the slide says 'மாணவர்கள் செய்து' (students did) with the subject split across lines, making the sentence ambiguous; the article says the Tamil and English departments demonstrated these items, not 'students'
+  fact-check: reel_script says the Tamil department showed 'தமிழர் பாரம்பரியக் கலைகள், தலவரலாறு' as part of the same sentence while the caption says these were shown by the CBSE school's Tamil department, which is consistent, but the reel_script omits that the English department performed the Mahabharata drama in the same sentence structure, mixing two departments' items into one sentence
+  fact-check: reel_script omits the important fact that the Principal Palanivel welcomed attendees and the caption's mention of education directors, while the reel_script's 'முன்னிலை வகித்தனர்' list omits the psychology counsellor and education directors named in the article
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 86 words; need 89-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 2 problems
+  Slide 2 line 'வாகன ஓட்டிகளும் பாதசாரிகளும் சாலையின் நடுவே நடக்க வேண்டிய' is cut off and has no complete meaning in Tamil.
+  The reel_script states the mud heaps are 'overgrown with bushes' and that the Highways department 'was asked' to act, which matches the article, but the reel_script says the road widening was done by the Highways department on the Mallasamudram road while the article says the road is on the Vaiyappamalai to Mallasamudram route, which is consistent; no further mismatch found there.
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  fact-check: Slide 2 line 'வாகன ஓட்டிகளும் பாதசாரிகளும் சாலையின் நடுவே நடக்க வேண்டிய' is cut off and has no complete meaning in Tamil.
+  fact-check: The reel_script states the mud heaps are 'overgrown with bushes' and that the Highways department 'was asked' to act, which matches the article, but the reel_script says the road widening was done by the Highways department on the Mallasamudram road while the article says the road is on the Vaiyappamalai to Mallasamudram route, which is consistent; no further mismatch found there.
+ok anthropic/claude-haiku-5-5
+real photo: no picture on the source page -> AI pictures
+imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs ~0.0020 pollen, but your available balance is 0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 0 problems
+claude rewrite 3 anthropic/claude-haiku-5-5: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  reel_script must tell how the story ENDED, as the article's last lines say ('மண் குவியலில் புதர் பொதுமக்கள் அச்சம்') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
+imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'One-day mushroom cultivation technical t'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-0657","first":"RN-308"}
+posting job started at once
+real photo: no picture on the source page -> AI pictures
+writing [N]: கபடி சங்க நிர்வாக தேர்தல் முறையாக நடத்தக்கோரி மனு
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free models unavailable: no free model answered: None
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Education exhibition 'Learn-2026, World '
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-0657","first":"RN-309"}
+real photo: no picture on the source page -> AI pictures
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  slide 1 line 2 longer than 60 characters
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Mud heaps and bushes along Mallasamudram'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-0658","first":"RN-310"}
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok groq/qwen/qwen3.8-27b (3s)
+proofread rejected (2 problems)
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok groq/openai/gpt-oss-120b (2s)
+real photo: no picture on the source page -> AI pictures
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Petition seeks fair election for Namakka'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-0658","first":"RN-311"}
 earlier stories still waiting for images: []
 instagram check: 96 recent posts read from both pages
 write round: 4 news waiting in the queue (written in priority order)
@@ -7,14 +266,15 @@ candidates waiting: 2 Rasipuram, 2 Namakkal; time left 29 min
 try (R) manual=False: மண் குவியலில் புதர் பொதுமக்கள் அச்சம்
 try (R) manual=False: ஏ.கே.வி., பள்ளியில் கல்வி கண்காட்சி
 try (N) manual=False: நாமக்கல் தோட்டக்கலைத்துறை சார்பில் காளான் வளர்ப்பு தொழில்நுட
-skip (N) could not open: நாமக்கல் தோட்டக்கலைத்துறை சார்பில் காளான் வளர்ப்பு [https://www.dinamalar.com/news/tamil-nadu-district-news-nama] 502 Server Error: Bad Gateway for url: https://www.dinamalar.com/news/tamil-nadu
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 1})
+posting job started at once
 try (N) manual=False: கபடி சங்க நிர்வாக தேர்தல் முறையாக நடத்தக்கோரி மனு
-skip (R) could not open: மண் குவியலில் புதர் பொதுமக்கள் அச்சம் [https://www.dinamalar.com/news/tamil-nadu-district-news-nama] 502 Server Error: Bad Gateway for url: https://www.dinamalar.com/news/tamil-nadu
-skip (R) could not open: ஏ.கே.வி., பள்ளியில் கல்வி கண்காட்சி [https://www.dinamalar.com/news/tamil-nadu-district-news-nama] 502 Server Error: Bad Gateway for url: https://www.dinamalar.com/news/tamil-nadu
-skip (N) could not open: கபடி சங்க நிர்வாக தேர்தல் முறையாக நடத்தக்கோரி மனு [https://www.dinamalar.com/news/tamil-nadu-district-news-nama] 502 Server Error: Bad Gateway for url: https://www.dinamalar.com/news/tamil-nadu
-candidate loop ended: left R=0 N=0, tried={'R': 2, 'N': 2}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 4 news waiting to be written
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'fal-ai/flux/schnell': 2})
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3, 'fal-ai/flux/schnell': 3})
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 4, 'fal-ai/flux/schnell': 4})
+candidate loop ended: left R=0 N=0, tried={'R': 2, 'N': 2}, done={'R': 2, 'N': 2}, time left 18 min
+carousel for 0 of 4 stories, the rest reel only
+filed: 2 Rasipuram + 2 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
 All News sheet: {"ok":true,"added":0,"updated":4} 
-stories: 0
+stories: 4
