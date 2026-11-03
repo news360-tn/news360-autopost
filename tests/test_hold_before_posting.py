@@ -55,6 +55,26 @@ class FormattingOnlyPosts(unittest.TestCase):
         self.assertTrue(post.news_hold(r).startswith("held: fact-check problems"))
 
 
+class Recheck3Nov(unittest.TestCase):
+    """owner 3 Nov: numbers written in words, incomplete-sentence flags, and a district-only location whose story names the town"""
+
+    def test_numbers_in_words_are_in_the_article(self):
+        art = "சுமார் 10 ஆயிரம் பேர் கலந்து கொண்டனர். ஆறு பேர் காயம். 1,500 ரூபாய்"
+        for n in ("10000", "6", "1500"):
+            self.assertTrue(post._number_in_article(n, art), n)
+        self.assertFalse(post._number_in_article("9547", art))
+
+    def test_incomplete_sentence_flag_posts(self):
+        r = dict(verification="DRAFT (m) - NOT CLEAN, held from posting - problems: fact-check: Slide 1 line 1 ends abruptly with an incomplete sentence fragment",
+                 location="X town, Y district", caption="x", reel_script="y", source="")
+        self.assertEqual(post.news_hold(r), "")
+
+    def test_district_only_with_town_in_story_posts(self):
+        r = dict(verification="DRAFT (m) - fact-check: no problems found", location="Namakkal district", caption="", reel_script="", source="",
+                 headline_ta="திருச்செங்கோடு அருகே விபத்து")
+        self.assertEqual(post.news_hold(r), "")
+
+
 class EntryPointLast(unittest.TestCase):
     """the posting job runs main() when the file is executed: every function it uses must be defined above that line (2 Nov, NameError)"""
 

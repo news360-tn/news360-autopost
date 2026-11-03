@@ -1847,6 +1847,63 @@ def _location_still_wrong(row, problem):
         return True
 
 
+
+_TA_SMALL = {1: ("ஒன்று", "ஒரு "), 2: ("இரண்டு", "இரு "), 3: ("மூன்று",), 4: ("நான்கு",), 5: ("ஐந்து",), 6: ("ஆறு",), 7: ("ஏழு",),
+             8: ("எட்டு",), 9: ("ஒன்பது",), 10: ("பத்து",)}
+
+
+def _number_in_article(n, art):
+    """owner 3 Nov: the article writes many numbers in words or with commas ('10 ஆயிரம்', '1,000', 'ஆறு') - those are in the article"""
+    if not art or not n.isdigit():
+        return False
+    v = int(n)
+    forms = {f"{v:,}"}
+    if v % 1000 == 0 and v < 100000:
+        forms |= {f"{v // 1000} ஆயிரம்", f"{v // 1000}ஆயிரம்"} | ({"ஆயிரம்"} if v == 1000 else set())
+    if v % 100000 == 0:
+        forms |= {f"{v // 100000} லட்சம்", f"{v // 100000}லட்சம்"} | ({"லட்சம்"} if v == 100000 else set())
+    if v in _TA_SMALL:
+        forms |= set(_TA_SMALL[v])
+    return any(f in art for f in forms)
+
+
+def _numbers_still_missing(row, problem):
+    """a 'numbers not found' note is judged again against the article: numbers it writes in words / with commas are dropped"""
+    m = re.match(r"(numbers not found in the article:\s*)(.*)$", problem)
+    if not m:
+        return problem
+    art = _article_text(row)
+    if not art:
+        return problem
+    left = [n.strip() for n in m.group(2).split(",") if n.strip() and not _number_in_article(n.strip(), art)]
+    return m.group(1) + ", ".join(left) if left else ""
+
+
+def _article_text(row):
+    src = str(row.get("source") or "").strip()
+    if not src.startswith("http"):
+        return ""
+    try:
+        sys.path.insert(0, str(ROOT / "research_free"))
+        import allnews
+        if src not in _ARTICLE_TEXT:
+            _ARTICLE_TEXT[src] = ""
+            _ARTICLE_TEXT[src] = allnews.article_any(src).get("text") or ""
+        return _ARTICLE_TEXT[src]
+    except Exception:
+        return ""
+
+
+def _town_in_story(row):
+    """owner 3 Nov: a story written before the town fix may have 'district' alone as location while its own headline / text names
+    the town - that story is fine"""
+    try:
+        sys.path.insert(0, str(ROOT / "research_free"))
+        import allnews
+        return bool(allnews.places_in(" ".join(str(row.get(k) or "") for k in ("headline_ta", "caption", "reel_script"))))
+    except Exception:
+        return False
+
 def news_hold(row):
     """owner 2 Nov (RN-272): a story with any fact-check problem, or whose location is unknown or only a district, is held"""
     v_ = str(row.get("verification") or "")
@@ -1855,13 +1912,14 @@ def news_hold(row):
         probs_ = v_.split("problems:", 1)[1] if "problems:" in v_ else v_
         facts_ = [p.strip() for p in probs_.split("; ") if re.search(r"fact-check|numbers not found|not grounded|invented|made up|wrong|contradict", p, re.I)]      # owner 2 Nov: "caption misses facts" is a missing detail, not a wrong fact - it posts
         # owner 3 Nov: a "fact-check:" flag about cut-off text, line length or word count is formatting, not a wrong fact - it posts
-        facts_ = [p for p in facts_ if not re.search(r"cut off|mid-sentence|mid-phrase|longer than|too long|too short|characters|\d+ words|word count", p, re.I)]
+        facts_ = [p for p in facts_ if not re.search(r"cut off|mid-sentence|mid-phrase|longer than|too long|too short|characters|\d+ words|word count|incomplete sentence|ends abruptly|sentence fragment|incomplete", p, re.I)]
         facts_ = [f for f in (_real_numbers(p) for p in facts_) if f]
+        facts_ = [f for f in (_numbers_still_missing(row, p) for p in facts_) if f]
         facts_ = [f for f in facts_ if _location_still_wrong(row, f)]
         if facts_:
             return "held: fact-check problems - " + "; ".join(facts_)[:200]
     loc_ = str(row.get("location") or "").strip()
-    if re.fullmatch(r"[^,]*\b(district|மாவட்டம்)\.?", loc_, re.I):      # a district alone is not a place
+    if re.fullmatch(r"[^,]*\b(district|மாவட்டம்)\.?", loc_, re.I) and not _town_in_story(row):      # a district alone is not a place
         return "held: location is only the district - the town from the article is missing"
     txt_ = " ".join([str(row.get("caption") or ""), str(row.get("reel_script") or "")])
     if loc_.lower() in ("unknown", "தெரியவில்லை") or re.search(r"இடம்\W*தெரியவில்லை|Location unknown", txt_, re.I):
