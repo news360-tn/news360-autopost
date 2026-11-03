@@ -1,10 +1,10 @@
-writing [N]: சிதிலமடைந்துள்ள கோவில்களில் கும்பாபிஷேகம் நடத்த கோரிக்கை
+writing [R]: விலைவாசி உயா்வைக் கண்டித்து 
+சிபிஎம் ஆா்ப்பாட்டம்
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
+writing [N]: பார்வையற்ற மாற்றுத்திறனாளிகளுக்கு உதவித்தொகை ரூ.5,000 வழங்க 
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
@@ -15,85 +15,268 @@ fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-ok gemini/gemini-3-flash-preview (10s)
-attempt 1 gemini/gemini-3-flash-preview: 1 problems
-  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
+writing [N]: எம்.பி.பி.எஸ்., மாணவர்களுக்கு அமைச்சர் வெள்ளை அங்கி வழங்கல்
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (10s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, plea
 dead for this round: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok gemini/gemini-3-flash-preview (9s)
+attempt 1 gemini/gemini-3-flash-preview: 2 problems
+  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): சேந்தமங்கலம் ('எம்.எல்.ஏ.,க்கள் நாம க்கல் திலீப், சேந்தமங்கலம் சந்திரசேகர்,')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok groq/openai/gpt-oss-120b (2s)
+factcheck by groq/openai/gpt-oss-120b: 0 problems
+attempt 1 gemini/gemini-3-flash-preview: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+ok gemini/gemini-3.6-flash (17s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to generate JSON. Please adjust your prompt. See 'failed_gener
 ok groq/qwen/qwen3.8-27b (4s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-ok groq/openai/gpt-oss-120b (4s)
-factcheck by groq/openai/gpt-oss-120b: 1 problems
-  Slide 1 third line incorrectly states that state leader Raja gave the petition, while the article says the petition was submitted by the pujaris association led by him
-attempt 2 groq/qwen/qwen3.8-27b: 1 problems
-  fact-check: Slide 1 third line incorrectly states that state leader Raja gave the petition, while the article says the petition was submitted by the pujaris association led by him
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 switching away from groq/openai/gpt-oss-120b for 10 min
-free models unavailable: no free model answered: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+ok groq/openai/gpt-oss-120b (6s)
+proofread rejected (3 problems)
+  missing key: reel_script
+  missing key: caption
+  missing key: scenes
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+not available on this plan: groq/qwen/qwen3.8-27b
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
+factcheck by anthropic/claude-haiku-5-5: 8 problems
+  reel_script says '150 நாடாளுமன்ற உறுப்பினர்பி.எஸ். மாணவர்கள்' — garbled, meaningless phrase (wrongly 'நாடாளுமன்ற உறுப்பினர்' inserted, 'எம்.பி.பி.எஸ்.' mangled) instead of 'எம்.பி.பி.எஸ்.'
+  reel_script says the minister 'தலைமை வகித்தார்' (presided), but the article only says he distributed white coats and spoke; presiding is not stated
+  reel_script says the MLAs and officials 'கலந்துகொண்டார்' as individual sentences, but the article says 'பங்கேற்றனர்' for a group; the reel_script also states only 'சட்டமன்ற உறுப்பினர்' for Thilip and Chandrasekar, which is a role not explicitly confirmed (article says MLAs, so acceptable, but the sentence 'நாமக்கல் சட்டமன்ற உறுப்பினர் திலீப்' is fine) — main issue is 'தலைமை வகித்தார' is unsupported
+  reel_script says '150 மாணவர்கள்' received white coats at the 'நாமக்கல் அரசு மருத்துவ கல்லூரியில்' — accurate, but the reel_script omits the important fact that the minister urged students to start their medical service in Tamil Nadu itself (partially present) — minor
+  reel_script omits key details: the Indian Medical Association oath being taken by all students (mentioned only generically), and the minister's statement that Tamil Nadu's medical sector is the foremost in India is present, but the line 'இந்திய மருத்துவ சங்க உறுதிமொழியை அவர்கள் ஏற்றனர்' is redundant and the minister leading the oath is stated as a separate sentence without clarity
+  slides_spec line 'மருத்துவ சேவையில் முதன்மை என்றார்' is a paraphrase that mixes the minister's claim about the state's medical sector being foremost in India into a claim about service, changing its meaning
+  caption states the minister 'கலந்துகொண்டார்' and then 'உரை நிகழ்த்தினார்' — acceptable; but caption says 'நாமக்கல் எம்.எல்.ஏ. திலீப், சேந்தமங்கலம் எம்.எல்.ஏ. சந்திரசேகர் நிகழ்ச்சியில் கலந்துகொண்டனர்' which is supported, however the caption omits the article's statement that the event was held by the Medicine and Public Welfare department only in passing — no clear error
+  caption sentence 'அரசு மருத்துவ கல்லூரி முதல்வர் முருகலட்சுமி, ... கலந்துகொண்டனர்' lists attendees as having 'கலந்துகொண்டனர்' while the article says 'பங்கேற்றனர்' — equivalent, not a problem
+attempt 2 groq/qwen/qwen3.8-27b: 8 problems
+  fact-check: reel_script says '150 நாடாளுமன்ற உறுப்பினர்பி.எஸ். மாணவர்கள்' — garbled, meaningless phrase (wrongly 'நாடாளுமன்ற உறுப்பினர்' inserted, 'எம்.பி.பி.எஸ்.' mangled) instead of 'எம்.பி.பி.எஸ்.'
+  fact-check: reel_script says the minister 'தலைமை வகித்தார்' (presided), but the article only says he distributed white coats and spoke; presiding is not stated
+  fact-check: reel_script says the MLAs and officials 'கலந்துகொண்டார்' as individual sentences, but the article says 'பங்கேற்றனர்' for a group; the reel_script also states only 'சட்டமன்ற உறுப்பினர்' for Thilip and Chandrasekar, which is a role not explicitly confirmed (article says MLAs, so acceptable, but the sentence 'நாமக்கல் சட்டமன்ற உறுப்பினர் திலீப்' is fine) — main issue is 'தலைமை வகித்தார' is unsupported
+  fact-check: reel_script says '150 மாணவர்கள்' received white coats at the 'நாமக்கல் அரசு மருத்துவ கல்லூரியில்' — accurate, but the reel_script omits the important fact that the minister urged students to start their medical service in Tamil Nadu itself (partially present) — minor
+  fact-check: reel_script omits key details: the Indian Medical Association oath being taken by all students (mentioned only generically), and the minister's statement that Tamil Nadu's medical sector is the foremost in India is present, but the line 'இந்திய மருத்துவ சங்க உறுதிமொழியை அவர்கள் ஏற்றனர்' is redundant and the minister leading the oath is stated as a separate sentence without clarity
+  fact-check: slides_spec line 'மருத்துவ சேவையில் முதன்மை என்றார்' is a paraphrase that mixes the minister's claim about the state's medical sector being foremost in India into a claim about service, changing its meaning
+  fact-check: caption states the minister 'கலந்துகொண்டார்' and then 'உரை நிகழ்த்தினார்' — acceptable; but caption says 'நாமக்கல் எம்.எல்.ஏ. திலீப், சேந்தமங்கலம் எம்.எல்.ஏ. சந்திரசேகர் நிகழ்ச்சியில் கலந்துகொண்டனர்' which is supported, however the caption omits the article's statement that the event was held by the Medicine and Public Welfare department only in passing — no clear error
+  fact-check: caption sentence 'அரசு மருத்துவ கல்லூரி முதல்வர் முருகலட்சுமி, ... கலந்துகொண்டனர்' lists attendees as having 'கலந்துகொண்டனர்' while the article says 'பங்கேற்றனர்' — equivalent, not a problem
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+factcheck by anthropic/claude-haiku-5-5: 0 problems
+attempt 1 gemini/gemini-3.6-flash: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+ok groq/qwen/qwen3.8-27b (1s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+real photo skipped (photo uploaded 2025-09-21 (older than the news)): https://media.dinamani.com/dinamani/2025-09-21/vcge6i6v/kolkata-west-bengal-india-30th-600
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs ~0.0020 pollen, but your available balance is 0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 7 problems
+  reel_script contains a garbled phrase 'நாடாளுமன்ற உறுப்பினர்பி.எஸ்.' ("Member of Parliament" mixed into 'MBBS'), which invents a role for the students/event and is ungrammatical; the article says MBBS students
+  reel_script says the minister 'வலியுறுத்தினார்' (stressed) and the article says he spoke of serving the public; minor wording but reel_script's sentence 'மருத்துவ மாணவர்கள் தமிழ்நாட்டிலேயே தங்கள் மருத்துவப் பணியைத் தொடங்கி...' is accurate
+  slides_spec title 'என்ன நிகழ்ச்சி?' lines are split mid-phrase ('வெள்ளை' / 'முதலாமாண்டு...' ) leaving 'வெள்ளை' dangling, so the sentence has no clear meaning on the slide
+  slides_spec 'அமைச்சர் பேச்சு' line 'வணிகவரி மற்றும் பதிவுத்துறை அமைச்சர் லோகேஷ் தமிழ்ச்செல்வன்' is a sentence fragment with no verb and does not state what the minister did
+  slides_spec 'மாணவர்களுக்கு' slide mixes two facts into one line ('மருத்துவ மாணவர்கள் தமிழ்நாட்டிலேயே' is cut off and joined to 'இந்திய மருத்துவ சங்க உறுதிமொழி அனைவரும் ஏற்றனர்' with no connecting sense)
+  reel_script 'சட்டமன்ற உறுப்பினர்க்கள்' is a misspelling/ungrammatical form of the MLA term; the article names them as MLAs (எம்.எல்.ஏ.க்கள்)
+  reel_script omits the minister's point about students practising in Tamil Nadu is included, but the headline's '150 மாணவர்களுக்கு' is fine; no further omission of key facts
+claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
+  fact-check: reel_script contains a garbled phrase 'நாடாளுமன்ற உறுப்பினர்பி.எஸ்.' ("Member of Parliament" mixed into 'MBBS'), which invents a role for the students/event and is ungrammatical; the article says MBBS students
+  fact-check: reel_script says the minister 'வலியுறுத்தினார்' (stressed) and the article says he spoke of serving the public; minor wording but reel_script's sentence 'மருத்துவ மாணவர்கள் தமிழ்நாட்டிலேயே தங்கள் மருத்துவப் பணியைத் தொடங்கி...' is accurate
+  fact-check: slides_spec title 'என்ன நிகழ்ச்சி?' lines are split mid-phrase ('வெள்ளை' / 'முதலாமாண்டு...' ) leaving 'வெள்ளை' dangling, so the sentence has no clear meaning on the slide
+  fact-check: slides_spec 'அமைச்சர் பேச்சு' line 'வணிகவரி மற்றும் பதிவுத்துறை அமைச்சர் லோகேஷ் தமிழ்ச்செல்வன்' is a sentence fragment with no verb and does not state what the minister did
+  fact-check: slides_spec 'மாணவர்களுக்கு' slide mixes two facts into one line ('மருத்துவ மாணவர்கள் தமிழ்நாட்டிலேயே' is cut off and joined to 'இந்திய மருத்துவ சங்க உறுதிமொழி அனைவரும் ஏற்றனர்' with no connecting sense)
+  fact-check: reel_script 'சட்டமன்ற உறுப்பினர்க்கள்' is a misspelling/ungrammatical form of the MLA term; the article names them as MLAs (எம்.எல்.ஏ.க்கள்)
+  fact-check: reel_script omits the minister's point about students practising in Tamil Nadu is included, but the headline's '150 மாணவர்களுக்கு' is fine; no further omission of key facts
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  slide 3 must have 2-3 lines
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): சேந்தமங்கலம் ('எம்.எல்.ஏ.,க்கள் நாம க்கல் திலீப், சேந்தமங்கலம் சந்திரசேகர்,')
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
+  slide 4 must have 2-3 lines
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 proofread skipped: no free model answered: None
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok anthropic/claude-haiku-5-5
-imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
-imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs ~0.0020 pollen, but your available balance is 0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
 imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
-image match: True The image shows a group of men presenting a printed petition written in Tamil inside an office setting, matching the eve
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-image match: False The photo shows a close-up of tied papers with a hand on a table, but does not depict priests, the Namakkal Collector, o
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-image match: False The image shows an artistic shot of a bundle of manuscript pages tied with a red string on a wooden desk, not priests su
-images made: 2 for 'Priests seek renovation and kumbabhishek'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-0235","first":"RN-302"}
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'CPM holds protest in Rasipuram against r'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-0643","first":"RN-303"}
 posting job started at once
+real photo: no picture on the source page -> AI pictures
+writing [N]: அங்கன்வாடி மையங்கள் ஆய்வில் 
+1,997 குழந்தைகளுக்கு உடல் வளா்ச
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Minister hands white coats to 150 first-'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-0643","first":"RN-304"}
+real photo: no picture on the source page -> AI pictures
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
+  reel_script writes ages as newspaper shorthand (நிலையிலும், 3,); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 86,119 ('இவா்களில் எடை, உயரம் கண்காணிக்கப்பட்ட வகையில், 86,119 குழந்த')
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  reel_script writes ages as newspaper shorthand (நிலையிலும், 3,); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+image match: True The image shows a visually impaired person with a white cane alongside individuals holding petition papers outside a gov
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Blind persons request monthly assistance'
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  reel_script has 95 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-0643","first":"RN-305"}
+writing [N]: திருச்செங்கோடு நகராட்சிக்கு 
+வாடகை செலுத்தாத கடைகளுக்கு ‘சீல
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
+real photo: vision check out of free quota
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 2 problems
+  The caption's 'முழு விவரம்' section says the shops are sealed 'மேலும்' — specifically the 12-month rent shop is described consistently, but the caption and reel_script both state that 'ஓர் ஆண்டுக்கும் மேலாக வாடகை செலுத்தாத கடைகளுக்கு' were sealed as separate shops, which is accurate; however the slides_spec headline 'வாடகை கட்டாத' and the reel_script say the municipality sealed shops for unpaid rent generally, while the article specifically says the 12-month and over-one-year shops were locked, so the reel_script's 'திருச்செங்கோடு நகராட்சி வாடகை செலுத்தாத கடைகளுக்கு சீல் வைத்துள்ளது' is fine.
+  The caption's date line 'நவம்பர் 2, 2026 (திங்கள்கிழமை)' is not stated in the article; the article only says திங்கள்கிழமை, so the specific date is an invented detail (the posting-date footer exemption does not cover the 🗓️ நாள் line in the body of the caption).
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  fact-check: The caption's 'முழு விவரம்' section says the shops are sealed 'மேலும்' — specifically the 12-month rent shop is described consistently, but the caption and reel_script both state that 'ஓர் ஆண்டுக்கும் மேலாக வாடகை செலுத்தாத கடைகளுக்கு' were sealed as separate shops, which is accurate; however the slides_spec headline 'வாடகை கட்டாத' and the reel_script say the municipality sealed shops for unpaid rent generally, while the article specifically says the 12-month and over-one-year shops were locked, so the reel_script's 'திருச்செங்கோடு நகராட்சி வாடகை செலுத்தாத கடைகளுக்கு சீல் வைத்துள்ளது' is fine.
+  fact-check: The caption's date line 'நவம்பர் 2, 2026 (திங்கள்கிழமை)' is not stated in the article; the article only says திங்கள்கிழமை, so the specific date is an invented detail (the posting-date footer exemption does not cover the 🗓️ நாள் line in the body of the caption).
+image match: False This is an AI-generated illustrative image rather than an authentic news photograph documenting the Namakkal Anganwadi s
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The reel_script says the municipality sealed the shops for unpaid rent in general ('வாடகை செலுத்தாத கடைகளுக்கு சீல் வைத்துள்ளது'), but the article says it sealed shops at the new bus stand commercial complex; the broader framing is not stated in the article
+  The reel_script says 'திங்கள்கிழமை நகராட்சி நிர்வாகம் இந்த நடவடிக்கையை மேற்கொண்டது' and the slide says 'திருச்செங்கோடு நகராட்சி நிர்வாகம் நடவடிக்கை எடுத்தது' while the article says the action was taken on Monday by the municipal administration; this is consistent, but the reel_script's sentence 'சொத்துவரி, குடிநீர் கட்டணம், வாடகை செலுத்தத் தவறியவர்கள் மீது நடவடிக்கை எடுக்கப்பட்டது' is accurate, so no issue here
+  The headline 'வாடகை, குடிநீர் கட்டணம் செலுத்தாதவர்கள் மீது நடவடிக்கை' and slide hl1 'திருச்செங்கோட்டில் வாடகை கட்டாத' are fine, but the reel_script omits that the action covered unpaid property tax specifically as a category linked to the shops; the article's key fact that the shop sealing targeted only the commercial complex shops is blurred by the reel_script's general wording
+  The caption states the 5 water connections were cut at Koottapalli, and the reel_script says 'கூட்டப்பள்ளியில்' correctly; however the caption's 'ஓர் ஆண்டுக்கும் மேலாக வாடகை செலுத்தாத கடைகளுக்கும்' is accurate, so no issue here
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The reel_script says the municipality sealed the shops for unpaid rent in general ('வாடகை செலுத்தாத கடைகளுக்கு சீல் வைத்துள்ளது'), but the article says it sealed shops at the new bus stand commercial complex; the broader framing is not stated in the article
+  fact-check: The reel_script says 'திங்கள்கிழமை நகராட்சி நிர்வாகம் இந்த நடவடிக்கையை மேற்கொண்டது' and the slide says 'திருச்செங்கோடு நகராட்சி நிர்வாகம் நடவடிக்கை எடுத்தது' while the article says the action was taken on Monday by the municipal administration; this is consistent, but the reel_script's sentence 'சொத்துவரி, குடிநீர் கட்டணம், வாடகை செலுத்தத் தவறியவர்கள் மீது நடவடிக்கை எடுக்கப்பட்டது' is accurate, so no issue here
+  fact-check: The headline 'வாடகை, குடிநீர் கட்டணம் செலுத்தாதவர்கள் மீது நடவடிக்கை' and slide hl1 'திருச்செங்கோட்டில் வாடகை கட்டாத' are fine, but the reel_script omits that the action covered unpaid property tax specifically as a category linked to the shops; the article's key fact that the shop sealing targeted only the commercial complex shops is blurred by the reel_script's general wording
+  fact-check: The caption states the 5 water connections were cut at Koottapalli, and the reel_script says 'கூட்டப்பள்ளியில்' correctly; however the caption's 'ஓர் ஆண்டுக்கும் மேலாக வாடகை செலுத்தாத கடைகளுக்கும்' is accurate, so no issue here
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Namakkal anganwadi survey: 1,997 childre'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-0644","first":"RN-306"}
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  slides_spec line 'ஓர் ஆண்டுக்கும் மேலாக குடிநீர் கட்டணம் செலுத்தாத <b>5</b>' contains a stray HTML tag and is an incomplete, ungrammatical sentence that duplicates the next line
+  reel_script says the shops were 'பூட்டப்பட்டன' and omits that the 12-month shops were sealed ('சீல்') in the same sentence structure mixing two facts; the 12-month and over-a-year shop groups are merged into one sentence, misrepresenting them as the same category
+  reel_script states 'நகராட்சி அலுவலர்கள் சீல் வைத்தனர்' only for 12-month shops in slides but the script's sentence 'ஓர் ஆண்டுக்கும் மேலாக வாடகை செலுத்தாத கடைகளும் பூட்டப்பட்டன' attributes the closing action without a clear subject, and the caption's headline line 'வாடகை கட்டாத கடைகளுக்கு சீல்' is a loose summary of mixed facts
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: slides_spec line 'ஓர் ஆண்டுக்கும் மேலாக குடிநீர் கட்டணம் செலுத்தாத <b>5</b>' contains a stray HTML tag and is an incomplete, ungrammatical sentence that duplicates the next line
+  fact-check: reel_script says the shops were 'பூட்டப்பட்டன' and omits that the 12-month shops were sealed ('சீல்') in the same sentence structure mixing two facts; the 12-month and over-a-year shop groups are merged into one sentence, misrepresenting them as the same category
+  fact-check: reel_script states 'நகராட்சி அலுவலர்கள் சீல் வைத்தனர்' only for 12-month shops in slides but the script's sentence 'ஓர் ஆண்டுக்கும் மேலாக வாடகை செலுத்தாத கடைகளும் பூட்டப்பட்டன' attributes the closing action without a clear subject, and the caption's headline line 'வாடகை கட்டாத கடைகளுக்கு சீல்' is a loose summary of mixed facts
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+real photo skipped (photo uploaded 2026-07-27 (older than the news)): https://media.dinamani.com/dinamani/2026-07-27/0uwjz3a4/சீல்
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Tiruchengode municipality seals shops th'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-0644","first":"RN-307"}
+write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 96 recent posts read from both pages
-write round: 7 news waiting in the queue (written in priority order)
-candidate filter: collected=5, already filed=2
-to write: 0 Rasipuram + 5 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 5 Namakkal; time left 29 min
-try (N) manual=False: இயற்கை காய்கறிகள் அங்காடி விற்பனை மையம் திறப்பு - Dinakaran
-try (N) manual=False: சிதிலமடைந்துள்ள கோவில்களில் கும்பாபிஷேகம் நடத்த கோரிக்கை
-try (N) manual=False: தொடர்ந்து உயர்ந்து வரும் முட்டை விலை - நாமக்கல்லில் முட்டை வ
-skip (N) similar to a filed story: தொடர்ந்து உயர்ந்து வரும் முட்டை விலை - நாமக்கல்லில
-try (N) manual=False: நாமக்கல் மாவட்டத்தில்டாஸ்மாக் கடைகளை மூடி ஊழியர்கள் போராட்டம
-skip (N) similar to a filed story: இயற்கை காய்கறிகள் அங்காடி விற்பனை மையம் திறப்பு - 
-try (N) manual=False: தியாகராஜ பாகவதர் 67வது நினைவு நாள்
-skip (N) similar to a filed story: தியாகராஜ பாகவதர் 67வது நினைவு நாள்
-skip (N) same event as RN-278: நாமக்கல் மாவட்டத்தில்டாஸ்மாக் கடைகளை மூடி ஊழியர்கள
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 2})
+write round: 13 news waiting in the queue (written in priority order)
+candidate filter: collected=11, already filed=2
+to write: 3 Rasipuram + 8 other district candidates (max 200 + 200 stories)
+candidates waiting: 3 Rasipuram, 8 Namakkal; time left 29 min
+try (R) manual=False: மண் குவியலில் புதர் பொதுமக்கள் அச்சம்
+try (N) manual=False: பள்ளி சாலையில் போக்குவரத்து நெரிசல் ஆக்கிரமிப்பை அகற்ற மக்கள
+try (N) manual=False: கல்லறை திருநாள் அனுஷ்டிப்பு
+skip (N) similar to a filed story: பள்ளி சாலையில் போக்குவரத்து நெரிசல் ஆக்கிரமிப்பை அ
+try (N) manual=False: பார்வையற்ற மாற்றுத்திறனாளிகளுக்கு உதவித்தொகை ரூ.5,000 வழங்க 
+skip (R) could not open: மண் குவியலில் புதர் பொதுமக்கள் அச்சம் [https://www.dinamalar.com/news/tamil-nadu-district-news-nama] 502 Server Error: Bad Gateway for url: https://www.dinamalar.com/news/tamil-nadu
+try (R) manual=False: விலைவாசி உயா்வைக் கண்டித்து 
+சிபிஎம் ஆா்ப்பாட்டம்
+skip (N) same event as RN-299: கல்லறை திருநாள் அனுஷ்டிப்பு
+try (R) manual=False: ஏ.கே.வி., பள்ளியில் கல்வி கண்காட்சி
+skip (R) could not open: ஏ.கே.வி., பள்ளியில் கல்வி கண்காட்சி [https://www.dinamalar.com/news/tamil-nadu-district-news-nama] 502 Server Error: Bad Gateway for url: https://www.dinamalar.com/news/tamil-nadu
+try (N) manual=False: எம்.பி.பி.எஸ்., மாணவர்களுக்கு அமைச்சர் வெள்ளை அங்கி வழங்கல்
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 1})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 5}, done={'R': 0, 'N': 1}, time left 16 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+try (N) manual=False: அங்கன்வாடி மையங்கள் ஆய்வில் 
+1,997 குழந்தைகளுக்கு உடல் வளா்ச
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'fal-ai/flux/schnell': 2})
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3, 'fal-ai/flux/schnell': 3})
+try (N) manual=False: திருச்செங்கோடு நகராட்சிக்கு 
+வாடகை செலுத்தாத கடைகளுக்கு ‘சீல
+try (N) manual=False: நாமக்கல் தோட்டக்கலைத்துறை சார்பில் காளான் வளர்ப்பு தொழில்நுட
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 5, 'fal-ai/flux/schnell': 4})
+try (N) manual=False: கபடி சங்க நிர்வாக தேர்தல் முறையாக நடத்தக்கோரி மனு
+skip (N) could not open: கபடி சங்க நிர்வாக தேர்தல் முறையாக நடத்தக்கோரி மனு [https://www.dinamalar.com/news/tamil-nadu-district-news-nama] 502 Server Error: Bad Gateway for url: https://www.dinamalar.com/news/tamil-nadu
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 6, 'fal-ai/flux/schnell': 5})
+skip (N) could not open: நாமக்கல் தோட்டக்கலைத்துறை சார்பில் காளான் வளர்ப்பு [https://www.dinamalar.com/news/tamil-nadu-district-news-nama] HTTPSConnectionPool(host='www.dinamalar.com', port=443): Read timed out. (read t
+candidate loop ended: left R=0 N=0, tried={'R': 3, 'N': 8}, done={'R': 1, 'N': 4}, time left 22 min
+carousel for 0 of 5 stories, the rest reel only
+filed: 1 Rasipuram + 4 Namakkal (targets 200 + 200)
+queue: 4 news waiting to be written
+write_stories.yml started
+All News sheet: {"ok":true,"added":0,"updated":9} 
+stories: 5
