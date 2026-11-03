@@ -1854,6 +1854,8 @@ def news_hold(row):
         # owner 2 Nov: only FACTUAL problems hold a story; formatting-only flags (word count, line length, cut-off slide text) do not
         probs_ = v_.split("problems:", 1)[1] if "problems:" in v_ else v_
         facts_ = [p.strip() for p in probs_.split("; ") if re.search(r"fact-check|numbers not found|not grounded|invented|made up|wrong|contradict", p, re.I)]      # owner 2 Nov: "caption misses facts" is a missing detail, not a wrong fact - it posts
+        # owner 3 Nov: a "fact-check:" flag about cut-off text, line length or word count is formatting, not a wrong fact - it posts
+        facts_ = [p for p in facts_ if not re.search(r"cut off|mid-sentence|mid-phrase|longer than|too long|too short|characters|\d+ words|word count", p, re.I)]
         facts_ = [f for f in (_real_numbers(p) for p in facts_) if f]
         facts_ = [f for f in facts_ if _location_still_wrong(row, f)]
         if facts_:

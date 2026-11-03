@@ -806,6 +806,15 @@ def refusal_verdict(why, st):
 HEADLINE_ONLY_MIN = 12     # fewer new words than this after the headline = nothing to report (a 2-line police brief has ~20)
 
 
+
+def district_town(art):
+    """the first town / village of the district named in the article (title first, then text), or ''"""
+    body = (art.get("title") or "") + "\n" + (art.get("text") or "")[:3000]
+    found = allnews.places_in(body)
+    if not found:
+        return ""
+    return min(found, key=lambda w: (body.find(w) if w in body else 10 ** 6, -len(w)))
+
 def file_story(art, res, errors_log, recent, scenes=None):
     """quality gate for one written story; returns the story dict, or (None, reason)"""
     if isinstance(res, Exception):
@@ -867,6 +876,12 @@ def file_story(art, res, errors_log, recent, scenes=None):
             print("image brief failed, using the writer's scenes:", str(e)[:120], flush=True)
             scenes = d["scenes"]
     prompts = "\n---\n".join(IMG_TEMPLATE.format(scene=s.strip()) for s in scenes[:pictures_per_reel()])      # owner 30 Oct: 2 pictures per reel
+    # owner 3 Nov: the writer still gives "<district> district" alone sometimes (RN-160 / RN-163 held). The town comes from the
+    # article itself: the first town / village of the district the article names is put in front. No town in the article -> left as it is.
+    if re.fullmatch(r"[^,]*\b(district|மாவட்டம்)\.?", str(d.get("location") or "").strip(), re.I):
+        town_ = district_town(art)
+        if town_:
+            d["location"] = f"{town_}, {str(d['location']).strip()}"
     ver = f"DRAFT ({model}) - fact-check: no problems found" if not errors else f"DRAFT ({model}) - NOT CLEAN, held from posting - problems: {'; '.join(errors)}"
     return {"tamil_headline": d["tamil_headline"], "english_headline": d["english_headline"], "category": d["category"], "location": d["location"],
             "importance": d["importance"], "scope": d.get("scope", ""), "post_to": d["post_to"], "slides_spec": d["slides_spec"], "reel_script": d["reel_script"],

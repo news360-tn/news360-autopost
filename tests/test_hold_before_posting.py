@@ -46,6 +46,10 @@ class FormattingOnlyPosts(unittest.TestCase):
         r = self.row("DRAFT (m) - NOT CLEAN, held from posting - problems: reel_script has 84 words; need 85-105; sentence 1 has 14 words")
         self.assertEqual(post.news_hold(r), "")
 
+    def test_fact_check_flag_about_cut_off_text_posts(self):
+        r = self.row("DRAFT (m) - NOT CLEAN, held from posting - problems: fact-check: The slides_spec slide's third line is cut off mid-sentence ('x')")
+        self.assertEqual(post.news_hold(r), "")
+
     def test_factual_problem_is_held(self):
         r = self.row("DRAFT (m) - NOT CLEAN, held from posting - problems: reel_script has 84 words; fact-check: caption misses facts of the article")
         self.assertTrue(post.news_hold(r).startswith("held: fact-check problems"))

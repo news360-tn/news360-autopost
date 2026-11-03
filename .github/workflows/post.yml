@@ -68,9 +68,9 @@ jobs:
             set +e; python poster/post.py check 2>&1 | tee .last_check; CHECK_RC=${PIPESTATUS[0]}; set -e      # owner 2 Nov: a crash must not look green
           fi
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
-          if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then git add -f .last_check && git commit -qm "check log" && { for i in 1 2 3 4; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null; sleep $((i*3)); done; } || true; fi
+          if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then git add -f .last_check && git commit -qm "check log" && { for i in 1 2 3 4; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null || true; sleep $((i*3)); done; } || true; fi
           # owner 1 Nov: the list of posts already shared to the story (never twice) is saved after every check
-          if [ -f poster/story_shared.json ]; then git add -f poster/story_shared.json && git commit -qm "stories shared" && { for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null; sleep $((i*3)); done; } || true; fi
+          if [ -f poster/story_shared.json ]; then git add -f poster/story_shared.json && git commit -qm "stories shared" && { for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null || true; sleep $((i*3)); done; } || true; fi
           if [ "${CHECK_RC:-0}" != "0" ]; then echo "::error::post.py check crashed (exit $CHECK_RC) - nothing was posted in this run"; exit 1; fi
       - name: Facebook - try failed reels again (at most 2 more times, within 24 h)
         if: always() && env.BRIDGE_URL != '' && env.DRY_RUN == ''
@@ -81,7 +81,7 @@ jobs:
           pip install -q requests==2.32.5
           python poster/facebook.py retry
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
-          git add -f poster/fb_posted && git commit -qm "facebook retry" && { for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null; sleep $((i*3)); done; } || true
+          git add -f poster/fb_posted && git commit -qm "facebook retry" && { for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null || true; sleep $((i*3)); done; } || true
       - name: Watchdog - restart an overdue collection or writer (GitHub sometimes skips scheduled runs)
         if: always() && github.event_name == 'schedule' && env.BRIDGE_URL != ''
         env:
@@ -210,5 +210,5 @@ jobs:
           # owner 2 Nov: the Facebook record (posted / failed) - a reel is never posted to Facebook twice
           if [ -n "$(ls poster/fb_posted 2>/dev/null)" ]; then git add -f poster/fb_posted && git commit -qm "facebook ${{ matrix.story }}" || true; fi
           if [ -n "$(git log origin/main..HEAD --oneline 2>/dev/null)" ]; then
-            for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null; sleep 5; done
+            for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null || true; sleep 5; done
           fi
