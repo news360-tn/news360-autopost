@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-02 | `8b3875d` | Facebook record keeps the story id (fb_story was overwritten by the news id) (owner 2 Nov) |
-| 2026-11-02 | `da756a7` | powercut: notices written |
-| 2026-11-02 | `fa10937` | powercut: notices written |
-| 2026-11-02 | `f5cc18f` | facebook RN-295 |
-| 2026-11-02 | `d83f828` | stories shared |
-| 2026-11-02 | `7672100` | Facebook: every Instagram post (news reel, carousel, ready reel, rasipalan) also posted to the page's Facebook page with a story; hashtags from fixed lists (owner 2 Nov) |
-| 2026-11-02 | `8af757f` | powercut: notices written |
-| 2026-11-02 | `755205d` | Full review fixes: clear full-detail reels, spaced posting, town-aware duplicates, Rasipuram area, insights every round (owner 2 Nov) |
-| 2026-11-02 | `e3ab956` | A zero-padded date is not an invented number: '02 நவம்பர் 2026' in the caption held every story on 1-9 Nov (owner 2 Nov) |
-| 2026-10-31 | `f2e4fe7` | Every reel from the FULL article, told like a news reader; reels up to 90 s (owner 31 Oct) |
-| 2026-11-02 | `3fb0892` | the fact-check hold stops only FACTUAL problems; formatting-only flags (word count, line length, cut-off slide text) post - owner-ticked news must not be held for them |
-| 2026-11-02 | `c9cfe06` | stories shared |
-| 2026-11-02 | `2491698` | post.py: the entry point ran main() before the new skip_reason/news_hold were defined (NameError, every post run failed); entry point moved to the end + a test |
-| 2026-11-02 | `fe1d6f3` | rasipalan posted |
-| 2026-11-01 | `7c9a922` | the fact-check / location hold also applies to owner ready reels (they skipped every news check before); RN-272 repost path |
-| 2026-11-01 | `65b0ed4` | writer must name the town or village from the article in location (a district alone is not allowed); a story whose location is only the district is held from posting (RN-272) |
-| 2026-11-01 | `5cc8699` | hold a story from posting when its fact-check found any problem or its location is unknown (RN-272); the verification label now shows the real check result instead of a fixed 'not checked by Claude yet' |
-| 2026-11-01 | `fe27d35` | Heartbeat |
-| 2026-11-01 | `1da681a` | rasipalan: திதி / நட்சத்திரம் / யோகம் as Maalaimalar's daily panchangam (Vakya) prints them; own calculation only when not found |
-| 2026-11-01 | `df9539f` | stories shared |
-| 2026-11-01 | `155ae71` | Namakkal: never written - another district's story (even on the paper's Namakkal page), a shop offer, a suicide (RN-251, RN-255) |
-| 2026-11-01 | `b25f824` | story catch-up: a post shared once is remembered (poster/story_shared.json) - the rasipalan got a 2nd story |
-| 2026-11-01 | `d25ab08` | story catch-up: video re-hosted on Cloudinary first (Instagram refused its own CDN link: container ERROR); tries capped per run |
-| 2026-11-01 | `cced927` | story catch-up: a post's owner id is the account's app id - every post was taken for the other page's collab |
-| 2026-11-01 | `0b4cd01` | story catch-up: log quota / posts / stories seen |
-| 2026-11-01 | `93c6f33` | stories: every post (news reel, carousel, rasipalan, any job) also goes to the story - fixed 25-post cut removed, missing stories caught up every run, last 5 of the 50/day kept for news |
-| 2026-11-01 | `ed69875` | powercut: log the title of a power cut skipped as another district |
-| 2026-11-01 | `889f623` | powercut: Namakkal district power-shutdown notices posted at once - hourly, Dinamani + Dinamalar Namakkal, never twice, never late, fails loudly; the normal collection is untouched |
-| 2026-11-01 | `0e7d218` | rasipalan writer: 5 tries, best draft kept, only the lines still wrong are replaced (1 Nov Coimbatore repost failed over 1 line) |
-| 2026-11-01 | `5a606f6` | rasipalan posted |
+| 2026-11-03 | `caa3921` | fix 3 Nov check: (1) workflow save steps retried 0 times - 'git rebase --abort' with no rebase exited the step under bash -e (RN-308's Facebook record was never saved; restored); (2) a fact-check flag about cut-off text / line length / word count posts; (3) a district-only location gets the first town the article names |
+| 2026-11-03 | `bd7f281` | powercut: notices written |
+| 2026-11-03 | `1d2ac8b` | powercut: notices written |
+| 2026-11-03 | `e344c41` | powercut: notices written |
+| 2026-11-03 | `d8e4b71` | stories shared |
+| 2026-11-03 | `b846cc9` | powercut: notices written |
+| 2026-11-03 | `1bfe28e` | facebook RN-322 |
+| 2026-11-03 | `0780100` | powercut: notices written |
+| 2026-11-03 | `9836e7c` | facebook RN-319 |
+| 2026-11-03 | `8862373` | powercut: notices written |
+| 2026-11-03 | `e31f9f3` | powercut: notices written |
+| 2026-11-03 | `dfb589e` | powercut: notices written |
+| 2026-11-03 | `11dc7ad` | facebook RN-314 |
+| 2026-11-03 | `bf79c08` | powercut: notices written |
+| 2026-11-03 | `3cae089` | powercut: notices written |
+| 2026-11-03 | `a6516b8` | facebook RN-316 |
+| 2026-11-03 | `5a9364b` | facebook RN-315 |
+| 2026-11-03 | `c8305d4` | powercut: notices written |
+| 2026-11-03 | `38f2530` | powercut: notices written |
+| 2026-11-03 | `7cb29a6` | facebook RN-312 |
+| 2026-11-03 | `bd99cdd` | powercut: notices written |
+| 2026-11-03 | `facee8a` | powercut: notices written |
+| 2026-11-03 | `7a8b663` | powercut: notices written |
+| 2026-11-03 | `e7f5671` | facebook RN-310 |
+| 2026-11-03 | `82d1da8` | stories shared |
+| 2026-11-03 | `ff0a059` | powercut: notices written |
+| 2026-11-03 | `e2a6ec3` | powercut: notices written |
+| 2026-11-03 | `5f324f2` | rasipalan posted |
+| 2026-11-03 | `db3d5dd` | powercut: notices written |
+| 2026-11-03 | `faa677f` | facebook RN-309 |
 <!-- recent-changes:end -->
