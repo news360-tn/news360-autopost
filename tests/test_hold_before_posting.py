@@ -69,6 +69,11 @@ class Recheck3Nov(unittest.TestCase):
                  location="X town, Y district", caption="x", reel_script="y", source="")
         self.assertEqual(post.news_hold(r), "")
 
+    def test_wording_flag_and_district_name_post(self):
+        for prob in ("fact-check: Slide title 'x' is ungrammatical/unclear in Tamil", "not grounded: place word 'கோயம்புத்தூர்' is not in the article"):
+            r = dict(verification="DRAFT (m) - NOT CLEAN, held from posting - problems: " + prob, location="X town, Y district", caption="x", reel_script="y", source="")
+            self.assertEqual(post.news_hold(r), "", prob)
+
     def test_district_only_with_town_in_story_posts(self):
         r = dict(verification="DRAFT (m) - fact-check: no problems found", location="Namakkal district", caption="", reel_script="", source="",
                  headline_ta="திருச்செங்கோடு அருகே விபத்து")

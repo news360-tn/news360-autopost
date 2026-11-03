@@ -1912,9 +1912,11 @@ def news_hold(row):
         probs_ = v_.split("problems:", 1)[1] if "problems:" in v_ else v_
         facts_ = [p.strip() for p in probs_.split("; ") if re.search(r"fact-check|numbers not found|not grounded|invented|made up|wrong|contradict", p, re.I)]      # owner 2 Nov: "caption misses facts" is a missing detail, not a wrong fact - it posts
         # owner 3 Nov: a "fact-check:" flag about cut-off text, line length or word count is formatting, not a wrong fact - it posts
-        facts_ = [p for p in facts_ if not re.search(r"cut off|mid-sentence|mid-phrase|longer than|too long|too short|characters|\d+ words|word count|incomplete sentence|ends abruptly|sentence fragment|incomplete", p, re.I)]
+        facts_ = [p for p in facts_ if not re.search(r"cut off|mid-sentence|mid-phrase|longer than|too long|too short|characters|\d+ words|word count|incomplete sentence|ends abruptly|sentence fragment|incomplete|ungrammatical|unclear|awkward|spelling|grammar", p, re.I)]
         facts_ = [f for f in (_real_numbers(p) for p in facts_) if f]
         facts_ = [f for f in (_numbers_still_missing(row, p) for p in facts_) if f]
+        # owner 3 Nov (RN-151): the district / city name itself (கோயம்புத்தூர் vs the article's கோவை) is not an invented place
+        facts_ = [p for p in facts_ if not re.match(r"not grounded: place word '(கோயம்புத்தூர்|கோவை|நாமக்கல்|ராசிபுரம்)[^']*'", p)]
         facts_ = [f for f in facts_ if _location_still_wrong(row, f)]
         if facts_:
             return "held: fact-check problems - " + "; ".join(facts_)[:200]
