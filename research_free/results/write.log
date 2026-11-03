@@ -1,11 +1,83 @@
+writing [R]: நவ.1ல் போராடினால் ரூ.10,000 கோடி இழப்பு; டில்லி வர்த்தகர்களி
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 503: {"error":{"message":"qwen/qwen3.8-27b is currently over capacity. Please try again and back o
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  slides must have 3 or 4 items
+  reel_script has 52 words; need 82-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 7 problems
+  reel_script talks about the article instead of the news (கட்டுரை) - if the article has no real news, return an empty reel_script
+  caption talks about the article instead of the news (கட்டுரை) - if the article has no real news, return an empty reel_script
+  slides must have 3 or 4 items
+  reel_script has 52 words; need 82-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  not grounded: only 42% of the words come from the article (e.g. நவம்பர், தேதி, ஏற்படும், எச்சரித்துள்ளனர், இந்தப்); use the article's own words and facts
+  hl1 (the first headline on screen) must name the place 'டில்லி', e.g. 'டில்லி: ...' or 'டில்லி-இல் ...' - viewers share news of their own area
+  known issue meta_article: script talks about the article instead of the news ('கட்டுரை') - rewrite so it does not happen again
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  slides must have 3 or 4 items
+  reel_script has 32 words; need 82-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok groq/openai/gpt-oss-120b (3s)
+proofread rejected (1 problems)
+  missing key: scenes
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest
+real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
+real photo: vision check out of free quota
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Delhi traders warn of Rs 10,000 crore lo'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261103-1841","first":"RN-324"}
+posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 1 news waiting in the queue (written in priority order)
-candidate filter: checked earlier=1
-to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+write round: 19 news waiting in the queue (written in priority order)
+candidate filter: already filed=12, collected=7
+to write: 1 Rasipuram + 6 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 6 Namakkal; time left 29 min
+try (N) manual=False: குமாரபாளையம் அருகே ரூ.14 லட்சம் மோசடியில் தலைமறைவானவர் கைது;
+try (N) manual=False: ஏலச்சீட்டில் ரூ.12 லட்சம் மோசடி தலைமறைவாக இருந்தவர் கைது
+try (N) manual=False: நாமக்கல்லில் முட்டை விலை கிடுகிடு உயர்வு... ஒரு முட்டை ரூ.6.
+skip (N) similar to a filed story: நாமக்கல்லில் முட்டை விலை கிடுகிடு உயர்வு... ஒரு மு
+try (N) manual=False: பள்ளி சாலையில் போக்குவரத்து நெரிசல் ஆக்கிரமிப்பை அகற்ற மக்கள
+skip (N) similar to a filed story: குமாரபாளையம் அருகே ரூ.14 லட்சம் மோசடியில் தலைமறைவா
+try (N) manual=False: கே.எஸ்.ஆர்., இன்ஜி., கல்லூரியில் ட்ரோன் பயிற்சி பள்ளி துவக்க
+skip (N) similar to a filed story: பள்ளி சாலையில் போக்குவரத்து நெரிசல் ஆக்கிரமிப்பை அ
+try (N) manual=False: அரிசி, பருப்பு விலை உயர்வு: மா.கம்யூ., ஆர்ப்பாட்டம்
+skip (N) similar to a filed story: ஏலச்சீட்டில் ரூ.12 லட்சம் மோசடி தலைமறைவாக இருந்தவர
+try (R) manual=False: நவ.1ல் போராடினால் ரூ.10,000 கோடி இழப்பு; டில்லி வர்த்தகர்களி
+skip (N) similar to a filed story: கே.எஸ்.ஆர்., இன்ஜி., கல்லூரியில் ட்ரோன் பயிற்சி பள
+skip (N) similar to a filed story: அரிசி, பருப்பு விலை உயர்வு: மா.கம்யூ., ஆர்ப்பாட்டம
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 6}, done={'R': 1, 'N': 0}, time left 26 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 1
