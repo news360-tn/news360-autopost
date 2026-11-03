@@ -65,6 +65,10 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-03 | `85c355b` | hold rechecks (3 Nov): numbers the article writes in words / thousands / commas are found; 'incomplete sentence' / 'ends abruptly' flags are formatting; a district-only location posts when the story's own text names the town |
+| 2026-11-03 | `0e032a1` | powercut: notices written |
+| 2026-11-03 | `6115e46` | facebook RN-320 |
+| 2026-11-03 | `3c03fc3` | powercut: notices written |
 | 2026-11-03 | `caa3921` | fix 3 Nov check: (1) workflow save steps retried 0 times - 'git rebase --abort' with no rebase exited the step under bash -e (RN-308's Facebook record was never saved; restored); (2) a fact-check flag about cut-off text / line length / word count posts; (3) a district-only location gets the first town the article names |
 | 2026-11-03 | `bd7f281` | powercut: notices written |
 | 2026-11-03 | `1d2ac8b` | powercut: notices written |
@@ -91,8 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-03 | `e7f5671` | facebook RN-310 |
 | 2026-11-03 | `82d1da8` | stories shared |
 | 2026-11-03 | `ff0a059` | powercut: notices written |
-| 2026-11-03 | `e2a6ec3` | powercut: notices written |
-| 2026-11-03 | `5f324f2` | rasipalan posted |
-| 2026-11-03 | `db3d5dd` | powercut: notices written |
-| 2026-11-03 | `faa677f` | facebook RN-309 |
 <!-- recent-changes:end -->
