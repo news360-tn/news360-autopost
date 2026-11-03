@@ -65,6 +65,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-03 | `f020307` | hold rechecks: wording flags (ungrammatical / unclear) post; the district / city name itself (கோயம்புத்தூர் vs கோவை) is not an invented place (RN-146, RN-151) |
+| 2026-11-03 | `d81f7e8` | facebook RN-317 |
+| 2026-11-03 | `e8557c9` | facebook RN-323 |
 | 2026-11-03 | `85c355b` | hold rechecks (3 Nov): numbers the article writes in words / thousands / commas are found; 'incomplete sentence' / 'ends abruptly' flags are formatting; a district-only location posts when the story's own text names the town |
 | 2026-11-03 | `0e032a1` | powercut: notices written |
 | 2026-11-03 | `6115e46` | facebook RN-320 |
@@ -92,7 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-03 | `bd99cdd` | powercut: notices written |
 | 2026-11-03 | `facee8a` | powercut: notices written |
 | 2026-11-03 | `7a8b663` | powercut: notices written |
-| 2026-11-03 | `e7f5671` | facebook RN-310 |
-| 2026-11-03 | `82d1da8` | stories shared |
-| 2026-11-03 | `ff0a059` | powercut: notices written |
 <!-- recent-changes:end -->
