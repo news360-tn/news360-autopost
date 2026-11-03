@@ -2,135 +2,15 @@
  "log": [
   "earlier stories still waiting for images: []",
   "instagram check: 100 recent posts read from both pages",
-  "write round: 12 news waiting in the queue (written in priority order)",
-  "candidate filter: already filed=8, collected=4",
-  "to write: 0 Rasipuram + 4 other district candidates (max 200 + 200 stories)",
-  "candidates waiting: 0 Rasipuram, 4 Namakkal; time left 29 min",
-  "try (N) manual=False: திருச்செங்கோடு அருகே தம்பதி உயிரிழப்பு! கடன் பிரச்சினையால் ந",
-  "try (N) manual=False: தொடர்ந்து உயரும் முட்டை விலை",
-  "try (N) manual=False: பள்ளி சாலையில் போக்குவரத்து நெரிசல் ஆக்கிரமிப்பை அகற்ற மக்கள",
-  "skip (N) similar to a filed story: திருச்செங்கோடு அருகே தம்பதி உயிரிழப்பு! கடன் பிரச்",
-  "try (N) manual=False: வெற்றி இல்லத்தரசி வீட்டு தோட்டம் அமைக்க அரசு மானியத்தில் இடு",
-  "skip (N) similar to a filed story: பள்ளி சாலையில் போக்குவரத்து நெரிசல் ஆக்கிரமிப்பை அ",
-  "NOT filed (N) தொடர்ந்து உயரும் முட்டை விலை: stale: price news from 03 Nov, not today",
-  "auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 1})",
-  "posting job started at once",
-  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 1}, time left 27 min",
-  "carousel for 0 of 1 stories, the rest reel only",
-  "filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)",
-  "queue: 1 news waiting to be written",
-  "write_stories.yml started",
-  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":2}"
+  "write round: 1 news waiting in the queue (written in priority order)",
+  "candidate filter: checked earlier=1",
+  "to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)",
+  "candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min",
+  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min",
+  "carousel for 0 of 0 stories, the rest reel only",
+  "filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)",
+  "queue: 0 news waiting to be written"
  ],
- "llm": [
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "ok gemini/gemini-3.6-flash (15s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "dead for this round: gemini/gemini-3.6-flash",
-  "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "dead for this round: gemini/gemini-3.5-flash",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "dead for this round: gemini/gemini-3.6-flash",
-  "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, plea",
-  "dead for this round: gemini/gemini-3-flash-preview",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {\"error\":{\"message\":\"Failed to validate JSON. Please adjust your prompt. See 'failed_gener",
-  "ok gemini/gemini-3-flash-preview (14s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "ok groq/qwen/qwen3.8-27b (3s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "switching away from groq/openai/gpt-oss-120b for 10 min",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "switching away from groq/qwen/qwen3.8-27b for 10 min",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.1-flash, gemini-flash-latest"
- ],
- "stories": [
-  {
-   "tamil_headline": "வெற்றி இல்லத்தரசி வீட்டு தோட்டம்: அரசு மானியத்தில் இடுபொருட்கள்",
-   "english_headline": "Government subsidy for home garden kits under Vetti Illatharasi scheme",
-   "category": "Government & Services",
-   "location": "Namakkal district",
-   "importance": "Medium",
-   "scope": "district",
-   "post_to": "Namakkal 360 (collab: Rasipuram 360)",
-   "slides_spec": {
-    "v": 3,
-    "cat": "வீட்டு தோட்டம்",
-    "loc": "நாமக்கல் மாவட்டம்",
-    "hl1": "வீட்டு தோட்டத்திற்கு அரசு மானியம்",
-    "hl2": "ரூ.725க்கு தொகுப்பு",
-    "slides": [
-     {
-      "title": "திட்டம்",
-      "lines": [
-       "தமிழக அரசு வெற்றி இல்லத்தரசி திட்டம் அறிமுகம்",
-       "குறைந்த செலவில் வீட்டு தோட்டம் அமைக்கலாம்"
-      ]
-     },
-     {
-      "title": "மாடி தோட்டம்",
-      "lines": [
-       "மொத்த மதிப்பு ரூ.1,450",
-       "50 சதவீத மானியத்தில் ரூ.725க்கு வழங்கல்",
-       "ஒருவர் 2 தொகுப்பு வரை பெறலாம்"
-      ]
-     },
-     {
-      "title": "விண்ணப்பம்",
-      "lines": [
-       "tnhorticulture.tn.gov.in/kit இல் விண்ணப்பிக்கவும்",
-       "முகவரி அடையாள அட்டை மற்றும் புகைப்படம் தேவை"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "வீட்டு தோட்டம் அமைக்க விரும்பும் மக்களுக்கு அரசு மானியம் வழங்குகிறது. நாமக்கல் மாவட்ட தோட்டக்கலைத்துறை இந்த திட்டத்தை அறிவித்துள்ளது. தமிழக அரசு வெற்றி இல்லத்தரசி வீட்டு தோட்டம் திட்டத்தை அறிமுகம் செய்துள்ளது. இதன் மூலம் நஞ்சில்லா காய்கறிகள் மற்றும் பழங்களை வீட்டிலேயே விளைவிக்கலாம். மாடித் தோட்டத் தொகுப்பின் மொத்த மதிப்பு ரூ.1,450 ஆகும். 50 சதவீத மானியத்தில் ரூ.725க்கு இந்த தொகுப்பு வழங்கப்படும். ஒரு நபர் 2 தொகுப்பு வரை பெற்று பயன்பெறலாம். 2026-27ஆம் ஆண்டிற்கு 1,500 மாடித் தோட்டத் தொகுப்பு வழங்க இலக்கு நிர்ணயிக்கப்பட்டுள்ளது. நிழல்வலைக் குடில் அமைப்பதற்கு 100 பேருக்கு இலக்கு உள்ளது. 100 சதுர அடிக்கு ரூ.3,500க்கு நிழல்வலை அமைக்கலாம். காய்கறி விதை தொகுப்பு ரூ.15க்கு வழங்கப்படும். பழச்செடி தொகுப்பு ரூ.25க்கு வழங்கப்படும். இந்த 2 தொகுப்புகளுக்கும் தலா 20,000 இலக்கு நிர்ணயிக்கப்பட்டுள்ளது. விண்ணப்பிக்க tnhorticulture.tn.gov.in/kit இணையதளத்தை பயன்படுத்தவும். முகவரி அடையாள அட்டை மற்றும் புகைப்படம் தேவை. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🥬 நாமக்கல் மாவட்டத்தில் வீட்டு தோட்டம் அமைக்க அரசு மானியம் - ரூ.725க்கு தொகுப்பு\n\n📰 முழு விவரம்:\nதமிழக அரசு வெற்றி இல்லத்தரசி வீட்டு தோட்டம் திட்டத்தை அறிமுகம் செய்துள்ளது. நாமக்கல் மாவட்ட தோட்டக்கலைத்துறை இந்த திட்டம் குறித்து செய்திக்குறிப்பு வெளியிட்டுள்ளது. மாடித் தோட்டத் தொகுப்பின் மொத்த மதிப்பு ரூ.1,450 ஆகும். 50 சதவீத மானியத்தில் ரூ.725க்கு தொகுப்பு வழங்கப்படும். ஒரு நபர் 2 தொகுப்பு வரை பெறலாம். 2026-27ஆம் ஆண்டிற்கு 1,500 மாடித் தோட்டத் தொகுப்பு இலக்கு உள்ளது. நிழல்வலைக் குடில் அமைப்பதற்கு 100 பேருக்கு இலக்கு நிர்ணயிக்கப்பட்டுள்ளது. 100 சதுர அடிக்கு ரூ.3,500க்கு நிழல்வலை அமைக்கலாம். காய்கறி விதை தொகுப்பு ரூ.15க்கு, பழச்செடி தொகுப்பு ரூ.25க்கு வழங்கப்படும். இந்த 2 தொகுப்புகளுக்கும் தலா 20,000 இலக்கு உள்ளது. விண்ணப்பிக்க tnhorticulture.tn.gov.in/kit இணையதளத்தை பயன்படுத்தவும். முகவரி அடையாள அட்டை மற்றும் புகைப்படம் தேவை.\n\n📍 இடம்: நாமக்கல் மாவட்டம்\n📅 ஆண்டு: 2026-27\n💰 மாடி தோட்டம்: ரூ.725 (மானியம்)\n🌱 விதை/பழம்: ரூ.15 / ரூ.25\n📞 தொடர்புக்கு: tnhorticulture.tn.gov.in/kit\nℹ️ மக்கள் கவனத்திற்கு: முகவரி அடையாள அட்டை மற்றும் புகைப்படம் வைத்து விண்ணப்பிக்கவும்.\n\nதேவைப்படுவோருக்கு Share செய்யுங்கள்\n\nNamakkal home garden subsidy | Namakkal news\n📍 Namakkal district | 04 Nov 2026\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #NamakkalNews #நாமக்கல் #VettiIllatharasi",
-   "prompts": "A woman homemaker in a cotton saree stands on the flat concrete terrace of a red-tiled town house in Namakkal district, carefully placing a green plastic grow bag filled with dark coconut coir and a young vegetable seedling into a neat row of similar bags, as part of the Vetti Illatharasi home garden kit being set up on her roof. Beside her, a second woman in a salwar kameez kneels and lays out more bags from a cardboard carton marked with nothing readable, while a small shade net hut of green mesh stretches over part of the terrace, supported by thin metal poles. Behind the parapet wall, the tops of coconut palms and a neem tree rise against the sky, and a few other rooftops of similar concrete houses are visible in the distance. Two stacked white plastic tubs of compost and a small watering can sit on the floor near the wall. The scene is set in mid-morning with soft, warm natural sunlight, slight haze over the dry red-brown landscape, and a clear sky. Shot from a slightly elevated angle at roughly eye level with the women seen from behind or in profile, captured with a 35 mm lens to show the full terrace and the shade net hut together. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://tamilmaninewstoday.com/tamilnadu/231369/",
-   "published": "2026-11-03T13:52:56+00:00",
-   "verification": "DRAFT (groq/qwen/qwen3.8-27b) - NOT CLEAN, held from posting - problems: reel_script must have no English letters (write English words and abbreviations in Tamil script); slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area); caption misses facts of the article (put every one in 📰 முழு விவரம்): 6 ('மாடித்தோட்டத் தொகுப்பில் செடி வளர்ப்புப் பைகள், தென்னை நார்க'); 75 ('காய்கறி விதைத்தொகுப்பு 75 சதவீத மானியத்தில் 6 வகையான விதைகள்'); 6 ('காய்கறி விதைத்தொகுப்பு 75 சதவீத மானியத்தில் 6 வகையான விதைகள்'); 75 ('பழச்செடி தொகுப்புகள் (கொய்யா, பலா, பப்பாளி, சீத்தா மற்றும் எ'); 20 ('இந்த 2 தொகுப்புகளும் தலா 20 ஆயிரம் நாமக்கல் மாவட்டத்திற்கு இ'); known issue english_in_voice: voice script has English words the voice skips (gov, in, kit, tn) - rewrite so it does not happen again",
-   "note": "free-model draft groq/qwen/qwen3.8-27b, 1 attempt(s), 4 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 2.0,
-   "images": [
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1793739447/news360/odqpdfxgmwksaxgmhiwn.jpg"
-   ]
-  }
- ]
+ "llm": [],
+ "stories": []
 }
