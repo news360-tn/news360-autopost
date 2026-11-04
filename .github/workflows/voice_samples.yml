@@ -5,7 +5,7 @@ permissions:
   contents: write
 jobs:
   voices:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 40
     env:
       TA_MODEL: ${{ github.workspace }}/reel/models/ta

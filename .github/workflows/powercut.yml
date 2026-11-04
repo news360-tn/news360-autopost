@@ -22,7 +22,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   powercut:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 120
     env:
       POWERCUT_DRY: ${{ github.event_name == 'workflow_dispatch' && inputs.dry || '0' }}

@@ -27,7 +27,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   post:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 340      # 7:00 AM start can keep trying until 12:30
     env:
       PAGE: rasipuram

@@ -12,7 +12,7 @@ permissions:
 concurrency: research-free-write      # owner 29 Oct: own queue (it used to cancel waiting collections); it skips its round while a collection runs
 jobs:
   write:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4

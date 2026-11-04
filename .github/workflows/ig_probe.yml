@@ -8,7 +8,7 @@ env:
   BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
 jobs:
   probe:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
