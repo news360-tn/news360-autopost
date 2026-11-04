@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-04 | `fc2455f` | hold: a checker note it marks itself as acceptable / not an error is not a problem (RN-334, 4 Nov) |
 | 2026-11-04 | `7f4a7c6` | post: retry the bridge queue read on timeout / 5xx (Apps Script answered after 120 s and RN-335 job failed before posting, 4 Nov) |
 | 2026-11-04 | `cc9dfdd` | facebook RN-354 |
 | 2026-11-04 | `8a43f06` | workflows: pin runners to ubuntu-24.04 - ubuntu-latest moved to 26.04 and Playwright cannot install Chromium there (post Install step failed 4 Nov) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-04 | `f4ea7a3` | stories shared |
 | 2026-11-04 | `6dd6d10` | powercut: notices written |
 | 2026-11-04 | `729e027` | powercut: notices written |
-| 2026-11-04 | `4e4c438` | facebook RN-339 |
 <!-- recent-changes:end -->
