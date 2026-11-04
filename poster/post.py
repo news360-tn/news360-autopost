@@ -57,7 +57,20 @@ def log(*a):
 
 # ---------------------------------------------------------------- bridge (Apps Script)
 def bridge_get(action, **params):
-    r = requests.get(BRIDGE_URL, params={"action": action, "key": BRIDGE_KEY, **params}, timeout=120)
+    # 4 Nov: Apps Script sometimes answers after more than 120 s and the whole post job failed before posting.
+    # A read is safe to repeat, so slow / failed answers are retried before giving up.
+    for k in range(3):
+        try:
+            r = requests.get(BRIDGE_URL, params={"action": action, "key": BRIDGE_KEY, **params}, timeout=120)
+            if r.status_code < 500:
+                break
+            err = f"HTTP {r.status_code}"
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+            if k == 2:
+                raise
+            err = str(e)[:150]
+        log(f"bridge get '{action}' failed (try {k + 1}):", err)
+        time.sleep(20 * (k + 1))
     r.raise_for_status()
     data = r.json()
     if not data.get("ok"):
