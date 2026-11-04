@@ -203,6 +203,8 @@ def story_video(page_id, token, video_url):
 
 
 def story_photo(page_id, token, image_url="", photo_id=""):
+    """owner 4 Nov (3 Nov rasipalan: 400 Invalid parameter 2522009): the photo inside the feed post is already published and
+    Facebook refuses it for a story - the story gets its own fresh unpublished upload of the first slide"""
     photo_id = photo_id or _photo(page_id, token, image_url)
     r = _call("POST", f"{page_id}/photo_stories", token, photo_id=photo_id)
     return r.get("post_id") or photo_id
@@ -227,7 +229,7 @@ def _attempt(page, sid, kind, media, caption, prev, story=True):
     log(f"posted to Facebook ({page} {sid} {kind}):", link)
     if story:      # the Facebook story of the same post (a story problem never changes the post record to failed)
         try:
-            rec["fb_story"] = story_video(pid, tok, media[0]) if kind == "reel" else story_photo(pid, tok, photo_id=first)
+            rec["fb_story"] = story_video(pid, tok, media[0]) if kind == "reel" else story_photo(pid, tok, image_url=media[0])
             log(f"Facebook story made ({page} {sid}):", rec["fb_story"])
         except Exception as e:
             rec["story_error"] = str(e)[:300]

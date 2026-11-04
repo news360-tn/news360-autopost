@@ -889,7 +889,7 @@ class FacebookEverything2Nov(unittest.TestCase):
             return "p1", "https://www.facebook.com/p1", "ph1"
         self.fb.publish_reel, self.fb.publish_photos = reel, photos
         self.fb.story_video = lambda pid, tok, url: fb.calls.append(("story_video", url)) or "s1"
-        self.fb.story_photo = lambda pid, tok, image_url="", photo_id="": fb.calls.append(("story_photo", photo_id)) or "s2"
+        self.fb.story_photo = lambda pid, tok, image_url="", photo_id="": fb.calls.append(("story_photo", photo_id or image_url)) or "s2"
 
     def tearDown_fns(self):
         import importlib
@@ -910,7 +910,7 @@ class FacebookEverything2Nov(unittest.TestCase):
         self.addCleanup(self.tearDown_fns)
         self._fake()
         self.fb.share("rasipuram", "RN-2", "photos", ["a.jpg", "b.jpg"], self.CAP, "#Rasipuram360")
-        self.assertEqual(self.calls, [("photos", "111", ("a.jpg", "b.jpg")), ("story_photo", "ph1")])
+        self.assertEqual(self.calls, [("photos", "111", ("a.jpg", "b.jpg")), ("story_photo", "a.jpg")])      # 4 Nov: a fresh upload, not the feed photo
 
     def test_not_set_up_page_and_dry_run_post_nothing(self):
         self.addCleanup(self.tearDown_fns)
