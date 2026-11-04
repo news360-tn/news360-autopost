@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-03 | `f020307` | hold rechecks: wording flags (ungrammatical / unclear) post; the district / city name itself (கோயம்புத்தூர் vs கோவை) is not an invented place (RN-146, RN-151) |
-| 2026-11-03 | `d81f7e8` | facebook RN-317 |
-| 2026-11-03 | `e8557c9` | facebook RN-323 |
-| 2026-11-03 | `85c355b` | hold rechecks (3 Nov): numbers the article writes in words / thousands / commas are found; 'incomplete sentence' / 'ends abruptly' flags are formatting; a district-only location posts when the story's own text names the town |
-| 2026-11-03 | `0e032a1` | powercut: notices written |
-| 2026-11-03 | `6115e46` | facebook RN-320 |
-| 2026-11-03 | `3c03fc3` | powercut: notices written |
-| 2026-11-03 | `caa3921` | fix 3 Nov check: (1) workflow save steps retried 0 times - 'git rebase --abort' with no rebase exited the step under bash -e (RN-308's Facebook record was never saved; restored); (2) a fact-check flag about cut-off text / line length / word count posts; (3) a district-only location gets the first town the article names |
-| 2026-11-03 | `bd7f281` | powercut: notices written |
-| 2026-11-03 | `1d2ac8b` | powercut: notices written |
-| 2026-11-03 | `e344c41` | powercut: notices written |
-| 2026-11-03 | `d8e4b71` | stories shared |
-| 2026-11-03 | `b846cc9` | powercut: notices written |
-| 2026-11-03 | `1bfe28e` | facebook RN-322 |
-| 2026-11-03 | `0780100` | powercut: notices written |
-| 2026-11-03 | `9836e7c` | facebook RN-319 |
-| 2026-11-03 | `8862373` | powercut: notices written |
-| 2026-11-03 | `e31f9f3` | powercut: notices written |
-| 2026-11-03 | `dfb589e` | powercut: notices written |
-| 2026-11-03 | `11dc7ad` | facebook RN-314 |
-| 2026-11-03 | `bf79c08` | powercut: notices written |
-| 2026-11-03 | `3cae089` | powercut: notices written |
-| 2026-11-03 | `a6516b8` | facebook RN-316 |
-| 2026-11-03 | `5a9364b` | facebook RN-315 |
-| 2026-11-03 | `c8305d4` | powercut: notices written |
-| 2026-11-03 | `38f2530` | powercut: notices written |
-| 2026-11-03 | `7cb29a6` | facebook RN-312 |
-| 2026-11-03 | `bd99cdd` | powercut: notices written |
-| 2026-11-03 | `facee8a` | powercut: notices written |
-| 2026-11-03 | `7a8b663` | powercut: notices written |
+| 2026-11-04 | `8a43f06` | workflows: pin runners to ubuntu-24.04 - ubuntu-latest moved to 26.04 and Playwright cannot install Chromium there (post Install step failed 4 Nov) |
+| 2026-11-04 | `99a9a4f` | Heartbeat |
+| 2026-11-04 | `6dcabfd` | powercut: notices written |
+| 2026-11-04 | `fb7679e` | stories shared |
+| 2026-11-04 | `f51d269` | facebook RN-353 |
+| 2026-11-04 | `d0b5bf4` | powercut: notices written |
+| 2026-11-04 | `0212566` | powercut: notices written |
+| 2026-11-04 | `6c0c920` | powercut: notices written |
+| 2026-11-04 | `43e16b1` | powercut: notices written |
+| 2026-11-04 | `1429d84` | facebook RN-348 |
+| 2026-11-04 | `2176fbc` | powercut: notices written |
+| 2026-11-04 | `9eced3a` | powercut: notices written |
+| 2026-11-04 | `d7ba350` | facebook RN-351 |
+| 2026-11-04 | `dc9726f` | facebook RN-352 |
+| 2026-11-04 | `073439e` | facebook RN-349 |
+| 2026-11-04 | `6567487` | stories shared |
+| 2026-11-04 | `ede9c3d` | powercut: notices written |
+| 2026-11-04 | `e23021c` | facebook RN-347 |
+| 2026-11-04 | `e08ba10` | powercut: notices written |
+| 2026-11-04 | `fbe4b51` | facebook RN-346 |
+| 2026-11-04 | `70e4bd7` | powercut: notices written |
+| 2026-11-04 | `6a393c8` | facebook RN-343 |
+| 2026-11-04 | `d5568ec` | powercut: notices written |
+| 2026-11-04 | `cab854c` | facebook RN-345 |
+| 2026-11-04 | `f4ea7a3` | stories shared |
+| 2026-11-04 | `6dd6d10` | powercut: notices written |
+| 2026-11-04 | `729e027` | powercut: notices written |
+| 2026-11-04 | `4e4c438` | facebook RN-339 |
+| 2026-11-04 | `4510c18` | powercut: notices written |
+| 2026-11-04 | `ae50351` | facebook RN-341 |
 <!-- recent-changes:end -->
