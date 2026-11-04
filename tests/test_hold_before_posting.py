@@ -80,6 +80,20 @@ class Recheck3Nov(unittest.TestCase):
         self.assertEqual(post.news_hold(r), "")
 
 
+class CheckerNoteAcceptable(unittest.TestCase):
+    """4 Nov RN-334: a checker note it marks itself as acceptable posts; a real conflict still holds"""
+
+    def r(self, prob):
+        return dict(verification="DRAFT (m) - NOT CLEAN, held from posting - problems: " + prob, location="X town, Y district",
+                    caption="x", reel_script="y", source="")
+
+    def test_acceptable_note_posts(self):
+        self.assertEqual(post.news_hold(self.r("fact-check: reel_script says the trees were grown but also cut \u2014 acceptable")), "")
+
+    def test_real_conflict_still_holds(self):
+        self.assertTrue(post.news_hold(self.r("fact-check: reel_script says 5 trees were cut but the article says the trees were not cut")))
+
+
 class EntryPointLast(unittest.TestCase):
     """the posting job runs main() when the file is executed: every function it uses must be defined above that line (2 Nov, NameError)"""
 
