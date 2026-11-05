@@ -1,17 +1,274 @@
+writing [R]: ராசிபுரம் ஏரி ஆக்கிரமிப்பை அகற்ற அமைச்சா் உத்தரவு
+writing [N]: தொடா்ந்து உயரும் முட்டை விலை:
+10 காசுகள் உயா்ந்து ரூ. 6.60 ஆ
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+writing [N]: திருச்செங்கோடு அருகே ஆடு திருடிய 3 பேர் கைது
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+ok gemini/gemini-3-flash-preview (10s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (14s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (11s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
+ok gemini/gemini-3-flash-preview (11s)
+factcheck by gemini/gemini-3-flash-preview: 3 problems
+  The date 'November 5th' in the reel script and caption is not mentioned in the article.
+  The year '2026' in the caption is an invented detail.
+  The headline and slides state that 25 acres were 'handed over', whereas the article says the encroachers only 'came forward to hand them over'.
+attempt 1 gemini/gemini-3-flash-preview: 3 problems
+  fact-check: The date 'November 5th' in the reel script and caption is not mentioned in the article.
+  fact-check: The year '2026' in the caption is an invented detail.
+  fact-check: The headline and slides state that 25 acres were 'handed over', whereas the article says the encroachers only 'came forward to hand them over'.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok groq/openai/gpt-oss-120b (4s)
+factcheck by groq/openai/gpt-oss-120b: 5 problems
+  Invented date “நவம்பர் 3, 2026” appears in caption and reel script but is not in the article
+  Reel script claims the arrested were already taken to court and jailed, which the article does not state
+  Reel script mentions thieves used a two‑wheeler vehicle, a detail not present in the article
+  Reel script calls the goat buyer a “வாலிபர்” (youth) whereas the article identifies him as a weaver (நெசவாளர்)
+  Slide 3 states all three suspects are already in jail, a fact not mentioned in the article
+attempt 1 gemini/gemini-3-flash-preview: 5 problems
+  fact-check: Invented date “நவம்பர் 3, 2026” appears in caption and reel script but is not in the article
+  fact-check: Reel script claims the arrested were already taken to court and jailed, which the article does not state
+  fact-check: Reel script mentions thieves used a two‑wheeler vehicle, a detail not present in the article
+  fact-check: Reel script calls the goat buyer a “வாலிபர்” (youth) whereas the article identifies him as a weaver (நெசவாளர்)
+  fact-check: Slide 3 states all three suspects are already in jail, a fact not mentioned in the article
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/qwen/qwen3.8-27b (4s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+ok gemini/gemini-3-flash-preview (24s)
+factcheck by gemini/gemini-3-flash-preview: 3 problems
+  spelling error 'குறிப்பிடத்தகதாகும்' in reel_script (should be குறிப்பிடத்தக்கதாகும்)
+  invented detail in Slide 3: the article does not state that farmers were consulted for the chicken price decision in Palladam
+  invented detail in caption: the article does not mention an instruction or advice for farmers and traders to follow the new prices
+attempt 1 gemini/gemini-3.6-flash: 3 problems
+  fact-check: spelling error 'குறிப்பிடத்தகதாகும்' in reel_script (should be குறிப்பிடத்தக்கதாகும்)
+  fact-check: invented detail in Slide 3: the article does not state that farmers were consulted for the chicken price decision in Palladam
+  fact-check: invented detail in caption: the article does not mention an instruction or advice for farmers and traders to follow the new prices
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The article says the minister gave the order on Thursday (வியாழக்கிழமை); the draft's reel_script and caption never mention this, and the draft says the ministerial order is about ordering encroachments removed, which matches, but the reel_script omits the detail that the minister personally inspected the lake (ஏரியைப் பார்வையிட்டு ஆய்வு செய்தார) — it is mentioned, so no issue there.
+  The reel_script says the 85-acre encroachment exists 'at Salem road lake' (சேலம் சாலை ஏரி) while the article describes the lake as being on the Salem road (சேலம் சாலையில் உள்ள ஏரி) — acceptable.
+  The reel_script states the minister 'ordered removal of the 85-acre encroachment' in the headline ('85 ஏக்கர் ஆக்கிரமிப்பு அகற்ற அமைச்சர் உத்தரவு'), but the article only says it is reported that about 85 acres are encroached ('கூறப்படும் நிலையில்'); the draft states the 85-acre figure as fact in the headline and slides without the 'reportedly' qualifier.
+  The slide 'அமைச்சர் உத்தரவு' hl2 text 'அமைச்சர் உத்தரவு: முழு' is truncated and ungrammatical, not conveying a clear meaning.
+  The slide claims the minister ordered 'முழு ஏரியையும் நீர்ப்பிடிப்பு பகுதியாக மாற்ற' which is consistent with the article, but the reel_script omits the article's instruction that the revenue and municipal officials must acquire the encroachments (ஆக்கிரமிப்புகளை கையகப்படுத்த) and the caption's 'நீர்வரத்தை அதிகரிக்க' is only partially reflected.
+attempt 2 groq/qwen/qwen3.8-27b: 5 problems
+  fact-check: The article says the minister gave the order on Thursday (வியாழக்கிழமை); the draft's reel_script and caption never mention this, and the draft says the ministerial order is about ordering encroachments removed, which matches, but the reel_script omits the detail that the minister personally inspected the lake (ஏரியைப் பார்வையிட்டு ஆய்வு செய்தார) — it is mentioned, so no issue there.
+  fact-check: The reel_script says the 85-acre encroachment exists 'at Salem road lake' (சேலம் சாலை ஏரி) while the article describes the lake as being on the Salem road (சேலம் சாலையில் உள்ள ஏரி) — acceptable.
+  fact-check: The reel_script states the minister 'ordered removal of the 85-acre encroachment' in the headline ('85 ஏக்கர் ஆக்கிரமிப்பு அகற்ற அமைச்சர் உத்தரவு'), but the article only says it is reported that about 85 acres are encroached ('கூறப்படும் நிலையில்'); the draft states the 85-acre figure as fact in the headline and slides without the 'reportedly' qualifier.
+  fact-check: The slide 'அமைச்சர் உத்தரவு' hl2 text 'அமைச்சர் உத்தரவு: முழு' is truncated and ungrammatical, not conveying a clear meaning.
+  fact-check: The slide claims the minister ordered 'முழு ஏரியையும் நீர்ப்பிடிப்பு பகுதியாக மாற்ற' which is consistent with the article, but the reel_script omits the article's instruction that the revenue and municipal officials must acquire the encroachments (ஆக்கிரமிப்புகளை கையகப்படுத்த) and the caption's 'நீர்வரத்தை அதிகரிக்க' is only partially reflected.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 064221570 ('https://images.dinamalar.com/data/gallery_2024/gallerye_0642'); 4368315 ('https://images.dinamalar.com/data/gallery_2024/gallerye_0642')
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  Caption's body text is a near-verbatim paste of the reel_script, including the 'மேலும் செய்திகளுக்கு' sentence in the reel; not a claim problem but duplicated content, not an issue per the rules.
+  The reel_script claims the egg price 'உயர்ந்து ரூ.6.60 ஆக நிர்ணயம்' and the article says the farm purchase price was raised 10 காசுகள் to ரூ.6.60 — consistent, no issue.
+  Slide 'கோழி விலை' says 'பல்லடத்தில் நடந்த கூட்டத்தில் விலை நிர்ணயம்' — article says prices were fixed at the Palladam meeting; consistent.
+  Slide 2 line 'மற்ற மண்டலங்களிலும் விலை தொடர்ந்து உயர்வு' — article says prices are being changed continuously in other zones, not explicitly that they are rising; the word 'உயர்வு' (rise) is not stated in the article, a minor embellishment.
+  Slide 3 line 'அதனால் நாமக்கல்லிலும் மாற்றம் செய்ய கோரிக்கை' — article says other zones' changes mean the change should also be made here; the 'கோரிக்கை' (demand) framing is a slight reinterpretation but substantively supported.
+  Caption headline says 'இன்றைய விலை' (today's price), but the article refers to a Thursday meeting; calling it today's price is an unsupported time framing.
+claude rewrite 1 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: Caption's body text is a near-verbatim paste of the reel_script, including the 'மேலும் செய்திகளுக்கு' sentence in the reel; not a claim problem but duplicated content, not an issue per the rules.
+  fact-check: The reel_script claims the egg price 'உயர்ந்து ரூ.6.60 ஆக நிர்ணயம்' and the article says the farm purchase price was raised 10 காசுகள் to ரூ.6.60 — consistent, no issue.
+  fact-check: Slide 'கோழி விலை' says 'பல்லடத்தில் நடந்த கூட்டத்தில் விலை நிர்ணயம்' — article says prices were fixed at the Palladam meeting; consistent.
+  fact-check: Slide 2 line 'மற்ற மண்டலங்களிலும் விலை தொடர்ந்து உயர்வு' — article says prices are being changed continuously in other zones, not explicitly that they are rising; the word 'உயர்வு' (rise) is not stated in the article, a minor embellishment.
+  fact-check: Slide 3 line 'அதனால் நாமக்கல்லிலும் மாற்றம் செய்ய கோரிக்கை' — article says other zones' changes mean the change should also be made here; the 'கோரிக்கை' (demand) framing is a slight reinterpretation but substantively supported.
+  fact-check: Caption headline says 'இன்றைய விலை' (today's price), but the article refers to a Thursday meeting; calling it today's price is an unsupported time framing.
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 064221570 ('https://images.dinamalar.com/data/gallery_2024/gallerye_0642'); 4368315 ('https://images.dinamalar.com/data/gallery_2024/gallerye_0642')
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'நாமக்கல் மண்டலம்', e.g. 'நாமக்கல் மண்டலம்: ...' or 'நாமக்கல் மண்டலம்-இல் ...' - viewers share news of their own area
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 064221570 ('https://images.dinamalar.com/data/gallery_2024/gallerye_0642'); 4368315 ('https://images.dinamalar.com/data/gallery_2024/gallerye_0642')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says the minister ordered that the lake be taken over/acquired by the revenue and municipal officials, which is fine, but the reel_script and slides say the minister ordered the encroachment removal 'in order to make the lake a water catchment area' only as a 'request' - the article says the minister directed the action; minor wording change
+  The article says the 25-acre handover was offered by 'the encroachers' (ஆக்கிரமிப்பாளர்கள்) generally, while the reel_script and slides say 'some' of them (சிலர்), which is not stated in the article
+  reel_script says the organizations 'presented this demand' (இந்தக் கோரிக்கையை முன்வைத்திருந்தன), which is consistent, but it omits that the minister visited and inspected the lake (ஏரியைப் பார்வையிட்டு ஆய்வு செய்தார) - the slides also omit this important fact
+  slides_spec 'அடுத்து என்ன?' slide says the revenue department was ordered to 'கையகப்படுத்த' for both revenue and municipal officials, but the slide line omits that the ordered takeover is to make the lake a full water catchment area
+  Caption describes the organizations as requesting removal of 'ஆக்கிரமிப்புகள்' but omits their warning that they would stage a protest if encroachments were not removed, which the reel_script includes
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script says the minister ordered that the lake be taken over/acquired by the revenue and municipal officials, which is fine, but the reel_script and slides say the minister ordered the encroachment removal 'in order to make the lake a water catchment area' only as a 'request' - the article says the minister directed the action; minor wording change
+  fact-check: The article says the 25-acre handover was offered by 'the encroachers' (ஆக்கிரமிப்பாளர்கள்) generally, while the reel_script and slides say 'some' of them (சிலர்), which is not stated in the article
+  fact-check: reel_script says the organizations 'presented this demand' (இந்தக் கோரிக்கையை முன்வைத்திருந்தன), which is consistent, but it omits that the minister visited and inspected the lake (ஏரியைப் பார்வையிட்டு ஆய்வு செய்தார) - the slides also omit this important fact
+  fact-check: slides_spec 'அடுத்து என்ன?' slide says the revenue department was ordered to 'கையகப்படுத்த' for both revenue and municipal officials, but the slide line omits that the ordered takeover is to make the lake a full water catchment area
+  fact-check: Caption describes the organizations as requesting removal of 'ஆக்கிரமிப்புகள்' but omits their warning that they would stage a protest if encroachments were not removed, which the reel_script includes
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 0 problems
+claude rewrite 3 anthropic/claude-haiku-5-5: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
+real photo: vision check out of free quota
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 2 problems
+  The draft's reel_script and caption say 'ஆக்கிரமிப்பாளர்களில் சிலர்' (some of the encroachers) and 'ஆக்கிரமிப்பாளர்கள் 25 ஏக்கர்' — the article says the encroachers 'முன்வந்தனர்' to hand over 25 acres to the revenue department; the draft's slides_spec line 'ஆக்கிரமிப்பாளர்களில் சிலர் 25 ஏக்கர் நிலத்தை' is cut off and does not clearly state the handover to the revenue department, which is partially missing/unclear in the slide text.
+  The reel_script states the 85 acres as 'ஆக்கிரமிப்பு இருப்பதாகக் கூறப்படுகிறது' (claimed), which is fine, but the reel_script's sentence 'இதை முழுமையாக அகற்ற அமைச்சர் ... உத்தரவிட்டார்' is grammatically and logically consistent; however the slides_spec line 'ஆக்கிரமிப்பை முழுமையாக அகற்ற அமைச்சர் த. லோகேஷ்' is an incomplete sentence with no verb, making it unclear in Tamil.
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  fact-check: The draft's reel_script and caption say 'ஆக்கிரமிப்பாளர்களில் சிலர்' (some of the encroachers) and 'ஆக்கிரமிப்பாளர்கள் 25 ஏக்கர்' — the article says the encroachers 'முன்வந்தனர்' to hand over 25 acres to the revenue department; the draft's slides_spec line 'ஆக்கிரமிப்பாளர்களில் சிலர் 25 ஏக்கர் நிலத்தை' is cut off and does not clearly state the handover to the revenue department, which is partially missing/unclear in the slide text.
+  fact-check: The reel_script states the 85 acres as 'ஆக்கிரமிப்பு இருப்பதாகக் கூறப்படுகிறது' (claimed), which is fine, but the reel_script's sentence 'இதை முழுமையாக அகற்ற அமைச்சர் ... உத்தரவிட்டார்' is grammatically and logically consistent; however the slides_spec line 'ஆக்கிரமிப்பை முழுமையாக அகற்ற அமைச்சர் த. லோகேஷ்' is an incomplete sentence with no verb, making it unclear in Tamil.
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Three arrested for stealing goats near T'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261106-0231","first":"RN-386"}
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+posting job started at once
+real photo: vision check resting (free quota busy)
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The reel_script says 'சேலம் சாலை ஏரி' while the article says the lake is on Salem road (சேலம் சாலையில் உள்ள ஏரி); minor wording, but the place is consistent. (Not a real problem.)
+  The reel_script says the minister ordered removal of encroachment at the lake 'ராசிபுரத்தில் ... ஆக்கிரமிப்பை அகற்ற அமைச்சர் உத்தரவிட்டுள்ளார்' — consistent with article.
+  The reel_script omits the minister's on-site inspection of the lake being part of the story is included, but it omits that the order was given to the revenue and municipal officials specifically as part of the first step — not a real gap.
+  The reel_script states the demands were made by 'பத்து ரூபாய் இயக்கம், ராசிபுரம் மக்கள் நலக்குழு, மக்கள் தன்னுரிமை கட்சி ஆகியவை' — the article says these are 'உள்ளிட்ட அமைப்புகள்' (among other organisations), so presenting them as the complete list is an overstatement.
+  The caption's date line 'நாள்: நவம்பர் 5, வியாழக்கிழமை' gives a specific date that does not appear in the article; the article only says Thursday (வியாழக்கிழமை), so the date is an invented detail.
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The reel_script says 'சேலம் சாலை ஏரி' while the article says the lake is on Salem road (சேலம் சாலையில் உள்ள ஏரி); minor wording, but the place is consistent. (Not a real problem.)
+  fact-check: The reel_script says the minister ordered removal of encroachment at the lake 'ராசிபுரத்தில் ... ஆக்கிரமிப்பை அகற்ற அமைச்சர் உத்தரவிட்டுள்ளார்' — consistent with article.
+  fact-check: The reel_script omits the minister's on-site inspection of the lake being part of the story is included, but it omits that the order was given to the revenue and municipal officials specifically as part of the first step — not a real gap.
+  fact-check: The reel_script states the demands were made by 'பத்து ரூபாய் இயக்கம், ராசிபுரம் மக்கள் நலக்குழு, மக்கள் தன்னுரிமை கட்சி ஆகியவை' — the article says these are 'உள்ளிட்ட அமைப்புகள்' (among other organisations), so presenting them as the complete list is an overstatement.
+  fact-check: The caption's date line 'நாள்: நவம்பர் 5, வியாழக்கிழமை' gives a specific date that does not appear in the article; the article only says Thursday (வியாழக்கிழமை), so the date is an invented detail.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Egg price in Namakkal zone rises 10 pais'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261106-0231","first":"RN-387"}
+real photo skipped (photo uploaded 2026-07-23 (older than the news)): https://media.dinamani.com/dinamani/2026-07-23/ixybuptl/7445373591561715885537767542350345
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 1 for 'Minister orders removal of encroachments'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261106-0231","first":"RN-388"}
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 11 news waiting in the queue (written in priority order)
-candidate filter: already filed=8, collected=3
-to write: 0 Rasipuram + 3 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 3 Namakkal; time left 29 min
+write round: 14 news waiting in the queue (written in priority order)
+candidate filter: collected=7, already filed=7
+to write: 1 Rasipuram + 6 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 6 Namakkal; time left 29 min
+try (N) manual=False: திருச்செங்கோடு அருகே ஆடு திருடிய 3 பேர் கைது
+try (R) manual=False: ராசிபுரம் ஏரி ஆக்கிரமிப்பை அகற்ற அமைச்சா் உத்தரவு
+try (N) manual=False: தொடா்ந்து உயரும் முட்டை விலை:
+10 காசுகள் உயா்ந்து ரூ. 6.60 ஆ
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
+posting job started at once
 try (N) manual=False: நாமக்கல் முட்டை கொள்முதல் விலை மேலும் 10 காசுகள் உயர்வு
-try (N) manual=False: தீவன மூலப்பொருள் விலை உயர்வால் முட்டை கொள்முதல் விலை அதிகரிப
-try (N) manual=False: மாயமான செஞ்சி சிறுமி நாமக்கலில் இருக்கிறாரா? வழக்கில் அடுத்த
-skip (N) similar to a filed story: மாயமான செஞ்சி சிறுமி நாமக்கலில் இருக்கிறாரா? வழக்க
-skip (N) today's price is already filed: நாமக்கல் முட்டை கொள்முதல் விலை மேலும் 10 காசுகள் உ
-skip (N) similar to a filed story: தீவன மூலப்பொருள் விலை உயர்வால் முட்டை கொள்முதல் வி
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 3}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 4})
+try (N) manual=False: இனிப்பு தயாரிப்பு நிறுவனங்களில் உணவுப் பாதுகாப்புத் துறையினா
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 5})
+skip (N) similar to a filed story: நாமக்கல் முட்டை கொள்முதல் விலை மேலும் 10 காசுகள் உ
+try (N) manual=False: டிவிஸ்ட்!  செஞ்சி சிறுமியை  காணாமல் போன அதே டிரஸ்ஸில் நாமக்க
+try (N) manual=False: 24 நாட்களுக்குப் பின் சிக்கிய சிசிடிவி காட்சிகள்...! செஞ்சி 
+skip (N) similar to a filed story: இனிப்பு தயாரிப்பு நிறுவனங்களில் உணவுப் பாதுகாப்புத
+skip (N) similar to a filed story: டிவிஸ்ட்!  செஞ்சி சிறுமியை  காணாமல் போன அதே டிரஸ்ஸ
+skip (N) same event as RN-349: 24 நாட்களுக்குப் பின் சிக்கிய சிசிடிவி காட்சிகள்..
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 6}, done={'R': 1, 'N': 2}, time left 27 min
+carousel for 0 of 3 stories, the rest reel only
+filed: 1 Rasipuram + 2 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":3} 
+stories: 3
