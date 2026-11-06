@@ -1,55 +1,66 @@
-writing [N]: நாமக்கல் மாவட்டம் துவங்கி 30 ஆண்டுகள் நிறைவு விழா ஏற்பாடுகள்
+writing [N]: மண் கடத்தல் லாரி பறிமுதல்
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (20s)
+ok gemini/gemini-3.6-flash (18s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (7s)
-factcheck by gemini/gemini-3.6-flash: 0 problems
-attempt 1 gemini/gemini-3.6-flash: 0 problems
+ok gemini/gemini-3.6-flash (3s)
+factcheck by gemini/gemini-3.6-flash: 1 problems
+  Specific date 'November 4 / 4 November 2026' in reel_script, slides_spec, and caption is not mentioned in the article (article only states 'நேற்று காலை')
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  fact-check: Specific date 'November 4 / 4 November 2026' in reel_script, slides_spec, and caption is not mentioned in the article (article only states 'நேற்று காலை')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (14s)
-proofread rejected (2 problems)
-  slide 3 title longer than 18 characters
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+ok gemini/gemini-3-flash-preview (14s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (11s)
+ok gemini/gemini-3-flash-preview (5s)
+factcheck by gemini/gemini-3-flash-preview: 0 problems
+attempt 2 gemini/gemini-3-flash-preview: 0 problems
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (17s)
+ok gemini/gemini-3-flash-preview (17s)
+proofread rejected (3 problems)
+  hl2 longer than 28 characters
+  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  caption needs 5 hashtags (Instagram max), has 7
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-real photo used (1152x751, sharpness 59.1, The photograph shows the District Collector inspecting layou): https://tamilmaninewstoday.com/wp-content/uploads/2026/11/Namakkal-Day.jpg
-real photo used (1152x751, sharpness 58.7, The photo authentically depicts district officials inspectin): https://i0.wp.com/tamilmaninewstoday.com/wp-content/uploads/2026/11/Namakkal-Day.jpg?fit=8
-real photos used for 'Collector Madhubalan inspects arrangemen' (Tamilmani News)
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261106-1840","first":"RN-408"}
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (5s)
+real photo: no picture on the source page -> AI pictures
+imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs ~0.0020 pollen, but your available balance is 0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
+imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Gravel soil smuggling truck seized near '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261106-2235","first":"RN-409"}
 posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 14 news waiting in the queue (written in priority order)
-candidate filter: collected=8, already filed=6
-to write: 1 Rasipuram + 7 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 7 Namakkal; time left 29 min
-try (R) manual=False: சிறுமியை திருமணம் செய்த வாலிபர் போக்சோவில் கைது
+write round: 9 news waiting in the queue (written in priority order)
+candidate filter: already filed=6, collected=3
+to write: 0 Rasipuram + 3 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 3 Namakkal; time left 29 min
+try (N) manual=False: மண் கடத்தல் லாரி பறிமுதல்
 try (N) manual=False: நாமக்கல் மாவட்டத்தில் என்எம்எம்எஸ் தேர்வுக்கு 825 மாணவ, மாணவ
-try (N) manual=False: தேசிய வருவாய் வழித் தேர்வு மாணவர்களுக்கு பயிற்சி வகுப்பு
-skip (N) similar to a filed story: நாமக்கல் மாவட்டத்தில் என்எம்எம்எஸ் தேர்வுக்கு 825 
-try (N) manual=False: தீவன மூலப்பொருள் விலை உயர்வால் முட்டை கொள்முதல் விலை அதிகரிப
-skip (R) similar to a filed story: சிறுமியை திருமணம் செய்த வாலிபர் போக்சோவில் கைது
-try (N) manual=False: செஞ்சி சிறுமி மாயமான வழக்கு வில்லுப்பாட்டு குழுவிடம் விசாரணை
-skip (N) similar to a filed story: தீவன மூலப்பொருள் விலை உயர்வால் முட்டை கொள்முதல் வி
-try (N) manual=False: முட்டை விலை கடந்த 7 நாட்களில் ரூ.90 காசுகள் உயர்வு
-skip (N) similar to a filed story: செஞ்சி சிறுமி மாயமான வழக்கு வில்லுப்பாட்டு குழுவிட
-try (N) manual=False: நாமக்கல் மாவட்டம் துவங்கி 30 ஆண்டுகள் நிறைவு விழா ஏற்பாடுகள்
-skip (N) similar to a filed story: தேசிய வருவாய் வழித் தேர்வு மாணவர்களுக்கு பயிற்சி வ
 try (N) manual=False: ப.வேலூர் சுற்றுவட்டாரத்தில் தாராளமாக விற்கப்படும் குட்கா
-skip (N) today's price is already filed: முட்டை விலை கடந்த 7 நாட்களில் ரூ.90 காசுகள் உயர்வு
+skip (N) similar to a filed story: நாமக்கல் மாவட்டத்தில் என்எம்எம்எஸ் தேர்வுக்கு 825 
 skip (N) similar to a filed story: ப.வேலூர் சுற்றுவட்டாரத்தில் தாராளமாக விற்கப்படும் 
-real photo from the source (Tamilmani News) for 'Collector Madhubalan inspects arrangemen'
-auto images: 1 of 1 stories ({})
+auto images: 1 of 1 stories ({'black-forest-labs/flux.1-dev': 2})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 7}, done={'R': 0, 'N': 1}, time left 27 min
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 3}, done={'R': 0, 'N': 1}, time left 25 min
 carousel for 0 of 1 stories, the rest reel only
 filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
