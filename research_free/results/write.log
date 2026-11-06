@@ -1,58 +1,29 @@
-writing [N]: மணல் குவாரி முறைகேடு - லஞ்ச ஒழிப்புத்துறை சோதனை..!
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (21s)
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  sentence 1 (one-line story) has 19 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+writing [N]: நாமக்கல் மாவட்டம் துவங்கி 30 ஆண்டுகள் நிறைவு விழா ஏற்பாடுகள்
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-switching away from gemini/gemini-3.6-flash for 10 min
-ok gemini/gemini-3.5-flash (22s)
-attempt 2 gemini/gemini-3.5-flash: 1 problems
-  reel_script has 79 words; need 94-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+ok gemini/gemini-3.6-flash (20s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (7s)
+factcheck by gemini/gemini-3.6-flash: 0 problems
+attempt 1 gemini/gemini-3.6-flash: 0 problems
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.5-flash (19s)
+ok gemini/gemini-3.6-flash (14s)
+proofread rejected (2 problems)
+  slide 3 title longer than 18 characters
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.5-flash (13s)
-factcheck by gemini/gemini-3.5-flash: 0 problems
-attempt 3 gemini/gemini-3.5-flash: 0 problems
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (11s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.5-flash (23s)
-proofread rejected (3 problems)
-  hl2 longer than 28 characters
-  slide 4 title longer than 18 characters
-  known issue meta_article: script talks about the article instead of the news ('விவரங்களும் தெரியவரும்') - rewrite so it does not happen again
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (17s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.5-flash (16s)
-real photo skipped (photo uploaded 2026-04-22 (older than the news)): https://static-cdn.publive.online/polimer-news/media/media_files/2026/04/22/apple-2026-04-
-real photo skipped (photo uploaded 2026-03-09 (older than the news)): https://static-cdn.publive.online/polimer-news/media/media_files/2026/03/09/live-tv-1-2026
-imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
-imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs ~0.0020 pollen, but your available balance is 0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
-imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-image match check unavailable: gemini-3.5-flash: 503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-image match: False The image is an AI-generated illustration showing generic paper bundles and a uniformed officer, not an authentic photog
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-image match: False The image is an AI-generated illustration showing generic stacks of files and uniformed officers, rather than an authent
-images made: 2 for 'Rs 4,730 crore sand quarry scam: DVAC ra'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261106-1443","first":"RN-407"}
+real photo used (1152x751, sharpness 59.1, The photograph shows the District Collector inspecting layou): https://tamilmaninewstoday.com/wp-content/uploads/2026/11/Namakkal-Day.jpg
+real photo used (1152x751, sharpness 58.7, The photo authentically depicts district officials inspectin): https://i0.wp.com/tamilmaninewstoday.com/wp-content/uploads/2026/11/Namakkal-Day.jpg?fit=8
+real photos used for 'Collector Madhubalan inspects arrangemen' (Tamilmani News)
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261106-1840","first":"RN-408"}
 posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
@@ -63,21 +34,22 @@ candidates waiting: 1 Rasipuram, 7 Namakkal; time left 29 min
 try (R) manual=False: சிறுமியை திருமணம் செய்த வாலிபர் போக்சோவில் கைது
 try (N) manual=False: நாமக்கல் மாவட்டத்தில் என்எம்எம்எஸ் தேர்வுக்கு 825 மாணவ, மாணவ
 try (N) manual=False: தேசிய வருவாய் வழித் தேர்வு மாணவர்களுக்கு பயிற்சி வகுப்பு
-skip (R) similar to a filed story: சிறுமியை திருமணம் செய்த வாலிபர் போக்சோவில் கைது
-try (N) manual=False: தீவன மூலப்பொருள் விலை உயர்வால் முட்டை கொள்முதல் விலை அதிகரிப
-skip (N) similar to a filed story: தேசிய வருவாய் வழித் தேர்வு மாணவர்களுக்கு பயிற்சி வ
-try (N) manual=False: செஞ்சி சிறுமி மாயமான வழக்கு வில்லுப்பாட்டு குழுவிடம் விசாரணை
-skip (N) similar to a filed story: செஞ்சி சிறுமி மாயமான வழக்கு வில்லுப்பாட்டு குழுவிட
-try (N) manual=False: முட்டை விலை கடந்த 7 நாட்களில் ரூ.90 காசுகள் உயர்வு
 skip (N) similar to a filed story: நாமக்கல் மாவட்டத்தில் என்எம்எம்எஸ் தேர்வுக்கு 825 
-try (N) manual=False: மணல் குவாரி முறைகேடு - லஞ்ச ஒழிப்புத்துறை சோதனை..!
-skip (N) today's price is already filed: முட்டை விலை கடந்த 7 நாட்களில் ரூ.90 காசுகள் உயர்வு
-try (N) manual=False: இனிப்பு தயாரிப்பு நிறுவனங்களில் உணவுப் பாதுகாப்புத் துறையினா
+try (N) manual=False: தீவன மூலப்பொருள் விலை உயர்வால் முட்டை கொள்முதல் விலை அதிகரிப
+skip (R) similar to a filed story: சிறுமியை திருமணம் செய்த வாலிபர் போக்சோவில் கைது
+try (N) manual=False: செஞ்சி சிறுமி மாயமான வழக்கு வில்லுப்பாட்டு குழுவிடம் விசாரணை
 skip (N) similar to a filed story: தீவன மூலப்பொருள் விலை உயர்வால் முட்டை கொள்முதல் வி
-skip (N) similar to a filed story: இனிப்பு தயாரிப்பு நிறுவனங்களில் உணவுப் பாதுகாப்புத
-auto images: 1 of 1 stories ({'black-forest-labs/flux.1-dev': 3})
+try (N) manual=False: முட்டை விலை கடந்த 7 நாட்களில் ரூ.90 காசுகள் உயர்வு
+skip (N) similar to a filed story: செஞ்சி சிறுமி மாயமான வழக்கு வில்லுப்பாட்டு குழுவிட
+try (N) manual=False: நாமக்கல் மாவட்டம் துவங்கி 30 ஆண்டுகள் நிறைவு விழா ஏற்பாடுகள்
+skip (N) similar to a filed story: தேசிய வருவாய் வழித் தேர்வு மாணவர்களுக்கு பயிற்சி வ
+try (N) manual=False: ப.வேலூர் சுற்றுவட்டாரத்தில் தாராளமாக விற்கப்படும் குட்கா
+skip (N) today's price is already filed: முட்டை விலை கடந்த 7 நாட்களில் ரூ.90 காசுகள் உயர்வு
+skip (N) similar to a filed story: ப.வேலூர் சுற்றுவட்டாரத்தில் தாராளமாக விற்கப்படும் 
+real photo from the source (Tamilmani News) for 'Collector Madhubalan inspects arrangemen'
+auto images: 1 of 1 stories ({})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 7}, done={'R': 0, 'N': 1}, time left 21 min
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 7}, done={'R': 0, 'N': 1}, time left 27 min
 carousel for 0 of 1 stories, the rest reel only
 filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
