@@ -1,13 +1,154 @@
+writing [N]: TVK | "தவெக ஆட்சியை கவிழ்க்க திமுக, அதிமுகவை விட.." - பெயரை 
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+writing [N]: பாதுகாப்பாக பட்டாசு வெடிக்க அறிவுரை
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+ok gemini/gemini-3-flash-preview (10s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
+ok groq/openai/gpt-oss-120b (4s)
+factcheck by groq/openai/gpt-oss-120b: 2 problems
+  Incorrect term 'வாளி தண்ணீர்' used instead of 'பக்கெட் தண்ணீர்' in slides_spec line; not present in article
+  Incorrect term 'வாளி தண்ணீர்' used in caption; not mentioned in article
+attempt 1 gemini/gemini-3-flash-preview: 2 problems
+  fact-check: Incorrect term 'வாளி தண்ணீர்' used instead of 'பக்கெட் தண்ணீர்' in slides_spec line; not present in article
+  fact-check: Incorrect term 'வாளி தண்ணீர்' used in caption; not mentioned in article
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+ok gemini/gemini-3.6-flash (18s)
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  slide 1 line 2 is cut off mid-phrase ('லைவர் அர்ஜுன் சம்பத்') - write a complete short phrase
+  known issue card_cut_mid_phrase: card cut off mid-phrase ('த் தலைவர் அர்ஜுன் சம்பத்') - rewrite so it does not happen again
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/qwen/qwen3.8-27b (3s)
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 56 words; need 60-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  sentence 1 (one-line story) has 19 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  slide 1 line 1 is cut off mid-phrase ('லைவர் அர்ஜுன் சம்பத்') - write a complete short phrase
+  known issue card_cut_mid_phrase: card cut off mid-phrase ('த் தலைவர் அர்ஜுன் சம்பத்') - rewrite so it does not happen again
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  reel_script uses 'அளந்துள்ளது' (measured) instead of 'அளிக்கப்பட்டுள்ளது'/'வழங்கியுள்ளது' (given) for the advice, which is ungrammatical/meaningless here
+  reel_script says 'கண்ணுக்கு நேராமல்' but the article says the stick should be long and not directly in line with the eye while standing tilted; the reel script omits the long-stick detail and the sentence structure is garbled, mixing the 'long stick' and 'tilted stance' points into two separate, unclear sentences
+  slides_spec line 'அருகில் <b>1</b> பக்கெட் தண்ணீர்' contains an HTML tag and a stray numeral not present in the article
+  caption contains 'அளக்கப்பட்டுள்ளது', the same meaningless verb as the reel script, instead of a correct verb for 'given/issued'
+  caption says 'பெரிய நீளமான பத்தி கொண்டு கண்ணுக்கு நேராமல், சாய்ந்த நிலையில் நின்று கொண்டு வெடிக்க வேண்டும்' merging the stick and stance points into an awkward sentence that loosely mirrors the source
+  slides_spec 'சரியான முறை' slide line 'அருகில் 1 பக்கெட் தண்ணீர் வைக்க வேண்டும்' changes 'ஒரு பக்கெட்' to a bare numeral, altering the stated fact
+attempt 2 groq/qwen/qwen3.8-27b: 6 problems
+  fact-check: reel_script uses 'அளந்துள்ளது' (measured) instead of 'அளிக்கப்பட்டுள்ளது'/'வழங்கியுள்ளது' (given) for the advice, which is ungrammatical/meaningless here
+  fact-check: reel_script says 'கண்ணுக்கு நேராமல்' but the article says the stick should be long and not directly in line with the eye while standing tilted; the reel script omits the long-stick detail and the sentence structure is garbled, mixing the 'long stick' and 'tilted stance' points into two separate, unclear sentences
+  fact-check: slides_spec line 'அருகில் <b>1</b> பக்கெட் தண்ணீர்' contains an HTML tag and a stray numeral not present in the article
+  fact-check: caption contains 'அளக்கப்பட்டுள்ளது', the same meaningless verb as the reel script, instead of a correct verb for 'given/issued'
+  fact-check: caption says 'பெரிய நீளமான பத்தி கொண்டு கண்ணுக்கு நேராமல், சாய்ந்த நிலையில் நின்று கொண்டு வெடிக்க வேண்டும்' merging the stick and stance points into an awkward sentence that loosely mirrors the source
+  fact-check: slides_spec 'சரியான முறை' slide line 'அருகில் 1 பக்கெட் தண்ணீர் வைக்க வேண்டும்' changes 'ஒரு பக்கெட்' to a bare numeral, altering the stated fact
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+real photo: no picture on the source page -> AI pictures
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  hl1 (the first headline on screen) must name the place 'பள்ளிப்பாளையம்', e.g. 'பள்ளிப்பாளையம்: ...' or 'பள்ளிப்பாளையம்-இல் ...' - viewers share news of their own area
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Arjun Sampath says VCK, Communist and Co'
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The caption's 'Palayapalayam' hashtag-like line is a romanized place name that is misspelled relative to the article's Pallipalayam (பள்ளிப்பாளையம்), and the Tamil caption text 'தீயணைப்புத்துறை அறிவுரை' is fine but the English tail line introduces a spelling not in the article.
+  The slides_spec 'யார் அறிவுரை?' slide adds 'பள்ளிப்பாளையம் பகுதி மக்களுக்கு' (to the people of the Pallipalayam area), an audience detail not stated in the article.
+  The reel_script's first sentence 'பள்ளிப்பாளையத்தில் பட்டாசு வெடிக்கும்போது பாதுகாப்பு முக்கியம்' is a generic framing rather than a claim, but the slides' 'சிறுவர்கள் வெடிக்கும்போது பெற்றோர் உடனிருங்கள்' and similar lines are consistent; no further factual error found.
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The caption's 'Palayapalayam' hashtag-like line is a romanized place name that is misspelled relative to the article's Pallipalayam (பள்ளிப்பாளையம்), and the Tamil caption text 'தீயணைப்புத்துறை அறிவுரை' is fine but the English tail line introduces a spelling not in the article.
+  fact-check: The slides_spec 'யார் அறிவுரை?' slide adds 'பள்ளிப்பாளையம் பகுதி மக்களுக்கு' (to the people of the Pallipalayam area), an audience detail not stated in the article.
+  fact-check: The reel_script's first sentence 'பள்ளிப்பாளையத்தில் பட்டாசு வெடிக்கும்போது பாதுகாப்பு முக்கியம்' is a generic framing rather than a claim, but the slides' 'சிறுவர்கள் வெடிக்கும்போது பெற்றோர் உடனிருங்கள்' and similar lines are consistent; no further factual error found.
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261106-1035","first":"RN-405"}
+posting job started at once
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'பள்ளிப்பாளையம்', e.g. 'பள்ளிப்பாளையம்: ...' or 'பள்ளிப்பாளையம்-இல் ...' - viewers share news of their own area
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+real photo: no picture on the source page -> AI pictures
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Pallipalayam fire department advises saf'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261106-1036","first":"RN-406"}
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 2 news waiting in the queue (written in priority order)
-candidate filter: already filed=1, collected=1
-to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
+write round: 14 news waiting in the queue (written in priority order)
+candidate filter: collected=8, already filed=6
+to write: 1 Rasipuram + 7 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 7 Namakkal; time left 29 min
+try (R) manual=False: சிறுமியை திருமணம் செய்த வாலிபர் போக்சோவில் கைது
+try (N) manual=False: நாமக்கல் மாவட்டத்தில் என்எம்எம்எஸ் தேர்வுக்கு 825 மாணவ, மாணவ
 try (N) manual=False: தேசிய வருவாய் வழித் தேர்வு மாணவர்களுக்கு பயிற்சி வகுப்பு
+skip (N) similar to a filed story: நாமக்கல் மாவட்டத்தில் என்எம்எம்எஸ் தேர்வுக்கு 825 
+try (N) manual=False: நாமக்கலில் முட்டை விலை 4 நாட்களில் 40 பைசா உயர்வு
+skip (R) similar to a filed story: சிறுமியை திருமணம் செய்த வாலிபர் போக்சோவில் கைது
+try (N) manual=False: செஞ்சி சிறுமி மாயமான வழக்கு வில்லுப்பாட்டு குழுவிடம் விசாரணை
+skip (N) too old (2026-11-04T04:43:11Z): நாமக்கல் மண்டலத்தில் முட்டை விலை 5 நாட்களில் 70 கா
+try (N) manual=False: பாதுகாப்பாக பட்டாசு வெடிக்க அறிவுரை
 skip (N) similar to a filed story: தேசிய வருவாய் வழித் தேர்வு மாணவர்களுக்கு பயிற்சி வ
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+try (N) manual=False: இனிப்பு தயாரிப்பு நிறுவனங்களில் உணவுப் பாதுகாப்புத் துறையினா
+skip (N) similar to a filed story: இனிப்பு தயாரிப்பு நிறுவனங்களில் உணவுப் பாதுகாப்புத
+try (N) manual=False: TVK | "தவெக ஆட்சியை கவிழ்க்க திமுக, அதிமுகவை விட.." - பெயரை 
+skip (N) similar to a filed story: செஞ்சி சிறுமி மாயமான வழக்கு வில்லுப்பாட்டு குழுவிட
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
+posting job started at once
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 4})
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 7}, done={'R': 0, 'N': 2}, time left 28 min
+carousel for 0 of 2 stories, the rest reel only
+filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":2} 
+stories: 2
