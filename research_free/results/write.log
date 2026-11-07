@@ -1,15 +1,17 @@
-writing [N]: தீபாவளி பண்டிகையை முன்னிட்டு 108 அவசர ஆம்புலன்ஸ் முன்னெச்சரி
+writing [N]: விசைத்தறி தொழிலாளர்களுக்கு 10 நாட்கள் தீபாவளி விடுமுறை
+writing [R]: ரூ.65 கோடி மதிப்பு நிலப்பத்திரத்தை கேட்டு தொழிலதிபர் கடத்தல்
+writing [N]: முட்டை விலை 8 நாட்களில் ரூ.1 உயர்வு
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (19s)
-attempt 1 gemini/gemini-3.6-flash: 2 problems
-  sentence 1 (one-line story) has 18 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (21s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
@@ -20,97 +22,191 @@ fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-ok gemini/gemini-3-flash-preview (39s)
-factcheck by gemini/gemini-3-flash-preview: 1 problems
-  The number '27' in the reel script and slide headline differs from 'more than 27' (27-க்கும் மேற்பட்ட) mentioned in the article.
-attempt 2 gemini/gemini-3.6-flash: 1 problems
-  fact-check: The number '27' in the reel script and slide headline differs from 'more than 27' (27-க்கும் மேற்பட்ட) mentioned in the article.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3-flash-preview (9s)
-attempt 3 gemini/gemini-3-flash-preview: 2 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3-flash-preview (9s)
-attempt 4 gemini/gemini-3-flash-preview: 1 problems
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (12s)
-attempt 5 gemini/gemini-3-flash-preview: 1 problems
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+ok gemini/gemini-3-flash-preview (10s)
+attempt 1 gemini/gemini-3-flash-preview: 2 problems
+  numbers not found in the article: 100
+  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
+ok gemini/gemini-3-flash-preview (10s)
+attempt 1 gemini/gemini-3-flash-preview: 1 problems
   sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (9s)
-attempt 6 gemini/gemini-3-flash-preview: 1 problems
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-ok groq/qwen/qwen3.8-27b (4s)
-attempt 7 groq/qwen/qwen3.8-27b: 2 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+ok gemini/gemini-3.6-flash (20s)
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  numbers not found in the article: 40000
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 8 ('தீபாவளி பண்டிகையின்போது மட்டுமே, அவர்களுக்கு குறைந்தது, 8 மு')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (11s)
+attempt 2 gemini/gemini-3-flash-preview: 1 problems
+  numbers not found in the article: 40000
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/qwen/qwen3.8-27b (3s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 switching away from groq/qwen/qwen3.8-27b for 10 min
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-free models unavailable: no free model answered: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your p
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('தீபாவளி பண்டிகையை முன்னிட்டு 108 அவசர ஆம்புலன்ஸ் முன்னெச்சரிக்கை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/openai/gpt-oss-120b (6s)
-proofread rejected (3 problems)
-  reel_script must tell how the story ENDED, as the article's last lines say ('தீபாவளி பண்டிகையை முன்னிட்டு 108 அவசர ஆம்புலன்ஸ் முன்னெச்சரிக்கை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-  caption must contain the exact follow line
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says the meeting was held on 'இன்றைய' price 670 and calls 'நவம்பர் 6ஆம் தேதி' a date; article says the meeting was 'இன்று (நவ.,6)' so date is fine, but reel_script says 'இன்றைய கொள்முதல் விலை 670' while slides and caption also use 'இன்றைய' consistently, so no issue there — however, the slide 'வரலாற்று உச்சம்' says '8 நாட்களில் விலை 1 ரூபாய் உயர்ந்துள்ளது' and reel_script states the 8-day rise happened in the same sentence chain as the 10-paisa increase, mixing two facts ('இதனால் இன்றைய கொள்முதல் விலை 670 காசாக நிர்ணயம் செய்யப்பட்டது' wrongly implies the 10-paisa rise caused the 670 price rather than being the increase itself)
+  reel_script says 'இதனால்' (therefore), introducing a causal link between the 10-paisa increase and the 670 price that the article does not state
+  reel_script omits that the 8-day rise was from 570 to 670, not a rise of 1 rupee in a single step and omits the numeric basis of the Rs.1 rise, which is an important fact of the article
+  caption and reel_script state the 8-day rise as 1 rupee, but the article's 570 to 670 is 1 rupee; the 'ரூ.1' rise is consistent, but slide 2 'அக்டோபர் 21ஆம் தேதி விலை 570 காசாக இருந்தது' is presented without linking it to the rise, leaving the 8-day comparison unclear
+  reel_script claims the meeting was held by the chairman 'இந்த கூட்டத்தை தலைவர் சிங்கராஜ் தலைமையில் நடத்தினார்' which matches the article, but the reel_script lists it before the date, and 'நாமக்கல் மண்டலத்தில் முட்டை விலை 8 நாட்களில் 1 ரூபாய் உயர்ந்துள்ளது' in the first sentence is fine; no invented fact found there
+attempt 2 groq/qwen/qwen3.8-27b: 5 problems
+  fact-check: reel_script says the meeting was held on 'இன்றைய' price 670 and calls 'நவம்பர் 6ஆம் தேதி' a date; article says the meeting was 'இன்று (நவ.,6)' so date is fine, but reel_script says 'இன்றைய கொள்முதல் விலை 670' while slides and caption also use 'இன்றைய' consistently, so no issue there — however, the slide 'வரலாற்று உச்சம்' says '8 நாட்களில் விலை 1 ரூபாய் உயர்ந்துள்ளது' and reel_script states the 8-day rise happened in the same sentence chain as the 10-paisa increase, mixing two facts ('இதனால் இன்றைய கொள்முதல் விலை 670 காசாக நிர்ணயம் செய்யப்பட்டது' wrongly implies the 10-paisa rise caused the 670 price rather than being the increase itself)
+  fact-check: reel_script says 'இதனால்' (therefore), introducing a causal link between the 10-paisa increase and the 670 price that the article does not state
+  fact-check: reel_script omits that the 8-day rise was from 570 to 670, not a rise of 1 rupee in a single step and omits the numeric basis of the Rs.1 rise, which is an important fact of the article
+  fact-check: caption and reel_script state the 8-day rise as 1 rupee, but the article's 570 to 670 is 1 rupee; the 'ரூ.1' rise is consistent, but slide 2 'அக்டோபர் 21ஆம் தேதி விலை 570 காசாக இருந்தது' is presented without linking it to the rise, leaving the 8-day comparison unclear
+  fact-check: reel_script claims the meeting was held by the chairman 'இந்த கூட்டத்தை தலைவர் சிங்கராஜ் தலைமையில் நடத்தினார்' which matches the article, but the reel_script lists it before the date, and 'நாமக்கல் மண்டலத்தில் முட்டை விலை 8 நாட்களில் 1 ரூபாய் உயர்ந்துள்ளது' in the first sentence is fine; no invented fact found there
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/openai/gpt-oss-120b (2s)
+free models unavailable: no free model answered: None
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
-real photo: vision check out of free quota
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 1 problems
+  The article says the price was set at 680 paise on July 23 and calls it the record high, but the caption says the price was 'நிர்ணயிக்கப்பட்ட 680 காசுதான்' (fine), while the slide claims 'இன்றைய விலை அதைவிட 10 காசு குறைவு' — this is consistent with 670 vs 680, so no error here; however, the slide states the 570 price was on 'அக். 21ல்' and the article says 'அக்., 21ல்' which matches.
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  fact-check: The article says the price was set at 680 paise on July 23 and calls it the record high, but the caption says the price was 'நிர்ணயிக்கப்பட்ட 680 காசுதான்' (fine), while the slide claims 'இன்றைய விலை அதைவிட 10 காசு குறைவு' — this is consistent with 670 vs 680, so no error here; however, the slide states the 570 price was on 'அக். 21ல்' and the article says 'அக்., 21ல்' which matches.
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  reel_script has numbers without their meaning (12); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 8 ('தீபாவளி பண்டிகையின்போது மட்டுமே, அவர்களுக்கு குறைந்தது, 8 மு')
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script and slides_spec state the incident happened on 'நவம்பர் 5' (November 5), but the article only says 'கடந்த, 5ல்' (on the 5th) with no month stated; the month is an invented detail.
+  caption repeats the invented date 'நாள்: நவம்பர் 5' as a fact from the article.
+  reel_script says the businessman and driver were kept confined for two days and escaped; the article says they were blindfolded and held for two days, which is consistent, but the reel_script omits that the victims were blindfolded in the kidnapping sentence context only partially; minor, but the caption's 'பின்னர் தப்பி' phrasing is acceptable.
+  caption says the victims 'தப்பி ராசிபுரம் அரசு மருத்துவமனையில் சிகிச்சைக்குச் சேர்ந்தனர்' which matches the article; however the reel_script's 'இருவரையும் கண்ணைக் கட்டிக் கடத்தியதாக' merges the kidnapping with the land demand in one sentence, mixing the demand and the abduction as one fact.
+  reel_script omits the detail that the businessman bought the land a few days earlier and that the family rented a house in R. Goundampalayam, though this is secondary; more importantly the GPS finding is stated without noting the car was parked two days, which is present, so no further major omission.
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script and slides_spec state the incident happened on 'நவம்பர் 5' (November 5), but the article only says 'கடந்த, 5ல்' (on the 5th) with no month stated; the month is an invented detail.
+  fact-check: caption repeats the invented date 'நாள்: நவம்பர் 5' as a fact from the article.
+  fact-check: reel_script says the businessman and driver were kept confined for two days and escaped; the article says they were blindfolded and held for two days, which is consistent, but the reel_script omits that the victims were blindfolded in the kidnapping sentence context only partially; minor, but the caption's 'பின்னர் தப்பி' phrasing is acceptable.
+  fact-check: caption says the victims 'தப்பி ராசிபுரம் அரசு மருத்துவமனையில் சிகிச்சைக்குச் சேர்ந்தனர்' which matches the article; however the reel_script's 'இருவரையும் கண்ணைக் கட்டிக் கடத்தியதாக' merges the kidnapping with the land demand in one sentence, mixing the demand and the abduction as one fact.
+  fact-check: reel_script omits the detail that the businessman bought the land a few days earlier and that the family rented a house in R. Goundampalayam, though this is secondary; more importantly the GPS finding is stated without noting the car was parked two days, which is present, so no further major omission.
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 1 ('முட்டை விலை 8 நாட்களில் ரூ.1 உயர்வு')
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  reel_script has numbers without their meaning (12); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'
+  numbers not found in the article: 40000
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 5 ('கடந்த, 5ல், ஆட்டையாம்பட்டி பிரிவு சாலையில், கோபாலகிருஷ்ணன் க')
+  known issue meta_article: cards talks about the article instead of the news ('விவரம் இன்னும் வெளியாகவில்லை') - rewrite so it does not happen again
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The reel_script says 'அக்டோபர் 21ஆம் தேதி' (October 21) and the caption says 'அக். 21ஆம் தேதி', but the article says 'அக்., 21' — the month is October, so this is consistent; no problem there. However, the reel_script and caption state 'நவம்பர் 6ஆம் தேதி'/'நவ. 6' as the meeting date, while the article says 'இன்று (நவ.,6)', which matches; no mismatch found in dates.
+  The reel_script states the price increase is 'ரூ.1' over eight days, but the article says the price rose from 570 to 680 paise (a ₹1.10 rise) between Oct 21 and Jul 23 timeline; the article's own framing of 'எட்டு நாட்களில் ஒரு ரூபாய்' is taken from the source, so this is faithful to the article rather than an error.
+  The reel_script says the 680 paise price was set on 'ஜூலை 23ஆம் தேதி' and calls it the historic peak, which matches the article; however the sentence 'அதன் பின்னர் விலை தொடர்ந்து உயர்ந்து' is consistent with the article, so no added problem.
+  The caption includes 'நாள்: நவம்பர் 6, 2026' as a posting date line, which is excluded from checking; the year 2026 is not stated in the article but is the posting-date footer and is therefore not a claim.
+  The slides_spec line 'குழுவின் தலைவர் சிங்கராஜ் தலைமையில் கூட்டம் நடந்தது' and the reel_script wording are consistent with the article; no invented facts identified.
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The reel_script says 'அக்டோபர் 21ஆம் தேதி' (October 21) and the caption says 'அக். 21ஆம் தேதி', but the article says 'அக்., 21' — the month is October, so this is consistent; no problem there. However, the reel_script and caption state 'நவம்பர் 6ஆம் தேதி'/'நவ. 6' as the meeting date, while the article says 'இன்று (நவ.,6)', which matches; no mismatch found in dates.
+  fact-check: The reel_script states the price increase is 'ரூ.1' over eight days, but the article says the price rose from 570 to 680 paise (a ₹1.10 rise) between Oct 21 and Jul 23 timeline; the article's own framing of 'எட்டு நாட்களில் ஒரு ரூபாய்' is taken from the source, so this is faithful to the article rather than an error.
+  fact-check: The reel_script says the 680 paise price was set on 'ஜூலை 23ஆம் தேதி' and calls it the historic peak, which matches the article; however the sentence 'அதன் பின்னர் விலை தொடர்ந்து உயர்ந்து' is consistent with the article, so no added problem.
+  fact-check: The caption includes 'நாள்: நவம்பர் 6, 2026' as a posting date line, which is excluded from checking; the year 2026 is not stated in the article but is the posting-date footer and is therefore not a claim.
+  fact-check: The slides_spec line 'குழுவின் தலைவர் சிங்கராஜ் தலைமையில் கூட்டம் நடந்தது' and the reel_script wording are consistent with the article; no invented facts identified.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has numbers without their meaning (12); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  sentence 1 (one-line story) has 15 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
 imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
 imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs ~0.0020 pollen, but your available balance is 0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
+ok anthropic/claude-haiku-5-5
 imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
 image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for '108 ambulance service in Namakkal takes '
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261107-1850","first":"RN-430"}
+images made: 2 for 'Paramathi area power loom workers in Pal'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261107-2224","first":"RN-431"}
 posting job started at once
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Businessman and driver allegedly kidnapp'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261107-2224","first":"RN-432"}
+write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 2 news waiting in the queue (written in priority order)
-candidate filter: checked earlier=1, collected=1
-to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
-try (N) manual=False: தீபாவளி பண்டிகையை முன்னிட்டு 108 அவசர ஆம்புலன்ஸ் முன்னெச்சரி
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 1})
+write round: 9 news waiting in the queue (written in priority order)
+candidate filter: already filed=6, collected=3
+to write: 1 Rasipuram + 2 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 2 Namakkal; time left 29 min
+try (R) manual=False: ரூ.65 கோடி மதிப்பு நிலப்பத்திரத்தை கேட்டு தொழிலதிபர் கடத்தல்
+try (N) manual=False: விசைத்தறி தொழிலாளர்களுக்கு 10 நாட்கள் தீபாவளி விடுமுறை
+try (N) manual=False: முட்டை விலை 8 நாட்களில் ரூ.1 உயர்வு
+NOT filed (N) முட்டை விலை 8 நாட்களில் ரூ.1 உயர்வு: stale: price news from 06 Nov, not today
+auto images: 1 of 1 stories ({'black-forest-labs/flux.1-dev': 2})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 1}, time left 17 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+auto images: 1 of 1 stories ({'black-forest-labs/flux.1-dev': 4})
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 2}, done={'R': 1, 'N': 1}, time left 23 min
+carousel for 0 of 2 stories, the rest reel only
+filed: 1 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 1 news waiting to be written
+write_stories.yml started
+All News sheet: {"ok":true,"added":0,"updated":3} 
+stories: 2
