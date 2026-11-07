@@ -1,83 +1,63 @@
-writing [N]: புத்தகக் கொள்முதலில் பெரும் ஊழல்: அரசு உடனடியாக நடவடிக்கை எட
+writing [N]: முட்டை விலை 8 நாட்களில் ரூ.1 உயர்வு
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+writing [N]: குறைந்தபட்ச ஊதியம் கேட்டு சி.ஐ.டி.யு., ஆர்ப்பாட்டம்
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+ok gemini/gemini-3.6-flash (22s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  numbers not found in the article: 70
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (45s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (25s)
+factcheck by gemini/gemini-3.6-flash: 1 problems
+  The reel_script missing an important detail from the article: district secretary Velusamy who presided over the protest
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  fact-check: The reel_script missing an important detail from the article: district secretary Velusamy who presided over the protest
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (51s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (29s)
+factcheck by gemini/gemini-3.6-flash: 0 problems
+attempt 2 gemini/gemini-3.6-flash: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (54s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (35s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (23s)
+factcheck by gemini/gemini-3.6-flash: 0 problems
+attempt 2 gemini/gemini-3.6-flash: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (16s)
+proofread rejected (2 problems)
+  sentence 1 (one-line story) has 15 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  reel_script has numbers without their meaning (,780); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-ok gemini/gemini-3.5-flash (21s)
-attempt 1 gemini/gemini-3.5-flash: 3 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 150 ('.தமிழ்ச் சூழலில் 100 பக்கங்கள் கொண்ட புத்தகத்துக்கு ரூ.150 வ'); 200 ('மிகவும் பிரபலமான எழுத்தாளரின் புத்தகமாக இருந்தால் ரூ.200 வில'); 1,000 ('பெரும்பாலான புத்தகங்களின் விலை ரூ.1,000-க்கும் அதிகமாக உள்ளத')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-ok gemini/gemini-3-flash-preview (12s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-ok groq/qwen/qwen3.8-27b (1s)
-factcheck by groq/qwen/qwen3.8-27b: 3 problems
-  reel_script states the fraud amount is 'lakhs' (பல லட்சம்) but implies it will cross 'crore' (கோடி) after full inspection, whereas the article says 'lakhs' fraud is visible now and 'crore' is what will be revealed after checking unopened bundles; the draft conflates the current estimate with the potential total in a way that slightly misrepresents the article's distinction, though the main error is in the slides.
-  slides_spec slide 3 line 3 claims 'பல கோடி ரூபாய் ஊழல்' (crores of rupees fraud) as the current complaint, but the article states 'பல லட்சம் ரூபாய் மோசடி' (lakhs of rupees fraud) is visible now, and 'கோடி ரூபாய்க்கும்மேல்' (more than crore) is what will be revealed after checking the remaining unopened bundles. The slide presents the potential future finding as the current confirmed complaint amount.
-  caption states 'இதில் பல கோடி ரூபாய் ஊழல் நடந்திருக்க வாய்ப்புள்ளதாகவும்' (possibility of crores of rupees fraud), which is a reasonable interpretation of the 'crore' potential, but the reel_script says 'முழுமையாக ஆய்வு செய்தால் இது கோடி ரூபாயைத் தாண்டும்' (if fully inspected, it will cross crore), which is accurate. However, the slide 3 line 'தரமற்ற புத்தகங்களால் பல கோடி ரூபாய் ஊழல் எனப் புகார்' (complaint of crores of rupees fraud due to poor quality books) is factually incorrect based on the article which says the *current* visible fraud is in lakhs, and the *potential* is crores. The slide presents it as a current complaint of crores.
-attempt 2 gemini/gemini-3-flash-preview: 3 problems
-  fact-check: reel_script states the fraud amount is 'lakhs' (பல லட்சம்) but implies it will cross 'crore' (கோடி) after full inspection, whereas the article says 'lakhs' fraud is visible now and 'crore' is what will be revealed after checking unopened bundles; the draft conflates the current estimate with the potential total in a way that slightly misrepresents the article's distinction, though the main error is in the slides.
-  fact-check: slides_spec slide 3 line 3 claims 'பல கோடி ரூபாய் ஊழல்' (crores of rupees fraud) as the current complaint, but the article states 'பல லட்சம் ரூபாய் மோசடி' (lakhs of rupees fraud) is visible now, and 'கோடி ரூபாய்க்கும்மேல்' (more than crore) is what will be revealed after checking the remaining unopened bundles. The slide presents the potential future finding as the current confirmed complaint amount.
-  fact-check: caption states 'இதில் பல கோடி ரூபாய் ஊழல் நடந்திருக்க வாய்ப்புள்ளதாகவும்' (possibility of crores of rupees fraud), which is a reasonable interpretation of the 'crore' potential, but the reel_script says 'முழுமையாக ஆய்வு செய்தால் இது கோடி ரூபாயைத் தாண்டும்' (if fully inspected, it will cross crore), which is accurate. However, the slide 3 line 'தரமற்ற புத்தகங்களால் பல கோடி ரூபாய் ஊழல் எனப் புகார்' (complaint of crores of rupees fraud due to poor quality books) is factually incorrect based on the article which says the *current* visible fraud is in lakhs, and the *potential* is crores. The slide presents it as a current complaint of crores.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-ok groq/openai/gpt-oss-120b (7s)
-attempt 3 groq/openai/gpt-oss-120b: 3 problems
-  missing key: reel_script
-  missing key: caption
-  missing key: scenes
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (22s)
+ok gemini/gemini-3.6-flash (43s)
+factcheck by gemini/gemini-3.6-flash: 0 problems
+proofread by gemini/gemini-3.6-flash: 0 problems
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
-free models unavailable: no free model answered: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  reel_script has 80 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 100 ('.தமிழ்ச் சூழலில் 100 பக்கங்கள் கொண்ட புத்தகத்துக்கு ரூ.150 வ'); 150 ('.தமிழ்ச் சூழலில் 100 பக்கங்கள் கொண்ட புத்தகத்துக்கு ரூ.150 வ'); 200 ('மிகவும் பிரபலமான எழுத்தாளரின் புத்தகமாக இருந்தால் ரூ.200 வில'); 1,000 ('பெரும்பாலான புத்தகங்களின் விலை ரூ.1,000-க்கும் அதிகமாக உள்ளத')
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 300 ('ரூ.300 மதிப்புள்ள புத்தகத்துக்கு ரூ.1,500 விலை வைத்துள்ளனர்.'); 1,500 ('ரூ.300 மதிப்புள்ள புத்தகத்துக்கு ரூ.1,500 விலை வைத்துள்ளனர்.')
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  reel_script has 86 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  hl1 (the first headline on screen) must name the place 'கோவை', e.g. 'கோவை: ...' or 'கோவை-இல் ...' - viewers share news of their own area
+ok gemini/gemini-3.6-flash (13s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
-real photo: vision check out of free quota
-image match: False The image displays a generic library aisle viewed from behind two individuals, showing no evidence or depiction of the r
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Massive corruption alleged in book purch'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261107-1033","first":"RN-427"}
-posting job started at once
+ok gemini/gemini-3.6-flash (12s)
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
 write round: 10 news waiting in the queue (written in priority order)
@@ -85,15 +65,14 @@ candidate filter: already filed=7, collected=3
 to write: 0 Rasipuram + 3 other district candidates (max 200 + 200 stories)
 candidates waiting: 0 Rasipuram, 3 Namakkal; time left 29 min
 try (N) manual=False: செஞ்சி சிறுமி மாயமான வழக்கு வில்லுப்பாட்டு குழுவிடம் விசாரணை
-try (N) manual=False: புத்தகக் கொள்முதலில் பெரும் ஊழல்: அரசு உடனடியாக நடவடிக்கை எட
-try (N) manual=False: ஏஐ வீடியோவில் உயிர்பெற்ற செஞ்சி சிறுமியின் ஏக்கம்.. ஹேமலதாவி
-skip (N) same event as RN-384: ஏஐ வீடியோவில் உயிர்பெற்ற செஞ்சி சிறுமியின் ஏக்கம்.
+try (N) manual=False: முட்டை விலை 8 நாட்களில் ரூ.1 உயர்வு
+try (N) manual=False: குறைந்தபட்ச ஊதியம் கேட்டு சி.ஐ.டி.யு., ஆர்ப்பாட்டம்
 skip (N) similar to a filed story: செஞ்சி சிறுமி மாயமான வழக்கு வில்லுப்பாட்டு குழுவிட
-auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 3})
-posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 3}, done={'R': 0, 'N': 1}, time left 26 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+NOT filed (N) குறைந்தபட்ச ஊதியம் கேட்டு சி.ஐ.டி.யு., ஆர்ப்பாட்டம: duplicate after write
+NOT filed (N) முட்டை விலை 8 நாட்களில் ரூ.1 உயர்வு: stale: price news from 06 Nov, not today
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 3}, done={'R': 0, 'N': 0}, time left 25 min
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 2 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":2} 
+stories: 0
