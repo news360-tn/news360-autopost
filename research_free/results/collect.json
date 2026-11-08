@@ -2,21 +2,17 @@
  "log": [
   "earlier stories still waiting for images: []",
   "instagram check: 100 recent posts read from both pages",
-  "write round: 2 news waiting in the queue (written in priority order)",
-  "candidate filter: collected=2",
-  "to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)",
-  "candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min",
-  "try (N) manual=False: முட்டை விலை ரூ. 6.70 ஆக நீடிப்பு",
+  "write round: 1 news waiting in the queue (written in priority order)",
+  "candidate filter: collected=1",
+  "to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)",
+  "candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min",
   "try (N) manual=False: குவாரி திறக்காததால் 50,000 மணல் லாரிகள் முடக்கம் தொழிலாளர் வ",
-  "auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})",
-  "posting job started at once",
   "NOT filed (N) குவாரி திறக்காததால் 50,000 மணல் லாரிகள் முடக்கம் த: not Namakkal district news (the story's first lines name another place and no Namakkal place)",
-  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 1}, time left 28 min",
-  "carousel for 0 of 1 stories, the rest reel only",
-  "filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)",
+  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 28 min",
+  "carousel for 0 of 0 stories, the rest reel only",
+  "filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)",
   "queue: 1 news waiting to be written",
-  "write_stories.yml started",
-  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":2}"
+  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":1}"
  ],
  "llm": [
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
@@ -28,99 +24,22 @@
   "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, plea",
   "dead for this round: gemini/gemini-3-flash-preview",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {\"error\":{\"message\":\"Request too large for model `openai/gpt-oss-120b` in organization `or",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {\"error\":{\"message\":\"Request too large for model `openai/gpt-oss-120b` in organization `or",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
-  "ok groq/qwen/qwen3.8-27b (3s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
-  "ok groq/openai/gpt-oss-120b (2s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
+  "switching away from groq/qwen/qwen3.8-27b for 10 min",
   "ok anthropic/claude-haiku-5-5",
-  "ok groq/openai/gpt-oss-120b (6s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "ok anthropic/claude-haiku-5-5",
-  "ok groq/openai/gpt-oss-120b (2s)",
+  "ok anthropic/claude-haiku-5-5",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "ok groq/openai/gpt-oss-120b (2s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "ok groq/openai/gpt-oss-120b (6s)",
+  "ok groq/openai/gpt-oss-120b (5s)",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "switching away from groq/openai/gpt-oss-120b for 10 min",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
   "ok anthropic/claude-haiku-5-5"
  ],
- "stories": [
-  {
-   "tamil_headline": "நாமக்கல் மண்டலத்தில் முட்டை விலை ரூ. 6.70 ஆக நீடிப்பு",
-   "english_headline": "Namakkal egg price remains at Rs. 6.70",
-   "category": "Business & Prices",
-   "location": "Namakkal district",
-   "importance": "High",
-   "scope": "district",
-   "post_to": "Namakkal 360 (collab: Rasipuram 360)",
-   "slides_spec": {
-    "v": 3,
-    "cat": "விலை விவரம்",
-    "loc": "நாமக்கல் மண்டலம்",
-    "hl1": "நாமக்கல் முட்டை விலை மாற்றமில்லை",
-    "hl2": "ரூ. 6.70 ஆக நீடிப்பு",
-    "slides": [
-     {
-      "title": "விலை நிலை",
-      "lines": [
-       "முட்டை விலை <b>ரூ. 6.70</b> ஆக நீடிக்கிறது",
-       "நாமக்கல் மண்டலம் முழுவதும் இந்த விலை",
-       "விலையில் எந்த மாற்றமும் இல்லை"
-      ]
-     },
-     {
-      "title": "காரணம்",
-      "lines": [
-       "மற்ற மண்டலங்களில் விலை மாறவில்லை",
-       "கோழிப் பண்ணையாளர்கள் மாற்றம் வேண்டாம் என கூறினர்",
-       "சனிக்கிழமை ஆலோசனைக் கூட்டம் நடைபெற்றது"
-      ]
-     },
-     {
-      "title": "கோழி விலை",
-      "lines": [
-       "கறிக்கோழி கிலோ <b>ரூ. 126</b> ஆக நிர்ணயம்",
-       "முட்டைக் கோழி கிலோ <b>ரூ. 100</b> ஆக நிர்ணயம்",
-       "பல்லடத்தில் நடைபெற்ற கூட்டத்தில் முடிவு"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "நாமக்கல் மண்டலத்தில் முட்டை விலை ரூ. 6.70 ஆகவே நீடிக்கிறது. சனிக்கிழமை நடைபெற்ற தேசிய முட்டை ஒருங்கிணைப்புக் குழு கூட்டத்தில் இது குறித்து முடிவு எடுக்கப்பட்டது. கோழிப் பண்ணையாளர்களிடம் விலை மாற்றம் குறித்து கருத்து கேட்கப்பட்டது. மற்ற மண்டலங்களில் விலை மாறாததால், நாமக்கலிலும் மாற்றம் வேண்டாம் என பண்ணையாளர்கள் தெரிவித்தனர். இதையடுத்து, முட்டையின் பண்ணைக் கொள்முதல் விலையை ரூ. 6.70 ஆகவே வைக்க தேசிய முட்டை ஒருங்கிணைப்புக் குழு அறிவித்தது. அதேபோல, பல்லடத்தில் நடைபெற்ற கூட்டத்தில் கோழி விலைகளும் நிர்ணயிக்கப்பட்டன. கறிக்கோழி கிலோ விலை ரூ. 126 ஆகவும், முட்டைக் கோழி கிலோ விலை ரூ. 100 ஆகவும் நிர்ணயிக்கப்பட்டது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🥚 நாமக்கல் மண்டலத்தில் முட்டை விலை ரூ. 6.70 ஆகவே நீடிக்கிறது - விலையில் மாற்றமில்லை\n\n📰 முழு விவரம்:\nநாமக்கல் மண்டலத்தில் முட்டை விலை ரூ. 6.70 ஆகவே நீடிக்கிறது. சனிக்கிழமை நடைபெற்ற தேசிய முட்டை ஒருங்கிணைப்புக் குழு கூட்டத்தில் இது குறித்து முடிவு எடுக்கப்பட்டது. கோழிப் பண்ணையாளர்களிடம் விலை மாற்றம் குறித்து கருத்து கேட்கப்பட்டது. மற்ற மண்டலங்களில் விலை மாறாததால், நாமக்கலிலும் மாற்றம் வேண்டாம் என பண்ணையாளர்கள் தெரிவித்தனர். இதையடுத்து, முட்டையின் பண்ணைக் கொள்முதல் விலையை ரூ. 6.70 ஆகவே வைக்க தேசிய முட்டை ஒருங்கிணைப்புக் குழு அறிவித்தது. அதேபோல, பல்லடத்தில் நடைபெற்ற கூட்டத்தில் கோழி விலைகளும் நிர்ணயிக்கப்பட்டன. கறிக்கோழி கிலோ விலை ரூ. 126 ஆகவும், முட்டைக் கோழி கிலோ விலை ரூ. 100 ஆகவும் நிர்ணயிக்கப்பட்டது.\n\n📍 இடம்: நாமக்கல் மண்டலம்\n🗓️ நாள்: சனிக்கிழமை\nℹ️ மக்கள் கவனத்திற்கு: முட்டை விலை ரூ. 6.70, கறிக்கோழி ரூ. 126, முட்டைக் கோழி ரூ. 100\n\nதேவைப்படுவோருக்கு Share செய்யுங்கள்\n\nNamakkal egg price today | Namakkal news\n📍 Namakkal district | 08 Nov 2026\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #NamakkalNews #EggPrice #நாமக்கல்",
-   "prompts": "The National Egg Coordination Committee holds its advisory meeting, discussing the steady egg price of Rs.6.70; the gathering takes place in a modest community hall in Namakkal district with plain concrete walls and tiled floor; from behind, a row of poultry farmers in simple shirts and khaki‑clad officials sit around a long wooden table, their backs to the camera; on the table a shallow metal tray holds dozens of fresh brown eggs and a whiteboard with a blurred price figure; daylight streams through high windows, casting even illumination; the shot is taken at eye level with a 35 mm lens, capturing the whole room and the collective focus on the price discussion. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA close‑up view of the meeting’s focal point: a metal tray piled with fresh eggs placed on the same wooden table; the tray rests beside a small cardboard sign that reads the price (the numbers are out of focus to avoid legibility); the background shows the blurred edge of the hall’s concrete wall and a hint of the tiled floor; a pair of hands, belonging to a farmer, gently adjust an egg, emphasizing the commodity under discussion; soft indoor lighting highlights the eggs’ shells; the camera is positioned low, angled slightly downward, using a 35 mm lens to isolate the eggs as the key detail of the price‑stability story. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamani.com/all-editions/edition-dharmapuri/namakkal/2026/Nov/07/%E0%AE%AE%E0%AF%81%E0%AE%9F%E0%AF%8D%E0%AE%9F%E0%AF%88-%E0%AE%B5%E0%AE%BF%E0%AE%B2%E0%AF%88-%E0%AE%B0%E0%AF%82-670-%E0%AE%86%E0%AE%95-%E0%AE%A8%E0%AF%80%E0%AE%9F%E0%AE%BF%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AF%81",
-   "published": "2026-11-07T22:38:55.495Z",
-   "verification": "DRAFT (groq/qwen/qwen3.8-27b) - fact-check: no problems found",
-   "note": "free-model draft groq/qwen/qwen3.8-27b, 1 attempt(s), 0 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 5.75,
-   "images": [
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794102227/news360/cnj7khxrkkm7toto6n93.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794102230/news360/kncimjkv1aoqfoysgclj.jpg"
-   ]
-  }
- ]
+ "stories": []
 }
