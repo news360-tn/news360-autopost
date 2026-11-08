@@ -1,83 +1,15 @@
-writing [N]: குவாரி திறக்காததால் 50,000 மணல் லாரிகள் முடக்கம் தொழிலாளர் வ
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (16s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-ok gemini/gemini-3.5-flash (4s)
-factcheck by gemini/gemini-3.5-flash: 1 problems
-  hl1 in slides_spec states 'நாமக்கல்லில் 50,000 லாரிகள் முடக்கம்' (50,000 lorries grounded in Namakkal), but the article specifies that 50,000+ sand lorries are grounded across all of Tamil Nadu, not just in Namakkal.
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  fact-check: hl1 in slides_spec states 'நாமக்கல்லில் 50,000 லாரிகள் முடக்கம்' (50,000 lorries grounded in Namakkal), but the article specifies that 50,000+ sand lorries are grounded across all of Tamil Nadu, not just in Namakkal.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.5-flash (16s)
-attempt 2 gemini/gemini-3.5-flash: 1 problems
-  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-ok gemini/gemini-3-flash-preview (14s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3-flash-preview (7s)
-factcheck by gemini/gemini-3-flash-preview: 0 problems
-attempt 3 gemini/gemini-3-flash-preview: 0 problems
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3-flash-preview (16s)
-proofread rejected (3 problems)
-  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  caption needs 5 hashtags (Instagram max), has 7
-  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, plea
-dead for this round: gemini/gemini-3-flash-preview
-ok groq/openai/gpt-oss-120b (2s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
-real photo: vision check out of free quota
-imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
-imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs ~0.0020 pollen, but your available balance is 0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
-imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
-imagegen: black-forest-labs/flux.1-dev no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQk
-imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for '50,000 sand trucks idle as quarries rema'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261108-1037","first":"RN-449"}
-posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 9 news waiting in the queue (written in priority order)
-candidate filter: already filed=5, collected=4
-to write: 1 Rasipuram + 3 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 3 Namakkal; time left 29 min
-try (N) manual=False: டூவீலர் மோதி மூதாட்டி பலி
-try (N) manual=False: அவசர உதவிக்கு தயார் நிலையில் 108 ஆம்புலன்ஸ் சேவை
+write round: 7 news waiting in the queue (written in priority order)
+candidate filter: already filed=5, collected=2
+to write: 1 Rasipuram + 1 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 1 Namakkal; time left 29 min
 try (R) manual=False: ஈ.வெ.ரா., நூலக ஊழல் நடவடிக்கை கோரி புகார்
-skip (N) similar to a filed story: அவசர உதவிக்கு தயார் நிலையில் 108 ஆம்புலன்ஸ் சேவை
-try (N) manual=False: குவாரி திறக்காததால் 50,000 மணல் லாரிகள் முடக்கம் தொழிலாளர் வ
+try (N) manual=False: அவசர உதவிக்கு தயார் நிலையில் 108 ஆம்புலன்ஸ் சேவை
 skip (R) similar to a filed story: ஈ.வெ.ரா., நூலக ஊழல் நடவடிக்கை கோரி புகார்
-skip (N) same event as RN-436: டூவீலர் மோதி மூதாட்டி பலி
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'black-forest-labs/flux.1-dev': 1})
-posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 3}, done={'R': 0, 'N': 1}, time left 23 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+skip (N) similar to a filed story: அவசர உதவிக்கு தயார் நிலையில் 108 ஆம்புலன்ஸ் சேவை
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written 
+stories: 0
