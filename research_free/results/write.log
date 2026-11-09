@@ -1,13 +1,208 @@
+writing [N]: டாஸ்மாக் மேற்பாா்வையாளா் 
+விபத்தில் உயிரிழப்பு
+writing [N]: 1,330 திருக்குறள் ஒப்பித்து விருது பெற்ற மாணவரை கெளரவித்த தம
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (21s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+ok gemini/gemini-3.6-flash (20s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.5-flash (4s)
+factcheck by gemini/gemini-3.5-flash: 1 problems
+  reel_script is missing the victim's name (C.R. Tamilselvan)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  fact-check: reel_script is missing the victim's name (C.R. Tamilselvan)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+ok gemini/gemini-3.5-flash (6s)
+factcheck by gemini/gemini-3.5-flash: 1 problems
+  reel_script misses the student's name (Likhith / லிகித்), who is the primary subject of the article
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  fact-check: reel_script misses the student's name (Likhith / லிகித்), who is the primary subject of the article
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (10s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (14s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (36s)
+factcheck by gemini/gemini-3-flash-preview: 3 problems
+  The date 'November 8, Sunday' in the caption is not mentioned in the article.
+  Slide 1 incorrectly states the accident happened on Sunday night, while the article says it happened on Diwali night.
+  Slide 1 states the accident occurred in the Murugan Temple area, but the article only mentions it as the victim's place of residence.
+attempt 2 gemini/gemini-3-flash-preview: 3 problems
+  fact-check: The date 'November 8, Sunday' in the caption is not mentioned in the article.
+  fact-check: Slide 1 incorrectly states the accident happened on Sunday night, while the article says it happened on Diwali night.
+  fact-check: Slide 1 states the accident occurred in the Murugan Temple area, but the article only mentions it as the victim's place of residence.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (52s)
+factcheck by gemini/gemini-3-flash-preview: 4 problems
+  The mention of 'public' (பொதுமக்கள்) in Slide 3 is an invented detail not found in the article.
+  The claim that the procession went 'throughout the town' (நகரப் பகுதி முழுவதும்) is an exaggeration of the article's 'inside the town' (நகரப் பகுதிக்குள்).
+  The mention of 'various sections of people' (பல்வேறு தரப்பினர்) and 'Tamil enthusiasts' (தமிழார்வலர்கள்) in the reel script are invented details not found in the article.
+  The mention of 'emotional impact' (நெகிழ்ச்சி) in the caption is an invented detail not found in the article.
+attempt 2 gemini/gemini-3-flash-preview: 4 problems
+  fact-check: The mention of 'public' (பொதுமக்கள்) in Slide 3 is an invented detail not found in the article.
+  fact-check: The claim that the procession went 'throughout the town' (நகரப் பகுதி முழுவதும்) is an exaggeration of the article's 'inside the town' (நகரப் பகுதிக்குள்).
+  fact-check: The mention of 'various sections of people' (பல்வேறு தரப்பினர்) and 'Tamil enthusiasts' (தமிழார்வலர்கள்) in the reel script are invented details not found in the article.
+  fact-check: The mention of 'emotional impact' (நெகிழ்ச்சி) in the caption is an invented detail not found in the article.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (10s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/qwen/qwen3.8-27b (4s)
+attempt 3 groq/qwen/qwen3.8-27b: 1 problems
+  stray Tamil sign '்' after 'ோ' in «ைச் சோ்ந்த»
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+free models unavailable: no free model answered: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your p
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+free fact-check unavailable, using Claude: no free model answered: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for mo
+ok groq/openai/gpt-oss-120b (5s)
+factcheck by groq/openai/gpt-oss-120b: 1 problems
+  Slide 3 adds the detail "ஞாயிற்றுக்கிழமை இரவு" which is not stated in the article (the article only mentions the death occurred on Sunday, not the time of the accident)
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  fact-check: Slide 3 adds the detail "ஞாயிற்றுக்கிழமை இரவு" which is not stated in the article (the article only mentions the death occurred on Sunday, not the time of the accident)
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says the student's father Saravanan is a 'விசைத்தறித் தொழிலாளி' — the article says the father and mother (Saravanan-Deepika) are both listed as this worker pair; minor, but the article does attribute the occupation to the couple, so this is roughly consistent and not a problem.
+  Caption says 'வாகன ஊர்வலம்' and the headline says 'ஊர்வலம்' — consistent with article, no issue.
+  reel_script says the student is 'லிகித்' from 'கத்தேரி பகுதியைச் சேர்ந்தவர்' and the father 'சரவணன்' — the article names Saravanan-Deepika as parents of Likhit; this is correct.
+  reel_script omits that the award was given by the state government ('தமிழக அரசு') in the reel script body, though slide 1 mentions it; the article's core facts are present.
+  Caption says 'மாநில அளவிலான விருதினை வென்றார்' and 'கலந்து கொண்டனர்' describing teachers and scholars — article lists teachers only, and the caption's 'தமிழறிஞர்கள்' participating is not explicitly stated as a participant in the event list, though the article does say scholars organized the procession (minor).
+attempt 3 gemini/gemini-3-flash-preview: 5 problems
+  fact-check: reel_script says the student's father Saravanan is a 'விசைத்தறித் தொழிலாளி' — the article says the father and mother (Saravanan-Deepika) are both listed as this worker pair; minor, but the article does attribute the occupation to the couple, so this is roughly consistent and not a problem.
+  fact-check: Caption says 'வாகன ஊர்வலம்' and the headline says 'ஊர்வலம்' — consistent with article, no issue.
+  fact-check: reel_script says the student is 'லிகித்' from 'கத்தேரி பகுதியைச் சேர்ந்தவர்' and the father 'சரவணன்' — the article names Saravanan-Deepika as parents of Likhit; this is correct.
+  fact-check: reel_script omits that the award was given by the state government ('தமிழக அரசு') in the reel script body, though slide 1 mentions it; the article's core facts are present.
+  fact-check: Caption says 'மாநில அளவிலான விருதினை வென்றார்' and 'கலந்து கொண்டனர்' describing teachers and scholars — article lists teachers only, and the caption's 'தமிழறிஞர்கள்' participating is not explicitly stated as a participant in the event list, though the article does say scholars organized the procession (minor).
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'குமாரபாளையம்', e.g. 'குமாரபாளையம்: ...' or 'குமாரபாளையம்-இல் ...' - viewers share news of their own area
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  Caption says the victim was on a 'Namakkal - Salem road' and was 'Murugan Kovil area' — article supports this, but the reel_script names the victim with initials 'சி ஆர் தமிழ்ச்செல்வன்' which is fine; however the reel_script states 'Tamil Selvan 48 வயதுடையவர்' correctly.
+  Caption states '👮 நடவடிக்கை' with the phrase 'நாமக்கல் போலீசார் வழக்குப் பதிவு செய்து விசாரணை நடத்தி வருகின்றனர்' — consistent with article, no issue.
+  Slide 'எப்படி நடந்தது?' says 'அங்கிருந்தோர் மீட்டு சேலத்திற்கு கொண்டு சென்றனர்' — article says taken to a private hospital in Salem; acceptable paraphrase.
+  Slide 1 headline 'நாமக்கல்லில் டாஸ்மாக் மேற்பார்வையாளர்' and 'இருசக்கர வாகன மோதல்' are fine.
+  Caption says the victim 'நாள்: ஞாயிற்றுக்கிழமை (தீபாவளி அன்று விபத்து)' — the article says the accident happened on Diwali day and he died on Sunday; the caption wording implies the accident was on Diwali, which the article supports, but the reel_script says he died on Sunday while the Diwali visit timing is not explicitly tied to the date, so the combined timeline is not clearly stated; no hard factual error found.
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: Caption says the victim was on a 'Namakkal - Salem road' and was 'Murugan Kovil area' — article supports this, but the reel_script names the victim with initials 'சி ஆர் தமிழ்ச்செல்வன்' which is fine; however the reel_script states 'Tamil Selvan 48 வயதுடையவர்' correctly.
+  fact-check: Caption states '👮 நடவடிக்கை' with the phrase 'நாமக்கல் போலீசார் வழக்குப் பதிவு செய்து விசாரணை நடத்தி வருகின்றனர்' — consistent with article, no issue.
+  fact-check: Slide 'எப்படி நடந்தது?' says 'அங்கிருந்தோர் மீட்டு சேலத்திற்கு கொண்டு சென்றனர்' — article says taken to a private hospital in Salem; acceptable paraphrase.
+  fact-check: Slide 1 headline 'நாமக்கல்லில் டாஸ்மாக் மேற்பார்வையாளர்' and 'இருசக்கர வாகன மோதல்' are fine.
+  fact-check: Caption says the victim 'நாள்: ஞாயிற்றுக்கிழமை (தீபாவளி அன்று விபத்து)' — the article says the accident happened on Diwali day and he died on Sunday; the caption wording implies the accident was on Diwali, which the article supports, but the reel_script says he died on Sunday while the Diwali visit timing is not explicitly tied to the date, so the combined timeline is not clearly stated; no hard factual error found.
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script writes ages as newspaper shorthand (லிகித், 1,); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  slide 1 line 2 longer than 60 characters
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+real photo skipped (photo uploaded 2026-04-26 (older than the news)): https://media.dinamani.com/dinamani/2026-04-26/ywd6xu2b/%E0%AE%AA%E0%AF%88%E0%AE%95%E0%AF%
+real photo skipped (photo uploaded 2026-04-26 (older than the news)): https://media.dinamani.com/dinamani/2026-04-26/ywd6xu2b/பைக்-மோதி-ஒடிஸா-மாநிலத்தை-சோ்ந்தவ
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The reel_script says 'சரவணன்-தீபிகா தம்பதியரின் மகன்' (the student is the son of Saravanan-Deepika) which matches the article, but the slides_spec line 'விசைத்தறித் தொழிலாளி சரவணன்-தீபிகா மகன்' is acceptable; however the reel_script omits the two-son detail (Sabarinathan and Likith) — not an error. The main issue: the reel_script says the 1,330 kurals were recited 'மனப்பாடமாக' and the award was given by the minister, which matches; the caption and reel_script state the minister 'ராஜ்மோகன்' is of 'பள்ளிக் கல்வித் துறை', matching the article.
+  The tamil_headline says 'ஊர்வல வரவேற்பு' (procession welcome), while the article describes the students being taken in a procession by scholars; the headline wording 'ஊர்வல வரவேற்பு' is a reasonable rendering, so no clear factual error.
+  The reel_script says the achievement was done 'குமாரபாளையத்தில்' (in Kumarapalayam), but the article says the competition was a state-level event held by the Tamil Nadu government; the location of the competition itself is not stated in the article, so placing the achievement in Kumarapalayam is a misattribution — the procession happened in Kumarapalayam, not the recital.
+  The reel_script's opening line 'குமாரபாளையத்தில் 1,330 திருக்குறள்களை மனப்பாடமாக ஒப்பித்த மாணவருக்கு ஊர்வல வரவேற்பு' conflates the place of the recital with the place of the procession, mixing two facts into one sentence.
+  The slides_spec loc field and the caption location tag present Kumarapalayam as the place of the achievement, which the article does not support.
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The reel_script says 'சரவணன்-தீபிகா தம்பதியரின் மகன்' (the student is the son of Saravanan-Deepika) which matches the article, but the slides_spec line 'விசைத்தறித் தொழிலாளி சரவணன்-தீபிகா மகன்' is acceptable; however the reel_script omits the two-son detail (Sabarinathan and Likith) — not an error. The main issue: the reel_script says the 1,330 kurals were recited 'மனப்பாடமாக' and the award was given by the minister, which matches; the caption and reel_script state the minister 'ராஜ்மோகன்' is of 'பள்ளிக் கல்வித் துறை', matching the article.
+  fact-check: The tamil_headline says 'ஊர்வல வரவேற்பு' (procession welcome), while the article describes the students being taken in a procession by scholars; the headline wording 'ஊர்வல வரவேற்பு' is a reasonable rendering, so no clear factual error.
+  fact-check: The reel_script says the achievement was done 'குமாரபாளையத்தில்' (in Kumarapalayam), but the article says the competition was a state-level event held by the Tamil Nadu government; the location of the competition itself is not stated in the article, so placing the achievement in Kumarapalayam is a misattribution — the procession happened in Kumarapalayam, not the recital.
+  fact-check: The reel_script's opening line 'குமாரபாளையத்தில் 1,330 திருக்குறள்களை மனப்பாடமாக ஒப்பித்த மாணவருக்கு ஊர்வல வரவேற்பு' conflates the place of the recital with the place of the procession, mixing two facts into one sentence.
+  fact-check: The slides_spec loc field and the caption location tag present Kumarapalayam as the place of the achievement, which the article does not support.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Namakkal TASMAC supervisor dies in road '
+ok anthropic/claude-haiku-5-5
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261110-0235","first":"RN-465"}
+posting job started at once
+real photo skipped (photo uploaded 2026-10-20 (older than the news)): https://media.dinamani.com/dinamani/2026-10-20/ehy6l1td/00000thirukural.jpg
+image match: False The photo is an AI-generated image showing garbled text, an 'OD' (Odisha) vehicle plate instead of Tamil Nadu (where Kum
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Kumarapalayam student Likith honoured wi'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261110-0235","first":"RN-466"}
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 1 news waiting in the queue (written in priority order)
-candidate filter: collected=1
-to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
-try (N) manual=False: முட்டை விலை ரூ. 6.70 ஆக நீடிப்பு
-skip (N) similar to a filed story: முட்டை விலை ரூ. 6.70 ஆக நீடிப்பு
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+write round: 4 news waiting in the queue (written in priority order)
+candidate filter: already filed=2, collected=2
+to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min
+try (N) manual=False: டாஸ்மாக் மேற்பாா்வையாளா் 
+விபத்தில் உயிரிழப்பு
+try (N) manual=False: 1,330 திருக்குறள் ஒப்பித்து விருது பெற்ற மாணவரை கெளரவித்த தம
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
+posting job started at once
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 5})
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 2}, time left 25 min
+carousel for 0 of 2 stories, the rest reel only
+filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":2} 
+stories: 2
