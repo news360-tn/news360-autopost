@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-04 | `fc2455f` | hold: a checker note it marks itself as acceptable / not an error is not a problem (RN-334, 4 Nov) |
-| 2026-11-04 | `7f4a7c6` | post: retry the bridge queue read on timeout / 5xx (Apps Script answered after 120 s and RN-335 job failed before posting, 4 Nov) |
-| 2026-11-04 | `cc9dfdd` | facebook RN-354 |
-| 2026-11-04 | `8a43f06` | workflows: pin runners to ubuntu-24.04 - ubuntu-latest moved to 26.04 and Playwright cannot install Chromium there (post Install step failed 4 Nov) |
-| 2026-11-04 | `99a9a4f` | Heartbeat |
-| 2026-11-04 | `6dcabfd` | powercut: notices written |
-| 2026-11-04 | `fb7679e` | stories shared |
-| 2026-11-04 | `f51d269` | facebook RN-353 |
-| 2026-11-04 | `d0b5bf4` | powercut: notices written |
-| 2026-11-04 | `0212566` | powercut: notices written |
-| 2026-11-04 | `6c0c920` | powercut: notices written |
-| 2026-11-04 | `43e16b1` | powercut: notices written |
-| 2026-11-04 | `1429d84` | facebook RN-348 |
-| 2026-11-04 | `2176fbc` | powercut: notices written |
-| 2026-11-04 | `9eced3a` | powercut: notices written |
-| 2026-11-04 | `d7ba350` | facebook RN-351 |
-| 2026-11-04 | `dc9726f` | facebook RN-352 |
-| 2026-11-04 | `073439e` | facebook RN-349 |
-| 2026-11-04 | `6567487` | stories shared |
-| 2026-11-04 | `ede9c3d` | powercut: notices written |
-| 2026-11-04 | `e23021c` | facebook RN-347 |
-| 2026-11-04 | `e08ba10` | powercut: notices written |
-| 2026-11-04 | `fbe4b51` | facebook RN-346 |
-| 2026-11-04 | `70e4bd7` | powercut: notices written |
-| 2026-11-04 | `6a393c8` | facebook RN-343 |
-| 2026-11-04 | `d5568ec` | powercut: notices written |
-| 2026-11-04 | `cab854c` | facebook RN-345 |
-| 2026-11-04 | `f4ea7a3` | stories shared |
-| 2026-11-04 | `6dd6d10` | powercut: notices written |
-| 2026-11-04 | `729e027` | powercut: notices written |
+| 2026-11-09 | `7ebd2ce` | ig-comments: read-only, encrypted report of comments on recent posts (manual run only) |
+| 2026-11-09 | `6993073` | powercut: notices written |
+| 2026-11-09 | `69fc97c` | powercut: notices written |
+| 2026-11-09 | `e38acb2` | powercut: notices written |
+| 2026-11-09 | `f7fa537` | powercut: notices written |
+| 2026-11-09 | `48b41fa` | powercut: notices written |
+| 2026-11-09 | `29ea638` | facebook retry |
+| 2026-11-09 | `61c7d06` | facebook RN-464 |
+| 2026-11-09 | `7d3f43b` | powercut: notices written |
+| 2026-11-09 | `59971a0` | facebook retry |
+| 2026-11-09 | `ea107d3` | powercut: notices written |
+| 2026-11-09 | `0b8b345` | facebook RN-463 |
+| 2026-11-09 | `492cc72` | powercut: notices written |
+| 2026-11-09 | `cf1ebc4` | powercut: notices written |
+| 2026-11-09 | `e30e13a` | powercut: notices written |
+| 2026-11-09 | `32608ad` | powercut: notices written |
+| 2026-11-09 | `eb728e9` | powercut: notices written |
+| 2026-11-09 | `0fa61ae` | powercut: notices written |
+| 2026-11-09 | `93e703f` | powercut: notices written |
+| 2026-11-09 | `742e01d` | powercut: notices written |
+| 2026-11-09 | `34f5c91` | facebook RN-454 |
+| 2026-11-09 | `249cd1c` | powercut: notices written |
+| 2026-11-09 | `9a70539` | powercut: notices written |
+| 2026-11-09 | `2eec030` | facebook RN-462 |
+| 2026-11-09 | `ab13dba` | powercut: notices written |
+| 2026-11-09 | `576d93b` | facebook RN-458 |
+| 2026-11-09 | `1dab867` | powercut: notices written |
+| 2026-11-09 | `1c4ed18` | facebook retry |
+| 2026-11-09 | `43a619e` | powercut: notices written |
+| 2026-11-09 | `fa5bc29` | facebook RN-459 |
 <!-- recent-changes:end -->
