@@ -27,5 +27,4 @@ jobs:
           openssl enc -aes-256-cbc -pbkdf2 -salt -in comments_report.json -out report.enc -pass file:k.bin
           openssl pkeyutl -encrypt -pubin -inkey pub.pem -pkeyopt rsa_padding_mode:oaep -in k.bin -out k.enc
           rm -f k.bin comments_report.json
-      - uses: actions/upload-artifact@v4
-        with: {name: comments-encrypted, path: "report.enc\nk.enc", retention-days: 1}
+          echo "===KEY==="; base64 -w 900 k.enc; echo "===REPORT==="; gzip -9c report.enc | base64 -w 900; echo "===END==="
