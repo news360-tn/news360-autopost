@@ -1,25 +1,6 @@
 writing [N]: மரண காமெடி.. தலைக்கு மேல் பறந்த ட்ரோன்.. சாக்கடையில் குதித்த
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (12s)
-attempt 1 gemini/gemini-3.6-flash: 2 problems
-  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): பள்ளிபாளையம் ('நாமக்கல்: நாமக்கல் அருகே பள்ளிபாளையம் பகுதியில் ஆற்றங்கரையோர'); பள்ளிபாளையம் ('அதிலும் ஒருவர் காவல்துறையினரிடம் இருந்த்யு தப்பிக்க சாக்கரைய'); பள்ளிபாளையம் ('​இதனைத் தொடர்ந்து, குமாரபாளையம் டிஎஸ்பி கௌதமன் மற்றும் பள்ளி'); பள்ளிபாளையம் ('​கைது செய்யப்பட்டவர்களைப் பள்ளிபாளையம் காவல் நிலையத்திற்கு அ')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (18s)
-attempt 2 gemini/gemini-3.6-flash: 1 problems
-  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
@@ -29,104 +10,75 @@ fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-switching away from gemini/gemini-3.5-flash for 10 min
-ok gemini/gemini-3-flash-preview (15s)
-attempt 3 gemini/gemini-3-flash-preview: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): பள்ளிபாளையம் ('நாமக்கல்: நாமக்கல் அருகே பள்ளிபாளையம் பகுதியில் ஆற்றங்கரையோர'); பள்ளிபாளையம் ('அதிலும் ஒருவர் காவல்துறையினரிடம் இருந்த்யு தப்பிக்க சாக்கரைய'); பள்ளிபாளையம் ('​இதனைத் தொடர்ந்து, குமாரபாளையம் டிஎஸ்பி கௌதமன் மற்றும் பள்ளி'); பள்ளிபாளையம் ('​கைது செய்யப்பட்டவர்களைப் பள்ளிபாளையம் காவல் நிலையத்திற்கு அ')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (12s)
-attempt 4 gemini/gemini-3-flash-preview: 1 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (18s)
-attempt 5 gemini/gemini-3-flash-preview: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): பள்ளிபாளையம் ('நாமக்கல்: நாமக்கல் அருகே பள்ளிபாளையம் பகுதியில் ஆற்றங்கரையோர'); பள்ளிபாளையம் ('அதிலும் ஒருவர் காவல்துறையினரிடம் இருந்த்யு தப்பிக்க சாக்கரைய'); குமாரபாளையம் ('​இதனைத் தொடர்ந்து, குமாரபாளையம் டிஎஸ்பி கௌதமன் மற்றும் பள்ளி'); பள்ளிபாளையம் ('​இதனைத் தொடர்ந்து, குமாரபாளையம் டிஎஸ்பி கௌதமன் மற்றும் பள்ளி'); பள்ளிபாளையம் ('​கைது செய்யப்பட்டவர்களைப் பள்ளிபாளையம் காவல் நிலையத்திற்கு அ')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3-flash-preview (14s)
-attempt 6 gemini/gemini-3-flash-preview: 1 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (13s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
 fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
 poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-ok groq/openai/gpt-oss-120b (5s)
-factcheck by groq/openai/gpt-oss-120b: 5 problems
-  Incorrect police rank for Gautam – article says DSP (டிஎஸ்பி) but draft calls him "காவல் துணை கண்காணிப்பாளர்"
-  Missing mention of Pallipalayam police investigator Sivakumar, an important fact from the article
-  Slide 2 states "10 பேர் கைது" whereas article reports "10-க்கும் மேற்பட்டோர்" were arrested
-  Slide 3 repeats the wrong title for Gautam, calling him "காவல் துணை கண்காணிப்பாளர்" instead of DSP
-  Reel script mixes roles by saying "குமாரபாளையம் காவல் துணை கண்காணிப்பாளர் கௌதமன் மற்றும் பள்ளிபாளையம் போலீசார்", which invents a title and omits the actual investigator
-attempt 7 gemini/gemini-3-flash-preview: 5 problems
-  fact-check: Incorrect police rank for Gautam – article says DSP (டிஎஸ்பி) but draft calls him "காவல் துணை கண்காணிப்பாளர்"
-  fact-check: Missing mention of Pallipalayam police investigator Sivakumar, an important fact from the article
-  fact-check: Slide 2 states "10 பேர் கைது" whereas article reports "10-க்கும் மேற்பட்டோர்" were arrested
-  fact-check: Slide 3 repeats the wrong title for Gautam, calling him "காவல் துணை கண்காணிப்பாளர்" instead of DSP
-  fact-check: Reel script mixes roles by saying "குமாரபாளையம் காவல் துணை கண்காணிப்பாளர் கௌதமன் மற்றும் பள்ளிபாளையம் போலீசார்", which invents a title and omits the actual investigator
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
-ok groq/qwen/qwen3.8-27b (3s)
-attempt 8 groq/qwen/qwen3.8-27b: 2 problems
-  reel_script has 94 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/qwen/qwen3.8-27b (4s)
+attempt 1 groq/qwen/qwen3.8-27b: 2 problems
+  reel_script has 89 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
   caption misses facts of the article (put every one in 📰 முழு விவரம்): பள்ளிபாளையம் ('நாமக்கல்: நாமக்கல் அருகே பள்ளிபாளையம் பகுதியில் ஆற்றங்கரையோர'); பள்ளிபாளையம் ('அதிலும் ஒருவர் காவல்துறையினரிடம் இருந்த்யு தப்பிக்க சாக்கரைய'); பள்ளிபாளையம் ('​இதனைத் தொடர்ந்து, குமாரபாளையம் டிஎஸ்பி கௌதமன் மற்றும் பள்ளி'); பள்ளிபாளையம் ('​கைது செய்யப்பட்டவர்களைப் பள்ளிபாளையம் காவல் நிலையத்திற்கு அ')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 switching away from groq/qwen/qwen3.8-27b for 10 min
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+free models unavailable: no free model answered: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-
 ok anthropic/claude-haiku-5-5
 claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 89 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
   hl1 (the first headline on screen) must name the place 'பள்ளிபாளையம்', e.g. 'பள்ளிபாளையம்: ...' or 'பள்ளிபாளையம்-இல் ...' - viewers share news of their own area
 ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 98 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 free fact-check unavailable, using Claude: no free model answered: None
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 5 problems
-  reel_script says 'குமாரபாளையம் காவல் துணை கண்காணிப்பாளர்' (Kumarapalayam DSP) — the article calls him DSP Gowthaman of Kumarapalayam; wording 'துணை கண்காணிப்பாளர்' is acceptable, but the caption and reel_script both describe the DSP as leading the drone operation, which the article does not explicitly state (article says the officers led the inspection, so this is mostly consistent)
-  reel_script says the gambling took place 'நவம்பர் 10ஆம் தேதி' (November 10), a date not present in the article
-  caption footer date '10 நவம்பர் 2026' is a claimed event date, not only the posting date, and is not supported by the article
-  reel_script says the gamblers were arrested after being 'சுற்றி வளைத்து' — consistent, but the reel_script omits that the drone spotted the group in the bush and that the flight was over the riverbank area, minor; more importantly the reel_script says '10-க்கும் மேற்பட்டோர் கைது' and 'சூதாட்டத்தில் ஈடுபட்ட 10-க்கும் மேற்பட்டோர்' which matches the article
-  tamil_headline and reel_script describe the drone as 'தலைக்கு மேலே' flying, and slides say the man 'சாக்கடையில் குதித்து தப்பியோட முயன்றார' — consistent, but the caption line 'ஒருவர் சாக்கடையில் குதித்து தப்ப முயன்றார' is fine
+  The reel_script and slides_spec say 'ரூ.10,000' was confiscated, which matches the article; no problem there. However, the reel_script's first sentence says 'பத்துக்கும் மேற்பட்டோர் கைது செய்யப்பட்டனர்' (over ten arrested) before stating the location and context, and then later says 'சூதாடிக்கொண்டிருந்தது' — this is acceptable, but the reel_script omits the article's note that the gang's members were caught 'கையும் களவுமாக' only in part; not a problem.
+  The reel_script says 'ஒருவர் ட்ரோனிடமிருந்து தப்ப ஆற்றங்கரையோரம் இருந்த சாக்கடையில் குதித்து ஓட முயன்றார்' which is accurate, but the article's detail that the person was escaping 'காவல்துறையினரிடம் இருந்து' (from police) is changed to 'ட்ரோனிடமிருந்து' (from the drone) in the reel_script, caption and slides, altering who the escape was from.
+  The caption says 'உஷாரான காவல்துறையினர் அப்பகுதியைச் சுற்றி வளைத்து 10-க்கும் மேற்பட்டோரைக் கைது செய்தனர்' which is consistent, but the slides say '10-க்கும் மேற்பட்டோர் கைது செய்யப்பட்டனர்' while the reel_script says 'சூதாடிய பத்துக்கும் மேற்பட்டோர் கைது செய்யப்பட்டனர்' - consistent; no problem there.
+  The tamil_headline states 'சாக்கடையில் குதித்து ஓட்டம்' as the gang's action, collectively attributing the sewer jump to the gang rather than one person, which misrepresents the article's single individual.
+  The caption and reel_script omit the article's important detail that police used the drone for aerial surveillance after receiving the tip, and the reel_script's phrase 'ட்ரோன் கேமரா மூலம் வான்வழி கண்காணிப்பில் ஈடுபட்டனர்' is present; however the caption omits the 'பள்ளிபாளையம் காவல் நிலையம்' destination only partly — minor.
 claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: reel_script says 'குமாரபாளையம் காவல் துணை கண்காணிப்பாளர்' (Kumarapalayam DSP) — the article calls him DSP Gowthaman of Kumarapalayam; wording 'துணை கண்காணிப்பாளர்' is acceptable, but the caption and reel_script both describe the DSP as leading the drone operation, which the article does not explicitly state (article says the officers led the inspection, so this is mostly consistent)
-  fact-check: reel_script says the gambling took place 'நவம்பர் 10ஆம் தேதி' (November 10), a date not present in the article
-  fact-check: caption footer date '10 நவம்பர் 2026' is a claimed event date, not only the posting date, and is not supported by the article
-  fact-check: reel_script says the gamblers were arrested after being 'சுற்றி வளைத்து' — consistent, but the reel_script omits that the drone spotted the group in the bush and that the flight was over the riverbank area, minor; more importantly the reel_script says '10-க்கும் மேற்பட்டோர் கைது' and 'சூதாட்டத்தில் ஈடுபட்ட 10-க்கும் மேற்பட்டோர்' which matches the article
-  fact-check: tamil_headline and reel_script describe the drone as 'தலைக்கு மேலே' flying, and slides say the man 'சாக்கடையில் குதித்து தப்பியோட முயன்றார' — consistent, but the caption line 'ஒருவர் சாக்கடையில் குதித்து தப்ப முயன்றார' is fine
+  fact-check: The reel_script and slides_spec say 'ரூ.10,000' was confiscated, which matches the article; no problem there. However, the reel_script's first sentence says 'பத்துக்கும் மேற்பட்டோர் கைது செய்யப்பட்டனர்' (over ten arrested) before stating the location and context, and then later says 'சூதாடிக்கொண்டிருந்தது' — this is acceptable, but the reel_script omits the article's note that the gang's members were caught 'கையும் களவுமாக' only in part; not a problem.
+  fact-check: The reel_script says 'ஒருவர் ட்ரோனிடமிருந்து தப்ப ஆற்றங்கரையோரம் இருந்த சாக்கடையில் குதித்து ஓட முயன்றார்' which is accurate, but the article's detail that the person was escaping 'காவல்துறையினரிடம் இருந்து' (from police) is changed to 'ட்ரோனிடமிருந்து' (from the drone) in the reel_script, caption and slides, altering who the escape was from.
+  fact-check: The caption says 'உஷாரான காவல்துறையினர் அப்பகுதியைச் சுற்றி வளைத்து 10-க்கும் மேற்பட்டோரைக் கைது செய்தனர்' which is consistent, but the slides say '10-க்கும் மேற்பட்டோர் கைது செய்யப்பட்டனர்' while the reel_script says 'சூதாடிய பத்துக்கும் மேற்பட்டோர் கைது செய்யப்பட்டனர்' - consistent; no problem there.
+  fact-check: The tamil_headline states 'சாக்கடையில் குதித்து ஓட்டம்' as the gang's action, collectively attributing the sewer jump to the gang rather than one person, which misrepresents the article's single individual.
+  fact-check: The caption and reel_script omit the article's important detail that police used the drone for aerial surveillance after receiving the tip, and the reel_script's phrase 'ட்ரோன் கேமரா மூலம் வான்வழி கண்காணிப்பில் ஈடுபட்டனர்' is present; however the caption omits the 'பள்ளிபாளையம் காவல் நிலையம்' destination only partly — minor.
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 proofread skipped: no free model answered: None
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
+real photo: vision check out of free quota
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Gambling gang in Pallipalayam jumps into'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261110-2258","first":"RN-484"}
+posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 7 news waiting in the queue (written in priority order)
-candidate filter: already filed=6, collected=1
+write round: 1 news waiting in the queue (written in priority order)
+candidate filter: collected=1
 to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
 candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
 try (N) manual=False: மரண காமெடி.. தலைக்கு மேல் பறந்த ட்ரோன்.. சாக்கடையில் குதித்த
-NOT filed (N) மரண காமெடி.. தலைக்கு மேல் பறந்த ட்ரோன்.. சாக்கடையி: duplicate after write
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 24 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 1 news waiting to be written
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 1}, time left 27 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
 All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 0
+stories: 1
