@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-11 | `66b9b08` | check: news already on Instagram is skipped before choosing - the post job skipped it but the check chose it again every run (owner 11 Nov) |
 | 2026-11-04 | `01f61a4` | Facebook photo story gets its own fresh upload of the first slide (rasipalan story 400 Invalid parameter, 3-4 Nov) |
 | 2026-11-11 | `2ebfc40` | powercut: notices written |
 | 2026-11-11 | `f160afc` | powercut: notices written |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-10 | `d26abf1` | powercut: notices written |
 | 2026-11-10 | `85315ff` | powercut: notices written |
 | 2026-11-10 | `885e67b` | powercut: notices written |
-| 2026-11-10 | `9a538d2` | powercut: notices written |
 <!-- recent-changes:end -->
