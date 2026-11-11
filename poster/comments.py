@@ -2,7 +2,7 @@
 
 Every run: the page's recent posts (last 3 days) -> comments not handled before -> 3 short Tamil reply options each (AI) ->
 sent to the Apps Script bridge (action commentNew), which keeps them in the private "Comments" tab and e-mails the owner.
-The owner picks / edits a reply on the confirmation page; only Apps Script posts it (apps_script/Comments.gs).
+The owner picks / edits a reply on the confirmation page; only Apps Script posts it (apps_script/Code.gs, comment replies part).
 
 The GitHub repository and its logs are PUBLIC: comment text and usernames are never printed or saved here - only counts.
 Needs the Instagram permission instagram_business_manage_comments on the page tokens (without it Instagram returns no comment text).

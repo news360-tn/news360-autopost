@@ -1081,7 +1081,7 @@ class CommentRepliesNeedOwner11Nov(unittest.TestCase):
         self.assertNotIn("viewer_one", out.getvalue())
 
     def test_bridge_has_the_approval_step(self):
-        gs = (ROOT / "apps_script" / "Comments.gs").read_text(encoding="utf-8")
+        gs = (ROOT / "apps_script" / "Code.gs").read_text(encoding="utf-8")      # 11 Nov: one file (the owner pastes only Code.gs)
         self.assertIn("Post this reply", gs)                     # posting only from the confirmation page's button (POST)
         self.assertIn("function commentSubmit_", gs)
         self.assertNotIn("/replies", gs.split("function commentPage_")[1].split("function commentSubmit_")[0])      # the GET page never posts
