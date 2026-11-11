@@ -1274,6 +1274,8 @@ def ig_duplicate(row, page):
     ta, en = (row.get("headline_ta") or "").strip(), (row.get("headline_en") or "").strip().lower()
     for ts, cap in ig_recent(page):
         head = cap.strip().split("\n")[0]
+        if hasattr(freshness, "cancel_differs") and freshness.cancel_differs(ta or row.get("caption") or "", head):
+            continue      # owner 11 Nov: a power cut and its cancellation / change are different news
         if ta and freshness.similar(head[:len(ta) + 8], ta, 0.62, ts):
             return ts
         if en and freshness.similar(cap.strip()[:len(en) + 8].lower(), en, 0.65, ts):
@@ -2027,7 +2029,24 @@ def news_hold(row):
 def skip_reason(row):
     """owner 2 Nov (RN-272): the usual checks first, then the news hold"""
     why = _skip_reason_base(row)
-    return why or news_hold(row)
+    return why or news_hold(row) or change_hold(row)
+
+
+def change_hold(row):
+    """owner 11 Nov: a power-cut cancellation / postponement is posted ONLY when this page posted that power cut before"""
+    import freshness
+    head = " ".join(str(row.get(k) or "") for k in ("headline_ta", "headline_en"))
+    if not freshness.cut_change(head):
+        return ""
+    known = False
+    for pg in pages_of(row):
+        recent = ig_recent(pg)
+        known = known or bool(recent)
+        if any(freshness.change_of_posted(head, cap.strip().split("\n")[0]) for _, cap in recent):
+            return ""
+    if not known:
+        return ""      # Instagram could not be read: never block on missing data
+    return "skipped: a power-cut cancellation / change, but that power cut was never posted on this page"
 
 if __name__ == "__main__":
     main()

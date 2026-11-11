@@ -414,3 +414,65 @@ _PRISON = re.compile(r"([஀-௿]{2,})\s+(?:மத்திய(?:ச்)?\s+|ம
 
 def _prison_towns(t):
     return {m.group(1)[:4] for m in _PRISON.finditer(t or "") if not m.group(1).startswith(("மத்திய", "மாவட்ட", "இந்த", "அந்த", "எந்த"))}
+
+
+# ---- owner 11 Nov (Coimbatore): a power cut that was CANCELLED / POSTPONED / moved to another day after it was posted is NEW news -
+# people stay home or plan for it. It names the same place and day as the original notice, so every duplicate test took it for the
+# same news and it was never posted. A notice and its cancellation / change are now never the same news.
+CUT_CHANGE = re.compile(r"ரத்து|ரத்தா|நிறுத்தி\s*வைப்பு|ஒத்தி\s*வை|ஒத்திவை|தள்ளி\s*வை|தள்ளிவை|நடைபெறாது|இருக்காது|"
+                        r"மாற்றம்|மாற்றப்பட|cancel|postpone|deferred|withdrawn|rescheduled", re.I)      # மாற்றம் = changed (not மின்மாற்றி, a transformer)
+_POW = re.compile(r"மின்\s*தடை|மின்\s*நிறுத்த|மின்\s*வெட்டு|power\s*(cut|shut|outage)", re.I)
+
+
+def cut_change(text):
+    """True when the text is about a power cut being cancelled / postponed / moved"""
+    return bool(_POW.search(text or "") and CUT_CHANGE.search(text or ""))
+
+
+def cancel_differs(a, b):
+    """one text is a power cut, the other its cancellation / change - never the same news"""
+    a, b = str(a or ""), str(b or "")
+    return bool((_POW.search(a) or _POW.search(b)) and cut_change(a) != cut_change(b))
+
+
+
+_similar, _different_power_cut, _same_event, _same_incident = similar, different_power_cut, same_event, same_incident
+
+
+def similar(a, b, thr, other_filed=None, today=None):
+    return False if cancel_differs(a, b) else _similar(a, b, thr, other_filed, today)
+
+
+def different_power_cut(a, b, other_filed=None, today=None):
+    return True if cancel_differs(a, b) else _different_power_cut(a, b, other_filed, today)
+
+
+def same_event(a, b, df_n):
+    return False if cancel_differs(a, b) else _same_event(a, b, df_n)
+
+
+def same_incident(a, b, df_n, shared=None, r=None):
+    return False if cancel_differs(a, b) else _same_incident(a, b, df_n, shared, r)
+
+
+_CUT_COMMON = ("மின்தடை", "மின்தட", "மின்நி", "நாளை", "இன்று", "காலை", "மாலை", "மதியம்", "முதல்", "வரை", "பகுதி", "ரத்து", "ரத்தா",
+               "ஒத்தி", "தள்ளி", "மாற்ற", "நிறுத", "அறிவி", "துணை", "நிலைய", "மின்வா", "பராமரி", "தேதி", "power", "outag")
+
+
+def change_of_posted(change, original):
+    """owner 11 Nov: a cancellation / change is posted ONLY for a power cut this page already posted - True when `original` (a posted
+    power-cut headline, not itself a change) names the same place as the cancellation / change `change`"""
+    if not (cut_change(change) and _POW.search(original or "") and not cut_change(original)):
+        return False
+    try:
+        import sys as _s
+        from pathlib import Path as _P
+        _s.path.insert(0, str(_P(__file__).resolve().parent.parent / "research_free"))
+        import allnews
+        pa, pb = set(allnews.places_in(change)), set(allnews.places_in(original))
+        if pa and pb:
+            return bool(pa & pb)
+    except Exception:
+        pass
+    st = lambda t: {w[:5] for w in re.findall(r"[஀-௿a-zA-Z]{4,}", t.lower()) if not w.startswith(_CUT_COMMON)}
+    return bool(st(change) & st(original))

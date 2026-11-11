@@ -89,3 +89,5 @@ EXACT PLACE AND WHO/HOW ON SCREEN (viewers want to know where and how it happene
 - Slide 2 lines: WHO was involved (role or name as in the article) and HOW it happened (the sequence in one line each).
 - Slide 3 lines: the NUMBERS (amounts, counts, times) and what authorities did or what residents should do.
 - Each of these lines is one complete fact copied from the article. If the article does not say where or how, leave that line out (fewer lines is fine) - never a line saying a detail is unknown, missing or "that is all" (owner 31 Oct).
+
+POWER CUT CANCELLED OR CHANGED (owner 11 Nov): when the article says a planned power cut is CANCELLED (ரத்து), POSTPONED or MOVED to another day, that is the news. Headline, hl1 and the first caption line start with the place and say it plainly, e.g. "⚡ சூலூரில் நாளை மின்தடை ரத்து" / "⚡ பொள்ளாச்சி மின்தடை 15ம் தேதிக்கு மாற்றம்". Give the original day and time from the article, and the new day if any. category "மின் தடை", importance "High". Never write it as a power cut that will still happen.

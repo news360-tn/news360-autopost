@@ -180,6 +180,17 @@ def same_cut(a, b):
     return a["url"] == b["url"] or (a.get("cut_day") == b.get("cut_day") and F.same_power_cut(a["title"], a["published"], b["title"], b["published"]))
 
 
+def _change_without_original(n, recent):
+    """owner 11 Nov: a cancellation / postponement / day change is news for our followers ONLY when we posted that power cut"""
+    from freshness import cut_change, change_of_posted
+    if not cut_change(n["title"]) or not recent:      # the Sheet could not be read: never block on missing data
+        return False
+    posted_heads = [str(r.get("headline_ta") or "") for r in recent
+                    if any(str(v).startswith("http") for k, v in r.items() if k.endswith("_link"))
+                    or str(r.get("post_status") or "").lower().startswith(("posted", "partly"))]
+    return not any(change_of_posted(n["title"], h) for h in posted_heads)
+
+
 def cmd_find():
     now = datetime.datetime.now(IST)
     today = now.date()
@@ -226,6 +237,9 @@ def cmd_find():
             if why in ("not this district", "other district", "cut day unknown"):
                 log(f"  {why}: {st['seen'][u].get('title', '')[:70]} <{u}>")
             continue
+        if _change_without_original(n, recent):
+            reasons["cancellation / change of a cut we never posted"] = reasons.get("cancellation / change of a cut we never posted", 0) + 1
+            continue
         if any(same_cut(n, d) for d in list(st["done"].values()) + posted + found):
             reasons["already written / posted"] = reasons.get("already written / posted", 0) + 1
             continue
@@ -244,6 +258,26 @@ def cmd_find():
     return 0
 
 
+def remember_refused(st=None):
+    """owner 11 Nov (பழங்கரை notice refused as a duplicate in an earlier run turned later checks red): the writer's refusals of
+    this job are kept in powercut_state.json (committed), so every later check knows them. Kept 2 days."""
+    own = st is None
+    st = st if st is not None else load()
+    now = datetime.datetime.now(IST)
+    keep = st.setdefault("refused", {})
+    try:
+        ref = json.loads((HERE / "results" / "pick_refused.json").read_text(encoding="utf-8"))
+    except Exception:
+        ref = {}
+    for u, why in ref.items():
+        keep.setdefault(pid(u), {"why": why, "at": now.isoformat()})
+    cut = (now - datetime.timedelta(days=2)).isoformat()
+    st["refused"] = {k: v for k, v in keep.items() if v.get("at", "") >= cut}
+    if own:
+        save(st)
+    return st["refused"]
+
+
 def cmd_verify():
     """every power cut written in the last 12 hours must be on Instagram (or its cut already over)"""
     st = load()
@@ -259,9 +293,13 @@ def cmd_verify():
         except Exception as e:
             log(f"verify: bridge {a} failed: {e}")
     stat = status(list(want), rows)
+    refused = {k: v.get("why", "") for k, v in remember_refused(st).items()}      # owner 11 Nov: this job's and earlier jobs' refusals
     bad = {}
     for k, v in stat.items():
         if v == "posted":
+            continue
+        if v == "not written" and refused.get(k):
+            log(f"   SKIPPED {k}: the writer refused it - {refused[k][:120]} - {want[k]['title'][:60]}")      # never posted on purpose
             continue
         if fr().power_cut_over(want[k]["title"], "", want[k]["published"], now) or want[k]["cut_day"] < now.date().isoformat():
             log(f"   {k}: cut over before it was posted - {want[k]['title'][:60]}")
@@ -282,6 +320,9 @@ if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "find":
         sys.exit(cmd_find())
+    if cmd == "remember":
+        remember_refused()
+        sys.exit(0)
     if cmd == "verify":
         sys.exit(cmd_verify())
     sys.exit(__doc__)

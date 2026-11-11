@@ -1104,6 +1104,86 @@ class SourceAtCaptionEnd11Nov(unittest.TestCase):
         self.assertFalse(hasattr(post, "source_comment"))
 
 
+class PowercutRefusalRemembered11Nov(unittest.TestCase):
+    """11 Nov 13:09: the பழங்கரை notice was refused ('duplicate after write') in an EARLIER run; the next run's check called it
+    'not written' and went red. Refusals are now kept in the committed state for 2 days."""
+
+    def test_earlier_refusal_is_skipped(self):
+        import importlib, powercut
+        importlib.reload(powercut)
+        now = datetime.datetime.now(IST)
+        u = "https://x/palangarai"
+        k = powercut.pid(u)
+        st = {"done": {k: {"at": now.isoformat(), "title": "நாளைய மின்தடை: பழங்கரை", "published": now.isoformat(),
+                           "cut_day": (now.date() + datetime.timedelta(days=1)).isoformat(), "url": u}}}
+        run1, run2 = Path(tempfile.mkdtemp()), Path(tempfile.mkdtemp())
+        (run1 / "results").mkdir(); (run2 / "results").mkdir()
+        (run1 / "results" / "pick_refused.json").write_text(json.dumps({u: "not filed: duplicate after write"}), encoding="utf-8")
+        old = (powercut.load, powercut.save, powercut.bridge_get, powercut.HERE)
+        powercut.load, powercut.save = (lambda: st), (lambda x: None)
+        powercut.bridge_get = lambda a: {"rows": []}
+        try:
+            powercut.HERE = run1
+            powercut.remember_refused()            # run 1: the workflow's save step
+            powercut.HERE = run2                   # run 2: a fresh checkout - its own writer refused nothing
+            self.assertEqual(powercut.cmd_verify(), 0)
+            st["refused"] = {}
+            self.assertEqual(powercut.cmd_verify(), 3)      # an unknown 'not written' is still reported
+        finally:
+            powercut.load, powercut.save, powercut.bridge_get, powercut.HERE = old
+        self.assertIn("powercut.py remember", (ROOT / ".github" / "workflows" / "powercut.yml").read_text(encoding="utf-8"))
+
+
+class PowerCutCancelledIsNews11Nov(unittest.TestCase):
+    """11 Nov (owner): a power cut cancelled / postponed after it was posted was never posted - every duplicate test took it for the
+    original notice (same place, same day). A cut and its cancellation / change are different news; two cancellations still match."""
+    CUT = "சூலூரில் நாளை மின்தடை: காலை 9 முதல் மாலை 5 வரை"
+    CANCEL = "சூலூரில் நாளை மின்தடை ரத்து"
+    MOVED = "சூலூர் மின்தடை 15ம் தேதிக்கு மாற்றம்"
+
+    def test_never_the_same_news(self):
+        self.assertTrue(fr.cut_change(self.CANCEL)); self.assertTrue(fr.cut_change("பொள்ளாச்சியில் மின் நிறுத்தம் ஒத்திவைப்பு"))
+        self.assertFalse(fr.cut_change(self.CUT)); self.assertFalse(fr.cut_change("பேருந்து சேவை ரத்து"))      # not a power cut
+        self.assertTrue(fr.cut_change(self.MOVED)); self.assertFalse(fr.cut_change("சூலூரில் மின்மாற்றி பழுது: நாளை மின்தடை"))      # a transformer
+        for other in (self.CANCEL, self.MOVED):
+            self.assertFalse(fr.similar(self.CUT, other, 0.3))
+            self.assertTrue(fr.different_power_cut(self.CUT, other))
+        self.assertFalse(fr.cancel_differs(self.CANCEL, "சூலூர் நாளை மின்தடை ரத்து அறிவிப்பு"))      # two cancellations: same news allowed
+
+    def test_power_cut_job_and_post_check(self):
+        import powercut
+        F = powercut.fr()
+        today = datetime.datetime.now(IST).date().isoformat()
+        self.assertFalse(F.same_power_cut(self.CUT, today, self.CANCEL, today))
+        self.assertIn("cancel_differs", (ROOT / "poster" / "post.py").read_text(encoding="utf-8").split("def ig_duplicate")[1][:900])
+        self.assertIn("POWER CUT CANCELLED OR CHANGED", (ROOT / "research_free" / "rules.md").read_text(encoding="utf-8"))
+
+    def test_only_when_we_posted_that_cut(self):      # owner 11 Nov: a cancellation is posted only for a cut this page posted
+        self.assertTrue(fr.change_of_posted(self.CANCEL, self.CUT))
+        self.assertTrue(fr.change_of_posted(self.MOVED, "⚡ " + self.CUT))
+        self.assertFalse(fr.change_of_posted(self.CANCEL, "பொள்ளாச்சியில் நாளை மின்தடை: காலை 9 முதல் 5 வரை"))      # another place
+        self.assertFalse(fr.change_of_posted(self.CANCEL, "சூலூரில் நாளை மின்தடை ரத்து"))      # the earlier post is itself a change
+        old = (post.ig_recent, post.pages_of)
+        post.pages_of = lambda row: ["p"]
+        row = {"headline_ta": self.CANCEL, "headline_en": ""}
+        try:
+            post.ig_recent = lambda pg: [("2026-11-11T08:00:00+0000", "⚡ " + self.CUT + "\n...")]
+            self.assertEqual(post.change_hold(row), "")
+            post.ig_recent = lambda pg: [("2026-11-11T08:00:00+0000", "பொள்ளாச்சியில் நாளை மின்தடை\n...")]
+            self.assertIn("never posted", post.change_hold(row))
+            post.ig_recent = lambda pg: []      # Instagram not readable: never blocked on missing data
+            self.assertEqual(post.change_hold(row), "")
+            self.assertEqual(post.change_hold({"headline_ta": self.CUT}), "")      # an ordinary power cut is not affected
+        finally:
+            post.ig_recent, post.pages_of = old
+        import powercut
+        rec = [{"headline_ta": self.CUT, "post_status": "Posted"}]
+        self.assertFalse(powercut._change_without_original({"title": self.CANCEL}, rec))
+        self.assertTrue(powercut._change_without_original({"title": self.CANCEL}, [dict(rec[0], post_status="Queued")]))
+        self.assertFalse(powercut._change_without_original({"title": self.CUT}, []))
+        self.assertFalse(powercut._change_without_original({"title": self.CANCEL}, []))      # Sheet not readable: not blocked
+
+
 if __name__ == "__main__":
     unittest.main()
 

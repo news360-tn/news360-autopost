@@ -69,3 +69,12 @@ def same_power_cut(a, a_published, b, b_published):
     def places(t):
         return {w[:6] for w in re.findall(r"[\u0B80-\u0BFFa-zA-Z]{4,}", (t or "").lower()) if not w.startswith(_PLACE_COMMON)}
     return bool(places(a) & places(b))
+
+
+# owner 11 Nov: a power cut and its cancellation / change are never the same notice (freshness.cancel_differs)
+_same_power_cut = same_power_cut
+
+
+def same_power_cut(a, a_published, b, b_published):
+    from freshness import cancel_differs
+    return False if cancel_differs(a, b) else _same_power_cut(a, a_published, b, b_published)

@@ -244,6 +244,9 @@ def score(n):
 # collect / write split (owner 26 Oct): the 4-hourly round only COLLECTS and queues every eligible news by priority;
 # the writer round (every 20 min) takes the queue in priority order, writes the story, and the posting job posts it at once.
 MODE = os.environ.get("COLLECT_MODE", "both")      # collect | write | both
+# owner 11 Nov: a final "no" from the writer (a link that could not be opened is NOT here - it is tried again)
+PICK_REFUSED = ("not filed", "not written", "not Namakkal", "already filed", "old", "article has no text", "not a Tamil", "duplicate",
+                "checked earlier")
 PICK_ONLY = os.environ.get("PICK_ONLY", "") == "1"      # owner 1 Nov: write ONLY the MANUAL_URL links (power-cut fast lane, powercut.py) - nothing else is collected or queued
 QUEUE = ARCHIVE / "queue.json"
 QFIELDS = ("key", "url", "title", "source", "published", "via", "query", "snippet", "outlets", "alts", "mentions", "area", "score", "queued_at", "verified")
@@ -1218,6 +1221,12 @@ def main():
     for n in news:
         if n["status"] == "collected":
             n["status"] = "queued for writing" if MODE == "collect" else "collected (not in this round's top)"
+    if PICK_ONLY:      # owner 11 Nov: the power-cut check must know which notices the writer REFUSED (else 'not written' turns it red)
+        try:
+            (HERE / "results" / "pick_refused.json").write_text(json.dumps(
+                {n["url"]: n["status"] for n in news if str(n.get("status", "")).startswith(PICK_REFUSED)}, ensure_ascii=False, indent=1), encoding="utf-8")
+        except Exception as e:
+            log.append(f"pick refusals not saved: {e}")
     # --- the list of ELIGIBLE news only (owner 26 Oct): Namakkal-district news of today / yesterday that was not posted before.
     # Other-district, old and already posted items are dropped silently (they used to fill the "All News" tab: 24,000 rows in 5 days).
     NOT_ELIGIBLE = ("old", "not Namakkal", "already filed", "checked earlier", "duplicate of a story filed")
