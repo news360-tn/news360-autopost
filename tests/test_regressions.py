@@ -959,6 +959,155 @@ class CheckSkipsInstagramDuplicates11Nov(unittest.TestCase):
         self.assertLess(loop.index("_ig_dup_for_check"), loop.index("ids.append"))
 
 
+class FacebookTopNewsOnly11Nov(unittest.TestCase):
+    """11 Nov: Facebook limited the new pages (error 368) after 13-17 API reels a day. Now only top news (urgent / the page's best
+    topics by insights), at most 5 a day, 2 h apart; a 368 pauses the page 24 h and is never retried; the rasipalan always goes"""
+
+    def setUp(self):
+        import importlib, facebook
+        self.fb = importlib.reload(facebook)
+        self.fb.STATE = Path(tempfile.mkdtemp())
+        self.env = dict(os.environ)
+        os.environ.update(FB_PAGE_ID_T="1", FB_TOKEN_T="tok")
+        self.calls = []
+        self.fb.publish_reel = lambda pid, tok, url, cap: self.calls.append(url) or ("v", "https://www.facebook.com/reel/v")
+        self.fb.story_video = lambda *a: "s"
+
+    def tearDown(self):
+        os.environ.clear(); os.environ.update(self.env)
+        import importlib, facebook
+        importlib.reload(facebook)
+
+    def share(self, sid, rank, **kw):
+        return self.fb.share("t", sid, "reel", [f"https://v/{sid}.mp4"], "செய்தி\n\n#a #b #c", "#T360", rank=rank, **kw)
+
+    def test_only_top_news(self):
+        self.assertEqual(self.share("RN-1", {"urgent": False, "topic": "education", "weight": -0.5, "best": False}), "")
+        self.assertEqual(self.fb.state("t", "RN-1", "reel")["status"], "skipped")
+        self.assertTrue(self.share("RN-2", {"urgent": False, "topic": "crime", "weight": 1.5, "best": True}))
+        self.assertEqual(self.calls, ["https://v/RN-2.mp4"])
+
+    def test_spacing_and_daily_limit_but_urgent_goes(self):
+        top = {"urgent": False, "topic": "crime", "weight": 1.5, "best": True}
+        self.assertTrue(self.share("RN-1", top))
+        self.assertEqual(self.share("RN-2", top), "")      # less than 2 h after the last Facebook post
+        self.assertTrue(self.share("RN-3", {"urgent": True, "topic": "power_cut", "weight": 1.5, "best": True}))      # a power cut never waits
+
+    def test_368_pauses_the_page_and_is_not_retried(self):
+        def limited(*a):
+            raise RuntimeError("Facebook video_reels: 400 368/1390008 We limit how often you can post")
+        self.fb.publish_reel = limited
+        top = {"urgent": True, "topic": "power_cut", "weight": 1.5, "best": True}
+        self.assertEqual(self.share("RN-1", top), "")
+        self.assertTrue(self.fb.paused("t"))
+        self.assertEqual(self.fb.state("t", "RN-1", "reel")["status"], "skipped")
+        self.fb.publish_reel = lambda *a: self.calls.append("x") or ("v", "l")
+        self.assertEqual(self.share("RN-2", top), "")      # paused 24 h - even urgent news stays Instagram-only
+        self.assertEqual(self.share("RN-3", None, always=True), "")      # the pause holds for the rasipalan too
+        self.assertEqual(self.fb.retry_failed(), 0)
+        self.assertEqual(self.calls, [])
+
+    def test_article_link_in_facebook_caption(self):
+        seen = []
+        self.fb.publish_reel = lambda pid, tok, url, cap: seen.append(cap) or ("v", "l")
+        self.share("RN-1", None, source_link="https://www.dinamalar.com/news/x/1")
+        self.assertIn("🔗 https://www.dinamalar.com/news/x/1", seen[0])
+        self.assertTrue(seen[0].rstrip().endswith("#T360"))
+
+
+class NewsSourceShown11Nov(unittest.TestCase):
+    """11 Nov: viewers called news 'fake' - every news names its paper + publish date (reel header, end card, captions);
+    an unknown site is never named (no guessed source)"""
+
+    def row(self, **kw):
+        r = {"story_id": "RN-1", "headline_ta": "ராசிபுரம் அருகே 9 பேர் கைது", "headline_en": "9 held near Rasipuram", "location": "ராசிபுரம்",
+             "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/x/1", "published": "2026-11-10T09:00:00+05:30",
+             "caption": "ராசிபுரம் அருகே 9 பேர் கைது\n\n📍 ராசிபுரம் | 10 நவம்பர் 2026\n\n#Rasipuram360", "importance": "Medium", "category": "Crime"}
+        r.update(kw)
+        return r
+
+    def test_credit(self):
+        self.assertEqual(post.source_credit(self.row()), ("தினமலர்", "தினமலர் (10 நவம்பர் 2026)"))
+        two = self.row(other_sources="https://www.dinamani.com/a/b https://www.dinamalar.com/c")
+        self.assertEqual(post.source_credit(two)[1], "தினமலர், தினமணி (10 நவம்பர் 2026)")
+        self.assertEqual(post.source_credit(self.row(source="https://unknown-blog.example/x")), ("", ""))
+
+    def test_caption_line_after_place(self):
+        lines = post.final_caption(self.row()).split("\n")
+        k = next(i for i, l in enumerate(lines) if l.startswith("📍"))
+        self.assertEqual(lines[k + 1], "📰 ஆதாரம்: தினமலர் (10 நவம்பர் 2026)")
+        self.assertNotIn("📰", post.final_caption(self.row(source="https://unknown-blog.example/x")))
+
+    def test_reel_shows_it(self):
+        src = (ROOT / "reel" / "reel4.py").read_text(encoding="utf-8")
+        self.assertIn('class="src">📰', src)
+        self.assertIn('class="e5">ஆதாரம்: ', src)
+        self.assertIn('"source": source_credit(row)[0]', (ROOT / "poster" / "post.py").read_text(encoding="utf-8"))
+
+
+class CommentRepliesNeedOwner11Nov(unittest.TestCase):
+    """11 Nov: new comments get 3 reply options e-mailed to the owner; nothing is posted by the job; comment text never in the public log;
+    a comment is sent once; the page's own replies are ignored"""
+
+    def test_flow(self):
+        import io, contextlib, importlib, datetime as d
+        import comments
+        importlib.reload(comments)
+        now = d.datetime.now(d.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S+0000")
+        sent, calls = [], []
+        fake_media = {"data": [{"id": "m1", "caption": "ராசிபுரம் அருகே 9 பேர் கைது\n📰 ஆதாரம்: தினமலர் (10 நவம்பர் 2026)", "timestamp": now,
+                                "permalink": "https://instagram.com/p/m1", "comments_count": 3}]}
+        fake_comments = {"data": [{"id": "c1", "text": "SECRET-TEXT இது பொய் செய்தி", "username": "viewer_one", "timestamp": now},
+                                  {"id": "c2", "text": "old one", "username": "viewer_two", "timestamp": now},
+                                  {"id": "c3", "text": "நன்றி", "username": comments.HANDLES.get("rasipuram", "x"), "timestamp": now}]}
+        old = (comments.post.bridge_get, comments.post.bridge_post, comments.post.ig, comments.post.ig_account, comments.options_for, comments.DRY)
+        comments.post.bridge_get = lambda a, **k: {"token": "t"} if a == "token" else {"ids": ["c2"]}
+        comments.post.bridge_post = lambda a, payload: sent.append((a, payload)) or {"ok": True, "added": len(payload["items"])}
+        comments.post.ig = lambda m, path, tok, **k: calls.append((m, path)) or (fake_media if path.endswith("/media") else fake_comments)
+        comments.post.ig_account = lambda tok: ("u1", "x")
+        comments.options_for = lambda cap, text: ("doubt_or_fake_claim", ["நன்றி! ஆதாரம்: தினமலர் (10 நவம்பர் 2026).", "b", "c"])
+        comments.DRY = False
+        out = io.StringIO()
+        try:
+            with contextlib.redirect_stdout(out):
+                n = comments.run("rasipuram")
+        finally:
+            (comments.post.bridge_get, comments.post.bridge_post, comments.post.ig, comments.post.ig_account, comments.options_for, comments.DRY) = old
+        self.assertEqual(n, 1)                                   # c2 already handled, c3 is the page's own reply
+        self.assertEqual(sent[0][0], "commentNew")
+        self.assertEqual(sent[0][1]["items"][0]["comment_id"], "c1")
+        self.assertTrue(all(m == "GET" for m, _ in calls))        # the job only reads - it never posts on Instagram
+        self.assertNotIn("SECRET-TEXT", out.getvalue())          # the log is public
+        self.assertNotIn("viewer_one", out.getvalue())
+
+    def test_bridge_has_the_approval_step(self):
+        gs = (ROOT / "apps_script" / "Comments.gs").read_text(encoding="utf-8")
+        self.assertIn("Post this reply", gs)                     # posting only from the confirmation page's button (POST)
+        self.assertIn("function commentSubmit_", gs)
+        self.assertNotIn("/replies", gs.split("function commentPage_")[1].split("function commentSubmit_")[0])      # the GET page never posts
+        code = (ROOT / "apps_script" / "Code.gs").read_text(encoding="utf-8")
+        self.assertIn("commentPage_(e)", code)
+        self.assertIn("commentNew_(body)", code)
+
+
+class SourceLinkComment11Nov(unittest.TestCase):
+    """11 Nov: the article link is shown too - as the page's own comment on Instagram (captions cannot carry a working link)"""
+
+    def test_comment_text_and_skips(self):
+        sent = []
+        old = post.ig
+        post.ig = lambda m, path, tok, **k: sent.append((m, path, k.get("message")))
+        try:
+            row = {"source": "https://www.dinamalar.com/news/x/1", "published": "2026-11-10T09:00:00+05:30", "importance": "Medium",
+                   "headline_ta": "செய்தி", "category": "Crime"}
+            post.source_comment("t", "m1", row)
+            post.source_comment("t", "m2", dict(row, source="https://unknown.example/x"))      # unknown site: nothing posted
+            post.source_comment("t", "", row)
+        finally:
+            post.ig = old
+        self.assertEqual(sent, [("POST", "m1/comments", "📰 ஆதாரம்: தினமலர் (10 நவம்பர் 2026)\n🔗 https://www.dinamalar.com/news/x/1")])
+
+
 if __name__ == "__main__":
     unittest.main()
 

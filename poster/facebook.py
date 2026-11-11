@@ -30,6 +30,12 @@ RETRY_HOURS = 24
 REEL_CAP = int(os.environ.get("FB_DAILY_CAP", "30") or 30)      # Facebook allows about 30 API reels a day per page
 WAIT_READY_S = int(os.environ.get("FB_WAIT_S", "300") or 300)
 FB_TAGS = 3              # Facebook: town + topic + page tag (many hashtags do not help there)
+# owner 11 Nov: from 7 Nov Facebook refused most reels (error 368 "we limit how often you can post") - new pages, 13-17 API reels a day.
+# Facebook now gets only the TOP news (urgent, or a topic the page's insights rank best), few a day, spaced; a 368 pauses the page 24 h.
+TOP_PER_DAY = int(os.environ.get("FB_TOP_PER_DAY", "5") or 5)
+GAP_MIN = int(os.environ.get("FB_GAP_MIN", "120") or 120)
+MIN_WEIGHT = float(os.environ.get("FB_MIN_WEIGHT", "0.4") or 0.4)
+PAUSE_HOURS = 24
 
 
 def log(*a):
@@ -74,6 +80,76 @@ def posted_last_day(page, kind="reel"):
         except Exception:
             pass
     return n
+
+
+def _blocked(e):
+    return " 368/" in str(e) or "limit how often" in str(e).lower()
+
+
+def _pause_file(page):
+    return STATE / f"_paused-{page}.json"
+
+
+def paused(page):
+    """'' or why this page's Facebook posting is paused (Facebook limited it - posting again too soon makes it longer)"""
+    try:
+        d = json.loads(_pause_file(page).read_text(encoding="utf-8"))
+        if dt.datetime.fromisoformat(d["until"]) > _now():
+            return f"Facebook limited this page - paused until {d['until'][:16]} UTC"
+    except Exception:
+        pass
+    return ""
+
+
+def _pause(page, why):
+    STATE.mkdir(parents=True, exist_ok=True)
+    until = (_now() + dt.timedelta(hours=PAUSE_HOURS)).isoformat(timespec="seconds")
+    _pause_file(page).write_text(json.dumps({"until": until, "why": str(why)[:300]}, indent=1), encoding="utf-8")
+    log(f"Facebook limited {page} - Facebook posting paused for {PAUSE_HOURS} h (until {until[:16]} UTC); Instagram goes on")
+
+
+def _last_posted(page):
+    last = None
+    for f in STATE.glob(f"{page}-*.json") if STATE.exists() else []:
+        try:
+            d = json.loads(f.read_text(encoding="utf-8"))
+            t = dt.datetime.fromisoformat(d["posted_at"]) if d.get("status") == "posted" else None
+            if t and (last is None or t > last):
+                last = t
+        except Exception:
+            pass
+    return last
+
+
+def top_news(rank):
+    """rank = {"urgent": bool, "weight": insights topic weight, "best": topic is among the page's best topics, "topic": name}"""
+    if not rank:
+        return True, "no rank given"
+    if rank.get("urgent"):
+        return True, "urgent"
+    if rank.get("best"):
+        return True, f"top topic for this page ({rank.get('topic')})"
+    if float(rank.get("weight") or 0) >= MIN_WEIGHT:
+        return True, f"strong topic ({rank.get('topic')} {rank.get('weight')})"
+    return False, f"not a top news on this page's insights ({rank.get('topic')} {rank.get('weight')})"
+
+
+def gate(page, rank, always=False):
+    """'' when this post may go to Facebook now, else why not (owner 11 Nov: top news only, few a day, spaced)"""
+    why = paused(page)
+    if why:
+        return why
+    if always:      # the daily rasipalan
+        return ""
+    ok, why = top_news(rank)
+    if not ok:
+        return why
+    if posted_last_day(page, "reel") + posted_last_day(page, "photos") >= TOP_PER_DAY and not (rank or {}).get("urgent"):
+        return f"Facebook top-news limit {TOP_PER_DAY} a day reached"
+    last = _last_posted(page)
+    if last and (_now() - last).total_seconds() < GAP_MIN * 60 and not (rank or {}).get("urgent"):
+        return f"less than {GAP_MIN} min since the last Facebook post"
+    return ""
 
 
 def fb_caption(cap, page_tag, tags=None):
@@ -220,6 +296,10 @@ def _attempt(page, sid, kind, media, caption, prev, story=True):
         else:
             obj, link, first = publish_photos(pid, tok, media, caption)
     except Exception as e:
+        if _blocked(e):      # Facebook limited the page: pause it, and this post is not tried again (a retry extends the limit)
+            _pause(page, e)
+            _save(page, sid, kind, {"status": "skipped", "why": "Facebook limited the page: " + str(e)[:300], "media": media})
+            return ""
         _save(page, sid, kind, {"status": "failed", "tries": tries, "error": str(e)[:400], "media": media, "caption": caption,
                                 "first_try": prev.get("first_try") or _now().isoformat(timespec="seconds")})
         log(f"NOT posted to Facebook ({page} {sid} {kind}, try {tries}/{MAX_TRIES}; Instagram is fine):", str(e)[:250])
@@ -238,7 +318,7 @@ def _attempt(page, sid, kind, media, caption, prev, story=True):
     return link
 
 
-def share(page, sid, kind, media, caption, page_tag, dry=False, tags=None, story=True):
+def share(page, sid, kind, media, caption, page_tag, dry=False, tags=None, story=True, rank=None, always=False, source_link=""):
     """kind 'reel' (media = [video url]) or 'photos' (media = image urls). Called right after the Instagram post is published.
     Never raises. Returns the Facebook link or ''."""
     try:
@@ -253,6 +333,14 @@ def share(page, sid, kind, media, caption, page_tag, dry=False, tags=None, story
             log(f"already on Facebook ({page} {sid} {kind}) - not posted again:", prev.get("link"))
             return prev.get("link", "")
         cap = fb_caption(caption, page_tag, tags)
+        if source_link:      # owner 11 Nov: Facebook allows links - the article itself, so readers can check the news
+            cap = cap.replace("\n\n#", f"\n🔗 {source_link}\n\n#", 1) if "\n\n#" in cap else cap + f"\n🔗 {source_link}"
+        why = gate(page, rank, always)
+        if why:
+            if not dry:
+                _save(page, sid, kind, {"status": "skipped", "why": why, "media": media})
+            log(f"Facebook: {sid} not posted ({why}) - Instagram only")
+            return ""
         if dry:
             log(f"DRY RUN - not posting to Facebook ({page} {sid} {kind}, {len(media)} file(s)); caption would be:\n{cap}")
             return ""
@@ -275,12 +363,12 @@ def retry_failed(limit=2):
             break
         try:
             d = json.loads(f.read_text(encoding="utf-8"))
-            if d.get("status") != "failed" or int(d.get("tries", 0)) >= MAX_TRIES:
+            if d.get("status") != "failed" or int(d.get("tries", 0)) >= MAX_TRIES or _blocked(d.get("error", "")):
                 continue
             if dt.datetime.fromisoformat(d.get("first_try") or d.get("updated")) < cut:
                 continue
             page, sid, kind = d["page"], d["story"], d.get("kind", "reel")
-            if not creds(page) or (kind == "reel" and posted_last_day(page, "reel") >= REEL_CAP):
+            if not creds(page) or paused(page) or (kind == "reel" and posted_last_day(page, "reel") >= REEL_CAP):
                 continue
             log(f"trying Facebook again: {page} {sid} {kind} (try {int(d.get('tries', 0)) + 1}/{MAX_TRIES})")
             _attempt(page, sid, kind, d["media"], d["caption"], d)

@@ -246,7 +246,7 @@ def main():
     try:      # owner 2 Nov: the same carousel + a story also go to the page's Facebook page (never touches the Instagram post)
         sys.path.insert(0, str(ROOT / "poster"))
         import facebook
-        facebook.share(PAGE, f"rasipalan-{day.isoformat()}", "photos", urls, cap, cfg["tags"][-1], tags=cfg["tags"][:2])
+        facebook.share(PAGE, f"rasipalan-{day.isoformat()}", "photos", urls, cap, cfg["tags"][-1], tags=cfg["tags"][:2], always=True)      # owner 11 Nov: the daily rasipalan always goes to Facebook
     except Exception as e:
         log("Facebook step skipped:", str(e)[:150])
     return 0

@@ -86,6 +86,9 @@ body{font-family:'NST','CT',sans-serif;color:#fff;position:relative}
 #end .e2{background:var(--red,#E3151B);font:900 56px 'CT','NST';padding:16px 46px 8px;border-radius:999px}
 #end .e4{font:800 44px 'NST','CT';color:#fff;background:rgba(0,0,0,.35);padding:12px 30px 6px;border-radius:16px}
 #end .e3{font:800 50px 'CT','NST';color:var(--yellow)}
+#end .e5{font:700 36px 'NST','CT';color:#fff;background:rgba(0,0,0,.45);padding:10px 26px 4px;border-radius:14px}      /* owner 11 Nov: news source */
+#hdr .src{font:800 26px 'NST','CT';color:#fff;background:rgba(255,255,255,.18);padding:4px 12px 0;border-radius:8px;white-space:nowrap;max-width:300px;overflow:hidden;text-overflow:ellipsis}
+#hdr .sub{flex-wrap:nowrap}
 #end .send{display:flex;align-items:center;gap:24px;background:#fff;color:var(--navy);padding:22px 40px 16px;border-radius:28px;font:900 58px/1.2 'CT','NST';box-shadow:0 14px 40px rgba(0,0,0,.5)}
 #end .send .ic{font-size:64px;color:var(--acc);flex:none;margin-top:-6px}
 #end .fol{display:flex;align-items:center;gap:18px;background:var(--acc);font:900 52px 'CT','NST';padding:16px 44px 10px;border-radius:999px}
@@ -497,7 +500,7 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
 <div id="stage">{imgs}</div><div id="shade"></div><div id="flash"></div>
 <img id="plogo" src="{logo}">
 <div id="hdr"><div><div class="nm">{page['name']}</div>
-<div class="sub"><span class="tag">{E(spec.get('cat', ''))}</span><span>{E(spec['date'])}</span></div></div></div>
+<div class="sub"><span class="tag">{E(spec.get('cat', ''))}</span><span>{E(spec['date'])}</span>{('<span class="src">📰 ' + E(spec['source']) + '</span>') if spec.get('source') else ''}</div></div></div>
 <img id="foot" src="{foot}">
 <div id="pin">{R.icon('location-dot')}<span>{E(spec.get('location', ''))}</span></div>
 <div id="hook"><div class="h1">{E(hook[0])}</div><div class="h2">{E(hook[1])}</div></div>
@@ -505,7 +508,7 @@ def build_html(spec, shots, sents, caps, hook_end, end_t, total, page):
 {cards}
 {summary}
 <div id="cap">{cap_html}</div>
-<div id="end"><img src="{logo}"><div class="e1">{E(page['tagline'])}</div><div class="e2">FOLLOW @{page['handle']}</div><div class="e4">📌 Save • தேவைப்படுவோருக்கு Share</div><div class="e3">{E(spec.get('location',''))}</div></div>
+<div id="end"><img src="{logo}"><div class="e1">{E(page['tagline'])}</div><div class="e2">FOLLOW @{page['handle']}</div><div class="e4">📌 Save • தேவைப்படுவோருக்கு Share</div><div class="e3">{E(spec.get('location',''))}</div>{('<div class="e5">ஆதாரம்: ' + E(spec['source_full']) + '</div>') if spec.get('source_full') else ''}</div>
 <script>
 const D={data};
 const cl=x=>Math.max(0,Math.min(1,x)), ease=x=>1-Math.pow(1-x,3), back=x=>{{const c=1.70158,c3=c+1;return 1+c3*Math.pow(x-1,3)+c*Math.pow(x-1,2)}};

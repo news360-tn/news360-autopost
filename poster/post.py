@@ -519,6 +519,42 @@ def hashtags_for(row, cap, reach, prof):
     return out
 
 
+# owner 11 Nov: viewers called some news "fake" - every news now names its source (paper + publish date) on the reel and in the captions
+SOURCE_NAMES = [("dinamalar.com", "தினமலர்"), ("dinamani.com", "தினமணி"), ("dailythanthi.com", "தினத்தந்தி"), ("maalaimalar.com", "மாலைமலர்"),
+                ("dinakaran.com", "தினகரன்"), ("hindutamil.in", "இந்து தமிழ்"), ("puthiyathalaimurai.com", "புதிய தலைமுறை"),
+                ("news18.com", "நியூஸ்18 தமிழ்"), ("vikatan.com", "விகடன்"), ("oneindia.com", "ஒன்இந்தியா"), ("polimernews.com", "பாலிமர் நியூஸ்"),
+                ("sunnews.in", "சன் நியூஸ்"), ("news7tamil.live", "நியூஸ்7 தமிழ்"), ("kalaignarseithigal.com", "கலைஞர் செய்திகள்"),
+                ("thehindu.com", "The Hindu"), ("timesofindia", "Times of India"), ("dtnext.in", "DT Next"),
+                ("newindianexpress.com", "The New Indian Express"), ("tnebltd", "மின்வாரியம்"), ("tangedco", "மின்வாரியம்"), ("tnpdcl", "மின்வாரியம்")]
+
+
+def source_names(row):
+    """the papers this news came from, in Tamil, main source first (unknown sites are left out - never a guessed name)"""
+    out = []
+    for u in [str(row.get("source") or "")] + re.split(r"[\s,]+", str(row.get("other_sources") or row.get("other_source") or "")):
+        n = next((t for d, t in SOURCE_NAMES if d in u.lower()), "")
+        if n and n not in out:
+            out.append(n)
+    return out[:2]
+
+
+def source_credit(row):
+    """(short for the reel header, full line for the end card / caption) - ('', '') when the source site is unknown"""
+    names = source_names(row)
+    if not names:
+        return "", ""
+    pre = "மின்வாரிய அறிவிப்பு • " if is_shutdown(row) and "மின்வாரியம்" not in names else ""
+    day = ""
+    try:
+        d = datetime.fromisoformat(str(row.get("published") or "").replace("Z", "+00:00"))
+        day = f"{d.day} {TAMIL_MONTHS[d.month - 1]} {d.year}"
+    except Exception:
+        pass
+    full = pre + ", ".join(names) + (f" ({day})" if day else "")
+    short = {"The New Indian Express": "Indian Express", "Times of India": "TOI", "நியூஸ்18 தமிழ்": "நியூஸ்18", "நியூஸ்7 தமிழ்": "நியூஸ்7"}
+    return short.get(names[0], names[0]), full      # the reel header has little room - the end card / caption carry the full name
+
+
 def final_caption(row):
     sys.path.insert(0, str(REEL))
     from digits import to_digits
@@ -565,6 +601,12 @@ def final_caption(row):
         bl[k:k] = [line]
         body = "\n".join(bl)
     body = re.sub(r"\n{3,}", "\n\n", body)
+    _, src_full = source_credit(row)
+    if src_full and "📰" not in body:      # owner 11 Nov: the source line right after the 📍 place line
+        bl = body.split("\n")
+        k = next((i + 1 for i, l in enumerate(bl) if l.strip().startswith("📍")), len(bl))
+        bl[k:k] = ["📰 ஆதாரம்: " + src_full]
+        body = "\n".join(bl)
     cap = body + "\n\n" + " ".join(tags[1:] + [TAG])
     if CONFIG.get("ai_label", True) and "AI" not in cap.split("#")[0][-300:]:
         lines = cap.split("\n")
@@ -718,7 +760,7 @@ def reel_spec(row, spec, images):
     hook = [(spec.get("hl1") or "").strip(), (spec.get("hl2") or "").strip()]
     return {"v": 3, "story": row["story_id"], "date": spec["date"], "cat": (spec.get("cat") or "").strip(),
             "location": (spec.get("loc") or ("இராசிபுரம்" if PAGE == "rasipuram" else "நாமக்கல்"))[:60], "voice": "male", "hook": hook,
-            "mini": (row.get("headline_ta") or "").strip(),
+            "mini": (row.get("headline_ta") or "").strip(), "source": source_credit(row)[0], "source_full": source_credit(row)[1],
             "images": [str(p) for p in images], "sentences": sents, "outro": {"say": last},
             "scenes": [{"caption": x["caption"]} for x in sents] + [{"caption": last}]}
 
@@ -943,6 +985,20 @@ def first_comment(token, media_id, sid, k=0):
         log("first comment added", media_id)
     except Exception as e:
         log("first comment not added (post itself is fine):", e)
+
+
+def source_comment(token, media_id, row):
+    """owner 11 Nov: the article link is shown too - Instagram captions cannot carry a working link, so the page's own comment under the
+    post gives the source name, date and link (Facebook gets the link in its caption). Needs the comment permission. Never raises."""
+    try:
+        src = str(row.get("source") or "").strip()
+        _, full = source_credit(row)
+        if not CONFIG.get("source_comment", True) or not media_id or not full or not src.startswith("http"):
+            return
+        ig("POST", f"{media_id}/comments", token, message=f"📰 ஆதாரம்: {full}\n🔗 {src}")
+        log("source comment added", media_id)
+    except Exception as e:
+        log("source comment not added (post itself is fine):", str(e)[:150])
 
 
 def _story_room():
@@ -1302,7 +1358,7 @@ def run_ready_reel(row, page):
             publish_story(token, url, "video")
         except Exception as e:
             log("story not made (post itself is fine):", e)
-        share_facebook(sid, "reel", [url], caption)
+        share_facebook(sid, "reel", [url], caption, row=row)
         bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "permalink": link, "media_id": mid, "media_urls": [url],
                                "caption": caption, "voice": "ready-made", "collab": False, "checks": "ready reel posted as received (owner verified; no duplicate check)"})
         return [("reel", link)]
@@ -1534,7 +1590,7 @@ def run_story_page(row, page):
                 log("DRY RUN carousel - not publishing", urls)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "dry_run": True, "permalink": "",
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab, "checks": note})
-                share_facebook(sid, "photos", urls, caption, dry=True)
+                share_facebook(sid, "photos", urls, caption, dry=True, row=row)
             elif not still_needed(sid, PAGE, "carousel"):
                 log("carousel no longer needed (sheet changed) - not publishing", sid, PAGE)
             else:
@@ -1543,6 +1599,7 @@ def run_story_page(row, page):
                 log("carousel posted", sid, link)
                 USED[PAGE] = USED.get(PAGE, 0) + 1
                 first_comment(token, mid, sid, 0)
+                source_comment(token, mid, row)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "permalink": link, "media_id": mid,
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab_ok, "checks": note})
                 done.append(("carousel", link))
@@ -1551,7 +1608,7 @@ def run_story_page(row, page):
                         publish_story(token, media["story"], "image")
                 except Exception as e:
                     log("story image not made (post itself is fine):", e)
-                fb = share_facebook(sid, "photos", urls, caption)
+                fb = share_facebook(sid, "photos", urls, caption, row=row)
                 if fb:
                     done.append(("facebook", fb))
         except Exception as e:
@@ -1571,7 +1628,7 @@ def run_story_page(row, page):
                 log("DRY RUN reel - not publishing", url)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "reel", "dry_run": True, "permalink": "",
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab, "checks": note})
-                share_facebook(sid, "reel", [url], caption, dry=True)
+                share_facebook(sid, "reel", [url], caption, dry=True, row=row)
             elif not still_needed(sid, PAGE, "reel"):
                 log("reel no longer needed (sheet changed) - not publishing", sid, PAGE)
             else:
@@ -1585,13 +1642,14 @@ def run_story_page(row, page):
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab_ok, "checks": note})
                 done.append(("reel", link))
                 first_comment(token, mid, sid, 1)
+                source_comment(token, mid, row)
                 publish_story(token, url, "video")
                 try:      # owner 27 Oct: the posted story goes to the Namakkal 360 website at once (a website problem never stops posting)
                     import website
                     website.send(row, link)
                 except Exception as e:
                     log("website step skipped:", str(e)[:150])
-                fb = share_facebook(sid, "reel", [url], caption)
+                fb = share_facebook(sid, "reel", [url], caption, row=row)
                 if fb:
                     done.append(("facebook", fb))
         except Exception as e:
@@ -1609,12 +1667,32 @@ def run_story_page(row, page):
     return done
 
 
-def share_facebook(sid, kind, media, caption, dry=False):
-    """owner 2 Nov: everything posted on Instagram also goes to this page's Facebook page, with a Facebook story
-    (Rasipuram posts -> Rasipuram 360 Facebook). kind 'reel' or 'photos'. Never raises - Instagram is never touched."""
+def fb_rank(row):
+    """owner 11 Nov: Facebook gets only the top news - urgent, or a topic this page's insights rank best (research_free/learned.json)"""
+    try:
+        if json.loads(row.get("slides_spec") or "{}").get("ready_reel"):
+            return {"urgent": False, "topic": "owner reel", "weight": 0, "best": True}      # the owner's own reel is always a top post
+        sys.path.insert(0, str(ROOT / "research_free"))
+        import learned
+        head = str(row.get("headline_ta") or "")
+        t = learned.topic(head)
+        d = learned.load()
+        ws = d.get("topic_weight") or {}
+        best = set(d.get("best_topics") or sorted(ws, key=lambda k: -float(ws[k]))[:3])
+        return {"urgent": bool(is_urgent(row)), "topic": t, "weight": round(learned.boost(head), 2), "best": t in best}
+    except Exception as e:
+        log("Facebook rank not read (treated as top news):", str(e)[:120])
+        return None
+
+
+def share_facebook(sid, kind, media, caption, dry=False, row=None):
+    """owner 2 Nov: Instagram posts also go to this page's Facebook page with a story; owner 11 Nov: only the top news (fb_rank),
+    with the article link. kind 'reel' or 'photos'. Never raises - Instagram is never touched."""
     try:
         import facebook
-        return facebook.share(PAGE, sid, kind, media, caption, TAG, dry=dry)
+        src = str((row or {}).get("source") or "").strip()
+        return facebook.share(PAGE, sid, kind, media, caption, TAG, dry=dry, rank=fb_rank(row) if row else None,
+                              source_link=src if src.startswith("http") else "")
     except Exception as e:
         log("Facebook step skipped:", str(e)[:150])
         return ""
