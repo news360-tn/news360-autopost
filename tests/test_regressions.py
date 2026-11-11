@@ -1081,19 +1081,19 @@ class CommentRepliesNeedOwner11Nov(unittest.TestCase):
         self.assertNotIn("viewer_one", out.getvalue())
 
     def test_bridge_has_the_approval_step(self):
-        gs = (ROOT / "apps_script" / "Code.gs").read_text(encoding="utf-8")      # 11 Nov: one file (the owner pastes only Code.gs)
-        self.assertIn("Post reply", gs)                          # 11 Nov: the reply form - posting only from its button (POST)
-        self.assertIn("function commentSubmit_", gs)
-        self.assertNotIn("/replies", gs.split("function commentForm_")[1].split("function commentSubmit_")[0])      # opening the form never posts
-        self.assertIn("type=\"checkbox\"", gs)                  # tick one or more replies
-        self.assertIn("post_text", gs)                          # the full news is shown
+        gs = (ROOT / "apps_script" / "Code.gs").read_text(encoding="utf-8")
+        self.assertIn("FormApp.create", gs)                      # 11 Nov: a Google Form, like the news picks (works anywhere)
+        self.assertIn("setRequireLogin(false)", gs)
+        self.assertIn("setCollectEmail(false)", gs)
+        for fn in ("commentNew_", "commentFormMake_", "commentMail_"):      # building the form and e-mailing it never posts
+            body = gs.split("function %s(" % fn)[1].split("\nfunction ")[0]
+            self.assertNotIn("/replies", body)
+        handle = gs.split("function commentHandle_(")[1].split("\nfunction ")[0]
+        self.assertIn("/replies", handle)                        # the only place a reply is posted: after the owner's submit
+        self.assertIn("function setupCommentPoll_", gs)
+        self.assertIn("COMMENT_ACTIONS", gs)
         code = (ROOT / "apps_script" / "Code.gs").read_text(encoding="utf-8")
-        self.assertIn("commentForm_(e)", code)
         self.assertIn("commentNew_(body)", code)
-
-
-class SourceAtCaptionEnd11Nov(unittest.TestCase):
-    """11 Nov (owner): no source comment under the post; the caption ENDS with 'Source: <paper> (<date>): <article link>'"""
 
     def test_last_line(self):
         row = {"story_id": "RN-1", "headline_ta": "ராசிபுரம் அருகே 9 பேர் கைது", "headline_en": "9 held", "location": "ராசிபுரம்",

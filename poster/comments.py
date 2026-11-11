@@ -18,7 +18,7 @@ sys.path.insert(0, str(HERE.parent / "research_free"))
 import post      # noqa: E402
 
 DAYS = int(os.environ.get("COMMENT_DAYS", "60") or 60)      # owner 11 Nov: the old comments never answered are offered too, not only new ones
-MAX_PER_RUN = int(os.environ.get("COMMENT_MAX", "25") or 25)
+MAX_PER_RUN = int(os.environ.get("COMMENT_MAX", "20") or 20)      # one Google Form holds up to 20 comments
 DRY = os.environ.get("DRY_RUN", "") in ("1", "true", "yes")
 HANDLES = {"namakkal": "namakkal.360", "rasipuram": "rasipuram.360", "coimbatore": "coimbatore.360"}
 
