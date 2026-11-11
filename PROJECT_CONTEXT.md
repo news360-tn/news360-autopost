@@ -65,6 +65,15 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-11 | `d273c5f` | Facebook: only top news by insights (urgent / best topics), 5 a day 2 h apart, 24 h pause on Facebook's limit (368), no retry; news source (paper + date) on the reel header, end card and captions, article link in the Facebook caption and the page's Instagram comment; comment replies e-mailed with 3 options - posted only after the owner's choice (owner 11 Nov) |
+| 2026-11-11 | `07ee52b` | facebook RN-496 |
+| 2026-11-11 | `e35567d` | facebook RN-506 |
+| 2026-11-11 | `95b91ad` | facebook retry |
+| 2026-11-11 | `6be58ee` | powercut: notices written |
+| 2026-11-11 | `88b9cdc` | powercut: notices written |
+| 2026-11-11 | `19b3133` | facebook retry |
+| 2026-11-11 | `901efe9` | facebook RN-493 |
+| 2026-11-11 | `c1fcde0` | facebook RN-492 |
 | 2026-11-11 | `66b9b08` | check: news already on Instagram is skipped before choosing - the post job skipped it but the check chose it again every run (owner 11 Nov) |
 | 2026-11-04 | `01f61a4` | Facebook photo story gets its own fresh upload of the first slide (rasipalan story 400 Invalid parameter, 3-4 Nov) |
 | 2026-11-11 | `2ebfc40` | powercut: notices written |
@@ -86,13 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-10 | `39b150e` | facebook RN-487 |
 | 2026-11-10 | `ab61bbb` | facebook retry |
 | 2026-11-10 | `2cda451` | facebook RN-488 |
-| 2026-11-10 | `dfb3c73` | facebook retry |
-| 2026-11-10 | `d5475f6` | facebook RN-489 |
-| 2026-11-10 | `752bb34` | facebook retry |
-| 2026-11-10 | `8e5212c` | Heartbeat |
-| 2026-11-10 | `2fe351a` | facebook retry |
-| 2026-11-10 | `ac4b7e8` | facebook RN-484 |
-| 2026-11-10 | `d26abf1` | powercut: notices written |
-| 2026-11-10 | `85315ff` | powercut: notices written |
-| 2026-11-10 | `885e67b` | powercut: notices written |
 <!-- recent-changes:end -->
