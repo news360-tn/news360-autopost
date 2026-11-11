@@ -1,22 +1,13 @@
 writing [N]: மேகதாதுவில் அணை கட்ட முயற்சி தடுத்து நிறுத்த முதல்வருக்கு கோ
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (16s)
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  sentence 1 (one-line story) has 17 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
-ok gemini/gemini-3.5-flash (15s)
-attempt 2 gemini/gemini-3.5-flash: 1 problems
+ok gemini/gemini-3.5-flash (18s)
+attempt 1 gemini/gemini-3.5-flash: 1 problems
   hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
@@ -25,47 +16,69 @@ fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 dead for this round: groq/openai/gpt-oss-120b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-ok anthropic/claude-haiku-5-5
+ok groq/qwen/qwen3.8-27b (4s)
+attempt 2 groq/qwen/qwen3.8-27b: 1 problems
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+dead for this round: groq/qwen/qwen3.8-27b
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
 ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 7 problems
-  reel_script says the petition was sent to the Chief Minister as a demand, but the article says the Chief Minister should meet the Prime Minister — the draft's reel_script claims Balasubramanian sent the petition asking the Chief Minister to 'prevent the dam', which is accurate, but the headline phrase 'விவசாயிகள் கோரிக்கை' (farmers' demand) misattributes the petition to farmers in general rather than the Vivasayi Munnetra Kazhagam general secretary
-  reel_script says Balasubramanian 'sent this petition' while the article says he is the general secretary of the Vivasaya Munnetra Kazhagam; the reel_script's claim that the Chief Minister should 'send a team immediately' is attributed to Karnataka CM Sivakumar, which is correct, but the reel_script omits that Vijay is the Tamil Nadu Chief Minister, creating ambiguity
-  slides_spec slide title 'அரசுக்கான' is an incomplete/ungrammatical heading with no clear meaning
-  slides_spec slide 3 line 'அனைத்துக்கட்சித் தலைவர்களுடன் பிரதமரை சந்திக்க வேண்டும்' and the 'உழவர் பெருந்தலைவர் அறிக்கையில் டில்லி பயணம் கோரிக்கை' line mix the statement by Naraayanasamy Naidu's union/leader with Velusamy's statement, conflating two different people's demands in one line
-  caption's 'கோரிக்கை' line attributes the demand to 'தமிழக முதல்வர் விஜய் தெளிவுபடுத்த வேண்டும்' while the article says the CM should convene farmer union representatives and clarify — partly accurate but the caption's 'அனைத்து விவசாய சங்கப் பிரதிநிதிகளை அழைத்து ஆலோசனை நடத்தி' is presented as the petitioner's ask while the article ties it to the petition; acceptable but blends the two statements
-  caption's 👮 emoji is inappropriate for a farmers' demand item and the caption's 'மக்கள் கவனத்திற்கு' line is fine but the caption's English hashtag line 'Mekedatu dam farmers demand Namakkal news' is an added element not in the article
-  reel_script omits the second statement by Velusamy (state farmers' union president) that the Karnataka dam would completely paralyse farmers' livelihood, an important point of the article's second half
-claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
-  fact-check: reel_script says the petition was sent to the Chief Minister as a demand, but the article says the Chief Minister should meet the Prime Minister — the draft's reel_script claims Balasubramanian sent the petition asking the Chief Minister to 'prevent the dam', which is accurate, but the headline phrase 'விவசாயிகள் கோரிக்கை' (farmers' demand) misattributes the petition to farmers in general rather than the Vivasayi Munnetra Kazhagam general secretary
-  fact-check: reel_script says Balasubramanian 'sent this petition' while the article says he is the general secretary of the Vivasaya Munnetra Kazhagam; the reel_script's claim that the Chief Minister should 'send a team immediately' is attributed to Karnataka CM Sivakumar, which is correct, but the reel_script omits that Vijay is the Tamil Nadu Chief Minister, creating ambiguity
-  fact-check: slides_spec slide title 'அரசுக்கான' is an incomplete/ungrammatical heading with no clear meaning
-  fact-check: slides_spec slide 3 line 'அனைத்துக்கட்சித் தலைவர்களுடன் பிரதமரை சந்திக்க வேண்டும்' and the 'உழவர் பெருந்தலைவர் அறிக்கையில் டில்லி பயணம் கோரிக்கை' line mix the statement by Naraayanasamy Naidu's union/leader with Velusamy's statement, conflating two different people's demands in one line
-  fact-check: caption's 'கோரிக்கை' line attributes the demand to 'தமிழக முதல்வர் விஜய் தெளிவுபடுத்த வேண்டும்' while the article says the CM should convene farmer union representatives and clarify — partly accurate but the caption's 'அனைத்து விவசாய சங்கப் பிரதிநிதிகளை அழைத்து ஆலோசனை நடத்தி' is presented as the petitioner's ask while the article ties it to the petition; acceptable but blends the two statements
-  fact-check: caption's 👮 emoji is inappropriate for a farmers' demand item and the caption's 'மக்கள் கவனத்திற்கு' line is fine but the caption's English hashtag line 'Mekedatu dam farmers demand Namakkal news' is an added element not in the article
-  fact-check: reel_script omits the second statement by Velusamy (state farmers' union president) that the Karnataka dam would completely paralyse farmers' livelihood, an important point of the article's second half
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
 ok anthropic/claude-haiku-5-5
 claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
   hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  The reel_script says the Mekedatu dam opposition was raised 'in Namakkal district' (நாமக்கல் மாவட்டத்தில்), but the article only gives Namakkal as the dateline; the place wording is an addition, though it is arguably the dateline location.
+  The slides_spec and reel_script describe the 25+ districts as farmers who 'fear', while the article says they are in fear due to dependence on Cauvery — this is consistent; no issue there.
+  The reel_script attributes the Mekedatu dam request to the CM 'in a petition' and says the CM should clarify — the article says the CM should convene farmer associations and clarify; consistent.
+  The reel_script omits the key fact that the Karnataka CM Shivakumar's claim is that the Supreme Court already gave permission, and that Tamil Nadu's CM should send a delegation immediately — the delegation demand is missing from the reel_script.
+  The reel_script states the Tamil Nadu farmers' association head Veluswamy warned the dam would 'completely paralyse' livelihoods; the article attributes this to the statement of the Uzhavar Perunthalaivar Narayanasamy Naidu's association — the source attribution is merged/confused between two statements.
+  The caption says Veluswamy 'released a statement' (அறிக்கை வெளியிட்டுள்ளார) — the article indicates he released the statement, but the reel_script/caption merge two separate leaders' demands into one sentence, mixing facts from two different statements.
+claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: The reel_script says the Mekedatu dam opposition was raised 'in Namakkal district' (நாமக்கல் மாவட்டத்தில்), but the article only gives Namakkal as the dateline; the place wording is an addition, though it is arguably the dateline location.
+  fact-check: The slides_spec and reel_script describe the 25+ districts as farmers who 'fear', while the article says they are in fear due to dependence on Cauvery — this is consistent; no issue there.
+  fact-check: The reel_script attributes the Mekedatu dam request to the CM 'in a petition' and says the CM should clarify — the article says the CM should convene farmer associations and clarify; consistent.
+  fact-check: The reel_script omits the key fact that the Karnataka CM Shivakumar's claim is that the Supreme Court already gave permission, and that Tamil Nadu's CM should send a delegation immediately — the delegation demand is missing from the reel_script.
+  fact-check: The reel_script states the Tamil Nadu farmers' association head Veluswamy warned the dam would 'completely paralyse' livelihoods; the article attributes this to the statement of the Uzhavar Perunthalaivar Narayanasamy Naidu's association — the source attribution is merged/confused between two statements.
+  fact-check: The caption says Veluswamy 'released a statement' (அறிக்கை வெளியிட்டுள்ளார) — the article indicates he released the statement, but the reel_script/caption merge two separate leaders' demands into one sentence, mixing facts from two different statements.
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 proofread skipped: no free model answered: None
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+real photo: no picture on the source page -> AI pictures
+imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs ~0.0020 pollen, but your available balance is 0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
+imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
+imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Demand to CM to stop Karnataka's Mekedat'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261111-2310","first":"RN-513"}
+posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
 write round: 1 news waiting in the queue (written in priority order)
@@ -73,10 +86,11 @@ candidate filter: collected=1
 to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
 candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
 try (N) manual=False: மேகதாதுவில் அணை கட்ட முயற்சி தடுத்து நிறுத்த முதல்வருக்கு கோ
-NOT filed (N) மேகதாதுவில் அணை கட்ட முயற்சி தடுத்து நிறுத்த முதல்: not Namakkal district news (the story's first lines name another place and no Namakkal place)
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 27 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 1 news waiting to be written
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 1})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 1}, time left 21 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
 All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 0
+stories: 1

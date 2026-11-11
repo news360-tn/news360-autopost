@@ -7,45 +7,105 @@
   "to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)",
   "candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min",
   "try (N) manual=False: மேகதாதுவில் அணை கட்ட முயற்சி தடுத்து நிறுத்த முதல்வருக்கு கோ",
-  "NOT filed (N) மேகதாதுவில் அணை கட்ட முயற்சி தடுத்து நிறுத்த முதல்: not Namakkal district news (the story's first lines name another place and no Namakkal place)",
-  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 27 min",
-  "carousel for 0 of 0 stories, the rest reel only",
-  "filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)",
-  "queue: 1 news waiting to be written",
+  "auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 1})",
+  "posting job started at once",
+  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 1}, time left 21 min",
+  "carousel for 0 of 1 stories, the rest reel only",
+  "filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)",
+  "queue: 0 news waiting to be written",
   "All News sheet: {\"ok\":true,\"added\":0,\"updated\":1}"
  ],
  "llm": [
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "ok gemini/gemini-3.6-flash (16s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.6-flash",
-  "ok gemini/gemini-3.5-flash (15s)",
+  "ok gemini/gemini-3.5-flash (18s)",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.5-flash",
-  "fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)",
-  "poor answer - skipped for 30 min: gemini/gemini-3-flash-preview",
+  "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, plea",
+  "dead for this round: gemini/gemini-3-flash-preview",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "dead for this round: groq/openai/gpt-oss-120b",
+  "ok groq/qwen/qwen3.8-27b (4s)",
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "switching away from groq/qwen/qwen3.8-27b for 10 min",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "dead for this round: groq/qwen/qwen3.8-27b",
   "ok anthropic/claude-haiku-5-5",
   "ok anthropic/claude-haiku-5-5",
   "ok anthropic/claude-haiku-5-5",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok anthropic/claude-haiku-5-5",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok anthropic/claude-haiku-5-5"
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok anthropic/claude-haiku-5-5",
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok anthropic/claude-haiku-5-5",
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash"
  ],
- "stories": []
+ "stories": [
+  {
+   "tamil_headline": "மேகதாதுவில் அணை கட்ட முயற்சியைத் தடுக்க முதல்வருக்கு கோரிக்கை",
+   "english_headline": "Demand to CM to stop Karnataka's Mekedatu dam move and meet the PM",
+   "category": "Government & Services",
+   "location": "Namakkal, Namakkal district",
+   "importance": "Medium",
+   "scope": "district",
+   "post_to": "Namakkal 360 (collab: Rasipuram 360)",
+   "slides_spec": {
+    "v": 3,
+    "cat": "அரசியல் கோரிக்கை",
+    "loc": "நாமக்கல்",
+    "hl1": "மேகதாதுவில் அணை கட்ட தடை கோரிக்கை",
+    "hl2": "முதல்வருக்கு மனு",
+    "slides": [
+     {
+      "title": "என்ன கோரிக்கை?",
+      "lines": [
+       "கர்நாடகா மேகதாதுவில் அணை கட்ட முயற்சிப்பதைத் தடுக்க வேண்டும்",
+       "பிரதமரைச் சந்தித்து வலியுறுத்த வேண்டும்",
+       "விவசாய முன்னேற்ற கழக பொதுச்செயலாளர் பாலசுப்ரமணியன் மனு"
+      ]
+     },
+     {
+      "title": "ஏன் கவலை?",
+      "lines": [
+       "காவிரியை நம்பியுள்ள <b>25</b>க்கும் மேற்பட்ட மாவட்ட",
+       "தமிழக விவசாயிகளின் வாழ்வாதாரத்தில் பெரும் பாதிப்பு ஏற்படும்"
+      ]
+     },
+     {
+      "title": "விவசாயிகள்",
+      "lines": [
+       "அனைத்து விவசாய சங்கப் பிரதிநிதிகளுடன் முதல்வர் ஆலோசனை நடத்த",
+       "அனைத்துக்கட்சித் தலைவர்களை டில்லிக்கு அழைத்துச் செல்ல",
+       "பிரதமர் மோடியை நேரில் சந்தித்து வலியுறுத்த வேண்டும்"
+      ]
+     }
+    ],
+    "carousel": false
+   },
+   "reel_script": "மேகதாதுவில் அணை கட்டும் முயற்சியைத் தடுக்க முதல்வருக்கு கோரிக்கை. விவசாய முன்னேற்ற கழக பொதுச்செயலாளர் பாலசுப்ரமணியன் இந்த மனுவை அனுப்பியுள்ளார். கர்நாடகா முதல்வர் சிவகுமார், மேகதாதுவில் அணை கட்டுவதற்கு தமிழக முதல்வர் உடனடியாக குழுவை அனுப்ப வேண்டும் என்று கூறி வருகிறார். உச்ச நீதிமன்றம் ஏற்கனவே அணை கட்ட அனுமதி அளித்துள்ளதாகவும் அவர் கூறுகிறார். இதனால் காவிரியை நம்பியுள்ள 25க்கும் மேற்பட்ட மாவட்ட விவசாயிகள் அச்சத்தில் உள்ளனர். தமிழக முதல்வர் விஜய், அனைத்து விவசாய சங்கப் பிரதிநிதிகளை அழைத்து ஆலோசனை நடத்த வேண்டும் என்று மனுவில் கோரப்பட்டுள்ளது. உழவர் பெருந்தலைவர் நாராயணசாமி நாயுடுவின் தமிழக விவசாயிகள் சங்க மாநிலத் தலைவர் வேலுசாமியும் இதே கோரிக்கையை வலியுறுத்தியுள்ளார். அனைத்துக்கட்சித் தலைவர்களையும் விவசாயிகள் சங்கப் பிரதிநிதிகளையும் டில்லிக்கு அழைத்துச் சென்று பிரதமர் மோடியை நேரில் சந்திக்க வேண்டும் என்றும் அவர் கோரியுள்ளார். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🌊 மேகதாதுவில் அணை கட்டும் முயற்சியைத் தடுக்க முதல்வருக்கு கோரிக்கை\n\n📰 முழு விவரம்:\nகர்நாடகா அரசு மேகதாதுவில் அணை கட்ட முயற்சிப்பதைத் தடுத்து நிறுத்த, பிரதமரைச் சந்தித்து வலியுறுத்த வேண்டும் என்று விவசாய முன்னேற்ற கழக பொதுச்செயலாளர் பாலசுப்ரமணியன் தமிழக முதல்வருக்கு மனு அனுப்பியுள்ளார். கர்நாடகா முதல்வர் சிவகுமார் அணை கட்ட தமிழக முதல்வர் குழுவை அனுப்ப வேண்டும் என்று கூறி வருகிறார். இது தமிழக விவசாயிகளின் வாழ்வாதாரத்தில் பெரும் பாதிப்பை ஏற்படுத்தும். காவிரியை நம்பியுள்ள 25க்கும் மேற்பட்ட மாவட்ட விவசாயிகள் அச்சத்தில் உள்ளனர். தமிழக விவசாயிகள் சங்க மாநிலத் தலைவர் வேலுசாமியும் அணையைத் தடுக்க முதல்வர் உடனடியாக நடவடிக்கை எடுக்க வேண்டும் என்று வலியுறுத்தியுள்ளார்.\n🗣️ அனைத்து விவசாய சங்க பிரதிநிதிகளுடன் முதல்வர் ஆலோசனை நடத்த வேண்டும்.\n🗣️ அனைத்துக்கட்சித் தலைவர்களையும் விவசாயிகள் சங்கப் பிரதிநிதிகளையும் டில்லிக்கு அழைத்துச் சென்று பிரதமர் மோடியை நேரில் சந்திக்க வேண்டும்.\n\nDemand to stop Mekedatu dam, Namakkal farmers | Namakkal news\n📍 நாமக்கல் | 11 நவம்பர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #NamakkalNews #நாமக்கல்",
+   "prompts": "A farmers' union office in Namakkal town, Namakkal district, Tamil Nadu, where a farmers' association general secretary sends a petition to the Tamil Nadu Chief Minister demanding that the state stop Karnataka's Mekedatu dam move on the Cauvery and press the Prime Minister on it. In the foreground, a wooden desk holds a neatly typed petition letter, a stack of folded papers and a black ink pen, with a plain envelope addressed for the Chief Minister's office. Behind the desk, two or three middle-aged men in white shirts and veshti, seen from behind and slightly blurred, stand together looking at the papers. A yellow-and-green farmers' union banner hangs on a whitewashed wall, and a row of plastic chairs lines the room. Ceiling fans turn overhead, and a window lets in soft daytime light from a cloudy afternoon in Namakkal. The camera sits at waist height, shooting slightly from the side at a 35 mm angle, so the desk, the petition and the men are all sharp while the wall background stays softly out of focus. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nClose-up on a desk in a Namakkal farmers' union office, showing the petition for the Tamil Nadu Chief Minister about stopping Karnataka's Mekedatu dam on the Cauvery. The focus is on a single sheet of printed Tamil letter paper, its text kept unreadable, lying beside a thick brown file folder, a red rubber stamp pad and a steel cup of tea with a faint steam curl. A pair of worn hands in a white shirt sleeve rests at the edge of the frame, seen only from the wrist down. Behind the desk, a faded map of the Cauvery river basin pinned to a cream wall is blurred and out of focus. Soft natural light from a side window falls across the paper and the tea, with a late-morning warmth typical of Tamil Nadu. The camera is set close at table height with a 35 mm lens, shallow depth of field, so only the petition and folder are sharp. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/plea-to-cm-to-stop-attempts-to-build-dam-at-mekedatu/4372935",
+   "published": "2026-11-11T06:57:00+05:30",
+   "verification": "DRAFT (anthropic/claude-haiku-5-5) - NOT CLEAN, held from posting - problems: hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area",
+   "note": "free-model draft anthropic/claude-haiku-5-5, 12 attempt(s), 1 validator problem(s)",
+   "post_time": "right after your reply, same day",
+   "_area": "N",
+   "_score": 2.0,
+   "images": [
+    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794418703/news360/bkxk9swb8zpr6f52uaui.jpg",
+    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794418835/news360/nwvdr6zd5ufyb3wjduy0.jpg"
+   ]
+  }
+ ]
 }
