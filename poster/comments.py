@@ -95,7 +95,7 @@ def run(page):
                           "kind": kind, "options": opts})
     log(f"{page}: {read} comments read, {len(items)} new")      # counts only - the repo is public
     if items and not DRY:
-        r = post.bridge_post("commentNew", {"page": page, "items": items})
+        r = post.bridge_post("commentNew", {"page": page, "items": items, "form_base": post.BRIDGE_URL})
         log(f"{page}: {r.get('added', 0)} sent to the owner for approval")
     elif items:
         log(f"{page}: DRY RUN - {len(items)} would be e-mailed")
@@ -114,7 +114,7 @@ def send_test(page):
     item = {"comment_id": f"TEST-{int(datetime.now(timezone.utc).timestamp())}", "media_id": it.get("id", ""), "permalink": it.get("permalink", ""),
             "post_title": "[TEST - sample e-mail, nothing will be posted] " + cap.split("\n")[0][:100], "post_text": cap[:3000], "user": "sample_viewer",
             "text": text, "kind": kind, "options": opts}
-    r = post.bridge_post("commentNew", {"page": page, "items": [item]})
+    r = post.bridge_post("commentNew", {"page": page, "items": [item], "form_base": post.BRIDGE_URL})
     log(f"{page}: test e-mail sent ({r.get('added', 0)} sample comment, {len(opts)} reply options)")
 
 

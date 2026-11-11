@@ -1115,12 +1115,21 @@ function commentFormKey_(page) {
   return v;
 }
 
+// owner 11 Nov: the e-mailed link opened Google Drive - ScriptApp.getService().getUrl() can give another address than the public web app.
+// The address the GitHub job itself uses (it is known to work) is sent with every commentNew and kept here.
+function commentBase_() {
+  var b = props_().getProperty('COMMENT_FORM_BASE');
+  return b || ScriptApp.getService().getUrl();
+}
+
 function commentFormUrl_(page) {
-  return ScriptApp.getService().getUrl() + '?cf=' + commentFormKey_(page) + '&p=' + encodeURIComponent(page);
+  return commentBase_() + '?cf=' + commentFormKey_(page) + '&p=' + encodeURIComponent(page);
 }
 
 // POST action=commentNew {page, items:[{comment_id, media_id, permalink, post_title, post_text, user, text, kind, options:[..]}]}
 function commentNew_(b) {
+  var base = String(b.form_base || '').split('?')[0];
+  if (/^https:\/\/script\.google\.com\/.+\/exec$/.test(base)) props_().setProperty('COMMENT_FORM_BASE', base);
   var sh = commentsSheet_();
   var seen = {};
   commentsSeen_().forEach(function (id) { seen[id] = true; });
@@ -1179,7 +1188,7 @@ function commentForm_(e) {
       String(e.parameter.cf) !== commentFormKey_(page)) return htmlPage_('<p>This link is not valid.</p>');      // only real pages, only an existing key
   var label = (typeof PAGE_LABEL !== 'undefined' && PAGE_LABEL[page]) || page;
   var rows = commentRows_().filter(function (r) { return r.page === page && !commentOpen_(r); });
-  var action = ScriptApp.getService().getUrl();
+  var action = commentBase_();
   var out = '<h2 style="margin:8px 0">' + esc_(label) + ' - comment replies</h2>';
   if (!rows.length) return htmlPage_(out + '<p>No comments are waiting. ✅</p>');
   out += '<p style="color:#666">' + rows.length + ' waiting. Tick one or more replies (they are joined in the box), edit or type your own, then press ' +
