@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-11 | `4a1562c` | comment replies: one reply form per page (works anywhere) - full news, the comment, 5-7 tick-box replies (one or more) or own text, Post reply / Skip / Hide; nothing is posted before the owner presses Post reply; manual test e-mail (owner 11 Nov) |
+| 2026-11-11 | `79d242f` | powercut: notices written |
 | 2026-11-11 | `83dfb90` | power cuts: a cancellation / postponement / day change is posted (urgent) only when this page posted that cut - never dropped as a duplicate of the original; the power-cut check remembers notices the writer refused (owner 11 Nov) |
 | 2026-11-11 | `939a2ae` | facebook RN-502 |
 | 2026-11-11 | `2710639` | powercut: notices written |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-04 | `01f61a4` | Facebook photo story gets its own fresh upload of the first slide (rasipalan story 400 Invalid parameter, 3-4 Nov) |
 | 2026-11-11 | `2ebfc40` | powercut: notices written |
 | 2026-11-11 | `f160afc` | powercut: notices written |
-| 2026-11-11 | `c0be843` | stories shared |
-| 2026-11-11 | `0020372` | powercut: notices written |
 <!-- recent-changes:end -->
