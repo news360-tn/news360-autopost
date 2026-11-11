@@ -65,6 +65,12 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-11 | `72d7f7f` | caption ends with 'Source: <paper> (<date>): <article link>'; no source comment under the post (owner 11 Nov) |
+| 2026-11-11 | `f89b928` | facebook RN-503 |
+| 2026-11-11 | `bcd92a9` | facebook RN-498 |
+| 2026-11-11 | `a6813ea` | facebook RN-507 |
+| 2026-11-11 | `a30e1b2` | powercut: notices written |
+| 2026-11-11 | `6667341` | powercut: notices written |
 | 2026-11-11 | `f4dc59b` | Apps Script: comment replies merged into Code.gs - the owner pastes one file (owner 11 Nov) |
 | 2026-11-11 | `0695f4c` | facebook RN-504 |
 | 2026-11-11 | `3b4c4d5` | facebook RN-499 |
@@ -89,10 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-11 | `8e41d41` | powercut: notices written |
 | 2026-11-11 | `9dba42f` | rasipalan posted |
 | 2026-11-11 | `a13239b` | facebook RN-491 |
-| 2026-11-11 | `63ae8ea` | facebook retry |
-| 2026-11-11 | `f33c699` | powercut: notices written |
-| 2026-11-11 | `a68cd0d` | facebook retry |
-| 2026-11-11 | `cfd45d3` | facebook RN-490 |
-| 2026-11-11 | `f5799cc` | powercut: notices written |
-| 2026-11-10 | `98bf220` | facebook retry |
 <!-- recent-changes:end -->
