@@ -1061,7 +1061,7 @@ function retryMessage() {
 // The GitHub job (poster/comments.py) sends new Instagram comments with 5-7 reply options (action commentNew). Apps Script makes ONE
 // Google Form per page and batch: for each comment the full news, the comment, tick boxes (one or more replies), an own-reply box and an
 // action (Reply / Skip / Hide). The form link is e-mailed; it opens on any phone or computer, with no Google account needed.
-// NOTHING is posted until the owner presses Submit. commentPoll_ (every 5 minutes, see setupCommentPoll_) reads the answers and posts.
+// NOTHING is posted until the owner presses Submit. commentPoll (every 5 minutes, see setupCommentPoll) reads the answers and posts.
 var COMMENTS_TAB = 'Comments';
 var COMMENT_COLS = ['received_ist', 'page', 'comment_id', 'media_id', 'permalink', 'post_title', 'user', 'text', 'kind',
                     'opt1', 'opt2', 'opt3', 'secret', 'status', 'reply', 'reply_id', 'done_ist', 'received_ms', 'post_text', 'opts_json',
@@ -1185,8 +1185,8 @@ function commentOpen_(r) {
   return '';
 }
 
-// every 5 minutes (set up once by setupCommentPoll_): reads the owner's submitted forms and posts the chosen replies
-function commentPoll_() {
+// every 5 minutes (set up once by setupCommentPoll): reads the owner's submitted forms and posts the chosen replies
+function commentPoll() {
   var lock = LockService.getScriptLock();
   if (!lock.tryLock(20000)) return;
   try {
@@ -1250,9 +1250,9 @@ function commentHandle_(r, resps) {
   set('done_ist', nowIst_());
 }
 
-// run ONCE from the Apps Script editor (Run -> setupCommentPoll_, then Review permissions -> Allow): starts the 5-minute check
-function setupCommentPoll_() {
-  ScriptApp.getProjectTriggers().forEach(function (t) { if (t.getHandlerFunction() === 'commentPoll_') ScriptApp.deleteTrigger(t); });
-  ScriptApp.newTrigger('commentPoll_').timeBased().everyMinutes(5).create();
+// run ONCE from the Apps Script editor (Run -> setupCommentPoll, then Review permissions -> Allow): starts the 5-minute check
+function setupCommentPoll() {
+  ScriptApp.getProjectTriggers().forEach(function (t) { if (t.getHandlerFunction() === 'commentPoll') ScriptApp.deleteTrigger(t); });
+  ScriptApp.newTrigger('commentPoll').timeBased().everyMinutes(5).create();
   Logger.log('Comment replies: the submitted forms are checked every 5 minutes');
 }

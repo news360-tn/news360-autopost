@@ -1090,7 +1090,7 @@ class CommentRepliesNeedOwner11Nov(unittest.TestCase):
             self.assertNotIn("/replies", body)
         handle = gs.split("function commentHandle_(")[1].split("\nfunction ")[0]
         self.assertIn("/replies", handle)                        # the only place a reply is posted: after the owner's submit
-        self.assertIn("function setupCommentPoll_", gs)
+        self.assertIn("function setupCommentPoll", gs)
         self.assertIn("COMMENT_ACTIONS", gs)
         code = (ROOT / "apps_script" / "Code.gs").read_text(encoding="utf-8")
         self.assertIn("commentNew_(body)", code)
