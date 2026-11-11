@@ -65,6 +65,10 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-11 | `f4dc59b` | Apps Script: comment replies merged into Code.gs - the owner pastes one file (owner 11 Nov) |
+| 2026-11-11 | `0695f4c` | facebook RN-504 |
+| 2026-11-11 | `3b4c4d5` | facebook RN-499 |
+| 2026-11-11 | `8d946c7` | powercut: notices written |
 | 2026-11-11 | `d273c5f` | Facebook: only top news by insights (urgent / best topics), 5 a day 2 h apart, 24 h pause on Facebook's limit (368), no retry; news source (paper + date) on the reel header, end card and captions, article link in the Facebook caption and the page's Instagram comment; comment replies e-mailed with 3 options - posted only after the owner's choice (owner 11 Nov) |
 | 2026-11-11 | `07ee52b` | facebook RN-496 |
 | 2026-11-11 | `e35567d` | facebook RN-506 |
@@ -91,8 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-11 | `cfd45d3` | facebook RN-490 |
 | 2026-11-11 | `f5799cc` | powercut: notices written |
 | 2026-11-10 | `98bf220` | facebook retry |
-| 2026-11-10 | `d582ba2` | facebook retry |
-| 2026-11-10 | `39b150e` | facebook RN-487 |
-| 2026-11-10 | `ab61bbb` | facebook retry |
-| 2026-11-10 | `2cda451` | facebook RN-488 |
 <!-- recent-changes:end -->
