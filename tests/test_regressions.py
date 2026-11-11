@@ -1057,7 +1057,9 @@ class CommentRepliesNeedOwner11Nov(unittest.TestCase):
                                 "permalink": "https://instagram.com/p/m1", "comments_count": 3}]}
         fake_comments = {"data": [{"id": "c1", "text": "SECRET-TEXT இது பொய் செய்தி", "username": "viewer_one", "timestamp": now},
                                   {"id": "c2", "text": "old one", "username": "viewer_two", "timestamp": now},
-                                  {"id": "c3", "text": "நன்றி", "username": comments.HANDLES.get("rasipuram", "x"), "timestamp": now}]}
+                                  {"id": "c3", "text": "நன்றி", "username": comments.HANDLES.get("rasipuram", "x"), "timestamp": now},
+                                  {"id": "c4", "text": "answered by hand", "username": "viewer_three", "timestamp": now,
+                                   "replies": {"data": [{"username": comments.HANDLES.get("rasipuram", "x")}]}}]}
         old = (comments.post.bridge_get, comments.post.bridge_post, comments.post.ig, comments.post.ig_account, comments.options_for, comments.DRY)
         comments.post.bridge_get = lambda a, **k: {"token": "t"} if a == "token" else {"ids": ["c2"]}
         comments.post.bridge_post = lambda a, payload: sent.append((a, payload)) or {"ok": True, "added": len(payload["items"])}
@@ -1071,7 +1073,7 @@ class CommentRepliesNeedOwner11Nov(unittest.TestCase):
                 n = comments.run("rasipuram")
         finally:
             (comments.post.bridge_get, comments.post.bridge_post, comments.post.ig, comments.post.ig_account, comments.options_for, comments.DRY) = old
-        self.assertEqual(n, 1)                                   # c2 already handled, c3 is the page's own reply
+        self.assertEqual(n, 1)                                   # c2 handled, c3 the page's own, c4 already answered in the app
         self.assertEqual(sent[0][0], "commentNew")
         self.assertEqual(sent[0][1]["items"][0]["comment_id"], "c1")
         self.assertTrue(all(m == "GET" for m, _ in calls))        # the job only reads - it never posts on Instagram

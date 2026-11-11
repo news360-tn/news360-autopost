@@ -17,7 +17,7 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(HERE.parent / "research_free"))
 import post      # noqa: E402
 
-DAYS = int(os.environ.get("COMMENT_DAYS", "3") or 3)
+DAYS = int(os.environ.get("COMMENT_DAYS", "60") or 60)      # owner 11 Nov: the old comments never answered are offered too, not only new ones
 MAX_PER_RUN = int(os.environ.get("COMMENT_MAX", "25") or 25)
 DRY = os.environ.get("DRY_RUN", "") in ("1", "true", "yes")
 HANDLES = {"namakkal": "namakkal.360", "rasipuram": "rasipuram.360", "coimbatore": "coimbatore.360"}
@@ -52,7 +52,7 @@ def options_for(post_text, comment):
 
 def recent_media(page, tok):
     uid, _ = post.ig_account(tok)
-    m = post.ig("GET", f"{uid}/media", tok, fields="id,caption,timestamp,permalink,comments_count", limit=30)
+    m = post.ig("GET", f"{uid}/media", tok, fields="id,caption,timestamp,permalink,comments_count", limit=100)
     cut = datetime.now(timezone.utc) - timedelta(days=DAYS)
     out = []
     for it in m.get("data", []):
@@ -71,7 +71,7 @@ def run(page):
     items, read, own = [], 0, HANDLES.get(page, "")
     for it in recent_media(page, tok):
         try:
-            c = post.ig("GET", f"{it['id']}/comments", tok, fields="id,text,username,timestamp", limit=50)
+            c = post.ig("GET", f"{it['id']}/comments", tok, fields="id,text,username,timestamp,replies{username}", limit=50)
         except Exception as e:
             log(f"{page}: comments of one post not read ({str(e)[:120]})")
             continue
@@ -79,6 +79,8 @@ def run(page):
             read += 1
             if str(cm.get("id")) in seen or not (cm.get("text") or "").strip() or (cm.get("username") or "") == own:
                 continue
+            if any((x.get("username") or "") == own for x in ((cm.get("replies") or {}).get("data") or [])):
+                continue      # the page already answered it (by hand in the app) - never offered again
             if len(items) >= MAX_PER_RUN:
                 break
             cap = it.get("caption") or ""
