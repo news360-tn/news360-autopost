@@ -1,6 +1,6 @@
 """Comment replies with the owner's approval (owner 11 Nov). NOTHING is posted from here.
 
-Every run: the page's recent posts (last 3 days) -> comments not handled before -> 3 short Tamil reply options each (AI) ->
+Every run: the page's recent posts (last 60 days, never answered) -> comments not handled before -> 5-7 short Tamil reply options each (AI) ->
 sent to the Apps Script bridge (action commentNew), which keeps them in the private "Comments" tab and e-mails the owner.
 The owner picks / edits a reply on the confirmation page; only Apps Script posts it (apps_script/Code.gs, comment replies part).
 
@@ -24,7 +24,8 @@ HANDLES = {"namakkal": "namakkal.360", "rasipuram": "rasipuram.360", "coimbatore
 
 SYSTEM = """You help the owner of a Tamil local-news Instagram page reply to viewers' comments. You NEVER post anything - the owner chooses.
 Return JSON: {"kind": one of "question" | "doubt_or_fake_claim" | "complaint" | "praise" | "info_from_viewer" | "spam_or_abuse" | "other",
-"options": [3 different replies]}.
+"options": [5 to 7 different replies - different tones: thanks + source, a direct answer from the post, "we will check and update",
+asking for more details, an invitation to share / follow, a very short thank-you]}.
 Rules for every reply:
 - Tamil, polite, warm, short (at most 2 sentences, under 220 characters). No hashtags, no links, no emoji spam (one emoji at most).
 - Use ONLY facts in the post text given below. Never add a new fact, number, name or promise. If the answer is not in the post, say we will check and update.
@@ -45,8 +46,8 @@ def options_for(post_text, comment):
     try:
         d, model = llm.ask_json(SYSTEM, user)
     except Exception:
-        d, model = llm.ask_claude(SYSTEM, user, max_tokens=800)
-    opts = [str(o).strip()[:400] for o in (d.get("options") or []) if str(o).strip()][:3]
+        d, model = llm.ask_claude(SYSTEM, user, max_tokens=1500)
+    opts = [str(o).strip()[:400] for o in (d.get("options") or []) if str(o).strip()][:7]
     return str(d.get("kind") or "other"), opts
 
 
@@ -90,7 +91,7 @@ def run(page):
                 log(f"{page}: reply options not made for one comment ({str(e)[:120]}) - tried again next run")
                 continue
             items.append({"comment_id": cm["id"], "media_id": it["id"], "permalink": it.get("permalink", ""),
-                          "post_title": cap.split("\n")[0][:120], "user": cm.get("username", ""), "text": cm["text"],
+                          "post_title": cap.split("\n")[0][:120], "post_text": cap[:3000], "user": cm.get("username", ""), "text": cm["text"],
                           "kind": kind, "options": opts})
     log(f"{page}: {read} comments read, {len(items)} new")      # counts only - the repo is public
     if items and not DRY:
@@ -101,7 +102,26 @@ def run(page):
     return len(items)
 
 
+def send_test(page):
+    """owner 11 Nov: ONE sample e-mail so the owner sees how it looks - a made-up viewer comment on the page's latest post, with 5-7 real
+    AI reply options. The comment id starts with TEST-, so no reply can ever be posted from it (Instagram refuses an unknown id)."""
+    tok = post.bridge_get("token", page=page)["token"]
+    uid, _ = post.ig_account(tok)
+    it = (post.ig("GET", f"{uid}/media", tok, fields="id,caption,permalink", limit=1).get("data") or [{}])[0]
+    cap = it.get("caption") or ""
+    text = "இது உண்மையான செய்தியா? எந்த பேப்பரில் வந்தது?"
+    kind, opts = options_for(cap, text)
+    item = {"comment_id": f"TEST-{int(datetime.now(timezone.utc).timestamp())}", "media_id": it.get("id", ""), "permalink": it.get("permalink", ""),
+            "post_title": "[TEST - sample e-mail, nothing will be posted] " + cap.split("\n")[0][:100], "post_text": cap[:3000], "user": "sample_viewer",
+            "text": text, "kind": kind, "options": opts}
+    r = post.bridge_post("commentNew", {"page": page, "items": [item]})
+    log(f"{page}: test e-mail sent ({r.get('added', 0)} sample comment, {len(opts)} reply options)")
+
+
 if __name__ == "__main__":
+    if os.environ.get("TEST_EMAIL", "") == "1":      # manual run only: one sample e-mail for the first page
+        send_test(sys.argv[1])
+        sys.exit(0)
     total = 0
     for pg in sys.argv[1:]:
         try:

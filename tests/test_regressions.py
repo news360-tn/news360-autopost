@@ -1082,11 +1082,13 @@ class CommentRepliesNeedOwner11Nov(unittest.TestCase):
 
     def test_bridge_has_the_approval_step(self):
         gs = (ROOT / "apps_script" / "Code.gs").read_text(encoding="utf-8")      # 11 Nov: one file (the owner pastes only Code.gs)
-        self.assertIn("Post this reply", gs)                     # posting only from the confirmation page's button (POST)
+        self.assertIn("Post reply", gs)                          # 11 Nov: the reply form - posting only from its button (POST)
         self.assertIn("function commentSubmit_", gs)
-        self.assertNotIn("/replies", gs.split("function commentPage_")[1].split("function commentSubmit_")[0])      # the GET page never posts
+        self.assertNotIn("/replies", gs.split("function commentForm_")[1].split("function commentSubmit_")[0])      # opening the form never posts
+        self.assertIn("type=\"checkbox\"", gs)                  # tick one or more replies
+        self.assertIn("post_text", gs)                          # the full news is shown
         code = (ROOT / "apps_script" / "Code.gs").read_text(encoding="utf-8")
-        self.assertIn("commentPage_(e)", code)
+        self.assertIn("commentForm_(e)", code)
         self.assertIn("commentNew_(body)", code)
 
 

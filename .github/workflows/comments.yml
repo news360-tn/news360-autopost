@@ -10,6 +10,9 @@ on:
       dry_run:
         description: "1 = make the options but send / e-mail nothing"
         default: "0"
+      test_email:
+        description: "1 = send ONE sample e-mail (a made-up comment on the latest post) - nothing is posted"
+        default: "0"
 permissions:
   contents: read
 concurrency:
@@ -26,6 +29,7 @@ jobs:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || '0' }}
+      TEST_EMAIL: ${{ github.event_name == 'workflow_dispatch' && inputs.test_email || '0' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
