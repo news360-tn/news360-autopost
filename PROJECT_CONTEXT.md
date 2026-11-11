@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-11 | `bbd7bca` | comments: old unanswered comments offered too (60 days, 100 posts); comments the page already answered in the app are skipped (owner 11 Nov) |
+| 2026-11-11 | `83ae709` | powercut: notices written |
 | 2026-11-11 | `72d7f7f` | caption ends with 'Source: <paper> (<date>): <article link>'; no source comment under the post (owner 11 Nov) |
 | 2026-11-11 | `f89b928` | facebook RN-503 |
 | 2026-11-11 | `bcd92a9` | facebook RN-498 |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-11 | `1f861f6` | powercut: notices written |
 | 2026-11-11 | `737dc5e` | stories shared |
 | 2026-11-11 | `8e41d41` | powercut: notices written |
-| 2026-11-11 | `9dba42f` | rasipalan posted |
-| 2026-11-11 | `a13239b` | facebook RN-491 |
 <!-- recent-changes:end -->
