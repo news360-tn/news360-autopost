@@ -1202,6 +1202,16 @@ def ig_recent(page):
     return IG_RECENT[page]
 
 
+def _ig_dup_for_check(row, page):
+    """the same Instagram-duplicate rule as run_story (owner reels and a page's own earlier half-post are never duplicates)"""
+    try:
+        if json.loads(row.get("slides_spec") or "{}").get("ready_reel") or row.get(page + "_link") or row.get("reel_link"):
+            return ""
+        return ig_duplicate(row, page)
+    except Exception:
+        return ""
+
+
 def minutes_since_last_post(page):
     """minutes since this page's newest Instagram post (1e9 when unknown) - owner 2 Nov: posts are spread, never a burst"""
     try:
@@ -1773,6 +1783,12 @@ def main():
                     ids, waiting, slots = [], [], {}
                     for r in (pick_all(rows) if n else []):
                         todo = [p for p in pages_of(r) if not page_done(r, p)]
+                        # owner 11 Nov: the post job skips news already on Instagram but nothing records it, so the check chose the
+                        # same 3 (RN-220/236/295) every 5 minutes from 6 Nov and the 41 others waited - the same test runs here first
+                        dups = [p for p in todo if _ig_dup_for_check(r, p)]
+                        if todo and len(dups) == len(todo):
+                            log("  ", r["story_id"], "skipped: already on Instagram", dups)
+                            continue
                         pg = [p for p in todo if p not in full and left.get(p, per_story) >= per_story
                               and (is_urgent(r) or USED.get(p, 0) < SOFT_CAP)]      # owner 2 Nov (review): over the cap only urgent news
                         if todo and not pg:

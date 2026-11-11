@@ -938,6 +938,27 @@ class FacebookEverything2Nov(unittest.TestCase):
             self.assertIn(k, wf)
 
 
+class CheckSkipsInstagramDuplicates11Nov(unittest.TestCase):
+    """11 Nov: RN-220/236/295 were already on Instagram; the post job skipped them but the check chose them again every 5 minutes
+    (6-11 Nov) and every other ready news waited. The check now runs the same duplicate rule first."""
+
+    def test_same_rule_as_the_post_job(self):
+        old = post.ig_duplicate
+        post.ig_duplicate = lambda row, page: "2026-11-07T05:34:17+0000" if row.get("story_id") == "RN-236" else ""
+        try:
+            self.assertTrue(post._ig_dup_for_check({"story_id": "RN-236", "slides_spec": "{}"}, "coimbatore"))
+            self.assertEqual(post._ig_dup_for_check({"story_id": "RN-300", "slides_spec": "{}"}, "coimbatore"), "")
+            self.assertEqual(post._ig_dup_for_check({"story_id": "RN-236", "slides_spec": json.dumps({"ready_reel": True})}, "coimbatore"), "")
+            self.assertEqual(post._ig_dup_for_check({"story_id": "RN-236", "slides_spec": "{}", "reel_link": "x"}, "coimbatore"), "")
+        finally:
+            post.ig_duplicate = old
+
+    def test_check_loop_uses_it_before_choosing(self):
+        src = (ROOT / "poster" / "post.py").read_text(encoding="utf-8")
+        loop = src[src.index("for r in (pick_all(rows) if n else []):"):]
+        self.assertLess(loop.index("_ig_dup_for_check"), loop.index("ids.append"))
+
+
 if __name__ == "__main__":
     unittest.main()
 
