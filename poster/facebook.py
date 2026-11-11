@@ -333,7 +333,7 @@ def share(page, sid, kind, media, caption, page_tag, dry=False, tags=None, story
             log(f"already on Facebook ({page} {sid} {kind}) - not posted again:", prev.get("link"))
             return prev.get("link", "")
         cap = fb_caption(caption, page_tag, tags)
-        if source_link:      # owner 11 Nov: Facebook allows links - the article itself, so readers can check the news
+        if source_link and source_link not in cap:      # owner 11 Nov: Facebook allows links - the article itself, so readers can check the news
             cap = cap.replace("\n\n#", f"\n🔗 {source_link}\n\n#", 1) if "\n\n#" in cap else cap + f"\n🔗 {source_link}"
         why = gate(page, rank, always)
         if why:

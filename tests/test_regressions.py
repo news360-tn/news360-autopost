@@ -1033,9 +1033,7 @@ class NewsSourceShown11Nov(unittest.TestCase):
         self.assertEqual(post.source_credit(self.row(source="https://unknown-blog.example/x")), ("", ""))
 
     def test_caption_line_after_place(self):
-        lines = post.final_caption(self.row()).split("\n")
-        k = next(i for i, l in enumerate(lines) if l.startswith("📍"))
-        self.assertEqual(lines[k + 1], "📰 ஆதாரம்: தினமலர் (10 நவம்பர் 2026)")
+        self.assertTrue(post.final_caption(self.row()).endswith("📰 Source: தினமலர் (10 நவம்பர் 2026): https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/x/1"))
         self.assertNotIn("📰", post.final_caption(self.row(source="https://unknown-blog.example/x")))
 
     def test_reel_shows_it(self):
@@ -1090,22 +1088,18 @@ class CommentRepliesNeedOwner11Nov(unittest.TestCase):
         self.assertIn("commentNew_(body)", code)
 
 
-class SourceLinkComment11Nov(unittest.TestCase):
-    """11 Nov: the article link is shown too - as the page's own comment on Instagram (captions cannot carry a working link)"""
+class SourceAtCaptionEnd11Nov(unittest.TestCase):
+    """11 Nov (owner): no source comment under the post; the caption ENDS with 'Source: <paper> (<date>): <article link>'"""
 
-    def test_comment_text_and_skips(self):
-        sent = []
-        old = post.ig
-        post.ig = lambda m, path, tok, **k: sent.append((m, path, k.get("message")))
-        try:
-            row = {"source": "https://www.dinamalar.com/news/x/1", "published": "2026-11-10T09:00:00+05:30", "importance": "Medium",
-                   "headline_ta": "செய்தி", "category": "Crime"}
-            post.source_comment("t", "m1", row)
-            post.source_comment("t", "m2", dict(row, source="https://unknown.example/x"))      # unknown site: nothing posted
-            post.source_comment("t", "", row)
-        finally:
-            post.ig = old
-        self.assertEqual(sent, [("POST", "m1/comments", "📰 ஆதாரம்: தினமலர் (10 நவம்பர் 2026)\n🔗 https://www.dinamalar.com/news/x/1")])
+    def test_last_line(self):
+        row = {"story_id": "RN-1", "headline_ta": "ராசிபுரம் அருகே 9 பேர் கைது", "headline_en": "9 held", "location": "ராசிபுரம்",
+               "source": "https://www.dinamalar.com/news/x/1", "published": "2026-11-10T09:00:00+05:30", "importance": "Medium",
+               "caption": "ராசிபுரம் அருகே 9 பேர் கைது\n\n📍 ராசிபுரம் | 10 நவம்பர் 2026\n\n#Rasipuram360", "category": "Crime"}
+        cap = post.final_caption(row)
+        self.assertEqual(cap.split("\n")[-1], "📰 Source: தினமலர் (10 நவம்பர் 2026): https://www.dinamalar.com/news/x/1")
+        self.assertEqual(cap.count("Source:"), 1)
+        self.assertNotIn("Source:", post.final_caption(dict(row, source="https://unknown.example/x")))
+        self.assertFalse(hasattr(post, "source_comment"))
 
 
 if __name__ == "__main__":

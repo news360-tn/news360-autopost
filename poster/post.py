@@ -601,12 +601,6 @@ def final_caption(row):
         bl[k:k] = [line]
         body = "\n".join(bl)
     body = re.sub(r"\n{3,}", "\n\n", body)
-    _, src_full = source_credit(row)
-    if src_full and "📰" not in body:      # owner 11 Nov: the source line right after the 📍 place line
-        bl = body.split("\n")
-        k = next((i + 1 for i, l in enumerate(bl) if l.strip().startswith("📍")), len(bl))
-        bl[k:k] = ["📰 ஆதாரம்: " + src_full]
-        body = "\n".join(bl)
     cap = body + "\n\n" + " ".join(tags[1:] + [TAG])
     if CONFIG.get("ai_label", True) and "AI" not in cap.split("#")[0][-300:]:
         lines = cap.split("\n")
@@ -616,6 +610,14 @@ def final_caption(row):
         else:
             lines += ["", AI_LINE]
         cap = "\n".join(lines)
+    # owner 11 Nov: the source at the very END of the caption - "Source: <paper>: <article link>" (not as a comment)
+    _, src_full = source_credit(row)
+    src = str(row.get("source") or "").strip()
+    if src_full:
+        line = f"📰 Source: {src_full}" + (f": {src}" if src.startswith("http") else "")
+        if len(cap) + len(line) + 2 > 2200:      # Instagram caption limit: the link is dropped before the caption is cut
+            line = f"📰 Source: {src_full}"
+        cap = cap.rstrip() + "\n\n" + line
     return cap
 
 
@@ -985,20 +987,6 @@ def first_comment(token, media_id, sid, k=0):
         log("first comment added", media_id)
     except Exception as e:
         log("first comment not added (post itself is fine):", e)
-
-
-def source_comment(token, media_id, row):
-    """owner 11 Nov: the article link is shown too - Instagram captions cannot carry a working link, so the page's own comment under the
-    post gives the source name, date and link (Facebook gets the link in its caption). Needs the comment permission. Never raises."""
-    try:
-        src = str(row.get("source") or "").strip()
-        _, full = source_credit(row)
-        if not CONFIG.get("source_comment", True) or not media_id or not full or not src.startswith("http"):
-            return
-        ig("POST", f"{media_id}/comments", token, message=f"📰 ஆதாரம்: {full}\n🔗 {src}")
-        log("source comment added", media_id)
-    except Exception as e:
-        log("source comment not added (post itself is fine):", str(e)[:150])
 
 
 def _story_room():
@@ -1599,7 +1587,6 @@ def run_story_page(row, page):
                 log("carousel posted", sid, link)
                 USED[PAGE] = USED.get(PAGE, 0) + 1
                 first_comment(token, mid, sid, 0)
-                source_comment(token, mid, row)
                 bridge_post("posted", {"row": row["row"], "page": PAGE, "kind": "carousel", "permalink": link, "media_id": mid,
                                        "media_urls": urls, "caption": caption, "slides": len(urls), "collab": collab_ok, "checks": note})
                 done.append(("carousel", link))
@@ -1642,7 +1629,6 @@ def run_story_page(row, page):
                                        "media_urls": [url], "caption": caption, "voice": voice, "collab": collab_ok, "checks": note})
                 done.append(("reel", link))
                 first_comment(token, mid, sid, 1)
-                source_comment(token, mid, row)
                 publish_story(token, url, "video")
                 try:      # owner 27 Oct: the posted story goes to the Namakkal 360 website at once (a website problem never stops posting)
                     import website
