@@ -2,289 +2,50 @@
  "log": [
   "earlier stories still waiting for images: []",
   "instagram check: 100 recent posts read from both pages",
-  "write round: 13 news waiting in the queue (written in priority order)",
-  "candidate filter: already filed=9, collected=4",
-  "to write: 0 Rasipuram + 4 other district candidates (max 200 + 200 stories)",
-  "candidates waiting: 0 Rasipuram, 4 Namakkal; time left 29 min",
-  "try (N) manual=False: சர்ச்சைக்குரிய 2,112 நூல்கள் நாமக்கல் நூலகத்திற்கு சப்ளை",
-  "try (N) manual=False: அரசு பள்ளி மாணவர்களுக்கு ஆங்கிலம் பேசும் திறன் வளர்க்க ஆசிரி",
-  "try (N) manual=False: கை கொடுக்குமா பொங்கல் பண்டிகை ஜவுளி உற்பத்தியாளர்கள் எதிர்பா",
-  "auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 1})",
-  "posting job started at once",
+  "write round: 1 news waiting in the queue (written in priority order)",
+  "candidate filter: collected=1",
+  "to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)",
+  "candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min",
   "try (N) manual=False: மேகதாதுவில் அணை கட்ட முயற்சி தடுத்து நிறுத்த முதல்வருக்கு கோ",
-  "auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'fal-ai/flux/schnell': 2})",
-  "auto images: 1 of 1 stories ({'fal-ai/flux/dev': 3, 'fal-ai/flux/schnell': 3})",
   "NOT filed (N) மேகதாதுவில் அணை கட்ட முயற்சி தடுத்து நிறுத்த முதல்: not Namakkal district news (the story's first lines name another place and no Namakkal place)",
-  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 3}, time left 17 min",
-  "carousel for 0 of 3 stories, the rest reel only",
-  "filed: 0 Rasipuram + 3 Namakkal (targets 200 + 200)",
+  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 27 min",
+  "carousel for 0 of 0 stories, the rest reel only",
+  "filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)",
   "queue: 1 news waiting to be written",
-  "write_stories.yml started",
-  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":4}"
+  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":1}"
  ],
  "llm": [
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "ok gemini/gemini-3.6-flash (13s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "ok gemini/gemini-3.6-flash (16s)",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.6-flash",
-  "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "switching away from gemini/gemini-3.6-flash for 10 min",
-  "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "ok gemini/gemini-3.6-flash (16s)",
+  "ok gemini/gemini-3.5-flash (15s)",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.5-flash",
-  "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "dead for this round: gemini/gemini-3.5-flash",
-  "ok gemini/gemini-3-flash-preview (4s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok gemini/gemini-3-flash-preview (5s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "switching away from gemini/gemini-3.5-flash for 10 min",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, plea",
-  "dead for this round: gemini/gemini-3-flash-preview",
-  "ok groq/openai/gpt-oss-120b (5s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok groq/openai/gpt-oss-120b (3s)",
-  "ok gemini/gemini-3-flash-preview (12s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok groq/openai/gpt-oss-120b (3s)",
   "fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)",
   "poor answer - skipped for 30 min: gemini/gemini-3-flash-preview",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "dead for this round: groq/openai/gpt-oss-120b",
-  "ok groq/qwen/qwen3.8-27b (5s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "ok groq/qwen/qwen3.8-27b (1s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok groq/qwen/qwen3.8-27b (4s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
   "switching away from groq/qwen/qwen3.8-27b for 10 min",
   "ok anthropic/claude-haiku-5-5",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "dead for this round: gemini/gemini-3.6-flash",
-  "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "dead for this round: gemini/gemini-3.5-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "ok anthropic/claude-haiku-5-5",
   "ok anthropic/claude-haiku-5-5",
   "ok anthropic/claude-haiku-5-5",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "ok anthropic/claude-haiku-5-5"
  ],
- "stories": [
-  {
-   "tamil_headline": "நாமக்கல்லில் அரசு பள்ளி மாணவர்களுக்கு 'ஸ்பீக்கத்தான்-30' ஆங்கிலப் பயிற்சி: ஆட்சியர் தொடக்கம்",
-   "english_headline": "Collector Madhubalan inaugurates 'Speakathon-30' English training manual for govt school teachers in Namakkal",
-   "category": "Education",
-   "location": "Namakkal city, Namakkal district",
-   "importance": "Medium",
-   "scope": "district",
-   "post_to": "Namakkal 360 (collab: Rasipuram 360)",
-   "slides_spec": {
-    "v": 3,
-    "cat": "கல்விச் செய்தி",
-    "loc": "நாமக்கல்",
-    "hl1": "நாமக்கல்: அரசுப் பள்ளி மாணவர்களுக்கு",
-    "hl2": "ஸ்பீக்கத்தான்-30 பயிற்சி",
-    "slides": [
-     {
-      "title": "என்ன நிகழ்ச்சி?",
-      "lines": [
-       "நாமக்கல் <b>DIET</b>-ல் 1 நாள் மாவட்ட பயிற்சி",
-       "<b>30</b> ஆசிரியர்களுக்கு ஆங்கிலப் பயிற்சி",
-       "ஆட்சியர் <b>மதுபாலன்</b> கையேடு வெளியீடு"
-      ]
-     },
-     {
-      "title": "ஸ்பீக்கத்தான்-30",
-      "lines": [
-       "<b>ஸ்பீக்கத்தான்-30</b> கையேடு DIET வடிவமைப்பு",
-       "ஒரு மாதத்திற்கு <b>30</b> ஆங்கிலப் பயிற்சிகள்",
-       "மாணவர்களின் ஆங்கிலப் பேச்சுத்திறன் வளரும்"
-      ]
-     },
-     {
-      "title": "ஆன்லைன் பயிற்சி",
-      "lines": [
-       "<b>8ஆம் வகுப்பு</b> மாணவர்களுக்குத் தேர்வுப் பயிற்சி",
-       "தேசிய வருமான வழி திறன் ஊக்கத்தொகை தேர்வு",
-       "<b>DIET</b> ஸ்டுடியோ மூலம் ஆன்லைன் பயிற்சி"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "நாமக்கல்லில் அரசு பள்ளி மாணவர்களுக்கு ஆங்கிலம் பேசும் திறன் வளர்க்க புதிய பயிற்சி தொடங்கப்பட்டது. நாமக்கல் மாவட்ட ஆசிரியர் கல்வி மற்றும் பயிற்சி நிறுவனத்தில் 30 ஆசிரியர்களுக்கு மாவட்ட அளவிலான ஒரு நாள் பயிற்சி நடைபெற்றது. இந்த நிகழ்ச்சியில் மாவட்ட ஆட்சியர் மதுபாலன் கலந்து கொண்டு ஸ்பீக்கத்தான்-30 என்ற பயிற்சிக் கையேட்டை வெளியிட்டுப் பயிற்சியைத் தொடங்கி வைத்தார். அரசு பள்ளி மாணவர்கள் ஆங்கிலம் பேசுவதற்காக ஒரு மாதத்திற்கு 30 பயிற்சிகள் அடங்கிய தொகுப்பை நாமக்கல் பயிற்சி நிறுவனம் வடிவமைத்துள்ளது. இதன் மூலம் மாணவர்களுக்குப் பயிற்சி அளிக்கும் போது அவர்களின் பேச்சுத்திறன், தன்னம்பிக்கை மற்றும் படைப்பாற்றல் வளரும் என ஆட்சியர் தெரிவித்தார். மேலும் 8ஆம் வகுப்பு மாணவர்களுக்கான தேசிய வருமான வழி திறன் ஊக்கத்தொகை தேர்வுக்கான இணையவழி பயிற்சியையும் ஆட்சியர் தொடங்கி வைத்தார். இந்நிகழ்ச்சியில் முதன்மை கல்வி அலுவலர் மாதவன், பயிற்சி நிறுவன முதல்வர் செல்வம் உள்ளிட்ட அதிகாரிகள் கலந்து கொண்டனர். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "📚 நாமக்கல்லில் அரசு பள்ளி மாணவர்களுக்காக 'ஸ்பீக்கத்தான்-30' ஆங்கிலப் பயிற்சித் திட்டம் தொடக்கம்\n\n📰 முழு விவரம்:\nநாமக்கல் மாவட்ட ஆசிரியர் கல்வி மற்றும் பயிற்சி நிறுவனத்தில் அரசு பள்ளி மாணவர்களின் ஆங்கிலப் பேச்சுத்திறனை மேம்படுத்த 30 ஆசிரியர்களுக்கு மாவட்ட அளவிலான பயிற்சி அளிக்கப்பட்டது.\nமாவட்ட ஆட்சியர் மதுபாலன் 'ஸ்பீக்கத்தான்-30' என்ற பயிற்சிக் கையேட்டை வெளியிட்டுத் தொடங்கி வைத்தார். ஒரு மாதத்திற்கு 30 ஆங்கிலப் பயிற்சிகள் இதில் உருவாக்கப்பட்டுள்ளன.\nமேலும், 8ஆம் வகுப்பு மாணவர்களுக்கான தேசிய வருமான வழி திறன் ஊக்கத்தொகை தேர்வுக்குத் தயார் செய்யும் இணையவழி பயிற்சியையும் ஆட்சியர் தொடங்கி வைத்தார்.\n📍 இடம்: மாவட்ட ஆசிரியர் கல்வி மற்றும் பயிற்சி நிறுவனம், நாமக்கல்\n🗓️ நாள்: 11 நவம்பர் 2026\nℹ️ மக்கள் கவனத்திற்கு: அரசுப் பள்ளி மாணவர்களுக்குச் செயல்பாட்டு வழியில் ஆங்கிலப் பேச்சுப் பயிற்சி அளிக்கப்பட உள்ளது.\n\nஆசிரியர்கள் மற்றும் பெற்றோருக்கு Share செய்யுங்கள்.\n\nSpeakathon-30 English training for govt school students in Namakkal | Namakkal news\n📍 Namakkal city, Namakkal | 11 November 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #Education #NamakkalNews #நாமக்கல்",
-   "prompts": "Collector Madhubalan presents the Speakathon-30 training manual to Institute Principal Selvam, while officials stand behind them, inside the main hall of the District Teacher Education and Training Institute in Namakkal. The hall is a rectangular room with rows of wooden chairs, a raised podium at the front, and a large whiteboard on the side. From behind, Chief Education Officer Madhavan, Early Education Officer Pachamuthu, speaker Sumathi and Deputy Principal Santosham watch, their khaki shirts and white shirts visible. Thirty teachers sit in the second row, notebooks open, listening attentively. Soft daylight filters through high windows, casting gentle shadows; the camera is positioned low, 35 mm lens, looking slightly upward to capture the handover and the crowd. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA close‑up of the newly released Speakathon-30 training manual lies open on a polished wooden table in the same institute hall. The manual’s bright cover, without readable text, shows a stylised speech bubble and the number 30, while the pages display diagrams of speaking exercises. Beside the book rests a metal microphone on a stand and a folded agenda. The background shows the blurred edge of the podium and the faint outline of chairs, confirming the setting. The lighting is even, daylight from the windows illuminating the surface, with a slight reflection on the cover. The camera is positioned directly above the table, using a 35 mm lens to capture the manual and its surrounding objects. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://tamilmaninewstoday.com/tamilnadu/231479/",
-   "published": "2026-11-11T12:11:16+00:00",
-   "verification": "DRAFT (gemini/gemini-3.6-flash) - fact-check: no problems found",
-   "note": "free-model draft gemini/gemini-3.6-flash, 1 attempt(s), 0 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 4.54,
-   "images": [
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794417172/news360/bk5nq3ai5drvnqruh5fh.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794417410/news360/kkw5v4ksnb3krrcbftyj.jpg"
-   ]
-  },
-  {
-   "tamil_headline": "நாமக்கல் நூலகத்துக்கு சர்ச்சைக்குரிய 2,112 நூல்கள் அனுப்பப்பட்டன",
-   "english_headline": "2,112 books from controversial publishers sent to Namakkal district library; 1,333 bundles kept unopened",
-   "category": "Government & Services",
-   "location": "Namakkal district library, Namakkal district",
-   "importance": "High",
-   "scope": "",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "நூலகம்",
-    "loc": "நாமக்கல் மாவட்டம்",
-    "hl1": "நாமக்கல் நூலகத்துக்கு 2,112 நூல்கள்",
-    "hl2": "1,333 கட்டுகள் பிரிக்காமல்",
-    "slides": [
-     {
-      "title": "என்ன வந்தது?",
-      "lines": [
-       "அகல் விளக்கு, பீனிக்ஸ் பதிப்பக <b>2,112 புத்தகங்கள்</b>",
-       "நாமக்கல் மாவட்ட நூலகத்துக்கு வந்துள்ளன",
-       "அவற்றில் <b>1,333 கட்டுகள்</b> பிரிக்காமல் உள்ளன"
-      ]
-     },
-     {
-      "title": "ஏன் சர்ச்சை?",
-      "lines": [
-       "கோவை ஈ.வெ.ரா. நூலகத்தில் நூல் கொள்முதலில் ஊழல் புகார்",
-       "எழுத்தாளர் பெருமாள் முருகன் புகார் தெரிவித்தார்",
-       "இந்த ஊழல் குறித்து விசாரணை நடக்கிறது"
-      ]
-     },
-     {
-      "title": "மாவட்டத்தில் என்ன?",
-      "lines": [
-       "நாமக்கல் மாவட்டத்தில் <b>122 நூலகங்கள்</b> செயல்படுகின்றன",
-       "2024-25ல் பீனிக்ஸ்: <b>779 நூல்கள்</b> மற்ற நூலகங்களுக்கு",
-       "அவற்றைத் திரும்பப் பெற உத்தரவு"
-      ]
-     },
-     {
-      "title": "அடுத்து என்ன?",
-      "lines": [
-       "2025-26 நூல்கள் பெரியப்பட்டி அரசு உயர்நிலைப் பள்ளியில் உள்ளன",
-       "உயர் அதிகாரிகளின் உத்தரவுப்படி மேல் நடவடிக்கை",
-       "விவரங்களுக்கு நாமக்கல் த்ரீ சிக்ஸ்டியை பின்தொடருங்கள்"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "நாமக்கல் மாவட்ட நூலகத்துக்கு சர்ச்சைக்குரிய 2,112 புத்தகங்கள் வந்துள்ளன. அகல் விளக்கு, பீனிக்ஸ் ஆகிய இரண்டு பதிப்பகங்களின் புத்தகங்கள் இவை. அவற்றில் 1,333 புத்தகக் கட்டுகள் பிரிக்காமல் வைக்கப்பட்டுள்ளன. கோவை ஈ.வெ.ரா. நூலகத்தில் நூல் கொள்முதலில் மிகப்பெரிய ஊழல் நடந்ததாக நாமக்கல்லைச் சேர்ந்த எழுத்தாளர் பெருமாள் முருகன் புகார் தெரிவித்தார். இதையடுத்து இந்த ஊழல் குறித்து விசாரணை நடந்து வருகிறது. கோவை நூலகம் கடந்த மாதம் 16ஆம் தேதி முதல்வர் விஜய் அவர்களால் திறந்து வைக்கப்பட்டது. நாமக்கல் மாவட்டத்தில் 122 நூலகங்கள் செயல்படுகின்றன. 2024-25ஆம் ஆண்டில் பீனிக்ஸ் பதிப்பகத்தின் 75 தலைப்புகளில் 779 நூல்கள் மற்ற நூலகங்களுக்கு அனுப்பப்பட்டுள்ளன. அவற்றை உடனடியாகத் திரும்பப் பெற உத்தரவிடப்பட்டுள்ளது. 2025-26ஆம் ஆண்டில் அகல் விளக்கு பதிப்பகத்தின் 50 தலைப்புகளில் 914 நூல்களும், பீனிக்ஸ் பதிப்பகத்தின் 48 தலைப்புகளில் 419 நூல்களும் வந்துள்ளன. இவை எந்த நூலகங்களுக்கும் அனுப்பப்படாமல் நாமக்கல் பெரியப்பட்டி அரசு உயர்நிலைப் பள்ளியில் வைக்கப்பட்டுள்ளன. உயர் அதிகாரிகளின் உத்தரவுப்படி மேல் நடவடிக்கை மேற்கொள்ளப்படும். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "📚 நாமக்கல் நூலகத்துக்கு சர்ச்சைக்குரிய 2,112 நூல்கள்\n\n📰 முழு விவரம்:\nஅகல் விளக்கு, பீனிக்ஸ் பதிப்பகங்களின் 2,112 புத்தகங்கள் நாமக்கல் மாவட்ட நூலகத்துக்கு வந்துள்ளன. அவற்றில் 1,333 புத்தகக் கட்டுகள் பிரிக்காமல் வைக்கப்பட்டுள்ளன.\nகோவை ஈ.வெ.ரா. நூலகத்தில் நூல் கொள்முதலில் மிகப்பெரிய ஊழல் நடந்ததாக நாமக்கல்லைச் சேர்ந்த எழுத்தாளர் பெருமாள் முருகன் தெரிவித்தார். இதையடுத்து இந்த ஊழல் குறித்து விசாரணை நடந்து வருகிறது.\nகோவை நூலகம் கடந்த மாதம் 16ஆம் தேதி முதல்வர் விஜய் அவர்களால் திறந்து வைக்கப்பட்டது.\nநாமக்கல் மாவட்டத்தில் 122 நூலகங்கள் செயல்படுகின்றன.\n2024-25ல் பீனிக்ஸ் பதிப்பகத்தின் 75 தலைப்புகளில் 779 நூல்கள் மாவட்டத்தில் உள்ள மற்ற நூலகங்களுக்கு அனுப்பப்பட்டுள்ளன. அவற்றை உடனடியாகத் திரும்பப் பெற உத்தரவிடப்பட்டுள்ளது.\n2025-26ல் அகல் விளக்கு பதிப்பகத்தின் 50 தலைப்புகளில் 914 நூல்களும், பீனிக்ஸ் பதிப்பகத்தின் 48 தலைப்புகளில் 419 நூல்களும் நாமக்கல் மாவட்ட நூலகத்துக்கு வந்துள்ளன. இவை எந்த நூலகங்களுக்கும் அனுப்பப்படாமல் நாமக்கல் பெரியப்பட்டி அரசு உயர்நிலைப் பள்ளியில் வைக்கப்பட்டுள்ளன.\nஉயர் அதிகாரிகளின் உத்தரவுப்படி மேல் நடவடிக்கை மேற்கொள்ளப்படும்.\n\nNamakkal library 2,112 books controversy | Namakkal news\n📍 நாமக்கல் மாவட்டம் | 11 நவம்பர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #நூலகம் #NamakkalNews #நாமக்கல்",
-   "prompts": "Inside the Namakkal district library, a quiet government reading hall in Tamil Nadu with wooden almirahs and tube lights switched on. In the foreground, several stacks of brown cardboard bundles of books, tied tightly with string and left sealed, rest on a concrete floor beside a plain metal desk. Two library officials in shirts and trousers stand a few metres away, seen from behind, looking over the stacked sealed bundles as if counting them. Behind them, shelves hold ordinary library books with spines turned away from the camera. Midday light from high windows falls softly across the floor and bundles, with a faint dusty haze in the air. Camera: wide-angle, eye level, about 35 mm, capturing the sealed bundles in the foreground and the officials and shelves in the background. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nClose-up of a cluster of cardboard book bundles tied with thick brown string, stacked inside a classroom-style storage room of a government high school in Tamil Nadu. The bundles are unopened, their corners dusty, and the string knots are still intact, showing they have not been sorted. A wooden bench and a stray plastic chair sit against a whitewashed wall. Soft afternoon light comes through a barred window and rests on the bundle tops. No people are in focus, with a faint blurred figure of an official far in the background. Camera: close-up at a slightly high angle, about 35 mm, shallow depth of field, focused on the sealed bundles. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-news/2112-controversial-books-supplied-to-namakkal-library/4373256",
-   "published": "2026-11-11T18:10:33+05:30",
-   "verification": "DRAFT (anthropic/claude-haiku-5-5 + proofread groq/qwen/qwen3.8-27b) - NOT CLEAN, held from posting - problems: slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)",
-   "note": "free-model draft anthropic/claude-haiku-5-5 + proofread groq/qwen/qwen3.8-27b, 13 attempt(s), 1 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 5.0,
-   "images": [
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794417421/news360/p1qdgxrrki22pdsy6ldf.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794417424/news360/sulgry3ezkiqsqkjkuxp.jpg"
-   ]
-  },
-  {
-   "tamil_headline": "பள்ளிப்பாளையத்தில் 40% ஜவுளி தேக்கம்: தீபாவளி ஏமாற்றம், பொங்கலை எதிர்நோக்கும் விசைத்தறியாளர்கள்!",
-   "english_headline": "40% textile stocks unsold in Pallipalayam after dull Diwali; powerloom weavers pin hopes on Pongal sales",
-   "category": "Business & Prices",
-   "location": "Pallipalayam, Namakkal district",
-   "importance": "Medium",
-   "scope": "local",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "ஜவுளித் தொழில்",
-    "loc": "பள்ளிப்பாளையம்",
-    "hl1": "பள்ளிப்பாளையத்தில் ஜவுளி தேக்கம்",
-    "hl2": "பொங்கல் பண்டிகை",
-    "slides": [
-     {
-      "title": "தீபாவளி சரிவு",
-      "lines": [
-       "<b>பள்ளிப்பாளையம்</b> விசைத்தறி ஜவுளித் தொழில் பாதிப்பு",
-       "தீபாவளிக்கு உற்பத்தி செய்த துணிகளில் <b>40%</b> தேக்கம்",
-       "ஆர்டர் மற்றும் விற்பனை குறைந்ததால் ஏமாற்றம்"
-      ]
-     },
-     {
-      "title": "விற்பனை நிலவரம்",
-      "lines": [
-       "வழக்கமாக தீபாவளிக்கு <b>ரூ.10 கோடி</b> வரை விற்பனை நடக்கும்",
-       "இந்த ஆண்டு <b>ரூ.5 கோடி</b> அளவுக்கு மட்டுமே விற்பனை",
-       "சங்கத் தலைவர் கந்தசாமி தகவல்"
-      ]
-     },
-     {
-      "title": "அடுத்த",
-      "lines": [
-       "பொங்கல் பண்டிகைக்காவது நல்ல ஆர்டர் கிடைக்கும் என நம்பிக்கை",
-       "சபரிமலை சீசனால் கலர் வேட்டி விற்பனை அதிகரிக்கும்"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "பள்ளிப்பாளையத்தில் தீபாவளிக்கு உற்பத்தி செய்யப்பட்ட துணிகள் 40 சதவீதம் விற்பனையின்றி தேக்கமடைந்துள்ளன. நாமக்கல் மாவட்டம் பள்ளிப்பாளையம் பகுதியில் விசைத்தறி மூலம் வேட்டி, சட்டை, சேலை, லுங்கி, துண்டு மற்றும் கலர் வேட்டிகள் உற்பத்தி செய்யப்படுகின்றன. இந்த ஆண்டு தீபாவளி காலத்தில் போதிய ஆர்டரும் விற்பனையும் இல்லாததால் ஜவுளித் தொழில் பாதிப்படைந்துள்ளது. இதுகுறித்து பள்ளிப்பாளையம் விசைத்தறி ஜவுளி உற்பத்தியாளர் சங்க தலைவர் கந்தசாமி தகவல் தெரிவித்துள்ளார். வழக்கமாக தீபாவளி பண்டிகைக்கு 10 கோடி ரூபாய் வரை துணிகள் விற்பனையாகும். ஆனால் இந்த ஆண்டு 5 கோடி ரூபாய் வரை மட்டுமே விற்பனை நடந்துள்ளது. இதனால் உற்பத்தி செய்யப்பட்ட துணிகளில் 40 சதவீதம் வரை விற்பனையாகாமல் தேக்கமடைந்துள்ளது. அடுத்து வரும் பொங்கல் பண்டிகைக் காலத்தில் நல்ல ஆர்டரும் விற்பனையும் இருக்கும் என உற்பத்தியாளர்கள் நம்புகின்றனர். மேலும் சபரிமலை சீசன் தொடங்குவதால் கலர் வேட்டி விற்பனை சூடு பிடிக்கும் என்றும் எதிர்பார்க்கப்படுகிறது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🧵 பள்ளிப்பாளையத்தில் 40% ஜவுளி தேக்கம்: தீபாவளி விற்பனை பாதிப்பால் பொங்கலை எதிர்நோக்கும் விசைத்தறியாளர்கள்!\n\n📰 முழு விவரம்:\nநாமக்கல் மாவட்டம் பள்ளிப்பாளையம் பகுதியில் விசைத்தறி மூலம் வேட்டி, சட்டை, சேலை, லுங்கி, துண்டு, கலர் வேட்டி உள்ளிட்ட துணிகள் உற்பத்தி செய்யப்படுகின்றன. இந்த ஆண்டு தீபாவளி பண்டிகைக்கு போதிய ஆர்டரும் விற்பனையும் இல்லாததால் உற்பத்தியாளர்கள் பாதிக்கப்பட்டுள்ளனர்.\nபள்ளிப்பாளையம் விசைத்தறி ஜவுளி உற்பத்தியாளர் சங்க தலைவர் கந்தசாமி தெரிவிக்கையில், வழக்கமாக தீபாவளி காலத்தில் 10 கோடி ரூபாய் வரை விற்பனை நடக்கும் என்றும், இந்த ஆண்டு 5 கோடி ரூபாய் வரை மட்டுமே விற்பனை நடந்துள்ளதாகவும் கூறினார். இதனால் உற்பத்தி செய்யப்பட்ட துணிகளில் 40 சதவீதம் விற்பனையின்றி தேக்கமடைந்துள்ளன.\nவரவிருக்கும் பொங்கல் பண்டிகை மற்றும் சபரிமலை சீசனால் கலர் வேட்டி விற்பனை அதிகரிக்குமா என உற்பத்தியாளர்கள் எதிர்பார்த்துள்ளனர்.\n\n📍 இடம்: பள்ளிப்பாளையம், நாமக்கல் மாவட்டம்\n🗓️ நாள்: 11 நவம்பர் 2026\n\nநெசவுத் தொழிலாளர்களுக்கு ஆதரவாக Share செய்யுங்கள் 👍\n\nPallipalayam powerloom textile sales drop during Diwali | Namakkal news\n📍 Pallipalayam, Namakkal | 11 November 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #Tiruchengode #NamakkalNews #நாமக்கல்",
-   "prompts": "Cover: Powerloom weavers stand beside towering stacks of unsold fabrics, their backs turned as they listen to the association president speak about hopes for Pongal sales. The scene is set inside a Pallipalayam textile powerloom workshop, a concrete‑sheathed industrial hall with rows of humming loom machines and open‑air storage areas. From behind, a small group of weavers in simple shirts and veshti watch the speaker, while the president, a middle‑aged man in a white shirt, gestures toward the fabric piles. No vehicles are visible. Daylight filters through high windows, casting soft shadows on the red‑brown floor. Shot from a low 35 mm angle, the camera captures the whole workshop and the waiting crowd. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nDetail: A close‑up shows a heap of colourful unsold fabrics – bright veetti, patterned shirts, silk sarees, and plain lungis – neatly folded on a wooden pallet inside the same Pallipalayam powerloom unit. The camera focuses on the texture of the cloth and the edge of a loom’s metal frame, emphasizing the volume of stock that remains unsold after Diwali. No faces are visible; only the fabric and a glimpse of a loom’s control panel appear. The lighting is natural, mid‑day sun streaming through the workshop’s high windows, highlighting the vivid colours against the muted concrete walls. Captured with a 35 mm lens from a slightly elevated angle, the shot isolates the unsold textiles as the key sign of the story. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-news/textile-manufacturers-look-forward-to-handmade-pongal/4373568",
-   "published": "2026-11-11T20:36:30+05:30",
-   "verification": "DRAFT (gemini/gemini-3.6-flash) - fact-check: no problems found",
-   "note": "free-model draft gemini/gemini-3.6-flash, 2 attempt(s), 0 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 3.0,
-   "images": [
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794417433/news360/ysjkykuewjwvf6a2dhvj.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794417437/news360/e0o8iyvzp7b1qvasnxpb.jpg"
-   ]
-  }
- ]
+ "stories": []
 }
