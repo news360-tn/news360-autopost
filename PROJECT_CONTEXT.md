@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-09 | `0c53282` | ig-comments: put the encrypted report in the log (artifact host not reachable) |
-| 2026-11-09 | `7ebd2ce` | ig-comments: read-only, encrypted report of comments on recent posts (manual run only) |
-| 2026-11-09 | `6993073` | powercut: notices written |
-| 2026-11-09 | `69fc97c` | powercut: notices written |
-| 2026-11-09 | `e38acb2` | powercut: notices written |
-| 2026-11-09 | `f7fa537` | powercut: notices written |
-| 2026-11-09 | `48b41fa` | powercut: notices written |
-| 2026-11-09 | `29ea638` | facebook retry |
-| 2026-11-09 | `61c7d06` | facebook RN-464 |
-| 2026-11-09 | `7d3f43b` | powercut: notices written |
-| 2026-11-09 | `59971a0` | facebook retry |
-| 2026-11-09 | `ea107d3` | powercut: notices written |
-| 2026-11-09 | `0b8b345` | facebook RN-463 |
-| 2026-11-09 | `492cc72` | powercut: notices written |
-| 2026-11-09 | `cf1ebc4` | powercut: notices written |
-| 2026-11-09 | `e30e13a` | powercut: notices written |
-| 2026-11-09 | `32608ad` | powercut: notices written |
-| 2026-11-09 | `eb728e9` | powercut: notices written |
-| 2026-11-09 | `0fa61ae` | powercut: notices written |
-| 2026-11-09 | `93e703f` | powercut: notices written |
-| 2026-11-09 | `742e01d` | powercut: notices written |
-| 2026-11-09 | `34f5c91` | facebook RN-454 |
-| 2026-11-09 | `249cd1c` | powercut: notices written |
-| 2026-11-09 | `9a70539` | powercut: notices written |
-| 2026-11-09 | `2eec030` | facebook RN-462 |
-| 2026-11-09 | `ab13dba` | powercut: notices written |
-| 2026-11-09 | `576d93b` | facebook RN-458 |
-| 2026-11-09 | `1dab867` | powercut: notices written |
-| 2026-11-09 | `1c4ed18` | facebook retry |
-| 2026-11-09 | `43a619e` | powercut: notices written |
+| 2026-11-04 | `01f61a4` | Facebook photo story gets its own fresh upload of the first slide (rasipalan story 400 Invalid parameter, 3-4 Nov) |
+| 2026-11-11 | `2ebfc40` | powercut: notices written |
+| 2026-11-11 | `f160afc` | powercut: notices written |
+| 2026-11-11 | `c0be843` | stories shared |
+| 2026-11-11 | `0020372` | powercut: notices written |
+| 2026-11-11 | `1f861f6` | powercut: notices written |
+| 2026-11-11 | `737dc5e` | stories shared |
+| 2026-11-11 | `8e41d41` | powercut: notices written |
+| 2026-11-11 | `9dba42f` | rasipalan posted |
+| 2026-11-11 | `a13239b` | facebook RN-491 |
+| 2026-11-11 | `63ae8ea` | facebook retry |
+| 2026-11-11 | `f33c699` | powercut: notices written |
+| 2026-11-11 | `a68cd0d` | facebook retry |
+| 2026-11-11 | `cfd45d3` | facebook RN-490 |
+| 2026-11-11 | `f5799cc` | powercut: notices written |
+| 2026-11-10 | `98bf220` | facebook retry |
+| 2026-11-10 | `d582ba2` | facebook retry |
+| 2026-11-10 | `39b150e` | facebook RN-487 |
+| 2026-11-10 | `ab61bbb` | facebook retry |
+| 2026-11-10 | `2cda451` | facebook RN-488 |
+| 2026-11-10 | `dfb3c73` | facebook retry |
+| 2026-11-10 | `d5475f6` | facebook RN-489 |
+| 2026-11-10 | `752bb34` | facebook retry |
+| 2026-11-10 | `8e5212c` | Heartbeat |
+| 2026-11-10 | `2fe351a` | facebook retry |
+| 2026-11-10 | `ac4b7e8` | facebook RN-484 |
+| 2026-11-10 | `d26abf1` | powercut: notices written |
+| 2026-11-10 | `85315ff` | powercut: notices written |
+| 2026-11-10 | `885e67b` | powercut: notices written |
+| 2026-11-10 | `9a538d2` | powercut: notices written |
 <!-- recent-changes:end -->
