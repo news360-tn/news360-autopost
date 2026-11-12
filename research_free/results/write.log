@@ -1,72 +1,21 @@
-writing [N]: டூவீலர் விபத்தில் பள்ளி மாணவர் பலி
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (22s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-ok gemini/gemini-3-flash-preview (17s)
-factcheck by gemini/gemini-3-flash-preview: 0 problems
-attempt 1 gemini/gemini-3.6-flash: 0 problems
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, plea
-dead for this round: gemini/gemini-3-flash-preview
-ok groq/openai/gpt-oss-120b (6s)
-proofread rejected (2 problems)
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  reel_script has numbers without their meaning ((17); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/openai/gpt-oss-120b (2s)
-real photo: no picture on the source page -> AI pictures
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Class 12 student dies in two-wheeler acc'
-bridge: 200 <!DOCTYPE html><html><head><script nonce="wRy9a4iwUTFfijlL2aVMbw">window['ppConfig'] = {productName: '26981ed0d57bbad37e728ff58134270c', deleteIsEnforced:  false , sealIsEnforced:  false , heartbeatRate:  0.5 , periodicReportingRateMillis:  60000.0 , disableAllReporting:  false };(function(){'use st
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261112-1037","first":"RN-534"}
-posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 11 news waiting in the queue (written in priority order)
-candidate filter: collected=7, already filed=4
-to write: 1 Rasipuram + 6 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 6 Namakkal; time left 29 min
-try (N) manual=False: டூவீலர் விபத்தில் பள்ளி மாணவர் பலி
+write round: 9 news waiting in the queue (written in priority order)
+candidate filter: collected=5, already filed=4
+to write: 0 Rasipuram + 5 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 5 Namakkal; time left 29 min
 try (N) manual=False: கரூர், நாமக்கல் பைபாஸ் சாலையோர நிழற்குடைகளை சீரமைக்க வேண்டும
 try (N) manual=False: மாணவர் விடுதியில் பாட்டில் விடுதி காப்பாளர் சஸ்பெண்ட்
-skip (N) similar to a filed story: கரூர், நாமக்கல் பைபாஸ் சாலையோர நிழற்குடைகளை சீரமைக
 try (N) manual=False: சுற்றித்திரியும் தெருநாய்கள் புகாரளிக்க மொபைல் எண்
-skip (N) similar to a filed story: மாணவர் விடுதியில் பாட்டில் விடுதி காப்பாளர் சஸ்பெண
+skip (N) similar to a filed story: கரூர், நாமக்கல் பைபாஸ் சாலையோர நிழற்குடைகளை சீரமைக
 try (N) manual=False: கை கொடுக்குமா பொங்கல் பண்டிகை ஜவுளி உற்பத்தியாளர்கள் எதிர்பா
-skip (N) same event as RN-489: சுற்றித்திரியும் தெருநாய்கள் புகாரளிக்க மொபைல் எண்
+skip (N) similar to a filed story: மாணவர் விடுதியில் பாட்டில் விடுதி காப்பாளர் சஸ்பெண
 try (N) manual=False: உலக அறிவு பெற ஆங்கிலம் ஒரு சிறந்த கருவி
 skip (N) similar to a filed story: கை கொடுக்குமா பொங்கல் பண்டிகை ஜவுளி உற்பத்தியாளர்க
-try (R) manual=False: நகராட்சி ஆணையா் இடமாற்றம்
-skip (R) similar to a filed story: நகராட்சி ஆணையா் இடமாற்றம்
+skip (N) same event as RN-489: சுற்றித்திரியும் தெருநாய்கள் புகாரளிக்க மொபைல் எண்
 skip (N) same event as RN-510: உலக அறிவு பெற ஆங்கிலம் ஒரு சிறந்த கருவி
-auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
-posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 6}, done={'R': 0, 'N': 1}, time left 27 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 5}, done={'R': 0, 'N': 0}, time left 29 min
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written 
+stories: 0
