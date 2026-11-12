@@ -1,0 +1,25 @@
+name: cloudinary clean-up (manual)
+# owner 12 Nov: one-time manual clean-up - deletes THIS page folder's files (news360) older than keep_hours. Prints counts only.
+on:
+  workflow_dispatch:
+    inputs:
+      keep_hours: {description: "keep files newer than this many hours", default: "30", required: true}
+      dry: {description: "dry run (count only, delete nothing)", type: boolean, default: true}
+permissions:
+  contents: read
+env:
+  CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
+  CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+  CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+  CLOUDINARY_KEEP_HOURS: ${{ inputs.keep_hours }}
+  CLOUDINARY_FULL_KEEP_HOURS: ${{ inputs.keep_hours }}
+jobs:
+  clean:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install -q requests==2.32.5
+      - run: python poster/cloudclean.py --force ${{ inputs.dry && '--dry' || '' }}
