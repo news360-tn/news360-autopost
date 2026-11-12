@@ -65,6 +65,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-12 | `59d3e13` | voice: 'பிளஸ் 2' is read 'பிளஸ் டூ' (was 'பிளஸ் இரண்டு', RN-534); 'பிளஸ் 1' -> 'பிளஸ் ஒன்' |
+| 2026-11-12 | `5514e90` | powercut: notices written |
+| 2026-11-12 | `3ca0c05` | powercut: notices written |
 | 2026-11-12 | `81f36b6` | direct reel upload (file instead of Cloudinary link) - OFF unless repo variable DIRECT_UPLOAD=1; falls back to the link; never posts twice |
 | 2026-11-12 | `2c52ba8` | cloudinary: keep the last 48 h only, clean once every 48 h (own workflow; hourly step removed) |
 | 2026-11-12 | `a49db2c` | powercut: notices written |
@@ -92,7 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-12 | `a0347d1` | facebook RN-526 |
 | 2026-11-12 | `78fb8c8` | powercut: notices written |
 | 2026-11-12 | `e5d036a` | powercut: notices written |
-| 2026-11-12 | `4b97849` | facebook RN-523 |
-| 2026-11-12 | `77cb2a5` | stories shared |
-| 2026-11-12 | `2ece6b0` | powercut: notices written |
 <!-- recent-changes:end -->
