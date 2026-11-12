@@ -1,21 +1,115 @@
+writing [N]: நாமக்கல் மாவட்ட வரைவு வாக்காளர் பட்டியல் வெளியீடு: மொத்த வாக
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (44s)
+attempt 1 gemini/gemini-3.6-flash: 3 problems
+  reel_script writes ages as newspaper shorthand (ஆண்கள், 6,); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (24s)
+attempt 2 gemini/gemini-3.6-flash: 2 problems
+  reel_script writes ages as newspaper shorthand (ஆண்கள், 6,); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.6-flash for 10 min
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.5-flash for 10 min
+ok gemini/gemini-3-flash-preview (13s)
+attempt 3 gemini/gemini-3-flash-preview: 3 problems
+  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (11s)
+attempt 4 gemini/gemini-3-flash-preview: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok groq/qwen/qwen3.8-27b (4s)
+attempt 5 groq/qwen/qwen3.8-27b: 2 problems
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 6,43,510, ('நாமக்கல் மாவட்டத்தில் உள்ள 6 சட்டசபை தொகுதிகளிலும் சேர்த்து '); 6,85,651, ('நாமக்கல் மாவட்டத்தில் உள்ள 6 சட்டசபை தொகுதிகளிலும் சேர்த்து '); 13,29,376 ('நாமக்கல் மாவட்டத்தில் உள்ள 6 சட்டசபை தொகுதிகளிலும் சேர்த்து '); 1 ('இப்பணியின்போது, 1.1.2027 அன்று 18 வயது பூர்த்தியடைந்தவர்களும')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
+free models unavailable: no free model answered: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-1
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்')
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+  caption needs 5 hashtags (Instagram max), has 8
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 13 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்'); 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்'); 13 ('நாமக்கல் மாவட்ட வரைவு வாக்காளர் பட்டியல் வெளியீடு: மொத்த வாக')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+proofread skipped: no free model answered: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":""}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok groq/openai/gpt-oss-120b (2s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+real photo used (1152x819, sharpness 58.5, The photograph shows district officials releasing the draft ): https://tamilmaninewstoday.com/wp-content/uploads/2026/11/Draft-Electoral-Namakkal.jpg
+real photo used (1152x819, sharpness 58.5, The photograph real camera capture showing officials and rep): https://i0.wp.com/tamilmaninewstoday.com/wp-content/uploads/2026/11/Draft-Electoral-Namakk
+real photos used for 'Namakkal district draft voter list relea' (Tamilmani News)
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261112-1855","first":"RN-535"}
+posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 9 news waiting in the queue (written in priority order)
-candidate filter: collected=5, already filed=4
-to write: 0 Rasipuram + 5 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 5 Namakkal; time left 29 min
-try (N) manual=False: கரூர், நாமக்கல் பைபாஸ் சாலையோர நிழற்குடைகளை சீரமைக்க வேண்டும
-try (N) manual=False: மாணவர் விடுதியில் பாட்டில் விடுதி காப்பாளர் சஸ்பெண்ட்
-try (N) manual=False: சுற்றித்திரியும் தெருநாய்கள் புகாரளிக்க மொபைல் எண்
-skip (N) similar to a filed story: கரூர், நாமக்கல் பைபாஸ் சாலையோர நிழற்குடைகளை சீரமைக
-try (N) manual=False: கை கொடுக்குமா பொங்கல் பண்டிகை ஜவுளி உற்பத்தியாளர்கள் எதிர்பா
-skip (N) similar to a filed story: மாணவர் விடுதியில் பாட்டில் விடுதி காப்பாளர் சஸ்பெண
+write round: 8 news waiting in the queue (written in priority order)
+candidate filter: already filed=4, collected=4
+to write: 0 Rasipuram + 4 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 4 Namakkal; time left 29 min
+try (N) manual=False: நாமக்கல் மாவட்ட வரைவு வாக்காளர் பட்டியல் வெளியீடு: மொத்த வாக
 try (N) manual=False: உலக அறிவு பெற ஆங்கிலம் ஒரு சிறந்த கருவி
-skip (N) similar to a filed story: கை கொடுக்குமா பொங்கல் பண்டிகை ஜவுளி உற்பத்தியாளர்க
-skip (N) same event as RN-489: சுற்றித்திரியும் தெருநாய்கள் புகாரளிக்க மொபைல் எண்
+try (N) manual=False: சுற்றித்திரியும் தெருநாய்கள் புகாரளிக்க மொபைல் எண்
 skip (N) same event as RN-510: உலக அறிவு பெற ஆங்கிலம் ஒரு சிறந்த கருவி
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 5}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+try (N) manual=False: கை கொடுக்குமா பொங்கல் பண்டிகை ஜவுளி உற்பத்தியாளர்கள் எதிர்பா
+skip (N) same event as RN-489: சுற்றித்திரியும் தெருநாய்கள் புகாரளிக்க மொபைல் எண்
+skip (N) similar to a filed story: கை கொடுக்குமா பொங்கல் பண்டிகை ஜவுளி உற்பத்தியாளர்க
+real photo from the source (Tamilmani News) for 'Namakkal district draft voter list relea'
+auto images: 1 of 1 stories ({})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 1}, time left 23 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 1
