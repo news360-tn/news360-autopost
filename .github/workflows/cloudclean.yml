@@ -1,9 +1,12 @@
-name: cloudinary clean-up (manual)
-# owner 12 Nov: one-time manual clean-up - deletes THIS page folder's files (news360) older than keep_hours. Prints counts only.
+name: cloudinary clean-up
+# owner 12 Nov: keep only the last 48 hours of videos and pictures; clean once every 48 hours (THIS page's folder only).
+# Prints counts only (the repo is public). Run by hand with "dry" to see the counts without deleting.
 on:
+  schedule:
+    - cron: "40 19 */2 * *"      # every 2nd day at 01:10 IST
   workflow_dispatch:
     inputs:
-      keep_hours: {description: "keep files newer than this many hours", default: "30", required: true}
+      keep_hours: {description: "keep files newer than this many hours", default: "48", required: true}
       dry: {description: "dry run (count only, delete nothing)", type: boolean, default: true}
 permissions:
   contents: read
@@ -11,8 +14,8 @@ env:
   CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
   CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
   CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
-  CLOUDINARY_KEEP_HOURS: ${{ inputs.keep_hours }}
-  CLOUDINARY_FULL_KEEP_HOURS: ${{ inputs.keep_hours }}
+  CLOUDINARY_KEEP_HOURS: ${{ inputs.keep_hours || '48' }}
+  CLOUDINARY_FULL_KEEP_HOURS: ${{ inputs.keep_hours || '48' }}
 jobs:
   clean:
     runs-on: ubuntu-24.04
