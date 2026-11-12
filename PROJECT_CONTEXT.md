@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-12 | `81f36b6` | direct reel upload (file instead of Cloudinary link) - OFF unless repo variable DIRECT_UPLOAD=1; falls back to the link; never posts twice |
 | 2026-11-12 | `2c52ba8` | cloudinary: keep the last 48 h only, clean once every 48 h (own workflow; hourly step removed) |
 | 2026-11-12 | `a49db2c` | powercut: notices written |
 | 2026-11-12 | `2a0575b` | cloudclean: manual one-time clean-up workflow (dry run by default) |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-12 | `4b97849` | facebook RN-523 |
 | 2026-11-12 | `77cb2a5` | stories shared |
 | 2026-11-12 | `2ece6b0` | powercut: notices written |
-| 2026-11-12 | `63a48cf` | powercut: notices written |
 <!-- recent-changes:end -->
