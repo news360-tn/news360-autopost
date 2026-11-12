@@ -65,6 +65,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-12 | `2a0575b` | cloudclean: manual one-time clean-up workflow (dry run by default) |
+| 2026-11-12 | `b2525ce` | powercut: notices written |
+| 2026-11-12 | `37b91da` | powercut: notices written |
 | 2026-11-12 | `bdda81a` | Cloudinary clean-up: this page's files older than 3 days deleted every hour (at 50% of the free limit reels older than 26 h too); a deleted prebuilt reel is uploaded again; rasipalan pictures in the page folder |
 | 2026-11-12 | `bbf0a4b` | powercut: notices written |
 | 2026-11-12 | `26e5cef` | facebook RN-535 |
@@ -92,7 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-12 | `63a48cf` | powercut: notices written |
 | 2026-11-12 | `c9eb633` | facebook RN-520 |
 | 2026-11-12 | `4121bd1` | stories shared |
-| 2026-11-12 | `d7e3a1c` | rasipalan posted |
-| 2026-11-12 | `a920b07` | facebook RN-528 |
-| 2026-11-12 | `6c4f187` | facebook RN-527 |
 <!-- recent-changes:end -->
