@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-11 | `29f7e8c` | Apps Script: comment-poll functions renamed without the trailing underscore (private functions are hidden from the Run list) - setupCommentPoll |
-| 2026-11-11 | `4d4b215` | comment replies: Google Form per batch (works on any device, no account) - news, comment, tick-box replies (one or more), own reply, Reply/Skip/Hide; posted only after the owner submits; 5-minute check (setupCommentPoll_) |
-| 2026-11-11 | `addeafe` | facebook RN-500 |
-| 2026-11-11 | `0d8afe7` | comment reply form: the e-mailed link and form buttons use the bridge's own public address (getUrl gave an address that opened Google Drive) (owner 11 Nov) |
-| 2026-11-11 | `980a496` | powercut: notices written |
-| 2026-11-11 | `4a1562c` | comment replies: one reply form per page (works anywhere) - full news, the comment, 5-7 tick-box replies (one or more) or own text, Post reply / Skip / Hide; nothing is posted before the owner presses Post reply; manual test e-mail (owner 11 Nov) |
-| 2026-11-11 | `79d242f` | powercut: notices written |
-| 2026-11-11 | `83dfb90` | power cuts: a cancellation / postponement / day change is posted (urgent) only when this page posted that cut - never dropped as a duplicate of the original; the power-cut check remembers notices the writer refused (owner 11 Nov) |
-| 2026-11-11 | `939a2ae` | facebook RN-502 |
-| 2026-11-11 | `2710639` | powercut: notices written |
-| 2026-11-11 | `bbd7bca` | comments: old unanswered comments offered too (60 days, 100 posts); comments the page already answered in the app are skipped (owner 11 Nov) |
-| 2026-11-11 | `83ae709` | powercut: notices written |
-| 2026-11-11 | `72d7f7f` | caption ends with 'Source: <paper> (<date>): <article link>'; no source comment under the post (owner 11 Nov) |
-| 2026-11-11 | `f89b928` | facebook RN-503 |
-| 2026-11-11 | `bcd92a9` | facebook RN-498 |
-| 2026-11-11 | `a6813ea` | facebook RN-507 |
-| 2026-11-11 | `a30e1b2` | powercut: notices written |
-| 2026-11-11 | `6667341` | powercut: notices written |
-| 2026-11-11 | `f4dc59b` | Apps Script: comment replies merged into Code.gs - the owner pastes one file (owner 11 Nov) |
-| 2026-11-11 | `0695f4c` | facebook RN-504 |
-| 2026-11-11 | `3b4c4d5` | facebook RN-499 |
-| 2026-11-11 | `8d946c7` | powercut: notices written |
-| 2026-11-11 | `d273c5f` | Facebook: only top news by insights (urgent / best topics), 5 a day 2 h apart, 24 h pause on Facebook's limit (368), no retry; news source (paper + date) on the reel header, end card and captions, article link in the Facebook caption and the page's Instagram comment; comment replies e-mailed with 3 options - posted only after the owner's choice (owner 11 Nov) |
-| 2026-11-11 | `07ee52b` | facebook RN-496 |
-| 2026-11-11 | `e35567d` | facebook RN-506 |
-| 2026-11-11 | `95b91ad` | facebook retry |
-| 2026-11-11 | `6be58ee` | powercut: notices written |
-| 2026-11-11 | `88b9cdc` | powercut: notices written |
-| 2026-11-11 | `19b3133` | facebook retry |
-| 2026-11-11 | `901efe9` | facebook RN-493 |
+| 2026-11-12 | `bdda81a` | Cloudinary clean-up: this page's files older than 3 days deleted every hour (at 50% of the free limit reels older than 26 h too); a deleted prebuilt reel is uploaded again; rasipalan pictures in the page folder |
+| 2026-11-12 | `bbf0a4b` | powercut: notices written |
+| 2026-11-12 | `26e5cef` | facebook RN-535 |
+| 2026-11-12 | `a970ea0` | powercut: notices written |
+| 2026-11-12 | `a0b110b` | powercut: notices written |
+| 2026-11-12 | `5d52d9c` | powercut: notices written |
+| 2026-11-12 | `f403a64` | powercut: notices written |
+| 2026-11-12 | `653d0fd` | powercut: notices written |
+| 2026-11-12 | `1291dee` | powercut: notices written |
+| 2026-11-12 | `bbbc8d5` | facebook RN-530 |
+| 2026-11-12 | `78d12dc` | powercut: notices written |
+| 2026-11-12 | `cdff698` | powercut: notices written |
+| 2026-11-12 | `2f8053e` | facebook RN-531 |
+| 2026-11-12 | `3874ea8` | powercut: notices written |
+| 2026-11-12 | `8b126c4` | facebook RN-529 |
+| 2026-11-12 | `c934644` | powercut: notices written |
+| 2026-11-12 | `15605d5` | powercut: notices written |
+| 2026-11-12 | `8d59f18` | facebook RN-534 |
+| 2026-11-12 | `a0347d1` | facebook RN-526 |
+| 2026-11-12 | `78fb8c8` | powercut: notices written |
+| 2026-11-12 | `e5d036a` | powercut: notices written |
+| 2026-11-12 | `4b97849` | facebook RN-523 |
+| 2026-11-12 | `77cb2a5` | stories shared |
+| 2026-11-12 | `2ece6b0` | powercut: notices written |
+| 2026-11-12 | `63a48cf` | powercut: notices written |
+| 2026-11-12 | `c9eb633` | facebook RN-520 |
+| 2026-11-12 | `4121bd1` | stories shared |
+| 2026-11-12 | `d7e3a1c` | rasipalan posted |
+| 2026-11-12 | `a920b07` | facebook RN-528 |
+| 2026-11-12 | `6c4f187` | facebook RN-527 |
 <!-- recent-changes:end -->
