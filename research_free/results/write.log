@@ -1,115 +1,215 @@
-writing [N]: நாமக்கல் மாவட்ட வரைவு வாக்காளர் பட்டியல் வெளியீடு: மொத்த வாக
+writing [R]: வன்கொடுமை தடுப்பு சட்டத்தை திருத்த வேண்டும்; நாடார் மகாஜன சங
+writing [R]: திருவிழாவில் ராட்டினங்களை இயக்க போலீசார் தடை விதிப்பு
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (44s)
-attempt 1 gemini/gemini-3.6-flash: 3 problems
-  reel_script writes ages as newspaper shorthand (ஆண்கள், 6,); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்')
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+writing [N]: பூட்டியிருந்த 4 வீடுகளில் டவுசர் கொள்ளையர் கைவரிசை
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (24s)
-attempt 2 gemini/gemini-3.6-flash: 2 problems
-  reel_script writes ages as newspaper shorthand (ஆண்கள், 6,); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.6-flash
+fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
   "error": {
     "code": 503,
-    "message": "This model is currently experiencing high d
+    "message": "This model is currently experiencing 
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
 switching away from gemini/gemini-3.6-flash for 10 min
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+switching away from gemini/gemini-3-flash-preview for 10 min
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+ok groq/qwen/qwen3.8-27b (5s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+switching away from gemini/gemini-3-flash-preview for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
+ok groq/qwen/qwen3.8-27b (0s)
+factcheck by groq/qwen/qwen3.8-27b: 1 problems
+  The caption contains the year '2026' in the date line, which is not mentioned in the article and is likely an error (the article only mentions Nov 11).
+attempt 1 groq/qwen/qwen3.8-27b: 1 problems
+  fact-check: The caption contains the year '2026' in the date line, which is not mentioned in the article and is likely an error (the article only mentions Nov 11).
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 29, ('மோதல் தொடர்பாக அரியாகவுண்டம்பட்டியை சேர்ந்த மோகன், 29, ரமேஷ்'); 37, ('மோதல் தொடர்பாக அரியாகவுண்டம்பட்டியை சேர்ந்த மோகன், 29, ரமேஷ்'); 24, ('மோதல் தொடர்பாக அரியாகவுண்டம்பட்டியை சேர்ந்த மோகன், 29, ரமேஷ்'); 22, ('மோதல் தொடர்பாக அரியாகவுண்டம்பட்டியை சேர்ந்த மோகன், 29, ரமேஷ்'); 26, ('மோதல் தொடர்பாக அரியாகவுண்டம்பட்டியை சேர்ந்த மோகன், 29, ரமேஷ்'); 48, ('மேலும் நாடார் தெருவை சேர்ந்த சுந்தரபாண்டியன், 48, தாமோதரன், ')
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  numbers not found in the article: 8
 fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
   "error": {
     "code": 503,
     "message": "This model is currently experiencing high d
 switching away from gemini/gemini-3.5-flash for 10 min
-ok gemini/gemini-3-flash-preview (13s)
-attempt 3 gemini/gemini-3-flash-preview: 3 problems
-  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்')
+free models unavailable: no free model answered: gemini gemini-3.5-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is curre
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  Headline says 'பூட்டிய 4 வீடுகளில்' (4 houses) and the reel_script/slides mention multiple houses; the article gives 4 houses in the headline but the body only details the Pudupalayam/Pulliyankadu houses, Omsakthi Nagar house and Vaikkal Medu house — count is not clearly supported in the body, though the article title states 4.
+  Reel_script says 'பூட்டிய வீடுகளில்' and mentions 'பூட்டை உடைத்து உள்ளே சென்ற அவர்கள்' fine, but it omits that the thieves were on a two-wheeler 'டூவீலரில்' only partly — minor; more importantly the reel_script omits that police were informed by local residents (the article's key follow-up action of residents informing police is missing).
+  Reel_script says the thieves 'கைவரிசை காட்டியுள்ளனர்' in Pudupalayam generally, while the article specifies the incident occurred in Pudupalayam, Pulliyankadu area — acceptable, but the slides_spec 'loc' and caption attribute the location inconsistently.
+  Caption adds an invented advisory: 'வெளியூர் செல்லும்போது வீட்டைப் பூட்டி, அக்கம்பக்கத்தினருக்குத் தகவல் தெரிவியுங்கள். சந்தேகப்படும் நபர்களைக் கண்டால் போலீசுக்குத் தெரிவியுங்கள்.' — this advice is not in the article.
+  Caption states 'நகை, பணம் கிடைக்காததால்' is fine, but the caption's 'நடவடிக்கை' line says police are 'கண்காணிப்பு கேமரா பதிவுகளை ஆராய்ந்து வருகின்றனர்' which matches; however the caption's mention 'சில மாதங்களாக இரவு நேர நடமாட்டம்' is supported.
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: Headline says 'பூட்டிய 4 வீடுகளில்' (4 houses) and the reel_script/slides mention multiple houses; the article gives 4 houses in the headline but the body only details the Pudupalayam/Pulliyankadu houses, Omsakthi Nagar house and Vaikkal Medu house — count is not clearly supported in the body, though the article title states 4.
+  fact-check: Reel_script says 'பூட்டிய வீடுகளில்' and mentions 'பூட்டை உடைத்து உள்ளே சென்ற அவர்கள்' fine, but it omits that the thieves were on a two-wheeler 'டூவீலரில்' only partly — minor; more importantly the reel_script omits that police were informed by local residents (the article's key follow-up action of residents informing police is missing).
+  fact-check: Reel_script says the thieves 'கைவரிசை காட்டியுள்ளனர்' in Pudupalayam generally, while the article specifies the incident occurred in Pudupalayam, Pulliyankadu area — acceptable, but the slides_spec 'loc' and caption attribute the location inconsistently.
+  fact-check: Caption adds an invented advisory: 'வெளியூர் செல்லும்போது வீட்டைப் பூட்டி, அக்கம்பக்கத்தினருக்குத் தகவல் தெரிவியுங்கள். சந்தேகப்படும் நபர்களைக் கண்டால் போலீசுக்குத் தெரிவியுங்கள்.' — this advice is not in the article.
+  fact-check: Caption states 'நகை, பணம் கிடைக்காததால்' is fine, but the caption's 'நடவடிக்கை' line says police are 'கண்காணிப்பு கேமரா பதிவுகளை ஆராய்ந்து வருகின்றனர்' which matches; however the caption's mention 'சில மாதங்களாக இரவு நேர நடமாட்டம்' is supported.
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): நாமக்கல் ('நாமக்கல் மாவட்டம், ராசிபுரம் அடுத்த அரியாகவுண்டம்பட்டியில், '); 29, ('மோதல் தொடர்பாக அரியாகவுண்டம்பட்டியை சேர்ந்த மோகன், 29, ரமேஷ்'); 37, ('மோதல் தொடர்பாக அரியாகவுண்டம்பட்டியை சேர்ந்த மோகன், 29, ரமேஷ்'); 24, ('மோதல் தொடர்பாக அரியாகவுண்டம்பட்டியை சேர்ந்த மோகன், 29, ரமேஷ்'); 22, ('மோதல் தொடர்பாக அரியாகவுண்டம்பட்டியை சேர்ந்த மோகன், 29, ரமேஷ்'); 26, ('மோதல் தொடர்பாக அரியாகவுண்டம்பட்டியை சேர்ந்த மோகன், 29, ரமேஷ்')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (11s)
-attempt 4 gemini/gemini-3-flash-preview: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்')
+proofread skipped: no free model answered: None
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-ok groq/qwen/qwen3.8-27b (4s)
-attempt 5 groq/qwen/qwen3.8-27b: 2 problems
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 6,43,510, ('நாமக்கல் மாவட்டத்தில் உள்ள 6 சட்டசபை தொகுதிகளிலும் சேர்த்து '); 6,85,651, ('நாமக்கல் மாவட்டத்தில் உள்ள 6 சட்டசபை தொகுதிகளிலும் சேர்த்து '); 13,29,376 ('நாமக்கல் மாவட்டத்தில் உள்ள 6 சட்டசபை தொகுதிகளிலும் சேர்த்து '); 1 ('இப்பணியின்போது, 1.1.2027 அன்று 18 வயது பூர்த்தியடைந்தவர்களும')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-120b` in organization `or
-free models unavailable: no free model answered: groq openai/gpt-oss-120b 413: {"error":{"message":"Request too large for model `openai/gpt-oss-1
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
 ok anthropic/claude-haiku-5-5
 claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்')
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 4 ('பூட்டியிருந்த 4 வீடுகளில் டவுசர் கொள்ளையர் கைவரிசை')
 ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  caption needs 5 hashtags (Instagram max), has 8
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 13 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்'); 376 ('நாமக்கல் மாவட்டத்தில் வரைவு வாக்காளர் பட்டியலின்படி, மொத்தம்'); 13 ('நாமக்கல் மாவட்ட வரைவு வாக்காளர் பட்டியல் வெளியீடு: மொத்த வாக')
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The article says the Namakkal collector's statement was given, but the reel_script and caption attribute the statement to 'நாமக்கல் கலெக்டர் மதுபாலன்' — this matches the article, so no problem there; however the draft states the festival 'started' on Nov 11 while the article says it began 'நேற்று (நவ.,11)' which implies the article date is Nov 12, so 'நேற்று இரவு' (last night) for the police ban is consistent; no issue found in that.
+  The reel_script says 'ராசிபுரம் அருகே திருவிழாவில் ராட்டினங்களை இயக்கப் போலீசார் தடை விதித்துள்ளனர்' and the slides say the ban happened 'நேற்று இரவு' which matches the article.
+  The reel_script states the festival 'நடப்பது வழக்கம்' on Thursdays and Fridays after Deepavali; article says Thursday and Friday after Deepavali — consistent.
+  The caption and reel_script describe the ride-installation work as having been done by 'தொழிலாளர்கள்' for 20 days — consistent with article.
+  The article notes the group had obtained permissions and no-objection certificates from fire, health, public works, district administration and police; this key fact is missing from the reel_script and caption, which omit that the organisers claimed to have obtained required permissions.
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The article says the Namakkal collector's statement was given, but the reel_script and caption attribute the statement to 'நாமக்கல் கலெக்டர் மதுபாலன்' — this matches the article, so no problem there; however the draft states the festival 'started' on Nov 11 while the article says it began 'நேற்று (நவ.,11)' which implies the article date is Nov 12, so 'நேற்று இரவு' (last night) for the police ban is consistent; no issue found in that.
+  fact-check: The reel_script says 'ராசிபுரம் அருகே திருவிழாவில் ராட்டினங்களை இயக்கப் போலீசார் தடை விதித்துள்ளனர்' and the slides say the ban happened 'நேற்று இரவு' which matches the article.
+  fact-check: The reel_script states the festival 'நடப்பது வழக்கம்' on Thursdays and Fridays after Deepavali; article says Thursday and Friday after Deepavali — consistent.
+  fact-check: The caption and reel_script describe the ride-installation work as having been done by 'தொழிலாளர்கள்' for 20 days — consistent with article.
+  fact-check: The article notes the group had obtained permissions and no-objection certificates from fire, health, public works, district administration and police; this key fact is missing from the reel_script and caption, which omit that the organisers claimed to have obtained required permissions.
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Nadar Mahajana Sangam leader demands ame'
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-proofread skipped: no free model answered: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_generation' for more details.","type":"invalid_request_error","code":"json_validate_failed","failed_generation":""}}
-
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+free fact-check unavailable, using Claude: no free model answered: None
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/openai/gpt-oss-120b (2s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-real photo used (1152x819, sharpness 58.5, The photograph shows district officials releasing the draft ): https://tamilmaninewstoday.com/wp-content/uploads/2026/11/Draft-Electoral-Namakkal.jpg
-real photo used (1152x819, sharpness 58.5, The photograph real camera capture showing officials and rep): https://i0.wp.com/tamilmaninewstoday.com/wp-content/uploads/2026/11/Draft-Electoral-Namakk
-real photos used for 'Namakkal district draft voter list relea' (Tamilmani News)
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261112-1855","first":"RN-535"}
+free fact-check unavailable, using Claude: no free model answered: None
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261112-2244","first":"RN-536"}
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The reel_script says 'நேற்று நவம்பர் 11ஆம் தேதி' is fine, but the slides_spec line 'நேற்று இரவு ராட்டினங்களை இயக்க போலீசார் தடை விதித்தனர்' and 'இதுவரை ராட்டினங்கள் இயங்கவில்லை' (rides have not operated so far) is an added claim not stated in the article
+  The slides_spec line 'ராட்சத ராட்டினங்களை 20 நாட்களாக அமைத்தனர்' places the 20-day period under the reason for the ban, mixing the setup timeline with the cause of the ban
+  The article states the rides and swings were to be set up by the Vaniyambadi-led group, but the reel_script says 'அமைப்பாளர்கள்' obtained permission without the article saying the organizers themselves were the ones who obtained all listed permissions as a confirmed fact; the article only says it is 'கூறப்படுகிறது' (reported/claimed)
+  The caption says 'அமைக்க வாணியம்பாடியைச் சேர்ந்த வினோத்குமார் தலைமையிலான குழுவினர் முடிவு செய்தனர்' and adds 'தூரிகள்' which is accurate, but the caption also states 'தொழிலாளர்கள் ராட்டினங்களை அமைத்து வந்தனர்' without the article's note that they were ready to operate, omitting the readiness detail
+  The reel_script omits that the earlier auction for shops and rides near the temple was cancelled, an important background fact in the article
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The reel_script says 'நேற்று நவம்பர் 11ஆம் தேதி' is fine, but the slides_spec line 'நேற்று இரவு ராட்டினங்களை இயக்க போலீசார் தடை விதித்தனர்' and 'இதுவரை ராட்டினங்கள் இயங்கவில்லை' (rides have not operated so far) is an added claim not stated in the article
+  fact-check: The slides_spec line 'ராட்சத ராட்டினங்களை 20 நாட்களாக அமைத்தனர்' places the 20-day period under the reason for the ban, mixing the setup timeline with the cause of the ban
+  fact-check: The article states the rides and swings were to be set up by the Vaniyambadi-led group, but the reel_script says 'அமைப்பாளர்கள்' obtained permission without the article saying the organizers themselves were the ones who obtained all listed permissions as a confirmed fact; the article only says it is 'கூறப்படுகிறது' (reported/claimed)
+  fact-check: The caption says 'அமைக்க வாணியம்பாடியைச் சேர்ந்த வினோத்குமார் தலைமையிலான குழுவினர் முடிவு செய்தனர்' and adds 'தூரிகள்' which is accurate, but the caption also states 'தொழிலாளர்கள் ராட்டினங்களை அமைத்து வந்தனர்' without the article's note that they were ready to operate, omitting the readiness detail
+  fact-check: The reel_script omits that the earlier auction for shops and rides near the temple was cancelled, an important background fact in the article
 posting job started at once
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  Headline and reel_script say 'near Pallipalayam' and 'four houses' — the article says 4 locked houses in Pudupalayam area, which is acceptable, but the reel_script claims 'ஒரே இரவில் 4 பூட்டிய வீடுகளில் திருட முயற்சி' (attempted theft in 4 houses in one night), while the article says one house was broken into at Omsakthi Nagar and another at Vaikkal Medu, with items stolen from houses, not merely attempted — the draft conflates 'attempt' with actual theft.
+  The reel_script states the thieves 'பூட்டை உடைத்து உள்ளே சென்ற' and took items, but the 'எங்கே, எப்போது?' slide and reel_script also say 'பூட்டிய 4 வீடுகளில் கைவரிசை' correctly; however the reel_script says the thieves took 'கையில் கிடைத்த பொருட்களைத் திருடிச் சென்றனர்' from the first set without specifying which houses, mixing the Pudupalayam incident with the Omsakthi Nagar and Vaikkal Medu incidents in one sentence.
+  The caption's 'மக்கள் கவனத்திற்கு' advisory (lock houses securely, report suspicious persons) is invented content not present in the article.
+  The article says the thieves came 'டவுசர் அணிந்து கொண்டு, கையில் ஆயுதங்களுடன்' — draft is accurate here, but the reel_script and slides omit the important fact that the thieves fled when neighbours shouted only for the Omsakthi Nagar case, and the caption's English line 'Four locked houses broken into' is inaccurate since the article does not say all four were broken into.
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: Headline and reel_script say 'near Pallipalayam' and 'four houses' — the article says 4 locked houses in Pudupalayam area, which is acceptable, but the reel_script claims 'ஒரே இரவில் 4 பூட்டிய வீடுகளில் திருட முயற்சி' (attempted theft in 4 houses in one night), while the article says one house was broken into at Omsakthi Nagar and another at Vaikkal Medu, with items stolen from houses, not merely attempted — the draft conflates 'attempt' with actual theft.
+  fact-check: The reel_script states the thieves 'பூட்டை உடைத்து உள்ளே சென்ற' and took items, but the 'எங்கே, எப்போது?' slide and reel_script also say 'பூட்டிய 4 வீடுகளில் கைவரிசை' correctly; however the reel_script says the thieves took 'கையில் கிடைத்த பொருட்களைத் திருடிச் சென்றனர்' from the first set without specifying which houses, mixing the Pudupalayam incident with the Omsakthi Nagar and Vaikkal Medu incidents in one sentence.
+  fact-check: The caption's 'மக்கள் கவனத்திற்கு' advisory (lock houses securely, report suspicious persons) is invented content not present in the article.
+  fact-check: The article says the thieves came 'டவுசர் அணிந்து கொண்டு, கையில் ஆயுதங்களுடன்' — draft is accurate here, but the reel_script and slides omit the important fact that the thieves fled when neighbours shouted only for the Omsakthi Nagar case, and the caption's English line 'Four locked houses broken into' is inaccurate since the article does not say all four were broken into.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'கூனவேலம்பட்டி புதூர்', e.g. 'கூனவேலம்பட்டி புதூர்: ...' or 'கூனவேலம்பட்டி புதூர்-இல் ...' - viewers share news of their own area
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+image match check unavailable: gemini-3.5-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Dhowsar gang breaks into locked houses n'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261112-2245","first":"RN-537"}
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match: False The photo shows amusement ride equipment set up on festival grounds, but it does not show police officers, any law enfor
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Police ban rides at Azhiya Ilanga Amman '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261112-2246","first":"RN-538"}
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
 write round: 8 news waiting in the queue (written in priority order)
-candidate filter: already filed=4, collected=4
-to write: 0 Rasipuram + 4 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 4 Namakkal; time left 29 min
-try (N) manual=False: நாமக்கல் மாவட்ட வரைவு வாக்காளர் பட்டியல் வெளியீடு: மொத்த வாக
-try (N) manual=False: உலக அறிவு பெற ஆங்கிலம் ஒரு சிறந்த கருவி
-try (N) manual=False: சுற்றித்திரியும் தெருநாய்கள் புகாரளிக்க மொபைல் எண்
-skip (N) same event as RN-510: உலக அறிவு பெற ஆங்கிலம் ஒரு சிறந்த கருவி
-try (N) manual=False: கை கொடுக்குமா பொங்கல் பண்டிகை ஜவுளி உற்பத்தியாளர்கள் எதிர்பா
-skip (N) same event as RN-489: சுற்றித்திரியும் தெருநாய்கள் புகாரளிக்க மொபைல் எண்
-skip (N) similar to a filed story: கை கொடுக்குமா பொங்கல் பண்டிகை ஜவுளி உற்பத்தியாளர்க
-real photo from the source (Tamilmani News) for 'Namakkal district draft voter list relea'
-auto images: 1 of 1 stories ({})
+candidate filter: collected=4, already filed=4
+to write: 2 Rasipuram + 2 other district candidates (max 200 + 200 stories)
+candidates waiting: 2 Rasipuram, 2 Namakkal; time left 29 min
+try (N) manual=False: பூட்டியிருந்த 4 வீடுகளில் டவுசர் கொள்ளையர் கைவரிசை
+try (R) manual=False: திருவிழாவில் ராட்டினங்களை இயக்க போலீசார் தடை விதிப்பு
+try (N) manual=False: காவிரி ஆற்றில் பச்சை நிறத் தண்ணீர்.. குடித்தால் நோய் பரவுமா?
+skip (N) similar to a filed story: காவிரி ஆற்றில் பச்சை நிறத் தண்ணீர்.. குடித்தால் நோ
+try (R) manual=False: வன்கொடுமை தடுப்பு சட்டத்தை திருத்த வேண்டும்; நாடார் மகாஜன சங
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 1}, time left 23 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 4})
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 7})
+candidate loop ended: left R=0 N=0, tried={'R': 2, 'N': 2}, done={'R': 2, 'N': 1}, time left 25 min
+carousel for 0 of 3 stories, the rest reel only
+filed: 2 Rasipuram + 1 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+All News sheet: {"ok":true,"added":0,"updated":3} 
+stories: 3
