@@ -65,6 +65,29 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-13 | `0e17c8e` | reel end card: 'Source: <paper> (<date>)' instead of 'ஆதாரம்' (owner 13 Nov - same on every page); waiting reels rebuilt |
+| 2026-11-13 | `8b8d23a` | powercut: notices written |
+| 2026-11-13 | `432444e` | powercut: notices written |
+| 2026-11-13 | `3c2ffae` | powercut: notices written |
+| 2026-11-13 | `2a46974` | facebook RN-543 |
+| 2026-11-13 | `33b9213` | powercut: notices written |
+| 2026-11-13 | `2a03209` | powercut: notices written |
+| 2026-11-13 | `fc0b168` | facebook RN-546 |
+| 2026-11-13 | `f54bd13` | stories shared |
+| 2026-11-13 | `096efe6` | powercut: notices written |
+| 2026-11-13 | `b2f8666` | facebook RN-547 |
+| 2026-11-13 | `6f05b33` | rasipalan posted |
+| 2026-11-13 | `2e1896d` | facebook RN-544 |
+| 2026-11-13 | `98ff167` | facebook RN-545 |
+| 2026-11-13 | `49cad7c` | powercut: notices written |
+| 2026-11-13 | `41c9e32` | powercut: notices written |
+| 2026-11-13 | `c69258a` | facebook RN-541 |
+| 2026-11-13 | `9d01cee` | facebook RN-542 |
+| 2026-11-12 | `c826733` | facebook RN-539 |
+| 2026-11-12 | `064daf9` | facebook RN-538 |
+| 2026-11-12 | `d7d2e22` | facebook RN-537 |
+| 2026-11-12 | `0f5d7c0` | powercut: notices written |
+| 2026-11-12 | `98320a1` | facebook RN-536 |
 | 2026-11-12 | `59e2d3c` | voice: numbers read the way people say them - English names in English (பிளஸ் டூ, குரூப் ஃபோர், டி ட்வென்டி, ஃபைவ் ஜி), endings joined (நாற்பதுக்கும், ...ஒன்றில், ரூபாய்க்கு), நெ. -> எண் |
 | 2026-11-12 | `59d3e13` | voice: 'பிளஸ் 2' is read 'பிளஸ் டூ' (was 'பிளஸ் இரண்டு', RN-534); 'பிளஸ் 1' -> 'பிளஸ் ஒன்' |
 | 2026-11-12 | `5514e90` | powercut: notices written |
@@ -72,27 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-12 | `81f36b6` | direct reel upload (file instead of Cloudinary link) - OFF unless repo variable DIRECT_UPLOAD=1; falls back to the link; never posts twice |
 | 2026-11-12 | `2c52ba8` | cloudinary: keep the last 48 h only, clean once every 48 h (own workflow; hourly step removed) |
 | 2026-11-12 | `a49db2c` | powercut: notices written |
-| 2026-11-12 | `2a0575b` | cloudclean: manual one-time clean-up workflow (dry run by default) |
-| 2026-11-12 | `b2525ce` | powercut: notices written |
-| 2026-11-12 | `37b91da` | powercut: notices written |
-| 2026-11-12 | `bdda81a` | Cloudinary clean-up: this page's files older than 3 days deleted every hour (at 50% of the free limit reels older than 26 h too); a deleted prebuilt reel is uploaded again; rasipalan pictures in the page folder |
-| 2026-11-12 | `bbf0a4b` | powercut: notices written |
-| 2026-11-12 | `26e5cef` | facebook RN-535 |
-| 2026-11-12 | `a970ea0` | powercut: notices written |
-| 2026-11-12 | `a0b110b` | powercut: notices written |
-| 2026-11-12 | `5d52d9c` | powercut: notices written |
-| 2026-11-12 | `f403a64` | powercut: notices written |
-| 2026-11-12 | `653d0fd` | powercut: notices written |
-| 2026-11-12 | `1291dee` | powercut: notices written |
-| 2026-11-12 | `bbbc8d5` | facebook RN-530 |
-| 2026-11-12 | `78d12dc` | powercut: notices written |
-| 2026-11-12 | `cdff698` | powercut: notices written |
-| 2026-11-12 | `2f8053e` | facebook RN-531 |
-| 2026-11-12 | `3874ea8` | powercut: notices written |
-| 2026-11-12 | `8b126c4` | facebook RN-529 |
-| 2026-11-12 | `c934644` | powercut: notices written |
-| 2026-11-12 | `15605d5` | powercut: notices written |
-| 2026-11-12 | `8d59f18` | facebook RN-534 |
-| 2026-11-12 | `a0347d1` | facebook RN-526 |
-| 2026-11-12 | `78fb8c8` | powercut: notices written |
 <!-- recent-changes:end -->
