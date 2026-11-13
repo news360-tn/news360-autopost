@@ -1039,7 +1039,7 @@ class NewsSourceShown11Nov(unittest.TestCase):
     def test_reel_shows_it(self):
         src = (ROOT / "reel" / "reel4.py").read_text(encoding="utf-8")
         self.assertIn('class="src">📰', src)
-        self.assertIn('class="e5">ஆதாரம்: ', src)
+        self.assertIn('class="e5">Source: ', src)      # owner 13 Nov: 'Source:' on every page, never 'ஆதாரம்'
         self.assertIn('"source": source_credit(row)[0]', (ROOT / "poster" / "post.py").read_text(encoding="utf-8"))
 
 
