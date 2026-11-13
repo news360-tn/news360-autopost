@@ -65,6 +65,18 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-13 | `b634f98` | posting: no start-time wait - every eligible story posts as soon as it is ready (prime_time OFF); collection stays every 4 hours (owner 13 Nov 22:51) |
+| 2026-11-13 | `24c6c7f` | powercut: notices written |
+| 2026-11-13 | `9710215` | powercut: notices written |
+| 2026-11-13 | `8c9f1b8` | powercut: notices written |
+| 2026-11-13 | `732f1fa` | powercut: notices written |
+| 2026-11-13 | `388c3bf` | powercut: notices written |
+| 2026-11-13 | `c06d7d5` | powercut: notices written |
+| 2026-11-13 | `18d394f` | powercut: notices written |
+| 2026-11-13 | `d7df7d0` | facebook RN-550 |
+| 2026-11-13 | `0cfab04` | powercut: notices written |
+| 2026-11-13 | `8b85aaf` | powercut: notices written |
+| 2026-11-13 | `d36d801` | powercut: notices written |
 | 2026-11-13 | `ef15a1a` | posting: each story waits for its start time 08:00 / 12:00 / 18:00 IST, then all waiting news posts - no end time, nothing skipped; only power cuts post at once (by category or headline). Collection every 4 hours (01/05/09/13/17/21 IST). Power-cut lists: Samayam format and several parts of one district (owner 13 Nov) |
 | 2026-11-13 | `c770db6` | powercut: notices written |
 | 2026-11-13 | `7d67952` | powercut: notices written |
@@ -83,16 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-13 | `33b9213` | powercut: notices written |
 | 2026-11-13 | `2a03209` | powercut: notices written |
 | 2026-11-13 | `fc0b168` | facebook RN-546 |
-| 2026-11-13 | `f54bd13` | stories shared |
-| 2026-11-13 | `096efe6` | powercut: notices written |
-| 2026-11-13 | `b2f8666` | facebook RN-547 |
-| 2026-11-13 | `6f05b33` | rasipalan posted |
-| 2026-11-13 | `2e1896d` | facebook RN-544 |
-| 2026-11-13 | `98ff167` | facebook RN-545 |
-| 2026-11-13 | `49cad7c` | powercut: notices written |
-| 2026-11-13 | `41c9e32` | powercut: notices written |
-| 2026-11-13 | `c69258a` | facebook RN-541 |
-| 2026-11-13 | `9d01cee` | facebook RN-542 |
-| 2026-11-12 | `c826733` | facebook RN-539 |
-| 2026-11-12 | `064daf9` | facebook RN-538 |
 <!-- recent-changes:end -->
