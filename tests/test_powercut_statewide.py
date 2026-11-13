@@ -71,5 +71,18 @@ class SearchAndGuard(unittest.TestCase):
         self.assertEqual(why, "other district")
 
 
+class SamayamFormat(unittest.TestCase):
+    def test_quoted_headings_and_two_parts_of_one_district(self):
+        body = ('தமிழகத்தில் நாளை காலை 9 மணி முதல் பராமரிப்பு பணிகள் காரணமாக மின்தடை."நாமக்கல்/மெட்ரோ மின் தடை பகுதிகள்":- "இருகூர், ஒண்டிப்புதூர்",'
+                '"நாமக்கல் /வடக்கு மின்வெட்டு பகுதிகள்":- "யமுனா நகர், கணுவாய்","திண்டுக்கல் மின்வெட்டு பகுதிகள்": - "நிலக்கோட்டை, சாணார்பட்டி"')
+        with mock.patch.object(allnews, "_get", return_value=page("தமிழகத்தில் நாளை (13-11-2026) மின்தடை அறிவிப்பு", body)):
+            a = allnews.article_any(LIST_URL + allnews.SECTION_MARK)
+        for w in ("இருகூர்", "ஒண்டிப்புதூர்", "யமுனா நகர்", "கணுவாய்"):
+            self.assertIn(w, a["text"], w)
+        for w in ("திண்டுக்கல்", "நிலக்கோட்டை"):
+            self.assertNotIn(w, a["text"] + a["title"], w)
+        self.assertTrue(a["title"].startswith("நாமக்கல் மாவட்டத்தில் நாளை (13-11-2026) மின்தடை: இருகூர், ஒண்டிப்புதூர்"), a["title"])
+
+
 if __name__ == "__main__":
     unittest.main()

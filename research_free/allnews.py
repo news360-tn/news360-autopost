@@ -403,8 +403,9 @@ TN_DISTRICTS = ("அரியலூர்", "செங்கல்பட்ட�
                 "நாமக்கல்", "நீலகிரி", "உதகை", "பெரம்பலூர்", "புதுக்கோட்டை", "ராமநாதபுரம்", "ராணிப்பேட்டை", "சேலம்", "சிவகங்கை", "தென்காசி",
                 "தஞ்சாவூர்", "தஞ்சை", "தேனி", "தூத்துக்குடி", "திருச்சி", "திருச்சிராப்பள்ளி", "திருநெல்வேலி", "நெல்லை", "திருப்பத்தூர்",
                 "திருப்பூர்", "திருவள்ளூர்", "திருவண்ணாமலை", "திருவாரூர்", "வேலூர்", "விழுப்புரம்", "விருதுநகர்", "புதுச்சேரி")
-_SECTION_HEAD = re.compile(r"(?:^|(?<=[\s.,;:|>\-–]))(" + "|".join(sorted(TN_DISTRICTS, key=len, reverse=True)) +
-                           r")(?:\s*(?:மாவட்டத்தில்|மாவட்டம்)\s*(?:பகுதிகள்)?\s*[:\-–]?|\s*(?:பகுதிகள்)?\s*[:\-–])")
+_SECTION_HEAD = re.compile(r'(?:^|(?<=[\s.,;:|>\-–"]))(' + "|".join(sorted(TN_DISTRICTS, key=len, reverse=True)) +
+                           r')(?:\s*/\s*[^\s":,.]+)?'      # Samayam: "கோவை/மெட்ரோ மின் தடை பகுதிகள்":- "..."
+                           r'(?:\s*(?:மாவட்டத்தில்|மாவட்டம்)\s*(?:பகுதிகள்)?\s*[:\-–]?|\s*(?:மின்\s*தடை|மின்தடை|மின்வெட்டு)?\s*(?:பகுதிகள்)?\s*"?\s*[:\-–])')
 
 
 def district_section(url, names=None):
@@ -419,15 +420,20 @@ def district_section(url, names=None):
     if not own:
         return dict(art, url=url, text="")
     m = own[0]
-    nxt = next((h.start() for h in heads if h.start() > m.end() and h.group(1) not in names), len(text))
-    part = text[m.end():min(nxt, m.end() + 700)].strip(" .,:;-–\n")
+    parts = []      # every part about our district (Samayam splits one district: "கோவை/மெட்ரோ", "கோவை/வடக்கு")
+    for h in own:
+        nxt = next((x.start() for x in heads if x.start() > h.end()), len(text))
+        p = text[h.end():min(nxt, h.end() + 700)].strip(' .,:;-–"\n')
+        if p and p not in parts:
+            parts.append(p)
+    part = "; ".join(parts)
     first = heads[0].start() if heads else 0
     intro = [s.strip() for s in re.split(r"(?<=[.!?])\s+|\n+", text[:first]) if s.strip()]
     others = [d for d in TN_DISTRICTS if d not in names]
     intro = " ".join(s for s in intro if ("மணி" in s or "பராமரிப்பு" in s) and not any(d in s for d in others))[:400]
     title = art.get("title") or ""
     when = re.search(r"நாளை\s*(?:\(|மறுநாள்)?\s*\d{1,2}[.\-/]\d{1,2}[.\-/]\d{2,4}\)?|\d{1,2}[.\-/]\d{1,2}[.\-/]\d{2,4}|நாளை", title)
-    areas = re.split(r"[,،]\s*", part)
+    areas = [x.strip(' "') for x in re.split(r"[,،;]\s*", part)]
     name = m.group(1)
     new_title = f"{name} மாவட்டத்தில் {when.group(0) if when else 'நாளை'} மின்தடை: {', '.join(a.strip() for a in areas[:4] if a.strip())}"
     body = (intro + "\n" if intro else "") + f"{name} மாவட்டம் - மின்தடை ஏற்படும் பகுதிகள்: {part}."

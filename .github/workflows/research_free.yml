@@ -3,7 +3,7 @@ name: research-free
 # (quality-checked) and sends ONE images-needed e-mail - only when there is news. Stories still waiting for images from an earlier round are listed again in it.
 on:
   schedule:
-    - cron: "7 */4 * * *"    # every 4 hours: COLLECT only (all news, queued by priority); write-stories.yml writes them and posting follows at once
+    - cron: "30 3,7,11,15,19,23 * * *"    # owner 13 Nov: every 4 hours - 09/13/17/21/01/05 IST; posting waits for 08:00 / 12:00 / 18:00 (poster/config.json prime_time)
   workflow_dispatch:
     inputs:
       dry:
