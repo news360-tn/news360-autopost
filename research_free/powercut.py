@@ -18,10 +18,16 @@ import allnews      # noqa: E402
 
 # ---- the only part that differs between the Coimbatore and the Namakkal copy of this file
 QUERIES = ["நாமக்கல் மின்தடை", "நாளைய மின்தடை நாமக்கல்", "ராசிபுரம் மின்தடை", "திருச்செங்கோடு மின்தடை", "பரமத்தி வேலூர் மின்தடை",
-           "குமாரபாளையம் மின்தடை", "பள்ளிப்பாளையம் மின்தடை", "மோகனூர் மின்தடை", "சேந்தமங்கலம் மின்தடை", "நாமக்கல் மின் நிறுத்தம்"]
+           "குமாரபாளையம் மின்தடை", "பள்ளிப்பாளையம் மின்தடை", "மோகனூர் மின்தடை", "சேந்தமங்கலம் மின்தடை", "நாமக்கல் மின் நிறுத்தம்",
+           "நாமகிரிப்பேட்டை மின்தடை", "வெண்ணந்தூர் மின்தடை", "மல்லசமுத்திரம் மின்தடை", "எருமப்பட்டி மின்தடை", "கொல்லிமலை மின்தடை"]      # owner 13 Nov: more towns
 SITES = ("dinamani.com", "dinamalar.com")      # order = preference when both papers print the same cut
 DISTRICT_URL = ("district-news-namakkal", "edition-dharmapuri/namakkal")      # a link of the district's own page
 # ----
+# owner 13 Nov: the daily STATE-WIDE lists name every district's areas - Namakkal's cuts are often printed only there (12 Nov:
+# Samayasangili, Alaiyapatti, Paruthipalli were in News18 / ABP Live, never in Dinamani / Dinamalar). Only OUR district's part is used
+# (allnews.district_section); a list without a Namakkal part is refused as 'not this district'.
+STATE_SITES = ("tamil.news18.com", "tamil.abplive.com", "tamil.samayam.com")
+STATE_QUERIES = ["தமிழகத்தில் நாளை மின்தடை", "தமிழ்நாட்டில் நாளை மின்தடை பகுதிகள்"]
 
 STATE = HERE / "archive" / "powercut_state.json"
 URLS = HERE / "results" / "powercut_urls.txt"
@@ -124,6 +130,14 @@ def links():
                     items += [x for x in fn(f"{q} site:{dom}") if dom in (x.get("site", "") + x.get("url", "")) and F.is_power_cut(x.get("title", ""))]
                 except Exception as e:
                     log(f"{fn.__name__} '{q}' {dom} failed: {str(e)[:80]}")
+    for q in STATE_QUERIES:
+        for dom in STATE_SITES:
+            for fn in (allnews.from_google, allnews.from_bing):
+                try:
+                    items += [dict(x, state_list=True) for x in fn(f"{q} site:{dom}")
+                              if dom in (x.get("site", "") + x.get("url", "")) and F.is_power_cut(x.get("title", ""))]
+                except Exception as e:
+                    log(f"{fn.__name__} '{q}' {dom} failed: {str(e)[:80]}")
     out, seen = [], set()
     for it in items:
         u = it["url"]
@@ -133,7 +147,13 @@ def links():
             except Exception:
                 continue
         u = norm(u)
-        if u in seen or not any(d in u for d in SITES):
+        if it.get("state_list"):
+            if not any(d in u for d in STATE_SITES):
+                continue
+            u += allnews.SECTION_MARK      # read as: intro + Namakkal's part only
+        elif not any(d in u for d in SITES):
+            continue
+        if u in seen:
             continue
         seen.add(u)
         out.append(dict(it, url=u))
@@ -159,6 +179,9 @@ def check(it, today, now):
     it["_title"] = title
     if not F.is_power_cut(title):
         return None, "not a power cut"
+    filed = allnews.url_district(it["url"])
+    if filed and filed != "namakkal" and not allnews.has_place(title):
+        return None, "other district"      # owner 13 Nov: filed under another district's page (11 Nov: a Coimbatore Dinamalar cut was taken)
     if not (allnews.has_place(title) or allnews.has_place(text[:800]) or any(d in it["url"] for d in DISTRICT_URL)):
         return None, "not this district"
     if allnews.other_district(title):
