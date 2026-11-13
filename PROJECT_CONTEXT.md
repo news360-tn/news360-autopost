@@ -65,6 +65,11 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-13 | `4acfde6` | goldrate: daily gold & silver rate carousel (owner design 14 Nov) - posts when 2 rate pages show today's date and the same rate; compared with yesterday; Namakkal + Rasipuram |
+| 2026-11-13 | `c05421b` | facebook RN-551 |
+| 2026-11-13 | `a5761ba` | stories shared |
+| 2026-11-13 | `1b2dca8` | facebook RN-552 |
+| 2026-11-13 | `8891d2a` | powercut: notices written |
 | 2026-11-13 | `b634f98` | posting: no start-time wait - every eligible story posts as soon as it is ready (prime_time OFF); collection stays every 4 hours (owner 13 Nov 22:51) |
 | 2026-11-13 | `24c6c7f` | powercut: notices written |
 | 2026-11-13 | `9710215` | powercut: notices written |
@@ -90,9 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-13 | `0e17c8e` | reel end card: 'Source: <paper> (<date>)' instead of 'ஆதாரம்' (owner 13 Nov - same on every page); waiting reels rebuilt |
 | 2026-11-13 | `8b8d23a` | powercut: notices written |
 | 2026-11-13 | `432444e` | powercut: notices written |
-| 2026-11-13 | `3c2ffae` | powercut: notices written |
-| 2026-11-13 | `2a46974` | facebook RN-543 |
-| 2026-11-13 | `33b9213` | powercut: notices written |
-| 2026-11-13 | `2a03209` | powercut: notices written |
-| 2026-11-13 | `fc0b168` | facebook RN-546 |
 <!-- recent-changes:end -->
