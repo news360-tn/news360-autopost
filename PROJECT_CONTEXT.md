@@ -65,6 +65,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-13 | `ef15a1a` | posting: each story waits for its start time 08:00 / 12:00 / 18:00 IST, then all waiting news posts - no end time, nothing skipped; only power cuts post at once (by category or headline). Collection every 4 hours (01/05/09/13/17/21 IST). Power-cut lists: Samayam format and several parts of one district (owner 13 Nov) |
+| 2026-11-13 | `c770db6` | powercut: notices written |
+| 2026-11-13 | `7d67952` | powercut: notices written |
 | 2026-11-13 | `a214804` | power cuts: also the daily state-wide lists (News18 / ABP Live / Samayam) - only Namakkal's part is written; 5 more towns searched; a notice filed under another district's page is refused. Reel: spoken sentence 1 names the town and states the news (no question / teaser). ABP / Samayam named as sources (owner 13 Nov) |
 | 2026-11-13 | `68bd1a7` | powercut: notices written |
 | 2026-11-13 | `12c2e20` | facebook RN-548 |
@@ -92,7 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-13 | `9d01cee` | facebook RN-542 |
 | 2026-11-12 | `c826733` | facebook RN-539 |
 | 2026-11-12 | `064daf9` | facebook RN-538 |
-| 2026-11-12 | `d7d2e22` | facebook RN-537 |
-| 2026-11-12 | `0f5d7c0` | powercut: notices written |
-| 2026-11-12 | `98320a1` | facebook RN-536 |
 <!-- recent-changes:end -->
