@@ -65,6 +65,13 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-13 | `a214804` | power cuts: also the daily state-wide lists (News18 / ABP Live / Samayam) - only Namakkal's part is written; 5 more towns searched; a notice filed under another district's page is refused. Reel: spoken sentence 1 names the town and states the news (no question / teaser). ABP / Samayam named as sources (owner 13 Nov) |
+| 2026-11-13 | `68bd1a7` | powercut: notices written |
+| 2026-11-13 | `12c2e20` | facebook RN-548 |
+| 2026-11-13 | `2e9c4bd` | powercut: notices written |
+| 2026-11-13 | `2b89841` | powercut: notices written |
+| 2026-11-13 | `6a5ea8e` | powercut: notices written |
+| 2026-11-13 | `580ef27` | powercut: notices written |
 | 2026-11-13 | `0e17c8e` | reel end card: 'Source: <paper> (<date>)' instead of 'ஆதாரம்' (owner 13 Nov - same on every page); waiting reels rebuilt |
 | 2026-11-13 | `8b8d23a` | powercut: notices written |
 | 2026-11-13 | `432444e` | powercut: notices written |
@@ -88,11 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-12 | `d7d2e22` | facebook RN-537 |
 | 2026-11-12 | `0f5d7c0` | powercut: notices written |
 | 2026-11-12 | `98320a1` | facebook RN-536 |
-| 2026-11-12 | `59e2d3c` | voice: numbers read the way people say them - English names in English (பிளஸ் டூ, குரூப் ஃபோர், டி ட்வென்டி, ஃபைவ் ஜி), endings joined (நாற்பதுக்கும், ...ஒன்றில், ரூபாய்க்கு), நெ. -> எண் |
-| 2026-11-12 | `59d3e13` | voice: 'பிளஸ் 2' is read 'பிளஸ் டூ' (was 'பிளஸ் இரண்டு', RN-534); 'பிளஸ் 1' -> 'பிளஸ் ஒன்' |
-| 2026-11-12 | `5514e90` | powercut: notices written |
-| 2026-11-12 | `3ca0c05` | powercut: notices written |
-| 2026-11-12 | `81f36b6` | direct reel upload (file instead of Cloudinary link) - OFF unless repo variable DIRECT_UPLOAD=1; falls back to the link; never posts twice |
-| 2026-11-12 | `2c52ba8` | cloudinary: keep the last 48 h only, clean once every 48 h (own workflow; hourly step removed) |
-| 2026-11-12 | `a49db2c` | powercut: notices written |
 <!-- recent-changes:end -->
