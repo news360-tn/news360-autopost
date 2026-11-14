@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-14 | `957d236` | posting: Gmail daily email limit no longer counts as a failed post record (sheet row is already saved - no 5x retries); checker notes ending 'so not a problem' no longer hold a story (14 Nov) |
+| 2026-11-14 | `288dee4` | powercut: notices written |
+| 2026-11-14 | `62c86c1` | facebook RN-573 |
+| 2026-11-14 | `729948b` | facebook RN-562 |
+| 2026-11-14 | `7bbbeef` | powercut: notices written |
+| 2026-11-14 | `1a69eb6` | facebook RN-575 |
+| 2026-11-14 | `ba4017a` | facebook RN-563 |
+| 2026-11-14 | `4113d42` | powercut: notices written |
+| 2026-11-14 | `eec6ad5` | powercut: notices written |
+| 2026-11-14 | `4a15f69` | facebook RN-568 |
+| 2026-11-14 | `8928eba` | facebook RN-561 |
+| 2026-11-14 | `4b75983` | stories shared |
+| 2026-11-14 | `3a9dddb` | powercut: notices written |
+| 2026-11-14 | `3463d2f` | powercut: notices written |
+| 2026-11-14 | `f06f9ad` | goldrate posted |
+| 2026-11-14 | `831985c` | facebook RN-560 |
+| 2026-11-14 | `60d69b8` | powercut: notices written |
+| 2026-11-14 | `85f3705` | powercut: notices written |
+| 2026-11-14 | `5c9cc61` | powercut: notices written |
+| 2026-11-14 | `046c80f` | stories shared |
+| 2026-11-14 | `29f7ee2` | powercut: notices written |
+| 2026-11-14 | `dec7179` | powercut: notices written |
+| 2026-11-14 | `62adfb5` | rasipalan posted |
+| 2026-11-14 | `00f2572` | powercut: notices written |
+| 2026-11-14 | `32dd7ae` | powercut: notices written |
+| 2026-11-13 | `04d2287` | stories shared |
+| 2026-11-13 | `4500c14` | stories shared |
+| 2026-11-13 | `e810bdd` | stories shared |
 | 2026-11-13 | `4acfde6` | goldrate: daily gold & silver rate carousel (owner design 14 Nov) - posts when 2 rate pages show today's date and the same rate; compared with yesterday; Namakkal + Rasipuram |
 | 2026-11-13 | `c05421b` | facebook RN-551 |
-| 2026-11-13 | `a5761ba` | stories shared |
-| 2026-11-13 | `1b2dca8` | facebook RN-552 |
-| 2026-11-13 | `8891d2a` | powercut: notices written |
-| 2026-11-13 | `b634f98` | posting: no start-time wait - every eligible story posts as soon as it is ready (prime_time OFF); collection stays every 4 hours (owner 13 Nov 22:51) |
-| 2026-11-13 | `24c6c7f` | powercut: notices written |
-| 2026-11-13 | `9710215` | powercut: notices written |
-| 2026-11-13 | `8c9f1b8` | powercut: notices written |
-| 2026-11-13 | `732f1fa` | powercut: notices written |
-| 2026-11-13 | `388c3bf` | powercut: notices written |
-| 2026-11-13 | `c06d7d5` | powercut: notices written |
-| 2026-11-13 | `18d394f` | powercut: notices written |
-| 2026-11-13 | `d7df7d0` | facebook RN-550 |
-| 2026-11-13 | `0cfab04` | powercut: notices written |
-| 2026-11-13 | `8b85aaf` | powercut: notices written |
-| 2026-11-13 | `d36d801` | powercut: notices written |
-| 2026-11-13 | `ef15a1a` | posting: each story waits for its start time 08:00 / 12:00 / 18:00 IST, then all waiting news posts - no end time, nothing skipped; only power cuts post at once (by category or headline). Collection every 4 hours (01/05/09/13/17/21 IST). Power-cut lists: Samayam format and several parts of one district (owner 13 Nov) |
-| 2026-11-13 | `c770db6` | powercut: notices written |
-| 2026-11-13 | `7d67952` | powercut: notices written |
-| 2026-11-13 | `a214804` | power cuts: also the daily state-wide lists (News18 / ABP Live / Samayam) - only Namakkal's part is written; 5 more towns searched; a notice filed under another district's page is refused. Reel: spoken sentence 1 names the town and states the news (no question / teaser). ABP / Samayam named as sources (owner 13 Nov) |
-| 2026-11-13 | `68bd1a7` | powercut: notices written |
-| 2026-11-13 | `12c2e20` | facebook RN-548 |
-| 2026-11-13 | `2e9c4bd` | powercut: notices written |
-| 2026-11-13 | `2b89841` | powercut: notices written |
-| 2026-11-13 | `6a5ea8e` | powercut: notices written |
-| 2026-11-13 | `580ef27` | powercut: notices written |
-| 2026-11-13 | `0e17c8e` | reel end card: 'Source: <paper> (<date>)' instead of 'ஆதாரம்' (owner 13 Nov - same on every page); waiting reels rebuilt |
-| 2026-11-13 | `8b8d23a` | powercut: notices written |
-| 2026-11-13 | `432444e` | powercut: notices written |
 <!-- recent-changes:end -->
