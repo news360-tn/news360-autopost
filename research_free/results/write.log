@@ -1,11 +1,252 @@
+writing [N]: கோழிகளுக்கு இறக்கை அழுகல் நோய் பாதிப்பு
+writing [N]: சாலைப் பணி முறைகேட்டை தட்டிக் கேட்ட சட்டக் கல்லூரி மாணவர் உள
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+writing [N]: ரூ.75 கோடி மோசடி வழக்கு மேலும் 2 ஊழியர்கள் கைது
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+ok gemini/gemini-3-flash-preview (12s)
+attempt 1 gemini/gemini-3-flash-preview: 3 problems
+  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  hl1 (the first headline on screen) must name the place 'சேலம்', e.g. 'சேலம்: ...' or 'சேலம்-இல் ...' - viewers share news of their own area
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 45 ('சேலம்: சேலம், சின்னதிருப்பதியை சேர்ந்த குமரன் மனைவி கண்ணகி, ')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+ok gemini/gemini-3.6-flash (14s)
+attempt 1 gemini/gemini-3.6-flash: 3 problems
+  reel_script must tell how the story ENDED, as the article's last lines say ('சாலைப் பணி முறைகேட்டை தட்டிக் கேட்ட சட்டக் கல்லூரி மாணவர் உள்ளிட்ட 3 பேர் மீதான வழக்கு ரத்து') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+  sentence 1 (one-line story) has 16 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (16s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 71 ('கோழிகளுக்கு இறக்கை அழுகல் நோய் மற்றும் ரத்தக் கழிச்சல் பாதிப')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (12s)
+attempt 2 gemini/gemini-3-flash-preview: 1 problems
+  reel_script sentence 1 (heard in the first 3 seconds) must name the place 'சேலம்' and the news itself, e.g. 'சேலம்-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (12s)
+attempt 2 gemini/gemini-3-flash-preview: 2 problems
+  reel_script must tell how the story ENDED, as the article's last lines say ('கோழிகளுக்கு இறக்கை அழுகல் நோய் பாதிப்பு') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (12s)
+attempt 3 gemini/gemini-3-flash-preview: 5 problems
+  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
+  sentence 1 (one-line story) has 15 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  numbers not found in the article: 8
+  reel_script sentence 1 (heard in the first 3 seconds) must name the place 'சேலம்' and the news itself, e.g. 'சேலம்-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 45 ('சேலம்: சேலம், சின்னதிருப்பதியை சேர்ந்த குமரன் மனைவி கண்ணகி, ')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (11s)
+attempt 3 gemini/gemini-3-flash-preview: 3 problems
+  reel_script must tell how the story ENDED, as the article's last lines say ('கோழிகளுக்கு இறக்கை அழுகல் நோய் பாதிப்பு') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 71 ('கோழிகளுக்கு இறக்கை அழுகல் நோய் மற்றும் ரத்தக் கழிச்சல் பாதிப')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (11s)
+attempt 4 gemini/gemini-3-flash-preview: 1 problems
+  hl1 (the first headline on screen) must name the place 'சேலம்', e.g. 'சேலம்: ...' or 'சேலம்-இல் ...' - viewers share news of their own area
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (11s)
+attempt 4 gemini/gemini-3-flash-preview: 1 problems
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+ok gemini/gemini-3-flash-preview (13s)
+attempt 5 gemini/gemini-3-flash-preview: 2 problems
+  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 89 ('கோழிகளுக்கு இறக்கை அழுகல் நோய் மற்றும் ரத்தக் கழிச்சல் பாதிப'); 6 ('கோழிகளுக்கு இறக்கை அழுகல் நோய் மற்றும் ரத்தக் கழிச்சல் பாதிப'); 71 ('கோழிகளுக்கு இறக்கை அழுகல் நோய் மற்றும் ரத்தக் கழிச்சல் பாதிப'); 89 ('பகல் வெப்பம் 89.6 டிகிரிக்கு மிகாமலும், இரவு வெப்பம் 68 டிகி'); 6 ('பகல் வெப்பம் 89.6 டிகிரிக்கு மிகாமலும், இரவு வெப்பம் 68 டிகி')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+ok groq/qwen/qwen3.8-27b (4s)
+attempt 2 groq/qwen/qwen3.8-27b: 3 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  source/outlet name or link appears: ஆதாரம்
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+switching away from groq/openai/gpt-oss-120b for 10 min
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+free models unavailable: no free model answered: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read t
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  reel_script must tell how the story ENDED, as the article's last lines say ('சாலைப் பணி முறைகேட்டை தட்டிக் கேட்ட சட்டக் கல்லூரி மாணவர் உள்ளிட்ட 3 பேர் மீதான வழக்கு ரத்து') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+  hl1 (the first headline on screen) must name the place 'சென்னை', e.g. 'சென்னை: ...' or 'சென்னை-இல் ...' - viewers share news of their own area
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  numbers not found in the article: 8
+  reel_script sentence 1 (heard in the first 3 seconds) must name the place 'சேலம்' and the news itself, e.g. 'சேலம்-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says the video showed a mismatch with police accusations and that there was no basis for the attack allegation; the article says the video showed inconsistency and the court found the allegation not believable, but the reel phrasing 'வீடியோவில் தெரிந்தது' loosely overstates it as settled fact and drops the 'not believable' wording (minor).
+  reel_script and caption say the case was 'quashed' over 'questioning' — the article's key point that the police officer's phone was snatched and the case was allegedly false (பொய் வழக்கு) is omitted from the reel_script.
+  caption states the case was against 3 people who 'challenged' the case, but the article says the petition was filed by the three and the court's quashing was for a case of attempting to assault police; the caption's 'மாணவர் ... வீடியோவில் ... முரண்பாடு இருப்பதாக நீதிமன்றத்தில் காட்டப்பட்டது' merges the video point with the allegation in one sentence, mixing two facts.
+  reel_script omits that the lawyer Asan Mohamed Jinnah argued the case and that lawyer Sarita raised the police station issue, an important party-level fact of who did what.
+  slides_spec 'வழக்கு ஏன் பொய்?' slide says the case was 'காவல் அதிகாரியைத் தாக்க முயன்றதாக வழக்கு' but the article's reason also includes preventing officers from doing duty, which is omitted, and the line 'கேள்வி கேட்பது குற்றமல்ல என வாதம்' attributes an argument, not a finding, as a conclusion of the judgment.
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script says the video showed a mismatch with police accusations and that there was no basis for the attack allegation; the article says the video showed inconsistency and the court found the allegation not believable, but the reel phrasing 'வீடியோவில் தெரிந்தது' loosely overstates it as settled fact and drops the 'not believable' wording (minor).
+  fact-check: reel_script and caption say the case was 'quashed' over 'questioning' — the article's key point that the police officer's phone was snatched and the case was allegedly false (பொய் வழக்கு) is omitted from the reel_script.
+  fact-check: caption states the case was against 3 people who 'challenged' the case, but the article says the petition was filed by the three and the court's quashing was for a case of attempting to assault police; the caption's 'மாணவர் ... வீடியோவில் ... முரண்பாடு இருப்பதாக நீதிமன்றத்தில் காட்டப்பட்டது' merges the video point with the allegation in one sentence, mixing two facts.
+  fact-check: reel_script omits that the lawyer Asan Mohamed Jinnah argued the case and that lawyer Sarita raised the police station issue, an important party-level fact of who did what.
+  fact-check: slides_spec 'வழக்கு ஏன் பொய்?' slide says the case was 'காவல் அதிகாரியைத் தாக்க முயன்றதாக வழக்கு' but the article's reason also includes preventing officers from doing duty, which is omitted, and the line 'கேள்வி கேட்பது குற்றமல்ல என வாதம்' attributes an argument, not a finding, as a conclusion of the judgment.
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  numbers not found in the article: 8
+  hl1 (the first headline on screen) must name the place 'சேலம்', e.g. 'சேலம்: ...' or 'சேலம்-இல் ...' - viewers share news of their own area
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 45 ('சேலம்: சேலம், சின்னதிருப்பதியை சேர்ந்த குமரன் மனைவி கண்ணகி, ')
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+  reel_script must tell how the story ENDED, as the article's last lines say ('சாலைப் பணி முறைகேட்டை தட்டிக் கேட்ட சட்டக் கல்லூரி மாணவர் உள்ளிட்ட 3 பேர் மீதான வழக்கு ரத்து') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  hl1 (the first headline on screen) must name the place 'சென்னை', e.g. 'சென்னை: ...' or 'சென்னை-இல் ...' - viewers share news of their own area
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  numbers not found in the article: 8
+  reel_script sentence 1 (heard in the first 3 seconds) must name the place 'சேலம்' and the news itself, e.g. 'சேலம்-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+writing [N]: இ.ஓ., பொறுப்பேற்பு
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  slides_spec 'ஆய்வில் தெரிந்தது' slide says the sick chickens were examined at the poultry disease lab, which the article supports, but the 'நோய் தாக்கம் மேலும் அதிகரிக்கலாம்' line is fine; however slide 4 adds 'நோய் அறிகுறி தெரிந்தால் உடனே மருத்துவரை அணுகுங்கள்' which is not in the article
+  slides_spec slide 4 adds 'மேலும் தகவலுக்கு கால்நடை மருத்துவக் கல்லூரியை அணுகுங்கள்', an invented advisory not stated in the article
+  caption states 'கடந்த வார பகல் வெப்பம் 89.6 டிகிரி, இரவு வெப்பம் 71.6 டிகிரியாக இருந்தது' which is supported by the article, but the reel_script and caption do not state the source of the temperature figures in context; more importantly the caption's 'பெரும்பாலானவை ... இறந்தது தெரியவந்துள்ளது' is accurate, so no issue there
+  reel_script says 'நாமக்கல் கோழிப் பண்ணைகளில் இறக்கை அழுகல் நோய் பரவி வருகிறது' and slides_spec loc 'நாமக்கல் கோழிப் பண்ணைகள்' presents the outbreak as on Namakkal poultry farms, which the article does not specify beyond the college weather centre report
+  reel_script's 'பனிக்காலம் தொடங்கி இருப்பதால்' is supported, but 'மேலும் செய்திகளுக்கு' closing is the fixed footer and is excluded
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: slides_spec 'ஆய்வில் தெரிந்தது' slide says the sick chickens were examined at the poultry disease lab, which the article supports, but the 'நோய் தாக்கம் மேலும் அதிகரிக்கலாம்' line is fine; however slide 4 adds 'நோய் அறிகுறி தெரிந்தால் உடனே மருத்துவரை அணுகுங்கள்' which is not in the article
+  fact-check: slides_spec slide 4 adds 'மேலும் தகவலுக்கு கால்நடை மருத்துவக் கல்லூரியை அணுகுங்கள்', an invented advisory not stated in the article
+  fact-check: caption states 'கடந்த வார பகல் வெப்பம் 89.6 டிகிரி, இரவு வெப்பம் 71.6 டிகிரியாக இருந்தது' which is supported by the article, but the reel_script and caption do not state the source of the temperature figures in context; more importantly the caption's 'பெரும்பாலானவை ... இறந்தது தெரியவந்துள்ளது' is accurate, so no issue there
+  fact-check: reel_script says 'நாமக்கல் கோழிப் பண்ணைகளில் இறக்கை அழுகல் நோய் பரவி வருகிறது' and slides_spec loc 'நாமக்கல் கோழிப் பண்ணைகள்' presents the outbreak as on Namakkal poultry farms, which the article does not specify beyond the college weather centre report
+  fact-check: reel_script's 'பனிக்காலம் தொடங்கி இருப்பதால்' is supported, but 'மேலும் செய்திகளுக்கு' closing is the fixed footer and is excluded
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+real photo skipped (photo uploaded 2026-08-04 (older than the news)): https://media.dinamani.com/dinamani/2026-08-04/5cewsdkn/pdm17brl_0408chn_136_3.jpg
+imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs about $0.0020, but your available balance is $0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slides must have 3 or 4 items
+ok anthropic/claude-haiku-5-5
+claude answer not JSON (Expecting ',' delimiter: line 1 column 3036 (char 3035)); stop_reason=end_turn blocks=['text'] usage={'input_tokens': 990, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 13280, 'cache_creation': {'ephemeral_5m_input_tokens': 0, 'ephemeral_1h_input_tokens': 0}, 'output_tokens': 2016, 'output_tokens_details': {'thinking_tokens': 0}, 'service_tier': 'standard', 'inference_geo': 'global', 'speed': 'standard'} head='{"tamil_headline": "காளப்பநாயக்கன்பட்டி பேரூராட்சிக்கு புதிய செயல் அலுவலர் பொறுப்பேற்பு", "english_headline": "New executive officer takes charge of Kalappanaickenpatti town panchayat", "category": "G'
+claude rewrite failed: Expecting ',' delimiter: line 1 column 3036 (char 3035)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image match: False The image appears to be an AI-generated illustration of a poultry farm and does not depict an actual news event, specifi
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match: False The image appears to be an AI-generated illustration of chicks resting on a tray, rather than an authentic news photogra
+image match: False The image is an AI-generated depiction of chickens in a baking tray, not a real news photograph showing diseased poultry
+images made: 2 for 'Wing rot and bloody diarrhoea disease hi'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261114-1748","first":"RN-576"}
+posting job started at once
+real photo used (1152x1009, sharpness 32.8, The real photograph depicts the newly appointed executive of): https://images.dinamalar.com/data/large_2025/Tamil_News_lrg_437575220261114062407.jpg?im=R
+real photos used for 'New executive officer takes charge of Ka' (Dinamalar)
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261114-1748","first":"RN-577"}
+write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 1 news waiting in the queue (written in priority order)
-candidate filter: checked earlier=1
-to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+write round: 8 news waiting in the queue (written in priority order)
+candidate filter: collected=7, already filed=1
+to write: 1 Rasipuram + 6 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 6 Namakkal; time left 29 min
+try (N) manual=False: ரூ.75 கோடி மோசடி வழக்கு மேலும் 2 ஊழியர்கள் கைது
+try (N) manual=False: கோழிகளுக்கு இறக்கை அழுகல் நோய் பாதிப்பு
+try (N) manual=False: அடையாளம் தெரியாத வாகனம் 
+மோதி மூதாட்டி உயிரிழப்பு
+skip (N) similar to a filed story: அடையாளம் தெரியாத வாகனம் 
+மோதி மூதாட்டி உயிரிழப்பு
+try (N) manual=False: சாலைப் பணி முறைகேட்டை தட்டிக் கேட்ட சட்டக் கல்லூரி மாணவர் உள
+NOT filed (N) சாலைப் பணி முறைகேட்டை தட்டிக் கேட்ட சட்டக் கல்லூரி: not Namakkal district news (the story's first lines name another place and no Namakkal place)
+try (R) manual=False: பெரிய மாரியம்மன் கோவில் திருவிழாவில் வினோத சடங்கு
+skip (R) similar to a filed story: பெரிய மாரியம்மன் கோவில் திருவிழாவில் வினோத சடங்கு
+try (N) manual=False: இ.ஓ., பொறுப்பேற்பு
+NOT filed (N) ரூ.75 கோடி மோசடி வழக்கு மேலும் 2 ஊழியர்கள் கைது: not Namakkal district news (the story's first lines name another place and no Namakkal place)
+try (N) manual=False: பஞ்சகவ்யா வினியோகம்
+auto images: 1 of 1 stories ({'black-forest-labs/flux.1-dev': 4})
+posting job started at once
+real photo from the source (Dinamalar) for 'New executive officer takes charge of Ka'
+auto images: 1 of 1 stories ({'black-forest-labs/flux.1-dev': 4})
+skip (N) same event as RN-546: பஞ்சகவ்யா வினியோகம்
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 6}, done={'R': 0, 'N': 2}, time left 23 min
+carousel for 0 of 2 stories, the rest reel only
+filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)
+queue: 2 news waiting to be written
+write_stories.yml started
+All News sheet: {"ok":true,"added":0,"updated":4} 
+stories: 2
