@@ -65,6 +65,12 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-14 | `33d1555` | comments: e-mail only important comments (question, fake / doubt claim, complaint, viewer information, abuse) - praise, thanks, emoji and chat are not e-mailed |
+| 2026-11-14 | `f2efced` | powercut: notices written |
+| 2026-11-14 | `d1c604e` | powercut: notices written |
+| 2026-11-14 | `67cee88` | facebook RN-570 |
+| 2026-11-14 | `4a5cc13` | facebook RN-571 |
+| 2026-11-14 | `f4bdb2c` | powercut: notices written |
 | 2026-11-14 | `3f8dd82` | goldrate: import the browser only when slides are made (tests machine has none - fixes the red tests since 13 Nov) |
 | 2026-11-14 | `957d236` | posting: Gmail daily email limit no longer counts as a failed post record (sheet row is already saved - no 5x retries); checker notes ending 'so not a problem' no longer hold a story (14 Nov) |
 | 2026-11-14 | `288dee4` | powercut: notices written |
@@ -89,10 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-14 | `29f7ee2` | powercut: notices written |
 | 2026-11-14 | `dec7179` | powercut: notices written |
 | 2026-11-14 | `62adfb5` | rasipalan posted |
-| 2026-11-14 | `00f2572` | powercut: notices written |
-| 2026-11-14 | `32dd7ae` | powercut: notices written |
-| 2026-11-13 | `04d2287` | stories shared |
-| 2026-11-13 | `4500c14` | stories shared |
-| 2026-11-13 | `e810bdd` | stories shared |
-| 2026-11-13 | `4acfde6` | goldrate: daily gold & silver rate carousel (owner design 14 Nov) - posts when 2 rate pages show today's date and the same rate; compared with yesterday; Namakkal + Rasipuram |
 <!-- recent-changes:end -->
