@@ -14,7 +14,7 @@ on:
         description: "1 = send ONE sample e-mail (a made-up comment on the latest post) - nothing is posted"
         default: "0"
 permissions:
-  contents: read
+  contents: write      # owner 14 Nov: saves poster/comments_ignored.json (hashed ids only)
 concurrency:
   group: comments
   cancel-in-progress: false
@@ -36,3 +36,11 @@ jobs:
         with: {python-version: "3.11"}
       - run: pip install -q requests==2.32.5 pillow==11.3.0
       - run: python poster/comments.py namakkal rasipuram
+      - name: Save the ignored comments (hashed ids only - never the text)
+        if: always()
+        run: |
+          [ -f poster/comments_ignored.json ] || exit 0
+          git config user.name "news360-bot"; git config user.email "bot@users.noreply.github.com"
+          git add -f poster/comments_ignored.json
+          git commit -qm "comments: normal comments recorded (not e-mailed)" || exit 0
+          for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash origin main && git push -q && break; git rebase --abort 2>/dev/null || true; sleep $((i*4)); done || true

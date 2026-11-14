@@ -8,7 +8,7 @@ The GitHub repository and its logs are PUBLIC: comment text and usernames are ne
 Needs the Instagram permission instagram_business_manage_comments on the page tokens (without it Instagram returns no comment text).
 Usage: python poster/comments.py <page> [<page> ...]      (DRY_RUN=1: options are made but nothing is sent / e-mailed)
 """
-import os, sys
+import hashlib, json, os, re, sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -20,6 +20,11 @@ import post      # noqa: E402
 DAYS = int(os.environ.get("COMMENT_DAYS", "60") or 60)      # owner 11 Nov: the old comments never answered are offered too, not only new ones
 MAX_PER_RUN = int(os.environ.get("COMMENT_MAX", "20") or 20)      # one Google Form holds up to 20 comments
 DRY = os.environ.get("DRY_RUN", "") in ("1", "true", "yes")
+# owner 14 Nov: ONLY important comments reach the owner by e-mail - a question to the owner, a fake-news / doubt claim, a complaint or
+# criticism, interesting information from a viewer, abuse. Emoji-only, praise, thanks and normal chat are recorded as "ignored"
+# (never e-mailed, never checked again).
+CRITICAL = set((os.environ.get("COMMENT_KINDS") or "question,doubt_or_fake_claim,complaint,info_from_viewer,spam_or_abuse").split(","))
+IGNORED = HERE / "comments_ignored.json"      # hashed comment ids only (the repo is public - never the text)
 HANDLES = {"namakkal": "namakkal.360", "rasipuram": "rasipuram.360", "coimbatore": "coimbatore.360"}
 
 SYSTEM = """You help the owner of a Tamil local-news Instagram page reply to viewers' comments. You NEVER post anything - the owner chooses.
@@ -33,6 +38,7 @@ Rules for every reply:
 - A complaint about a local problem: thank them and say we will bring it to the notice of the officials / follow up.
 - Praise: a short thank-you (one option may ask them to share the page with friends).
 - spam_or_abuse: "options" is an empty list.
+- If kind is praise or other: "options" is an empty list (only important comments get replies).
 - Never argue, never blame, never take a political side."""
 
 
@@ -66,10 +72,29 @@ def recent_media(page, tok):
     return out
 
 
+def _h(cid):
+    return hashlib.sha1(str(cid).encode()).hexdigest()[:16]
+
+
+def local_ignored():
+    try:
+        return set(json.loads(IGNORED.read_text(encoding="utf-8")))
+    except Exception:
+        return set()
+
+
+def save_ignored(ids):
+    if DRY or not ids:
+        return
+    have = list(local_ignored() | {_h(i) for i in ids})
+    IGNORED.write_text(json.dumps(sorted(have)[-20000:]), encoding="utf-8")
+
+
 def run(page):
     tok = post.bridge_get("token", page=page)["token"]
     seen = set(post.bridge_get("commentsSeen").get("ids", [])) if not DRY else set()
-    items, read, own = [], 0, HANDLES.get(page, "")
+    items, ignored, read, own = [], [], 0, HANDLES.get(page, "")
+    skip = local_ignored()
     for it in recent_media(page, tok):
         try:
             c = post.ig("GET", f"{it['id']}/comments", tok, fields="id,text,username,timestamp,replies{username}", limit=50)
@@ -82,18 +107,25 @@ def run(page):
                 continue
             if any((x.get("username") or "") == own for x in ((cm.get("replies") or {}).get("data") or [])):
                 continue      # the page already answered it (by hand in the app) - never offered again
+            if _h(cm.get("id")) in skip:
+                continue      # a normal comment seen before - never e-mailed
             if len(items) >= MAX_PER_RUN:
                 break
+            if not re.search(r"[A-Za-z\u0B80-\u0BFF]{2,}", cm["text"]):
+                ignored.append(str(cm["id"])); continue      # emoji / symbols only: no AI call, not e-mailed
             cap = it.get("caption") or ""
             try:
                 kind, opts = options_for(cap, cm["text"])
             except Exception as e:
                 log(f"{page}: reply options not made for one comment ({str(e)[:120]}) - tried again next run")
                 continue
+            if kind not in CRITICAL:
+                ignored.append(str(cm["id"])); continue      # praise / thanks / normal chat: not e-mailed
             items.append({"comment_id": cm["id"], "media_id": it["id"], "permalink": it.get("permalink", ""),
                           "post_title": cap.split("\n")[0][:120], "post_text": cap[:3000], "user": cm.get("username", ""), "text": cm["text"],
                           "kind": kind, "options": opts})
-    log(f"{page}: {read} comments read, {len(items)} new")      # counts only - the repo is public
+    log(f"{page}: {read} comments read, {len(items)} important (e-mailed), {len(ignored)} normal (not e-mailed)")      # counts only - the repo is public
+    save_ignored(ignored)
     if items and not DRY:
         r = post.bridge_post("commentNew", {"page": page, "items": items, "form_base": post.BRIDGE_URL})
         log(f"{page}: {r.get('added', 0)} sent to the owner for approval")
