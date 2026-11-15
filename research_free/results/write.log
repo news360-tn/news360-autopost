@@ -1,102 +1,11 @@
-writing [N]: கல்லூரி மாணவர்கள் பெயரில் கடன் பெற்று ரூ.70 கோடி மோசடி: 2 பே
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-writing [R]: மாரியம்மன் கோவிலில் விடையாற்றி கட்டளை பூஜை
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-ok gemini/gemini-3.6-flash (19s)
-attempt 1 gemini/gemini-3.6-flash: 2 problems
-  hl1 (the first headline on screen) must name the place 'சேலம் & நாமக்கல்', e.g. 'சேலம் & நாமக்கல்: ...' or 'சேலம் & நாமக்கல்-இல் ...' - viewers share news of their own area
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 28 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 23 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 30 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ')
-ok gemini/gemini-3.5-flash (17s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, plea
-dead for this round: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
-ok groq/qwen/qwen3.8-27b (4s)
-attempt 2 groq/qwen/qwen3.8-27b: 1 problems
-  numbers not found in the article: 700
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-ok gemini/gemini-3-flash-preview (4s)
-factcheck by gemini/gemini-3-flash-preview: 0 problems
-attempt 1 gemini/gemini-3.5-flash: 0 problems
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Used 741, Requested 377. Please try again in 7.08s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
-
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
-real photo: no picture on the source page -> AI pictures
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  hl1 (the first headline on screen) must name the place 'சேலம்', e.g. 'சேலம்: ...' or 'சேலம்-இல் ...' - viewers share news of their own area
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 28 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 23 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 30 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  reel_script sentence 1 (heard in the first 3 seconds) must name the place 'சேலம்' and the news itself, e.g. 'சேலம்-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area
-image match: True The photo shows traditional Hindu temple floral decorations, offering bowls with flower petals, and devotees praying wit
-images made: 2 for 'Vidaiyatri Kattalai pooja performed at N'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261115-1008","first":"RN-598"}
-posting job started at once
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  hl1 (the first headline on screen) must name the place 'சேலம்', e.g. 'சேலம்: ...' or 'சேலம்-இல் ...' - viewers share news of their own area
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 28 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 23 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 30 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
-write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 2 news waiting in the queue (written in priority order)
-candidate filter: collected=2
-to write: 1 Rasipuram + 1 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 1 Namakkal; time left 29 min
-try (N) manual=False: கல்லூரி மாணவர்கள் பெயரில் கடன் பெற்று ரூ.70 கோடி மோசடி: 2 பே
-try (R) manual=False: மாரியம்மன் கோவிலில் விடையாற்றி கட்டளை பூஜை
-auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
-posting job started at once
-NOT filed (N) கல்லூரி மாணவர்கள் பெயரில் கடன் பெற்று ரூ.70 கோடி ம: not Namakkal district news (the story's first lines name another place and no Namakkal place)
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 1}, done={'R': 1, 'N': 0}, time left 28 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 1 news waiting to be written
-write_stories.yml started
-All News sheet: {"ok":true,"added":0,"updated":2} 
-stories: 1
+write round: 1 news waiting in the queue (written in priority order)
+candidate filter: checked earlier=1
+to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written 
+stories: 0

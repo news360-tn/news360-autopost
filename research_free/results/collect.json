@@ -2,124 +2,15 @@
  "log": [
   "earlier stories still waiting for images: []",
   "instagram check: 100 recent posts read from both pages",
-  "write round: 2 news waiting in the queue (written in priority order)",
-  "candidate filter: collected=2",
-  "to write: 1 Rasipuram + 1 other district candidates (max 200 + 200 stories)",
-  "candidates waiting: 1 Rasipuram, 1 Namakkal; time left 29 min",
-  "try (N) manual=False: கல்லூரி மாணவர்கள் பெயரில் கடன் பெற்று ரூ.70 கோடி மோசடி: 2 பே",
-  "try (R) manual=False: மாரியம்மன் கோவிலில் விடையாற்றி கட்டளை பூஜை",
-  "auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})",
-  "posting job started at once",
-  "NOT filed (N) கல்லூரி மாணவர்கள் பெயரில் கடன் பெற்று ரூ.70 கோடி ம: not Namakkal district news (the story's first lines name another place and no Namakkal place)",
-  "candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 1}, done={'R': 1, 'N': 0}, time left 28 min",
-  "carousel for 0 of 1 stories, the rest reel only",
-  "filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)",
-  "queue: 1 news waiting to be written",
-  "write_stories.yml started",
-  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":2}"
+  "write round: 1 news waiting in the queue (written in priority order)",
+  "candidate filter: checked earlier=1",
+  "to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)",
+  "candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min",
+  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min",
+  "carousel for 0 of 0 stories, the rest reel only",
+  "filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)",
+  "queue: 0 news waiting to be written"
  ],
- "llm": [
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "dead for this round: gemini/gemini-3.6-flash",
-  "ok gemini/gemini-3.6-flash (19s)",
-  "ok gemini/gemini-3.5-flash (17s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "dead for this round: gemini/gemini-3.5-flash",
-  "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
-  "dead for this round: gemini/gemini-3.5-flash",
-  "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, plea",
-  "dead for this round: gemini/gemini-3-flash-preview",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
-  "dead for this round: groq/openai/gpt-oss-120b",
-  "ok groq/qwen/qwen3.8-27b (4s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "ok gemini/gemini-3-flash-preview (4s)",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "switching away from groq/qwen/qwen3.8-27b for 10 min",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "switching away from groq/qwen/qwen3.8-27b for 10 min",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok anthropic/claude-haiku-5-5"
- ],
- "stories": [
-  {
-   "tamil_headline": "ராசிபுரம் நித்திய சுமங்கலி மாரியம்மன் கோவிலில் விடையாற்றி கட்டளை பூஜை: அமைச்சர் சுவாமி தரிசனம்",
-   "english_headline": "Vidaiyatri Kattalai pooja performed at Nithya Sumangali Mariamman Temple in Rasipuram; Minister offers prayers",
-   "category": "Temples & Events",
-   "location": "Rasipuram town, Namakkal district",
-   "importance": "Medium",
-   "scope": "local",
-   "post_to": "Rasipuram 360 (collab: Namakkal 360)",
-   "slides_spec": {
-    "v": 3,
-    "cat": "கோவில் விழா",
-    "loc": "ராசிபுரம்",
-    "hl1": "ராசிபுரம் மாரியம்மன் கோவில் சிறப்பு பூஜை",
-    "hl2": "அமைச்சர் சுவாமி தரிசனம்",
-    "slides": [
-     {
-      "title": "விடையாற்றி பூஜை",
-      "lines": [
-       "ராசிபுரம் நித்திய சுமங்கலி மாரியம்மன் கோவில்",
-       "ஐப்பசி <b>தேர்த்திருவிழா</b> கடந்த வாரம் முடிந்தது",
-       "சத்தாபரணம் நிகழ்ச்சிக்குப் பின் விடையாற்றி பூஜை"
-      ]
-     },
-     {
-      "title": "சிறப்பு வழிபாடு",
-      "lines": [
-       "விழாவையொட்டி அம்மனுக்கு <b>சிறப்பு பூஜை</b> நடக்கிறது",
-       "நேற்று நடந்த நிகழ்வில் <b>அமைச்சர்</b> பங்கேற்பு",
-       "அமைச்சர் லோகேஷ் தமிழ்ச்செல்வன் சாமி தரிசனம் செய்தார்"
-      ]
-     },
-     {
-      "title": "புஷ்ப அலங்காரம்",
-      "lines": [
-       "அம்மன் <b>புஷ்ப அலங்காரத்தில்</b> ஊர்வலம் வந்தார்",
-       "திரளான <b>பக்தர்கள்</b> கலந்துகொண்டு தரிசனம் செய்தனர்"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "ராசிபுரம் மாரியம்மன் கோவிலில் விடையாற்றி கட்டளை பூஜை நடைபெற்றது. ராசிபுரம் நித்திய சுமங்கலி மாரியம்மன் கோவில் ஐப்பசி தேர்த்திருவிழா கடந்த வாரம் நிறைவடைந்தது. திருவிழா நாட்களில் அம்மன் பல்வேறு அலங்காரங்களில் ஊர்வலமாக வந்து பக்தர்களுக்கு அருள்பாலித்தார். சத்தாபரணம் நிகழ்ச்சிக்கு பிறகு விடையாற்றி கட்டளை என்ற பெயரில் சிறப்பு பூஜைகள் தொடர்ந்து நடைபெற்று வருகின்றன. இதன் ஒரு பகுதியாக நேற்று நடைபெற்ற கட்டளை பூஜையில் அமைச்சர் லோகேஷ் தமிழ்ச்செல்வன் கலந்துகொண்டு சுவாமி தரிசனம் செய்தார். தொடர்ந்து அம்மன் புஷ்ப அலங்காரத்தில் ஊர்வலமாக வீதி உலா வந்தார். இந்த நிகழ்ச்சியில் திரளான பக்தர்கள் கலந்துகொண்டு சுவாமி தரிசனம் செய்தனர். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🛕 ராசிபுரம் நித்திய சுமங்கலி மாரியம்மன் கோவிலில் விடையாற்றி கட்டளை பூஜை - அமைச்சர் பங்கேற்பு\n\n📰 முழு விவரம்:\nராசிபுரம் நித்திய சுமங்கலி மாரியம்மன் கோவில் ஐப்பசி தேர்த்திருவிழா கடந்த வாரம் நிறைவடைந்தது. திருவிழா நாட்களில் அம்மன் பல்வேறு அலங்காரங்களில் ஊர்வலமாக வந்து அருள்பாலித்தார். சத்தாபரணம் நிகழ்ச்சிக்கு பிறகு விடையாற்றி கட்டளை பூஜை தொடர்ந்து நடைபெற்று வருகிறது. நேற்று நடைபெற்ற நிகழ்வில் அமைச்சர் லோகேஷ் தமிழ்ச்செல்வன் கலந்துகொண்டு சுவாமி தரிசனம் செய்தார். அம்மன் புஷ்ப அலங்காரத்தில் ஊர்வலமாக எழுந்தருளினார். இதில் திரளான பக்தர்கள் பங்கேற்றனர்.\n\n📍 இடம்: நித்திய சுமங்கலி மாரியம்மன் கோவில், ராசிபுரம்\n🗓️ நிகழ்வு: விடையாற்றி கட்டளை சிறப்பு பூஜை\n\nபக்தி கொண்ட நண்பர்களுக்கு Share செய்யுங்கள்!\n\nRasipuram Mariamman Temple Vidaiyatri Kattalai Pooja | Namakkal news\n📍 ராசிபுரம், நாமக்கல் மாவட்டம் | 15 நவம்பர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Rasipuram360 #Rasipuram #RasipuramNews #Namakkal360 #ராசிபுரம்",
-   "prompts": "Inside the premises of Nithya Sumangali Mariamman Temple in Rasipuram town, a Vidaiyatri Kattalai pooja is under way and a procession of the goddess is moving forward, her idol heavily decorated with fresh flowers in a flower alankaram. A Tamil Nadu temple setting with a tall stone gopuram rising behind, painted in bright colours, with the temple street and mandapam in the foreground. A group of devotees, men in white shirts and veshtis and women in cotton and silk sarees, stand back on both sides of the street with folded hands, some holding brass pooja plates with flowers, coconuts and oil lamps. In the middle of the crowd, a man in a plain white shirt and dhoti, seen only from behind, joins the prayers; no face is shown. Some devotees hold up their phones. Late morning light is warm and soft under a clear sky, with a faint haze over the dry red-brown ground. Camera: wide-angle at about 35 mm from ground level, slightly elevated, capturing the gopuram, the flower-decorated idol and the crowd together. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nClose-up of the flower decoration on the processional deity of Nithya Sumangali Mariamman, showing the garlands of jasmine, marigold and red roses tied around the pillars and canopy of the decorated palanquin, with a brass lamp and a steel pooja plate with kumkum, turmeric and flower petals placed on the edge of the frame. Soft filtered daylight from one side brings out the bright orange and white flowers against the gold-and-red fabric. Behind the decorations, the blurred shapes of devotees' hands folded in prayer and the dim interior of the temple mandapam can be seen, with no faces visible. The camera is set at about 35 mm, shooting slightly from the side at close range with a shallow depth of field, so the flowers stay sharp and the background softens, which conveys the festive pooja and flower alankaram without showing any readable text. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/farewell-and-kadhalai-puja-at-mariamman-temple/4376613",
-   "published": "2026-11-15T05:46:00+05:30",
-   "verification": "DRAFT (gemini/gemini-3.5-flash) - fact-check: no problems found",
-   "note": "free-model draft gemini/gemini-3.5-flash, 1 attempt(s), 0 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "R",
-   "_score": 5.87,
-   "images": [
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794717511/news360/lt3wphjzutogkj8mv30l.jpg",
-    "https://res.cloudinary.com/bgk9wm1u/image/upload/v1794717522/news360/bb5yklrdojqcp0kvgjdc.jpg"
-   ]
-  }
- ]
+ "llm": [],
+ "stories": []
 }
