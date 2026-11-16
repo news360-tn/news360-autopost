@@ -28,12 +28,11 @@ def grab(work, texts, starts, total):
 def per_sentence(n_img, content_end, snaps):
     """poster section i while sentence i is read"""
     cuts = [0.0] + [STARTS[i] - 0.15 for i in range(1, n_img)] + [content_end + 5]
-    base = V3.plan_shots(n_img, content_end, snaps)[0]
     shots = []
     for i in range(n_img):
         z0, z1, fx, fy, px, py = MOVES[i % len(MOVES)]
-        shots.append(dict(base, a=round(cuts[i], 3), b=round(cuts[i + 1], 3), img=i, z0=min(z0, V3.MAX_ZOOM), z1=min(z1, V3.MAX_ZOOM),
-                          fx=fx, fy=fy, px=px, py=py))
+        shots.append({"a": round(cuts[i], 3), "b": round(cuts[i + 1], 3), "img": i, "z0": min(z0, V3.MAX_ZOOM), "z1": min(z1, V3.MAX_ZOOM),
+                      "fx": fx, "fy": fy, "px": px, "py": py})
     return shots
 
 
