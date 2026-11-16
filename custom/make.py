@@ -11,13 +11,22 @@ story = json.loads((C / "story.json").read_text())
 
 img = C / "img" / "01.jpg"      # the news picture: made from the SAME prompt the posting job used for RN-606
 if not img.exists():
-    import imagegen
-    data = imagegen.generate(story["image_prompt"], seed=606)
     try:
-        data = imagegen.to_story_size(data)
-    except Exception:
-        pass
-    img.write_bytes(data)
+        import imagegen
+        data = imagegen.generate(story["image_prompt"], seed=606)
+        try:
+            data = imagegen.to_story_size(data)
+        except Exception:
+            pass
+        img.write_bytes(data)
+    except Exception as e:      # free picture allowance used up: the plain branded background (same as the posting job's fallback)
+        print("picture not made:", str(e)[:150], "- plain branded background")
+        from PIL import Image, ImageDraw
+        bg = Image.new("RGB", (1152, 2048), (10, 24, 52)); d = ImageDraw.Draw(bg)
+        for y in range(2048):
+            d.line([(0, y), (1152, y)], fill=(10 + y // 80, 24 + y // 60, 52 + y // 30))
+        logo = Image.open(ROOT / "kit" / "logo_rasipuram.png").convert("RGBA"); logo.thumbnail((620, 620))
+        bg.paste(logo, ((1152 - logo.width) // 2, 560), logo); bg.save(img, quality=92)
 story["images"] = [str(img)] * len(story["sentences"])
 spec = C / "story_run.json"
 spec.write_text(json.dumps(story, ensure_ascii=False))
