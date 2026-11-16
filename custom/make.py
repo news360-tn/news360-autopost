@@ -67,10 +67,10 @@ html = f"""<html><head><style>
 body{{margin:0;background:transparent}}
 #p{{width:1040px;height:320px;box-sizing:border-box;display:flex;align-items:center;gap:24px;padding:18px 24px 18px 18px;
  background:linear-gradient(100deg,#fffaf0,#fff3d6);border-radius:22px;border:4px solid #b3121b;box-shadow:0 10px 30px rgba(0,0,0,.45);font-family:NL,NT}}
-#p img{{width:330px;height:278px;object-fit:cover;border-radius:12px;border:2px solid #d9c9a3}}
+#p img{{width:330px;height:278px;object-fit:contain;background:#fff;border-radius:12px;border:2px solid #d9c9a3}}
 .tag{{display:inline-block;background:#b3121b;color:#fff;font:800 28px NL,NT;padding:4px 18px;border-radius:30px;margin-bottom:8px}}
 .t1{{font:800 44px/1.15 NL,NT;color:#7a0d12}}
-.t2{{font:600 34px/1.35 NL6,NT6;color:#222;margin-top:6px}}
+.t2{{font:600 31px/1.35 NL6,NT6;color:#222;margin-top:6px;white-space:nowrap}}
 .t3{{font:800 38px/1.3 NL,NT;color:#0b6b3a;margin-top:4px}}
 </style></head><body><div id="p"><img src="file://{thumb}"><div>
 <div class="tag">விளம்பரம்</div>
@@ -84,10 +84,10 @@ with sync_playwright() as p:
     pg.goto(f"file://{(C / 'promo.html').resolve()}"); pg.wait_for_timeout(600)
     pg.locator("#p").screenshot(path=str(C / "promo.png"), omit_background=True); b.close()
 
-# strip over the reel: x 20, y 1438 (1040 x 320) (below the subtitles, above the logo footer), slides up at 1.2 s, stays to the end
+# strip over the reel: x 20, y 1584 (1040 x 320) - over the small footer logo, below the subtitles (below the subtitles, above the logo footer), slides up at 1.2 s, stays to the end
 subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(base), "-loop", "1", "-i", str(C / "promo.png"),
                 "-filter_complex", "[1:v]format=rgba,fade=in:st=1.2:d=0.4:alpha=1[pr];"
-                "[0:v][pr]overlay=x=20:y='if(lt(t,1.2),1920,max(1438,1920-(t-1.2)*1800))':shortest=1[v]",
+                "[0:v][pr]overlay=x=20:y='if(lt(t,1.2),1920,max(1584,1920-(t-1.2)*1800))':shortest=1[v]",
                 "-map", "[v]", "-map", "0:a?", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p",
                 "-c:a", "copy", "-movflags", "+faststart", str(out)], check=True)
 print("done", out)
