@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-16 | `aeeea5b` | custom_reel: choose the story branch; picture keys for a sample made from its prompt (manual only, never posts) |
 | 2026-11-16 | `3b4c28f` | custom_reel: manual one-off reel builder (never posts) |
 | 2026-11-16 | `8feb6c5` | rasipalan posted |
 | 2026-11-15 | `aa6f628` | facebook RN-606 |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-15 | `c2bf338` | facebook RN-593 |
 | 2026-11-15 | `f967fb0` | powercut: notices written |
 | 2026-11-15 | `50c13a9` | facebook RN-594 |
-| 2026-11-15 | `e9045f2` | powercut: notices written |
 <!-- recent-changes:end -->
