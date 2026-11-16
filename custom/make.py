@@ -65,29 +65,29 @@ html = f"""<html><head><style>
 @font-face{{font-family:NT6;src:url(file://{F}/noto-sans-tamil-tamil-600-normal.woff2)}}
 @font-face{{font-family:NL6;src:url(file://{F}/noto-sans-tamil-latin-600-normal.woff2)}}
 body{{margin:0;background:transparent}}
-#p{{width:1000px;height:196px;box-sizing:border-box;display:flex;align-items:center;gap:20px;padding:14px 22px 14px 14px;
+#p{{width:1040px;height:320px;box-sizing:border-box;display:flex;align-items:center;gap:24px;padding:18px 24px 18px 18px;
  background:linear-gradient(100deg,#fffaf0,#fff3d6);border-radius:22px;border:4px solid #b3121b;box-shadow:0 10px 30px rgba(0,0,0,.45);font-family:NL,NT}}
-#p img{{width:236px;height:162px;object-fit:cover;border-radius:12px;border:2px solid #d9c9a3}}
-.tag{{display:inline-block;background:#b3121b;color:#fff;font:800 22px NL,NT;padding:3px 14px;border-radius:30px;margin-bottom:6px}}
-.t1{{font:800 34px/1.15 NL,NT;color:#7a0d12}}
-.t2{{font:600 25px/1.35 NL6,NT6;color:#222;margin-top:4px}}
-.t3{{font:800 26px/1.3 NL,NT;color:#0b6b3a}}
+#p img{{width:330px;height:278px;object-fit:cover;border-radius:12px;border:2px solid #d9c9a3}}
+.tag{{display:inline-block;background:#b3121b;color:#fff;font:800 28px NL,NT;padding:4px 18px;border-radius:30px;margin-bottom:8px}}
+.t1{{font:800 44px/1.15 NL,NT;color:#7a0d12}}
+.t2{{font:600 34px/1.35 NL6,NT6;color:#222;margin-top:6px}}
+.t3{{font:800 38px/1.3 NL,NT;color:#0b6b3a;margin-top:4px}}
 </style></head><body><div id="p"><img src="file://{thumb}"><div>
 <div class="tag">விளம்பரம்</div>
-<div class="t1">JCOM ராசிபுரம் 2.0 – வணிகக் கூட்டம்</div>
-<div class="t2">நவ. 18 புதன் • மாலை 6 மணி • மகாலட்சுமி மினி ஹால்</div>
-<div class="t3">கட்டணம் ₹299 • 94491 17729</div></div></div></body></html>"""
+<div class="t1">JCOM வணிகக் கூட்டம்</div>
+<div class="t2">நவ. 18 • மாலை 6 • மகாலட்சுமி ஹால்</div>
+<div class="t3">₹299 • 94491 17729</div></div></div></body></html>"""
 (C / "promo.html").write_text(html)
 from playwright.sync_api import sync_playwright
 with sync_playwright() as p:
-    b = p.chromium.launch(); pg = b.new_page(viewport={"width": 1000, "height": 196})
+    b = p.chromium.launch(); pg = b.new_page(viewport={"width": 1040, "height": 320})
     pg.goto(f"file://{(C / 'promo.html').resolve()}"); pg.wait_for_timeout(600)
     pg.locator("#p").screenshot(path=str(C / "promo.png"), omit_background=True); b.close()
 
-# strip over the reel: x 40, y 1560 (below the subtitles, above the logo footer), slides up at 1.2 s, stays to the end
+# strip over the reel: x 20, y 1438 (1040 x 320) (below the subtitles, above the logo footer), slides up at 1.2 s, stays to the end
 subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(base), "-loop", "1", "-i", str(C / "promo.png"),
                 "-filter_complex", "[1:v]format=rgba,fade=in:st=1.2:d=0.4:alpha=1[pr];"
-                "[0:v][pr]overlay=x=40:y='if(lt(t,1.2),1920,max(1560,1920-(t-1.2)*1800))':shortest=1[v]",
+                "[0:v][pr]overlay=x=20:y='if(lt(t,1.2),1920,max(1438,1920-(t-1.2)*1800))':shortest=1[v]",
                 "-map", "[v]", "-map", "0:a?", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p",
                 "-c:a", "copy", "-movflags", "+faststart", str(out)], check=True)
 print("done", out)
