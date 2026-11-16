@@ -1,104 +1,167 @@
-writing [R]: பைக் மீது கார் மோதி தொழிலாளி படுகாயம்
+writing [N]: கல்லூரி மாணவர்கள் பெயரில் கடன் பெற்று ரூ.70 கோடி மோசடி: 2 பே
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
-ok gemini/gemini-3.5-flash (13s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
+writing [N]: நாமக்கல் ரிங்ரோடு திட்டத்தில் மோகனூர் லத்துவாடியில் மெகா சைஸ
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, plea
 dead for this round: gemini/gemini-3-flash-preview
-ok groq/openai/gpt-oss-120b (4s)
-factcheck by groq/openai/gpt-oss-120b: 4 problems
-  Caption adds a specific date (14 நவம்பர் 2026) not present in the article
-  Reel script says police made a case filing (வழக்குப் பதிவு செய்து) which is not mentioned in the article
-  Slide 3 mentions hospital admission (மீட்கப்பட்டு மருத்துவனையில் அனுமதி) not stated in the article
-  Reel script omits the victim’s name (பழனிசாமி மகன் தங்கபாலு) which is a key fact in the article
-attempt 1 gemini/gemini-3.5-flash: 4 problems
-  fact-check: Caption adds a specific date (14 நவம்பர் 2026) not present in the article
-  fact-check: Reel script says police made a case filing (வழக்குப் பதிவு செய்து) which is not mentioned in the article
-  fact-check: Slide 3 mentions hospital admission (மீட்கப்பட்டு மருத்துவனையில் அனுமதி) not stated in the article
-  fact-check: Reel script omits the victim’s name (பழனிசாமி மகன் தங்கபாலு) which is a key fact in the article
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-ok groq/openai/gpt-oss-120b (7s)
-attempt 2 groq/openai/gpt-oss-120b: 3 problems
-  missing key: reel_script
-  missing key: caption
-  missing key: scenes
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 dead for this round: groq/openai/gpt-oss-120b
 ok groq/qwen/qwen3.8-27b (3s)
+attempt 1 groq/qwen/qwen3.8-27b: 2 problems
+  reel_script has 80 words; need 83-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  reel_script sentence 1 (heard in the first 3 seconds) must name the place 'லத்துவாடி' and the news itself, e.g. 'லத்துவாடி-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The article says the accident happened near Thimmanaikkanpatti/Pazhanisamy's home area without saying the accident occurred in Thekku Rajapalayam; the headline and reel_script place the accident in Thekku Rajapalayam ("தெற்கு ராஜாபாளையத்தில் பைக் மீது கார் மோதி"), which is not stated in the article (the article only names it as Thangapalu's home area)
-  The reel_script and caption say the accident happened 'on the road' where the car came from the opposite direction; the article does not state the location of the accident, so the location in the headline and slides_spec 'loc' field is an invented detail
-  The caption's 'நேற்று முன்தினம்' and 'இரவு' are correct per the article, but the slides_spec 'hl1' headline states the accident occurred in Thekku Rajapalayam, which conflicts with the article's account of the location
-attempt 3 groq/qwen/qwen3.8-27b: 3 problems
-  fact-check: The article says the accident happened near Thimmanaikkanpatti/Pazhanisamy's home area without saying the accident occurred in Thekku Rajapalayam; the headline and reel_script place the accident in Thekku Rajapalayam ("தெற்கு ராஜாபாளையத்தில் பைக் மீது கார் மோதி"), which is not stated in the article (the article only names it as Thangapalu's home area)
-  fact-check: The reel_script and caption say the accident happened 'on the road' where the car came from the opposite direction; the article does not state the location of the accident, so the location in the headline and slides_spec 'loc' field is an invented detail
-  fact-check: The caption's 'நேற்று முன்தினம்' and 'இரவு' are correct per the article, but the slides_spec 'hl1' headline states the accident occurred in Thekku Rajapalayam, which conflicts with the article's account of the location
+ok gemini/gemini-3-flash-preview (10s)
+attempt 1 gemini/gemini-3-flash-preview: 3 problems
+  sentence 1 (one-line story) has 17 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  reel_script sentence 1 (heard in the first 3 seconds) must name the place 'சேலம்' and the news itself, e.g. 'சேலம்-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 45 ('சேலம், சேலம் சின்னதிருப்பதி பகுதியை சேர்ந்தவர் கண்ணகி (வயது '); 28 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 23 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 30 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 33 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 8 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 switching away from groq/qwen/qwen3.8-27b for 10 min
 free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
 ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'சேலம்', e.g. 'சேலம்: ...' or 'சேலம்-இல் ...' - viewers share news of their own area
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  reel_script says the Lathuvadi roundabout is 'part of the fifth stage' while the article says the Vasanthapuram-Lathuvadi-Valliyapuram road is stages four and five; the roundabout itself is not explicitly tied to stage five (minor mismatch in stage attribution)
+  reel_script and caption state the ring road project was announced at 197 crore, but the article does not say the 197 crore covers the whole project in a way that matches the 'ஐந்து கட்டங்களாகச் செயல்படுத்தப்படுகிறது' phrasing; the caption says 'ஐந்து கட்டங்களாக' which is consistent, but the reel_script's 'ஐந்தாம் கட்டப் பணிகள் இப்போது நடைபெறுகின்றன' conflicts with the article's statement that stages four and five are the ones being built together
+  caption states the road work was started in 'கடந்த ஜனவரியில்' (last January), which the article gives as 'கடந்த ஜன.,யில' – acceptable, but the article says the foundation stone was laid, and the caption's 'அடிக்கல் நாட்டப்பட்டது' is accurate; no error here
+  reel_script omits the 'ஐந்து சாலைகள்' detail being at Lathuvadi on the Namakkal-Mohanur road only if read as separate; this is included, so not missing
+  reel_script's 'இத்திட்டம் அமைக்கப்படுகிறது' for the ring road 'to prevent heavy vehicles from entering the city' is stated as the purpose; the article gives this purpose for the ring road, so consistent
+  slides_spec line 'ஐந்தாம் கட்டப் பணிகள் ஒரு வாரத்தில் முடிக்க இலக்கு' attributes the one-week target to the fifth stage, while the article ties the target to the whole roundabout/road work completed by contractors
+claude rewrite 1 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: reel_script says the Lathuvadi roundabout is 'part of the fifth stage' while the article says the Vasanthapuram-Lathuvadi-Valliyapuram road is stages four and five; the roundabout itself is not explicitly tied to stage five (minor mismatch in stage attribution)
+  fact-check: reel_script and caption state the ring road project was announced at 197 crore, but the article does not say the 197 crore covers the whole project in a way that matches the 'ஐந்து கட்டங்களாகச் செயல்படுத்தப்படுகிறது' phrasing; the caption says 'ஐந்து கட்டங்களாக' which is consistent, but the reel_script's 'ஐந்தாம் கட்டப் பணிகள் இப்போது நடைபெறுகின்றன' conflicts with the article's statement that stages four and five are the ones being built together
+  fact-check: caption states the road work was started in 'கடந்த ஜனவரியில்' (last January), which the article gives as 'கடந்த ஜன.,யில' – acceptable, but the article says the foundation stone was laid, and the caption's 'அடிக்கல் நாட்டப்பட்டது' is accurate; no error here
+  fact-check: reel_script omits the 'ஐந்து சாலைகள்' detail being at Lathuvadi on the Namakkal-Mohanur road only if read as separate; this is included, so not missing
+  fact-check: reel_script's 'இத்திட்டம் அமைக்கப்படுகிறது' for the ring road 'to prevent heavy vehicles from entering the city' is stated as the purpose; the article gives this purpose for the ring road, so consistent
+  fact-check: slides_spec line 'ஐந்தாம் கட்டப் பணிகள் ஒரு வாரத்தில் முடிக்க இலக்கு' attributes the one-week target to the fifth stage, while the article ties the target to the whole roundabout/road work completed by contractors
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  letters of another script inside Tamil words: ण - write every word only in Tamil letters
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 28 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 23 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 30 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ')
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 free fact-check unavailable, using Claude: no free model answered: None
 ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 0 problems
-claude rewrite 1 anthropic/claude-haiku-5-5: 0 problems
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The reel_script says the road is 'வசந்தபுரம் – லத்துவாடி – வள்ளிபுரம்' built in 'ஐந்து கட்டங்களாக' — the article says the 5 stages are Namakkal-Mudalaipatti to Vallipuram; the 103 crore road is stages 4 and 5 only, so the reel_script's framing mixes the 197 crore project with the 103 crore stretch in one sentence.
+  The reel_script states the 197 crore ring road project was 'அறிவிக்கப்பட்டு' and then that the Vasanthapuram–Lathuvadi–Vallipuram road is built at 103 crore, mixing two different cost figures/projects in adjacent sentences without clarity.
+  The reel_script says 'கடந்த ஜனவரி மாதம்' for the foundation stone, which the article gives only as 'கடந்த ஜன.,யில' (January) — month name is consistent, but the year is not stated, so no year error; however the reel_script omits that the road is handled by the Tamil Nadu State Highways Department (தமிழ்நாடு மாநில நெடுஞ்சாலைத்துறை) and the 'விரிவான சாலை உள்கட்டமைப்பு மேம்பாட்டு திட்டம்' scheme, which is an important fact of the article.
+  The reel_script omits the fact that the ring road is meant to ease traffic congestion for vehicle drivers who are struggling (விழிபிதுங்குகின்றனர) — minor, but the reel_script omits the 'ஐந்து கட்டமாக' detail's stage names (Namakkal-Mudalaipatti New Bus Stand to Vallipuram), which are important route facts.
+  The slides_spec 'என்ன பணி?' slide and the caption say the roundabout is at 'ஐந்து சாலைகள் சந்திக்கும் இடத்தில' — consistent, but the slides_spec 'எவ்வளவு செலவு?' slide says '197 கோடி ரூபாயில் அறிவிக்கப்பட்டது' which is accurate; no error there, so this item is not a problem.
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The reel_script says the road is 'வசந்தபுரம் – லத்துவாடி – வள்ளிபுரம்' built in 'ஐந்து கட்டங்களாக' — the article says the 5 stages are Namakkal-Mudalaipatti to Vallipuram; the 103 crore road is stages 4 and 5 only, so the reel_script's framing mixes the 197 crore project with the 103 crore stretch in one sentence.
+  fact-check: The reel_script states the 197 crore ring road project was 'அறிவிக்கப்பட்டு' and then that the Vasanthapuram–Lathuvadi–Vallipuram road is built at 103 crore, mixing two different cost figures/projects in adjacent sentences without clarity.
+  fact-check: The reel_script says 'கடந்த ஜனவரி மாதம்' for the foundation stone, which the article gives only as 'கடந்த ஜன.,யில' (January) — month name is consistent, but the year is not stated, so no year error; however the reel_script omits that the road is handled by the Tamil Nadu State Highways Department (தமிழ்நாடு மாநில நெடுஞ்சாலைத்துறை) and the 'விரிவான சாலை உள்கட்டமைப்பு மேம்பாட்டு திட்டம்' scheme, which is an important fact of the article.
+  fact-check: The reel_script omits the fact that the ring road is meant to ease traffic congestion for vehicle drivers who are struggling (விழிபிதுங்குகின்றனர) — minor, but the reel_script omits the 'ஐந்து கட்டமாக' detail's stage names (Namakkal-Mudalaipatti New Bus Stand to Vallipuram), which are important route facts.
+  fact-check: The slides_spec 'என்ன பணி?' slide and the caption say the roundabout is at 'ஐந்து சாலைகள் சந்திக்கும் இடத்தில' — consistent, but the slides_spec 'எவ்வளவு செலவு?' slide says '197 கோடி ரூபாயில் அறிவிக்கப்பட்டது' which is accurate; no error there, so this item is not a problem.
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  hl1 (the first headline on screen) must name the place 'சேலம்', e.g. 'சேலம்: ...' or 'சேலம்-இல் ...' - viewers share news of their own area
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 28 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 23 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ'); 30 ('.போலீசார்இந்த மோசடி குறித்து சேலம் மத்திய குற்றப்பிரிவு போலீ')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 proofread skipped: no free model answered: None
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 ok anthropic/claude-haiku-5-5
-real photo: no picture on the source page -> AI pictures
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  reel_script says the 103 crore section runs from Vasanthapuram to Lathuvadi to Valliputhur, but the article says the full ring road runs from Namakkal-Mudalaipatti new bus stand to Valliputhur; the reel_script's route description is roughly consistent, but the 'ஐந்தாம் கட்டமான' wording pairs stages 4 and 5 with the section, which matches the article.
+  reel_script says the 5-stage project runs 'நாமக்கல் - முதலைப்பட்டி புது பேருந்து நிலையத்தில் இருந்து வள்ளிபுரம் வரை' which is accurate, but it states the 103 crore allocation as 'ஒதுக்கப்பட்டுள்ளது' (allocated) for the stage 4-5 road, whereas the article says the 103 crore is the value of the work for that road — acceptable wording, not a fact change.
+  reel_script says the roundabout is on 'நாமக்கல் மோகனூர் சாலை' and the slides say 'நாமக்கல் - மோகனூர் சாலை, லத்துவாடி பகுதி', consistent with the article.
+  reel_script omits that the work is expected to be finished 'within a week' by contractors only in the sense of 'ஒப்பந்ததாரர்கள்' — the script does include this, so no omission.
+  caption states 'கடந்த ஜனவரியில் அடிக்கல்' (foundation stone laid last January); the article says 'கடந்த ஜன.,யில்' which means January of the previous period; the draft presents it as the past January, which is a reasonable reading but adds the year-specific interpretation 'கடந்த ஜனவரி மாதம்'.
+  slides_spec hl1 'லத்துவாடியில் மெகா ரவுண்டானா, ஒரு' is truncated and grammatically unclear in Tamil ('ஒரு' hangs without 'வாரத்தில'), creating an ungrammatical/meaningless headline fragment.
+claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: reel_script says the 103 crore section runs from Vasanthapuram to Lathuvadi to Valliputhur, but the article says the full ring road runs from Namakkal-Mudalaipatti new bus stand to Valliputhur; the reel_script's route description is roughly consistent, but the 'ஐந்தாம் கட்டமான' wording pairs stages 4 and 5 with the section, which matches the article.
+  fact-check: reel_script says the 5-stage project runs 'நாமக்கல் - முதலைப்பட்டி புது பேருந்து நிலையத்தில் இருந்து வள்ளிபுரம் வரை' which is accurate, but it states the 103 crore allocation as 'ஒதுக்கப்பட்டுள்ளது' (allocated) for the stage 4-5 road, whereas the article says the 103 crore is the value of the work for that road — acceptable wording, not a fact change.
+  fact-check: reel_script says the roundabout is on 'நாமக்கல் மோகனூர் சாலை' and the slides say 'நாமக்கல் - மோகனூர் சாலை, லத்துவாடி பகுதி', consistent with the article.
+  fact-check: reel_script omits that the work is expected to be finished 'within a week' by contractors only in the sense of 'ஒப்பந்ததாரர்கள்' — the script does include this, so no omission.
+  fact-check: caption states 'கடந்த ஜனவரியில் அடிக்கல்' (foundation stone laid last January); the article says 'கடந்த ஜன.,யில்' which means January of the previous period; the draft presents it as the past January, which is a reasonable reading but adds the year-specific interpretation 'கடந்த ஜனவரி மாதம்'.
+  fact-check: slides_spec hl1 'லத்துவாடியில் மெகா ரவுண்டானா, ஒரு' is truncated and grammatically unclear in Tamil ('ஒரு' hangs without 'வாரத்தில'), creating an ungrammatical/meaningless headline fragment.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
+real photo: vision check out of free quota
 imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
 imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs about $0.0020, but your available balance is $0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
-imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
+imagegen: black-forest-labs/flux.1-schnell 422: {"detail":[{"type":"extra_forbidden","loc":["body","seed"],"msg":"Extra inputs are not permitted","input":685167}]}
 imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
 imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
 imagegen: fal fal-ai/flux/dev 403: {"detail":"User is locked. Reason: Exhausted balance. Top up your balance at fal.ai/dashboard/billing."}
-images NOT made for 'Worker injured as car hits his bike near': all image models failed: fal fal-ai/flux/dev 403: {"detail":"User is locked. Reason: Exhausted balance. Top up your balance at fal.ai/dashboard/billing."}
-bridge: 200 {"ok":true,"added":1,"auto_queued":0,"emailed":0,"reoffered":0,"batch":"B20261116-0851","first":"RN-623"}
+images NOT made for 'Mega roundabout construction at Lathuvad': all image models failed: fal fal-ai/flux/dev 403: {"detail":"User is locked. Reason: Exhausted balance. Top up your balance at fal.ai/dashboard/billing."}
+bridge: 200 {"ok":true,"added":1,"auto_queued":0,"emailed":0,"reoffered":0,"batch":"B20261116-1648","first":"RN-624"}
 posting job started at once
+write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 1 news waiting in the queue (written in priority order)
-candidate filter: collected=1
-to write: 1 Rasipuram + 0 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 0 Namakkal; time left 29 min
-try (R) manual=False: பைக் மீது கார் மோதி தொழிலாளி படுகாயம்
-auto images failed for 'Worker injured as car hits his bike near': all image models failed: fal fal-ai/flux/dev 403: {"detail":"User is locked. Reason: Exhausted balance. Top up your bala -> images-needed email
+write round: 15 news waiting in the queue (written in priority order)
+candidate filter: already filed=8, collected=7
+to write: 0 Rasipuram + 7 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 7 Namakkal; time left 29 min
+try (N) manual=False: கல்லூரி மாணவர்கள் பெயரில் கடன் பெற்று ரூ.70 கோடி மோசடி: 2 பே
+try (N) manual=False: லாட்டரி விற்றவர் கைது
+try (N) manual=False: கரும்புத் தோட்டத்தில் தீ விபத்து
+skip (N) similar to a filed story: கரும்புத் தோட்டத்தில் தீ விபத்து
+try (N) manual=False: முட்டை விலை 25 காசு சரிவு
+skip (N) similar to a filed story: லாட்டரி விற்றவர் கைது
+try (N) manual=False: நாமக்கல்லில் செவிலியா் கல்லூரி: பட்ஜெட்டில் அறிவிப்பு வெளியி
+skip (N) same event as RN-600: நாமக்கல்லில் செவிலியா் கல்லூரி: பட்ஜெட்டில் அறிவிப
+try (N) manual=False: நாமக்கல் ரிங்ரோடு திட்டத்தில் மோகனூர் லத்துவாடியில் மெகா சைஸ
+skip (N) similar to a filed story: முட்டை விலை 25 காசு சரிவு
+try (N) manual=False: பறவை காய்ச்சல் நோய் தாக்காமல் இருக்க நாமக்கல் பகுதி கோழிப்பண
+skip (N) similar to a filed story: பறவை காய்ச்சல் நோய் தாக்காமல் இருக்க நாமக்கல் பகுத
+NOT filed (N) கல்லூரி மாணவர்கள் பெயரில் கடன் பெற்று ரூ.70 கோடி ம: not Namakkal district news (the story's first lines name another place and no Namakkal place)
+auto images failed for 'Mega roundabout construction at Lathuvad': all image models failed: fal fal-ai/flux/dev 403: {"detail":"User is locked. Reason: Exhausted balance. Top up your bala -> images-needed email
 auto images: 0 of 1 stories ({})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 0}, done={'R': 1, 'N': 0}, time left 23 min
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 7}, done={'R': 0, 'N': 1}, time left 25 min
 carousel for 0 of 1 stories, the rest reel only
-filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 1 news waiting to be written
+write_stories.yml started
+All News sheet: {"ok":true,"added":0,"updated":2} 
 stories: 1
