@@ -16,8 +16,7 @@ spec.write_text(json.dumps(story, ensure_ascii=False))
 
 STARTS = []
 _mvt = R.make_voice_track
-MOVES = [(1.0, 1.12, 0.5, 0.5, 0, 0), (1.12, 1.0, 0.5, 0.45, 0, 0), (1.0, 1.15, 0.5, 0.35, 0, 0), (1.0, 1.15, 0.5, 0.35, 0, 0),
-         (1.05, 1.18, 0.5, 0.5, 0, 0), (1.0, 1.1, 0.5, 0.5, 0, 0)]
+MOVES = [(1.0, 1.42, 0.5, 0.364, 0, 0), (1.15, 1.42, 0.5, 0.451, 0, 0), (1.15, 1.42, 0.143, 0.391, 0, 0), (1.15, 1.42, 0.867, 0.391, 0, 0), (1.15, 1.42, 0.23, 0.543, 0, 0), (1.15, 1.42, 0.847, 0.641, 0, 0)]      # owner 16 Nov: the whole banner; the camera moves to the part being read
 
 
 def grab(work, texts, starts, total):
