@@ -1,0 +1,41 @@
+name: custom_reel
+# owner 14 Nov (Rasipuram 16 Nov): a one-off reel made by hand (story + photos on branch custom-reel), in the page's news-reel design with the
+# Valluvar voice. Manual only - it never posts; the finished video goes to branch custom-reel-out for the owner to check.
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - name: Story and photos
+        run: |
+          git fetch -q origin custom-reel
+          git checkout origin/custom-reel -- custom
+          ls custom custom/img
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - uses: actions/setup-node@v4
+        with: {node-version: "20"}
+      - name: Install
+        timeout-minutes: 20
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          pip install -q -r poster/requirements.txt edge-tts==7.2.3 playwright==1.56.0
+          python -m playwright install --with-deps chromium
+          (cd kit && npm install --no-audit --no-fund)
+      - name: Make the reel
+        run: |
+          mkdir -p out
+          python custom/make.py out/custom_reel.mp4
+      - name: Hand the video over (branch custom-reel-out)
+        run: |
+          git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
+          git checkout -q --orphan custom-reel-out
+          git rm -rq --cached . >/dev/null
+          git add -f out/custom_reel.mp4 out/custom_reel_cover.jpg 2>/dev/null || git add -f out/custom_reel.mp4
+          git commit -qm "custom reel" && git push -qf origin custom-reel-out
