@@ -2,42 +2,25 @@
  "log": [
   "earlier stories still waiting for images: []",
   "instagram check: 100 recent posts read from both pages",
-  "write round: 15 news waiting in the queue (written in priority order)",
-  "candidate filter: already filed=8, collected=7",
-  "to write: 0 Rasipuram + 7 other district candidates (max 200 + 200 stories)",
-  "candidates waiting: 0 Rasipuram, 7 Namakkal; time left 29 min",
+  "write round: 1 news waiting in the queue (written in priority order)",
+  "candidate filter: collected=1",
+  "to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)",
+  "candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min",
   "try (N) manual=False: கல்லூரி மாணவர்கள் பெயரில் கடன் பெற்று ரூ.70 கோடி மோசடி: 2 பே",
-  "try (N) manual=False: லாட்டரி விற்றவர் கைது",
-  "try (N) manual=False: கரும்புத் தோட்டத்தில் தீ விபத்து",
-  "skip (N) similar to a filed story: கரும்புத் தோட்டத்தில் தீ விபத்து",
-  "try (N) manual=False: முட்டை விலை 25 காசு சரிவு",
-  "skip (N) similar to a filed story: லாட்டரி விற்றவர் கைது",
-  "try (N) manual=False: நாமக்கல்லில் செவிலியா் கல்லூரி: பட்ஜெட்டில் அறிவிப்பு வெளியி",
-  "skip (N) same event as RN-600: நாமக்கல்லில் செவிலியா் கல்லூரி: பட்ஜெட்டில் அறிவிப",
-  "try (N) manual=False: நாமக்கல் ரிங்ரோடு திட்டத்தில் மோகனூர் லத்துவாடியில் மெகா சைஸ",
-  "skip (N) similar to a filed story: முட்டை விலை 25 காசு சரிவு",
-  "try (N) manual=False: பறவை காய்ச்சல் நோய் தாக்காமல் இருக்க நாமக்கல் பகுதி கோழிப்பண",
-  "skip (N) similar to a filed story: பறவை காய்ச்சல் நோய் தாக்காமல் இருக்க நாமக்கல் பகுத",
   "NOT filed (N) கல்லூரி மாணவர்கள் பெயரில் கடன் பெற்று ரூ.70 கோடி ம: not Namakkal district news (the story's first lines name another place and no Namakkal place)",
-  "auto images failed for 'Mega roundabout construction at Lathuvad': all image models failed: fal fal-ai/flux/dev 403: {\"detail\":\"User is locked. Reason: Exhausted balance. Top up your bala -> images-needed email",
-  "auto images: 0 of 1 stories ({})",
-  "posting job started at once",
-  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 7}, done={'R': 0, 'N': 1}, time left 25 min",
-  "carousel for 0 of 1 stories, the rest reel only",
-  "filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)",
+  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min",
+  "carousel for 0 of 0 stories, the rest reel only",
+  "filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)",
   "queue: 1 news waiting to be written",
-  "write_stories.yml started",
-  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":2}"
+  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":1}"
  ],
  "llm": [
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.6-flash",
   "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.5-flash",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, plea",
   "dead for this round: gemini/gemini-3-flash-preview",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
@@ -45,96 +28,23 @@
   "ok groq/qwen/qwen3.8-27b (3s)",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "ok gemini/gemini-3-flash-preview (10s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "switching away from groq/qwen/qwen3.8-27b for 10 min",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "switching away from groq/qwen/qwen3.8-27b for 10 min",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok anthropic/claude-haiku-5-5",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
   "ok anthropic/claude-haiku-5-5",
   "ok anthropic/claude-haiku-5-5",
   "ok anthropic/claude-haiku-5-5",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "ok groq/qwen/qwen3.8-27b (0s)",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok anthropic/claude-haiku-5-5",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
   "ok anthropic/claude-haiku-5-5",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok anthropic/claude-haiku-5-5",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok anthropic/claude-haiku-5-5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash"
+  "ok groq/qwen/qwen3.8-27b (1s)"
  ],
- "stories": [
-  {
-   "tamil_headline": "நாமக்கல் ரிங்ரோடு: மோகனூர் லத்துவாடியில் மெகா ரவுண்டானா அமைப்பு",
-   "english_headline": "Mega roundabout construction at Lathuvadi, Mohanur under Namakkal Ring Road project",
-   "category": "Roads & Transport",
-   "location": "Lathuvadi, Mohanur, Namakkal district",
-   "importance": "High",
-   "scope": "district",
-   "post_to": "Namakkal 360 (collab: Rasipuram 360)",
-   "slides_spec": {
-    "v": 3,
-    "cat": "சாலை வளர்ச்சி",
-    "loc": "லத்துவாடி, மோகனூர்",
-    "hl1": "லத்துவாடியில் மெகா ரவுண்டானா அமைப்பு",
-    "hl2": "ஒரு வாரத்தில் பணிகள் முடிவு",
-    "slides": [
-     {
-      "title": "ரிங்ரோடு திட்டம்",
-      "lines": [
-       "நாமக்கல் ரிங்ரோடு திட்டம் 197 கோடி ரூபாய் மதிப்பில்",
-       "மோகனூர் லத்துவாடியில் ஐந்து சாலைகள் சந்திக்கும் இடத்தில்"
-      ]
-     },
-     {
-      "title": "பணி விவரம்",
-      "lines": [
-       "வசந்தபுரம் முதல் வள்ளிபுரம் வரை 22.39 கி.மீ. சாலை",
-       "சென்டர் மீடியன் அமைக்கும் பணியும் தார்ச்சாலை போடும் பணியும்"
-      ]
-     },
-     {
-      "title": "முடிவு தேதி",
-      "lines": [
-       "ஐந்தாம் கட்டப் பணிகள் ஒரு வாரத்தில் முடிக்கப்படும் என",
-       "கனரக வாகனங்கள் நகருக்குள் வராமல் தடுக்க இந்த ரிங்ரோடு"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "197 கோடி ரூபாய் மதிப்பில் நாமக்கல் ரிங்ரோடு திட்டம் செயல்படுத்தப்படுகிறது. மோகனூர் லத்துவாடியில் ஐந்து சாலைகள் சந்திக்கும் இடத்தில் மெகா சைஸ் ரவுண்டானா அமைக்கும் பணி நடைபெறுகிறது. வசந்தபுரம் முதல் வள்ளிபுரம் வரை 22.39 கிலோமீட்டர் நீளமான சாலை விரிவாக்கம் செய்யப்படுகிறது. இந்த பணிகள் 103 கோடி ரூபாய் மதிப்பில் மேற்கொள்ளப்படுகின்றன. கடந்த ஜனவரி மாதத்தில் இந்த பணிக்கான அடிக்கல் நாட்டப்பட்டது. சென்டர் மீடியன் அமைக்கும் பணியும் தார்ச்சாலை போடும் பணியும் தீவிரப்படுத்தப்பட்டுள்ளது. நகரில் வாகன நெரிசலை குறைக்க கனரக வாகனங்களை நகருக்குள் வராமல் தடுக்க இந்த திட்டம் அமைக்கப்படுகிறது. ஒப்பந்தாரர்கள் இந்த பணிகள் அனைத்தும் ஒரு வாரத்தில் முடிக்கப்படும் என்று தெரிவித்தனர். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🛣️ நாமக்கல் ரிங்ரோடு: மோகனூர் லத்துவாடியில் மெகா ரவுண்டானா அமைப்பு - ஒரு வாரத்தில் முடிவு\n\n📰 முழு விவரம்:\nநாமக்கல் நகரில் வாகன நெரிசலை குறைக்க 197 கோடி ரூபாய் மதிப்பில் ரிங்ரோடு திட்டம் செயல்படுத்தப்படுகிறது. மோகனூர் லத்துவாடியில் ஐந்து சாலைகள் சந்திக்கும் இடத்தில் மெகா சைஸ் ரவுண்டானா அமைக்கும் பணி நடைபெறுகிறது. வசந்தபுரம் முதல் வள்ளிபுரம் வரை 22.39 கி.மீ. நீளமான சாலை விரிவாக்கம் 103 கோடி ரூபாய் மதிப்பில் மேற்கொள்ளப்படுகிறது. கடந்த ஜனவரி மாதத்தில் இந்த பணிக்கான அடிக்கல் நாட்டப்பட்டது. சென்டர் மீடியன் அமைக்கும் பணியும் தார்ச்சாலை போடும் பணியும் தீவிரப்படுத்தப்பட்டுள்ளது. ஒப்பந்தாரர்கள் இந்த பணிகள் அனைத்தும் ஒரு வாரத்தில் முடிக்கப்படும் என்று தெரிவித்தனர்.\n\n📍 இடம்: லத்துவாடி, மோகனூர், நாமக்கல்\n💰 மதிப்பு: 197 கோடி ரூபாய் (மொத்த திட்டம்)\n📏 நீளம்: 22.39 கி.மீ. (வசந்தபுரம் - வள்ளிபுரம்)\n⏳ காலம்: ஒரு வாரத்தில் முடிவு\n\nதேவைப்படுவோருக்கு Share செய்யுங்கள்\n\nNamakkal Ring Road project | Mega roundabout at Lathuvadi | Namakkal news\n📍 Lathuvadi, Mohanur, Namakkal | 16 Nov 2026\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #Mohanur #NamakkalNews #நாமக்கல்",
-   "prompts": "A wide daytime shot at a five-road junction in Lathuvadi village on the Namakkal-Mohanur road, Namakkal district, Tamil Nadu, where a large new circular roundabout is being built as part of the Namakkal Ring Road project. The freshly laid black tar surface shines in the middle of the junction, and a road roller and a tipper lorry sit at the edge of the new work. Raw concrete kerbs and a newly poured centre median curve around the roundabout, with orange-and-white barricades and heaps of gravel and grey metal stacked along the verge. Several workers in shirts and veshti or trousers, seen from behind and at a distance, guide the work with hand gestures. Two-wheelers and a TNSTC bus slow down on the diverted lane beside the cordon, and red-tiled houses and coconut palms line the road behind. Bright midday sun, dry red-brown soil, clear sky, a faint dust haze over the road. Camera: wide-angle at roughly 35 mm, eye-level from the roadside, capturing the full roundabout and the five roads converging. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA close-up of the freshly laid black-top road edge where the new roundabout meets the old road surface at Lathuvadi, Mohanur road, Namakkal district. The hot grey-black tar is smoothed by a road roller's steel drum, with a fine layer of gravel and metal chips at the seam and a neat line of concrete kerb stones forming the new centre median. A stack of tar drums and a shovel rest on the side, and a single pair of work boots and a worker's trouser leg is visible at the edge of the frame, shown from behind. Hard midday sunlight casts short shadows, and a light dust film sits on the tar. Dry red-brown soil and a dusty roadside are visible at the bottom. Camera: close-up at roughly 35 mm, low angle near ground level, shallow depth of field. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/mega-size-roundabout-at-mohanur-lathuvadi-in-namakkal-ring-road-project-aim-to-be-completed-in-a-week/4377419",
-   "published": "2026-11-16T06:05:00+05:30",
-   "verification": "DRAFT (groq/qwen/qwen3.8-27b) - NOT CLEAN, held from posting - problems: reel_script has 80 words; need 83-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block); reel_script sentence 1 (heard in the first 3 seconds) must name the place 'லத்துவாடி' and the news itself, e.g. 'லத்துவாடி-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area",
-   "note": "free-model draft groq/qwen/qwen3.8-27b, 1 attempt(s), 2 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 2.0,
-   "auto_images": true
-  }
- ]
+ "stories": []
 }
