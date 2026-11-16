@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-14 | `33d1555` | comments: e-mail only important comments (question, fake / doubt claim, complaint, viewer information, abuse) - praise, thanks, emoji and chat are not e-mailed |
-| 2026-11-14 | `f2efced` | powercut: notices written |
-| 2026-11-14 | `d1c604e` | powercut: notices written |
-| 2026-11-14 | `67cee88` | facebook RN-570 |
-| 2026-11-14 | `4a5cc13` | facebook RN-571 |
-| 2026-11-14 | `f4bdb2c` | powercut: notices written |
-| 2026-11-14 | `3f8dd82` | goldrate: import the browser only when slides are made (tests machine has none - fixes the red tests since 13 Nov) |
-| 2026-11-14 | `957d236` | posting: Gmail daily email limit no longer counts as a failed post record (sheet row is already saved - no 5x retries); checker notes ending 'so not a problem' no longer hold a story (14 Nov) |
-| 2026-11-14 | `288dee4` | powercut: notices written |
-| 2026-11-14 | `62c86c1` | facebook RN-573 |
-| 2026-11-14 | `729948b` | facebook RN-562 |
-| 2026-11-14 | `7bbbeef` | powercut: notices written |
-| 2026-11-14 | `1a69eb6` | facebook RN-575 |
-| 2026-11-14 | `ba4017a` | facebook RN-563 |
-| 2026-11-14 | `4113d42` | powercut: notices written |
-| 2026-11-14 | `eec6ad5` | powercut: notices written |
-| 2026-11-14 | `4a15f69` | facebook RN-568 |
-| 2026-11-14 | `8928eba` | facebook RN-561 |
-| 2026-11-14 | `4b75983` | stories shared |
-| 2026-11-14 | `3a9dddb` | powercut: notices written |
-| 2026-11-14 | `3463d2f` | powercut: notices written |
-| 2026-11-14 | `f06f9ad` | goldrate posted |
-| 2026-11-14 | `831985c` | facebook RN-560 |
-| 2026-11-14 | `60d69b8` | powercut: notices written |
-| 2026-11-14 | `85f3705` | powercut: notices written |
-| 2026-11-14 | `5c9cc61` | powercut: notices written |
-| 2026-11-14 | `046c80f` | stories shared |
-| 2026-11-14 | `29f7ee2` | powercut: notices written |
-| 2026-11-14 | `dec7179` | powercut: notices written |
-| 2026-11-14 | `62adfb5` | rasipalan posted |
+| 2026-11-16 | `3b4c28f` | custom_reel: manual one-off reel builder (never posts) |
+| 2026-11-16 | `8feb6c5` | rasipalan posted |
+| 2026-11-15 | `aa6f628` | facebook RN-606 |
+| 2026-11-15 | `b5081a0` | stories shared |
+| 2026-11-15 | `aaa195f` | facebook RN-605 |
+| 2026-11-15 | `51e8485` | powercut: notices written |
+| 2026-11-15 | `7b8cd62` | powercut: notices written |
+| 2026-11-15 | `c023875` | facebook RN-602 |
+| 2026-11-15 | `96b2cad` | facebook RN-603 |
+| 2026-11-15 | `f3d3481` | powercut: notices written |
+| 2026-11-15 | `957e2c8` | powercut: notices written |
+| 2026-11-15 | `1664b93` | powercut: notices written |
+| 2026-11-15 | `8355ffe` | powercut: notices written |
+| 2026-11-15 | `4247821` | powercut: notices written |
+| 2026-11-15 | `75a49b9` | facebook RN-601 |
+| 2026-11-15 | `af51203` | powercut: notices written |
+| 2026-11-15 | `0149b67` | powercut: notices written |
+| 2026-11-15 | `2b190f5` | powercut: notices written |
+| 2026-11-15 | `3ffb5f0` | powercut: notices written |
+| 2026-11-15 | `295373b` | powercut: notices written |
+| 2026-11-15 | `dc59095` | facebook RN-597 |
+| 2026-11-15 | `271fbb8` | powercut: notices written |
+| 2026-11-15 | `e15bea5` | powercut: notices written |
+| 2026-11-15 | `de44741` | facebook RN-596 |
+| 2026-11-15 | `9128ce2` | powercut: notices written |
+| 2026-11-15 | `ef776c6` | facebook RN-600 |
+| 2026-11-15 | `c2bf338` | facebook RN-593 |
+| 2026-11-15 | `f967fb0` | powercut: notices written |
+| 2026-11-15 | `50c13a9` | facebook RN-594 |
+| 2026-11-15 | `e9045f2` | powercut: notices written |
 <!-- recent-changes:end -->
