@@ -1,11 +1,158 @@
+writing [R]: டூவீலரில் ரூ.200 திருடிய வாலிபருக்கு காப்பு
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+writing [N]: பட்டா கொடுத்த அதிகாரிகள் எங்கே? வீடிழந்த மக்களுக்கு  பதில் ச
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (10s)
+attempt 1 gemini/gemini-3-flash-preview: 2 problems
+  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 22 ('”அதி காரிகளே வழங்கிய போலி பட்டா” என்ற பெயரில், கடந்த அக்டோபர'); 28 ('”அதி காரிகளே வழங்கிய போலி பட்டா” என்ற பெயரில், கடந்த அக்டோபர')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 78 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 90 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  reel_script has 98 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 22 ('”அதி காரிகளே வழங்கிய போலி பட்டா” என்ற பெயரில், கடந்த அக்டோபர'); 28 ('”அதி காரிகளே வழங்கிய போலி பட்டா” என்ற பெயரில், கடந்த அக்டோபர')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok groq/qwen/qwen3.8-27b (3s)
+proofread by groq/qwen/qwen3.8-27b: 1 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+ok gemini/gemini-3-flash-preview (28s)
+attempt 1 gemini/gemini-3-flash-preview: 1 problems
+  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+ok anthropic/claude-haiku-5-5
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  slides_spec 'எப்போது?' slide says 'வெண்ணந்தூர் போலீசார் வழக்குப் பதிவு செய்தனர்' (police registered a case) — the article only says the complainant filed a complaint and the arrest was made; case registration is not stated.
+  slides_spec 'யார் இவர்?' slide says 'தப்பி ஓட முயன்றபோது அருகில் இருந்தவர்கள் பிடித்தனர்' — the article says people nearby helped catch him after he tried to flee, which is consistent, but the slide also says 'அஜித்குமார் கைது' tied to the manager's complaint; acceptable. However the reel_script omits that the security guard Ravichandran's instruction led to the capture, which is minor.
+  caption and reel_script say 'வெண்ணந்தூர் அருகே அத்தனூரில்' / 'அத்தனூர் அருகே' — the article places the hall near Attanur on Salem highway, which matches; no issue there.
+  caption '👮 நடவடிக்கை: வெண்ணந்தூர் போலீசார் அஜித்குமாரை கைது செய்தனர்' — the article says the arrest was made on the manager's complaint; attributing the arrest to Vennandur police is a reasonable reading, not a clear error.
+  reel_script says 'பொய் சொல்ல வேண்டாம் என்று செக்யூரிட்டி எச்சரித்ததும்' — the article says the guard told him not to lie after he gave his name; the sequencing is consistent, not a problem.
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: slides_spec 'எப்போது?' slide says 'வெண்ணந்தூர் போலீசார் வழக்குப் பதிவு செய்தனர்' (police registered a case) — the article only says the complainant filed a complaint and the arrest was made; case registration is not stated.
+  fact-check: slides_spec 'யார் இவர்?' slide says 'தப்பி ஓட முயன்றபோது அருகில் இருந்தவர்கள் பிடித்தனர்' — the article says people nearby helped catch him after he tried to flee, which is consistent, but the slide also says 'அஜித்குமார் கைது' tied to the manager's complaint; acceptable. However the reel_script omits that the security guard Ravichandran's instruction led to the capture, which is minor.
+  fact-check: caption and reel_script say 'வெண்ணந்தூர் அருகே அத்தனூரில்' / 'அத்தனூர் அருகே' — the article places the hall near Attanur on Salem highway, which matches; no issue there.
+  fact-check: caption '👮 நடவடிக்கை: வெண்ணந்தூர் போலீசார் அஜித்குமாரை கைது செய்தனர்' — the article says the arrest was made on the manager's complaint; attributing the arrest to Vennandur police is a reasonable reading, not a clear error.
+  fact-check: reel_script says 'பொய் சொல்ல வேண்டாம் என்று செக்யூரிட்டி எச்சரித்ததும்' — the article says the guard told him not to lie after he gave his name; the sequencing is consistent, not a problem.
+real photo step failed (429 Client Error: Too Many Requests for url: https://angusam.com/patta-issued-responsible-for-homeless-people/) -> AI pictures
+imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs about $0.0020, but your available balance is $0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
+imagegen: black-forest-labs/flux.1-schnell 422: {"detail":[{"type":"extra_forbidden","loc":["body","seed"],"msg":"Extra inputs are not permitted","input":876251}]}
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  The reel_script says the theft was from a 'திருமண மண்டபத்தில்' (wedding hall) which is fine, but the caption says 'மண்டப மேலாளர் செந்திலின் டூவீலர் டிக்கியில்' while the article says an electric bike (எலக்ட்ரிக் பைக்) — the draft calls it a two-wheeler, which matches the headline's 'டூவீலர்', so this is acceptable; however the reel_script names the security guard ரவிச்சந்திரன் and the article supports that.
+  The reel_script states the suspect 'ரூ.200 எடுத்துள்ளார்' from the bike 'டிக்கியில்' — consistent with article.
+  The caption states the date as 'நேற்று முன்தினம் (நவம்பர் 14)', which asserts a specific calendar date not present in the article; the article only says 'நேற்று முன்தினம்'.
+  The reel_script says the arrest was based on 'மேலாளர் செந்தில்குமார்' complaint and names the manager as 'செந்தில்' in the same script, while the article's manager is 'செந்தில்' in one place and 'செந்தில்குமார்' in another; the draft mixes the names without clarification, but this is consistent with the article.
+  The reel_script says the suspect was caught 'அருகில் இருந்தவர்கள் உதவியுடன்' and handed to 'வெண்ணந்தூர் போலீசாரிடம்' — consistent with article.
+  The reel_script says the arrest happened near 'அத்தனூர் அருகே' while the slide and caption say 'வெண்ணந்தூர், அத்தனூர்' — consistent with article's 'வெண்ணந்தூர்' and 'அத்தனூர் அருகே' location.
+claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: The reel_script says the theft was from a 'திருமண மண்டபத்தில்' (wedding hall) which is fine, but the caption says 'மண்டப மேலாளர் செந்திலின் டூவீலர் டிக்கியில்' while the article says an electric bike (எலக்ட்ரிக் பைக்) — the draft calls it a two-wheeler, which matches the headline's 'டூவீலர்', so this is acceptable; however the reel_script names the security guard ரவிச்சந்திரன் and the article supports that.
+  fact-check: The reel_script states the suspect 'ரூ.200 எடுத்துள்ளார்' from the bike 'டிக்கியில்' — consistent with article.
+  fact-check: The caption states the date as 'நேற்று முன்தினம் (நவம்பர் 14)', which asserts a specific calendar date not present in the article; the article only says 'நேற்று முன்தினம்'.
+  fact-check: The reel_script says the arrest was based on 'மேலாளர் செந்தில்குமார்' complaint and names the manager as 'செந்தில்' in the same script, while the article's manager is 'செந்தில்' in one place and 'செந்தில்குமார்' in another; the draft mixes the names without clarification, but this is consistent with the article.
+  fact-check: The reel_script says the suspect was caught 'அருகில் இருந்தவர்கள் உதவியுடன்' and handed to 'வெண்ணந்தூர் போலீசாரிடம்' — consistent with article.
+  fact-check: The reel_script says the arrest happened near 'அத்தனூர் அருகே' while the slide and caption say 'வெண்ணந்தூர், அத்தனூர்' — consistent with article's 'வெண்ணந்தூர்' and 'அத்தனூர் அருகே' location.
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  reel_script says the theft was from a 'டூவீலர்' and the arrest was made 'வெண்ணந்தூர் அருகே' — acceptable, but reel_script states the man was caught by 'அருகில் இருந்தவர்கள்' only after escape attempt; this matches. However, reel_script omits the identity of the arrested person's name and father details (அஜித்குமார், திப்பம்பட்டி) — not strictly required, but the arrest name is included.
+  reel_script says 'பைக் மேலாளர் செந்தில் உடையது என்று கூறியதும்' — article says security told him the bike belongs to manager Senthil; fine. But reel_script says 'மேலாளர் செந்தில் தனது எலக்ட்ரிக் பைக்கை நிறுத்தியிருந்தார்' — accurate.
+  slides_spec 'hl1' says 'பணம் திருடியவர்' and 'cat' label is fine; however slides_spec line 'அருகில் இருந்தவர்கள் உதவியுடன் பிடித்து போலீசில்' is an ungrammatical/unclear Tamil fragment ('பிடித்து போலீசில்' lacks a clear verb object relation: should be 'போலீசாரிடம் ஒப்படைத்தனர்').
+  caption contains the phrase 'Two-wheeler theft arrest in Venmandur | Namakkal news' in English mixed into the Tamil caption body, which is a stylistic inconsistency but not a factual claim.
+  caption says 'மண்டப மேலாளர் செந்திலின் எலக்ட்ரிக் பைக் டிக்கியைத் திறந்து ஒருவர் ரூ.200 எடுத்தார்' — matches article; caption and reel_script say the man was arrested by 'வெண்ணந்தூர் போலீசாரிடம் ஒப்படைக்கப்பட்டார்' and 'கைது' — consistent.
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: reel_script says the theft was from a 'டூவீலர்' and the arrest was made 'வெண்ணந்தூர் அருகே' — acceptable, but reel_script states the man was caught by 'அருகில் இருந்தவர்கள்' only after escape attempt; this matches. However, reel_script omits the identity of the arrested person's name and father details (அஜித்குமார், திப்பம்பட்டி) — not strictly required, but the arrest name is included.
+  fact-check: reel_script says 'பைக் மேலாளர் செந்தில் உடையது என்று கூறியதும்' — article says security told him the bike belongs to manager Senthil; fine. But reel_script says 'மேலாளர் செந்தில் தனது எலக்ட்ரிக் பைக்கை நிறுத்தியிருந்தார்' — accurate.
+  fact-check: slides_spec 'hl1' says 'பணம் திருடியவர்' and 'cat' label is fine; however slides_spec line 'அருகில் இருந்தவர்கள் உதவியுடன் பிடித்து போலீசில்' is an ungrammatical/unclear Tamil fragment ('பிடித்து போலீசில்' lacks a clear verb object relation: should be 'போலீசாரிடம் ஒப்படைத்தனர்').
+  fact-check: caption contains the phrase 'Two-wheeler theft arrest in Venmandur | Namakkal news' in English mixed into the Tamil caption body, which is a stylistic inconsistency but not a factual claim.
+  fact-check: caption says 'மண்டப மேலாளர் செந்திலின் எலக்ட்ரிக் பைக் டிக்கியைத் திறந்து ஒருவர் ரூ.200 எடுத்தார்' — matches article; caption and reel_script say the man was arrested by 'வெண்ணந்தூர் போலீசாரிடம் ஒப்படைக்கப்பட்டார்' and 'கைது' — consistent.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+imagegen: black-forest-labs/flux.1-dev 500: Internal Server Error
+imagegen: fal fal-ai/flux/dev 403: {"detail":"User is locked. Reason: Exhausted balance. Top up your balance at fal.ai/dashboard/billing."}
+images NOT made for 'Eight families in Kuppampalayam, Vasanth': all image models failed: fal fal-ai/flux/dev 403: {"detail":"User is locked. Reason: Exhausted balance. Top up your balance at fal.ai/dashboard/billing."}
+bridge: 200 {"ok":true,"added":1,"auto_queued":0,"emailed":0,"reoffered":0,"batch":"B20261116-1734","first":"RN-625"}
+posting job started at once
+bridge: 200 {"ok":true,"added":1,"auto_queued":0,"emailed":0,"reoffered":0,"batch":"B20261116-1734","first":"RN-626"}
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 1 news waiting in the queue (written in priority order)
-candidate filter: checked earlier=1
-to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)
-candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+write round: 13 news waiting in the queue (written in priority order)
+candidate filter: already filed=8, collected=5
+to write: 1 Rasipuram + 4 other district candidates (max 200 + 200 stories)
+candidates waiting: 1 Rasipuram, 4 Namakkal; time left 29 min
+try (R) manual=False: டூவீலரில் ரூ.200 திருடிய வாலிபருக்கு காப்பு
+try (N) manual=False: முட்டை விலை 25 காசு சரிவு
+try (N) manual=False: நாமக்கல்லில் செவிலியா் கல்லூரி: பட்ஜெட்டில் அறிவிப்பு வெளியி
+skip (N) same event as RN-600: நாமக்கல்லில் செவிலியா் கல்லூரி: பட்ஜெட்டில் அறிவிப
+try (N) manual=False: பட்டா கொடுத்த அதிகாரிகள் எங்கே? வீடிழந்த மக்களுக்கு  பதில் ச
+skip (N) similar to a filed story: முட்டை விலை 25 காசு சரிவு
+try (N) manual=False: பறவை காய்ச்சல் நோய் தாக்காமல் இருக்க நாமக்கல் பகுதி கோழிப்பண
+skip (N) similar to a filed story: பறவை காய்ச்சல் நோய் தாக்காமல் இருக்க நாமக்கல் பகுத
+auto images failed for 'Eight families in Kuppampalayam, Vasanth': all image models failed: fal fal-ai/flux/dev 403: {"detail":"User is locked. Reason: Exhausted balance. Top up your bala -> images-needed email
+auto images: 0 of 1 stories ({})
+posting job started at once
+auto images: 0 of 1 stories ({})
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 4}, done={'R': 1, 'N': 1}, time left 25 min
+carousel for 0 of 2 stories, the rest reel only
+filed: 1 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":2} 
+stories: 2
