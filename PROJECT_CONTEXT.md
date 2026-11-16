@@ -65,6 +65,15 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-16 | `4a018c8` | post: while news is still waiting, a live posting run starts the next one (GitHub skipped most 5-minute runs on 16 Nov) |
+| 2026-11-16 | `6957c9b` | facebook RN-607 |
+| 2026-11-16 | `c79d7ee` | facebook RN-611 |
+| 2026-11-16 | `9ba3f59` | stories shared |
+| 2026-11-16 | `6c158e3` | facebook RN-623 |
+| 2026-11-16 | `d8380cc` | stories shared |
+| 2026-11-16 | `b91a147` | powercut: notices written |
+| 2026-11-16 | `787b956` | powercut: notices written |
+| 2026-11-16 | `0bb2d1f` | goldrate posted |
 | 2026-11-16 | `aeeea5b` | custom_reel: choose the story branch; picture keys for a sample made from its prompt (manual only, never posts) |
 | 2026-11-16 | `3b4c28f` | custom_reel: manual one-off reel builder (never posts) |
 | 2026-11-16 | `8feb6c5` | rasipalan posted |
@@ -86,13 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-15 | `2b190f5` | powercut: notices written |
 | 2026-11-15 | `3ffb5f0` | powercut: notices written |
 | 2026-11-15 | `295373b` | powercut: notices written |
-| 2026-11-15 | `dc59095` | facebook RN-597 |
-| 2026-11-15 | `271fbb8` | powercut: notices written |
-| 2026-11-15 | `e15bea5` | powercut: notices written |
-| 2026-11-15 | `de44741` | facebook RN-596 |
-| 2026-11-15 | `9128ce2` | powercut: notices written |
-| 2026-11-15 | `ef776c6` | facebook RN-600 |
-| 2026-11-15 | `c2bf338` | facebook RN-593 |
-| 2026-11-15 | `f967fb0` | powercut: notices written |
-| 2026-11-15 | `50c13a9` | facebook RN-594 |
 <!-- recent-changes:end -->
