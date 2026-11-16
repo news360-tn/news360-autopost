@@ -3,6 +3,10 @@ name: custom_reel
 # Valluvar voice. Manual only - it never posts; the finished video goes to branch custom-reel-out for the owner to check.
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: branch with the custom/ folder
+        default: custom-reel
 permissions:
   contents: write
 jobs:
@@ -14,8 +18,8 @@ jobs:
         with: {ref: main}
       - name: Story and photos
         run: |
-          git fetch -q origin custom-reel
-          git checkout origin/custom-reel -- custom
+          git fetch -q origin ${{ inputs.branch || 'custom-reel' }}
+          git checkout origin/${{ inputs.branch || 'custom-reel' }} -- custom
           ls custom custom/img
       - uses: actions/setup-python@v5
         with: {python-version: "3.11"}
@@ -29,6 +33,11 @@ jobs:
           python -m playwright install --with-deps chromium
           (cd kit && npm install --no-audit --no-fund)
       - name: Make the reel
+        env:      # picture services (free first) for a sample whose picture is made from its prompt
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
         run: |
           mkdir -p out
           python custom/make.py out/custom_reel.mp4
