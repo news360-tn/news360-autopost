@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-16 | `4a018c8` | post: while news is still waiting, a live posting run starts the next one (GitHub skipped most 5-minute runs on 16 Nov) |
-| 2026-11-16 | `6957c9b` | facebook RN-607 |
-| 2026-11-16 | `c79d7ee` | facebook RN-611 |
-| 2026-11-16 | `9ba3f59` | stories shared |
-| 2026-11-16 | `6c158e3` | facebook RN-623 |
-| 2026-11-16 | `d8380cc` | stories shared |
-| 2026-11-16 | `b91a147` | powercut: notices written |
-| 2026-11-16 | `787b956` | powercut: notices written |
-| 2026-11-16 | `0bb2d1f` | goldrate posted |
-| 2026-11-16 | `aeeea5b` | custom_reel: choose the story branch; picture keys for a sample made from its prompt (manual only, never posts) |
-| 2026-11-16 | `3b4c28f` | custom_reel: manual one-off reel builder (never posts) |
-| 2026-11-16 | `8feb6c5` | rasipalan posted |
-| 2026-11-15 | `aa6f628` | facebook RN-606 |
-| 2026-11-15 | `b5081a0` | stories shared |
-| 2026-11-15 | `aaa195f` | facebook RN-605 |
-| 2026-11-15 | `51e8485` | powercut: notices written |
-| 2026-11-15 | `7b8cd62` | powercut: notices written |
-| 2026-11-15 | `c023875` | facebook RN-602 |
-| 2026-11-15 | `96b2cad` | facebook RN-603 |
-| 2026-11-15 | `f3d3481` | powercut: notices written |
-| 2026-11-15 | `957e2c8` | powercut: notices written |
-| 2026-11-15 | `1664b93` | powercut: notices written |
-| 2026-11-15 | `8355ffe` | powercut: notices written |
-| 2026-11-15 | `4247821` | powercut: notices written |
-| 2026-11-15 | `75a49b9` | facebook RN-601 |
-| 2026-11-15 | `af51203` | powercut: notices written |
-| 2026-11-15 | `0149b67` | powercut: notices written |
-| 2026-11-15 | `2b190f5` | powercut: notices written |
-| 2026-11-15 | `3ffb5f0` | powercut: notices written |
-| 2026-11-15 | `295373b` | powercut: notices written |
+| 2026-11-17 | `adf89b9` | pictures: NVIDIA FLUX no longer accepts 'seed' (422) - dropped so the free NVIDIA pictures work again |
+| 2026-11-17 | `3f45cec` | goldrate posted |
+| 2026-11-17 | `d705ed2` | facebook RN-648 |
+| 2026-11-17 | `566bc2b` | facebook RN-636 |
+| 2026-11-17 | `9db8bcd` | stories shared |
+| 2026-11-17 | `e7281a9` | stories shared |
+| 2026-11-17 | `daf319a` | stories shared |
+| 2026-11-17 | `0d1f61c` | rasipalan posted |
+| 2026-11-17 | `156d6e0` | powercut: notices written |
+| 2026-11-17 | `7dc0084` | comments: normal comments recorded (not e-mailed) |
+| 2026-11-17 | `9ee496c` | powercut: notices written |
+| 2026-11-17 | `0113fab` | stories shared |
+| 2026-11-17 | `ca6b80f` | facebook RN-647 |
+| 2026-11-17 | `0034219` | facebook RN-646 |
+| 2026-11-17 | `4fb6325` | stories shared |
+| 2026-11-17 | `9fe833b` | facebook RN-637 |
+| 2026-11-17 | `2b5aa3f` | facebook RN-639 |
+| 2026-11-17 | `3b49ae9` | facebook RN-638 |
+| 2026-11-17 | `cbc4b97` | facebook RN-631 |
+| 2026-11-17 | `d500205` | facebook RN-632 |
+| 2026-11-17 | `c36d0f2` | facebook RN-627 |
+| 2026-11-17 | `7910fa4` | facebook RN-628 |
+| 2026-11-17 | `9a72bea` | facebook RN-635 |
+| 2026-11-17 | `64699c6` | facebook RN-634 |
+| 2026-11-17 | `e13849a` | facebook RN-630 |
+| 2026-11-16 | `12c4886` | facebook RN-616 |
+| 2026-11-16 | `6c7480f` | facebook RN-619 |
+| 2026-11-16 | `eea7757` | facebook RN-620 |
+| 2026-11-16 | `71aff19` | facebook RN-622 |
+| 2026-11-16 | `664f9e6` | facebook RN-617 |
 <!-- recent-changes:end -->
