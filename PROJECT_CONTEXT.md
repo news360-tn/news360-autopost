@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-17 | `adf89b9` | pictures: NVIDIA FLUX no longer accepts 'seed' (422) - dropped so the free NVIDIA pictures work again |
-| 2026-11-17 | `3f45cec` | goldrate posted |
-| 2026-11-17 | `d705ed2` | facebook RN-648 |
-| 2026-11-17 | `566bc2b` | facebook RN-636 |
-| 2026-11-17 | `9db8bcd` | stories shared |
-| 2026-11-17 | `e7281a9` | stories shared |
-| 2026-11-17 | `daf319a` | stories shared |
-| 2026-11-17 | `0d1f61c` | rasipalan posted |
-| 2026-11-17 | `156d6e0` | powercut: notices written |
-| 2026-11-17 | `7dc0084` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-17 | `9ee496c` | powercut: notices written |
-| 2026-11-17 | `0113fab` | stories shared |
-| 2026-11-17 | `ca6b80f` | facebook RN-647 |
-| 2026-11-17 | `0034219` | facebook RN-646 |
-| 2026-11-17 | `4fb6325` | stories shared |
-| 2026-11-17 | `9fe833b` | facebook RN-637 |
-| 2026-11-17 | `2b5aa3f` | facebook RN-639 |
-| 2026-11-17 | `3b49ae9` | facebook RN-638 |
-| 2026-11-17 | `cbc4b97` | facebook RN-631 |
-| 2026-11-17 | `d500205` | facebook RN-632 |
-| 2026-11-17 | `c36d0f2` | facebook RN-627 |
-| 2026-11-17 | `7910fa4` | facebook RN-628 |
-| 2026-11-17 | `9a72bea` | facebook RN-635 |
-| 2026-11-17 | `64699c6` | facebook RN-634 |
-| 2026-11-17 | `e13849a` | facebook RN-630 |
-| 2026-11-16 | `12c4886` | facebook RN-616 |
-| 2026-11-16 | `6c7480f` | facebook RN-619 |
-| 2026-11-16 | `eea7757` | facebook RN-620 |
-| 2026-11-16 | `71aff19` | facebook RN-622 |
-| 2026-11-16 | `664f9e6` | facebook RN-617 |
+| 2026-11-18 | `6f7a05a` | schedule: rasipalan 6:40 AM, gold 9:40 AM (MJDTA 9:30), afternoon gold change post after MJDTA's 3:30 PM rate, watchdog in the posting job starts them (and an overdue news round) when GitHub skips the schedule |
+| 2026-11-18 | `2e8b8fc` | rasipalan posted |
+| 2026-11-18 | `1c964df` | stories shared |
+| 2026-11-18 | `86de5c9` | goldrate posted |
+| 2026-11-18 | `1798252` | goldrate posted |
+| 2026-11-18 | `6c7bbdb` | powercut: notices written |
+| 2026-11-18 | `6dc999e` | powercut: notices written |
+| 2026-11-18 | `eb320c4` | comments: normal comments recorded (not e-mailed) |
+| 2026-11-18 | `81b088b` | facebook RN-667 |
+| 2026-11-18 | `61fa55e` | facebook RN-660 |
+| 2026-11-18 | `0a71ce9` | facebook RN-662 |
+| 2026-11-18 | `4022127` | facebook RN-659 |
+| 2026-11-18 | `fd63bee` | facebook RN-657 |
+| 2026-11-18 | `5018ae5` | facebook RN-663 |
+| 2026-11-18 | `76512b5` | facebook RN-668 |
+| 2026-11-18 | `f0b0f03` | facebook RN-661 |
+| 2026-11-18 | `58814b5` | facebook RN-658 |
+| 2026-11-17 | `4e3186d` | facebook RN-656 |
+| 2026-11-17 | `0c6a4dd` | facebook RN-654 |
+| 2026-11-17 | `2dc7e53` | facebook RN-652 |
+| 2026-11-17 | `1b3fe34` | facebook RN-655 |
+| 2026-11-17 | `5496129` | facebook RN-651 |
+| 2026-11-17 | `1717cf8` | facebook RN-650 |
+| 2026-11-17 | `a2dc87f` | comments: normal comments recorded (not e-mailed) |
+| 2026-11-17 | `559a2da` | powercut: notices written |
+| 2026-11-17 | `6a10668` | powercut: notices written |
+| 2026-11-17 | `012b655` | facebook RN-645 |
+| 2026-11-17 | `29eaea1` | facebook RN-641 |
+| 2026-11-17 | `3d001f9` | facebook RN-642 |
+| 2026-11-17 | `25b3195` | facebook RN-643 |
 <!-- recent-changes:end -->
