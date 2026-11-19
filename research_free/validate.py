@@ -214,6 +214,15 @@ META = ["கட்டுரை", "தகவல் இல்லை", "விவ�
         "குறிப்பிடப்படவில்லை", "the article", "this article", "not mentioned in", "no information"]
 
 
+def _power_cut():
+    """owner 19 Nov (same as the other pages): poster/config.json "power_cut" limits ({} = a power cut has the normal limits)"""
+    try:
+        from pathlib import Path
+        return json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text(encoding="utf-8")).get("power_cut") or {}
+    except Exception:
+        return {}
+
+
 def _reach():
     """owner 29 Oct views plan: poster/config.json "reach" switches ({} = the old behaviour)"""
     try:
@@ -343,6 +352,9 @@ def validate(d, article, today_digits=("2026",)):
     maxw = int(_reach().get("script_max_words") or 170)      # owner 29 Oct: reels at most 60 s (105 words); the caption keeps every detail
     need = min(130, int(len(_tamil_words(article)) * 0.55)) if article else 60      # owner 28 Oct: full detail - a longer article needs a longer reel
     need = min(need, maxw - 20, 100)      # owner 31 Oct: up to 90 s for the full news, but a long article never FORCES more than ~100 words
+    import powercut_compat      # owner 19 Nov: a power cut reads EVERY area (up to 90 s), the same rule as every other page
+    if powercut_compat.is_power_cut(d.get("tamil_headline"), d.get("english_headline"), d.get("category")):
+        maxw = int(_power_cut().get("script_max_words") or maxw)      # only the upper limit grows; the minimum stays the normal one
     if not max(60, need) <= wc <= maxw + 5:
         p.append(f"reel_script has {wc} words; need {max(60, need)}-{maxw} (the key facts once each, in at most {60 if maxw <= 110 else 90} seconds; "
                  "every other detail goes in the caption's 📰 முழு விவரம் block)")

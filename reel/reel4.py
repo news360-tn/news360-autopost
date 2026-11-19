@@ -571,17 +571,28 @@ window.fitAll=function(){{
 </script></body></html>"""
 
 
-def max_seconds():
+def max_seconds(spec=None):
+    """owner 19 Nov: a news reel is at most config "reel_max_seconds" (60 s); a power-cut notice (every area read out) may run to
+    config "power_cut" max_seconds (88 s, under verify.py's 90 s check) - the same power-cut rule as every other page"""
     try:
-        return float(json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text()).get("reel_max_seconds", 90))
+        cfg = json.loads((Path(__file__).resolve().parent.parent / "poster" / "config.json").read_text())
     except Exception:
         return 90.0
+    limit = float(cfg.get("reel_max_seconds", 90))
+    if spec:
+        rf = str(Path(__file__).resolve().parent.parent / "research_free")
+        if rf not in sys.path:
+            sys.path.append(rf)
+        import powercut_compat      # the power-cut test of the Namakkal power-cut lane (poster/freshness.py stays unchanged)
+        if powercut_compat.is_power_cut(spec.get("cat"), spec.get("mini"), *(spec.get("hook") or [])):
+            limit = float((cfg.get("power_cut") or {}).get("max_seconds") or limit)
+    return limit
 
 
-def fit_max(work, n, lead, gap):
+def fit_max(work, n, lead, gap, limit=None):
     """owner 28 Oct: a reel is at most 90 s. Never cut a fact - when the full news runs longer, the news lines (not the
     English outro) are read a little faster, at most 1.2x"""
-    limit = max_seconds()
+    limit = limit or max_seconds()
     durs = [V3.wav_dur(work / f"line{i}.wav") for i in range(n)]
     pauses = lead + sum(V3.PAUSE if i == n - 2 else (0.55 if i == 0 else gap) for i in range(n - 1))
     total = sum(durs) + pauses + 2.4
@@ -667,7 +678,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
             (work / "lines.json").write_text(json.dumps(texts, ensure_ascii=False))
             subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "tts.py"), str(work / "lines.json"), str(work), spec.get("voice", "female")], check=True)
         english_outro(work, len(texts) - 1, vs.get("outro_voice", "en-IN-PrabhatNeural") if used else "en-IN-NeerjaNeural", used == "google")
-    fit_max(work, len(texts), lead, gap)
+    fit_max(work, len(texts), lead, gap, max_seconds(spec))
     starts, ends, t = [], [], lead
     for i in range(len(texts)):
         d = V3.wav_dur(work / f"line{i}.wav")
