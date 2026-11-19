@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-18 | `6f7a05a` | schedule: rasipalan 6:40 AM, gold 9:40 AM (MJDTA 9:30), afternoon gold change post after MJDTA's 3:30 PM rate, watchdog in the posting job starts them (and an overdue news round) when GitHub skips the schedule |
-| 2026-11-18 | `2e8b8fc` | rasipalan posted |
-| 2026-11-18 | `1c964df` | stories shared |
-| 2026-11-18 | `86de5c9` | goldrate posted |
-| 2026-11-18 | `1798252` | goldrate posted |
-| 2026-11-18 | `6c7bbdb` | powercut: notices written |
-| 2026-11-18 | `6dc999e` | powercut: notices written |
-| 2026-11-18 | `eb320c4` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-18 | `81b088b` | facebook RN-667 |
-| 2026-11-18 | `61fa55e` | facebook RN-660 |
-| 2026-11-18 | `0a71ce9` | facebook RN-662 |
-| 2026-11-18 | `4022127` | facebook RN-659 |
-| 2026-11-18 | `fd63bee` | facebook RN-657 |
-| 2026-11-18 | `5018ae5` | facebook RN-663 |
-| 2026-11-18 | `76512b5` | facebook RN-668 |
-| 2026-11-18 | `f0b0f03` | facebook RN-661 |
-| 2026-11-18 | `58814b5` | facebook RN-658 |
-| 2026-11-17 | `4e3186d` | facebook RN-656 |
-| 2026-11-17 | `0c6a4dd` | facebook RN-654 |
-| 2026-11-17 | `2dc7e53` | facebook RN-652 |
-| 2026-11-17 | `1b3fe34` | facebook RN-655 |
-| 2026-11-17 | `5496129` | facebook RN-651 |
-| 2026-11-17 | `1717cf8` | facebook RN-650 |
-| 2026-11-17 | `a2dc87f` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-17 | `559a2da` | powercut: notices written |
-| 2026-11-17 | `6a10668` | powercut: notices written |
-| 2026-11-17 | `012b655` | facebook RN-645 |
-| 2026-11-17 | `29eaea1` | facebook RN-641 |
-| 2026-11-17 | `3d001f9` | facebook RN-642 |
-| 2026-11-17 | `25b3195` | facebook RN-643 |
+| 2026-11-19 | `b7e816b` | Gold & silver rate also as a reel, posted after the carousel (never twice; a reel problem never touches the carousel) |
+| 2026-11-19 | `76d40b0` | powercut: notices written |
+| 2026-11-19 | `17c37a9` | stories shared |
+| 2026-11-19 | `63a5d1f` | comments: normal comments recorded (not e-mailed) |
+| 2026-11-19 | `0cf11db` | facebook RN-686 |
+| 2026-11-19 | `c4e15bd` | facebook RN-688 |
+| 2026-11-19 | `ef39c52` | facebook RN-695 |
+| 2026-11-19 | `f1e7c74` | facebook RN-696 |
+| 2026-11-19 | `edcb470` | facebook RN-693 |
+| 2026-11-19 | `69f7914` | facebook RN-689 |
+| 2026-11-19 | `c903e4a` | stories shared |
+| 2026-11-19 | `fda1723` | facebook RN-690 |
+| 2026-11-19 | `fdc08dd` | facebook RN-691 |
+| 2026-11-19 | `47b251c` | stories shared |
+| 2026-11-19 | `c4fb5d1` | facebook RN-687 |
+| 2026-11-19 | `a890e7d` | facebook RN-683 |
+| 2026-11-19 | `0875663` | goldrate posted |
+| 2026-11-19 | `51ec0b1` | facebook RN-685 |
+| 2026-11-19 | `55ffc69` | facebook RN-682 |
+| 2026-11-19 | `a870816` | facebook RN-680 |
+| 2026-11-19 | `41370ab` | facebook RN-681 |
+| 2026-11-19 | `6d4f7bb` | facebook RN-700 |
+| 2026-11-19 | `93c4008` | facebook RN-699 |
+| 2026-11-19 | `6ce197f` | facebook RN-692 |
+| 2026-11-19 | `5e20a8a` | facebook RN-694 |
+| 2026-11-19 | `bec0da7` | stories shared |
+| 2026-11-19 | `9666b63` | facebook RN-684 |
+| 2026-11-19 | `e9e8e07` | rasipalan posted |
+| 2026-11-18 | `47de1a5` | powercut: notices written |
+| 2026-11-18 | `e451723` | powercut: notices written |
 <!-- recent-changes:end -->
