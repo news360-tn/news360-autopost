@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-19 | `6d19263` | Gold reel: new bright poster design and faster pace (short lines, quicker voice, fast cuts) |
+| 2026-11-19 | `b2bb045` | stories shared |
 | 2026-11-19 | `f577deb` | Gold reel: modern theme - full-screen scenes (hook, 22K, 24K, silver, follow) changing with each spoken line |
 | 2026-11-19 | `66daa5d` | powercut: notices written |
 | 2026-11-19 | `b7e816b` | Gold & silver rate also as a reel, posted after the carousel (never twice; a reel problem never touches the carousel) |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-19 | `6ce197f` | facebook RN-692 |
 | 2026-11-19 | `5e20a8a` | facebook RN-694 |
 | 2026-11-19 | `bec0da7` | stories shared |
-| 2026-11-19 | `9666b63` | facebook RN-684 |
-| 2026-11-19 | `e9e8e07` | rasipalan posted |
 <!-- recent-changes:end -->
