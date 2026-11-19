@@ -65,6 +65,13 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-19 | `fce4b98` | 19 Nov owner changes: reel length / wording, source first comment, 360 gold reel, posting windows, rasipalan before 9 AM |
+| 2026-11-19 | `af4b1e6` | powercut: notices written |
+| 2026-11-19 | `7833376` | powercut: notices written |
+| 2026-11-19 | `702f613` | comments: normal comments recorded (not e-mailed) |
+| 2026-11-19 | `345c2ac` | stories shared |
+| 2026-11-19 | `e9c8744` | stories shared |
+| 2026-11-19 | `72f05da` | facebook RN-701 |
 | 2026-11-19 | `d7bb018` | rasipalan + goldrate: publish again when Instagram says 'media not ready' (9007, nothing posted - Erode 19 Nov); Cloudinary upload tried 3 times with its reason in the log (Rasipuram rasipalan posted 18:43 on 18 Nov after 3 refusals) |
 | 2026-11-19 | `1d567cd` | stories shared |
 | 2026-11-19 | `9f41887` | goldrate posted |
@@ -88,11 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-19 | `fda1723` | facebook RN-690 |
 | 2026-11-19 | `fdc08dd` | facebook RN-691 |
 | 2026-11-19 | `47b251c` | stories shared |
-| 2026-11-19 | `c4fb5d1` | facebook RN-687 |
-| 2026-11-19 | `a890e7d` | facebook RN-683 |
-| 2026-11-19 | `0875663` | goldrate posted |
-| 2026-11-19 | `51ec0b1` | facebook RN-685 |
-| 2026-11-19 | `55ffc69` | facebook RN-682 |
-| 2026-11-19 | `a870816` | facebook RN-680 |
-| 2026-11-19 | `41370ab` | facebook RN-681 |
 <!-- recent-changes:end -->
