@@ -1,21 +1,61 @@
+writing [N]: உங்கள் குரல்(Tag)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+ok gemini/gemini-3.6-flash (43s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (48s)
+attempt 2 gemini/gemini-3.6-flash: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 400 ('பிரச்னை: தமிழகத்தில் 400க்கும் மேற்பட்ட தொழில் நிறுவனங்களை ம')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (48s)
+attempt 3 gemini/gemini-3.6-flash: 1 problems
+  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (24s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.6-flash
+ok gemini/gemini-3.5-flash (43s)
+factcheck by gemini/gemini-3.5-flash: 0 problems
+attempt 4 gemini/gemini-3.6-flash: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.5-flash (37s)
+proofread rejected (1 problems)
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.5-flash (26s)
+imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs about $0.0020, but your available balance is $0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image match: True The photo illustrates a local welding workshop scene featuring a welder working with metal pipes and sparks flying, whic
+image match check unavailable: gemini-3.5-flash: 503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models
+images made: 2 for 'Welding workshops hit by raw material pr'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261119-1743","first":"RN-701"}
+posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 12 news waiting in the queue (written in priority order)
-candidate filter: already filed=7, collected=5
-to write: 1 Rasipuram + 4 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 4 Namakkal; time left 29 min
-try (N) manual=False: கே.எம்.சி.எச்., மருத்துவமனை சார்பில் இலவச புற்றுநோய் மருத்து
-try (N) manual=False: நாமக்கல்லில் பரபரப்பு தினசரி காய்கறி சந்தை வளாகத்தில் மர்ம க
-try (N) manual=False: துறை சார்ந்த கேள்விகளுக்கு கூட பதிலளிக்காமல் அமைச்சர் நழுவல்
-skip (N) similar to a filed story: நாமக்கல்லில் பரபரப்பு தினசரி காய்கறி சந்தை வளாகத்த
-try (R) manual=False: தற்காலிக கடை அமைக்க இடம் பிடிக்கும் வியாபாரிகள்
-skip (N) similar to a filed story: கே.எம்.சி.எச்., மருத்துவமனை சார்பில் இலவச புற்றுநோ
-try (N) manual=False: பரமத்தி வேலூரில் ரூ. 23.75 கோடியில் கட்டப்பட்ட புதிய அரசு மர
-skip (N) similar to a filed story: துறை சார்ந்த கேள்விகளுக்கு கூட பதிலளிக்காமல் அமைச்
-skip (N) similar to a filed story: பரமத்தி வேலூரில் ரூ. 23.75 கோடியில் கட்டப்பட்ட புத
-skip (R) similar to a filed story: தற்காலிக கடை அமைக்க இடம் பிடிக்கும் வியாபாரிகள்
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 4}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+write round: 8 news waiting in the queue (written in priority order)
+candidate filter: already filed=7, collected=1
+to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
+try (N) manual=False: உங்கள் குரல்(Tag)
+auto images: 1 of 1 stories ({'black-forest-labs/flux.1-schnell': 2})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 1}, time left 22 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 1
