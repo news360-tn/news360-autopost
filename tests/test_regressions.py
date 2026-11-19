@@ -254,13 +254,13 @@ class PrimeTime(unittest.TestCase):
     def test_windows_switched_on(self):
         pt = json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))["prime_time"]
         self.assertTrue(pt["enabled"])
-        self.assertEqual(pt["windows"], [["05:00", "12:00"], ["15:00", "18:00"]])
+        self.assertEqual(pt["windows"], [["06:00", "12:00"], ["15:00", "21:00"]])      # owner 19 Nov: collection fitted to these
         self.assertFalse(pt["starts"])
 
     def test_inside_a_window_at_once_outside_waits(self):
         news = "கோவில் கும்பாபிஷேக விழா"
-        for now, expect in (((5, 0), ""), ((9, 30), ""), ((11, 59), ""), ((12, 0), "15:00"), ((14, 30), "15:00"), ((15, 0), ""),
-                            ((17, 59), ""), ((18, 0), "05:00"), ((23, 0), "05:00"), ((1, 0), "05:00")):
+        for now, expect in (((5, 30), "06:00"), ((6, 0), ""), ((9, 30), ""), ((11, 59), ""), ((12, 0), "15:00"), ((14, 30), "15:00"),
+                            ((15, 0), ""), ((20, 59), ""), ((21, 0), "06:00"), ((23, 0), "06:00"), ((1, 0), "06:00")):
             got = self.wait(self.row(news, 0, 30), self.at(*now))
             if expect:
                 self.assertIn(expect, got, now)
@@ -270,7 +270,7 @@ class PrimeTime(unittest.TestCase):
     def test_only_power_cut_posts_at_once(self):
         self.assertEqual("", self.wait(self.row("காளப்பநாயக்கன்பட்டி பகுதியில் நாளை மின் தடை", 21, 30), self.at(23)))
         for title in ("தனியார் பேருந்து மோதி தொழிலாளி உயிரிழப்பு", "கனமழை எச்சரிக்கை", "ஆட்சியர் அறிவிப்பு: சிறப்பு முகாம்"):
-            self.assertIn("prime time", self.wait(self.row(title, 13, 50), self.at(13, 55)), title)
+            self.assertIn("prime time", self.wait(self.row(title, 13, 50), self.at(13, 55)), title)      # 12:00-15:00: waits
 
     def test_never_dropped_after_long_wait(self):
         self.assertEqual("", self.wait(self.row("கோவில் கும்பாபிஷேக விழா", 21, 30), self.at(3, day=1), waited=19))
