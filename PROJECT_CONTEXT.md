@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-19 | `0161120` | tests: install pytest and run the suite with pytest (gold reel tests were red since 19 Nov); insights: retry the save when another job saved at the same moment |
 | 2026-11-19 | `6d19263` | Gold reel: new bright poster design and faster pace (short lines, quicker voice, fast cuts) |
 | 2026-11-19 | `b2bb045` | stories shared |
 | 2026-11-19 | `f577deb` | Gold reel: modern theme - full-screen scenes (hook, 22K, 24K, silver, follow) changing with each spoken line |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-19 | `93c4008` | facebook RN-699 |
 | 2026-11-19 | `6ce197f` | facebook RN-692 |
 | 2026-11-19 | `5e20a8a` | facebook RN-694 |
-| 2026-11-19 | `bec0da7` | stories shared |
 <!-- recent-changes:end -->
