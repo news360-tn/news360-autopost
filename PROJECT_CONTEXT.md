@@ -65,6 +65,11 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-20 | `9265f81` | Every news reel goes to the story again (stories_urgent_only false) |
+| 2026-11-20 | `6d143e0` | powercut: notices written |
+| 2026-11-20 | `4446ddb` | stories shared |
+| 2026-11-20 | `5341616` | powercut: notices written |
+| 2026-11-20 | `d6694cb` | comments: normal comments recorded (not e-mailed) |
 | 2026-11-20 | `33cbfe4` | Promotion ads (owner-approved only, bottom of the reel during the news) and twice-a-day YouTube details e-mail |
 | 2026-11-20 | `ad5dd3d` | facebook RN-718 |
 | 2026-11-20 | `d37273b` | facebook RN-719 |
@@ -90,9 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-20 | `7f918d5` | stories shared |
 | 2026-11-20 | `231d7aa` | rasipalan posted |
 | 2026-11-20 | `68476ee` | facebook RN-706 |
-| 2026-11-20 | `6b1a564` | facebook RN-704 |
-| 2026-11-20 | `fc19f41` | facebook RN-709 |
-| 2026-11-20 | `a87c607` | facebook RN-710 |
-| 2026-11-20 | `2b002ec` | facebook RN-708 |
-| 2026-11-20 | `5cef367` | facebook RN-702 |
 <!-- recent-changes:end -->
