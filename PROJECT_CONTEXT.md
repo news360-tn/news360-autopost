@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-20 | `4cba8f4` | Daily rasipalan as a reel in the 360 gold-reel pattern (music only); carousel only if the reel fails |
+| 2026-11-20 | `66e7db6` | Reels without a picture: a designed background by news type, never the page logo |
 | 2026-11-20 | `9265f81` | Every news reel goes to the story again (stories_urgent_only false) |
 | 2026-11-20 | `6d143e0` | powercut: notices written |
 | 2026-11-20 | `4446ddb` | stories shared |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-20 | `c898032` | Reel length back to the full news (at most 90 s, 70-160 words); captions always fit Instagram's 2,200 |
 | 2026-11-20 | `2fdb7cb` | stories shared |
 | 2026-11-20 | `7f918d5` | stories shared |
-| 2026-11-20 | `231d7aa` | rasipalan posted |
-| 2026-11-20 | `68476ee` | facebook RN-706 |
 <!-- recent-changes:end -->
