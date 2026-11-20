@@ -20,6 +20,7 @@ from playwright.sync_api import sync_playwright
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import reel as R
 import reel3 as V3
+import clock360      # owner 20 Nov: the 360 clock branding layer over every news reel (never fails the reel)
 from digits import to_digits
 
 def E(s):
@@ -702,7 +703,7 @@ def main(spec_path, out_mp4, page_key="namakkal"):
     hook_end = max(2.6, min(6.0, ends[0] + 0.3))      # the hook stays while the one-line story is spoken
     V3.build_audio(work, starts, shots, [dict(s, fact="") for s in sents], total)
     page = work / "reel4.html"
-    page.write_text(build_html(spec, shots, sents, caps, hook_end, end_t, total, R.PAGE))
+    page.write_text(clock360.add(build_html(spec, shots, sents, caps, hook_end, end_t, total, R.PAGE)))
     nframes = int(math.ceil(total * FPS))
     enc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", str(FPS), "-c:v", "mjpeg", "-i", "-",
                             "-i", str(work / "mix.wav"), "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
