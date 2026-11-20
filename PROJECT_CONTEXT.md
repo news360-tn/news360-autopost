@@ -65,6 +65,11 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-20 | `8286833` | News reels: 360 clock branding layer (logo progress ring, opening ring, clock-hand picture change, end-card ring) |
+| 2026-11-20 | `b07624d` | stories shared |
+| 2026-11-20 | `b073c84` | goldrate posted |
+| 2026-11-20 | `10607f3` | facebook RN-715 |
+| 2026-11-20 | `ad6f64f` | facebook RN-716 |
 | 2026-11-20 | `c898032` | Reel length back to the full news (at most 90 s, 70-160 words); captions always fit Instagram's 2,200 |
 | 2026-11-20 | `2fdb7cb` | stories shared |
 | 2026-11-20 | `7f918d5` | stories shared |
@@ -90,9 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-19 | `9f41887` | goldrate posted |
 | 2026-11-19 | `05f83ed` | stories shared |
 | 2026-11-19 | `0161120` | tests: install pytest and run the suite with pytest (gold reel tests were red since 19 Nov); insights: retry the save when another job saved at the same moment |
-| 2026-11-19 | `6d19263` | Gold reel: new bright poster design and faster pace (short lines, quicker voice, fast cuts) |
-| 2026-11-19 | `b2bb045` | stories shared |
-| 2026-11-19 | `f577deb` | Gold reel: modern theme - full-screen scenes (hook, 22K, 24K, silver, follow) changing with each spoken line |
-| 2026-11-19 | `66daa5d` | powercut: notices written |
-| 2026-11-19 | `b7e816b` | Gold & silver rate also as a reel, posted after the carousel (never twice; a reel problem never touches the carousel) |
 <!-- recent-changes:end -->
