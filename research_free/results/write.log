@@ -1,87 +1,13 @@
-writing [R]: நாமக்கல் மாவட்டம் ராசிபுரம் ‘டைடல் நியோ’ (TIDEL Neo) தகவல் த
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (38s)
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): பரமத்தி ('பாதுகாப்பு மற்றும் வாகன நிறுத்துமிடம்: 24 மணி நேர சிசிடிவி க'); சேந்தமங்கலம் ('பாதுகாப்பு மற்றும் வாகன நிறுத்துமிடம்: 24 மணி நேர சிசிடிவி க')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (37s)
-attempt 2 gemini/gemini-3.6-flash: 1 problems
-  reel_script writes ages as newspaper shorthand (தளங்களுடன், 63,); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (43s)
-attempt 3 gemini/gemini-3.6-flash: 2 problems
-  reel_script writes ages as newspaper shorthand (தளங்களுடன், 63,); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 24 ('பாதுகாப்பு மற்றும் வாகன நிறுத்துமிடம்: 24 மணி நேர சிசிடிவி க'); திருச்செங்கோடு ('பாதுகாப்பு மற்றும் வாகன நிறுத்துமிடம்: 24 மணி நேர சிசிடிவி க'); பரமத்தி ('பாதுகாப்பு மற்றும் வாகன நிறுத்துமிடம்: 24 மணி நேர சிசிடிவி க'); சேந்தமங்கலம் ('பாதுகாப்பு மற்றும் வாகன நிறுத்துமிடம்: 24 மணி நேர சிசிடிவி க')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (46s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-switching away from gemini/gemini-3.6-flash for 10 min
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-switching away from gemini/gemini-3.5-flash for 10 min
-ok gemini/gemini-3-flash-preview (27s)
-factcheck by gemini/gemini-3-flash-preview: 0 problems
-attempt 4 gemini/gemini-3.6-flash: 0 problems
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (16s)
-proofread rejected (1 problems)
-  hl2 longer than 28 characters
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (6s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-real photo: vision check unavailable: 503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:
-imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
-imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs about $0.0020, but your available balance is $0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
-imagegen: black-forest-labs/flux.1-schnell no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAU
-imagegen: black-forest-labs/flux.1-schnell no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAU
-imagegen: black-forest-labs/flux.1-dev no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQk
-imagegen: black-forest-labs/flux.1-dev no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQk
-image match check unavailable: gemini-3.5-flash: 503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models
-imagegen: black-forest-labs/flux.1-schnell no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAU
-imagegen: black-forest-labs/flux.1-schnell no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAU
-imagegen: black-forest-labs/flux.1-dev no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQk
-imagegen: black-forest-labs/flux.1-dev no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQk
-image match check unavailable: gemini-3.5-flash: 503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models
-images made: 2 for 'TIDEL Neo Mini IT Park construction prog'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261120-1345","first":"RN-717"}
-posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 10 news waiting in the queue (written in priority order)
-candidate filter: already filed=7, collected=3
-to write: 1 Rasipuram + 2 other district candidates (max 200 + 200 stories)
-candidates waiting: 1 Rasipuram, 2 Namakkal; time left 29 min
-try (N) manual=False: தெப்பக்குளத்தில் சடலம் போலீசார் விசாரணை
+write round: 9 news waiting in the queue (written in priority order)
+candidate filter: already filed=8, collected=1
+to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
+candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
 try (N) manual=False: டூவீலர் மீது கார் மோதிய விபத்தில் இருவர் படுகாயம்
-try (R) manual=False: நாமக்கல் மாவட்டம் ராசிபுரம் ‘டைடல் நியோ’ (TIDEL Neo) தகவல் த
-skip (N) similar to a filed story: தெப்பக்குளத்தில் சடலம் போலீசார் விசாரணை
 skip (N) similar to a filed story: டூவீலர் மீது கார் மோதிய விபத்தில் இருவர் படுகாயம்
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'fal-ai/flux/schnell': 1})
-posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 2}, done={'R': 1, 'N': 0}, time left 24 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written 
+stories: 0
