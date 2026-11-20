@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-20 | `9ebd386` | Posting loop: start the next posting run with 3 tries |
 | 2026-11-20 | `65832d3` | Cloudinary clean-up every 6 hours; red run + e-mail when the login is refused, usage unreadable or 80% used |
 | 2026-11-20 | `51ef75e` | facebook RN-717 |
 | 2026-11-20 | `045a306` | facebook RN-714 |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-19 | `7833376` | powercut: notices written |
 | 2026-11-19 | `702f613` | comments: normal comments recorded (not e-mailed) |
 | 2026-11-19 | `345c2ac` | stories shared |
-| 2026-11-19 | `e9c8744` | stories shared |
 <!-- recent-changes:end -->
