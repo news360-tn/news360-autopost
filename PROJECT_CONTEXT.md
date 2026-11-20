@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-20 | `023b329` | Writer: the opening headline (hl1) is always a complete phrase |
 | 2026-11-20 | `c0b5940` | News reels: the design team's design (Tamil) with the 360 clock branding on every page |
 | 2026-11-20 | `3b933cd` | goldrate posted |
 | 2026-11-20 | `9ebd386` | Posting loop: start the next posting run with 3 tries |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-19 | `a339ebe` | Posting time first: news posts 06:00-12:00 and 15:00-21:00 IST; collection fitted to it (04:00, 08:30, 13:00, 16:30, 18:30) |
 | 2026-11-19 | `fce4b98` | 19 Nov owner changes: reel length / wording, source first comment, 360 gold reel, posting windows, rasipalan before 9 AM |
 | 2026-11-19 | `af4b1e6` | powercut: notices written |
-| 2026-11-19 | `7833376` | powercut: notices written |
 <!-- recent-changes:end -->
