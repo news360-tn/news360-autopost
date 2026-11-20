@@ -65,6 +65,18 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-20 | `c898032` | Reel length back to the full news (at most 90 s, 70-160 words); captions always fit Instagram's 2,200 |
+| 2026-11-20 | `2fdb7cb` | stories shared |
+| 2026-11-20 | `7f918d5` | stories shared |
+| 2026-11-20 | `231d7aa` | rasipalan posted |
+| 2026-11-20 | `68476ee` | facebook RN-706 |
+| 2026-11-20 | `6b1a564` | facebook RN-704 |
+| 2026-11-20 | `fc19f41` | facebook RN-709 |
+| 2026-11-20 | `a87c607` | facebook RN-710 |
+| 2026-11-20 | `2b002ec` | facebook RN-708 |
+| 2026-11-20 | `5cef367` | facebook RN-702 |
+| 2026-11-20 | `5037669` | facebook RN-712 |
+| 2026-11-19 | `32b2a30` | facebook RN-703 |
 | 2026-11-19 | `a339ebe` | Posting time first: news posts 06:00-12:00 and 15:00-21:00 IST; collection fitted to it (04:00, 08:30, 13:00, 16:30, 18:30) |
 | 2026-11-19 | `fce4b98` | 19 Nov owner changes: reel length / wording, source first comment, 360 gold reel, posting windows, rasipalan before 9 AM |
 | 2026-11-19 | `af4b1e6` | powercut: notices written |
@@ -83,16 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-19 | `f577deb` | Gold reel: modern theme - full-screen scenes (hook, 22K, 24K, silver, follow) changing with each spoken line |
 | 2026-11-19 | `66daa5d` | powercut: notices written |
 | 2026-11-19 | `b7e816b` | Gold & silver rate also as a reel, posted after the carousel (never twice; a reel problem never touches the carousel) |
-| 2026-11-19 | `76d40b0` | powercut: notices written |
-| 2026-11-19 | `17c37a9` | stories shared |
-| 2026-11-19 | `63a5d1f` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-19 | `0cf11db` | facebook RN-686 |
-| 2026-11-19 | `c4e15bd` | facebook RN-688 |
-| 2026-11-19 | `ef39c52` | facebook RN-695 |
-| 2026-11-19 | `f1e7c74` | facebook RN-696 |
-| 2026-11-19 | `edcb470` | facebook RN-693 |
-| 2026-11-19 | `69f7914` | facebook RN-689 |
-| 2026-11-19 | `c903e4a` | stories shared |
-| 2026-11-19 | `fda1723` | facebook RN-690 |
-| 2026-11-19 | `fdc08dd` | facebook RN-691 |
 <!-- recent-changes:end -->
