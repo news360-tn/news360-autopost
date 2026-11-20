@@ -65,6 +65,12 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-20 | `65832d3` | Cloudinary clean-up every 6 hours; red run + e-mail when the login is refused, usage unreadable or 80% used |
+| 2026-11-20 | `51ef75e` | facebook RN-717 |
+| 2026-11-20 | `045a306` | facebook RN-714 |
+| 2026-11-20 | `2419f18` | powercut: notices written |
+| 2026-11-20 | `520929b` | powercut: notices written |
+| 2026-11-20 | `98ba6bf` | comments: normal comments recorded (not e-mailed) |
 | 2026-11-20 | `8286833` | News reels: 360 clock branding layer (logo progress ring, opening ring, clock-hand picture change, end-card ring) |
 | 2026-11-20 | `b07624d` | stories shared |
 | 2026-11-20 | `b073c84` | goldrate posted |
@@ -89,10 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-19 | `702f613` | comments: normal comments recorded (not e-mailed) |
 | 2026-11-19 | `345c2ac` | stories shared |
 | 2026-11-19 | `e9c8744` | stories shared |
-| 2026-11-19 | `72f05da` | facebook RN-701 |
-| 2026-11-19 | `d7bb018` | rasipalan + goldrate: publish again when Instagram says 'media not ready' (9007, nothing posted - Erode 19 Nov); Cloudinary upload tried 3 times with its reason in the log (Rasipuram rasipalan posted 18:43 on 18 Nov after 3 refusals) |
-| 2026-11-19 | `1d567cd` | stories shared |
-| 2026-11-19 | `9f41887` | goldrate posted |
-| 2026-11-19 | `05f83ed` | stories shared |
-| 2026-11-19 | `0161120` | tests: install pytest and run the suite with pytest (gold reel tests were red since 19 Nov); insights: retry the save when another job saved at the same moment |
 <!-- recent-changes:end -->
