@@ -65,6 +65,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-20 | `33cbfe4` | Promotion ads (owner-approved only, bottom of the reel during the news) and twice-a-day YouTube details e-mail |
+| 2026-11-20 | `ad5dd3d` | facebook RN-718 |
+| 2026-11-20 | `d37273b` | facebook RN-719 |
 | 2026-11-20 | `66280aa` | Fix: reels again made with reel4 (config reel_design back to v4) |
 | 2026-11-20 | `f6bf7be` | News reels: one design on every page - the earlier, proven design with the source and date shown clearly |
 | 2026-11-20 | `023b329` | Writer: the opening headline (hl1) is always a complete phrase |
@@ -92,7 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-20 | `a87c607` | facebook RN-710 |
 | 2026-11-20 | `2b002ec` | facebook RN-708 |
 | 2026-11-20 | `5cef367` | facebook RN-702 |
-| 2026-11-20 | `5037669` | facebook RN-712 |
-| 2026-11-19 | `32b2a30` | facebook RN-703 |
-| 2026-11-19 | `a339ebe` | Posting time first: news posts 06:00-12:00 and 15:00-21:00 IST; collection fitted to it (04:00, 08:30, 13:00, 16:30, 18:30) |
 <!-- recent-changes:end -->
