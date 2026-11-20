@@ -723,6 +723,12 @@ def main(spec_path, out_mp4, page_key="namakkal"):
         except Exception as e:
             print("new design not made, the earlier design is used:", str(e)[:200])
     page.write_text(clock360.add(new_page or build_html(spec, shots, sents, caps, hook_end, end_t, total, R.PAGE)))
+    if os.environ.get("PROMO_JSON"):      # owner 20 Nov: the approved sponsor ad (poster/promo.py chose it; never stops the reel)
+        try:
+            import promo360
+            page.write_text(promo360.add(page.read_text(), json.loads(Path(os.environ["PROMO_JSON"]).read_text(encoding="utf-8"))))
+        except Exception as e:
+            print("promotion not added (the reel is made without it):", str(e)[:150])
     nframes = int(math.ceil(total * FPS))
     enc = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", str(FPS), "-c:v", "mjpeg", "-i", "-",
                             "-i", str(work / "mix.wav"), "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
