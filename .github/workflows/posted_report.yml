@@ -1,0 +1,39 @@
+name: posted report
+# owner 21 Nov ("news posted e-mail not received - I don't know whether news is posted"): ONE e-mail for ALL 8 pages, 4 times a day -
+# every news posted since the last report (time, headline, Instagram link), today's count, what is ready / waiting, gold rate,
+# rasipalan and any problem. Sent through the Promo Hub (only 4 e-mails a day - Gmail's daily limit is never reached).
+# GitHub often skips scheduled runs: the posting job's watchdog starts a skipped report (poster/watchdog.py).
+on:
+  schedule:
+    - cron: "30 3 * * *"      # 09:00 IST
+    - cron: "30 7 * * *"      # 13:00 IST
+    - cron: "30 12 * * *"     # 18:00 IST
+    - cron: "30 16 * * *"     # 22:00 IST
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: posted-report
+  cancel-in-progress: false
+env:
+  PROMO_URL: ${{ secrets.PROMO_URL || 'https://script.google.com/macros/s/AKfycbxwMsz3A3kYGIRzrqJ7SS2Yfu-d0kR2zv4DBp8iWS3N3Ax3QEJ6KQxN69XtCTi2qvVF/exec' }}
+  PROMO_KEY: ${{ secrets.PROMO_KEY }}
+jobs:
+  report:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install -q requests==2.32.5
+      - name: E-mail the posted report (all pages)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python poster/posted_report.py
+      - name: Remember when the report was sent
+        run: |
+          git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
+          [ -f poster/report_state.json ] || exit 0
+          git add -f poster/report_state.json && git commit -qm "posted report sent" && { for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null || true; sleep $((i*3)); done; } || true
