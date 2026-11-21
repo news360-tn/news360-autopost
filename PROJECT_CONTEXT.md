@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-21 | `2c503e3` | Post news as soon as it is ready; only news with a source link; collect every 4 hours, max 35 a day |
+| 2026-11-21 | `748f834` | comments: normal comments recorded (not e-mailed) |
 | 2026-11-21 | `ad9547d` | A news picture that cannot be downloaded (old Cloudinary account, 401/404) is left out - the reel uses the designed background, the page is never blocked |
 | 2026-11-21 | `36c1341` | stories shared |
 | 2026-11-21 | `deed9a3` | stories shared |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-20 | `49dab13` | powercut: notices written |
 | 2026-11-20 | `f316327` | comments: normal comments recorded (not e-mailed) |
 | 2026-11-20 | `9abfdb9` | Facebook first comment = the same source comment as Instagram (link into the text if Facebook refuses the comment) |
-| 2026-11-20 | `17dc379` | Facebook: up to 18 news a day per page (45 min apart), article link in the first comment, 3 hashtags |
-| 2026-11-20 | `4cba8f4` | Daily rasipalan as a reel in the 360 gold-reel pattern (music only); carousel only if the reel fails |
 <!-- recent-changes:end -->
