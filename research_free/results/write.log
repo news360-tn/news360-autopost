@@ -1,183 +1,74 @@
-writing [N]: மாணவர்களுக்கு பயிற்சி: கலெக்டர் ஆய்வு
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-writing [R]: மது போதையில் தகராறு: எலக்ட்ரீஷியன் விபரீதம்
+writing [R]: ராசிபுரத்தில் நாளை சிறப்பு சொற்பொழிவு
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (16s)
-attempt 1 gemini/gemini-3.6-flash: 2 problems
-  numbers not found in the article: 9
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 1 ('எலச்சிபாளையம்:எலச்சிபாளையம் வட்டாரம், குப்பாண்டம்பாளையம் அரச')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
-ok gemini/gemini-3.6-flash (15s)
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  not grounded: location 'நகர்' is not in the article
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.5-flash (14s)
-attempt 2 gemini/gemini-3.5-flash: 3 problems
-  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  numbers not found in the article: 9
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 1 ('எலச்சிபாளையம்:எலச்சிபாளையம் வட்டாரம், குப்பாண்டம்பாளையம் அரச')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.5-flash (15s)
-attempt 3 gemini/gemini-3.5-flash: 2 problems
-  numbers not found in the article: 9
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 1 ('எலச்சிபாளையம்:எலச்சிபாளையம் வட்டாரம், குப்பாண்டம்பாளையம் அரச')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-ok gemini/gemini-3-flash-preview (11s)
-attempt 4 gemini/gemini-3-flash-preview: 3 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  numbers not found in the article: 9
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 1 ('எலச்சிபாளையம்:எலச்சிபாளையம் வட்டாரம், குப்பாண்டம்பாளையம் அரச')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (14s)
-attempt 5 gemini/gemini-3-flash-preview: 2 problems
-  numbers not found in the article: 9
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 1 ('எலச்சிபாளையம்:எலச்சிபாளையம் வட்டாரம், குப்பாண்டம்பாளையம் அரச')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.5-flash (58s)
-attempt 2 gemini/gemini-3.5-flash: 2 problems
-  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  not grounded: location 'நகர்' is not in the article
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, plea
-dead for this round: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 ok gemini/gemini-3-flash-preview (9s)
-attempt 6 gemini/gemini-3-flash-preview: 2 problems
-  numbers not found in the article: 9
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 1 ('எலச்சிபாளையம்:எலச்சிபாளையம் வட்டாரம், குப்பாண்டம்பாளையம் அரச')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): மெட்டாலா ('இவர், மெட்டாலா அருகே உள்ள உரம்பு அரசு பள்ளியில் ஆசிரியை.')
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  numbers not found in the article: 9
-ok anthropic/claude-haiku-5-5
+ok gemini/gemini-3-flash-preview (6s)
+factcheck by gemini/gemini-3-flash-preview: 2 problems
+  The date 'November 22', day 'Sunday', and year '2026' are not mentioned in the article.
+  The detail 'Entry free' (அனுமதி இலவசம்) is an invented detail not found in the article.
+attempt 1 gemini/gemini-3-flash-preview: 2 problems
+  fact-check: The date 'November 22', day 'Sunday', and year '2026' are not mentioned in the article.
+  fact-check: The detail 'Entry free' (அனுமதி இலவசம்) is an invented detail not found in the article.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (12s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 9
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The draft says 'Rasipuram' is where Metala/Urambu school is, but the article only says the school is near Metala; the reel_script states the wife works at 'மெட்டாலா அருகே உள்ள உரம்பு அரசு பள்ளி', which matches the article, so this is fine — however, the slides_spec 'hl2' says 'வேலவன் நகரில் நடந்த சம்பவம்' which is consistent; no issue here.
-  The reel_script says the wife, Komathi, is a teacher at the school, which is in the article, but the caption and reel_script both describe the death as caused by the quarrel ('மது போதையில் நடந்த தகராறால் ... உயிரிழந்துள்ளார'), an attributed cause the article does not state: the article only reports a quarrel and the suicide, with no link stated between them.
-  The reel_script states the death was 'ஜன்னல் கம்பியில் தூக்குப்போட்டு' while the article says the hanging was from the window grille of a small room on the terrace; the draft omits the small-room detail, which is a minor omission but not a factual error.
-  The tamil_headline and reel_script describe the victim as having 'உயிரிழப்பு' from a quarrel in the headline ('மது போதை தகராறு: எலக்ட்ரீஷியன் தூக்குப்போட்டு உயிரிழப்பு'), implying the quarrel caused the suicide, which the article does not establish.
-claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The draft says 'Rasipuram' is where Metala/Urambu school is, but the article only says the school is near Metala; the reel_script states the wife works at 'மெட்டாலா அருகே உள்ள உரம்பு அரசு பள்ளி', which matches the article, so this is fine — however, the slides_spec 'hl2' says 'வேலவன் நகரில் நடந்த சம்பவம்' which is consistent; no issue here.
-  fact-check: The reel_script says the wife, Komathi, is a teacher at the school, which is in the article, but the caption and reel_script both describe the death as caused by the quarrel ('மது போதையில் நடந்த தகராறால் ... உயிரிழந்துள்ளார'), an attributed cause the article does not state: the article only reports a quarrel and the suicide, with no link stated between them.
-  fact-check: The reel_script states the death was 'ஜன்னல் கம்பியில் தூக்குப்போட்டு' while the article says the hanging was from the window grille of a small room on the terrace; the draft omits the small-room detail, which is a minor omission but not a factual error.
-  fact-check: The tamil_headline and reel_script describe the victim as having 'உயிரிழப்பு' from a quarrel in the headline ('மது போதை தகராறு: எலக்ட்ரீஷியன் தூக்குப்போட்டு உயிரிழப்பு'), implying the quarrel caused the suicide, which the article does not establish.
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-hl1 shortened at a natural break: 'குப்பாண்டம்பாளையம் பள்ளியில் காலநிலை பயிற்சி' -> 'குப்பாண்டம்பாளையம் காலநிலை பயிற்சி'
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: no free model answered: None
+ok gemini/gemini-3-flash-preview (7s)
+factcheck by gemini/gemini-3-flash-preview: 0 problems
+attempt 2 gemini/gemini-3-flash-preview: 0 problems
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
+ok gemini/gemini-3-flash-preview (8s)
+proofread rejected (1 problems)
+  caption needs 5 hashtags (Instagram max), has 7
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The article says Senthilkumar's wife Komathi is a teacher at a government school; the draft omits this, which is fine, but the caption's 'மனைவி கோமதி' is correct—no issue there.
-  The caption's '🗓️ நாள்: நேற்று முன்தினம் இரவு' refers to a date relative to the posting date; the article says 'நேற்று முன்தினம் இரவு' so this matches the article.
-  The reel_script says Senthilkumar was 'எலக்ட்ரீஷியனாகப் பணியாற்றி வந்தார்' (worked as an electrician); the article only says he is an electrician, which is a minor rephrasing rather than an error.
-  The reel_script and slides say the death was in 'வீட்டு மொட்டை மாடியில்' and 'சிறிய அறையின் ஜன்னல் கம்பியில்'; the article says the rope was on the window bar of a small room on the terrace, which matches.
-  The headline says 'மது போதையில் தகராறு; எலக்ட்ரீஷியன் தூக்கிட்டு உயிரிழப்பு' — the article only says he had a habit of heavy drinking and quarrels, not that he was intoxicated at the time, so 'மது போதையில்' asserts an unverified state at the time of the incident.
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The article says Senthilkumar's wife Komathi is a teacher at a government school; the draft omits this, which is fine, but the caption's 'மனைவி கோமதி' is correct—no issue there.
-  fact-check: The caption's '🗓️ நாள்: நேற்று முன்தினம் இரவு' refers to a date relative to the posting date; the article says 'நேற்று முன்தினம் இரவு' so this matches the article.
-  fact-check: The reel_script says Senthilkumar was 'எலக்ட்ரீஷியனாகப் பணியாற்றி வந்தார்' (worked as an electrician); the article only says he is an electrician, which is a minor rephrasing rather than an error.
-  fact-check: The reel_script and slides say the death was in 'வீட்டு மொட்டை மாடியில்' and 'சிறிய அறையின் ஜன்னல் கம்பியில்'; the article says the rope was on the window bar of a small room on the terrace, which matches.
-  fact-check: The headline says 'மது போதையில் தகராறு; எலக்ட்ரீஷியன் தூக்கிட்டு உயிரிழப்பு' — the article only says he had a habit of heavy drinking and quarrels, not that he was intoxicated at the time, so 'மது போதையில்' asserts an unverified state at the time of the incident.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok anthropic/claude-haiku-5-5
+ok gemini/gemini-3-flash-preview (7s)
 real photo: no picture on the source page -> AI pictures
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok anthropic/claude-haiku-5-5
-image match: False The image shows a close-up drawing and small plant sprout on a desk, rather than a District Collector inspecting climate
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Collector inspects climate education tra'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261121-0900","first":"RN-735"}
+image match check unavailable: gemini-3.5-flash: 503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models
+image match check unavailable: gemini-3.5-flash: 503 Server Error: Service Unavailable for url: https://generativelanguage.googleapis.com/v1beta/models
+images made: 2 for 'Special lecture on 'Differences among hu'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261121-1330","first":"RN-737"}
 posting job started at once
-real photo: no picture on the source page -> AI pictures
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Electrician found hanging on Rasipuram t'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261121-0900","first":"RN-736"}
+write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
 write round: 11 news waiting in the queue (written in priority order)
 candidate filter: collected=7, already filed=4
 to write: 2 Rasipuram + 5 other district candidates (max 200 + 200 stories)
+daily maximum 70: 15 written today - this round writes at most 55 + 0
 candidates waiting: 2 Rasipuram, 5 Namakkal; time left 29 min
-try (N) manual=False: புகையிலைப் பொருள்கள் விற்றவா் கைது
 try (R) manual=False: அமைப்புசாரா தொழிலாளருக்கு ஓய்வூதியம் வழங்க கோரிக்கை
-try (N) manual=False: மாணவர்களுக்கு பயிற்சி: கலெக்டர் ஆய்வு
-skip (N) similar to a filed story: புகையிலைப் பொருள்கள் விற்றவா் கைது
-try (N) manual=False: விவசாயிகளுக்கு சாகுபடி தொழில்நுட்ப விழிப்புணர்வு
+try (R) manual=False: ராசிபுரத்தில் நாளை சிறப்பு சொற்பொழிவு
 skip (R) similar to a filed story: அமைப்புசாரா தொழிலாளருக்கு ஓய்வூதியம் வழங்க கோரிக்க
-try (R) manual=False: மது போதையில் தகராறு: எலக்ட்ரீஷியன் விபரீதம்
-skip (N) similar to a filed story: விவசாயிகளுக்கு சாகுபடி தொழில்நுட்ப விழிப்புணர்வு
-try (N) manual=False: 185 ஏக்கர் கொண்ட எஸ்.வாழவந்தி ஏரி ரூ.27 லட்சத்தில் புனரமைப்ப
-skip (N) similar to a filed story: 185 ஏக்கர் கொண்ட எஸ்.வாழவந்தி ஏரி ரூ.27 லட்சத்தில்
-try (N) manual=False: நாமக்கல் மேற்கு மாவட்ட தி.மு.க., செயற்குழு கூட்டம்
-skip (N) similar to a filed story: நாமக்கல் மேற்கு மாவட்ட தி.மு.க., செயற்குழு கூட்டம்
-auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 3})
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
 posting job started at once
-auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 5})
-candidate loop ended: left R=0 N=0, tried={'R': 2, 'N': 5}, done={'R': 1, 'N': 1}, time left 26 min
-carousel for 0 of 2 stories, the rest reel only
-filed: 1 Rasipuram + 1 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":2} 
-stories: 2
+candidate loop ended: left R=0 N=5, tried={'R': 2, 'N': 0}, done={'R': 1, 'N': 0}, time left 28 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 5 news waiting to be written
+write_stories.yml started
+All News sheet: {"ok":true,"added":0,"updated":6} 
+stories: 1
