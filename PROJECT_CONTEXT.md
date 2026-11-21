@@ -65,6 +65,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-21 | `f8a807d` | YouTube: news reels uploaded automatically as Shorts (only with the page's keys) |
+| 2026-11-21 | `b744395` | posted report sent |
+| 2026-11-21 | `0d0f660` | powercut: notices written |
 | 2026-11-21 | `01c4827` | Facebook: every news that is on Instagram also goes to Facebook |
 | 2026-11-21 | `18196e9` | powercut: notices written |
 | 2026-11-21 | `afb9209` | comments: normal comments recorded (not e-mailed) |
@@ -92,7 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-21 | `a1c78cb` | stories shared |
 | 2026-11-21 | `875b351` | rasipalan posted |
 | 2026-11-21 | `3cce986` | facebook RN-732 |
-| 2026-11-21 | `fe13209` | facebook RN-728 |
-| 2026-11-21 | `8ca1ecf` | facebook RN-731 |
-| 2026-11-21 | `b6869cd` | facebook RN-729 |
 <!-- recent-changes:end -->
