@@ -219,7 +219,7 @@
     ],
     "sarvam_reasoning": "low"
   },
-  "story_reserve": 5,
+  "story_reserve": 20,
   "post_stories": true,
   "power_cut": {
     "note": "owner 19 Nov (same as every page): a power-cut reel reads EVERY area, so it may run to max_seconds (88 = 2 s under verify.py's 90 s check) with up to script_max_words; all other reels keep reel_max_seconds / reach.script_max_words",
@@ -237,5 +237,6 @@
   "stories_urgent_only": false,
   "stories_urgent_only_note": "owner 20 Nov: EVERY news reel goes to the story again (14 Nov plan A had kept it for power cuts / urgent news only). Instagram's 50 posts a day: the last story_reserve posts stay for news - a story that has to wait is posted later by the story catch-up. true = urgent news only",
   "ig_block_pause_hours": 6,
-  "ig_block_pause_note": "owner 21 Nov: when Instagram says 'action is blocked' (2207051), the page's posting waits this many hours instead of trying every few minutes (that makes the block longer); its news is posted afterwards"
+  "ig_block_pause_note": "owner 21 Nov: when Instagram says 'action is blocked' (2207051), the page's posting waits this many hours instead of trying every few minutes (that makes the block longer); its news is posted afterwards",
+  "story_reserve_note": "owner 21 Nov: stories stop when 30 of Instagram's 50 posts a day are used - the last 20 are kept for NEWS (with a story for every news, stories filled the limit and Coimbatore's news waited at 48/50). A story that has to wait is posted later by the story catch-up."
 }
