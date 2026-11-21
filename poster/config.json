@@ -227,13 +227,15 @@
     "script_max_words": 160
   },
   "posting": {
-    "spacing_min": 0,
-    "note": "owner 19 Nov: no gap between news posts - inside a posting window every ready news posts at once"
+    "spacing_min": 10,
+    "note": "owner 21 Nov: 10 minutes between news posts on a page (19 Nov's 0 = every ready news at once: Trichy posted 5 reels in 3 minutes and Instagram blocked it; Namakkal put 7 reels on Facebook in 2 minutes). Urgent news still goes first."
   },
   "reel_look": "classic",
   "reel_look_note": "owner 20 Nov (final decision): ONE look on every page - the earlier, proven reel4 look (big hook, big captions, fact cards, FOLLOW end card) with '📅 date  📰 Source: paper' in the header and the 360 clock branding. \"handoff\" switches on the design team's look (reel/design360.py), kept in the code. (reel_design must stay \"v4\": it picks reel4.py.)",
   "posted_email": "digest",
   "posted_email_note": "owner 20 Nov: once the Promo Hub is set up (PROMO_URL), no e-mail per posted reel - the twice-a-day YouTube details e-mail per page lists them (Gmail's daily limit). \"each\" brings the per-reel e-mail back.",
   "stories_urgent_only": false,
-  "stories_urgent_only_note": "owner 20 Nov: EVERY news reel goes to the story again (14 Nov plan A had kept it for power cuts / urgent news only). Instagram's 50 posts a day: the last story_reserve posts stay for news - a story that has to wait is posted later by the story catch-up. true = urgent news only"
+  "stories_urgent_only_note": "owner 20 Nov: EVERY news reel goes to the story again (14 Nov plan A had kept it for power cuts / urgent news only). Instagram's 50 posts a day: the last story_reserve posts stay for news - a story that has to wait is posted later by the story catch-up. true = urgent news only",
+  "ig_block_pause_hours": 6,
+  "ig_block_pause_note": "owner 21 Nov: when Instagram says 'action is blocked' (2207051), the page's posting waits this many hours instead of trying every few minutes (that makes the block longer); its news is posted afterwards"
 }
