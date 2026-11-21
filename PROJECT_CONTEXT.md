@@ -65,6 +65,24 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-21 | `136f00a` | Stop posting bursts: 10 min between news posts; an Instagram block pauses the page 6 h (news waits) instead of retrying every run |
+| 2026-11-21 | `a1c78cb` | stories shared |
+| 2026-11-21 | `875b351` | rasipalan posted |
+| 2026-11-21 | `3cce986` | facebook RN-732 |
+| 2026-11-21 | `fe13209` | facebook RN-728 |
+| 2026-11-21 | `8ca1ecf` | facebook RN-731 |
+| 2026-11-21 | `b6869cd` | facebook RN-729 |
+| 2026-11-21 | `2344f76` | facebook RN-730 |
+| 2026-11-21 | `1fdfcb8` | facebook RN-727 |
+| 2026-11-21 | `3bc96ce` | facebook RN-720 |
+| 2026-11-21 | `2bd9b5a` | facebook RN-722 |
+| 2026-11-21 | `4fdc5d7` | facebook RN-734 |
+| 2026-11-21 | `38d6af4` | facebook RN-723 |
+| 2026-11-21 | `16a804e` | facebook RN-725 |
+| 2026-11-21 | `e12283f` | facebook RN-724 |
+| 2026-11-20 | `a598c45` | facebook RN-726 |
+| 2026-11-20 | `49dab13` | powercut: notices written |
+| 2026-11-20 | `f316327` | comments: normal comments recorded (not e-mailed) |
 | 2026-11-20 | `9abfdb9` | Facebook first comment = the same source comment as Instagram (link into the text if Facebook refuses the comment) |
 | 2026-11-20 | `17dc379` | Facebook: up to 18 news a day per page (45 min apart), article link in the first comment, 3 hashtags |
 | 2026-11-20 | `4cba8f4` | Daily rasipalan as a reel in the 360 gold-reel pattern (music only); carousel only if the reel fails |
@@ -77,22 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-20 | `33cbfe4` | Promotion ads (owner-approved only, bottom of the reel during the news) and twice-a-day YouTube details e-mail |
 | 2026-11-20 | `ad5dd3d` | facebook RN-718 |
 | 2026-11-20 | `d37273b` | facebook RN-719 |
-| 2026-11-20 | `66280aa` | Fix: reels again made with reel4 (config reel_design back to v4) |
-| 2026-11-20 | `f6bf7be` | News reels: one design on every page - the earlier, proven design with the source and date shown clearly |
-| 2026-11-20 | `023b329` | Writer: the opening headline (hl1) is always a complete phrase |
-| 2026-11-20 | `c0b5940` | News reels: the design team's design (Tamil) with the 360 clock branding on every page |
-| 2026-11-20 | `3b933cd` | goldrate posted |
-| 2026-11-20 | `9ebd386` | Posting loop: start the next posting run with 3 tries |
-| 2026-11-20 | `65832d3` | Cloudinary clean-up every 6 hours; red run + e-mail when the login is refused, usage unreadable or 80% used |
-| 2026-11-20 | `51ef75e` | facebook RN-717 |
-| 2026-11-20 | `045a306` | facebook RN-714 |
-| 2026-11-20 | `2419f18` | powercut: notices written |
-| 2026-11-20 | `520929b` | powercut: notices written |
-| 2026-11-20 | `98ba6bf` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-20 | `8286833` | News reels: 360 clock branding layer (logo progress ring, opening ring, clock-hand picture change, end-card ring) |
-| 2026-11-20 | `b07624d` | stories shared |
-| 2026-11-20 | `b073c84` | goldrate posted |
-| 2026-11-20 | `10607f3` | facebook RN-715 |
-| 2026-11-20 | `ad6f64f` | facebook RN-716 |
-| 2026-11-20 | `c898032` | Reel length back to the full news (at most 90 s, 70-160 words); captions always fit Instagram's 2,200 |
 <!-- recent-changes:end -->
