@@ -1,59 +1,13 @@
-writing [R]: விரைவில் திமுக ஆட்சி உதயமாகும்; சொல்கிறார் ஸ்டாலின்
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.6-flash
-fail gemini/gemini-3.5-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-ok groq/qwen/qwen3.8-27b (3s)
-attempt 1 groq/qwen/qwen3.8-27b: 2 problems
-  slides must have 3 or 4 items
-  reel_script has 38 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-switching away from groq/openai/gpt-oss-120b for 10 min
-free models unavailable: no free model answered: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 55 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  reel_script has 67 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  slides must have 3 or 4 items
-  reel_script has 29 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  not grounded: location 'unknown' is not a place: write the town or village the article names (never 'விவரம் இல்லை' / unknown)
-  known issue meta_article: cards talks about the article instead of the news ('கட்டுரை') - rewrite so it does not happen again
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (3s)
-proofread by groq/qwen/qwen3.8-27b: 1 problems
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-ok anthropic/claude-haiku-5-5
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
 write round: 19 news waiting in the queue (written in priority order)
 candidate filter: collected=14, already filed=5
-to write: 2 Rasipuram + 12 other district candidates (max 200 + 200 stories)
+to write: 0 Rasipuram + 14 other district candidates (max 200 + 200 stories)
 daily maximum 70: 16 written today - this round writes at most 54 + 0
-candidates waiting: 2 Rasipuram, 12 Namakkal; time left 29 min
-try (R) manual=False: அமைப்புசாரா தொழிலாளருக்கு ஓய்வூதியம் வழங்க கோரிக்கை
-try (R) manual=False: விரைவில் திமுக ஆட்சி உதயமாகும்; சொல்கிறார் ஸ்டாலின்
-skip (R) similar to a filed story: அமைப்புசாரா தொழிலாளருக்கு ஓய்வூதியம் வழங்க கோரிக்க
-NOT filed (R) விரைவில் திமுக ஆட்சி உதயமாகும்; சொல்கிறார் ஸ்டாலின: not Namakkal district news (the story's first lines name another place and no Namakkal place)
-candidate loop ended: left R=0 N=12, tried={'R': 2, 'N': 0}, done={'R': 0, 'N': 0}, time left 25 min
+candidates waiting: 0 Rasipuram, 14 Namakkal; time left 29 min
+candidate loop ended: left R=0 N=14, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 13 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":13} 
+queue: 14 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":14} 
 stories: 0
