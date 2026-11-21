@@ -65,6 +65,10 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-21 | `e35b1eb` | Instagram-safe: stories only for power cuts / urgent news again (as Kovai and Chennai Minnal) |
+| 2026-11-21 | `077b948` | powercut: notices written |
+| 2026-11-21 | `44ad480` | stories shared |
+| 2026-11-21 | `555dd47` | powercut: notices written |
 | 2026-11-21 | `2c503e3` | Post news as soon as it is ready; only news with a source link; collect every 4 hours, max 35 a day |
 | 2026-11-21 | `748f834` | comments: normal comments recorded (not e-mailed) |
 | 2026-11-21 | `ad9547d` | A news picture that cannot be downloaded (old Cloudinary account, 401/404) is left out - the reel uses the designed background, the page is never blocked |
@@ -91,8 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-21 | `38d6af4` | facebook RN-723 |
 | 2026-11-21 | `16a804e` | facebook RN-725 |
 | 2026-11-21 | `e12283f` | facebook RN-724 |
-| 2026-11-20 | `a598c45` | facebook RN-726 |
-| 2026-11-20 | `49dab13` | powercut: notices written |
-| 2026-11-20 | `f316327` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-20 | `9abfdb9` | Facebook first comment = the same source comment as Instagram (link into the text if Facebook refuses the comment) |
 <!-- recent-changes:end -->
