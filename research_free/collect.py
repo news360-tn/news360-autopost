@@ -1014,6 +1014,11 @@ def main():
     log.append("candidate filter: " + ", ".join(f"{k.split(':')[0][:40]}={v}" for k, v in Counter(n["status"] for n in news).most_common()))
     log.append(f"to write: {len(queues['R'])} Rasipuram + {len(queues['N'])} other district candidates (max {MAX_RASIPURAM} + {MAX_NAMAKKAL} stories)")
     target, done, tried = {"R": MAX_RASIPURAM, "N": MAX_NAMAKKAL}, {"R": 0, "N": 0}, {"R": 0, "N": 0}
+    room = DAILY_CAP - TODAY[0]      # owner 21 Nov: at most 30-35 news a day per page - two pages here (DAILY_CAP 70 = 35 each);
+    if 0 < room < target["R"] + target["N"]:      # a round never takes the day past the maximum
+        target["R"] = min(target["R"], room)
+        target["N"] = max(0, room - target["R"])
+        log.append(f"daily maximum {DAILY_CAP}: {TODAY[0]} written today - this round writes at most {target['R']} + {target['N']}")
     if TODAY[0] >= DAILY_CAP:
         log.append(f"daily cap: {TODAY[0]} stories already written today (cap {DAILY_CAP}) - only main / important news is written now")
     if os.environ.get("WRITE_STORIES", "1") == "0" or TODAY[0] >= DAILY_CAP:      # archive-only round: collect and store everything, write nothing, send no email
@@ -1071,6 +1076,8 @@ def main():
                         break
         except Exception as e:
             return {"skip": f"could not open the article: {str(e)[:60]}", "log": f"skip ({area}) could not open: {n['title'][:50]} [{n['url'][:60]}] {str(e)[:80]}"}
+        if not re.fullmatch(r"https?://\S+", str(url or "").strip()):      # owner 21 Nov: only news with its source link is written (and posted)
+            return {"skip": "no source link", "s": "notext", "log": f"skip ({area}) no source link: {(art.get('title') or n.get('title') or '')[:50]}"}
         if url in seen_src or any(r.get("source") == url for r in recent):
             return {"skip": "already filed", "s": "dup", "log": f"skip ({area}) already filed: {art['title'][:50]}"}
         bw = len(body_words(art))

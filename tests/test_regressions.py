@@ -251,29 +251,32 @@ class PrimeTime(unittest.TestCase):
         with mock.patch.object(post, "age_hours", return_value=waited), mock.patch.dict(post.CONFIG, {"prime_time": pt}):
             return post.prime_wait(row, now)
 
-    def test_windows_switched_on(self):
+    def test_windows_switched_on(self):      # owner 21 Nov: no best-time windows - any time from 05:00, quiet 00:00-05:00
         pt = json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))["prime_time"]
         self.assertTrue(pt["enabled"])
-        self.assertEqual(pt["windows"], [["06:00", "12:00"], ["15:00", "21:00"]])      # owner 19 Nov: collection fitted to these
+        self.assertEqual(pt["windows"], [["05:00", "24:00"]])
+        self.assertEqual(pt["quiet_ist"], ["00:00", "05:00"])
         self.assertFalse(pt["starts"])
 
     def test_inside_a_window_at_once_outside_waits(self):
         news = "கோவில் கும்பாபிஷேக விழா"
-        for now, expect in (((5, 30), "06:00"), ((6, 0), ""), ((9, 30), ""), ((11, 59), ""), ((12, 0), "15:00"), ((14, 30), "15:00"),
-                            ((15, 0), ""), ((20, 59), ""), ((21, 0), "06:00"), ((23, 0), "06:00"), ((1, 0), "06:00")):
+        for now, expect in (((4, 30), "night"), ((5, 0), ""), ((9, 30), ""), ((12, 0), ""), ((14, 30), ""), ((21, 0), ""),
+                            ((23, 59), ""), ((0, 0), "night"), ((1, 0), "night")):
             got = self.wait(self.row(news, 0, 30), self.at(*now))
             if expect:
                 self.assertIn(expect, got, now)
             else:
                 self.assertEqual("", got, now)
 
-    def test_only_power_cut_posts_at_once(self):
+    def test_only_power_cut_posts_at_once(self):      # owner 21 Nov: every news posts at once now - and nothing at night, power cuts too
         self.assertEqual("", self.wait(self.row("காளப்பநாயக்கன்பட்டி பகுதியில் நாளை மின் தடை", 21, 30), self.at(23)))
+        self.assertIn("night", self.wait(self.row("காளப்பநாயக்கன்பட்டி பகுதியில் நாளை மின் தடை", 21, 30), self.at(2)))
         for title in ("தனியார் பேருந்து மோதி தொழிலாளி உயிரிழப்பு", "கனமழை எச்சரிக்கை", "ஆட்சியர் அறிவிப்பு: சிறப்பு முகாம்"):
-            self.assertIn("prime time", self.wait(self.row(title, 13, 50), self.at(13, 55)), title)      # 12:00-15:00: waits
+            self.assertEqual("", self.wait(self.row(title, 13, 50), self.at(13, 55)), title)
 
     def test_never_dropped_after_long_wait(self):
-        self.assertEqual("", self.wait(self.row("கோவில் கும்பாபிஷேக விழா", 21, 30), self.at(3, day=1), waited=19))
+        self.assertIn("night", self.wait(self.row("கோவில் கும்பாபிஷேக விழா", 21, 30), self.at(3, day=1), waited=19))
+        self.assertEqual("", self.wait(self.row("கோவில் கும்பாபிஷேக விழா", 21, 30), self.at(5, day=1), waited=21))
 
 
 class ReelOpening(unittest.TestCase):
@@ -709,7 +712,7 @@ class SpacedPostingMatrix(unittest.TestCase):
 
     def test_no_gap_every_ready_news_at_once(self):      # owner 19 Nov: spacing_min 0 - no gap, no stagger (kept working when set)
         from unittest import mock
-        self.assertEqual(json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))["posting"]["spacing_min"], 10)      # owner 21 Nov
+        self.assertEqual(json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))["posting"]["spacing_min"], 5)      # owner 21 Nov
         with mock.patch.dict(post.CONFIG, {"posting": {"spacing_min": 0}}):
             self.no_gap()
 
@@ -1275,7 +1278,7 @@ class NotNews(unittest.TestCase):
         self.assertTrue(out.endswith("பின்தொடருங்கள்."))
 
     def test_posting_gate_blocks_it(self):
-        row = {"story_id": "RN-189", "headline_ta": "முட்டை விலை நிலவரம்", "headline_en": "Egg price update", "category": "Business & Prices",
+        row = {"source": "https://example.com/news/test_posting_gate_blocks_it-1", "story_id": "RN-189", "headline_ta": "முட்டை விலை நிலவரம்", "headline_en": "Egg price update", "category": "Business & Prices",
                "published": post.datetime.now(post.IST).isoformat(), "researched": post.datetime.now(post.IST).strftime("%d %b %Y, %H:%M"),
                "reel_script": self.EMPTY, "caption": "", "slides_spec": "{}"}
         self.assertTrue(post.skip_reason(row).startswith(("not news", "known issue meta_article")))      # blocked either way
@@ -1303,7 +1306,8 @@ class OwnerFixes29Oct(unittest.TestCase):
         self.assertEqual("", fr.same_day_recurring(a, {"researched": now, "headline_ta": "ராசிபுரத்தில் பைக் திருட்டு"}))
         post.ALL_ROWS = [dict(a, post_status="Posted")]
         try:
-            self.assertIn("one egg price post a day", post.skip_reason(dict(b, source="", category="", published=f"{TODAY}", notes="", batch="", review="Auto")))
+            with mock.patch.object(post, "link_hold", return_value=""):      # owner 21 Nov: the source-link rule is tested in test_source_link_21nov.py
+                self.assertIn("one egg price post a day", post.skip_reason(dict(b, source="", category="", published=f"{TODAY}", notes="", batch="", review="Auto")))
         finally:
             post.ALL_ROWS = []
 

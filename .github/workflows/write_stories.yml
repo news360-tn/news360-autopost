@@ -71,6 +71,7 @@ jobs:
           BUDGET_MIN: "30"
           AUTO_IMAGES: "1"
           WRITE_STORIES: '1'
+          DAILY_CAP: "70"          # owner 21 Nov: at most 30-35 news a day PER PAGE - Namakkal 360 + Rasipuram 360 = 70 (urgent news still go after it)
           WRITE_WORKERS: "3"
           FRESH_DAYS: "2"
         run: |

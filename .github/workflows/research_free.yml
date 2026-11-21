@@ -3,11 +3,11 @@ name: research-free
 # (quality-checked) and sends ONE images-needed e-mail - only when there is news. Stories still waiting for images from an earlier round are listed again in it.
 on:
   schedule:
-    - cron: "30 22 * * *"      # 04:00 IST (owner 19 Nov: collection fitted to the posting windows - ready when 06:00 opens)
-    - cron: "0 3 * * *"        # 08:30 IST (posts inside the morning window)
-    - cron: "30 7 * * *"       # 13:00 IST (ready when 15:00 opens)
-    - cron: "0 11 * * *"       # 16:30 IST
-    - cron: "0 13 * * *"       # 18:30 IST (posts before the evening window closes at 21:00)
+    - cron: "30 22 * * *"      # 04:00 IST (owner 21 Nov: collection every 4 hours - ready when posting opens at 05:00)
+    - cron: "30 2 * * *"       # 08:00 IST
+    - cron: "30 6 * * *"       # 12:00 IST
+    - cron: "30 10 * * *"      # 16:00 IST
+    - cron: "30 14 * * *"      # 20:00 IST (nothing posts 00:00-05:00, so no midnight round)
   workflow_dispatch:
     inputs:
       dry:
@@ -78,6 +78,7 @@ jobs:
           GH_REPO: ${{ github.repository }}
           AUTO_IMAGES: "1"          # owner request 24 Oct: images made automatically (Cloudflare FLUX, then NVIDIA FLUX.1-dev); stories without all images go to the e-mail as before
           WRITE_STORIES: '1'
+          DAILY_CAP: "70"          # owner 21 Nov: at most 30-35 news a day PER PAGE - Namakkal 360 + Rasipuram 360 = 70 (urgent news still go after it)
           COLLECT_MODE: ${{ github.event.inputs.manual_url != '' && 'both' || 'collect' }}      # a link given by hand is written at once
           WRITE_WORKERS: "3"        # stories written at the same time
           FRESH_DAYS: "2"           # news published today or yesterday (not posted yet)
