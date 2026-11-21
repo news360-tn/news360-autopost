@@ -65,6 +65,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-21 | `e737609` | Instagram-safe limits, file upload without Cloudinary, skipped e-mails restarted |
+| 2026-11-21 | `9a20dad` | goldrate posted |
+| 2026-11-21 | `a35dc65` | facebook RN-737 |
 | 2026-11-21 | `e35b1eb` | Instagram-safe: stories only for power cuts / urgent news again (as Kovai and Chennai Minnal) |
 | 2026-11-21 | `077b948` | powercut: notices written |
 | 2026-11-21 | `44ad480` | stories shared |
@@ -92,7 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-21 | `3bc96ce` | facebook RN-720 |
 | 2026-11-21 | `2bd9b5a` | facebook RN-722 |
 | 2026-11-21 | `4fdc5d7` | facebook RN-734 |
-| 2026-11-21 | `38d6af4` | facebook RN-723 |
-| 2026-11-21 | `16a804e` | facebook RN-725 |
-| 2026-11-21 | `e12283f` | facebook RN-724 |
 <!-- recent-changes:end -->
