@@ -65,6 +65,13 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-21 | `ad9547d` | A news picture that cannot be downloaded (old Cloudinary account, 401/404) is left out - the reel uses the designed background, the page is never blocked |
+| 2026-11-21 | `36c1341` | stories shared |
+| 2026-11-21 | `deed9a3` | stories shared |
+| 2026-11-21 | `6ed0d76` | stories shared |
+| 2026-11-21 | `8a5aad8` | goldrate posted |
+| 2026-11-21 | `7351c3a` | facebook RN-736 |
+| 2026-11-21 | `d92a12a` | facebook RN-735 |
 | 2026-11-21 | `b43ce91` | Keep 20 of Instagram's 50 daily posts for news: stories stop at 30 (news was waiting at 48/50) |
 | 2026-11-21 | `1ae4799` | stories shared |
 | 2026-11-21 | `136f00a` | Stop posting bursts: 10 min between news posts; an Instagram block pauses the page 6 h (news waits) instead of retrying every run |
@@ -88,11 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-20 | `9abfdb9` | Facebook first comment = the same source comment as Instagram (link into the text if Facebook refuses the comment) |
 | 2026-11-20 | `17dc379` | Facebook: up to 18 news a day per page (45 min apart), article link in the first comment, 3 hashtags |
 | 2026-11-20 | `4cba8f4` | Daily rasipalan as a reel in the 360 gold-reel pattern (music only); carousel only if the reel fails |
-| 2026-11-20 | `66e7db6` | Reels without a picture: a designed background by news type, never the page logo |
-| 2026-11-20 | `9265f81` | Every news reel goes to the story again (stories_urgent_only false) |
-| 2026-11-20 | `6d143e0` | powercut: notices written |
-| 2026-11-20 | `4446ddb` | stories shared |
-| 2026-11-20 | `5341616` | powercut: notices written |
-| 2026-11-20 | `d6694cb` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-20 | `33cbfe4` | Promotion ads (owner-approved only, bottom of the reel during the news) and twice-a-day YouTube details e-mail |
 <!-- recent-changes:end -->
