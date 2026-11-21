@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-21 | `45847c9` | Posted report: one e-mail for all pages, 4 times a day |
 | 2026-11-21 | `e737609` | Instagram-safe limits, file upload without Cloudinary, skipped e-mails restarted |
 | 2026-11-21 | `9a20dad` | goldrate posted |
 | 2026-11-21 | `a35dc65` | facebook RN-737 |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-21 | `1fdfcb8` | facebook RN-727 |
 | 2026-11-21 | `3bc96ce` | facebook RN-720 |
 | 2026-11-21 | `2bd9b5a` | facebook RN-722 |
-| 2026-11-21 | `4fdc5d7` | facebook RN-734 |
 <!-- recent-changes:end -->
