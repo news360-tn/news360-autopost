@@ -43,6 +43,13 @@ env:
   FB_TOKEN_NAMAKKAL: ${{ secrets.FB_TOKEN_NAMAKKAL }}
   FB_PAGE_ID_RASIPURAM: ${{ secrets.FB_PAGE_ID_RASIPURAM }}
   FB_TOKEN_RASIPURAM: ${{ secrets.FB_TOKEN_RASIPURAM }}
+  # owner 21 Nov: YouTube auto upload - a page uploads only when its 3 YT_* secrets exist
+  YT_CLIENT_ID_NAMAKKAL: ${{ secrets.YT_CLIENT_ID_NAMAKKAL }}
+  YT_CLIENT_SECRET_NAMAKKAL: ${{ secrets.YT_CLIENT_SECRET_NAMAKKAL }}
+  YT_REFRESH_TOKEN_NAMAKKAL: ${{ secrets.YT_REFRESH_TOKEN_NAMAKKAL }}
+  YT_CLIENT_ID_RASIPURAM: ${{ secrets.YT_CLIENT_ID_RASIPURAM }}
+  YT_CLIENT_SECRET_RASIPURAM: ${{ secrets.YT_CLIENT_SECRET_RASIPURAM }}
+  YT_REFRESH_TOKEN_RASIPURAM: ${{ secrets.YT_REFRESH_TOKEN_RASIPURAM }}
   DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
   PREBUILD: ${{ github.event_name == 'workflow_dispatch' && inputs.prebuild && '1' || '' }}
   PAUSED: ${{ vars.PAUSED }}
@@ -77,7 +84,7 @@ jobs:
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
           if grep -q "ready to post: [1-9]" .last_check || [ "$(date -u +%M)" -lt 5 ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then git add -f .last_check && git commit -qm "check log" && { for i in 1 2 3 4; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null || true; sleep $((i*3)); done; } || true; fi
           # owner 1 Nov: the list of posts already shared to the story (never twice) is saved after every check
-          [ -f poster/story_shared.json ] && git add -f poster/story_shared.json; for f in poster/prebuilt/_ig_paused_*.json poster/prebuilt/_direct_*.json; do [ -f "$f" ] && git add -f "$f"; done; [ -d poster/fb_posted ] && git add -f poster/fb_posted; git diff --cached --quiet || { git commit -qm "stories shared / Instagram pause" && { for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null || true; sleep $((i*3)); done; } || true; }      # owner 21 Nov: a pause made by the story catch-up is kept too
+          [ -f poster/story_shared.json ] && git add -f poster/story_shared.json; for f in poster/prebuilt/_ig_paused_*.json poster/prebuilt/_direct_*.json; do [ -f "$f" ] && git add -f "$f"; done; [ -d poster/fb_posted ] && git add -f poster/fb_posted; [ -d poster/yt_uploaded ] && git add -f poster/yt_uploaded; git diff --cached --quiet || { git commit -qm "stories shared / Instagram pause" && { for i in 1 2 3 4 5; do git pull -q --rebase -X theirs --autostash && git push -q && break; git rebase --abort 2>/dev/null || true; sleep $((i*3)); done; } || true; }      # owner 21 Nov: a pause made by the story catch-up is kept too
           if [ "${CHECK_RC:-0}" != "0" ]; then echo "::error::post.py check crashed (exit $CHECK_RC) - nothing was posted in this run"; exit 1; fi
       - name: Facebook - try failed reels again (at most 2 more times, within 24 h)
         if: always() && env.BRIDGE_URL != '' && env.DRY_RUN == ''
