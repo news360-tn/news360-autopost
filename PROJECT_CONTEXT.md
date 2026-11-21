@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-21 | `b43ce91` | Keep 20 of Instagram's 50 daily posts for news: stories stop at 30 (news was waiting at 48/50) |
+| 2026-11-21 | `1ae4799` | stories shared |
 | 2026-11-21 | `136f00a` | Stop posting bursts: 10 min between news posts; an Instagram block pauses the page 6 h (news waits) instead of retrying every run |
 | 2026-11-21 | `a1c78cb` | stories shared |
 | 2026-11-21 | `875b351` | rasipalan posted |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-20 | `5341616` | powercut: notices written |
 | 2026-11-20 | `d6694cb` | comments: normal comments recorded (not e-mailed) |
 | 2026-11-20 | `33cbfe4` | Promotion ads (owner-approved only, bottom of the reel during the news) and twice-a-day YouTube details e-mail |
-| 2026-11-20 | `ad5dd3d` | facebook RN-718 |
-| 2026-11-20 | `d37273b` | facebook RN-719 |
 <!-- recent-changes:end -->
