@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-22 | `048b536` | Manual post e-mail: attach a 720p copy of the reel (the full reel was too large) |
+| 2026-11-22 | `f2569a3` | stories shared / Instagram pause |
 | 2026-11-22 | `5209717` | Manual post e-mail: news a page cannot post goes to the owner, one by one |
 | 2026-11-22 | `6a62e8e` | stories shared / Instagram pause |
 | 2026-11-22 | `3cedc86` | facebook RN-733 |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-21 | `44ad480` | stories shared |
 | 2026-11-21 | `555dd47` | powercut: notices written |
 | 2026-11-21 | `2c503e3` | Post news as soon as it is ready; only news with a source link; collect every 4 hours, max 35 a day |
-| 2026-11-21 | `748f834` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-21 | `ad9547d` | A news picture that cannot be downloaded (old Cloudinary account, 401/404) is left out - the reel uses the designed background, the page is never blocked |
 <!-- recent-changes:end -->
