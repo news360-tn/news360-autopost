@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-22 | `03e1f90` | Facebook check: list each page's latest Facebook posts (read only) |
 | 2026-11-22 | `30e203c` | Facebook share e-mail: news on Instagram but not on Facebook after 3 hours |
 | 2026-11-22 | `9916dfd` | stories shared / Instagram pause |
 | 2026-11-22 | `1069ab9` | goldrate posted |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-21 | `45847c9` | Posted report: one e-mail for all pages, 4 times a day |
 | 2026-11-21 | `e737609` | Instagram-safe limits, file upload without Cloudinary, skipped e-mails restarted |
 | 2026-11-21 | `9a20dad` | goldrate posted |
-| 2026-11-21 | `a35dc65` | facebook RN-737 |
 <!-- recent-changes:end -->
