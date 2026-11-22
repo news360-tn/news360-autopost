@@ -236,7 +236,11 @@ function doPost(e) {
       return json_({ ok: true });
     }
     if (b.action === 'digest') {
-      GmailApp.sendEmail(owner_(), b.subject, b.text || '', b.html ? { htmlBody: b.html } : {});
+      var opts = b.html ? { htmlBody: b.html } : {};
+      if (b.attachment && b.attachment.data) {      // owner 22 Nov: the reel for a manual post
+        opts.attachments = [Utilities.newBlob(Utilities.base64Decode(b.attachment.data), b.attachment.type || 'video/mp4', b.attachment.name || 'reel.mp4')];
+      }
+      GmailApp.sendEmail(owner_(), b.subject, b.text || '', opts);
       return json_({ ok: true });
     }
     return json_({ ok: false, error: 'unknown action or id' });
