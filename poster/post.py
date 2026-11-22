@@ -2551,11 +2551,14 @@ def facebook_share_email(now=None):
                     due.append((f, d))
             if not due:
                 continue
-            token = bridge_get("token", page=pg)["token"]
+            tokens = {}
             items = []
             for f, d in due[:15]:
                 try:
-                    link = ig("GET", d["ig_media"], token, fields="permalink").get("permalink", "")
+                    igp = d.get("ig_page") or pg      # owner 22 Nov: a Rasipuram reel's link is read with Rasipuram's login
+                    if igp not in tokens:
+                        tokens[igp] = bridge_get("token", page=igp)["token"]
+                    link = ig("GET", d["ig_media"], tokens[igp], fields="permalink").get("permalink", "")
                 except Exception:
                     link = ""
                 if not link:
@@ -2606,7 +2609,7 @@ def facebook_catchup():
             if why:
                 log(f"Facebook catch-up {pg}: {d.get('story')} still waits ({why})")
                 continue
-            token = bridge_get("token", page=pg)["token"]
+            token = bridge_get("token", page=d.get("ig_page") or pg)["token"]      # owner 22 Nov: a Rasipuram reel is read with Rasipuram's login
             url = (ig("GET", d["ig_media"], token, fields="media_url") or {}).get("media_url")
             path = localmedia.download(url, "facebook.mp4") if url else None
             if not path:

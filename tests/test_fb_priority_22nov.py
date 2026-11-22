@@ -75,3 +75,23 @@ class AfterFifteenToEmail(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RasipuramGoesToNamakkalFacebook(unittest.TestCase):
+    def test_route(self):
+        self.assertEqual(facebook.route("rasipuram"), "namakkal")
+        self.assertEqual(facebook.route("namakkal"), "namakkal")
+        with mock.patch.dict(os.environ, {"FB_PAGE_ID_RASIPURAM": "P", "FB_TOKEN_RASIPURAM": "T"}):
+            self.assertIsNone(facebook.creds("rasipuram"))      # its own Facebook page is never used
+
+    def test_rasipuram_news_posts_on_the_namakkal_page_once(self):
+        d = Path(tempfile.mkdtemp())
+        seen = []
+        with mock.patch.object(facebook, "STATE", d), mock.patch.dict(os.environ, {"FB_PAGE_ID_NAMAKKAL": "NP", "FB_TOKEN_NAMAKKAL": "NT"}), \
+                mock.patch.object(facebook, "gate", return_value=""), \
+                mock.patch.object(facebook, "_attempt", side_effect=lambda pg, sid, kind, media, cap, *a, **k: seen.append((pg, cap)) or "https://fb/1"):
+            facebook.share("rasipuram", "RN-5", "reel", ["file:///r.mp4"], "News\n\n#Vennandur #Rasipuram360", "#Rasipuram360")
+        self.assertEqual(len(seen), 1)
+        self.assertEqual(seen[0][0], "namakkal")
+        self.assertIn("#Namakkal360", seen[0][1])
+        self.assertNotIn("#Rasipuram360", seen[0][1])

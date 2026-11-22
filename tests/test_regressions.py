@@ -870,6 +870,9 @@ class FacebookEverything2Nov(unittest.TestCase):
         self.tmp = tempfile.mkdtemp()
         self.old = (facebook.STATE, dict(os.environ))
         facebook.STATE = Path(self.tmp)
+        self._route = facebook.ROUTE
+        facebook.ROUTE = {}      # owner 22 Nov: these check the posting mechanism on a page with its own Facebook page
+        self.addCleanup(setattr, facebook, "ROUTE", self._route)
         os.environ.update(FB_PAGE_ID_RASIPURAM="111", FB_TOKEN_RASIPURAM="tok")
         os.environ.pop("FB_PAGE_ID_NAMAKKAL", None)
         self.calls = []

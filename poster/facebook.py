@@ -49,7 +49,20 @@ def log(*a):
     print("[facebook]", *a, flush=True)
 
 
+# owner 22 Nov: Rasipuram 360 is Instagram only - its Facebook page is being deleted; Rasipuram news goes to the NAMAKKAL district
+# Facebook page instead (the same news posted on both Instagram pages goes to Facebook once). "FB_ROUTE": "" switches it off.
+ROUTE = dict(x.split(":", 1) for x in os.environ.get("FB_ROUTE", "rasipuram:namakkal").split(",") if ":" in x)
+ROUTE_TAG = {"namakkal": "#Namakkal360"}
+
+
+def route(page):
+    """the Facebook page a page's news really goes to (rasipuram -> namakkal)"""
+    return ROUTE.get(page, page)
+
+
 def creds(page):
+    if page in ROUTE:
+        return None      # owner 22 Nov: no Facebook page of its own (its news goes to route(page))
     k = re.sub(r"[^A-Z0-9]", "_", page.upper())
     pid, tok = os.environ.get("FB_PAGE_ID_" + k, "").strip(), os.environ.get("FB_TOKEN_" + k, "").strip()
     return (pid, tok) if pid and tok else None
@@ -413,6 +426,12 @@ def share(page, sid, kind, media, caption, page_tag, dry=False, tags=None, story
     """kind 'reel' (media = [video url]) or 'photos' (media = image urls). Called right after the Instagram post is published.
     Never raises. Returns the Facebook link or ''."""
     try:
+        ig_page = page      # the Instagram account the video is read back from (catch-up / share e-mail)
+        if page in ROUTE:      # owner 22 Nov: Rasipuram's news goes to the Namakkal district Facebook page
+            log(f"Facebook: {page} has no Facebook page - {sid} goes to the {route(page)} page")
+            page, page_tag = route(page), ROUTE_TAG.get(route(page), page_tag)
+            tags = [t for t in (tags or []) if "rasipuram360" not in t.lower()] or None
+            caption = re.sub(r"#Rasipuram360\b", "", caption or "", flags=re.I)
         media = [m for m in (media or []) if m]
         if not creds(page):
             log(f"Facebook not set up for {page} (secrets FB_PAGE_ID_{page.upper()} / FB_TOKEN_{page.upper()}) - skipped")
@@ -431,7 +450,7 @@ def share(page, sid, kind, media, caption, page_tag, dry=False, tags=None, story
         if why and not dry and kind == "reel" and ig_media and wait_reason(why):
             # owner 21 Nov: every news goes to Facebook too - it waits and post.py's facebook_catchup() posts it when the gap allows
             _save(page, sid, kind, {"status": "waiting", "why": why, "ig_media": ig_media, "caption": cap, "link": src, "comment": comment,
-                                    "with_story": story, "waiting_since": _now().isoformat(timespec="seconds"), "rank": rank})
+                                    "with_story": story, "waiting_since": _now().isoformat(timespec="seconds"), "rank": rank, "ig_page": ig_page})
             log(f"Facebook: {sid} waits ({why}) - posted when the gap allows")
             return ""
         if not why and not dry and not always and kind == "reel" and ig_media and not (rank or {}).get("urgent"):
@@ -439,7 +458,7 @@ def share(page, sid, kind, media, caption, page_tag, dry=False, tags=None, story
             if w and priority(w.get("rank")) > priority(rank):
                 _save(page, sid, kind, {"status": "waiting", "why": f"a more important news ({w.get('story')}) goes to Facebook first",
                                         "ig_media": ig_media, "caption": cap, "link": src, "comment": comment, "with_story": story,
-                                        "waiting_since": _now().isoformat(timespec="seconds"), "rank": rank})
+                                        "waiting_since": _now().isoformat(timespec="seconds"), "rank": rank, "ig_page": ig_page})
                 log(f"Facebook: {sid} waits - the more important {w.get('story')} goes first")
                 return ""
         if why:
