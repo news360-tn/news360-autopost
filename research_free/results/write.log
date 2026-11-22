@@ -1,107 +1,20 @@
-writing [N]: குமாரபாளையத்தில் கால்நடைகளால் போக்குவரத்துக்கு இடையூறு
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-ok gemini/gemini-3.6-flash (19s)
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (19s)
-attempt 2 gemini/gemini-3.6-flash: 1 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('குமாரபாளையத்தில் கால்நடைகளால் போக்குவரத்துக்கு இடையூறு') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-ok gemini/gemini-3-flash-preview (12s)
-attempt 3 gemini/gemini-3-flash-preview: 1 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('குமாரபாளையத்தில் கால்நடைகளால் போக்குவரத்துக்கு இடையூறு') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3-flash-preview (8s)
-attempt 4 gemini/gemini-3-flash-preview: 1 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('குமாரபாளையத்தில் கால்நடைகளால் போக்குவரத்துக்கு இடையூறு') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (9s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-ok groq/openai/gpt-oss-120b (3s)
-factcheck by groq/openai/gpt-oss-120b: 1 problems
-  Reel script claims that officials will take action ("அதிகாரிகள் நடவடிக்கை எடுப்பார்கள் என எதிர்பார்க்கப்படுகிறது") which is not stated in the article
-attempt 5 gemini/gemini-3-flash-preview: 1 problems
-  fact-check: Reel script claims that officials will take action ("அதிகாரிகள் நடவடிக்கை எடுப்பார்கள் என எதிர்பார்க்கப்படுகிறது") which is not stated in the article
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
-ok groq/qwen/qwen3.8-27b (3s)
-attempt 6 groq/qwen/qwen3.8-27b: 1 problems
-  hl1 is 54 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('குமாரபாளையத்தில் கால்நடைகளால் போக்குவரத்துக்கு இடையூறு') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('குமாரபாளையத்தில் கால்நடைகளால் போக்குவரத்துக்கு இடையூறு') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-real photo too small to be presentable (399x221): https://media.dinamani.com/dinamani/2026-11-22/ll0ir8p0/mkr1_2311chn_69_2.jpg
-image match: False The image shows only cattle with no horses present, and it appears to be an AI-generated illustration rather than an act
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Cattle and horses block traffic on Salem'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261123-0338","first":"RN-774"}
-posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 11 news waiting in the queue (written in priority order)
-candidate filter: already filed=6, collected=5
-to write: 1 Rasipuram + 4 other district candidates (max 200 + 200 stories)
-daily maximum 30: 6 written today - this round writes at most 1 + 23
-candidates waiting: 1 Rasipuram, 4 Namakkal; time left 29 min
+write round: 10 news waiting in the queue (written in priority order)
+candidate filter: already filed=6, collected=4
+to write: 1 Rasipuram + 3 other district candidates (max 200 + 200 stories)
+daily maximum 30: 7 written today - this round writes at most 1 + 22
+candidates waiting: 1 Rasipuram, 3 Namakkal; time left 29 min
 try (R) manual=False: செம்மண் கடத்திய லாரி பறிமுதல்
-try (N) manual=False: குமாரபாளையத்தில் கால்நடைகளால் போக்குவரத்துக்கு இடையூறு
 try (N) manual=False: கடலூரில் பறவைக் காய்ச்சல்; ஓமனில் முட்டை இறக்குமதிக்கு தடை: 
+try (N) manual=False: "அதிர்ச்சி செய்தி! இந்திய முட்டை இறக்குமதிக்கு ஓமன் திடீர் த
 skip (N) same event as RN-750: கடலூரில் பறவைக் காய்ச்சல்; ஓமனில் முட்டை இறக்குமதி
-try (N) manual=False: முட்டை விலை 20 காசுகள் குறைந்து ரூ.5.60 ஆக நிா்ணயம்
-skip (N) similar to a filed story: முட்டை விலை 20 காசுகள் குறைந்து ரூ.5.60 ஆக நிா்ணயம
-try (N) manual=False: ஆர்ப்பரித்து கொட்டும் ஆகாய கங்கை நீர்வீழ்ச்சி
+try (N) manual=False: #BREAKING இந்திய முட்டைக்கு தடை விதித்த ஓமன்
+skip (N) similar to a filed story: "அதிர்ச்சி செய்தி! இந்திய முட்டை இறக்குமதிக்கு ஓமன
 skip (R) similar to a filed story: செம்மண் கடத்திய லாரி பறிமுதல்
-skip (N) similar to a filed story: ஆர்ப்பரித்து கொட்டும் ஆகாய கங்கை நீர்வீழ்ச்சி
-auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 3})
-posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 4}, done={'R': 0, 'N': 1}, time left 25 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+skip (N) similar to a filed story: #BREAKING இந்திய முட்டைக்கு தடை விதித்த ஓமன்
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 3}, done={'R': 0, 'N': 0}, time left 29 min
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written 
+stories: 0
