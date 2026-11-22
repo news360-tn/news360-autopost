@@ -2664,6 +2664,15 @@ def _town_in_story(row):
     except Exception:
         return False
 
+def _own_district_story(row):
+    """owner 21 Nov (approved 22 Nov): Namakkal 360 and Rasipuram 360 - a story that clearly names their own district (Namakkal /
+    Rasipuram) is posted even when the article names only the district, not a town. Other pages are unchanged."""
+    if PAGE not in ("namakkal", "rasipuram"):
+        return False
+    t = " ".join([str(row.get("headline_ta") or ""), str(row.get("headline_en") or ""), str(row.get("caption") or "")[:300]])
+    return bool(re.search(r"நாமக்கல்|Namakkal|ராசிபுரம்|Rasipuram", t, re.I))
+
+
 def news_hold(row):
     """owner 2 Nov (RN-272): a story with any fact-check problem, or whose location is unknown or only a district, is held"""
     v_ = str(row.get("verification") or "")
@@ -2683,7 +2692,7 @@ def news_hold(row):
         if facts_:
             return "held: fact-check problems - " + "; ".join(facts_)[:200]
     loc_ = str(row.get("location") or "").strip()
-    if re.fullmatch(r"[^,]*\b(district|மாவட்டம்)\.?", loc_, re.I) and not _town_in_story(row):      # a district alone is not a place
+    if re.fullmatch(r"[^,]*\b(district|மாவட்டம்)\.?", loc_, re.I) and not _town_in_story(row) and not _own_district_story(row):      # a district alone is not a place
         return "held: location is only the district - the town from the article is missing"
     txt_ = " ".join([str(row.get("caption") or ""), str(row.get("reel_script") or "")])
     if loc_.lower() in ("unknown", "தெரியவில்லை") or re.search(r"இடம்\W*தெரியவில்லை|Location unknown", txt_, re.I):
