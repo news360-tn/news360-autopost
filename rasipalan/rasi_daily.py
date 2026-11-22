@@ -343,6 +343,8 @@ def main():
         import facebook
         if reel:      # owner 20 Nov: the reel goes to Facebook as a reel
             facebook.share(PAGE, f"rasipalan-{day.isoformat()}", "reel", [reel[0]], reel[1], cfg["tags"][-1], tags=cfg["tags"][:2], always=True)      # owner 11 Nov: the daily rasipalan always goes to Facebook
+            if PAGE == "rasipuram" and cfg.get("collab") == "namakkal.360":      # owner 22 Nov: Namakkal 360 gets it on Facebook too (on Instagram it is the collaborator)
+                facebook.share("namakkal", f"rasipalan-{day.isoformat()}", "reel", [reel[0]], reel[1], "#Namakkal360", tags=cfg["tags"][:2], always=True)
         else:
             facebook.share(PAGE, f"rasipalan-{day.isoformat()}", "photos", urls, cap, cfg["tags"][-1], tags=cfg["tags"][:2], always=True)      # owner 11 Nov: the daily rasipalan always goes to Facebook
     except Exception as e:

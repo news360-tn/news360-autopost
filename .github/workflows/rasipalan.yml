@@ -47,6 +47,8 @@ jobs:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       FB_PAGE_ID_RASIPURAM: ${{ secrets.FB_PAGE_ID_RASIPURAM }}      # owner 2 Nov: also on the Facebook page
       FB_TOKEN_RASIPURAM: ${{ secrets.FB_TOKEN_RASIPURAM }}
+      FB_PAGE_ID_NAMAKKAL: ${{ secrets.FB_PAGE_ID_NAMAKKAL }}      # owner 22 Nov: the rasipalan also on the Namakkal 360 Facebook page
+      FB_TOKEN_NAMAKKAL: ${{ secrets.FB_TOKEN_NAMAKKAL }}
     steps:
       - uses: actions/checkout@v4
         with: {ref: main}
