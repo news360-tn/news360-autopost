@@ -74,6 +74,7 @@ def payload(row, reel_link="", en=None):
         "location": row.get("location", ""), "category": row.get("category", ""), "images": images_of(row),
         "reel_link": reel_link or row.get("reel_link", "") or row.get("namakkal_link", "") or row.get("rasipuram_link", ""),
         "source": row.get("source", ""), "published": row.get("published", ""), "filed_at": filed_iso(row),
+        "district": "namakkal",      # owner 22 Nov: one website for all 7 districts (www.namakkal360.workers.dev/namakkal)
     }
 
 
