@@ -659,7 +659,7 @@ def pending_ids(max_hours=2):
         if not m or m.group(2).lower() not in mon:
             continue
         t = datetime.datetime(int(m.group(3)), mon.index(m.group(2).lower()) + 1, int(m.group(1)), int(m.group(4)), int(m.group(5)), tzinfo=IST)
-        if t.date() == now.date() and not str(r.get("post_status", "")).lower().startswith("skipped"):
+        if t.date() == now.date() and not str(r.get("post_status", "")).lower().startswith("skipped") and not _published_before(r, now):
             TODAY[0] += 1          # stories written today (each one is one reel per page it goes to)
         if str(r.get("post_status", "")).strip() != "Awaiting images":
             continue
@@ -670,6 +670,20 @@ def pending_ids(max_hours=2):
 
 REOFFER = []
 TODAY = [0]
+
+
+def _published_before(row, now):
+    """owner 22 Nov: the daily maximum counts only TODAY's published news - a story whose news was published before today (yesterday's
+    pending news) does not use one of the 30. Unknown date: counted."""
+    p = str(row.get("published") or "").strip()
+    if not re.match(r"\d{4}-\d{2}-\d{2}", p):
+        return False
+    try:
+        t = datetime.datetime.fromisoformat(p.replace("Z", "+00:00"))
+        d = (t.astimezone(IST) if t.tzinfo else t).date()
+    except Exception:
+        return False
+    return d < now.astimezone(IST).date()
 DAILY_CAP = int(os.environ.get("DAILY_CAP", "1000"))      # owner: after 40 posts in a day only the main / important news is written and posted
 
 
@@ -1029,7 +1043,7 @@ def main():
         PRIO = ("பலி", "உயிரிழ", "விபத்து", "வெடி", "கொலை", "தீப்பிடி", "தீ விபத்து", "மின்தடை", "மின் தடை", "வெள்ளம்", "தற்கொலை", "கைது")
         target = {"R": 1, "N": 2}
         for a_ in ("R", "N"):
-            queues[a_] = [q for q in queues[a_] if q["mentions"] >= 3 or any(w in q["title"] for w in PRIO)][:4]
+            queues[a_] = [q for q in queues[a_] if (q["mentions"] >= 3 and not q.get("manual")) or any(w in q["title"] for w in PRIO)][:4]
         PRIORITY_ONLY[0] = True
         log.append("archive round: priority scan only (urgent local news, if any)")
     if MODE == "collect":
