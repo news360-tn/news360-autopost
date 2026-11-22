@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-22 | `2870ec8` | Website: each posted story goes to the shared 7-district site with its district (only when the WEBSITE_INGEST_KEY secret is set; posting is not affected) |
-| 2026-11-22 | `364dae1` | stories shared / Instagram pause |
-| 2026-11-22 | `b24584b` | Dashboard status file for the owner's private dashboard; rasipalan also shared to the Namakkal Facebook page |
-| 2026-11-22 | `5bad8fc` | Facebook check: list the last 20 Facebook posts (was 10) |
-| 2026-11-22 | `03e1f90` | Facebook check: list each page's latest Facebook posts (read only) |
-| 2026-11-22 | `30e203c` | Facebook share e-mail: news on Instagram but not on Facebook after 3 hours |
-| 2026-11-22 | `9916dfd` | stories shared / Instagram pause |
-| 2026-11-22 | `1069ab9` | goldrate posted |
-| 2026-11-22 | `8fec525` | posted report sent |
-| 2026-11-22 | `6177d59` | stories shared / Instagram pause |
-| 2026-11-22 | `048b536` | Manual post e-mail: attach a 720p copy of the reel (the full reel was too large) |
-| 2026-11-22 | `f2569a3` | stories shared / Instagram pause |
-| 2026-11-22 | `5209717` | Manual post e-mail: news a page cannot post goes to the owner, one by one |
-| 2026-11-22 | `6a62e8e` | stories shared / Instagram pause |
-| 2026-11-22 | `3cedc86` | facebook RN-733 |
-| 2026-11-22 | `f05b9c7` | posted RN-733 |
-| 2026-11-22 | `08474c4` | Namakkal and Rasipuram: post a story that names only the district |
-| 2026-11-22 | `3a33870` | stories shared / Instagram pause |
-| 2026-11-22 | `eaa4b27` | rasipalan posted |
-| 2026-11-21 | `bf3f905` | posted report sent |
-| 2026-11-21 | `e58e77d` | powercut: notices written |
-| 2026-11-21 | `2d64282` | powercut: notices written |
-| 2026-11-21 | `7df6e24` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-21 | `1ef8573` | posted report sent |
-| 2026-11-21 | `f8a807d` | YouTube: news reels uploaded automatically as Shorts (only with the page's keys) |
-| 2026-11-21 | `b744395` | posted report sent |
-| 2026-11-21 | `0d0f660` | powercut: notices written |
-| 2026-11-21 | `01c4827` | Facebook: every news that is on Instagram also goes to Facebook |
-| 2026-11-21 | `18196e9` | powercut: notices written |
-| 2026-11-21 | `afb9209` | comments: normal comments recorded (not e-mailed) |
+| 2026-11-22 | `716203d` | Same-day news only, 15-35 a day: every news published today is written (max 35), yesterday's news is never posted, 22:00 round added; Namakkal writer split fix |
+| 2026-11-22 | `511c733` | stories shared / Instagram pause |
+| 2026-11-22 | `1b8af40` | stories shared / Instagram pause |
+| 2026-11-22 | `163930c` | stories shared / Instagram pause |
+| 2026-11-22 | `5b17701` | stories shared / Instagram pause |
+| 2026-11-22 | `b2d41a2` | stories shared / Instagram pause |
+| 2026-11-22 | `4234e06` | stories shared / Instagram pause |
+| 2026-11-22 | `869084d` | stories shared / Instagram pause |
+| 2026-11-22 | `5e0923a` | stories shared / Instagram pause |
+| 2026-11-22 | `47c9a22` | stories shared / Instagram pause |
+| 2026-11-22 | `f249282` | stories shared / Instagram pause |
+| 2026-11-22 | `64dbb49` | stories shared / Instagram pause |
+| 2026-11-22 | `390beb7` | facebook RN-742 |
+| 2026-11-22 | `d790218` | posted RN-742 |
+| 2026-11-22 | `3a5df01` | stories shared / Instagram pause |
+| 2026-11-22 | `112ac02` | facebook RN-741 |
+| 2026-11-22 | `c863028` | posted RN-741 |
+| 2026-11-22 | `82a09bf` | stories shared / Instagram pause |
+| 2026-11-22 | `c2aa65a` | facebook RN-740 |
+| 2026-11-22 | `a56c33e` | posted RN-740 |
+| 2026-11-22 | `a9c0817` | stories shared / Instagram pause |
+| 2026-11-22 | `8b7a3ef` | facebook RN-738 |
+| 2026-11-22 | `910b9ee` | posted RN-738 |
+| 2026-11-22 | `8ca3429` | stories shared / Instagram pause |
+| 2026-11-22 | `894c8e0` | facebook RN-739 |
+| 2026-11-22 | `8ea722a` | posted RN-739 |
+| 2026-11-22 | `2c651cf` | stories shared / Instagram pause |
+| 2026-11-22 | `df63747` | stories shared / Instagram pause |
+| 2026-11-22 | `9271642` | posted report sent |
+| 2026-11-22 | `ac53a9e` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
