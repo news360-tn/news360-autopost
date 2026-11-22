@@ -1,87 +1,13 @@
-writing [N]: மரத்தில் கார் மோதி கோர விபத்து; 8 பேர் பலி
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (20s)
-attempt 1 gemini/gemini-3.6-flash: 4 problems
-  hl1 is 41 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  numbers not found in the article: 6
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 42, ('திருச்சி: திருச்சி அருகே மரத்தில் கார் மோதிய கோர விபத்தில், '); 44, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க'); 42, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க'); 43, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க'); 45, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க'); 50, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (29s)
-attempt 2 gemini/gemini-3.6-flash: 1 problems
-  numbers not found in the article: 6
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
-ok groq/qwen/qwen3.8-27b (4s)
-attempt 3 groq/qwen/qwen3.8-27b: 1 problems
-  reel_script has numbers without their meaning (42, 44, 42, 43); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  hl1 is 47 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 44, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க'); 43, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க'); 45, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க'); 50, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க')
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 6 problems
-  reel_script says the car hit the tree 'near Trichy' and the slide says 'திருச்சி அருகே'; the article gives the location as Trichy district, which is consistent, so no issue here — however the reel_script names the place 'எருமப்பட்டி' as 'எருமப்பட்டி' while the article spells it 'எருமைப்பட்டி' (place name differs from the article)
-  reel_script and slides say 'தஞ்சை மாவட்டம் திருக்காட்டுப்பள்ளி செங்கல் சூளையில் பணியாற்றிய 10 பேர்' and the article says 10 workers went, but the reel_script never mentions the 10 people were all from the brick kiln as the article states the kiln workers were in the car; minor, not an error
-  caption lists 'சீதாராமன்' without an age, which is faithful to the article, but the caption says 'உயிரிழந்தவர்கள்' lists six people from Thanjavur and two from Villupuram while the article lists exactly these names, so no issue
-  caption and slides_spec state the victims were 'செங்கல் சூளைத் தொழிலாளர்கள்' (brick kiln workers) and the article supports this, so no issue
-  reel_script omits that the 10 workers were 'இன்று (நவ.,22) காலை' and instead gives the date as 'நவம்பர் 22ஆம் தேதி', which is consistent with the article
-  caption 'நவ. 22 காலை' and the reel_script date are consistent with the article's date, so no issue
-claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
-  fact-check: reel_script says the car hit the tree 'near Trichy' and the slide says 'திருச்சி அருகே'; the article gives the location as Trichy district, which is consistent, so no issue here — however the reel_script names the place 'எருமப்பட்டி' as 'எருமப்பட்டி' while the article spells it 'எருமைப்பட்டி' (place name differs from the article)
-  fact-check: reel_script and slides say 'தஞ்சை மாவட்டம் திருக்காட்டுப்பள்ளி செங்கல் சூளையில் பணியாற்றிய 10 பேர்' and the article says 10 workers went, but the reel_script never mentions the 10 people were all from the brick kiln as the article states the kiln workers were in the car; minor, not an error
-  fact-check: caption lists 'சீதாராமன்' without an age, which is faithful to the article, but the caption says 'உயிரிழந்தவர்கள்' lists six people from Thanjavur and two from Villupuram while the article lists exactly these names, so no issue
-  fact-check: caption and slides_spec state the victims were 'செங்கல் சூளைத் தொழிலாளர்கள்' (brick kiln workers) and the article supports this, so no issue
-  fact-check: reel_script omits that the 10 workers were 'இன்று (நவ.,22) காலை' and instead gives the date as 'நவம்பர் 22ஆம் தேதி', which is consistent with the article
-  fact-check: caption 'நவ. 22 காலை' and the reel_script date are consistent with the article's date, so no issue
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 44, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க'); 43, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க'); 45, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க'); 50, ('இந்த விபத்தில், தஞ்சை, மகாராஜபுரம் பகுதியைச் சேர்ந்த மாணிக்க')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok anthropic/claude-haiku-5-5
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
 write round: 1 news waiting in the queue (written in priority order)
-candidate filter: collected=1
-to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
+candidate filter: checked earlier=1
+to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)
 daily cap: 30 stories already written today (cap 30) - only main / important news is written now
 archive round: priority scan only (urgent local news, if any)
-candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
-try (N) manual=False: மரத்தில் கார் மோதி கோர விபத்து; 8 பேர் பலி
-NOT filed (N) மரத்தில் கார் மோதி கோர விபத்து; 8 பேர் பலி: not Namakkal district news (the story's first lines name another place and no Namakkal place)
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 27 min
+candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 1 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
+queue: 0 news waiting to be written 
 stories: 0
