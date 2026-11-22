@@ -8,6 +8,7 @@ on:
     - cron: "30 6 * * *"       # 12:00 IST
     - cron: "30 10 * * *"      # 16:00 IST
     - cron: "30 14 * * *"      # 20:00 IST (nothing posts 00:00-05:00, so no midnight round)
+    - cron: "30 16 * * *"      # 22:00 IST (owner 22 Nov: news of the late evening still goes out the same day)
   workflow_dispatch:
     inputs:
       dry:
@@ -78,10 +79,10 @@ jobs:
           GH_REPO: ${{ github.repository }}
           AUTO_IMAGES: "1"          # owner request 24 Oct: images made automatically (Cloudflare FLUX, then NVIDIA FLUX.1-dev); stories without all images go to the e-mail as before
           WRITE_STORIES: '1'
-          DAILY_CAP: "70"          # owner 21 Nov: at most 30-35 news a day PER PAGE - Namakkal 360 + Rasipuram 360 = 70 (urgent news still go after it)
+          DAILY_CAP: "35"          # owner 22 Nov: 15-35 news a day for the district (Namakkal 360 + Rasipuram 360 together; urgent news still go after it)
           COLLECT_MODE: ${{ github.event.inputs.manual_url != '' && 'both' || 'collect' }}      # a link given by hand is written at once
           WRITE_WORKERS: "3"        # stories written at the same time
-          FRESH_DAYS: "2"           # news published today or yesterday (not posted yet)
+          FRESH_DAYS: "1"           # owner 22 Nov: only news published TODAY (IST) - yesterday's news is never posted today
         run: |
           mkdir -p research_free/results
           FLAG=""; [ "${{ github.event.inputs.dry }}" = "true" ] && FLAG="--dry"

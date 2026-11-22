@@ -71,9 +71,9 @@ jobs:
           BUDGET_MIN: "30"
           AUTO_IMAGES: "1"
           WRITE_STORIES: '1'
-          DAILY_CAP: "70"          # owner 21 Nov: at most 30-35 news a day PER PAGE - Namakkal 360 + Rasipuram 360 = 70 (urgent news still go after it)
+          DAILY_CAP: "35"          # owner 22 Nov: 15-35 news a day for the district (Namakkal 360 + Rasipuram 360 together; urgent news still go after it)
           WRITE_WORKERS: "3"
-          FRESH_DAYS: "2"
+          FRESH_DAYS: "1"           # owner 22 Nov: only news published TODAY (IST) - yesterday's news is never posted today
         run: |
           mkdir -p research_free/results
           python -u research_free/collect.py > research_free/results/write.log 2>&1 || echo "exit $?" >> research_free/results/write.log

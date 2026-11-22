@@ -1016,8 +1016,10 @@ def main():
     target, done, tried = {"R": MAX_RASIPURAM, "N": MAX_NAMAKKAL}, {"R": 0, "N": 0}, {"R": 0, "N": 0}
     room = DAILY_CAP - TODAY[0]      # owner 21 Nov: at most 30-35 news a day per page - two pages here (DAILY_CAP 70 = 35 each);
     if 0 < room < target["R"] + target["N"]:      # a round never takes the day past the maximum
-        target["R"] = min(target["R"], room)
-        target["N"] = max(0, room - target["R"])
+        # owner 22 Nov: Rasipuram gets only as many places as it has news - the rest is Namakkal's (it took all 65 with 0 news,
+        # so 31 Namakkal news waited and nothing was written)
+        target["R"] = min(target["R"], room, len(queues["R"]))
+        target["N"] = min(target["N"], max(0, room - target["R"]))
         log.append(f"daily maximum {DAILY_CAP}: {TODAY[0]} written today - this round writes at most {target['R']} + {target['N']}")
     if TODAY[0] >= DAILY_CAP:
         log.append(f"daily cap: {TODAY[0]} stories already written today (cap {DAILY_CAP}) - only main / important news is written now")
