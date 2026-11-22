@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-22 | `2870ec8` | Website: each posted story goes to the shared 7-district site with its district (only when the WEBSITE_INGEST_KEY secret is set; posting is not affected) |
+| 2026-11-22 | `364dae1` | stories shared / Instagram pause |
 | 2026-11-22 | `b24584b` | Dashboard status file for the owner's private dashboard; rasipalan also shared to the Namakkal Facebook page |
 | 2026-11-22 | `5bad8fc` | Facebook check: list the last 20 Facebook posts (was 10) |
 | 2026-11-22 | `03e1f90` | Facebook check: list each page's latest Facebook posts (read only) |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-21 | `01c4827` | Facebook: every news that is on Instagram also goes to Facebook |
 | 2026-11-21 | `18196e9` | powercut: notices written |
 | 2026-11-21 | `afb9209` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-21 | `35e544b` | posted report sent |
-| 2026-11-21 | `45847c9` | Posted report: one e-mail for all pages, 4 times a day |
 <!-- recent-changes:end -->
