@@ -65,6 +65,14 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-22 | `08474c4` | Namakkal and Rasipuram: post a story that names only the district |
+| 2026-11-22 | `3a33870` | stories shared / Instagram pause |
+| 2026-11-22 | `eaa4b27` | rasipalan posted |
+| 2026-11-21 | `bf3f905` | posted report sent |
+| 2026-11-21 | `e58e77d` | powercut: notices written |
+| 2026-11-21 | `2d64282` | powercut: notices written |
+| 2026-11-21 | `7df6e24` | comments: normal comments recorded (not e-mailed) |
+| 2026-11-21 | `1ef8573` | posted report sent |
 | 2026-11-21 | `f8a807d` | YouTube: news reels uploaded automatically as Shorts (only with the page's keys) |
 | 2026-11-21 | `b744395` | posted report sent |
 | 2026-11-21 | `0d0f660` | powercut: notices written |
@@ -87,12 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-21 | `deed9a3` | stories shared |
 | 2026-11-21 | `6ed0d76` | stories shared |
 | 2026-11-21 | `8a5aad8` | goldrate posted |
-| 2026-11-21 | `7351c3a` | facebook RN-736 |
-| 2026-11-21 | `d92a12a` | facebook RN-735 |
-| 2026-11-21 | `b43ce91` | Keep 20 of Instagram's 50 daily posts for news: stories stop at 30 (news was waiting at 48/50) |
-| 2026-11-21 | `1ae4799` | stories shared |
-| 2026-11-21 | `136f00a` | Stop posting bursts: 10 min between news posts; an Instagram block pauses the page 6 h (news waits) instead of retrying every run |
-| 2026-11-21 | `a1c78cb` | stories shared |
-| 2026-11-21 | `875b351` | rasipalan posted |
-| 2026-11-21 | `3cce986` | facebook RN-732 |
 <!-- recent-changes:end -->
