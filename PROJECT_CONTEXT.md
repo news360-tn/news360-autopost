@@ -65,6 +65,10 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-22 | `aebee6f` | Facebook: Rasipuram 360 is Instagram only - its news goes to the Namakkal 360 Facebook page (once, #Namakkal360) |
+| 2026-11-22 | `e6bf7cc` | stories shared / Instagram pause |
+| 2026-11-22 | `2d118e8` | posted report sent |
+| 2026-11-22 | `7eb910b` | powercut: notices written |
 | 2026-11-22 | `7240f2c` | Facebook: one post every 60 minutes, at most 15 a day per page, most important news first; after the 15 the rest goes to the owner's e-mail at once (share from Instagram) |
 | 2026-11-22 | `abe5bda` | facebook RN-760 |
 | 2026-11-22 | `3d67eb7` | posted RN-760 |
@@ -91,8 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-22 | `2ad44f1` | facebook RN-753 |
 | 2026-11-22 | `5c31aee` | posted RN-753 |
 | 2026-11-22 | `82745e8` | stories shared / Instagram pause |
-| 2026-11-22 | `4616b2f` | facebook RN-748 |
-| 2026-11-22 | `6ee8711` | posted RN-748 |
-| 2026-11-22 | `0481326` | stories shared / Instagram pause |
-| 2026-11-22 | `dd64e0c` | facebook RN-752 |
 <!-- recent-changes:end -->
