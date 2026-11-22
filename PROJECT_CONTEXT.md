@@ -65,6 +65,20 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-22 | `7240f2c` | Facebook: one post every 60 minutes, at most 15 a day per page, most important news first; after the 15 the rest goes to the owner's e-mail at once (share from Instagram) |
+| 2026-11-22 | `abe5bda` | facebook RN-760 |
+| 2026-11-22 | `3d67eb7` | posted RN-760 |
+| 2026-11-22 | `5e0d90e` | facebook RN-755 |
+| 2026-11-22 | `32096ff` | posted RN-755 |
+| 2026-11-22 | `973c071` | stories shared / Instagram pause |
+| 2026-11-22 | `11d9713` | facebook RN-759 |
+| 2026-11-22 | `13a390f` | posted RN-759 |
+| 2026-11-22 | `bae08aa` | facebook RN-757 |
+| 2026-11-22 | `3cd9582` | posted RN-757 |
+| 2026-11-22 | `6f00aae` | facebook RN-756 |
+| 2026-11-22 | `8215bbb` | posted RN-756 |
+| 2026-11-22 | `ac51db8` | stories shared / Instagram pause |
+| 2026-11-22 | `2ae5216` | stories shared / Instagram pause |
 | 2026-11-22 | `f44a211` | Daily plan: 30 of today's published news + yesterday's pending news + urgent news after the 30; news older than yesterday never posted |
 | 2026-11-22 | `62d081c` | stories shared / Instagram pause |
 | 2026-11-22 | `cd46948` | stories shared / Instagram pause |
@@ -81,18 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-22 | `6ee8711` | posted RN-748 |
 | 2026-11-22 | `0481326` | stories shared / Instagram pause |
 | 2026-11-22 | `dd64e0c` | facebook RN-752 |
-| 2026-11-22 | `b32f043` | posted RN-752 |
-| 2026-11-22 | `135caaa` | stories shared / Instagram pause |
-| 2026-11-22 | `f919db2` | posted report sent |
-| 2026-11-22 | `3455b80` | facebook RN-751 |
-| 2026-11-22 | `fdef8fa` | posted RN-751 |
-| 2026-11-22 | `4bfcddb` | stories shared / Instagram pause |
-| 2026-11-22 | `41702f0` | facebook RN-749 |
-| 2026-11-22 | `7b607c1` | posted RN-749 |
-| 2026-11-22 | `4163274` | stories shared / Instagram pause |
-| 2026-11-22 | `a73682b` | facebook RN-746 |
-| 2026-11-22 | `381d3f4` | posted RN-746 |
-| 2026-11-22 | `bb5b6fb` | stories shared / Instagram pause |
-| 2026-11-22 | `0f92380` | facebook RN-747 |
-| 2026-11-22 | `5adc4c2` | posted RN-747 |
 <!-- recent-changes:end -->
