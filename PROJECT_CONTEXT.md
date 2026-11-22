@@ -65,6 +65,10 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-22 | `5209717` | Manual post e-mail: news a page cannot post goes to the owner, one by one |
+| 2026-11-22 | `6a62e8e` | stories shared / Instagram pause |
+| 2026-11-22 | `3cedc86` | facebook RN-733 |
+| 2026-11-22 | `f05b9c7` | posted RN-733 |
 | 2026-11-22 | `08474c4` | Namakkal and Rasipuram: post a story that names only the district |
 | 2026-11-22 | `3a33870` | stories shared / Instagram pause |
 | 2026-11-22 | `eaa4b27` | rasipalan posted |
@@ -91,8 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-21 | `2c503e3` | Post news as soon as it is ready; only news with a source link; collect every 4 hours, max 35 a day |
 | 2026-11-21 | `748f834` | comments: normal comments recorded (not e-mailed) |
 | 2026-11-21 | `ad9547d` | A news picture that cannot be downloaded (old Cloudinary account, 401/404) is left out - the reel uses the designed background, the page is never blocked |
-| 2026-11-21 | `36c1341` | stories shared |
-| 2026-11-21 | `deed9a3` | stories shared |
-| 2026-11-21 | `6ed0d76` | stories shared |
-| 2026-11-21 | `8a5aad8` | goldrate posted |
 <!-- recent-changes:end -->
