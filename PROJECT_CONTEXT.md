@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-22 | `d4f4494` | Collection: Bing backup when Google News is busy; dashboard file written only by the posting job |
-| 2026-11-22 | `716203d` | Same-day news only, 15-35 a day: every news published today is written (max 35), yesterday's news is never posted, 22:00 round added; Namakkal writer split fix |
-| 2026-11-22 | `511c733` | stories shared / Instagram pause |
-| 2026-11-22 | `1b8af40` | stories shared / Instagram pause |
-| 2026-11-22 | `163930c` | stories shared / Instagram pause |
-| 2026-11-22 | `5b17701` | stories shared / Instagram pause |
-| 2026-11-22 | `b2d41a2` | stories shared / Instagram pause |
-| 2026-11-22 | `4234e06` | stories shared / Instagram pause |
-| 2026-11-22 | `869084d` | stories shared / Instagram pause |
-| 2026-11-22 | `5e0923a` | stories shared / Instagram pause |
-| 2026-11-22 | `47c9a22` | stories shared / Instagram pause |
-| 2026-11-22 | `f249282` | stories shared / Instagram pause |
-| 2026-11-22 | `64dbb49` | stories shared / Instagram pause |
-| 2026-11-22 | `390beb7` | facebook RN-742 |
-| 2026-11-22 | `d790218` | posted RN-742 |
-| 2026-11-22 | `3a5df01` | stories shared / Instagram pause |
-| 2026-11-22 | `112ac02` | facebook RN-741 |
-| 2026-11-22 | `c863028` | posted RN-741 |
-| 2026-11-22 | `82a09bf` | stories shared / Instagram pause |
-| 2026-11-22 | `c2aa65a` | facebook RN-740 |
-| 2026-11-22 | `a56c33e` | posted RN-740 |
-| 2026-11-22 | `a9c0817` | stories shared / Instagram pause |
-| 2026-11-22 | `8b7a3ef` | facebook RN-738 |
-| 2026-11-22 | `910b9ee` | posted RN-738 |
-| 2026-11-22 | `8ca3429` | stories shared / Instagram pause |
-| 2026-11-22 | `894c8e0` | facebook RN-739 |
-| 2026-11-22 | `8ea722a` | posted RN-739 |
-| 2026-11-22 | `2c651cf` | stories shared / Instagram pause |
-| 2026-11-22 | `df63747` | stories shared / Instagram pause |
-| 2026-11-22 | `9271642` | posted report sent |
+| 2026-11-22 | `f44a211` | Daily plan: 30 of today's published news + yesterday's pending news + urgent news after the 30; news older than yesterday never posted |
+| 2026-11-22 | `62d081c` | stories shared / Instagram pause |
+| 2026-11-22 | `cd46948` | stories shared / Instagram pause |
+| 2026-11-22 | `ed7cc4f` | stories shared / Instagram pause |
+| 2026-11-22 | `c73ed2c` | stories shared / Instagram pause |
+| 2026-11-22 | `afa70c6` | stories shared / Instagram pause |
+| 2026-11-22 | `3388672` | stories shared / Instagram pause |
+| 2026-11-22 | `d4e7695` | stories shared / Instagram pause |
+| 2026-11-22 | `fac71a9` | stories shared / Instagram pause |
+| 2026-11-22 | `2ad44f1` | facebook RN-753 |
+| 2026-11-22 | `5c31aee` | posted RN-753 |
+| 2026-11-22 | `82745e8` | stories shared / Instagram pause |
+| 2026-11-22 | `4616b2f` | facebook RN-748 |
+| 2026-11-22 | `6ee8711` | posted RN-748 |
+| 2026-11-22 | `0481326` | stories shared / Instagram pause |
+| 2026-11-22 | `dd64e0c` | facebook RN-752 |
+| 2026-11-22 | `b32f043` | posted RN-752 |
+| 2026-11-22 | `135caaa` | stories shared / Instagram pause |
+| 2026-11-22 | `f919db2` | posted report sent |
+| 2026-11-22 | `3455b80` | facebook RN-751 |
+| 2026-11-22 | `fdef8fa` | posted RN-751 |
+| 2026-11-22 | `4bfcddb` | stories shared / Instagram pause |
+| 2026-11-22 | `41702f0` | facebook RN-749 |
+| 2026-11-22 | `7b607c1` | posted RN-749 |
+| 2026-11-22 | `4163274` | stories shared / Instagram pause |
+| 2026-11-22 | `a73682b` | facebook RN-746 |
+| 2026-11-22 | `381d3f4` | posted RN-746 |
+| 2026-11-22 | `bb5b6fb` | stories shared / Instagram pause |
+| 2026-11-22 | `0f92380` | facebook RN-747 |
+| 2026-11-22 | `5adc4c2` | posted RN-747 |
 <!-- recent-changes:end -->
