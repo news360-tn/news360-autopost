@@ -65,6 +65,11 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-22 | `30e203c` | Facebook share e-mail: news on Instagram but not on Facebook after 3 hours |
+| 2026-11-22 | `9916dfd` | stories shared / Instagram pause |
+| 2026-11-22 | `1069ab9` | goldrate posted |
+| 2026-11-22 | `8fec525` | posted report sent |
+| 2026-11-22 | `6177d59` | stories shared / Instagram pause |
 | 2026-11-22 | `048b536` | Manual post e-mail: attach a 720p copy of the reel (the full reel was too large) |
 | 2026-11-22 | `f2569a3` | stories shared / Instagram pause |
 | 2026-11-22 | `5209717` | Manual post e-mail: news a page cannot post goes to the owner, one by one |
@@ -90,9 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-21 | `e737609` | Instagram-safe limits, file upload without Cloudinary, skipped e-mails restarted |
 | 2026-11-21 | `9a20dad` | goldrate posted |
 | 2026-11-21 | `a35dc65` | facebook RN-737 |
-| 2026-11-21 | `e35b1eb` | Instagram-safe: stories only for power cuts / urgent news again (as Kovai and Chennai Minnal) |
-| 2026-11-21 | `077b948` | powercut: notices written |
-| 2026-11-21 | `44ad480` | stories shared |
-| 2026-11-21 | `555dd47` | powercut: notices written |
-| 2026-11-21 | `2c503e3` | Post news as soon as it is ready; only news with a source link; collect every 4 hours, max 35 a day |
 <!-- recent-changes:end -->
