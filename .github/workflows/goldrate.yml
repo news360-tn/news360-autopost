@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 240
     env:
-      GOLD_PAGES: "namakkal rasipuram"
+      GOLD_PAGES: "namakkal"      # owner 23 Nov: Rasipuram 360 does not post on its own
       DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry || '' }}
       GOLD_DATE: ${{ github.event_name == 'workflow_dispatch' && inputs.date || '' }}
       GOLD_MODE: ${{ (github.event_name == 'workflow_dispatch' && inputs.mode) || (github.event.schedule == '5 10 * * *' && 'pm') || 'am' }}

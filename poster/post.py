@@ -203,19 +203,22 @@ def is_shutdown(row):
 LABEL = {"rasipuram": "இராசிபுரம் 360", "namakkal": "நாமக்கல் 360"}
 
 
-def pages_of(row):
-    """the ONE page that posts this story (its logo, follow line and account) = the first page named in post_to:
-    "Rasipuram 360 (collab: Namakkal 360)" -> rasipuram; "Namakkal 360 (collab: Rasipuram 360)" / "Namakkal 360" -> namakkal.
-    Older rows ("Rasipuram 360 + Namakkal 360") follow the same rule."""
+def is_rasipuram_news(row):
+    """the writer filed it as Rasipuram-area news: post_to names Rasipuram 360 FIRST ("Rasipuram 360 (collab: Namakkal 360)")"""
     t = (row.get("post_to") or "").lower()
     pos = {p: t.find(p) for p in ("namakkal", "rasipuram") if p in t}
-    return [min(pos, key=pos.get)] if pos else ["namakkal"]
+    return bool(pos) and min(pos, key=pos.get) == "rasipuram"
+
+
+def pages_of(row):
+    """owner 23 Nov: EVERY Namakkal-district news is posted by Namakkal 360 (its logo, follow line and account) - Rasipuram 360 never
+    posts on its own; a Rasipuram-area news invites Rasipuram 360 as collaborator (collab_page)"""
+    return ["namakkal"]
 
 
 def collab_page(row, page):
-    """the other page, invited as collaborator, when post_to names it (Rasipuram news always invites Namakkal 360)"""
-    other = "namakkal" if page == "rasipuram" else "rasipuram"
-    return other if (other in (row.get("post_to") or "").lower() or page == "rasipuram") else ""
+    """owner 23 Nov: only a Rasipuram-area news invites Rasipuram 360 (district-wide news: no collaborator)"""
+    return "rasipuram" if page == "namakkal" and is_rasipuram_news(row) else ""
 
 
 def page_done(row, page):
@@ -1116,6 +1119,18 @@ def collab_user():
     if COLLAB == "rasipuram":
         return CONFIG.get("collab_username", "rasipuram.360")
     return CONFIG.get("collab_namakkal_username", "namakkal.360")
+
+
+def accept_collab(page, mid):
+    """owner 23 Nov: the invited page (Rasipuram 360) accepts the collaboration itself so the reel shows on both pages.
+    Best effort - never raises; when Instagram refuses, the owner accepts it in the Rasipuram 360 app."""
+    try:
+        tok = bridge_get("token", page=page)["token"]
+        uid = ig("GET", "me", tok, fields="user_id")["user_id"]
+        ig("POST", f"{uid}/collaboration_invites", tok, media_id=mid, accept="true")
+        log(f"{LABEL.get(page, page)} accepted the collaboration")
+    except Exception as e:
+        log(f"collaboration not accepted automatically (accept it in the {LABEL.get(page, page)} app):", str(e)[:200])
 
 
 def create_with_collab(uid, token, params, collab):
@@ -2405,6 +2420,8 @@ def run_story_page(row, page):
                                        "media_urls": [localmedia.shown(url) or link], "caption": caption, "voice": voice, "collab": collab_ok, "checks": note,
                                        "quiet": posted_quiet()})
                 done.append(("reel", link))
+                if collab_ok and COLLAB:
+                    accept_collab(COLLAB, mid)      # owner 23 Nov: the Rasipuram news shows on Rasipuram 360 at once
                 first_comment(token, mid, sid, row)
                 publish_story(token, url, "video", row)
                 try:      # owner 27 Oct: the posted story goes to the Namakkal 360 website at once (a website problem never stops posting)

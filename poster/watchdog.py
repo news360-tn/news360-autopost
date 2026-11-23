@@ -57,8 +57,10 @@ def busy(rs, now, minutes):
 
 
 def posted_today(folder, prefix, today):
-    """True when every saved post file in folder (name starting with prefix) is dated today; None when there is no such file"""
-    files = [n for n in (names(folder) or []) if n.startswith(prefix) and n.endswith(".json")]
+    """True when every saved post file in folder (name starting with prefix) is dated today; None when there is no such file.
+    owner 23 Nov: only the pages that still post (a page that stopped posting keeps an old file - it is not waited for)"""
+    files = [n for n in (names(folder) or []) if n.startswith(prefix) and n.endswith(".json")
+             and any(n == f"{prefix}{pg}.json" for pg in page_names())]
     if not files:
         return None
     for n in files:
@@ -97,7 +99,7 @@ def round_overdue(now, round_runs):
 
 def page_names():
     name = REPO.split("/")[-1]
-    return ("namakkal", "rasipuram") if name.startswith("news360") else (name.split("360")[0],)
+    return ("namakkal",) if name.startswith("news360") else (name.split("360")[0],)      # owner 23 Nov: Rasipuram 360 posts only as collaborator
 
 
 def all_paused(now):

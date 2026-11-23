@@ -28,6 +28,9 @@ MIN_SOURCES = int(os.environ.get("MIN_SOURCES", "2"))
 REPOST = os.environ.get("REPOST", "") == "1"      # by hand: today's post was deleted by the owner - post it again (state file ignored)
 FORCE_DATE = os.environ.get("RASI_DATE", "")      # testing only: YYYY-MM-DD
 PAGES = {
+    # owner 23 Nov: Rasipuram 360 no longer posts on its own - the daily rasipalan goes out on Namakkal 360 (PAGE=namakkal)
+    "namakkal": {"brand": "நாமக்கல் 360", "town": "நாமக்கல்", "design": "temple", "logo": "logo_namakkal.png", "handle": "namakkal.360",
+                 "collab": "", "tags": ["#ராசிபலன்", "#RasiPalan", "#இன்றையராசிபலன்", "#Namakkal", "#Namakkal360"]},
     "rasipuram": {"brand": "இராசிபுரம் 360", "town": "இராசிபுரம்", "design": "temple", "logo": "logo_rasipuram.png",
                   "collab": "namakkal.360", "tags": ["#ராசிபலன்", "#RasiPalan", "#இன்றையராசிபலன்", "#Namakkal360", "#Rasipuram360"]},
     "coimbatore": {"brand": "கோயம்புத்தூர் 360", "town": "கோவை", "design": "calendar", "logo": "logo_coimbatore.png",
