@@ -65,6 +65,11 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-23 | `e9d3417` | Reels only: no Instagram or Facebook stories; wait 5 minutes after an error |
+| 2026-11-23 | `76587e9` | stories shared / Instagram pause |
+| 2026-11-23 | `227efe9` | stories shared / Instagram pause |
+| 2026-11-23 | `d393492` | stories shared / Instagram pause |
+| 2026-11-23 | `0f4be26` | stories shared / Instagram pause |
 | 2026-11-23 | `2e25bad` | Posting: next reel about 5 minutes after the last (5-minute gap kept); a temporary Instagram error waits 10 minutes, then posts (no manual e-mail for it) |
 | 2026-11-23 | `fa83a21` | stories shared / Instagram pause |
 | 2026-11-23 | `de0aa7f` | stories shared / Instagram pause |
@@ -90,9 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-23 | `559d297` | stories shared / Instagram pause |
 | 2026-11-23 | `93b5ffd` | stories shared / Instagram pause |
 | 2026-11-23 | `be6af0b` | stories shared / Instagram pause |
-| 2026-11-23 | `d749260` | stories shared / Instagram pause |
-| 2026-11-23 | `c129828` | stories shared / Instagram pause |
-| 2026-11-23 | `e5007a8` | stories shared / Instagram pause |
-| 2026-11-23 | `a07bb68` | stories shared / Instagram pause |
-| 2026-11-23 | `b5b388e` | rasipalan posted |
 <!-- recent-changes:end -->
