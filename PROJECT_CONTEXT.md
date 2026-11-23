@@ -65,6 +65,12 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-23 | `7d39ca2` | Facebook 15 a day counts today's news only (not the last 24 h, not rasipalan / gold); picking rejects state-wide news; Thiruparankundram is outside |
+| 2026-11-23 | `e18ddda` | stories shared / Instagram pause |
+| 2026-11-23 | `1e7ed58` | stories shared / Instagram pause |
+| 2026-11-23 | `b323bf0` | stories shared / Instagram pause |
+| 2026-11-23 | `d0a1f7d` | stories shared / Instagram pause |
+| 2026-11-23 | `935a6f5` | stories shared / Instagram pause |
 | 2026-11-23 | `f534c71` | Namakkal 360 posts every Namakkal-district news, rasipalan and gold; Rasipuram 360 only as collaborator on Rasipuram-area news (auto-accepted); other-district town filter |
 | 2026-11-23 | `18bcfb5` | stories shared / Instagram pause |
 | 2026-11-23 | `3d85dc6` | stories shared / Instagram pause |
@@ -89,10 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-23 | `2b5f9b6` | posted RN-782 |
 | 2026-11-23 | `6087862` | stories shared / Instagram pause |
 | 2026-11-23 | `1e292de` | goldrate posted |
-| 2026-11-23 | `9ece9a6` | stories shared / Instagram pause |
-| 2026-11-23 | `03e015a` | facebook RN-778 |
-| 2026-11-23 | `3594439` | posted RN-778 |
-| 2026-11-23 | `cce29d6` | facebook RN-788 |
-| 2026-11-23 | `82c6017` | posted RN-788 |
-| 2026-11-23 | `546f580` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
