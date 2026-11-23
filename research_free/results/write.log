@@ -1,22 +1,277 @@
+writing [N]: ஆம்லெட் பிரியர்களுக்கு மகிழ்ச்சி செய்தி! தொடர்ந்து குறையும் 
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+writing [N]: மரத்தில் கார் மோதிய விபத்தில் பலி எண்ணிக்கை 9 ஆக உயர்வு
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+writing [N]: சேலம், நாமக்கல் மாணவர்களுக்கு குட் நியூஸ்! விருது வழங்கும் ம
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (11s)
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  reel_script has 75 words; need 77-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 10 ('5.60-ஆக தேசிய முட்டை ஒருங்கிணைப்புக் குழுவால் நிர்ணயிக்கப்பட'); 10 ('5.60..முட்டை விலை 10 காசுகள் உயா்ந்து ரூ.')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+ok gemini/gemini-3.6-flash (20s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 4 ('நடப்பாண்டுக்கான முதல் கட்ட விழா கடந்த நவம்பர் 4-ம் தேதி சென்'); 18 ('இந்த விழா முதலில் நவம்பர் 18-ம் தேதி நடைபெறும் என அறிவிக்கப்')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+ok gemini/gemini-3.5-flash (18s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (33s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  reel_script sentence 1 (heard in the first 3 seconds) must name the place 'முசிறி அருகே' and the news itself, e.g. 'முசிறி அருகே-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+switching away from gemini/gemini-3-flash-preview for 10 min
+ok groq/openai/gpt-oss-120b (4s)
+factcheck by groq/openai/gpt-oss-120b: 1 problems
+  Slide 2 line claims that other zones reduced egg price, which is not mentioned in the article (article only says price changes were made, not specifically reductions)
+attempt 2 gemini/gemini-3.5-flash: 1 problems
+  fact-check: Slide 2 line claims that other zones reduced egg price, which is not mentioned in the article (article only says price changes were made, not specifically reductions)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+switching away from gemini/gemini-3-flash-preview for 10 min
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+ok groq/qwen/qwen3.8-27b (4s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+ok groq/qwen/qwen3.8-27b (0s)
+factcheck by groq/qwen/qwen3.8-27b: 2 problems
+  Slide 3, line 2 claims 'ஏற்றுமதி நிறுத்தப்படுவதால் விலை குறைக்கப்பட்டது' (Price reduced because export stopped), which is an invented causal link. The article lists low consumption, price changes in other zones, and the Oman ban as separate factors, but does not state that the export stoppage was the specific reason for the price reduction.
+  Slide 3, line 1 states 'மாதந்தோறும் 3 கோடி முட்டைகள் ஓமனுக்கு அனுப்பப்படுகிறது' (3 crore eggs are sent to Oman monthly), which is a general statement. The article specifies that 3 crore eggs were being sent to Oman specifically, but the context of the slide (Export Ban) implies this is the current status or the specific volume affected, which is slightly misleading as the export is now stopped due to the ban, though the number itself is correct from the article. However, the main issue is the causal claim in the next line.
+attempt 3 groq/qwen/qwen3.8-27b: 2 problems
+  fact-check: Slide 3, line 2 claims 'ஏற்றுமதி நிறுத்தப்படுவதால் விலை குறைக்கப்பட்டது' (Price reduced because export stopped), which is an invented causal link. The article lists low consumption, price changes in other zones, and the Oman ban as separate factors, but does not state that the export stoppage was the specific reason for the price reduction.
+  fact-check: Slide 3, line 1 states 'மாதந்தோறும் 3 கோடி முட்டைகள் ஓமனுக்கு அனுப்பப்படுகிறது' (3 crore eggs are sent to Oman monthly), which is a general statement. The article specifies that 3 crore eggs were being sent to Oman specifically, but the context of the slide (Export Ban) implies this is the current status or the specific volume affected, which is slightly misleading as the export is now stopped due to the ban, though the number itself is correct from the article. However, the main issue is the causal claim in the next line.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  slides_spec line 'இன்று மாலை பலி எண்ணிக்கை 9 ஆக உயர்வு' says the death toll rose 'today' in the evening, but the article says the 9th death happened on 23 Nov evening (the 'today' framing relative to the posting date is not clearly supported; ambiguous timing)
+  slides_spec line 'திருச்சி அரசு மருத்துவமனையில் சிகிச்சையில் இருந்தவர்களில்' is an incomplete, ungrammatical sentence with no clear meaning
+  slides_spec line 'காரில் பயணித்தவர்கள் மொத்தம் 10 பேர்' combined with the slide title 'மொத்த பலி' mixes the total occupants with the death count in one confusing context
+  reel_script states the 3 deaths in hospital without noting that the 9-death total includes the later death of Ramalingam; the sentence 'மூன்று பேர் மருத்துவமனையில் உயிரிழந்தனர்' is missing the article's detail that the two injured were treated at Trichy government hospital before one died (partially covered, but the fact that one of them is Ramalingam is only in a later sentence, mixing two facts)
+  slides_spec subtitle 'சாத்தனூர் ராமலிங்கம் (45 வயது), இன்று மாலை உயிரிழப்பு' uses 'இன்று' (today) for 23 Nov, which the article dates as 'இன்று (நவ.,23)' only relative to article publication, creating a date ambiguity versus the posting date
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: slides_spec line 'இன்று மாலை பலி எண்ணிக்கை 9 ஆக உயர்வு' says the death toll rose 'today' in the evening, but the article says the 9th death happened on 23 Nov evening (the 'today' framing relative to the posting date is not clearly supported; ambiguous timing)
+  fact-check: slides_spec line 'திருச்சி அரசு மருத்துவமனையில் சிகிச்சையில் இருந்தவர்களில்' is an incomplete, ungrammatical sentence with no clear meaning
+  fact-check: slides_spec line 'காரில் பயணித்தவர்கள் மொத்தம் 10 பேர்' combined with the slide title 'மொத்த பலி' mixes the total occupants with the death count in one confusing context
+  fact-check: reel_script states the 3 deaths in hospital without noting that the 9-death total includes the later death of Ramalingam; the sentence 'மூன்று பேர் மருத்துவமனையில் உயிரிழந்தனர்' is missing the article's detail that the two injured were treated at Trichy government hospital before one died (partially covered, but the fact that one of them is Ramalingam is only in a later sentence, mixing two facts)
+  fact-check: slides_spec subtitle 'சாத்தனூர் ராமலிங்கம் (45 வயது), இன்று மாலை உயிரிழப்பு' uses 'இன்று' (today) for 23 Nov, which the article dates as 'இன்று (நவ.,23)' only relative to article publication, creating a date ambiguity versus the posting date
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+switching away from gemini/gemini-3-flash-preview for 10 min
+free models unavailable: no free model answered: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The caption's 'Namakkal egg price cut to Rs 5.60 | Namakkal news' line is an English line that adds extra text beyond the Tamil content; it is not a claim from the article, so it is not counted here, but the Tamil text itself is faithful.
+  The slide 'பிற மண்டலங்களிலும் விலை மாற்றம் செய்யப்பட்டு வருகிறது' is placed under 'ஏற்றுமதி நிலை' (export status), mixing a price-change fact into the export slide.
+  The reel_script states 'ஓமனுக்கு மாதம் 3 கோடி முட்டைகள் கப்பலில் அனுப்பப்படுபவை தற்போது ஏற்றுமதி செய்யப்படாமல் தேங்கியுள்ளன' which is garbled: it merges 'shipped by ship' with 'stuck unexported', and the article's wording ('ஓமன் நாட்டுக்கு மட்டும் மாதந்தோறும் 3 கோடி முட்டைகள் கப்பலில் அனுப்பிவைக்கப்படுகின்றன… தேங்கியுள்ளன') conveys the figure as the monthly amount sent to Oman that is now stuck, not as a clear sentence in the draft.
+  The slide 'ஓமனுக்கு மாதம் 3 கோடி முட்டைகள் தேக்கம்' under 'விலை குறைவுக்கான' presents the stuck eggs as a price-cut cause, mixing two separate facts (export ban and stuck stock) into one slide line.
+  The 'முட்டை, கோழி இறைச்சி நுகர்வு குறைந்து வருவதாலும்... விலை மாற்றம் தேவை' statement and the export ban are presented in the same paragraph/slide structure, combining the consumption-decline cause with the export-ban cause without clear separation.
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The caption's 'Namakkal egg price cut to Rs 5.60 | Namakkal news' line is an English line that adds extra text beyond the Tamil content; it is not a claim from the article, so it is not counted here, but the Tamil text itself is faithful.
+  fact-check: The slide 'பிற மண்டலங்களிலும் விலை மாற்றம் செய்யப்பட்டு வருகிறது' is placed under 'ஏற்றுமதி நிலை' (export status), mixing a price-change fact into the export slide.
+  fact-check: The reel_script states 'ஓமனுக்கு மாதம் 3 கோடி முட்டைகள் கப்பலில் அனுப்பப்படுபவை தற்போது ஏற்றுமதி செய்யப்படாமல் தேங்கியுள்ளன' which is garbled: it merges 'shipped by ship' with 'stuck unexported', and the article's wording ('ஓமன் நாட்டுக்கு மட்டும் மாதந்தோறும் 3 கோடி முட்டைகள் கப்பலில் அனுப்பிவைக்கப்படுகின்றன… தேங்கியுள்ளன') conveys the figure as the monthly amount sent to Oman that is now stuck, not as a clear sentence in the draft.
+  fact-check: The slide 'ஓமனுக்கு மாதம் 3 கோடி முட்டைகள் தேக்கம்' under 'விலை குறைவுக்கான' presents the stuck eggs as a price-cut cause, mixing two separate facts (export ban and stuck stock) into one slide line.
+  fact-check: The 'முட்டை, கோழி இறைச்சி நுகர்வு குறைந்து வருவதாலும்... விலை மாற்றம் தேவை' statement and the export ban are presented in the same paragraph/slide structure, combining the consumption-decline cause with the export-ban cause without clear separation.
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has numbers without their meaning (10); write what each number is: '15 வயது', '30 பாட்டில்கள்', 'அக்டோபர் 26ஆம் தேதி'
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  The reel_script says the 10 people were 'travelling in a car' (காரில் பயணம் செய்தனர்), but the article says they were 10 brick-kiln workers from Thanjavur and Villupuram district; the article does not say all 10 were in the car, though the caption repeats it as 'காரில் மொத்தம் 10 பேர்'.
+  The reel_script states the accident happened 'நேற்று, நவம்பர் 22ஆம் தேதி மாலை' – the article gives 'நேற்று (நவ.,22) மாலை', which matches, so no issue there; however the slides_spec says '5 பேர் சம்பவ இடத்தில் உயிரிழப்பு' and 'மொத்த பலி' slide says Ramalingam is from 'தஞ்சாவூர் மாவட்டத்தைச் சேர்ந்தவர்' which is consistent with the article.
+  The slides_spec 'பயணிகள் விவரம்' slide says the workers went to a function in 'நாமக்கல் எருமப்பட்டியில்', while the article names the place as 'எருமைப்பட்டி' – a spelling difference that changes the place name.
+  The slides_spec 'உயிரிழப்பு' slide lines are malformed: '<b>ராமலிங்கம்' is missing its closing tag and the sentence is incomplete, so it does not form a clear sentence.
+  The caption's 'பயணிகள்' line says the travellers were from 'திருக்காட்டுப்பள்ளி, விழுப்புரத்தைச் சேர்ந்த' which mixes a place with a district list incorrectly, and the caption's 'பயணிகள்' line omits Thanjavur district; the article names 'தஞ்சாவூர் மாவட்டம், திருக்காட்டுப்பள்ளி' – the caption presents Thirukattupalli as if it were a district-level origin without the district name.
+  The reel_script omits the detail that Ramalingam was receiving treatment at Trichy government hospital with the other injured person and that the death occurred on the evening of 23 November at that hospital; it is partly present but the caption and script mix who died where, making the hospital-death location ambiguous (3 hospital deaths versus Ramalingam's death).
+claude rewrite 2 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: The reel_script says the 10 people were 'travelling in a car' (காரில் பயணம் செய்தனர்), but the article says they were 10 brick-kiln workers from Thanjavur and Villupuram district; the article does not say all 10 were in the car, though the caption repeats it as 'காரில் மொத்தம் 10 பேர்'.
+  fact-check: The reel_script states the accident happened 'நேற்று, நவம்பர் 22ஆம் தேதி மாலை' – the article gives 'நேற்று (நவ.,22) மாலை', which matches, so no issue there; however the slides_spec says '5 பேர் சம்பவ இடத்தில் உயிரிழப்பு' and 'மொத்த பலி' slide says Ramalingam is from 'தஞ்சாவூர் மாவட்டத்தைச் சேர்ந்தவர்' which is consistent with the article.
+  fact-check: The slides_spec 'பயணிகள் விவரம்' slide says the workers went to a function in 'நாமக்கல் எருமப்பட்டியில்', while the article names the place as 'எருமைப்பட்டி' – a spelling difference that changes the place name.
+  fact-check: The slides_spec 'உயிரிழப்பு' slide lines are malformed: '<b>ராமலிங்கம்' is missing its closing tag and the sentence is incomplete, so it does not form a clear sentence.
+  fact-check: The caption's 'பயணிகள்' line says the travellers were from 'திருக்காட்டுப்பள்ளி, விழுப்புரத்தைச் சேர்ந்த' which mixes a place with a district list incorrectly, and the caption's 'பயணிகள்' line omits Thanjavur district; the article names 'தஞ்சாவூர் மாவட்டம், திருக்காட்டுப்பள்ளி' – the caption presents Thirukattupalli as if it were a district-level origin without the district name.
+  fact-check: The reel_script omits the detail that Ramalingam was receiving treatment at Trichy government hospital with the other injured person and that the death occurred on the evening of 23 November at that hospital; it is partly present but the caption and script mix who died where, making the hospital-death location ambiguous (3 hospital deaths versus Ramalingam's death).
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The slides_spec 'ஏற்றுமதி நிலை' slide has a malformed line: '<b>10' is an unclosed bold tag and the sentence is cut off, so the export figure is incomplete and the line has no clear meaning.
+  The reel_script's export sentence and the caption's export line say the Gulf countries receive 10 crore eggs per month, but the article says 10 crore eggs go to Dubai, Qatar, Oman and the Gulf countries combined; this is consistent, but the 'Dubai' spelling differs from the article's 'துபை'. (Minor spelling difference, not a factual error.)
+  The reel_script says the 3 crore eggs for Oman are 'தேங்கியுள்ளன' (piled up) due to the ban, which matches the article, but it omits that the ban is temporary being explicitly stated as 'தற்காலிகத் தடை' in the reel; this is present, so no issue here.
+  The reel_script states the price reduction was decided because 'பிற மண்டலங்களில் விலை மாற்றம் செய்யப்பட்டு வருவதாலும்' and calls it 'விலையைக் குறைக்க வேண்டும் என தெரிவிக்கப்பட்டது', which is accurate; however the reel omits the article's point that the price was reduced to 5.60 by the national coordination committee's fixing, which it includes, so no issue.
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The slides_spec 'ஏற்றுமதி நிலை' slide has a malformed line: '<b>10' is an unclosed bold tag and the sentence is cut off, so the export figure is incomplete and the line has no clear meaning.
+  fact-check: The reel_script's export sentence and the caption's export line say the Gulf countries receive 10 crore eggs per month, but the article says 10 crore eggs go to Dubai, Qatar, Oman and the Gulf countries combined; this is consistent, but the 'Dubai' spelling differs from the article's 'துபை'. (Minor spelling difference, not a factual error.)
+  fact-check: The reel_script says the 3 crore eggs for Oman are 'தேங்கியுள்ளன' (piled up) due to the ban, which matches the article, but it omits that the ban is temporary being explicitly stated as 'தற்காலிகத் தடை' in the reel; this is present, so no issue here.
+  fact-check: The reel_script states the price reduction was decided because 'பிற மண்டலங்களில் விலை மாற்றம் செய்யப்பட்டு வருவதாலும்' and calls it 'விலையைக் குறைக்க வேண்டும் என தெரிவிக்கப்பட்டது', which is accurate; however the reel omits the article's point that the price was reduced to 5.60 by the national coordination committee's fixing, which it includes, so no issue.
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 4 ('நடப்பாண்டுக்கான முதல் கட்ட விழா கடந்த நவம்பர் 4-ம் தேதி சென்')
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The reel_script and slides say the 10 workers were 'brick kiln workers' (செங்கல் சூளைத் தொழிலாளர்கள்) from Thanjavur district Thirukattupalli and Villupuram, but the article only says the Thirukattupalli and Villupuram workers were brick kiln workers; the slides and caption attribute the entire group of 10 to Thirukattupalli, which is not stated.
+  The slides_spec 'பயணிகள் விவரம்' slide says the 10 workers are from Thanjavur district Thirukattupalli, omitting Villupuram, which the article mentions.
+  The reel_script says 'Thanjavur district Thirukattupalli, Villupuram' as one list, mixing two origins into one sentence without clarity on who is from where.
+  The caption says the accident happened 'நேற்று (நவ. 22) மாலை, நாமக்கல் மாவட்டம் எருமைப்பட்டியில் காதணி விழா முடித்து' which places the ear-piercing ceremony and the accident in a way that is not clearly stated; the article says the ceremony was in Erumaipatti and the return trip was in the evening, so the accident location (Musiri) is not clearly tied to the time sequence.
+  The reel_script states the 3 people who died in hospital as a plain fact, but the article says the 3 died in hospital while the 5 died at the scene; the reel_script's 'மூன்று பேர் மருத்துவமனையில் உயிரிழந்தனர்' is accurate but the flow misses that the accident occurred on the return journey from the ceremony (partially present), not a problem by itself.
+claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The reel_script and slides say the 10 workers were 'brick kiln workers' (செங்கல் சூளைத் தொழிலாளர்கள்) from Thanjavur district Thirukattupalli and Villupuram, but the article only says the Thirukattupalli and Villupuram workers were brick kiln workers; the slides and caption attribute the entire group of 10 to Thirukattupalli, which is not stated.
+  fact-check: The slides_spec 'பயணிகள் விவரம்' slide says the 10 workers are from Thanjavur district Thirukattupalli, omitting Villupuram, which the article mentions.
+  fact-check: The reel_script says 'Thanjavur district Thirukattupalli, Villupuram' as one list, mixing two origins into one sentence without clarity on who is from where.
+  fact-check: The caption says the accident happened 'நேற்று (நவ. 22) மாலை, நாமக்கல் மாவட்டம் எருமைப்பட்டியில் காதணி விழா முடித்து' which places the ear-piercing ceremony and the accident in a way that is not clearly stated; the article says the ceremony was in Erumaipatti and the return trip was in the evening, so the accident location (Musiri) is not clearly tied to the time sequence.
+  fact-check: The reel_script states the 3 people who died in hospital as a plain fact, but the article says the 3 died in hospital while the 5 died at the scene; the reel_script's 'மூன்று பேர் மருத்துவமனையில் உயிரிழந்தனர்' is accurate but the flow misses that the accident occurred on the return journey from the ceremony (partially present), not a problem by itself.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The slides_spec 'ஏற்றுமதி நிலை' slide has an unclosed <b> tag in the line 'துபை, கத்தார், ஓமன், வளைகுடா நாடுகளுக்கு மாதம் <b>10' (the <b> is never closed and the '10 கோடி' figure is not fully formatted), making the line ungrammatical markup.
+  The reel_script says the ஆலோசனைக் கூட்டத்தில் 'கருத்து' was asked of poultry farmers and that the price was reduced to 5.60 'after' this, but the reel_script's 'பண்ணைக் கொள்முதல் விலை 20 காசுகள் குறைக்கப்பட்டது' omits the fixed price of ரூ.5.60 in that sentence, which is mixed with the consultation and cause sentences; minor but it leaves the result unclear.
+  The reel_script states the 3 crore eggs are destined for Oman and are 'தேங்கியுள்ளன', but the article says these eggs are stuck/unexported; the draft's 'ஓமனுக்கு செல்ல வேண்டிய 3 கோடி முட்டைகள் தேக்கம்' in slides is a reasonable reading, however the caption and slides conflate the 10 crore monthly exports with the 3 crore Oman shipment without clearly separating the two facts.
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The slides_spec 'ஏற்றுமதி நிலை' slide has an unclosed <b> tag in the line 'துபை, கத்தார், ஓமன், வளைகுடா நாடுகளுக்கு மாதம் <b>10' (the <b> is never closed and the '10 கோடி' figure is not fully formatted), making the line ungrammatical markup.
+  fact-check: The reel_script says the ஆலோசனைக் கூட்டத்தில் 'கருத்து' was asked of poultry farmers and that the price was reduced to 5.60 'after' this, but the reel_script's 'பண்ணைக் கொள்முதல் விலை 20 காசுகள் குறைக்கப்பட்டது' omits the fixed price of ரூ.5.60 in that sentence, which is mixed with the consultation and cause sentences; minor but it leaves the result unclear.
+  fact-check: The reel_script states the 3 crore eggs are destined for Oman and are 'தேங்கியுள்ளன', but the article says these eggs are stuck/unexported; the draft's 'ஓமனுக்கு செல்ல வேண்டிய 3 கோடி முட்டைகள் தேக்கம்' in slides is a reasonable reading, however the caption and slides conflate the 10 crore monthly exports with the 3 crore Oman shipment without clearly separating the two facts.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
+  hl1 is 49 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  reel_script has 95 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 2 ('சென்னை நீலாங்கரையில் உள்ள தனியார் அரங்கில் பிற்பகல் 2.30 மணி')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+ok anthropic/claude-haiku-5-5
+image match: False The image is an AI-generated visual of a car accident rather than an authentic news photograph of the specific incident.
+image match: False The image is an AI-generated scene showing a car accident and does not depict the actual news photograph from the Musiri
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Death toll rises to 9 in car crash near '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261123-2237","first":"RN-795"}
+posting job started at once
+real photo skipped (photo uploaded 2026-01-13 (older than the news)): https://media.dinamani.com/dinamani/2026-01-13/h92zfuxt/dinamaniimport20171117originalfarm
+image match: False The photo depicts a person inspecting egg crates loaded on trucks at a farm or warehouse setting, which is a generic ima
+image match: True The photo shows trucks loaded with egg trays on a roadside in India, illustrating the context of egg transport and trade
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Egg price in Namakkal reduced by 20 pais'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261123-2238","first":"RN-796"}
+real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
+real photo: vision check out of free quota
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'CM Vijay to give education awards to stu'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261123-2238","first":"RN-797"}
+write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 11 news waiting in the queue (written in priority order)
-candidate filter: already filed=6, collected=5
-to write: 1 Rasipuram + 4 other district candidates (max 200 + 200 stories)
-daily maximum 30: 27 written today - this round writes at most 1 + 2
-candidates waiting: 1 Rasipuram, 4 Namakkal; time left 29 min
-try (R) manual=False: மழைநீர் சேகரிப்பு விழிப்புணர்வு பேரணி
-try (N) manual=False: ஐயப்ப பக்தர்களின் வசதிக்காக நாமக்கல் வழியாக சிறப்பு ரயில்கள்
-try (N) manual=False: இருள்சூழ்ந்த வாரச்சந்தை
-skip (N) similar to a filed story: ஐயப்ப பக்தர்களின் வசதிக்காக நாமக்கல் வழியாக சிறப்ப
-try (N) manual=False: குமாரபாளையத்தில் ஜன., 24-ல் ஜல்லிக்கட்டு
-skip (N) same event as RN-760: இருள்சூழ்ந்த வாரச்சந்தை
-try (N) manual=False: மயான வசதி
-skip (R) similar to a filed story: மழைநீர் சேகரிப்பு விழிப்புணர்வு பேரணி
-skip (N) similar to a filed story: குமாரபாளையத்தில் ஜன., 24-ல் ஜல்லிக்கட்டு
-skip (N) same event as RN-761: மயான வசதி
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 4}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+write round: 12 news waiting in the queue (written in priority order)
+candidate filter: collected=7, already filed=5
+to write: 0 Rasipuram + 7 other district candidates (max 200 + 200 stories)
+daily maximum 30: 27 written today - this round writes at most 0 + 3
+candidates waiting: 0 Rasipuram, 7 Namakkal; time left 29 min
+try (N) manual=False: மரத்தில் கார் மோதிய விபத்தில் பலி எண்ணிக்கை 9 ஆக உயர்வு
+try (N) manual=False: ஆம்லெட் பிரியர்களுக்கு மகிழ்ச்சி செய்தி! தொடர்ந்து குறையும் 
+try (N) manual=False: முட்டை விலை தொடர் சரிவு பண்ணையாளர்களுக்கு இழப்பு
+skip (N) similar to a filed story: முட்டை விலை தொடர் சரிவு பண்ணையாளர்களுக்கு இழப்பு
+try (N) manual=False: சேலம், நாமக்கல் மாணவர்களுக்கு குட் நியூஸ்! விருது வழங்கும் ம
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 3})
+posting job started at once
+try (N) manual=False: வீட்டிலேயே குப்பையில் இருந்து இயற்கை உரம் தயாரிக்கும் பொதுமக
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 6})
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 8})
+skip (N) similar to a filed story: வீட்டிலேயே குப்பையில் இருந்து இயற்கை உரம் தயாரிக்க
+candidate loop ended: left R=0 N=2, tried={'R': 0, 'N': 5}, done={'R': 0, 'N': 3}, time left 25 min
+carousel for 0 of 3 stories, the rest reel only
+filed: 0 Rasipuram + 3 Namakkal (targets 200 + 200)
+queue: 2 news waiting to be written
+write_stories.yml started
+All News sheet: {"ok":true,"added":0,"updated":5} 
+stories: 3
