@@ -65,6 +65,16 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-23 | `be7ebf6` | YouTube Namakkal: public, 20 a day, 40 min apart, 7-22 IST; daily cap 30 |
+| 2026-11-23 | `34c8f78` | goldrate posted |
+| 2026-11-23 | `8165228` | stories shared / Instagram pause |
+| 2026-11-23 | `286486f` | stories shared / Instagram pause |
+| 2026-11-23 | `895765d` | stories shared / Instagram pause |
+| 2026-11-23 | `3e2c405` | stories shared / Instagram pause |
+| 2026-11-23 | `96bbe72` | stories shared / Instagram pause |
+| 2026-11-23 | `aa7e272` | facebook RN-784 |
+| 2026-11-23 | `48abfe1` | posted RN-784 |
+| 2026-11-23 | `502d368` | stories shared / Instagram pause |
 | 2026-11-23 | `f50bc57` | Yesterday's pending news (held only by the daily maximum) is offered again; common place words (நகரம், ரோடு, நிலையம் ...) no longer hold a news; Indian number grouping (29,86,950) is understood |
 | 2026-11-23 | `52006ac` | stories shared / Instagram pause |
 | 2026-11-23 | `a770a3c` | stories shared / Instagram pause |
@@ -85,14 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-23 | `64142dd` | powercut: notices written |
 | 2026-11-23 | `347a4c1` | stories shared / Instagram pause |
 | 2026-11-23 | `ef89cf0` | stories shared / Instagram pause |
-| 2026-11-23 | `3f70a9f` | posted report sent |
-| 2026-11-23 | `cf7eb11` | stories shared / Instagram pause |
-| 2026-11-23 | `2ed2aa4` | powercut: notices written |
-| 2026-11-23 | `881a173` | stories shared / Instagram pause |
-| 2026-11-23 | `b865b47` | stories shared / Instagram pause |
-| 2026-11-23 | `e8b5f02` | facebook RN-793 |
-| 2026-11-23 | `0851f15` | posted RN-793 |
-| 2026-11-23 | `dc8f7a2` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-23 | `8835986` | stories shared / Instagram pause |
-| 2026-11-23 | `cc98c09` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
