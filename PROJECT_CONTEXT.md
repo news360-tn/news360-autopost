@@ -65,6 +65,12 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-23 | `5638816` | District filter: Tindivanam, Gingee, Chidambaram, Neyveli and nearby towns are other-district news |
+| 2026-11-23 | `4c9af6f` | stories shared / Instagram pause |
+| 2026-11-23 | `0cf6fff` | stories shared / Instagram pause |
+| 2026-11-23 | `d5f38f2` | facebook RN-794 |
+| 2026-11-23 | `c11f8f1` | posted RN-794 |
+| 2026-11-23 | `2991ed1` | stories shared / Instagram pause |
 | 2026-11-23 | `be7ebf6` | YouTube Namakkal: public, 20 a day, 40 min apart, 7-22 IST; daily cap 30 |
 | 2026-11-23 | `34c8f78` | goldrate posted |
 | 2026-11-23 | `8165228` | stories shared / Instagram pause |
@@ -89,10 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-23 | `e98daae` | stories shared / Instagram pause |
 | 2026-11-23 | `b2b6e60` | stories shared / Instagram pause |
 | 2026-11-23 | `c7cf11e` | stories shared / Instagram pause |
-| 2026-11-23 | `33cd890` | stories shared / Instagram pause |
-| 2026-11-23 | `87849eb` | stories shared / Instagram pause |
-| 2026-11-23 | `49fd207` | stories shared / Instagram pause |
-| 2026-11-23 | `64142dd` | powercut: notices written |
-| 2026-11-23 | `347a4c1` | stories shared / Instagram pause |
-| 2026-11-23 | `ef89cf0` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
