@@ -1,86 +1,62 @@
-writing [N]: Rash Driving| ஃபுல் மப்பில் `படம்’ காட்டிய காலேஜ் 2nd Year ப
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (36s)
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  sentence 1 (one-line story) has 18 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-ok groq/qwen/qwen3.8-27b (3s)
+writing [N]: பரமத்தி வேலூர்: சிவாலயங்களில் பிரதோஷ வழிபாடு
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-ok groq/openai/gpt-oss-120b (4s)
-factcheck by groq/openai/gpt-oss-120b: 2 problems
-  slides_spec hl2 mentions police arrest, which is not stated in the article (invented detail)
-  hl2 mixes two different facts (people attack and police arrest) into one line, which is not supported by the article
-attempt 2 groq/qwen/qwen3.8-27b: 2 problems
-  fact-check: slides_spec hl2 mentions police arrest, which is not stated in the article (invented detail)
-  fact-check: hl2 mixes two different facts (people attack and police arrest) into one line, which is not supported by the article
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-switching away from groq/openai/gpt-oss-120b for 10 min
-free models unavailable: no free model answered: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 2 ('இந்த சம்பவத்தால் அப்பகுதியில் சிறிது நேரம் போக்குவரத்து பாதி')
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 2 ('இந்த சம்பவத்தால் அப்பகுதியில் சிறிது நேரம் போக்குவரத்து பாதி')
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 2 ('இந்த சம்பவத்தால் அப்பகுதியில் சிறிது நேரம் போக்குவரத்து பாதி')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: no free model answered: None
+ok gemini/gemini-3.6-flash (55s)
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  reel_script has 91 words; need 95-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 400 ('.எல்லையம்மன் கோவில்அதேபோல் பரமத்தி வேலூரில் 400 ஆண்டுகள் பழம')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
-real photo: no picture on the source page -> AI pictures
-imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
-imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs about $0.0020, but your available balance is $0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
-imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
-imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
+fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.6-flash
+ok gemini/gemini-3.5-flash (42s)
+attempt 2 gemini/gemini-3.5-flash: 1 problems
+  sentence 1 (one-line story) has 15 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-image match: False The image is an AI-generated depiction showing a car and a scooter driving normally on a street near police officers, ra
-image match: False The image is an AI-generated illustration and does not depict the actual news event or real individuals.
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Car speeds the wrong way on one-way road'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261123-1248","first":"RN-793"}
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.5-flash (22s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.5-flash (15s)
+factcheck by gemini/gemini-3.5-flash: 0 problems
+attempt 3 gemini/gemini-3.5-flash: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.5-flash (24s)
+proofread rejected (2 problems)
+  reel_script has 89 words; need 95-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.5-flash (14s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+real photo used (1192x667, sharpness 83.9, The photograph shows decorated Shiva Lingams during the Spec): https://media.assettype.com/dailythanthi%2F2026-11-23%2Fkyteio5y%2Fpradosa-puja.jpg?w=1200
+real photo used (1192x667, sharpness 83.9, The photograph shows Shiva Lingas elaborately decorated with): https://media.assettype.com/dailythanthi/2026-11-23/kyteio5y/pradosa-puja.jpg?w=1200&h=675
+real photos used for 'Special Pradosham pujas and 18-type abhi' (Daily Thanthi)
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261123-1645","first":"RN-794"}
 posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 9 news waiting in the queue (written in priority order)
-candidate filter: already filed=6, collected=3
-to write: 1 Rasipuram + 2 other district candidates (max 200 + 200 stories)
-daily maximum 30: 25 written today - this round writes at most 1 + 4
-candidates waiting: 1 Rasipuram, 2 Namakkal; time left 29 min
+write round: 11 news waiting in the queue (written in priority order)
+candidate filter: collected=6, already filed=5
+to write: 1 Rasipuram + 5 other district candidates (max 200 + 200 stories)
+daily maximum 30: 26 written today - this round writes at most 1 + 3
+candidates waiting: 1 Rasipuram, 5 Namakkal; time left 29 min
 try (R) manual=False: மழைநீர் சேகரிப்பு விழிப்புணர்வு பேரணி
-try (N) manual=False: Rash Driving| ஃபுல் மப்பில் `படம்’ காட்டிய காலேஜ் 2nd Year ப
-try (N) manual=False: குமாரபாளையத்தில் ஜன., 24-ல் ஜல்லிக்கட்டு
+try (N) manual=False: ஐயப்ப பக்தர்களின் வசதிக்காக நாமக்கல் வழியாக சிறப்பு ரயில்கள்
+try (N) manual=False: பரமத்தி வேலூர்: சிவாலயங்களில் பிரதோஷ வழிபாடு
+skip (N) similar to a filed story: ஐயப்ப பக்தர்களின் வசதிக்காக நாமக்கல் வழியாக சிறப்ப
+try (N) manual=False: இருள்சூழ்ந்த வாரச்சந்தை
 skip (R) similar to a filed story: மழைநீர் சேகரிப்பு விழிப்புணர்வு பேரணி
+try (N) manual=False: குமாரபாளையத்தில் ஜன., 24-ல் ஜல்லிக்கட்டு
+skip (N) same event as RN-760: இருள்சூழ்ந்த வாரச்சந்தை
+try (N) manual=False: மயான வசதி
+skip (N) same event as RN-761: மயான வசதி
 skip (N) similar to a filed story: குமாரபாளையத்தில் ஜன., 24-ல் ஜல்லிக்கட்டு
-auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'fal-ai/flux/schnell': 1})
+real photo from the source (Daily Thanthi) for 'Special Pradosham pujas and 18-type abhi'
+auto images: 1 of 1 stories ({})
 posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 2}, done={'R': 0, 'N': 1}, time left 21 min
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 5}, done={'R': 0, 'N': 1}, time left 24 min
 carousel for 0 of 1 stories, the rest reel only
 filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
 queue: 0 news waiting to be written
