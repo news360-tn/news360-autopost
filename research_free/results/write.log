@@ -1,64 +1,22 @@
-writing [N]: பரமத்தி வேலூர்: சிவாலயங்களில் பிரதோஷ வழிபாடு
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (55s)
-attempt 1 gemini/gemini-3.6-flash: 2 problems
-  reel_script has 91 words; need 95-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 400 ('.எல்லையம்மன் கோவில்அதேபோல் பரமத்தி வேலூரில் 400 ஆண்டுகள் பழம')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.6-flash
-ok gemini/gemini-3.5-flash (42s)
-attempt 2 gemini/gemini-3.5-flash: 1 problems
-  sentence 1 (one-line story) has 15 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.5-flash (22s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.5-flash (15s)
-factcheck by gemini/gemini-3.5-flash: 0 problems
-attempt 3 gemini/gemini-3.5-flash: 0 problems
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.5-flash (24s)
-proofread rejected (2 problems)
-  reel_script has 89 words; need 95-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.5-flash (14s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-real photo used (1192x667, sharpness 83.9, The photograph shows decorated Shiva Lingams during the Spec): https://media.assettype.com/dailythanthi%2F2026-11-23%2Fkyteio5y%2Fpradosa-puja.jpg?w=1200
-real photo used (1192x667, sharpness 83.9, The photograph shows Shiva Lingas elaborately decorated with): https://media.assettype.com/dailythanthi/2026-11-23/kyteio5y/pradosa-puja.jpg?w=1200&h=675
-real photos used for 'Special Pradosham pujas and 18-type abhi' (Daily Thanthi)
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261123-1645","first":"RN-794"}
-posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
 write round: 11 news waiting in the queue (written in priority order)
-candidate filter: collected=6, already filed=5
-to write: 1 Rasipuram + 5 other district candidates (max 200 + 200 stories)
-daily maximum 30: 26 written today - this round writes at most 1 + 3
-candidates waiting: 1 Rasipuram, 5 Namakkal; time left 29 min
+candidate filter: already filed=6, collected=5
+to write: 1 Rasipuram + 4 other district candidates (max 200 + 200 stories)
+daily maximum 30: 27 written today - this round writes at most 1 + 2
+candidates waiting: 1 Rasipuram, 4 Namakkal; time left 29 min
 try (R) manual=False: மழைநீர் சேகரிப்பு விழிப்புணர்வு பேரணி
 try (N) manual=False: ஐயப்ப பக்தர்களின் வசதிக்காக நாமக்கல் வழியாக சிறப்பு ரயில்கள்
-try (N) manual=False: பரமத்தி வேலூர்: சிவாலயங்களில் பிரதோஷ வழிபாடு
-skip (N) similar to a filed story: ஐயப்ப பக்தர்களின் வசதிக்காக நாமக்கல் வழியாக சிறப்ப
 try (N) manual=False: இருள்சூழ்ந்த வாரச்சந்தை
-skip (R) similar to a filed story: மழைநீர் சேகரிப்பு விழிப்புணர்வு பேரணி
+skip (N) similar to a filed story: ஐயப்ப பக்தர்களின் வசதிக்காக நாமக்கல் வழியாக சிறப்ப
 try (N) manual=False: குமாரபாளையத்தில் ஜன., 24-ல் ஜல்லிக்கட்டு
 skip (N) same event as RN-760: இருள்சூழ்ந்த வாரச்சந்தை
 try (N) manual=False: மயான வசதி
-skip (N) same event as RN-761: மயான வசதி
+skip (R) similar to a filed story: மழைநீர் சேகரிப்பு விழிப்புணர்வு பேரணி
 skip (N) similar to a filed story: குமாரபாளையத்தில் ஜன., 24-ல் ஜல்லிக்கட்டு
-real photo from the source (Daily Thanthi) for 'Special Pradosham pujas and 18-type abhi'
-auto images: 1 of 1 stories ({})
-posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 5}, done={'R': 0, 'N': 1}, time left 24 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+skip (N) same event as RN-761: மயான வசதி
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 4}, done={'R': 0, 'N': 0}, time left 29 min
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written 
+stories: 0
