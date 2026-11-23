@@ -1,14 +1,259 @@
+writing [N]: காப்பா் கம்பிகளை திருடிய 2 போ் கைது
+writing [N]: லாரி மோதி இருசக்கர வாகனத்தில் சென்றவா் உயிரிழப்பு
+writing [N]: வெற்றி இல்லத்தரசி வீட்டுத் தோட்டம்: 50% மானியத்தில் அமைக்க அ
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+ok gemini/gemini-3.6-flash (10s)
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  hl1 is 41 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+ok gemini/gemini-3-flash-preview (10s)
+attempt 2 gemini/gemini-3-flash-preview: 1 problems
+  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.5-flash (22s)
+attempt 1 gemini/gemini-3.5-flash: 1 problems
+  hl1 is 46 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+ok groq/qwen/qwen3.8-27b (4s)
+attempt 2 groq/qwen/qwen3.8-27b: 26 problems
+  stray Tamil sign '்' after 'ா' in «கபிலா்மலை»
+  stray Tamil sign '்' after 'ா' in «கபிலா்மலை»
+  stray Tamil sign '்' after 'ா' in «க்குநா் தம»
+  stray Tamil sign '்' after 'ா' in «லை வளா்ச்ச»
+  stray Tamil sign '்' after 'ா' in «றி வளா்ப்ப»
+  stray Tamil sign 'ா' after 'ி' in «ல் தளிா் க»
+  stray Tamil sign '்' after 'ா' in «் தளிா் கீ»
+  stray Tamil sign '்' after 'ா' in «ரை வளா்ப்ப»
+  stray Tamil sign '்' after 'ா' in «றி, தா்பூச»
+  stray Tamil sign '்' after 'ா' in «ற உழவா் செ»
+  stray Tamil sign '்' after 'ா' in « கபிலா்மலை»
+  stray Tamil sign '்' after 'ா' in «க்குநா் அல»
+  stray Tamil sign '்' after 'ா' in « கபிலா்மலை»
+  stray Tamil sign '்' after 'ா' in «
+கபிலா்மலை»
+  stray Tamil sign '்' after 'ா' in «லை வளா்ச்ச»
+  stray Tamil sign '்' after 'ா' in «றி வளா்ப்ப»
+  stray Tamil sign 'ா' after 'ி' in «ல் தளிா் க»
+  stray Tamil sign '்' after 'ா' in «் தளிா் கீ»
+  stray Tamil sign '்' after 'ா' in «ரை வளா்ப்ப»
+  stray Tamil sign '்' after 'ா' in «ும் தா்பூச»
+  stray Tamil sign '்' after 'ா' in «ற உழவா் செ»
+  stray Tamil sign '்' after 'ா' in « கபிலா்மலை»
+  stray Tamil sign '்' after 'ா' in «: உழவா் செ»
+  stray Tamil sign '்' after 'ா' in « கபிலா்மலை»
+  stray Tamil sign '்' after 'ா' in «க்குநா் அல»
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): பரமத்தி ('வெற்றி இல்லத்தரசி வீட்டுத் தோட்டத்தை 50% மானியத்தில் அமைக்க ')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+ok gemini/gemini-3-flash-preview (10s)
+attempt 3 gemini/gemini-3-flash-preview: 1 problems
+  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+ok gemini/gemini-3.6-flash (46s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The article says the deceased, Jeeva, was a lorry driver, but the reel_script and caption describe him only as a '40 வயது நபர்' / 'இருசக்கர வாகன ஓட்டுநர்' without naming him as a lorry driver; the slide also calls the victim a two-wheeler rider, which is accurate, but the reel omits his occupation.
+  The article names the deceased (ஜீவா) and the arrested driver (சுரேஷ், who is also the lorry owner); the draft omits the owner detail, stating only that the driver was arrested, so an important fact (driver is also owner) is missing.
+  The slide_spec says the lorry driver was arrested ('தருமபுரி மாவட்டத்தைச் சேர்ந்த லாரி டிரைவர் கைது') while the article identifies him as both driver and owner; the owner role is missing.
+  The caption's date line '2026 நவம்பர் 22 (ஞாயிறு இரவு)' asserts a specific date for the incident that is not stated in the article, which only says Sunday night; this is an invented date detail.
+attempt 1 gemini/gemini-3.6-flash: 4 problems
+  fact-check: The article says the deceased, Jeeva, was a lorry driver, but the reel_script and caption describe him only as a '40 வயது நபர்' / 'இருசக்கர வாகன ஓட்டுநர்' without naming him as a lorry driver; the slide also calls the victim a two-wheeler rider, which is accurate, but the reel omits his occupation.
+  fact-check: The article names the deceased (ஜீவா) and the arrested driver (சுரேஷ், who is also the lorry owner); the draft omits the owner detail, stating only that the driver was arrested, so an important fact (driver is also owner) is missing.
+  fact-check: The slide_spec says the lorry driver was arrested ('தருமபுரி மாவட்டத்தைச் சேர்ந்த லாரி டிரைவர் கைது') while the article identifies him as both driver and owner; the owner role is missing.
+  fact-check: The caption's date line '2026 நவம்பர் 22 (ஞாயிறு இரவு)' asserts a specific date for the incident that is not stated in the article, which only says Sunday night; this is an invented date detail.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'கபிலர்மலை', e.g. 'கபிலர்மலை: ...' or 'கபிலர்மலை-இல் ...' - viewers share news of their own area
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slide 2 line 1 longer than 60 characters
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  The reel_script says Sivakasi-born Manthiraselvam is from Sivakasi, but the article says he is from Sivakasi Narayanapuram Muthuramalinga Nagar — minor, acceptable; however the reel_script says both men 'திருடினர்' (stole) and that the 'கம்பிகள் அண்மையில் திருடு போயின' sentence mixes the theft event with the employment detail in one sentence, joining two facts (employed 2 months, and theft) without clear separation
+  The reel_script states the copper wire theft occurred at the chicken shop where 'கடையில் கடந்த 2 மாதங்களாக வேலை செய்த' worked, but the article says Manthiraselvam worked there, and Shahrukh's role is not stated; the reel_script wrongly implies both men worked at the shop
+  The reel_script and slides_spec say Shahrukh 'யார் திருடியது' alongside an employee, but the article does not say Shahrukh worked at the shop, so the description of 'கடையில் பணிபுரிந்த' applies to both men in the slides_spec, which is an unsupported claim
+  The reel_script says the men were arrested and 'வழக்குப் பதிவு செய்தனர்' but omits that the police are still investigating ('விசாரித்து வருகின்றனர்'), an important fact of the article
+  The reel_script and caption state the copper wires were 150 metres 'காப்பர் கம்பிகள்' but the article specifies 'ஜெனரேட்டர் காப்பர் கம்பிகள்' (generator copper wires); the reel_script omits this detail
+  The caption describes the wires as 'ஜெனரேட்டர் காப்பர் கம்பிகள்' correctly, but the slides_spec 'hl2' and title lines state only 'காப்பர் கம்பி' — inconsistent but not wrong
+claude rewrite 1 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: The reel_script says Sivakasi-born Manthiraselvam is from Sivakasi, but the article says he is from Sivakasi Narayanapuram Muthuramalinga Nagar — minor, acceptable; however the reel_script says both men 'திருடினர்' (stole) and that the 'கம்பிகள் அண்மையில் திருடு போயின' sentence mixes the theft event with the employment detail in one sentence, joining two facts (employed 2 months, and theft) without clear separation
+  fact-check: The reel_script states the copper wire theft occurred at the chicken shop where 'கடையில் கடந்த 2 மாதங்களாக வேலை செய்த' worked, but the article says Manthiraselvam worked there, and Shahrukh's role is not stated; the reel_script wrongly implies both men worked at the shop
+  fact-check: The reel_script and slides_spec say Shahrukh 'யார் திருடியது' alongside an employee, but the article does not say Shahrukh worked at the shop, so the description of 'கடையில் பணிபுரிந்த' applies to both men in the slides_spec, which is an unsupported claim
+  fact-check: The reel_script says the men were arrested and 'வழக்குப் பதிவு செய்தனர்' but omits that the police are still investigating ('விசாரித்து வருகின்றனர்'), an important fact of the article
+  fact-check: The reel_script and caption state the copper wires were 150 metres 'காப்பர் கம்பிகள்' but the article specifies 'ஜெனரேட்டர் காப்பர் கம்பிகள்' (generator copper wires); the reel_script omits this detail
+  fact-check: The caption describes the wires as 'ஜெனரேட்டர் காப்பர் கம்பிகள்' correctly, but the slides_spec 'hl2' and title lines state only 'காப்பர் கம்பி' — inconsistent but not wrong
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 45 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 45 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 52 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'கபிலர்மலை', e.g. 'கபிலர்மலை: ...' or 'கபிலர்மலை-இல் ...' - viewers share news of their own area
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 1 problems
+  The reel_script says Jeeva was riding the two-wheeler and is 'லாரி ஓட்டுநர்' (lorry driver); the article says he was a lorry driver, which is consistent, but the draft's slides_spec and caption describe him as 'இருசக்கர வாகன ஓட்டுநர்' in the headline, which is not stated in the article as his role; the article only says he was riding a two-wheeler.
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  fact-check: The reel_script says Jeeva was riding the two-wheeler and is 'லாரி ஓட்டுநர்' (lorry driver); the article says he was a lorry driver, which is consistent, but the draft's slides_spec and caption describe him as 'இருசக்கர வாகன ஓட்டுநர்' in the headline, which is not stated in the article as his role; the article only says he was riding a two-wheeler.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+real photo skipped (photo uploaded 2026-11-14 (older than the news)): https://media.dinamani.com/dinamani/2026-11-14/3zpfxwhp/%E0%AE%95%E0%AF%88%E0%AE%A4%E0%AF%
+real photo skipped (photo uploaded 2026-11-14 (older than the news)): https://media.dinamani.com/dinamani/2026-11-14/3zpfxwhp/கைது.jfif?w=1200&h=675&auto=format
+imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
+imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs about $0.0020, but your available balance is $0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+imagegen: black-forest-labs/flux.1-schnell no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAU
+imagegen: black-forest-labs/flux.1-schnell no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAU
+imagegen: HTTPSConnectionPool(host='ai.api.nvidia.com', port=443): Read timed out. (read timeout=150) 504 timeout
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for '2 men arrested for stealing copper wires'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261124-0438","first":"RN-800"}
+posting job started at once
+real photo skipped (photo uploaded 2026-04-26 (older than the news)): https://media.dinamani.com/dinamani/2026-04-26/ywd6xu2b/%E0%AE%AA%E0%AF%88%E0%AE%95%E0%AF%
+real photo skipped (photo uploaded 2026-04-26 (older than the news)): https://media.dinamani.com/dinamani/2026-04-26/ywd6xu2b/பைக்-மோதி-ஒடிஸா-மாநிலத்தை-சோ்ந்தவ
+writing [R]: கிணற்றில் தவறிவிழுந்த
+தொழிலாளி உயிரிழப்பு
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 59 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 50 ('தங்கவேலுக்கு மனைவி சுசீலா (50), மகன்கள் ஜெகநாதன் (35), பாஸ்க'); 35 ('தங்கவேலுக்கு மனைவி சுசீலா (50), மகன்கள் ஜெகநாதன் (35), பாஸ்க'); 33 ('தங்கவேலுக்கு மனைவி சுசீலா (50), மகன்கள் ஜெகநாதன் (35), பாஸ்க')
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  slide 2 line 3 longer than 60 characters
+  hl1 (the first headline on screen) must name the place 'மொஞ்சனூர்', e.g. 'மொஞ்சனூர்: ...' or 'மொஞ்சனூர்-இல் ...' - viewers share news of their own area
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Lorry hits two-wheeler near Elachipalaya'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261124-0438","first":"RN-801"}
+real photo skipped (photo uploaded 2026-08-06 (older than the news)): https://media.dinamani.com/dinamani/2026-08-06/y6lpy33a/garden.jpg
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 50 ('தங்கவேலுக்கு மனைவி சுசீலா (50), மகன்கள் ஜெகநாதன் (35), பாஸ்க'); 35 ('தங்கவேலுக்கு மனைவி சுசீலா (50), மகன்கள் ஜெகநாதன் (35), பாஸ்க'); 33 ('தங்கவேலுக்கு மனைவி சுசீலா (50), மகன்கள் ஜெகநாதன் (35), பாஸ்க')
+hl1 shortened at a natural break: 'மொஞ்சனூர்: கிணற்றில் விழுந்து தொழிலாளி பலி' -> 'மொஞ்சனூர்: கிணற்றில் தொழிலாளி பலி'
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+images made: 1 for 'Vetri Illathrasi home garden scheme: 50%'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261124-0439","first":"RN-802"}
+real photo skipped (photo uploaded 2026-04-26 (older than the news)): https://media.dinamani.com/dinamani/2026-04-26/ywd6xu2b/%E0%AE%AA%E0%AF%88%E0%AE%95%E0%AF%
+real photo skipped (photo uploaded 2026-04-26 (older than the news)): https://media.dinamani.com/dinamani/2026-04-26/ywd6xu2b/பைக்-மோதி-ஒடிஸா-மாநிலத்தை-சோ்ந்தவ
+imagegen: black-forest-labs/flux.1-schnell no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAU
+imagegen: black-forest-labs/flux.1-schnell no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAU
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+imagegen: black-forest-labs/flux.1-schnell no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAU
+imagegen: black-forest-labs/flux.1-schnell no image (CONTENT_FILTERED): {'artifacts': [{'base64': '/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAU
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Labourer drowns after falling into well '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261124-0439","first":"RN-803"}
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 1 news waiting in the queue (written in priority order)
-candidate filter: collected=1
-to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
-daily maximum 30: 2 written today - this round writes at most 0 + 28
-candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
+write round: 11 news waiting in the queue (written in priority order)
+candidate filter: collected=7, already filed=4
+to write: 1 Rasipuram + 6 other district candidates (max 200 + 200 stories)
+daily maximum 30: 2 written today - this round writes at most 1 + 27
+candidates waiting: 1 Rasipuram, 6 Namakkal; time left 29 min
+try (N) manual=False: காப்பா் கம்பிகளை திருடிய 2 போ் கைது
+try (N) manual=False: லாரி மோதி இருசக்கர வாகனத்தில் சென்றவா் உயிரிழப்பு
+try (N) manual=False: வெற்றி இல்லத்தரசி வீட்டுத் தோட்டம்: 50% மானியத்தில் அமைக்க அ
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'black-forest-labs/flux.1-schnell': 1})
+posting job started at once
+try (R) manual=False: கிணற்றில் தவறிவிழுந்த
+தொழிலாளி உயிரிழப்பு
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'black-forest-labs/flux.1-schnell': 3})
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 1, 'black-forest-labs/flux.1-schnell': 4})
+try (N) manual=False: முட்டை விலை தொடர் சரிவு பண்ணையாளர்களுக்கு இழப்பு
+try (N) manual=False: இல்லத்தரசிகளுக்கு குட் நியூஸ்! அதிரடியாகக் குறைந்த முட்டை வி
+auto images: 1 of 1 stories ({'fal-ai/flux/dev': 2, 'black-forest-labs/flux.1-schnell': 4, 'fal-ai/flux/schnell': 1})
 try (N) manual=False: கார் விபத்தில் இறந்த 8 பேர் உடல் குடும்பத்தாரிடம் ஒப்படைப்பு
+skip (N) similar to a filed story: இல்லத்தரசிகளுக்கு குட் நியூஸ்! அதிரடியாகக் குறைந்த
+skip (N) similar to a filed story: முட்டை விலை தொடர் சரிவு பண்ணையாளர்களுக்கு இழப்பு
 skip (N) same event as RN-795: கார் விபத்தில் இறந்த 8 பேர் உடல் குடும்பத்தாரிடம் 
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 6}, done={'R': 1, 'N': 3}, time left 24 min
+carousel for 0 of 4 stories, the rest reel only
+filed: 1 Rasipuram + 3 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":4} 
+stories: 4
