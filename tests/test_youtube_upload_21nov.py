@@ -59,7 +59,7 @@ class YouTubeUpload(unittest.TestCase):
             up = self.run_once()
             up.assert_called_once()
             self.assertIn("மின் தடை", up.call_args.args[2])      # the power cut first (rasipalan never)
-            self.assertEqual(up.call_args.args[5], "private")      # until Google's audit
+            self.assertEqual(up.call_args.args[5], "public")      # owner 23 Nov: the Namakkal channel is not locked - uploads go out public
             self.run_once(NOW + timedelta(minutes=30)).assert_not_called()      # 90 minutes apart
             up = self.run_once(NOW + timedelta(minutes=95))
             self.assertIn("சாலை", up.call_args.args[2])      # then the next one - never the same reel twice
@@ -67,7 +67,8 @@ class YouTubeUpload(unittest.TestCase):
 
     def test_day_limit_hours_and_quota(self):
         s = ytupload.settings({"youtube_upload": {"per_day": 20}})
-        self.assertEqual(s["per_day"], 6)      # 6 x 1,600 units fit in the 10,000 a day
+        self.assertEqual(s["per_day"], 20)      # owner 23 Nov: 20 a day is allowed (own 100-a-day upload allowance)
+        self.assertEqual(ytupload.settings({"youtube_upload": {"per_day": 200}})["per_day"], 30)      # never more than 30
         night = datetime(2026, 11, 21, 17, 0, tzinfo=timezone.utc)      # 22:30 IST
         self.assertEqual(ytupload.due("x", s, night), "outside the upload hours")
         with mock.patch.dict(os.environ, KEYS):
@@ -79,7 +80,7 @@ class YouTubeUpload(unittest.TestCase):
         wf = (ROOT / ".github" / "workflows" / "post.yml").read_text(encoding="utf-8")
         self.assertIn("YT_REFRESH_TOKEN_", wf)
         self.assertIn("git add -f poster/yt_uploaded", wf)
-        self.assertEqual(json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))["youtube_upload"]["privacy"], "private")
+        self.assertEqual(json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))["youtube_upload"]["privacy"], "public")      # owner 23 Nov: Namakkal uploads public
 
 
 if __name__ == "__main__":
