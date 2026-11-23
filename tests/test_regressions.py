@@ -868,7 +868,8 @@ class FacebookEverything2Nov(unittest.TestCase):
         import facebook
         self.fb = facebook
         self.tmp = tempfile.mkdtemp()
-        self.old = (facebook.STATE, dict(os.environ))
+        self.old = (facebook.STATE, dict(os.environ), facebook.FB_STORIES)
+        facebook.FB_STORIES = True      # stories are off for the owner (23 Nov); this checks the mechanism
         facebook.STATE = Path(self.tmp)
         self._route = facebook.ROUTE
         facebook.ROUTE = {}      # owner 22 Nov: these check the posting mechanism on a page with its own Facebook page
@@ -879,6 +880,7 @@ class FacebookEverything2Nov(unittest.TestCase):
 
     def tearDown(self):
         self.fb.STATE = self.old[0]
+        self.fb.FB_STORIES = self.old[2]
         os.environ.clear(); os.environ.update(self.old[1])
 
     PAGE_NAME = "rasipuram"
