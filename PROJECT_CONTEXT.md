@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-22 | `aebee6f` | Facebook: Rasipuram 360 is Instagram only - its news goes to the Namakkal 360 Facebook page (once, #Namakkal360) |
-| 2026-11-22 | `e6bf7cc` | stories shared / Instagram pause |
-| 2026-11-22 | `2d118e8` | posted report sent |
-| 2026-11-22 | `7eb910b` | powercut: notices written |
-| 2026-11-22 | `7240f2c` | Facebook: one post every 60 minutes, at most 15 a day per page, most important news first; after the 15 the rest goes to the owner's e-mail at once (share from Instagram) |
-| 2026-11-22 | `abe5bda` | facebook RN-760 |
-| 2026-11-22 | `3d67eb7` | posted RN-760 |
-| 2026-11-22 | `5e0d90e` | facebook RN-755 |
-| 2026-11-22 | `32096ff` | posted RN-755 |
-| 2026-11-22 | `973c071` | stories shared / Instagram pause |
-| 2026-11-22 | `11d9713` | facebook RN-759 |
-| 2026-11-22 | `13a390f` | posted RN-759 |
-| 2026-11-22 | `bae08aa` | facebook RN-757 |
-| 2026-11-22 | `3cd9582` | posted RN-757 |
-| 2026-11-22 | `6f00aae` | facebook RN-756 |
-| 2026-11-22 | `8215bbb` | posted RN-756 |
-| 2026-11-22 | `ac51db8` | stories shared / Instagram pause |
-| 2026-11-22 | `2ae5216` | stories shared / Instagram pause |
-| 2026-11-22 | `f44a211` | Daily plan: 30 of today's published news + yesterday's pending news + urgent news after the 30; news older than yesterday never posted |
-| 2026-11-22 | `62d081c` | stories shared / Instagram pause |
-| 2026-11-22 | `cd46948` | stories shared / Instagram pause |
-| 2026-11-22 | `ed7cc4f` | stories shared / Instagram pause |
-| 2026-11-22 | `c73ed2c` | stories shared / Instagram pause |
-| 2026-11-22 | `afa70c6` | stories shared / Instagram pause |
-| 2026-11-22 | `3388672` | stories shared / Instagram pause |
-| 2026-11-22 | `d4e7695` | stories shared / Instagram pause |
-| 2026-11-22 | `fac71a9` | stories shared / Instagram pause |
-| 2026-11-22 | `2ad44f1` | facebook RN-753 |
-| 2026-11-22 | `5c31aee` | posted RN-753 |
-| 2026-11-22 | `82745e8` | stories shared / Instagram pause |
+| 2026-11-23 | `f534c71` | Namakkal 360 posts every Namakkal-district news, rasipalan and gold; Rasipuram 360 only as collaborator on Rasipuram-area news (auto-accepted); other-district town filter |
+| 2026-11-23 | `18bcfb5` | stories shared / Instagram pause |
+| 2026-11-23 | `3d85dc6` | stories shared / Instagram pause |
+| 2026-11-23 | `3dfe8ce` | stories shared / Instagram pause |
+| 2026-11-23 | `97ea8cd` | stories shared / Instagram pause |
+| 2026-11-23 | `77fd503` | stories shared / Instagram pause |
+| 2026-11-23 | `82d20a8` | stories shared / Instagram pause |
+| 2026-11-23 | `b7b2ebe` | stories shared / Instagram pause |
+| 2026-11-23 | `e283698` | stories shared / Instagram pause |
+| 2026-11-23 | `8786696` | stories shared / Instagram pause |
+| 2026-11-23 | `4cf71e1` | stories shared / Instagram pause |
+| 2026-11-23 | `28ede52` | facebook RN-786 |
+| 2026-11-23 | `a6a56b2` | posted RN-786 |
+| 2026-11-23 | `ca6db81` | stories shared / Instagram pause |
+| 2026-11-23 | `3184e54` | facebook RN-787 |
+| 2026-11-23 | `47eeac6` | posted RN-787 |
+| 2026-11-23 | `d3d5f56` | stories shared / Instagram pause |
+| 2026-11-23 | `137256e` | facebook RN-792 |
+| 2026-11-23 | `ea37d72` | posted RN-792 |
+| 2026-11-23 | `749cfa9` | stories shared / Instagram pause |
+| 2026-11-23 | `b59b280` | facebook RN-782 |
+| 2026-11-23 | `2b5f9b6` | posted RN-782 |
+| 2026-11-23 | `6087862` | stories shared / Instagram pause |
+| 2026-11-23 | `1e292de` | goldrate posted |
+| 2026-11-23 | `9ece9a6` | stories shared / Instagram pause |
+| 2026-11-23 | `03e015a` | facebook RN-778 |
+| 2026-11-23 | `3594439` | posted RN-778 |
+| 2026-11-23 | `cce29d6` | facebook RN-788 |
+| 2026-11-23 | `82c6017` | posted RN-788 |
+| 2026-11-23 | `546f580` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
