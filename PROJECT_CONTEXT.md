@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-23 | `7d39ca2` | Facebook 15 a day counts today's news only (not the last 24 h, not rasipalan / gold); picking rejects state-wide news; Thiruparankundram is outside |
-| 2026-11-23 | `e18ddda` | stories shared / Instagram pause |
-| 2026-11-23 | `1e7ed58` | stories shared / Instagram pause |
-| 2026-11-23 | `b323bf0` | stories shared / Instagram pause |
-| 2026-11-23 | `d0a1f7d` | stories shared / Instagram pause |
-| 2026-11-23 | `935a6f5` | stories shared / Instagram pause |
-| 2026-11-23 | `f534c71` | Namakkal 360 posts every Namakkal-district news, rasipalan and gold; Rasipuram 360 only as collaborator on Rasipuram-area news (auto-accepted); other-district town filter |
-| 2026-11-23 | `18bcfb5` | stories shared / Instagram pause |
-| 2026-11-23 | `3d85dc6` | stories shared / Instagram pause |
-| 2026-11-23 | `3dfe8ce` | stories shared / Instagram pause |
-| 2026-11-23 | `97ea8cd` | stories shared / Instagram pause |
-| 2026-11-23 | `77fd503` | stories shared / Instagram pause |
-| 2026-11-23 | `82d20a8` | stories shared / Instagram pause |
-| 2026-11-23 | `b7b2ebe` | stories shared / Instagram pause |
-| 2026-11-23 | `e283698` | stories shared / Instagram pause |
-| 2026-11-23 | `8786696` | stories shared / Instagram pause |
-| 2026-11-23 | `4cf71e1` | stories shared / Instagram pause |
-| 2026-11-23 | `28ede52` | facebook RN-786 |
-| 2026-11-23 | `a6a56b2` | posted RN-786 |
-| 2026-11-23 | `ca6db81` | stories shared / Instagram pause |
-| 2026-11-23 | `3184e54` | facebook RN-787 |
-| 2026-11-23 | `47eeac6` | posted RN-787 |
-| 2026-11-23 | `d3d5f56` | stories shared / Instagram pause |
-| 2026-11-23 | `137256e` | facebook RN-792 |
-| 2026-11-23 | `ea37d72` | posted RN-792 |
-| 2026-11-23 | `749cfa9` | stories shared / Instagram pause |
-| 2026-11-23 | `b59b280` | facebook RN-782 |
-| 2026-11-23 | `2b5f9b6` | posted RN-782 |
-| 2026-11-23 | `6087862` | stories shared / Instagram pause |
-| 2026-11-23 | `1e292de` | goldrate posted |
+| 2026-11-23 | `f50bc57` | Yesterday's pending news (held only by the daily maximum) is offered again; common place words (நகரம், ரோடு, நிலையம் ...) no longer hold a news; Indian number grouping (29,86,950) is understood |
+| 2026-11-23 | `52006ac` | stories shared / Instagram pause |
+| 2026-11-23 | `a770a3c` | stories shared / Instagram pause |
+| 2026-11-23 | `559d297` | stories shared / Instagram pause |
+| 2026-11-23 | `93b5ffd` | stories shared / Instagram pause |
+| 2026-11-23 | `be6af0b` | stories shared / Instagram pause |
+| 2026-11-23 | `d749260` | stories shared / Instagram pause |
+| 2026-11-23 | `c129828` | stories shared / Instagram pause |
+| 2026-11-23 | `e5007a8` | stories shared / Instagram pause |
+| 2026-11-23 | `a07bb68` | stories shared / Instagram pause |
+| 2026-11-23 | `b5b388e` | rasipalan posted |
+| 2026-11-23 | `e98daae` | stories shared / Instagram pause |
+| 2026-11-23 | `b2b6e60` | stories shared / Instagram pause |
+| 2026-11-23 | `c7cf11e` | stories shared / Instagram pause |
+| 2026-11-23 | `33cd890` | stories shared / Instagram pause |
+| 2026-11-23 | `87849eb` | stories shared / Instagram pause |
+| 2026-11-23 | `49fd207` | stories shared / Instagram pause |
+| 2026-11-23 | `64142dd` | powercut: notices written |
+| 2026-11-23 | `347a4c1` | stories shared / Instagram pause |
+| 2026-11-23 | `ef89cf0` | stories shared / Instagram pause |
+| 2026-11-23 | `3f70a9f` | posted report sent |
+| 2026-11-23 | `cf7eb11` | stories shared / Instagram pause |
+| 2026-11-23 | `2ed2aa4` | powercut: notices written |
+| 2026-11-23 | `881a173` | stories shared / Instagram pause |
+| 2026-11-23 | `b865b47` | stories shared / Instagram pause |
+| 2026-11-23 | `e8b5f02` | facebook RN-793 |
+| 2026-11-23 | `0851f15` | posted RN-793 |
+| 2026-11-23 | `dc8f7a2` | comments: normal comments recorded (not e-mailed) |
+| 2026-11-23 | `8835986` | stories shared / Instagram pause |
+| 2026-11-23 | `cc98c09` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
