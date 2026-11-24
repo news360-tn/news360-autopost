@@ -65,6 +65,26 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-24 | `2bdaf38` | Facebook posts every news like Instagram: daily news limit 15 -> 30 (Meta's own API reel limit per page in 24 h) |
+| 2026-11-24 | `fd8bc5a` | stories shared / Instagram pause |
+| 2026-11-24 | `cf524de` | stories shared / Instagram pause |
+| 2026-11-24 | `215290a` | posted report sent |
+| 2026-11-24 | `8292b17` | stories shared / Instagram pause |
+| 2026-11-24 | `b7e5b39` | stories shared / Instagram pause |
+| 2026-11-24 | `a05df1c` | stories shared / Instagram pause |
+| 2026-11-24 | `523b763` | stories shared / Instagram pause |
+| 2026-11-24 | `3fe33b1` | stories shared / Instagram pause |
+| 2026-11-24 | `88436db` | stories shared / Instagram pause |
+| 2026-11-24 | `b4e2126` | stories shared / Instagram pause |
+| 2026-11-24 | `67a1631` | facebook RN-791 |
+| 2026-11-24 | `f4e8e83` | posted RN-791 |
+| 2026-11-24 | `8ee4872` | stories shared / Instagram pause |
+| 2026-11-24 | `b8e3453` | stories shared / Instagram pause |
+| 2026-11-24 | `9ca27c4` | facebook RN-785 |
+| 2026-11-24 | `60ac180` | posted RN-785 |
+| 2026-11-24 | `177f4a4` | stories shared / Instagram pause |
+| 2026-11-24 | `370b19e` | facebook RN-779 |
+| 2026-11-24 | `53ff330` | posted RN-779 |
 | 2026-11-24 | `69fff04` | Google News links: when Google refuses the decoder (429), the same headline on Bing (same newspaper) gives the article link - news is no longer dropped |
 | 2026-11-24 | `09b529e` | stories shared / Instagram pause |
 | 2026-11-24 | `fb2f04b` | facebook RN-801 |
@@ -75,24 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-24 | `93e892b` | Fixes: Facebook 24-hour-limit news wait or are e-mailed (never silently skipped); slow sheet reads get more time; YouTube stops for the whole day after its quota; YouTube tests use today's date |
 | 2026-11-24 | `a2cec36` | stories shared / Instagram pause |
 | 2026-11-24 | `e57426a` | stories shared / Instagram pause |
-| 2026-11-24 | `c3d244e` | stories shared / Instagram pause |
-| 2026-11-24 | `b5f473f` | stories shared / Instagram pause |
-| 2026-11-24 | `8e85ac7` | stories shared / Instagram pause |
-| 2026-11-24 | `795594e` | stories shared / Instagram pause |
-| 2026-11-24 | `7565c32` | stories shared / Instagram pause |
-| 2026-11-24 | `f6f3b7d` | stories shared / Instagram pause |
-| 2026-11-24 | `bf66f18` | stories shared / Instagram pause |
-| 2026-11-24 | `6025557` | stories shared / Instagram pause |
-| 2026-11-24 | `11e1411` | Auto-fix held news (rewrite from the article, check again, post); Cloudinary fallbacks: pictures kept in the repo, reels direct then repo link; rasipalan and gold the same |
-| 2026-11-24 | `d8fe308` | stories shared / Instagram pause |
-| 2026-11-24 | `b260f2c` | stories shared / Instagram pause |
-| 2026-11-24 | `e1d5857` | stories shared / Instagram pause |
-| 2026-11-24 | `c416b06` | goldrate posted |
-| 2026-11-24 | `c6e61c4` | stories shared / Instagram pause |
-| 2026-11-24 | `4007978` | stories shared / Instagram pause |
-| 2026-11-24 | `785878d` | stories shared / Instagram pause |
-| 2026-11-24 | `2d9b7a4` | posted report sent |
-| 2026-11-24 | `fa64eed` | facebook RN-808 |
-| 2026-11-24 | `fdce2ed` | posted RN-808 |
-| 2026-11-24 | `a92ab1c` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
