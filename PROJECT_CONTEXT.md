@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-23 | `866efcd` | District check before every post (picked news too), neighbour-district towns, Facebook 5-minute gap, more Tamil news outlets + one open district search per round |
-| 2026-11-23 | `e07f0e9` | stories shared / Instagram pause |
-| 2026-11-23 | `8ce1cfa` | stories shared / Instagram pause |
-| 2026-11-23 | `7ebf870` | stories shared / Instagram pause |
-| 2026-11-23 | `ccf4b34` | stories shared / Instagram pause |
-| 2026-11-23 | `78b03f2` | stories shared / Instagram pause |
-| 2026-11-23 | `8727542` | stories shared / Instagram pause |
-| 2026-11-23 | `4cea8ed` | stories shared / Instagram pause |
-| 2026-11-23 | `baf6d99` | stories shared / Instagram pause |
-| 2026-11-23 | `9ea30ce` | stories shared / Instagram pause |
-| 2026-11-23 | `6751868` | stories shared / Instagram pause |
-| 2026-11-23 | `f62fd9c` | stories shared / Instagram pause |
-| 2026-11-23 | `30a7310` | stories shared / Instagram pause |
-| 2026-11-23 | `454b37e` | stories shared / Instagram pause |
-| 2026-11-23 | `071b2f2` | stories shared / Instagram pause |
-| 2026-11-23 | `6868e03` | posted report sent |
-| 2026-11-23 | `642bccb` | stories shared / Instagram pause |
-| 2026-11-23 | `cbe04ca` | stories shared / Instagram pause |
-| 2026-11-23 | `bebfb3a` | stories shared / Instagram pause |
-| 2026-11-23 | `3791c03` | posted report sent |
-| 2026-11-23 | `7f0e423` | stories shared / Instagram pause |
-| 2026-11-23 | `9b7ad91` | stories shared / Instagram pause |
-| 2026-11-23 | `e9d3417` | Reels only: no Instagram or Facebook stories; wait 5 minutes after an error |
-| 2026-11-23 | `76587e9` | stories shared / Instagram pause |
-| 2026-11-23 | `227efe9` | stories shared / Instagram pause |
-| 2026-11-23 | `d393492` | stories shared / Instagram pause |
-| 2026-11-23 | `0f4be26` | stories shared / Instagram pause |
-| 2026-11-23 | `2e25bad` | Posting: next reel about 5 minutes after the last (5-minute gap kept); a temporary Instagram error waits 10 minutes, then posts (no manual e-mail for it) |
-| 2026-11-23 | `fa83a21` | stories shared / Instagram pause |
-| 2026-11-23 | `de0aa7f` | stories shared / Instagram pause |
+| 2026-11-24 | `ff93e8e` | Retry plan for any posting problem: 3 tries 5 minutes apart, then 2 tries 15 minutes apart, then Hold + one e-mail; 'account restricted' follows the same plan |
+| 2026-11-24 | `997a0fe` | stories shared / Instagram pause |
+| 2026-11-24 | `b5fa189` | facebook RN-813 |
+| 2026-11-24 | `eb79096` | posted RN-813 |
+| 2026-11-24 | `d440776` | stories shared / Instagram pause |
+| 2026-11-24 | `4168c0c` | facebook RN-807 |
+| 2026-11-24 | `3ec268d` | posted RN-807 |
+| 2026-11-24 | `c541f7b` | stories shared / Instagram pause |
+| 2026-11-24 | `a15d6b4` | facebook RN-814 |
+| 2026-11-24 | `addaa03` | posted RN-814 |
+| 2026-11-24 | `9433bdd` | facebook RN-804 |
+| 2026-11-24 | `5e42f71` | posted RN-804 |
+| 2026-11-24 | `880a3d7` | stories shared / Instagram pause |
+| 2026-11-24 | `1ba7c69` | stories shared / Instagram pause |
+| 2026-11-24 | `9dd5443` | stories shared / Instagram pause |
+| 2026-11-24 | `f3ff689` | stories shared / Instagram pause |
+| 2026-11-24 | `25b1c9e` | stories shared / Instagram pause |
+| 2026-11-24 | `cfc9ed0` | stories shared / Instagram pause |
+| 2026-11-24 | `e2f2abd` | stories shared / Instagram pause |
+| 2026-11-24 | `e32d9dc` | stories shared / Instagram pause |
+| 2026-11-24 | `0be6e17` | stories shared / Instagram pause |
+| 2026-11-24 | `e986506` | stories shared / Instagram pause |
+| 2026-11-24 | `1b5e82d` | stories shared / Instagram pause |
+| 2026-11-24 | `a1b0d9d` | stories shared / Instagram pause |
+| 2026-11-24 | `26610e9` | stories shared / Instagram pause |
+| 2026-11-24 | `6018c68` | stories shared / Instagram pause |
+| 2026-11-24 | `7cbd902` | stories shared / Instagram pause |
+| 2026-11-24 | `6f1893d` | stories shared / Instagram pause |
+| 2026-11-24 | `ac59138` | posted report sent |
+| 2026-11-24 | `d6debc5` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
