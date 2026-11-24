@@ -1,82 +1,70 @@
-writing [N]: லாரி மோதி இருசக்கர வாகனத்தில் சென்றவா் உயிரிழப்பு
+writing [N]: காப்பர் ஒயர் திருட்டு 2 பேருக்கு காப்பு
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
   "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
+    "code": 503,
+    "message": "This model is currently experiencing high d
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+switching away from gemini/gemini-3.6-flash for 10 min
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
 fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
   "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, plea
-dead for this round: gemini/gemini-3-flash-preview
+    "code": 503,
+    "message": "This model is currently experiencing 
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+switching away from gemini/gemini-3-flash-preview for 10 min
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 dead for this round: groq/openai/gpt-oss-120b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 dead for this round: groq/qwen/qwen3.8-27b
 free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-writing [N]: காப்பர் ஒயர் திருட்டு 2 பேருக்கு காப்பு
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free models unavailable: no free model answered: None
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  hl1 is 45 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 33, ('திருச்செங்கோடு; திருச்செங்கோடு அடுத்த வரப்பாளையம் பஸ் ஸ்டாப்'); 32, ('இதுகுறித்து கடை மேலாளர் ஜெகன், 32, கடையில் உள்ள, 'சிசிடிவி' '); 29, ('இதுகுறித்து கடை மேலாளர் ஜெகன், 32, கடையில் உள்ள, 'சிசிடிவி' ')
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 41 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  hl1 is 45 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  slide 3 line 1 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  hl1 is 45 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  hl1 (the first headline on screen) must name the place 'எலச்சிபாளையம்', e.g. 'எலச்சிபாளையம்: ...' or 'எலச்சிபாளையம்-இல் ...' - viewers share news of their own area
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-hl1 shortened at a natural break: 'திருச்செங்கோட்டில் ஒயர் திருட்டு 2 பேர் கைது' -> 'திருச்செங்கோட்டில் ஒயர் 2 பேர் கைது'
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 43 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 32, ('இதுகுறித்து கடை மேலாளர் ஜெகன், 32, கடையில் உள்ள, 'சிசிடிவி' ')
 ok anthropic/claude-haiku-5-5
 claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): திருச்செங்கோடு ('எலச்சிபாளையம் அருகே லாரி மோதியதில், இருசக்கர வாகனத்தில் சென்'); திருச்செங்கோடு ('இதில், இருசக்கர வாகனத்தில் சென்ற ஜீவா சம்பவ இடத்திலேயே உயிரி')
+  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+hl1 shortened at a natural break: 'திருச்செங்கோடில் ஒயர் திருடிய 2 பேர் கைது' -> 'திருச்செங்கோடில் ஒயர் 2 பேர் கைது'
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 proofread skipped: no free model answered: None
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok anthropic/claude-haiku-5-5
 ok anthropic/claude-haiku-5-5
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 10 news waiting in the queue (written in priority order)
-candidate filter: already filed=6, collected=4
-to write: 0 Rasipuram + 4 other district candidates (max 200 + 200 stories)
+write round: 9 news waiting in the queue (written in priority order)
+candidate filter: already filed=7, collected=2
+to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)
 daily maximum 30: 17 written today - this round writes at most 0 + 13
-candidates waiting: 0 Rasipuram, 4 Namakkal; time left 29 min
+candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min
 try (N) manual=False: காப்பர் ஒயர் திருட்டு 2 பேருக்கு காப்பு
 try (N) manual=False: தி.மலை, திருப்பரங்குன்ற தீபத்திருவிழா பாதுகாப்பிற்கு சென்ற 4
-try (N) manual=False: லாரி மோதி இருசக்கர வாகனத்தில் சென்றவா் உயிரிழப்பு
 skip (N) similar to a filed story: தி.மலை, திருப்பரங்குன்ற தீபத்திருவிழா பாதுகாப்பிற்
-try (N) manual=False: கபிலர்மலை வட்டார  விவசாயிகள் மானியம் பெற விண்ணப்பிக்கலாம்
-skip (N) same event as RN-802: கபிலர்மலை வட்டார  விவசாயிகள் மானியம் பெற விண்ணப்பி
 NOT filed (N) காப்பர் ஒயர் திருட்டு 2 பேருக்கு காப்பு: duplicate after write
-NOT filed (N) லாரி மோதி இருசக்கர வாகனத்தில் சென்றவா் உயிரிழப்பு: duplicate after write
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 0}, time left 29 min
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 0}, time left 27 min
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 2 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":2} 
+queue: 1 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
 stories: 0
