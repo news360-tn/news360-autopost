@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-24 | `1d27b83` | Facebook post text without the outside article link (less reach); the link stays in the first comment, the paper name and date stay |
+| 2026-11-24 | `a81215c` | stories shared / Instagram pause |
+| 2026-11-24 | `575cf79` | stories shared / Instagram pause |
+| 2026-11-24 | `2beef15` | stories shared / Instagram pause |
+| 2026-11-24 | `d585ee1` | stories shared / Instagram pause |
+| 2026-11-24 | `194c2cb` | stories shared / Instagram pause |
+| 2026-11-24 | `c894eb0` | stories shared / Instagram pause |
+| 2026-11-24 | `a6198da` | stories shared / Instagram pause |
+| 2026-11-24 | `54dd40c` | facebook RN-809 |
+| 2026-11-24 | `80be912` | posted RN-809 |
+| 2026-11-24 | `ec9be4a` | stories shared / Instagram pause |
+| 2026-11-24 | `e368a96` | stories shared / Instagram pause |
+| 2026-11-24 | `75eeb3b` | facebook RN-805 |
+| 2026-11-24 | `cc67a67` | posted RN-805 |
+| 2026-11-24 | `3358bf4` | stories shared / Instagram pause |
+| 2026-11-24 | `904c87e` | manual post e-mail RN-809 |
+| 2026-11-24 | `e7fbb37` | manual post e-mail RN-805 |
+| 2026-11-24 | `4e704b5` | stories shared / Instagram pause |
+| 2026-11-24 | `291ade6` | stories shared / Instagram pause |
+| 2026-11-24 | `68d040a` | autofix: corrected held news |
+| 2026-11-24 | `f931e5e` | stories shared / Instagram pause |
+| 2026-11-24 | `19089a3` | stories shared / Instagram pause |
+| 2026-11-24 | `db0b5ec` | stories shared / Instagram pause |
+| 2026-11-24 | `6eeb5bc` | stories shared / Instagram pause |
 | 2026-11-24 | `0eff7c3` | Facebook check: read-only views report of the latest reels (plays, reach, processing status) |
 | 2026-11-24 | `86ea9b1` | stories shared / Instagram pause |
 | 2026-11-24 | `649573e` | posted report sent |
 | 2026-11-24 | `b01ad20` | stories shared / Instagram pause |
 | 2026-11-24 | `d7984ea` | stories shared / Instagram pause |
 | 2026-11-24 | `aa4cdd2` | stories shared / Instagram pause |
-| 2026-11-24 | `a712efc` | stories shared / Instagram pause |
-| 2026-11-24 | `f4bd61a` | stories shared / Instagram pause |
-| 2026-11-24 | `ad108fb` | stories shared / Instagram pause |
-| 2026-11-24 | `a9dbc31` | stories shared / Instagram pause |
-| 2026-11-24 | `43f5f11` | stories shared / Instagram pause |
-| 2026-11-24 | `503d649` | stories shared / Instagram pause |
-| 2026-11-24 | `f753141` | stories shared / Instagram pause |
-| 2026-11-24 | `41c8830` | stories shared / Instagram pause |
-| 2026-11-24 | `81bdb3d` | stories shared / Instagram pause |
-| 2026-11-24 | `c43424c` | stories shared / Instagram pause |
-| 2026-11-24 | `4424996` | stories shared / Instagram pause |
-| 2026-11-24 | `1c760a1` | stories shared / Instagram pause |
-| 2026-11-24 | `146e36c` | stories shared / Instagram pause |
-| 2026-11-24 | `50f8d73` | stories shared / Instagram pause |
-| 2026-11-24 | `7b1de40` | stories shared / Instagram pause |
-| 2026-11-24 | `2857d2d` | stories shared / Instagram pause |
-| 2026-11-24 | `a27ed2e` | stories shared / Instagram pause |
-| 2026-11-24 | `d87aa69` | stories shared / Instagram pause |
-| 2026-11-24 | `e2786e7` | stories shared / Instagram pause |
-| 2026-11-24 | `9991b2f` | posted report sent |
-| 2026-11-24 | `6785d1c` | stories shared / Instagram pause |
-| 2026-11-24 | `9072e8e` | stories shared / Instagram pause |
-| 2026-11-24 | `c615fad` | stories shared / Instagram pause |
-| 2026-11-24 | `bc908ae` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
