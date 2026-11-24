@@ -258,6 +258,9 @@ def _parse_pub(s):
         return ""
 
 
+_GMETA = {}      # google news link -> (headline, publisher site) of this run
+
+
 def from_google(q):
     url = "https://news.google.com/rss/search?q=" + urllib.parse.quote(q + " when:2d") + "&hl=ta&gl=IN&ceid=IN:ta"
     root = ET.fromstring(_get(url).content)
@@ -268,6 +271,8 @@ def from_google(q):
         out.append({"key": it.findtext("guid") or it.findtext("link"), "url": it.findtext("link"), "title": _clean_title(title),
                     "source": (src.text if src is not None and src.text else _outlet(title, "Google News")), "published": _parse_pub(it.findtext("pubDate") or ""),
                     "via": "google", "query": q, "snippet": re.sub(r"<[^>]+>", " ", html.unescape(it.findtext("description") or ""))[:300]})
+    for x in out:      # owner 24 Nov: kept so resolve() can find the article on Bing when Google refuses the decoder (429)
+        _GMETA[x.get("url") or ""] = (x.get("title") or "", x.get("site") or "")
     return out
 
 
@@ -390,7 +395,27 @@ def resolve(url):
             return final
         raise RuntimeError("google page, not the article")
     except Exception as e:
+        via = _bing_same_article(url)      # owner 24 Nov: Google refused the decoder (429) - the same headline on Bing gives the real link
+        if via:
+            return via
         raise RuntimeError(f"google news link not decoded ({err}; {str(e)[:60]})")
+
+
+def _bing_same_article(gurl):
+    """the publisher's own link for a Google News item, found by its exact headline on Bing (same newspaper only); '' when not found"""
+    import difflib
+    title, site = _GMETA.get(gurl, ("", ""))
+    dom = urllib.parse.urlparse(site).netloc.replace("www.", "") if site else ""
+    if not title or not dom:
+        return ""
+    try:
+        for x in from_bing(f"{title} site:{dom}"):
+            u = x.get("url") or ""
+            if dom in u and difflib.SequenceMatcher(None, title, x.get("title") or "").ratio() >= 0.6:
+                return u
+    except Exception:
+        pass
+    return ""
 
 
 # owner 13 Nov: the daily STATE-WIDE power-cut lists (News18, ABP Live, Samayam: "தமிழகத்தில் நாளை மின்தடை ...") name the areas
