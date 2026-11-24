@@ -1,119 +1,57 @@
 writing [N]: லாரி மோதி இருசக்கர வாகனத்தில் சென்றவா் உயிரிழப்பு
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
-writing [N]: காப்பர் ஒயர் திருட்டு 2 பேருக்கு காப்பு
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (18s)
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (25s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.6-flash
-ok gemini/gemini-3.6-flash (35s)
-attempt 2 gemini/gemini-3.6-flash: 3 problems
-  slide 1 line 1 is cut off mid-phrase ('ப்பாளையம் பஸ் ஸ்டாப்') - write a complete short phrase
-  source/outlet name or link appears: ஆதாரம்
-  known issue card_cut_mid_phrase: card cut off mid-phrase ('ு வரப்பாளையம் பஸ் ஸ்டாப்') - rewrite so it does not happen again
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-ok gemini/gemini-3.5-flash (19s)
-factcheck by gemini/gemini-3.5-flash: 2 problems
-  Victim's name (Jeeva) mentioned in the article is missing from the reel_script
-  Arrested driver's name (Suresh) mentioned in the article is missing from the reel_script
-attempt 1 gemini/gemini-3.6-flash: 2 problems
-  fact-check: Victim's name (Jeeva) mentioned in the article is missing from the reel_script
-  fact-check: Arrested driver's name (Suresh) mentioned in the article is missing from the reel_script
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3-flash-preview (9s)
-attempt 3 gemini/gemini-3-flash-preview: 2 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 32, ('இதுகுறித்து கடை மேலாளர் ஜெகன், 32, கடையில் உள்ள, 'சிசிடிவி' ')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3-flash-preview (14s)
-attempt 4 gemini/gemini-3-flash-preview: 1 problems
-  hl1 is 43 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 dead for this round: groq/openai/gpt-oss-120b
-ok groq/qwen/qwen3.8-27b (11s)
-attempt 2 groq/qwen/qwen3.8-27b: 1 problems
-  hl1 is 43 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 dead for this round: groq/qwen/qwen3.8-27b
 free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-ok anthropic/claude-haiku-5-5
+writing [N]: காப்பர் ஒயர் திருட்டு 2 பேருக்கு காப்பு
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-free models unavailable: no free model answered: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read t
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free models unavailable: no free model answered: None
 ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The reel_script and slides_spec say the lorry was driven by the arrested person (Suresh) but the article says the victim Jeeva was the lorry driver; the draft wrongly calls Jeeva 'லாரி ஓட்டுநர்' while he was riding a two-wheeler, and the slide line 'இருசக்கர வாகனத்தில் சென்ற லாரி ஓட்டுநர் ஜீவா' mixes two roles into one description.
-  The article states Jeeva was a lorry driver (லாரி ஓட்டுநா்) of Mara Parai Chekkarapatti; the draft's caption also says 'இருசக்கர வாகன ஓட்டுநர்' in the headline, which is a different role than the article's description of the deceased as a lorry driver, creating a mismatch.
-  The caption's 'லாரி மோதி இருசக்கர வாகன ஓட்டுநர் உயிரிழப்பு' headline and the caption body 'இருசக்கர வாகனத்தில் சென்ற லாரி ஓட்டுநர் ஜீவா' conflate the victim's vehicle and occupation, which is inconsistent with the article.
-claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The reel_script and slides_spec say the lorry was driven by the arrested person (Suresh) but the article says the victim Jeeva was the lorry driver; the draft wrongly calls Jeeva 'லாரி ஓட்டுநர்' while he was riding a two-wheeler, and the slide line 'இருசக்கர வாகனத்தில் சென்ற லாரி ஓட்டுநர் ஜீவா' mixes two roles into one description.
-  fact-check: The article states Jeeva was a lorry driver (லாரி ஓட்டுநா்) of Mara Parai Chekkarapatti; the draft's caption also says 'இருசக்கர வாகன ஓட்டுநர்' in the headline, which is a different role than the article's description of the deceased as a lorry driver, creating a mismatch.
-  fact-check: The caption's 'லாரி மோதி இருசக்கர வாகன ஓட்டுநர் உயிரிழப்பு' headline and the caption body 'இருசக்கர வாகனத்தில் சென்ற லாரி ஓட்டுநர் ஜீவா' conflate the victim's vehicle and occupation, which is inconsistent with the article.
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 45 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
   caption misses facts of the article (put every one in 📰 முழு விவரம்): 33, ('திருச்செங்கோடு; திருச்செங்கோடு அடுத்த வரப்பாளையம் பஸ் ஸ்டாப்'); 32, ('இதுகுறித்து கடை மேலாளர் ஜெகன், 32, கடையில் உள்ள, 'சிசிடிவி' '); 29, ('இதுகுறித்து கடை மேலாளர் ஜெகன், 32, கடையில் உள்ள, 'சிசிடிவி' ')
 ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  hl1 is 47 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): ராசிபுரம் ('அப்போது, அவ்வழியாக உடுமலைப்பேட்டையில் இருந்து மாட்டுத்தீவனம்')
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 45 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  slide 3 line 1 longer than 60 characters
 ok anthropic/claude-haiku-5-5
 claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
   hl1 is 45 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
 ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'எலச்சிபாளையம்', e.g. 'எலச்சிபாளையம்: ...' or 'எலச்சிபாளையம்-இல் ...' - viewers share news of their own area
 ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The draft says Suresh is a 'லாரி உரிமையாளர்' (lorry owner) in the reel_script, but the article says he is the driver and owner ('ஓட்டுநரும், உரிமையாளருமான'); the reel_script omits that he is also the driver, which is the same person. The reel_script's sentence 'லாரியை ஓட்டி வந்த ... சுரேஷ், 40 வயது, லாரி உரிமையாளர் ஆவார்' is a loose rendering that mixes the driver and owner roles, though it does not state a different fact.
-  The article says the lorry was carrying cattle feed (மாட்டுத்தீவனம்) and the slides say the same, which matches; however the caption's 'LKT' English line 'Lorry hits two-wheeler rider' is not a problem per the exclusion rules, so no issue there.
-  The reel_script states the arrest of the lorry driver/owner, which matches the article; no other problem found in the headline or slides.
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The draft says Suresh is a 'லாரி உரிமையாளர்' (lorry owner) in the reel_script, but the article says he is the driver and owner ('ஓட்டுநரும், உரிமையாளருமான'); the reel_script omits that he is also the driver, which is the same person. The reel_script's sentence 'லாரியை ஓட்டி வந்த ... சுரேஷ், 40 வயது, லாரி உரிமையாளர் ஆவார்' is a loose rendering that mixes the driver and owner roles, though it does not state a different fact.
-  fact-check: The article says the lorry was carrying cattle feed (மாட்டுத்தீவனம்) and the slides say the same, which matches; however the caption's 'LKT' English line 'Lorry hits two-wheeler rider' is not a problem per the exclusion rules, so no issue there.
-  fact-check: The reel_script states the arrest of the lorry driver/owner, which matches the article; no other problem found in the headline or slides.
-hl1 shortened at a natural break: 'எலச்சிபாளையத்தில் லாரி மோதியதில் உயிரிழப்பு' -> 'எலச்சிபாளையத்தில் மோதியதில் உயிரிழப்பு'
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+hl1 shortened at a natural break: 'திருச்செங்கோட்டில் ஒயர் திருட்டு 2 பேர் கைது' -> 'திருச்செங்கோட்டில் ஒயர் 2 பேர் கைது'
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 proofread skipped: no free model answered: None
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  hl1 is 43 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-hl1 shortened at a natural break: 'திருச்செங்கோட்டில் ஒயர் திருடிய 2 பேர் கைது' -> 'திருச்செங்கோட்டில் ஒயர் 2 பேர் கைது'
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): திருச்செங்கோடு ('எலச்சிபாளையம் அருகே லாரி மோதியதில், இருசக்கர வாகனத்தில் சென்'); திருச்செங்கோடு ('இதில், இருசக்கர வாகனத்தில் சென்ற ஜீவா சம்பவ இடத்திலேயே உயிரி')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 proofread skipped: no free model answered: None
@@ -128,15 +66,15 @@ candidate filter: already filed=6, collected=4
 to write: 0 Rasipuram + 4 other district candidates (max 200 + 200 stories)
 daily maximum 30: 17 written today - this round writes at most 0 + 13
 candidates waiting: 0 Rasipuram, 4 Namakkal; time left 29 min
-try (N) manual=False: தி.மலை, திருப்பரங்குன்ற தீபத்திருவிழா பாதுகாப்பிற்கு சென்ற 4
 try (N) manual=False: காப்பர் ஒயர் திருட்டு 2 பேருக்கு காப்பு
+try (N) manual=False: தி.மலை, திருப்பரங்குன்ற தீபத்திருவிழா பாதுகாப்பிற்கு சென்ற 4
 try (N) manual=False: லாரி மோதி இருசக்கர வாகனத்தில் சென்றவா் உயிரிழப்பு
 skip (N) similar to a filed story: தி.மலை, திருப்பரங்குன்ற தீபத்திருவிழா பாதுகாப்பிற்
 try (N) manual=False: கபிலர்மலை வட்டார  விவசாயிகள் மானியம் பெற விண்ணப்பிக்கலாம்
 skip (N) same event as RN-802: கபிலர்மலை வட்டார  விவசாயிகள் மானியம் பெற விண்ணப்பி
-NOT filed (N) லாரி மோதி இருசக்கர வாகனத்தில் சென்றவா் உயிரிழப்பு: duplicate after write
 NOT filed (N) காப்பர் ஒயர் திருட்டு 2 பேருக்கு காப்பு: duplicate after write
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 0}, time left 26 min
+NOT filed (N) லாரி மோதி இருசக்கர வாகனத்தில் சென்றவா் உயிரிழப்பு: duplicate after write
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 0}, time left 29 min
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
 queue: 2 news waiting to be written
