@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-24 | `e9f9302` | A self-immolation / suicide ATTEMPT where nobody died (a protest) is news and is written - a death still is not |
+| 2026-11-24 | `7c0501c` | stories shared / Instagram pause |
+| 2026-11-24 | `5759200` | stories shared / Instagram pause |
+| 2026-11-24 | `00b4d32` | stories shared / Instagram pause |
+| 2026-11-24 | `566c3dc` | stories shared / Instagram pause |
+| 2026-11-24 | `ce24516` | stories shared / Instagram pause |
+| 2026-11-24 | `c619edc` | powercut: notices written |
+| 2026-11-24 | `a3055a4` | stories shared / Instagram pause |
+| 2026-11-24 | `5380779` | stories shared / Instagram pause |
+| 2026-11-24 | `c1e3533` | stories shared / Instagram pause |
+| 2026-11-24 | `fd716f0` | powercut: notices written |
+| 2026-11-24 | `f0e927b` | stories shared / Instagram pause |
+| 2026-11-24 | `08a73e8` | stories shared / Instagram pause |
+| 2026-11-24 | `d0d3d63` | comments: normal comments recorded (not e-mailed) |
+| 2026-11-24 | `e78c09b` | stories shared / Instagram pause |
+| 2026-11-24 | `e81a631` | stories shared / Instagram pause |
+| 2026-11-24 | `8663f62` | stories shared / Instagram pause |
+| 2026-11-24 | `a37904c` | stories shared / Instagram pause |
+| 2026-11-24 | `511e947` | stories shared / Instagram pause |
+| 2026-11-24 | `ffc41e6` | stories shared / Instagram pause |
+| 2026-11-24 | `8eca801` | stories shared / Instagram pause |
+| 2026-11-24 | `20a8875` | stories shared / Instagram pause |
+| 2026-11-24 | `1e40718` | stories shared / Instagram pause |
+| 2026-11-24 | `10116b3` | stories shared / Instagram pause |
+| 2026-11-24 | `bd87232` | stories shared / Instagram pause |
+| 2026-11-24 | `9e26ce3` | stories shared / Instagram pause |
 | 2026-11-24 | `2bdaf38` | Facebook posts every news like Instagram: daily news limit 15 -> 30 (Meta's own API reel limit per page in 24 h) |
 | 2026-11-24 | `fd8bc5a` | stories shared / Instagram pause |
 | 2026-11-24 | `cf524de` | stories shared / Instagram pause |
 | 2026-11-24 | `215290a` | posted report sent |
-| 2026-11-24 | `8292b17` | stories shared / Instagram pause |
-| 2026-11-24 | `b7e5b39` | stories shared / Instagram pause |
-| 2026-11-24 | `a05df1c` | stories shared / Instagram pause |
-| 2026-11-24 | `523b763` | stories shared / Instagram pause |
-| 2026-11-24 | `3fe33b1` | stories shared / Instagram pause |
-| 2026-11-24 | `88436db` | stories shared / Instagram pause |
-| 2026-11-24 | `b4e2126` | stories shared / Instagram pause |
-| 2026-11-24 | `67a1631` | facebook RN-791 |
-| 2026-11-24 | `f4e8e83` | posted RN-791 |
-| 2026-11-24 | `8ee4872` | stories shared / Instagram pause |
-| 2026-11-24 | `b8e3453` | stories shared / Instagram pause |
-| 2026-11-24 | `9ca27c4` | facebook RN-785 |
-| 2026-11-24 | `60ac180` | posted RN-785 |
-| 2026-11-24 | `177f4a4` | stories shared / Instagram pause |
-| 2026-11-24 | `370b19e` | facebook RN-779 |
-| 2026-11-24 | `53ff330` | posted RN-779 |
-| 2026-11-24 | `69fff04` | Google News links: when Google refuses the decoder (429), the same headline on Bing (same newspaper) gives the article link - news is no longer dropped |
-| 2026-11-24 | `09b529e` | stories shared / Instagram pause |
-| 2026-11-24 | `fb2f04b` | facebook RN-801 |
-| 2026-11-24 | `7927602` | posted RN-801 |
-| 2026-11-24 | `36aa5c2` | stories shared / Instagram pause |
-| 2026-11-24 | `fe67ca5` | Auto-fix: busy AI writers do not use up a news's tries; each page runs at its own minutes; try counts reset |
-| 2026-11-24 | `4ebde6c` | autofix: corrected held news |
-| 2026-11-24 | `93e892b` | Fixes: Facebook 24-hour-limit news wait or are e-mailed (never silently skipped); slow sheet reads get more time; YouTube stops for the whole day after its quota; YouTube tests use today's date |
-| 2026-11-24 | `a2cec36` | stories shared / Instagram pause |
-| 2026-11-24 | `e57426a` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
