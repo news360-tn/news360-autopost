@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-24 | `11e1411` | Auto-fix held news (rewrite from the article, check again, post); Cloudinary fallbacks: pictures kept in the repo, reels direct then repo link; rasipalan and gold the same |
+| 2026-11-24 | `d8fe308` | stories shared / Instagram pause |
+| 2026-11-24 | `b260f2c` | stories shared / Instagram pause |
+| 2026-11-24 | `e1d5857` | stories shared / Instagram pause |
+| 2026-11-24 | `c416b06` | goldrate posted |
+| 2026-11-24 | `c6e61c4` | stories shared / Instagram pause |
+| 2026-11-24 | `4007978` | stories shared / Instagram pause |
+| 2026-11-24 | `785878d` | stories shared / Instagram pause |
+| 2026-11-24 | `2d9b7a4` | posted report sent |
+| 2026-11-24 | `fa64eed` | facebook RN-808 |
+| 2026-11-24 | `fdce2ed` | posted RN-808 |
+| 2026-11-24 | `a92ab1c` | stories shared / Instagram pause |
+| 2026-11-24 | `71a056d` | stories shared / Instagram pause |
+| 2026-11-24 | `fa5f814` | facebook RN-811 |
+| 2026-11-24 | `8bc2888` | posted RN-811 |
+| 2026-11-24 | `5a96013` | stories shared / Instagram pause |
+| 2026-11-24 | `a19cd81` | stories shared / Instagram pause |
+| 2026-11-24 | `2a14a96` | facebook RN-812 |
+| 2026-11-24 | `f689170` | posted RN-812 |
+| 2026-11-24 | `80a85cb` | stories shared / Instagram pause |
+| 2026-11-24 | `6903338` | stories shared / Instagram pause |
+| 2026-11-24 | `50c99e6` | facebook RN-802 |
+| 2026-11-24 | `9480be7` | posted RN-802 |
+| 2026-11-24 | `ca722a0` | stories shared / Instagram pause |
+| 2026-11-24 | `bb5d8c0` | stories shared / Instagram pause |
+| 2026-11-24 | `a207d26` | facebook RN-803 |
+| 2026-11-24 | `4d4ea73` | posted RN-803 |
+| 2026-11-24 | `7c03e3c` | stories shared / Instagram pause |
+| 2026-11-24 | `add5331` | stories shared / Instagram pause |
 | 2026-11-24 | `a97dc14` | E-mail for every posted news again (posted_email each); daily summary e-mail at 00:10 IST with every news posted the day before |
-| 2026-11-24 | `47048fa` | facebook RN-798 |
-| 2026-11-24 | `de4118c` | posted RN-798 |
-| 2026-11-24 | `8b5ada9` | posted report sent |
-| 2026-11-24 | `d6bf110` | stories shared / Instagram pause |
-| 2026-11-24 | `7522318` | stories shared / Instagram pause |
-| 2026-11-24 | `6720821` | facebook RN-799 |
-| 2026-11-24 | `05cd4c1` | posted RN-799 |
-| 2026-11-24 | `4a1fbdc` | manual post e-mail RN-802 |
-| 2026-11-24 | `f220c3d` | manual post e-mail RN-803 |
-| 2026-11-24 | `bf3ee7c` | manual post e-mail RN-798 |
-| 2026-11-24 | `375eb44` | stories shared / Instagram pause |
-| 2026-11-24 | `f0b7706` | stories shared / Instagram pause |
-| 2026-11-24 | `18e78f6` | rasipalan posted |
-| 2026-11-24 | `ff93e8e` | Retry plan for any posting problem: 3 tries 5 minutes apart, then 2 tries 15 minutes apart, then Hold + one e-mail; 'account restricted' follows the same plan |
-| 2026-11-24 | `997a0fe` | stories shared / Instagram pause |
-| 2026-11-24 | `b5fa189` | facebook RN-813 |
-| 2026-11-24 | `eb79096` | posted RN-813 |
-| 2026-11-24 | `d440776` | stories shared / Instagram pause |
-| 2026-11-24 | `4168c0c` | facebook RN-807 |
-| 2026-11-24 | `3ec268d` | posted RN-807 |
-| 2026-11-24 | `c541f7b` | stories shared / Instagram pause |
-| 2026-11-24 | `a15d6b4` | facebook RN-814 |
-| 2026-11-24 | `addaa03` | posted RN-814 |
-| 2026-11-24 | `9433bdd` | facebook RN-804 |
-| 2026-11-24 | `5e42f71` | posted RN-804 |
-| 2026-11-24 | `880a3d7` | stories shared / Instagram pause |
-| 2026-11-24 | `1ba7c69` | stories shared / Instagram pause |
-| 2026-11-24 | `9dd5443` | stories shared / Instagram pause |
-| 2026-11-24 | `f3ff689` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
