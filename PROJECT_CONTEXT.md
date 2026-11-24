@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-24 | `2ec3486` | Facebook: 20 news a day per page (owner 24 Nov) |
-| 2026-11-24 | `72640fa` | stories shared / Instagram pause |
-| 2026-11-24 | `af7c9d8` | stories shared / Instagram pause |
-| 2026-11-24 | `ff112ba` | stories shared / Instagram pause |
-| 2026-11-24 | `791da35` | goldrate posted |
-| 2026-11-24 | `c42e63c` | stories shared / Instagram pause |
-| 2026-11-24 | `e9f9302` | A self-immolation / suicide ATTEMPT where nobody died (a protest) is news and is written - a death still is not |
-| 2026-11-24 | `7c0501c` | stories shared / Instagram pause |
-| 2026-11-24 | `5759200` | stories shared / Instagram pause |
-| 2026-11-24 | `00b4d32` | stories shared / Instagram pause |
-| 2026-11-24 | `566c3dc` | stories shared / Instagram pause |
-| 2026-11-24 | `ce24516` | stories shared / Instagram pause |
-| 2026-11-24 | `c619edc` | powercut: notices written |
-| 2026-11-24 | `a3055a4` | stories shared / Instagram pause |
-| 2026-11-24 | `5380779` | stories shared / Instagram pause |
-| 2026-11-24 | `c1e3533` | stories shared / Instagram pause |
-| 2026-11-24 | `fd716f0` | powercut: notices written |
-| 2026-11-24 | `f0e927b` | stories shared / Instagram pause |
-| 2026-11-24 | `08a73e8` | stories shared / Instagram pause |
-| 2026-11-24 | `d0d3d63` | comments: normal comments recorded (not e-mailed) |
-| 2026-11-24 | `e78c09b` | stories shared / Instagram pause |
-| 2026-11-24 | `e81a631` | stories shared / Instagram pause |
-| 2026-11-24 | `8663f62` | stories shared / Instagram pause |
-| 2026-11-24 | `a37904c` | stories shared / Instagram pause |
-| 2026-11-24 | `511e947` | stories shared / Instagram pause |
-| 2026-11-24 | `ffc41e6` | stories shared / Instagram pause |
-| 2026-11-24 | `8eca801` | stories shared / Instagram pause |
-| 2026-11-24 | `20a8875` | stories shared / Instagram pause |
-| 2026-11-24 | `1e40718` | stories shared / Instagram pause |
-| 2026-11-24 | `10116b3` | stories shared / Instagram pause |
+| 2026-11-24 | `0eff7c3` | Facebook check: read-only views report of the latest reels (plays, reach, processing status) |
+| 2026-11-24 | `86ea9b1` | stories shared / Instagram pause |
+| 2026-11-24 | `649573e` | posted report sent |
+| 2026-11-24 | `b01ad20` | stories shared / Instagram pause |
+| 2026-11-24 | `d7984ea` | stories shared / Instagram pause |
+| 2026-11-24 | `aa4cdd2` | stories shared / Instagram pause |
+| 2026-11-24 | `a712efc` | stories shared / Instagram pause |
+| 2026-11-24 | `f4bd61a` | stories shared / Instagram pause |
+| 2026-11-24 | `ad108fb` | stories shared / Instagram pause |
+| 2026-11-24 | `a9dbc31` | stories shared / Instagram pause |
+| 2026-11-24 | `43f5f11` | stories shared / Instagram pause |
+| 2026-11-24 | `503d649` | stories shared / Instagram pause |
+| 2026-11-24 | `f753141` | stories shared / Instagram pause |
+| 2026-11-24 | `41c8830` | stories shared / Instagram pause |
+| 2026-11-24 | `81bdb3d` | stories shared / Instagram pause |
+| 2026-11-24 | `c43424c` | stories shared / Instagram pause |
+| 2026-11-24 | `4424996` | stories shared / Instagram pause |
+| 2026-11-24 | `1c760a1` | stories shared / Instagram pause |
+| 2026-11-24 | `146e36c` | stories shared / Instagram pause |
+| 2026-11-24 | `50f8d73` | stories shared / Instagram pause |
+| 2026-11-24 | `7b1de40` | stories shared / Instagram pause |
+| 2026-11-24 | `2857d2d` | stories shared / Instagram pause |
+| 2026-11-24 | `a27ed2e` | stories shared / Instagram pause |
+| 2026-11-24 | `d87aa69` | stories shared / Instagram pause |
+| 2026-11-24 | `e2786e7` | stories shared / Instagram pause |
+| 2026-11-24 | `9991b2f` | posted report sent |
+| 2026-11-24 | `6785d1c` | stories shared / Instagram pause |
+| 2026-11-24 | `9072e8e` | stories shared / Instagram pause |
+| 2026-11-24 | `c615fad` | stories shared / Instagram pause |
+| 2026-11-24 | `bc908ae` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
