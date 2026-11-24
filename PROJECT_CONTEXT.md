@@ -65,6 +65,12 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-24 | `2ec3486` | Facebook: 20 news a day per page (owner 24 Nov) |
+| 2026-11-24 | `72640fa` | stories shared / Instagram pause |
+| 2026-11-24 | `af7c9d8` | stories shared / Instagram pause |
+| 2026-11-24 | `ff112ba` | stories shared / Instagram pause |
+| 2026-11-24 | `791da35` | goldrate posted |
+| 2026-11-24 | `c42e63c` | stories shared / Instagram pause |
 | 2026-11-24 | `e9f9302` | A self-immolation / suicide ATTEMPT where nobody died (a protest) is news and is written - a death still is not |
 | 2026-11-24 | `7c0501c` | stories shared / Instagram pause |
 | 2026-11-24 | `5759200` | stories shared / Instagram pause |
@@ -89,10 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-24 | `20a8875` | stories shared / Instagram pause |
 | 2026-11-24 | `1e40718` | stories shared / Instagram pause |
 | 2026-11-24 | `10116b3` | stories shared / Instagram pause |
-| 2026-11-24 | `bd87232` | stories shared / Instagram pause |
-| 2026-11-24 | `9e26ce3` | stories shared / Instagram pause |
-| 2026-11-24 | `2bdaf38` | Facebook posts every news like Instagram: daily news limit 15 -> 30 (Meta's own API reel limit per page in 24 h) |
-| 2026-11-24 | `fd8bc5a` | stories shared / Instagram pause |
-| 2026-11-24 | `cf524de` | stories shared / Instagram pause |
-| 2026-11-24 | `215290a` | posted report sent |
 <!-- recent-changes:end -->
