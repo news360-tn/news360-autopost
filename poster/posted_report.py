@@ -7,7 +7,8 @@ Gmail's daily sending limit (about 100) is never reached. For every page:
   any problem: Instagram paused the page, posting runs that failed.
 It reads only public files of the 7 repositories (poster/posted/*.json - one tiny record per posted news, .last_check,
 goldrate/state, rasipalan/state) and the posting runs list. Never prints a token.
-Usage: python poster/posted_report.py [--dry]      (--dry prints the e-mail instead of sending it)"""
+owner 24 Nov: and ONCE a day (00:10 IST) a DAILY summary - every news posted on all pages the day before (--day).
+Usage: python poster/posted_report.py [--dry] [--day]      (--dry prints the e-mail instead of sending it)"""
 import html
 import json
 import os
@@ -135,20 +136,28 @@ def daily_jobs(repo, pg, today):
     return res
 
 
-def failed_runs(repo, since):
+def failed_runs(repo, since, until=None):
+    f = "%Y-%m-%dT%H:%M:%SZ"
     try:
-        d = api(f"repos/{OWNER}/{repo}/actions/workflows/post.yml/runs", status="failure",
-                created=">=" + since.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), per_page=1) or {}
+        created = (since.astimezone(timezone.utc).strftime(f) + ".." + until.astimezone(timezone.utc).strftime(f)) if until \
+            else ">=" + since.astimezone(timezone.utc).strftime(f)      # owner 24 Nov: the daily summary counts only that day
+        d = api(f"repos/{OWNER}/{repo}/actions/workflows/post.yml/runs", status="failure", created=created, per_page=1) or {}
         return int(d.get("total_count") or 0)
     except Exception as e:
         log(repo, "runs not read:", str(e)[:120])
         return 0
 
 
-def collect(now):
-    since, until = window(now)
-    day_start = now.astimezone(IST).replace(hour=0, minute=0, second=0, microsecond=0)
-    today = now.astimezone(IST).strftime("%Y-%m-%d")
+def day_window(now):
+    """owner 24 Nov: (since, until) = the whole IST day before now (00:00 - 24:00)"""
+    end = now.astimezone(IST).replace(hour=0, minute=0, second=0, microsecond=0)
+    return end - timedelta(days=1), end
+
+
+def collect(now, span=None):
+    since, until = span or window(now)
+    day_start = (until - timedelta(seconds=1)).astimezone(IST).replace(hour=0, minute=0, second=0, microsecond=0)
+    today = day_start.strftime("%Y-%m-%d")
     pages = []
     for repo, pgs in REPOS:
         try:
@@ -157,7 +166,7 @@ def collect(now):
             log(repo, "posted news not read:", str(e)[:150])
             recs, counts = None, {}
         st = check_status(repo, pgs)
-        fails = failed_runs(repo, since)
+        fails = failed_runs(repo, since, until if span else None)
         for i, pg in enumerate(pgs):
             problems = []
             if st["paused"].get(pg):
@@ -168,18 +177,22 @@ def collect(now):
                 problems.append("posted list not readable")
             pages.append({"page": pg, "label": LABEL.get(pg, pg), "posted": [r for r in recs or [] if r.get("page") == pg],
                           "today": counts.get(pg, 0), "ready": st["ready"] if i == 0 else None, "waits": st["waits"] if i == 0 else {},
-                          "quota": st["quota"].get(pg, ""), "problems": problems, **daily_jobs(repo, pg, today),
+                          "quota": st["quota"].get(pg, ""), "problems": problems,
+                          **(daily_jobs(repo, pg, today) if not span else {"gold": "", "rasipalan": ""}),      # the state files keep only the latest day
                           "shared": len(pgs) > 1})
     return since, until, pages
 
 
-def email(since, until, pages):
+def email(since, until, pages, daily=False):
     total = sum(len(p["posted"]) for p in pages)
     day_total = sum(p["today"] for p in pages)
     problems = [(p["label"], x) for p in pages for x in p["problems"]]
     span = f"{since.astimezone(IST):%I:%M %p}".lstrip("0") + " - " + f"{until.astimezone(IST):%I:%M %p}".lstrip("0")
     subject = (f"[News 360 REPORT] {until.astimezone(IST):%d %b %I:%M %p} - {total} news posted since the last report"
                + (f" - {len(problems)} problem(s)" if problems else ""))
+    if daily:      # owner 24 Nov: one e-mail with the whole day
+        subject = f"[News 360 DAILY] {since.astimezone(IST):%d %b %Y} - {total} news posted on all pages"
+        span = f"{since.astimezone(IST):%d %b %Y} (whole day)"
     text = [subject, f"{span}: {total} news posted. Today so far: {day_total} on all pages.", ""]
     rows, blocks = [], []
     for p in pages:
@@ -210,15 +223,17 @@ def email(since, until, pages):
     html_body = (f"<div style='font-family:Arial,sans-serif'><h2 style='margin:0'>News 360 - posted report</h2>"
                  f"<p style='margin:6px 0'>{E(span)}: <b>{total}</b> news posted. Today so far: <b>{day_total}</b> on all pages.</p>{probs}"
                  f"<table style='border-collapse:collapse;font-size:14px'>{head}{''.join(rows)}</table>{''.join(blocks)}"
-                 f"<p style='color:#888;font-size:12px'>One report for all pages at 9 AM, 1 PM, 6 PM and 10 PM. 'Posted now' = since the "
-                 f"last report. 'Ready now' = news ready in the page's latest posting check.</p></div>")
+                 + ("<p style='color:#888;font-size:12px'>Daily summary: every news posted that day on all pages. 'Posted now' and "
+                    "'Today' = that day. 'Ready now' = news waiting in the page's latest posting check.</p></div>" if daily else
+                    "<p style='color:#888;font-size:12px'>One report for all pages at 9 AM, 1 PM, 6 PM and 10 PM. 'Posted now' = since the "
+                    "last report. 'Ready now' = news ready in the page's latest posting check.</p></div>"))
     return subject, "\n".join(text), html_body
 
 
-def main(dry=False):
+def main(dry=False, daily=False):
     now = datetime.now(timezone.utc)
-    since, until, pages = collect(now)
-    subject, text, html_body = email(since, until, pages)
+    since, until, pages = collect(now, day_window(now) if daily else None)
+    subject, text, html_body = email(since, until, pages, daily)
     if dry:
         print(subject + "\n" + text)
         return
@@ -227,9 +242,12 @@ def main(dry=False):
         log("not sent (PROMO_URL / PROMO_KEY not set)\n" + text)
         return
     promo.hub_post("digest", {"subject": subject, "text": text, "html": html_body})
+    if daily:      # the daily summary never moves the 4-a-day report's window
+        log("sent:", subject)
+        return
     STATE.write_text(json.dumps({"last": until.isoformat(timespec="seconds")}, indent=1), encoding="utf-8")
     log("sent:", subject)
 
 
 if __name__ == "__main__":
-    main("--dry" in sys.argv)
+    main("--dry" in sys.argv, "--day" in sys.argv)

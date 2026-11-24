@@ -9,7 +9,13 @@ on:
     - cron: "30 7 * * *"      # 13:00 IST
     - cron: "30 12 * * *"     # 18:00 IST
     - cron: "30 16 * * *"     # 22:00 IST
+    - cron: "40 18 * * *"     # 00:10 IST - owner 24 Nov: the DAILY summary of the day before (every news posted on all pages)
   workflow_dispatch:
+    inputs:
+      day:
+        description: "send the daily summary of yesterday"
+        type: boolean
+        default: false
 permissions:
   contents: write
   actions: read
@@ -31,7 +37,8 @@ jobs:
       - name: E-mail the posted report (all pages)
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python poster/posted_report.py
+        run: |
+          if [ "${{ github.event.schedule }}" = "40 18 * * *" ] || [ "${{ inputs.day }}" = "true" ]; then python poster/posted_report.py --day; else python poster/posted_report.py; fi
       - name: Remember when the report was sent
         run: |
           git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
