@@ -65,6 +65,17 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-24 | `93e892b` | Fixes: Facebook 24-hour-limit news wait or are e-mailed (never silently skipped); slow sheet reads get more time; YouTube stops for the whole day after its quota; YouTube tests use today's date |
+| 2026-11-24 | `a2cec36` | stories shared / Instagram pause |
+| 2026-11-24 | `e57426a` | stories shared / Instagram pause |
+| 2026-11-24 | `c3d244e` | stories shared / Instagram pause |
+| 2026-11-24 | `b5f473f` | stories shared / Instagram pause |
+| 2026-11-24 | `8e85ac7` | stories shared / Instagram pause |
+| 2026-11-24 | `795594e` | stories shared / Instagram pause |
+| 2026-11-24 | `7565c32` | stories shared / Instagram pause |
+| 2026-11-24 | `f6f3b7d` | stories shared / Instagram pause |
+| 2026-11-24 | `bf66f18` | stories shared / Instagram pause |
+| 2026-11-24 | `6025557` | stories shared / Instagram pause |
 | 2026-11-24 | `11e1411` | Auto-fix held news (rewrite from the article, check again, post); Cloudinary fallbacks: pictures kept in the repo, reels direct then repo link; rasipalan and gold the same |
 | 2026-11-24 | `d8fe308` | stories shared / Instagram pause |
 | 2026-11-24 | `b260f2c` | stories shared / Instagram pause |
@@ -84,15 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-24 | `a19cd81` | stories shared / Instagram pause |
 | 2026-11-24 | `2a14a96` | facebook RN-812 |
 | 2026-11-24 | `f689170` | posted RN-812 |
-| 2026-11-24 | `80a85cb` | stories shared / Instagram pause |
-| 2026-11-24 | `6903338` | stories shared / Instagram pause |
-| 2026-11-24 | `50c99e6` | facebook RN-802 |
-| 2026-11-24 | `9480be7` | posted RN-802 |
-| 2026-11-24 | `ca722a0` | stories shared / Instagram pause |
-| 2026-11-24 | `bb5d8c0` | stories shared / Instagram pause |
-| 2026-11-24 | `a207d26` | facebook RN-803 |
-| 2026-11-24 | `4d4ea73` | posted RN-803 |
-| 2026-11-24 | `7c03e3c` | stories shared / Instagram pause |
-| 2026-11-24 | `add5331` | stories shared / Instagram pause |
-| 2026-11-24 | `a97dc14` | E-mail for every posted news again (posted_email each); daily summary e-mail at 00:10 IST with every news posted the day before |
 <!-- recent-changes:end -->
