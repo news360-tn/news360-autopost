@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-24 | `fe67ca5` | Auto-fix: busy AI writers do not use up a news's tries; each page runs at its own minutes; try counts reset |
+| 2026-11-24 | `4ebde6c` | autofix: corrected held news |
 | 2026-11-24 | `93e892b` | Fixes: Facebook 24-hour-limit news wait or are e-mailed (never silently skipped); slow sheet reads get more time; YouTube stops for the whole day after its quota; YouTube tests use today's date |
 | 2026-11-24 | `a2cec36` | stories shared / Instagram pause |
 | 2026-11-24 | `e57426a` | stories shared / Instagram pause |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-24 | `8bc2888` | posted RN-811 |
 | 2026-11-24 | `5a96013` | stories shared / Instagram pause |
 | 2026-11-24 | `a19cd81` | stories shared / Instagram pause |
-| 2026-11-24 | `2a14a96` | facebook RN-812 |
-| 2026-11-24 | `f689170` | posted RN-812 |
 <!-- recent-changes:end -->
