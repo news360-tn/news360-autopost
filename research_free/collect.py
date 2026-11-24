@@ -793,13 +793,17 @@ SHOP = re.compile(r"சில்க்ஸ்|டெக்ஸ்டைல்ஸ�
 OFFER = re.compile(r"தள்ளுபடி|ஆஃபர்|ஆபர்|சலுகை விலை|சிறப்பு விற்பனை|விற்பனை தொடக்கம்|க்கு விற்பனை|புதிய கிளை|கிளை திறப்பு|திறப்பு விழா|அள்ளுங்க|மெகா சேல்|offer|sale", re.I)
 SUICIDE = re.compile(r"தற்கொலை|தூக்கிட்டு|தூக்கில் தொங்கி|தூக்குப்போட்டு|தீக்குளித்து|தீக்குளிக்க|விஷம் குடித்து|பூச்சிக்கொல்லி மருந்தை குடித்து|suicide", re.I)
 
+# owner 24 Nov: an ATTEMPT where nobody died (mostly a protest at the collector's office) is news; a death still is not written
+ATTEMPT_PROTEST = re.compile(r"(தீக்குளி(க்க|ப்பு)?|தற்கொலை(க்கு)?)\s*முயற்சி|தீக்குளிக்க\s*முயன்ற")
+DEATH_WORDS = re.compile(r"உயிரிழ|பலி|சாவு|மரணம்|இறந்த|காலமான|மறைவு")
+
 
 def never_written(title, text=""):
     """'' or why this article is never written (shop offer, suicide, another district's news) - owner 1 Nov"""
     t = title or ""
     if SHOP.search(t) and OFFER.search(t) or re.search(r"(?:சேலை|புடவை|சட்டை|வேட்டி)\s*(?:ஒன்று|ஒரு)?\s*ரூ\.?\s*\d+\s*க்கு", t):
         return "shop offer / advertisement - not news"
-    if SUICIDE.search(t) or SUICIDE.search((text or "")[:200]):
+    if (SUICIDE.search(t) or SUICIDE.search((text or "")[:200])) and not (ATTEMPT_PROTEST.search(t) and not DEATH_WORDS.search(t)):
         return "suicide - not posted"
     head = f"{t} {(text or '')[:300]}"
     if not allnews.has_place(t) and allnews.other_district(head):
