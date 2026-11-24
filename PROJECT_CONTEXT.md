@@ -65,6 +65,11 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-24 | `69fff04` | Google News links: when Google refuses the decoder (429), the same headline on Bing (same newspaper) gives the article link - news is no longer dropped |
+| 2026-11-24 | `09b529e` | stories shared / Instagram pause |
+| 2026-11-24 | `fb2f04b` | facebook RN-801 |
+| 2026-11-24 | `7927602` | posted RN-801 |
+| 2026-11-24 | `36aa5c2` | stories shared / Instagram pause |
 | 2026-11-24 | `fe67ca5` | Auto-fix: busy AI writers do not use up a news's tries; each page runs at its own minutes; try counts reset |
 | 2026-11-24 | `4ebde6c` | autofix: corrected held news |
 | 2026-11-24 | `93e892b` | Fixes: Facebook 24-hour-limit news wait or are e-mailed (never silently skipped); slow sheet reads get more time; YouTube stops for the whole day after its quota; YouTube tests use today's date |
@@ -90,9 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-24 | `fa64eed` | facebook RN-808 |
 | 2026-11-24 | `fdce2ed` | posted RN-808 |
 | 2026-11-24 | `a92ab1c` | stories shared / Instagram pause |
-| 2026-11-24 | `71a056d` | stories shared / Instagram pause |
-| 2026-11-24 | `fa5f814` | facebook RN-811 |
-| 2026-11-24 | `8bc2888` | posted RN-811 |
-| 2026-11-24 | `5a96013` | stories shared / Instagram pause |
-| 2026-11-24 | `a19cd81` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
