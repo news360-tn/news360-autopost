@@ -1,12 +1,182 @@
+writing [N]: நாமக்கல் வேளாண் சங்கத்தில்
+ரூ. 7 லட்சத்துக்கு பருத்தி ஏலம்
+writing [N]: நவ. 27 வரை முட்டை விலை ரூ. 5.40 ஆக நீடிக்கும்: என்இசிசி
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing high d
+writing [N]: பரமத்தி வேலூரில் ரூ. 1.20 லட்சத்துக்கு தேங்காய் ஏலம்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+ok gemini/gemini-3-flash-preview (23s)
+attempt 1 gemini/gemini-3-flash-preview: 4 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  caption needs 5 hashtags (Instagram max), has 6
+  numbers not found in the article: 120847, 2655, 6654
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 6 ('அதேபோல தேங்காய்களை ஏலம் எடுப்பதற்காக பல்வேறு மாவட்டங்களில் இ'); 654 ('அதேபோல தேங்காய்களை ஏலம் எடுப்பதற்காக பல்வேறு மாவட்டங்களில் இ'); 2 ('2 லட்சத்து 20 ஆயிரத்து 847 க்கு தேஙகாய் விற்பனை நடைபெற்றது..'); 847 ('2 லட்சத்து 20 ஆயிரத்து 847 க்கு தேஙகாய் விற்பனை நடைபெற்றது..'); 655 ('2 லட்சத்து 20 ஆயிரத்து 847 க்கு தேஙகாய் விற்பனை நடைபெற்றது..'); 847 ('1 லட்சத்து 20 ஆயிரத்து 847க்கு தேங்காய் விற்பனையானது.')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (12s)
+attempt 1 gemini/gemini-3-flash-preview: 2 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 8 ('27) வரை நீடிக்கும் என தேசிய முட்டை ஒருங்கிணைப்புக் குழு (என்'); 50 ('நாள்தோறும் 7.50 கோடி முட்டைகள் உற்பத்தியாகின்றன.'); 11 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம'); 20 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம'); 15 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம'); 20, ('தொடா்ந்து 20, 22 ஆம் தேதிகளில் தலா 20 காசுகள் குறைந்து, திங்')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3.6-flash (34s)
+attempt 1 gemini/gemini-3.6-flash: 2 problems
+  numbers not found in the article: 8899, 9666
+  known issue repeated_words: the same sentence is read twice - rewrite so it does not happen again
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+  "error": {
+    "code": 503,
+    "message": "This model is currently experiencing 
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+ok groq/qwen/qwen3.8-27b (5s)
+attempt 2 groq/qwen/qwen3.8-27b: 2 problems
+  numbers not found in the article: 120847, 220847, 2655, 6654
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 6 ('அதேபோல தேங்காய்களை ஏலம் எடுப்பதற்காக பல்வேறு மாவட்டங்களில் இ'); 654 ('அதேபோல தேங்காய்களை ஏலம் எடுப்பதற்காக பல்வேறு மாவட்டங்களில் இ'); 2 ('2 லட்சத்து 20 ஆயிரத்து 847 க்கு தேஙகாய் விற்பனை நடைபெற்றது..'); 847 ('2 லட்சத்து 20 ஆயிரத்து 847 க்கு தேஙகாய் விற்பனை நடைபெற்றது..'); 655 ('2 லட்சத்து 20 ஆயிரத்து 847 க்கு தேஙகாய் விற்பனை நடைபெற்றது..'); 847 ('1 லட்சத்து 20 ஆயிரத்து 847க்கு தேங்காய் விற்பனையானது.')
+ok gemini/gemini-3-flash-preview (33s)
+attempt 2 gemini/gemini-3-flash-preview: 1 problemsgemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+  
+numbers not found in the article: 1000
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+ok gemini/gemini-3-flash-preview (34s)
+attempt 2 gemini/gemini-3-flash-preview: 4 problems
+  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  numbers not found in the article: 8899, 9666
+  stray Tamil sign '்' after 'ா' in «தியாளா்கள்»
+  stray Tamil sign '்' after 'ா' in «ென்றனா்.
+
+»
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image brief failed, using the writer's scenes: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to acces
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image brief failed, using the writer's scenes: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to acces
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+image brief failed, using the writer's scenes: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to acces
+real photo skipped (photo uploaded 2026-01-13 (older than the news)): https://media.dinamani.com/dinamani/2026-01-13/h92zfuxt/dinamaniimport20171117originalfarm
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+switching away from groq/qwen/qwen3.8-27b for 10 min
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+images made: 2 for 'Namakkal egg price to remain at ₹5.40 un'
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+image brief failed, using the writer's scenes: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to acces
+bridge: 200 <!DOCTYPE html><html><head><script nonce="jA6cB6QrjawAfVmKq_0jQA">window['ppConfig'] = {productName: '26981ed0d57bbad37e728ff58134270c', deleteIsEnforced:  false , sealIsEnforced:  false , heartbeatRate:  0.5 , periodicReportingRateMillis:  60000.0 , disableAllReporting:  false };(function(){'use st
+bridge: 200 <!DOCTYPE html><html><head><script nonce="WbG2XAnLHtE55oxD0Tcx5g">window['ppConfig'] = {productName: '26981ed0d57bbad37e728ff58134270c', deleteIsEnforced:  false , sealIsEnforced:  false , heartbeatRate:  0.5 , periodicReportingRateMillis:  60000.0 , disableAllReporting:  false };(function(){'use st
+bridge: 200 <!DOCTYPE html><html><head><script nonce="sY3mEpGXPETtmzbkcgMHSw">window['ppConfig'] = {productName: '26981ed0d57bbad37e728ff58134270c', deleteIsEnforced:  false , sealIsEnforced:  false , heartbeatRate:  0.5 , periodicReportingRateMillis:  60000.0 , disableAllReporting:  false };(function(){'use st
+bridge failed: Expecting value: line 1 column 1 (char 0)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+writing [N]: வாக்காளா் பட்டியலில் பெயா் சோ்க்க 2,023 போ் விண்ணப்பம்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+image brief failed, using the writer's scenes: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to acces
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
+claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
+real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
+real photo: vision check out of free quota
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match: False The image is an AI-generated render of a hand holding a coconut on a digital scale with gibberish text, not a photo of a
+image match: False The image is a generic, AI-generated close-up of a single coconut being weighed on a scale, not a news photograph showin
+images made: 2 for 'Coconut auction for Rs. 1.20 lakh in Par'
+bridge: 200 <!DOCTYPE html><html><head><script nonce="YRi1tYxSOXIBp3PjCHIe8A">window['ppConfig'] = {productName: '26981ed0d57bbad37e728ff58134270c', deleteIsEnforced:  false , sealIsEnforced:  false , heartbeatRate:  0.5 , periodicReportingRateMillis:  60000.0 , disableAllReporting:  false };(function(){'use st
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261125-0231","first":"RN-816"}
+posting job started at once
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+image brief failed, using the writer's scenes: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to acces
+real photo: no picture on the source page -> AI pictures
+image match: False The image is an AI-generated illustration featuring garbled background text and unnaturally uniform cotton bolls, not a 
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match: False The image is a generic stylized close-up of hands holding cotton bolls and does not depict an actual auction event or ma
+image match: False The photo is a generic/AI-generated close-up of hands holding cotton bolls, not a real news photograph depicting an auct
+images made: 2 for 'Cotton auctioned for Rs 7 lakh at Namakk'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261125-0232","first":"RN-817"}
+write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 8 news waiting in the queue (written in priority order)
-candidate filter: already filed=8
-to write: 0 Rasipuram + 0 other district candidates (max 200 + 200 stories)
-daily maximum 30: 18 written today - this round writes at most 0 + 12
-candidates waiting: 0 Rasipuram, 0 Namakkal; time left 29 min
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 0}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+write round: 10 news waiting in the queue (written in priority order)
+candidate filter: already filed=5, collected=5
+to write: 0 Rasipuram + 5 other district candidates (max 200 + 200 stories)
+daily maximum 30: 0 written today - this round writes at most 0 + 30
+candidates waiting: 0 Rasipuram, 5 Namakkal; time left 29 min
+try (N) manual=False: நவ. 27 வரை முட்டை விலை ரூ. 5.40 ஆக நீடிக்கும்: என்இசிசி
+try (N) manual=False: முட்டை தினசரி விலை நிர்ணயம் நிறுத்தம்
+try (N) manual=False: நாமக்கல் வேளாண் சங்கத்தில்
+ரூ. 7 லட்சத்துக்கு பருத்தி ஏலம்
+skip (N) similar to a filed story: முட்டை தினசரி விலை நிர்ணயம் நிறுத்தம்
+try (N) manual=False: பரமத்தி வேலூரில் ரூ. 1.20 லட்சத்துக்கு தேங்காய் ஏலம்
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
+addStories failed: Expecting value: line 1 column 1 (char 0)
+try (N) manual=False: வாக்காளா் பட்டியலில் பெயா் சோ்க்க 2,023 போ் விண்ணப்பம்
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 5})
+posting job started at once
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 9})
+NOT filed (N) வாக்காளா் பட்டியலில் பெயா் சோ்க்க 2,023 போ் விண்: all free models failed: no usable answer from the models
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 5}, done={'R': 0, 'N': 3}, time left 23 min
+carousel for 0 of 3 stories, the rest reel only
+filed: 0 Rasipuram + 3 Namakkal (targets 200 + 200)
+queue: 1 news waiting to be written
+write_stories.yml started
+All News sheet: {"ok":true,"added":0,"updated":4} 
+stories: 3
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261125-0233","first":"RN-818"}
