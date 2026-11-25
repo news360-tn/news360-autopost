@@ -2,42 +2,38 @@
  "log": [
   "earlier stories still waiting for images: []",
   "instagram check: 100 recent posts read from both pages",
-  "write round: 6 news waiting in the queue (written in priority order)",
-  "candidate filter: collected=6",
-  "to write: 0 Rasipuram + 6 other district candidates (max 200 + 200 stories)",
-  "daily maximum 30: 11 written today - this round writes at most 0 + 19",
-  "candidates waiting: 0 Rasipuram, 6 Namakkal; time left 29 min",
+  "write round: 4 news waiting in the queue (written in priority order)",
+  "candidate filter: collected=4",
+  "to write: 0 Rasipuram + 4 other district candidates (max 200 + 200 stories)",
+  "daily maximum 30: 13 written today - this round writes at most 0 + 17",
+  "candidates waiting: 0 Rasipuram, 4 Namakkal; time left 29 min",
   "try (N) manual=False: கார்த்திகை தீப விழா கோலாகலம்",
-  "try (N) manual=False: பி.ஜி.பி., கல்வி நிறுவனங்களில் ஆசிரியர் திறன் மேம்பாட்டு பயி",
-  "try (N) manual=False: 2 கூரை வீடுகளில் தீ",
-  "NOT filed (N) கார்த்திகை தீப விழா கோலாகலம்: all free models failed: no usable answer from the models",
   "try (N) manual=False: காசி விஸ்வநாதர் கோவிலில் 18 ஆண்டுகளுக்கு பின் மீண்டும் துவங்",
-  "NOT filed (N) காசி விஸ்வநாதர் கோவிலில் 18 ஆண்டுகளுக்கு பின் மீண்: all free models failed: no usable answer from the models",
   "try (N) manual=False: பயிர்க்கடன் நிலுவை தொகையை செலுத்தினால் வட்டி தள்ளுபடி",
   "NOT filed (N) பயிர்க்கடன் நிலுவை தொகையை செலுத்தினால் வட்டி தள்ளு: all free models failed: no usable answer from the models",
   "try (N) manual=False: சிறுபான்மை மக்கள் நலக்குழு ஆர்ப்பாட்டம்",
+  "NOT filed (N) கார்த்திகை தீப விழா கோலாகலம்: all free models failed: no usable answer from the models",
   "NOT filed (N) சிறுபான்மை மக்கள் நலக்குழு ஆர்ப்பாட்டம்: all free models failed: no usable answer from the models",
-  "auto images: 1 of 1 stories ({'black-forest-labs/flux.1-schnell': 2})",
-  "posting job started at once",
-  "auto images: 1 of 1 stories ({'black-forest-labs/flux.1-schnell': 3, 'fal-ai/flux/schnell': 1})",
-  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 6}, done={'R': 0, 'N': 2}, time left 26 min",
-  "carousel for 0 of 2 stories, the rest reel only",
-  "filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)",
+  "NOT filed (N) காசி விஸ்வநாதர் கோவிலில் 18 ஆண்டுகளுக்கு பின் மீண்: all free models failed: no usable answer from the models",
+  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 0}, time left 28 min",
+  "carousel for 0 of 0 stories, the rest reel only",
+  "filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)",
   "queue: 4 news waiting to be written",
-  "write_stories.yml started",
-  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":6}"
+  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":4}"
  ],
  "llm": [
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "dead for this round: gemini/gemini-3.6-flash",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.6-flash",
   "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.5-flash",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "dead for this round: gemini/gemini-3.5-flash",
   "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, plea",
   "dead for this round: gemini/gemini-3-flash-preview",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
@@ -48,142 +44,8 @@
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok gemini/gemini-3-flash-preview (10s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "ok gemini/gemini-3.6-flash (31s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b"
+  "fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)",
+  "poor answer - skipped for 30 min: gemini/gemini-3-flash-preview"
  ],
- "stories": [
-  {
-   "tamil_headline": "பள்ளிப்பாளையம் அருகே பட்டாசு தீப்பொறி பட்டு 2 கூரை வீடுகள் எரிந்து நாசம்: ரூ. 3 லட்சம் பொருட்கள் சேதம்",
-   "english_headline": "Two thatched houses destroyed in fire near Pallipalayam after firecracker sparks fall on roofs; ₹3 lakh worth of goods lost",
-   "category": "Crime & Safety",
-   "location": "Chinnagoundampalayam near Pallipalayam, Namakkal district",
-   "importance": "Medium",
-   "scope": "local",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "தீ விபத்து",
-    "loc": "பள்ளிப்பாளையம்",
-    "hl1": "பள்ளிப்பாளையத்தில் 2 வீடுகள்",
-    "hl2": "ரூ. 3 லட்சம் பொருட்கள் சேதம்",
-    "slides": [
-     {
-      "title": "எப்போது? எங்கே?",
-      "lines": [
-       "நேற்று இரவு <b>7 மணி</b> அளவில் விபத்து",
-       "பள்ளிப்பாளையம் அருகே <b>சின்னகவுண்டம்பாளையம்</b>",
-       "கார்த்திகை தீப பட்டாசு தீப்பொறி பட்டு தீ விபத்து"
-      ]
-     },
-     {
-      "title": "என்ன நடந்தது?",
-      "lines": [
-       "<b>2 கூரை வீடுகள்</b> முற்றிலும் எரிந்து நாசம்",
-       "<b>65 வயது</b> முதியவர்கள் 2 பேர் பாதிப்பு",
-       "வெப்படை தீயணைப்பு வீரர்கள் தீயை அணைத்தனர்"
-      ]
-     },
-     {
-      "title": "சேத விவரம்",
-      "lines": [
-       "டூவீலர் உள்ளிட்ட <b>ரூ. 3 லட்சம்</b> பொருட்கள் சேதம்",
-       "வீட்டில் இருந்த அனைத்து பொருட்களும் எரிந்து கருகின",
-       "பட்டாசு வெடிக்கும்போது கவனமாக இருக்க அறிவுறுத்தல்"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "பள்ளிப்பாளையம் அருகே பட்டாசு தீப்பொறி பட்டு 2 கூரை வீடுகள் முற்றிலும் எரிந்து நாசமானது. சின்னகவுண்டம்பாளையம் பகுதியில் இந்த விபத்து நடந்தது. நேற்று கார்த்திகை தீபத்தை முன்னிட்டு இரவு 7 மணி அளவில் அப்பகுதியில் பட்டாசுகள் வெடிக்கப்பட்டன. அப்போது பட்டாசு தீப்பொறி பட்டு 65 வயதுடைய 2 முதியவர்களின் கூரை வீடுகளில் தீப்பிடித்தது. வெப்படை தீயணைப்பு வீரர்கள் விரைந்து வந்து தீயை அணைத்தனர். இருப்பினும் 2 வீடுகளும் முழுமையாக எரிந்துவிட்டன. இதில் ஒரு இருசக்கர வாகனம் உள்ளிட்ட 3 லட்சம் ரூபாய் மதிப்பிலான பொருட்கள் தீயில் கருகின. பட்டாசு வெடிக்கும்போது பொதுமக்கள் எச்சரிக்கையாக இருக்க வேண்டும். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🚨 பள்ளிப்பாளையம் அருகே பட்டாசு தீப்பொறி பட்டு 2 கூரை வீடுகள் எரிந்து நாசம் - ரூ. 3 லட்சம் பொருட்கள் சேதம்\n\n📰 முழு விவரம்:\nபள்ளிப்பாளையம் அருகே உள்ள சின்னகவுண்டம்பாளையம் பகுதியில் நேற்று இரவு தீ விபத்து ஏற்பட்டது. கார்த்திகை தீபத்தை முன்னிட்டு அப்பகுதியில் வெடிக்கப்பட்ட பட்டாசின் தீப்பொறி பட்டு, 65 வயதுடைய 2 முதியவர்களின் கூரை வீடுகள் தீப்பிடித்தன. வெப்படை தீயணைப்பு வீரர்கள் போராடி தீயை அணைத்தனர். இந்த விபத்தில் 2 வீடுகளும், ஒரு இருசக்கர வாகனம் உள்ளிட்ட 3 லட்சம் ரூபாய் மதிப்பிலான பொருட்களும் எரிந்து சேதமடைந்தன.\n\n📍 இடம்: சின்னகவுண்டம்பாளையம், பள்ளிப்பாளையம்\n🗓️ நாள்: 24 நவம்பர் 2026\n🕘 நேரம்: இரவு 7 மணி\n🚒 நடவடிக்கை: வெப்படை தீயணைப்பு வீரர்கள் தீயை அணைத்தனர்\nℹ️ மக்கள் கவனத்திற்கு: பட்டாசு வெடிக்கும்போது கூரை வீடுகள் மற்றும் எளிதில் தீப்பற்றும் பொருட்கள் அருகில் இல்லாதவாறு பார்த்துக்கொள்ளுங்கள்.\n\nPallipalayam house fire accident | Namakkal news\n📍 Chinnagoundampalayam, Namakkal | 25 November 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #Pallipalayam #தீவிபத்து #நாமக்கல்",
-   "prompts": "A night scene in a village near Pallipalayam, two thatched houses engulfed in orange flames, smoke rising into the dark sky, silhouettes of people watching from a distance. Same warm firelight and deep night colour grade across this series. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nCharred remains of a thatched house in the morning light, a burnt two-wheeler frame visible among the ashes and blackened wood, firemen in uniform inspecting the site. Same warm firelight and deep night colour grade across this series. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/2-houses-gutted-in-fire/4385601",
-   "published": "2026-11-25T06:03:00+05:30",
-   "verification": "DRAFT (gemini/gemini-3-flash-preview) - fact-check: no problems found",
-   "note": "free-model draft gemini/gemini-3-flash-preview, 1 attempt(s), 0 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 4.0,
-   "images": [
-    "https://res.cloudinary.com/dyaejou1/image/upload/v1795575994/news360/cxeim0zecr9n1w6xfnoz.jpg",
-    "https://res.cloudinary.com/dyaejou1/image/upload/v1795576002/news360/tfkeszrdyrwa72fjpeox.jpg"
-   ]
-  },
-  {
-   "tamil_headline": "நாமக்கல் பி.ஜி.பி. கல்வி நிறுவனங்களில் பேராசிரியர் திறன் மேம்பாட்டு பயிற்சி: 300க்கும் மேற்பட்டோர் பங்கேற்பு",
-   "english_headline": "Faculty development training program held at PGP Educational Institutions in Namakkal with over 300 professors participating",
-   "category": "Education",
-   "location": "PGP Educational Institutions, Namakkal city, Namakkal district",
-   "importance": "Medium",
-   "scope": "local",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "ஆசிரியர் பயிற்சி",
-    "loc": "நாமக்கல்",
-    "hl1": "நாமக்கல்லில் பேராசிரியர்கள் பயிற்சி",
-    "hl2": "300+ பேராசிரியர்கள்",
-    "slides": [
-     {
-      "title": "நிகழ்வு விவரம்",
-      "lines": [
-       "நாமக்கல் <b>பி.ஜி.பி. கல்வி நிறுவனங்களில்</b> சிறப்புப் பயிற்சி",
-       "பேராசிரியர்களுக்கான திறன் மேம்பாட்டு பயிற்சி நடைபெற்றது",
-       "பல்வேறு கல்லூரிகளின் பேராசிரியர்கள் பங்கேற்பு"
-      ]
-     },
-     {
-      "title": "சிறப்பு",
-      "lines": [
-       "சென்னை அண்ணா பல்கலைக்கழக ஓய்வுபெற்ற பேராசிரியர் <b>முத்தன்</b>",
-       "பல்வேறு தலைப்புகளில் பயனுள்ள பயிற்சிகளை அளித்தார்",
-       "<b>300க்கும் மேற்பட்ட</b> பேராசிரியர்கள், முதல்வர்கள் பங்கேற்பு"
-      ]
-     },
-     {
-      "title": "நிர்வாகிகள்",
-      "lines": [
-       "தலைவர் <b>பழனி ஜி பெரியசாமி</b>, துணைத் தலைவர் <b>விசாலாட்சி</b> பங்கேற்பு",
-       "துணைத் தலைவர் <b>விசாலாட்சி பெரியசாமி</b> வாழ்த்துத் தெரிவித்தார்",
-       "தாளாளர் கணபதி வரவேற்பு, முதன்மையர் பெரியசாமி நன்றி"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "நாமக்கல் பி ஜி பி கல்வி நிறுவனங்களில் 300க்கும் மேற்பட்ட பேராசிரியர்களுக்குத் திறன் மேம்பாட்டு பயிற்சி நடந்தது. இதில் வேளாண்மை, கலை அறிவியல், மருந்தியல், செவிலியர், இணை மருத்துவ அறிவியல், பிசியோதெரபி, கல்வியியல், பொறியியல், பாலிடெக்னிக் மற்றும் யோகா கல்லூரிகளைச் சேர்ந்த பேராசிரியர்களும் கல்லூரி முதல்வர்களும் கலந்துகொண்டனர். சென்னை அண்ணா பல்கலைக்கழகத்தின் ஓய்வுபெற்ற பேராசிரியர் முத்தன் முதன்மை விருந்தினராகக் கலந்துகொண்டு பல்வேறு தலைப்புகளில் பயிற்சியளித்தார். இந்நிகழ்வில் பி ஜி பி கல்வி நிறுவனங்களின் தலைவர் பழனி ஜி பெரியசாமி, துணைத் தலைவர் விசாலாட்சி பெரியசாமி, நிறுவனத்தின் தலைவர், செயலாளர், பல்வேறு கல்லூரிகளின் முதல்வர்கள் மற்றும் மூத்த அதிகாரிகள் கலந்துகொண்டனர். துணைத் தலைவர் விசாலாட்சி பெரியசாமி பேராசிரியர்களுக்கு வாழ்த்துகளைத் தெரிவித்தார். தாளாளர் கணபதி வரவேற்புரையாற்றினார். கல்லூரி முதன்மையர் பெரியசாமி நன்றி கூறினார். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🎓 நாமக்கல் பி.ஜி.பி. கல்வி நிறுவனங்களில் பேராசிரியர்களுக்குத் திறன் மேம்பாட்டு பயிற்சி!\n\n📰 முழு விவரம்:\nநாமக்கல் பி.ஜி.பி. கல்வி நிறுவனங்களில் பேராசிரியர்களுக்கான திறன் மேம்பாட்டு பயிற்சி நடைபெற்றது.\nஇதில் வேளாண்மை கல்லூரி, கலை அறிவியல், மருந்தியல், செவிலியர், இணை மருத்துவ அறிவியல், பிசியோதெரபி, கல்வியியல், பொறியியல், பாலிடெக்னிக் மற்றும் யோகா கல்லூரிகளைச் சேர்ந்த 300க்கும் மேற்பட்ட பேராசிரியர்களும், கல்லூரி முதல்வர்களும் கலந்துகொண்டனர்.\nசென்னை அண்ணா பல்கலைக்கழகத்தின் ஓய்வுபெற்ற பேராசிரியர் முத்தன் முதன்மை விருந்தினராகக் கலந்துகொண்டு பல்வேறு தலைப்புகளில் பயிற்சியளித்தார்.\nஇந்நிகழ்வில் பி.ஜி.பி. கல்வி நிறுவனங்களின் தலைவர் பழனி ஜி பெரியசாமி, துணைத் தலைவர் விசாலாட்சி பெரியசாமி, நிறுவனத்தின் தலைவர், செயலாளர், பல்வேறு கல்லூரிகளின் முதல்வர்கள் மற்றும் மூத்த அதிகாரிகள் பங்கேற்றனர். துணைத் தலைவர் விசாலாட்சி பெரியசாமி வாழ்த்துத் தெரிவித்தார். தாளாளர் கணபதி வரவேற்றார். கல்லூரி முதன்மையர் பெரியசாமி நன்றி தெரிவித்தார்.\n\n📍 இடம்: பி.ஜி.பி. கல்வி நிறுவனங்கள், நாமக்கல்\n🗓️ நாள்: 25 நவம்பர் 2026\n🎯 பங்கேற்பாளர்கள்: 300க்கும் மேற்பட்ட பேராசிரியர்கள் & கல்லூரி முதல்வர்கள்\n\nPGP Institutions faculty development training in Namakkal | Namakkal news\n📍 நாமக்கல் | 25 நவம்பர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #NamakkalNews #PGPCollege #நாமக்கல்",
-   "prompts": "A wide view of a modern auditorium inside PGP Educational Institutions campus in Namakkal, Tamil Nadu, with over 300 professors and college principals seated, attentively attending a faculty development training session, warm professional lighting. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA senior speaker presenting from the podium on stage at an academic workshop in Namakkal, presentation screen visible in the background, seated delegates in front, professional academic ambience. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/teacher-skill-development-training-in--educational-institutions/4385595",
-   "published": "2026-11-25T05:59:00+05:30",
-   "verification": "DRAFT (gemini/gemini-3.6-flash) - NOT CLEAN, held from posting - problems: sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences",
-   "note": "free-model draft gemini/gemini-3.6-flash, 1 attempt(s), 1 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 5.0,
-   "images": [
-    "https://res.cloudinary.com/dyaejou1/image/upload/v1795576014/news360/nbolqln5yquyaypzukz1.jpg",
-    "https://res.cloudinary.com/dyaejou1/image/upload/v1795576177/news360/r2k1koptscrautm3brom.jpg"
-   ]
-  }
- ]
+ "stories": []
 }
