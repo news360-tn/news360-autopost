@@ -65,6 +65,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-25 | `9bb96cd` | Platform text: Facebook news caption short (headline + 3 lines + source) with the Tamil district tag; YouTube title ~70 chars with an English search word, 3 hashtags first, Subscribe line, Tamil language |
+| 2026-11-25 | `80e48b0` | stories shared / Instagram pause |
+| 2026-11-25 | `d09bd0a` | stories shared / Instagram pause |
 | 2026-11-25 | `7fe5265` | YouTube: the Instagram source comment (source + link) at the top of each Short's description |
 | 2026-11-25 | `fc9adbe` | goldrate posted |
 | 2026-11-25 | `b32181c` | stories shared / Instagram pause |
@@ -92,7 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-25 | `845e6c2` | stories shared / Instagram pause |
 | 2026-11-25 | `18c1b95` | stories shared / Instagram pause |
 | 2026-11-25 | `2941e05` | stories shared / Instagram pause |
-| 2026-11-25 | `65da25a` | stories shared / Instagram pause |
-| 2026-11-25 | `dd16fdd` | stories shared / Instagram pause |
-| 2026-11-25 | `64a6c0c` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
