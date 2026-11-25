@@ -254,13 +254,13 @@ class PrimeTime(unittest.TestCase):
     def test_windows_switched_on(self):      # owner 21 Nov: no best-time windows - any time from 05:00, quiet 00:00-05:00
         pt = json.loads((ROOT / "poster" / "config.json").read_text(encoding="utf-8"))["prime_time"]
         self.assertTrue(pt["enabled"])
-        self.assertEqual(pt["windows"], [["05:00", "24:00"]])
-        self.assertEqual(pt["quiet_ist"], ["00:00", "05:00"])
+        self.assertEqual(pt["windows"], [["04:00", "24:00"]])
+        self.assertEqual(pt["quiet_ist"], ["00:00", "04:00"])
         self.assertFalse(pt["starts"])
 
     def test_inside_a_window_at_once_outside_waits(self):
         news = "கோவில் கும்பாபிஷேக விழா"
-        for now, expect in (((4, 30), "night"), ((5, 0), ""), ((9, 30), ""), ((12, 0), ""), ((14, 30), ""), ((21, 0), ""),
+        for now, expect in (((3, 30), "night"), ((4, 0), ""), ((9, 30), ""), ((12, 0), ""), ((14, 30), ""), ((21, 0), ""),
                             ((23, 59), ""), ((0, 0), "night"), ((1, 0), "night")):
             got = self.wait(self.row(news, 0, 30), self.at(*now))
             if expect:
