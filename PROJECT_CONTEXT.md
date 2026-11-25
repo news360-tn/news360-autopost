@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-25 | `1361ca0` | YouTube: upload only when the login's channel is this page's (verify_channel on Erode, Karur, Salem, Tiruppur, Trichy - their Shorts went to the Namakkal channel) |
+| 2026-11-25 | `a3da05b` | stories shared / Instagram pause |
 | 2026-11-25 | `2e0c36d` | YouTube: upload only when the login's channel is this page's (verify_channel on Erode, Karur, Salem, Tiruppur, Trichy - their Shorts went to the Namakkal channel) |
 | 2026-11-25 | `f4ae18b` | stories shared / Instagram pause |
 | 2026-11-25 | `264181f` | stories shared / Instagram pause |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-25 | `e285d1c` | stories shared / Instagram pause |
 | 2026-11-25 | `85396be` | stories shared / Instagram pause |
 | 2026-11-25 | `2f687a9` | stories shared / Instagram pause |
-| 2026-11-25 | `b560dc2` | stories shared / Instagram pause |
-| 2026-11-25 | `8a36d5c` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
