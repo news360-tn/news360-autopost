@@ -65,6 +65,16 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-25 | `7d2c329` | R2 free-tier safety: at most 300 MB and 400 files per page per day, 100 MB per file; usage read from the bucket before each upload; over a limit R2 is skipped until tomorrow |
+| 2026-11-25 | `dc43e98` | stories shared / Instagram pause |
+| 2026-11-25 | `fb36987` | stories shared / Instagram pause |
+| 2026-11-25 | `d95fcf2` | stories shared / Instagram pause |
+| 2026-11-25 | `b3550e8` | stories shared / Instagram pause |
+| 2026-11-25 | `874fdbe` | stories shared / Instagram pause |
+| 2026-11-25 | `5ecc7b6` | stories shared / Instagram pause |
+| 2026-11-25 | `eaf1919` | stories shared / Instagram pause |
+| 2026-11-25 | `3516b4c` | stories shared / Instagram pause |
+| 2026-11-25 | `9a24744` | powercut: notices written |
 | 2026-11-25 | `a5eb164` | Watchdog: ignore the shared rasipalan text files (rasis_*.json) - they stopped the watchdog on every run |
 | 2026-11-25 | `7426a50` | stories shared / Instagram pause |
 | 2026-11-25 | `f64c3ff` | stories shared / Instagram pause |
@@ -85,14 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-25 | `b35705d` | stories shared / Instagram pause |
 | 2026-11-25 | `a0d3281` | stories shared / Instagram pause |
 | 2026-11-25 | `f2f301c` | stories shared / Instagram pause |
-| 2026-11-25 | `7d5f409` | stories shared / Instagram pause |
-| 2026-11-25 | `73f7ac2` | stories shared / Instagram pause |
-| 2026-11-25 | `1b0538b` | stories shared / Instagram pause |
-| 2026-11-25 | `3b7fe31` | stories shared / Instagram pause |
-| 2026-11-25 | `41454ce` | R2: accept the Account ID pasted as a link or with spaces; clear message when it is another value |
-| 2026-11-25 | `2f33a7e` | stories shared / Instagram pause |
-| 2026-11-25 | `4825922` | posted report sent |
-| 2026-11-25 | `9bcf760` | stories shared / Instagram pause |
-| 2026-11-25 | `5065422` | stories shared / Instagram pause |
-| 2026-11-25 | `8754c05` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
