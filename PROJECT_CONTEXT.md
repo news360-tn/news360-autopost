@@ -65,6 +65,27 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-25 | `bf1fa5e` | Per-post e-mail for every post, at most 60 a day for all 7 pages together (one Gmail account); later posts are in the daily summary |
+| 2026-11-25 | `55241cf` | facebook RN-810 |
+| 2026-11-25 | `7adff9f` | posted RN-810 |
+| 2026-11-25 | `856545f` | stories shared / Instagram pause |
+| 2026-11-25 | `89c6c26` | autofix: corrected held news |
+| 2026-11-25 | `eea4446` | stories shared / Instagram pause |
+| 2026-11-25 | `295b54a` | stories shared / Instagram pause |
+| 2026-11-25 | `bbf1070` | stories shared / Instagram pause |
+| 2026-11-25 | `f5d8577` | stories shared / Instagram pause |
+| 2026-11-25 | `74a15b6` | stories shared / Instagram pause |
+| 2026-11-25 | `845e6c2` | stories shared / Instagram pause |
+| 2026-11-25 | `18c1b95` | stories shared / Instagram pause |
+| 2026-11-25 | `2941e05` | stories shared / Instagram pause |
+| 2026-11-25 | `65da25a` | stories shared / Instagram pause |
+| 2026-11-25 | `dd16fdd` | stories shared / Instagram pause |
+| 2026-11-25 | `64a6c0c` | stories shared / Instagram pause |
+| 2026-11-25 | `4beadf7` | stories shared / Instagram pause |
+| 2026-11-25 | `fbe0933` | stories shared / Instagram pause |
+| 2026-11-25 | `6ce6878` | stories shared / Instagram pause |
+| 2026-11-25 | `36f9eee` | stories shared / Instagram pause |
+| 2026-11-25 | `acc396b` | stories shared / Instagram pause |
 | 2026-11-25 | `bcf7814` | R2: one folder per page (the repository name) in every job, so the 24-hour clean-up finds every file |
 | 2026-11-25 | `1872bcf` | Clean-up keeps 24 hours only: Cloudflare R2 (this page's folder), Cloudinary and the media/ fallback folder |
 | 2026-11-25 | `9858d87` | stories shared / Instagram pause |
@@ -74,25 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-25 | `d95fcf2` | stories shared / Instagram pause |
 | 2026-11-25 | `b3550e8` | stories shared / Instagram pause |
 | 2026-11-25 | `874fdbe` | stories shared / Instagram pause |
-| 2026-11-25 | `5ecc7b6` | stories shared / Instagram pause |
-| 2026-11-25 | `eaf1919` | stories shared / Instagram pause |
-| 2026-11-25 | `3516b4c` | stories shared / Instagram pause |
-| 2026-11-25 | `9a24744` | powercut: notices written |
-| 2026-11-25 | `a5eb164` | Watchdog: ignore the shared rasipalan text files (rasis_*.json) - they stopped the watchdog on every run |
-| 2026-11-25 | `7426a50` | stories shared / Instagram pause |
-| 2026-11-25 | `f64c3ff` | stories shared / Instagram pause |
-| 2026-11-25 | `55564a4` | stories shared / Instagram pause |
-| 2026-11-25 | `0457a19` | stories shared / Instagram pause |
-| 2026-11-25 | `3a19140` | stories shared / Instagram pause |
-| 2026-11-25 | `7c341f7` | stories shared / Instagram pause |
-| 2026-11-25 | `fbc509c` | powercut: notices written |
-| 2026-11-25 | `4ca7489` | stories shared / Instagram pause |
-| 2026-11-25 | `b7a5c5d` | stories shared / Instagram pause |
-| 2026-11-25 | `6de67fb` | stories shared / Instagram pause |
-| 2026-11-25 | `e7c6eba` | stories shared / Instagram pause |
-| 2026-11-25 | `9ae7687` | stories shared / Instagram pause |
-| 2026-11-25 | `737b065` | stories shared / Instagram pause |
-| 2026-11-25 | `cb0c489` | stories shared / Instagram pause |
-| 2026-11-25 | `4202b13` | stories shared / Instagram pause |
-| 2026-11-25 | `e38e059` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
