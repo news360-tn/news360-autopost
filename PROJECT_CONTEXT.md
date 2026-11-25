@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-24 | `1d27b83` | Facebook post text without the outside article link (less reach); the link stays in the first comment, the paper name and date stay |
-| 2026-11-24 | `a81215c` | stories shared / Instagram pause |
-| 2026-11-24 | `575cf79` | stories shared / Instagram pause |
-| 2026-11-24 | `2beef15` | stories shared / Instagram pause |
-| 2026-11-24 | `d585ee1` | stories shared / Instagram pause |
-| 2026-11-24 | `194c2cb` | stories shared / Instagram pause |
-| 2026-11-24 | `c894eb0` | stories shared / Instagram pause |
-| 2026-11-24 | `a6198da` | stories shared / Instagram pause |
-| 2026-11-24 | `54dd40c` | facebook RN-809 |
-| 2026-11-24 | `80be912` | posted RN-809 |
-| 2026-11-24 | `ec9be4a` | stories shared / Instagram pause |
-| 2026-11-24 | `e368a96` | stories shared / Instagram pause |
-| 2026-11-24 | `75eeb3b` | facebook RN-805 |
-| 2026-11-24 | `cc67a67` | posted RN-805 |
-| 2026-11-24 | `3358bf4` | stories shared / Instagram pause |
-| 2026-11-24 | `904c87e` | manual post e-mail RN-809 |
-| 2026-11-24 | `e7fbb37` | manual post e-mail RN-805 |
-| 2026-11-24 | `4e704b5` | stories shared / Instagram pause |
-| 2026-11-24 | `291ade6` | stories shared / Instagram pause |
-| 2026-11-24 | `68d040a` | autofix: corrected held news |
-| 2026-11-24 | `f931e5e` | stories shared / Instagram pause |
-| 2026-11-24 | `19089a3` | stories shared / Instagram pause |
-| 2026-11-24 | `db0b5ec` | stories shared / Instagram pause |
-| 2026-11-24 | `6eeb5bc` | stories shared / Instagram pause |
-| 2026-11-24 | `0eff7c3` | Facebook check: read-only views report of the latest reels (plays, reach, processing status) |
-| 2026-11-24 | `86ea9b1` | stories shared / Instagram pause |
-| 2026-11-24 | `649573e` | posted report sent |
-| 2026-11-24 | `b01ad20` | stories shared / Instagram pause |
-| 2026-11-24 | `d7984ea` | stories shared / Instagram pause |
-| 2026-11-24 | `aa4cdd2` | stories shared / Instagram pause |
+| 2026-11-25 | `b653aac` | Rasipalan: each page keeps the day's 12 rasi texts; when every AI writer is busy, a page uses the text another 360 page wrote that day |
+| 2026-11-25 | `a6581c2` | stories shared / Instagram pause |
+| 2026-11-25 | `a2e6c08` | stories shared / Instagram pause |
+| 2026-11-25 | `bae9355` | stories shared / Instagram pause |
+| 2026-11-25 | `d40b01c` | stories shared / Instagram pause |
+| 2026-11-25 | `55b34c7` | stories shared / Instagram pause |
+| 2026-11-25 | `24d3c5c` | autofix: corrected held news |
+| 2026-11-25 | `292fcdc` | stories shared / Instagram pause |
+| 2026-11-25 | `ca9ceb7` | stories shared / Instagram pause |
+| 2026-11-25 | `521b5fc` | stories shared / Instagram pause |
+| 2026-11-25 | `8307b11` | facebook RN-830 |
+| 2026-11-25 | `135085c` | posted RN-830 |
+| 2026-11-25 | `6497f73` | stories shared / Instagram pause |
+| 2026-11-25 | `40eafa5` | stories shared / Instagram pause |
+| 2026-11-25 | `6425877` | facebook RN-829 |
+| 2026-11-25 | `ab172db` | posted RN-829 |
+| 2026-11-25 | `89be0ec` | stories shared / Instagram pause |
+| 2026-11-25 | `c4bdbc7` | stories shared / Instagram pause |
+| 2026-11-25 | `b50a2e5` | stories shared / Instagram pause |
+| 2026-11-25 | `0505e84` | stories shared / Instagram pause |
+| 2026-11-25 | `2222f3b` | stories shared / Instagram pause |
+| 2026-11-25 | `8761c0a` | stories shared / Instagram pause |
+| 2026-11-25 | `a02ed22` | stories shared / Instagram pause |
+| 2026-11-25 | `3ca0971` | stories shared / Instagram pause |
+| 2026-11-25 | `a336684` | stories shared / Instagram pause |
+| 2026-11-25 | `21c7e19` | stories shared / Instagram pause |
+| 2026-11-25 | `3300696` | stories shared / Instagram pause |
+| 2026-11-25 | `e6ef27c` | stories shared / Instagram pause |
+| 2026-11-25 | `8a94e77` | stories shared / Instagram pause |
+| 2026-11-25 | `910c8dd` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
