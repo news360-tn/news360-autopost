@@ -1,20 +1,16 @@
-23:06:15 hold lifted: RN-284 - not grounded: location 'பரமத்தி' is not in the article - the location IS in the article (checked again)
-23:06:19 hold lifted: RN-326 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-23:06:19 hold lifted: RN-329 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-23:06:22 hold lifted: RN-394 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-23:06:23 hold lifted: RN-422 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-23:06:25 hold lifted: RN-434 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-23:06:27 hold lifted: RN-461 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-23:06:28 hold lifted: RN-469 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-23:06:40 hold lifted: RN-553 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-23:06:43 hold lifted: RN-697 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-23:06:46 6 held news to fix: ['RN-780', 'RN-796', 'RN-805', 'RN-806', 'RN-809', 'RN-810']
+07:06:02 hold lifted: RN-284 - not grounded: location 'பரமத்தி' is not in the article - the location IS in the article (checked again)
+07:06:08 hold lifted: RN-326 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+07:06:08 hold lifted: RN-329 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+07:06:12 hold lifted: RN-394 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+07:06:15 hold lifted: RN-422 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+07:06:18 hold lifted: RN-434 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+07:06:21 hold lifted: RN-461 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+07:06:23 hold lifted: RN-469 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+07:06:43 hold lifted: RN-553 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+07:06:46 hold lifted: RN-697 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+07:06:50 6 held news to fix: ['RN-810', 'RN-815', 'RN-816', 'RN-817', 'RN-818', 'RN-822']
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
@@ -25,193 +21,15 @@ fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing 
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing 
-switching away from gemini/gemini-3-flash-preview for 10 min
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-ok groq/qwen/qwen3.8-27b (0s)
-factcheck by groq/qwen/qwen3.8-27b: 2 problems
-  Missing names of the specific parish priests (George, Stephen Raj, Michael Arulraj, Arokiasamy) who presided over the Navanjal Masses in the reel_script, slides_spec, and caption, listing only their locations.
-  Missing the name of the presiding priest (Ignatius Fidelis) for the evening festival mass in the reel_script, slides_spec, and caption.
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  fact-check: Missing names of the specific parish priests (George, Stephen Raj, Michael Arulraj, Arokiasamy) who presided over the Navanjal Masses in the reel_script, slides_spec, and caption, listing only their locations.
-  fact-check: Missing the name of the presiding priest (Ignatius Fidelis) for the evening festival mass in the reel_script, slides_spec, and caption.
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok groq/qwen/qwen3.8-27b (0s)
-factcheck by groq/qwen/qwen3.8-27b: 2 problems
-  Slide 4 line 2 contains a grammatical error: 'பக்தர்கள் பங்கேற்று வழிபட்டனர' should be 'வழிபட்டனர்' (verb conjugation error).
-  Slide 4 line 3 simplifies the organizers to only 'பங்கு தந்தை தாமஸ்மாணிக்கம்', omitting the 'பங்கு அருள்பேரவை' and 'விழாக்குழுவினர்' mentioned in the article, which is an incomplete representation of the fact.
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  fact-check: Slide 4 line 2 contains a grammatical error: 'பக்தர்கள் பங்கேற்று வழிபட்டனர' should be 'வழிபட்டனர்' (verb conjugation error).
-  fact-check: Slide 4 line 3 simplifies the organizers to only 'பங்கு தந்தை தாமஸ்மாணிக்கம்', omitting the 'பங்கு அருள்பேரவை' and 'விழாக்குழுவினர்' mentioned in the article, which is an incomplete representation of the fact.
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (0s)
-factcheck by groq/qwen/qwen3.8-27b: 3 problems
-  reel_script omits the name of the priest (Theodore Selvaraj) who presided over the evening 6:00 mass, which is a specific detail present in the article.
-  reel_script omits the name of the priest (Charlie) who presided over the 9:00 PM blessing and flag lowering, which is a specific detail present in the article.
-  reel_script omits the mention of 'Divine Mercy Blessing' (திவ்யநற்கருணை ஆசீர்) during the 9:00 PM event, only mentioning the flag lowering.
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: reel_script omits the name of the priest (Theodore Selvaraj) who presided over the evening 6:00 mass, which is a specific detail present in the article.
-  fact-check: reel_script omits the name of the priest (Charlie) who presided over the 9:00 PM blessing and flag lowering, which is a specific detail present in the article.
-  fact-check: reel_script omits the mention of 'Divine Mercy Blessing' (திவ்யநற்கருணை ஆசீர்) during the 9:00 PM event, only mentioning the flag lowering.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-ok groq/qwen/qwen3.8-27b (4s)
-proofread rejected (3 problems)
-  missing key: reel_script
-  missing key: caption
-  missing key: scenes
-23:09:46 RN-780 NOT fixed (try 1 of 2 ): still held: held: fact-check problems - fact-check: Slide 4 line 2 contains a grammatical error: 'பக்தர்கள் பங்கேற்று வழிபட்டனர' should be 'வழிபட்டனர்' (verb conjugation error).
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-free models unavailable: no free model answered: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your p
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok groq/qwen/qwen3.8-27b (0s)
-factcheck by groq/qwen/qwen3.8-27b: 0 problems
-claude rewrite 1 anthropic/claude-haiku-5-5: 0 problems
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-ok groq/qwen/qwen3.8-27b (4s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-ok groq/openai/gpt-oss-120b (4s)
-factcheck by groq/openai/gpt-oss-120b: 1 problems
-  Caption includes a specific date (23 November 2026) that is not stated in the article
-proofread rejected (1 problems)
-  fact-check: Caption includes a specific date (23 November 2026) that is not stated in the article
-23:10:43 RN-796 NOT fixed (try 1 of 2 ): stale: price news from 23 Nov, not today
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-free models unavailable: no free model answered: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your p
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-ok groq/openai/gpt-oss-120b (3s)
-factcheck by groq/openai/gpt-oss-120b: 0 problems
-claude rewrite 1 anthropic/claude-haiku-5-5: 0 problems
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-ok groq/openai/gpt-oss-120b (6s)
-proofread rejected (3 problems)
-  missing key: reel_script
-  missing key: caption
-  missing key: scenes
-23:11:54 RN-805 FIXED - posts with the corrected text: நாமகிரிப்பேட்டையில் நேற்று இரவு கனமழை: சாலைகளில் வெள்ளம்
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 dead for this round: groq/openai/gpt-oss-120b
-free models unavailable: no free model answered: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  slide 1 line 1 longer than 60 characters
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  reel_script says 'சிவகங்கை மாவட்டத்துக்கு அருகே உள்ள காரைக்குடி' which is awkward; article says 'சிவகங்கை மாவட்டம் அருகே உள்ள காரைக்குடி பகுதி' - minor wording, meaning slightly shifted (district vs. district-near-area), acceptable but garbled phrasing
-  caption's 'நேதாஜி நகரைச் சேர்ந்த' adds the locality detail; this is in the article (நேதாஜி நகர்) so not invented, but the caption's 'கண்களைத் துணியால் கட்டியதால்' sentence is mixed with the rescue sentence, joining two facts into one sentence
-  reel_script says 'அவரைக் கடத்திச் சென்றது' while the article says the gang took him by car at night; reel_script and caption omit that the gang was unidentified (மர்ம கும்பல்) in the same clear way, acceptable; however the reel_script omits that the victim could not identify the kidnappers, which is only partially covered
-  caption attributes the 'தலைவர் வந்து பேசுவார்' quote and the no-torture/no-ransom statement to him but the caption also says 'அவர் தெரிவித்தார்' twice, making the statement sequence unclear
-claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: reel_script says 'சிவகங்கை மாவட்டத்துக்கு அருகே உள்ள காரைக்குடி' which is awkward; article says 'சிவகங்கை மாவட்டம் அருகே உள்ள காரைக்குடி பகுதி' - minor wording, meaning slightly shifted (district vs. district-near-area), acceptable but garbled phrasing
-  fact-check: caption's 'நேதாஜி நகரைச் சேர்ந்த' adds the locality detail; this is in the article (நேதாஜி நகர்) so not invented, but the caption's 'கண்களைத் துணியால் கட்டியதால்' sentence is mixed with the rescue sentence, joining two facts into one sentence
-  fact-check: reel_script says 'அவரைக் கடத்திச் சென்றது' while the article says the gang took him by car at night; reel_script and caption omit that the gang was unidentified (மர்ம கும்பல்) in the same clear way, acceptable; however the reel_script omits that the victim could not identify the kidnappers, which is only partially covered
-  fact-check: caption attributes the 'தலைவர் வந்து பேசுவார்' quote and the no-torture/no-ransom statement to him but the caption also says 'அவர் தெரிவித்தார்' twice, making the statement sequence unclear
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The article never says 'a person was kidnapped in Kumarapalayam' as the event location; the kidnapping place is not specified, but the draft says 'குமாரபாளையத்தில் கடத்தப்பட்ட' (kidnapped in Kumarapalayam), which is an unsupported location claim.
-  The reel_script says the man was kidnapped while 'சென்றுகொண்டிருந்தபோது' and places the kidnapping in Kumarapalayam; the article only says he was taken by car while riding a two-wheeler, with no kidnapping location given.
-  The caption headline and slides_spec loc field state the kidnapping occurred in Kumarapalayam, which the article does not establish (it only identifies his home area as Kumarapalayam, Nethaji Nagar).
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The article never says 'a person was kidnapped in Kumarapalayam' as the event location; the kidnapping place is not specified, but the draft says 'குமாரபாளையத்தில் கடத்தப்பட்ட' (kidnapped in Kumarapalayam), which is an unsupported location claim.
-  fact-check: The reel_script says the man was kidnapped while 'சென்றுகொண்டிருந்தபோது' and places the kidnapping in Kumarapalayam; the article only says he was taken by car while riding a two-wheeler, with no kidnapping location given.
-  fact-check: The caption headline and slides_spec loc field state the kidnapping occurred in Kumarapalayam, which the article does not establish (it only identifies his home area as Kumarapalayam, Nethaji Nagar).
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-23:12:26 RN-806 FIXED - posts with the corrected text: குமாரபாளையத்தில் கடத்தப்பட்ட அங்கப்பராஜ் மீட்பு
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The article says the worker is Prakash, 35, from Suriyampalayam, Tiruchengode, Namakkal district — the draft's reel_script and slides say he is a 'கறிக்கடை தொழிலாளி' (meat shop worker), which matches the article, so no issue there; however the reel_script says he climbed in 'ஒருவர்' without the name, which is fine. Main problem: the reel_script states the act was done 'இளைஞர்கள் மது பழக்கத்தை கைவிட வேண்டும் என வலியுறுத்தி' — consistent with article.
-  The draft says the climb was done on 2018 and 2024 Tamil New Year (தமிழ் புத்தாண்டன்று) — the article says 'தமிழ் புத்தாண்டில்', consistent, but the reel_script claims he 'விழிப்புணர்வு ஏற்படுத்தினார்' on those dates while the article says he performed the climb on those dates, which is consistent; no problem.
-  The caption's phrase 'மது ஒழிப்பு விழிப்புணர்வு' (total alcohol prohibition awareness) in the headline line is an overstatement: the article only says he urged young people to give up alcohol habits, not a campaign for 'மது ஒழிப்பு'.
-  The caption's hashtag-free English footer claims 'against alcohol' — the article supports urging to give up alcohol habits, so this is a mild overstatement rather than a fact error.
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The article says the worker is Prakash, 35, from Suriyampalayam, Tiruchengode, Namakkal district — the draft's reel_script and slides say he is a 'கறிக்கடை தொழிலாளி' (meat shop worker), which matches the article, so no issue there; however the reel_script says he climbed in 'ஒருவர்' without the name, which is fine. Main problem: the reel_script states the act was done 'இளைஞர்கள் மது பழக்கத்தை கைவிட வேண்டும் என வலியுறுத்தி' — consistent with article.
-  fact-check: The draft says the climb was done on 2018 and 2024 Tamil New Year (தமிழ் புத்தாண்டன்று) — the article says 'தமிழ் புத்தாண்டில்', consistent, but the reel_script claims he 'விழிப்புணர்வு ஏற்படுத்தினார்' on those dates while the article says he performed the climb on those dates, which is consistent; no problem.
-  fact-check: The caption's phrase 'மது ஒழிப்பு விழிப்புணர்வு' (total alcohol prohibition awareness) in the headline line is an overstatement: the article only says he urged young people to give up alcohol habits, not a campaign for 'மது ஒழிப்பு'.
-  fact-check: The caption's hashtag-free English footer claims 'against alcohol' — the article supports urging to give up alcohol habits, so this is a mild overstatement rather than a fact error.
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  slide 1 line 1 longer than 60 characters
-  hl1 (the first headline on screen) must name the place 'திருச்செங்கோடு', e.g. 'திருச்செங்கோடு: ...' or 'திருச்செங்கோடு-இல் ...' - viewers share news of their own area
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The reel_script says the 1,300 steps were climbed with thandal (push-ups) in the sense of an event on a given day, but the article says the 2018 and 2024 Tamil New Year events were also done this way; the draft's sentence about 2018/2024 is accurate, but the headline and reel_script omit that this was a repeated action, which is acceptable. However, the reel_script states he 'climbed the hill doing thandal' while the article says he climbed the 1,300 steps doing thandal and then performed worship — the draft's 'மலை ஏறினார்' is consistent, so no error here.
-  The caption and reel_script state the age as 35 years (பிரகாஷ் (35 வயது)); the article gives age 35 as '35;' which is consistent, so this is not a problem.
-  The reel_script and caption say 'கடந்த 2018, 2024ஆம் ஆண்டுகளில் தமிழ் புத்தாண்டிலும் இதே போல்' — the article says this was done 'தமிழ் புத்தாண்டில்' in those years, so this is consistent.
-  The slide 'யார் செய்தார்?' line 'இளைஞர்களுக்கு விழிப்புணர்வு ஏற்படுத்தினார்' is supported by the article.
-claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The reel_script says the 1,300 steps were climbed with thandal (push-ups) in the sense of an event on a given day, but the article says the 2018 and 2024 Tamil New Year events were also done this way; the draft's sentence about 2018/2024 is accurate, but the headline and reel_script omit that this was a repeated action, which is acceptable. However, the reel_script states he 'climbed the hill doing thandal' while the article says he climbed the 1,300 steps doing thandal and then performed worship — the draft's 'மலை ஏறினார்' is consistent, so no error here.
-  fact-check: The caption and reel_script state the age as 35 years (பிரகாஷ் (35 வயது)); the article gives age 35 as '35;' which is consistent, so this is not a problem.
-  fact-check: The reel_script and caption say 'கடந்த 2018, 2024ஆம் ஆண்டுகளில் தமிழ் புத்தாண்டிலும் இதே போல்' — the article says this was done 'தமிழ் புத்தாண்டில்' in those years, so this is consistent.
-  fact-check: The slide 'யார் செய்தார்?' line 'இளைஞர்களுக்கு விழிப்புணர்வு ஏற்படுத்தினார்' is supported by the article.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-23:12:58 RN-809 FIXED - posts with the corrected text: திருச்செங்கோட்டில் 1,300 படிக்கட்டுகளில் தண்டால் எடுத்து மது பழக்கத்தை கைவிட வலி
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-claude answer not JSON (Expecting ',' delimiter: line 1 column 3065 (char 3064)); stop_reason=end_turn blocks=['text'] usage={'input_tokens': 1842, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 13755, 'cache_creation': {'ephemeral_5m_input_tokens': 0, 'ephemeral_1h_input_tokens': 0}, 'output_tokens': 2432, 'output_tokens_details': {'thinking_tokens': 0}, 'service_tier': 'standard', 'inference_geo': 'global', 'speed': 'standard'} head='{"tamil_headline": "நாமக்கல் குறைதீர் கூட்டம்: 422 மனுக்கள் பெறப்பட்டன", "english_headline": "Namakkal public grievance meeting receives 422 petitions; disabled people given hearing aids and wheelchai'
-claude rewrite failed: Expecting ',' delimiter: line 1 column 3065 (char 3064)
-23:13:10 RN-810 NOT fixed - the free AI writers are busy; tried again in a later run (this try is not counted): all free models failed: no usable answer from the models
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+dead for this round: groq/qwen/qwen3.8-27b
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
+07:06:53 RN-810 NOT fixed - the free AI writers are busy; tried again in a later run (this try is not counted): all free models failed: no usable answer from the models
