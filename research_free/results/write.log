@@ -1,4 +1,4 @@
-writing [N]: காவிரி ஆறு வறண்டது ப.வேலூர் பகுதியில் குடிநீர் தட்டுப்பாடு அ
+writing [N]: தர்பூசணி பயிரிட்ட விவசாயிகள் கவலை விளைச்சல் அதிகரிப்பால் வில
 writing [N]: இன்று இலவச கண் பரிசோதனை முகாம்
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
@@ -19,27 +19,21 @@ fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-writing [N]: குப்பையை தரம் பிரிக்காத கடைகளுக்கு ரூ.20,000 பைன்
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing 
-fail gemini/gemini-3.5-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 dead for this round: groq/openai/gpt-oss-120b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 dead for this round: groq/qwen/qwen3.8-27b
 free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
-writing [N]: தர்பூசணி பயிரிட்ட விவசாயிகள் கவலை விளைச்சல் அதிகரிப்பால் வில
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
 claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
 writing [N]: பள்ளி மாணவர்கள் 4,026 பேர்  கல்லூரி களப்பயணம் தொடக்கம்
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
@@ -53,7 +47,7 @@ free models unavailable: no free model answered: None
 claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
 writing [N]: கற்கள் வெட்டிய 5 பேர் மீது வழக்கு
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 free models unavailable: no free model answered: None
 claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
 writing [N]: பயிர்கடன் முழு தள்ளுபடி கேட்டு கவன ஈர்ப்பு ஆர்ப்பாட்டம்
@@ -61,59 +55,56 @@ gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemin
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 free models unavailable: no free model answered: None
 claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
+writing [N]: குப்பையை தரம் பிரிக்காத கடைகளுக்கு ரூ.20,000 பைன்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
+claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
 writing [N]: மின்சாரம் துண்டிக்கப்பட்டதால் அங்கன்வாடி குழந்தைகள் தவிப்பு
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 free models unavailable: no free model answered: None
 claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
 writing [N]: தடை செய்த களைக்கொல்லி விற்றால் கடும் நடவடிக்கை
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
-claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
-ok gemini/gemini-3-flash-preview (31s)
-attempt 1 gemini/gemini-3-flash-preview: 3 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  numbers not found in the article: 10
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 30 ('குடிநீர் தட்டுப்பாட்டை பயன்படுத்தி, சில தனியார் கேன் விற்பனை')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
-claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free models unavailable: no free model answered: None
+claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
+ok gemini/gemini-3-flash-preview (33s)
+attempt 1 gemini/gemini-3-flash-preview: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 18 ('ஒரு ஏக்கருக்கு, 18 முதல், 20 டன் வரை விளைச்சல் கிடைக்கும்.'); 20 ('ஒரு ஏக்கருக்கு, 18 முதல், 20 டன் வரை விளைச்சல் கிடைக்கும்.')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
+claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 proofread skipped: no free model answered: None
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 image brief failed, using the writer's scenes: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to acces
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 image brief failed, using the writer's scenes: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to acces
 real photo: no picture on the source page -> AI pictures
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-free models unavailable: no free model answered: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read t
-claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
 image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
 image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Cauvery river dries up in Paramathi Velu'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261126-0441","first":"RN-840"}
+images made: 2 for 'Watermelon prices crash in Paramathi Vel'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261126-0443","first":"RN-841"}
 posting job started at once
 write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 10 news waiting in the queue (written in priority order)
-candidate filter: collected=10
-to write: 0 Rasipuram + 10 other district candidates (max 200 + 200 stories)
-daily maximum 30: 4 written today - this round writes at most 0 + 26
-candidates waiting: 0 Rasipuram, 10 Namakkal; time left 29 min
+write round: 9 news waiting in the queue (written in priority order)
+candidate filter: collected=9
+to write: 0 Rasipuram + 9 other district candidates (max 200 + 200 stories)
+daily maximum 30: 5 written today - this round writes at most 0 + 25
+candidates waiting: 0 Rasipuram, 9 Namakkal; time left 29 min
 try (N) manual=False: இன்று இலவச கண் பரிசோதனை முகாம்
-try (N) manual=False: காவிரி ஆறு வறண்டது ப.வேலூர் பகுதியில் குடிநீர் தட்டுப்பாடு அ
 try (N) manual=False: குப்பையை தரம் பிரிக்காத கடைகளுக்கு ரூ.20,000 பைன்
-NOT filed (N) இன்று இலவச கண் பரிசோதனை முகாம்: all free models failed: no usable answer from the models
 try (N) manual=False: தர்பூசணி பயிரிட்ட விவசாயிகள் கவலை விளைச்சல் அதிகரிப்பால் வில
-NOT filed (N) தர்பூசணி பயிரிட்ட விவசாயிகள் கவலை விளைச்சல் அதிகரி: all free models failed: no usable answer from the models
+NOT filed (N) இன்று இலவச கண் பரிசோதனை முகாம்: all free models failed: no usable answer from the models
 try (N) manual=False: பள்ளி மாணவர்கள் 4,026 பேர்  கல்லூரி களப்பயணம் தொடக்கம்
 NOT filed (N) பள்ளி மாணவர்கள் 4,026 பேர்  கல்லூரி களப்பயணம் தொடக: all free models failed: no usable answer from the models
 try (N) manual=False: காங்., புதிய நிர்வாகிகள் அறிமுக கூட்டத்தில் கடும் கூச்சல், க
@@ -123,16 +114,16 @@ NOT filed (N) கற்கள் வெட்டிய 5 பேர் மீத�
 try (N) manual=False: பயிர்கடன் முழு தள்ளுபடி கேட்டு கவன ஈர்ப்பு ஆர்ப்பாட்டம்
 NOT filed (N) பயிர்கடன் முழு தள்ளுபடி கேட்டு கவன ஈர்ப்பு ஆர்ப்பா: all free models failed: no usable answer from the models
 try (N) manual=False: மின்சாரம் துண்டிக்கப்பட்டதால் அங்கன்வாடி குழந்தைகள் தவிப்பு
-NOT filed (N) மின்சாரம் துண்டிக்கப்பட்டதால் அங்கன்வாடி குழந்தைகள: all free models failed: no usable answer from the models
+NOT filed (N) குப்பையை தரம் பிரிக்காத கடைகளுக்கு ரூ.20,000 பைன்: all free models failed: no usable answer from the models
 try (N) manual=False: தடை செய்த களைக்கொல்லி விற்றால் கடும் நடவடிக்கை
+NOT filed (N) மின்சாரம் துண்டிக்கப்பட்டதால் அங்கன்வாடி குழந்தைகள: all free models failed: no usable answer from the models
 NOT filed (N) தடை செய்த களைக்கொல்லி விற்றால் கடும் நடவடிக்கை: all free models failed: no usable answer from the models
 auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
 posting job started at once
-NOT filed (N) குப்பையை தரம் பிரிக்காத கடைகளுக்கு ரூ.20,000 பைன்: all free models failed: no usable answer from the models
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 10}, done={'R': 0, 'N': 1}, time left 27 min
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 9}, done={'R': 0, 'N': 1}, time left 29 min
 carousel for 0 of 1 stories, the rest reel only
 filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
-queue: 9 news waiting to be written
+queue: 8 news waiting to be written
 write_stories.yml started
-All News sheet: {"ok":true,"added":0,"updated":10} 
+All News sheet: {"ok":true,"added":0,"updated":9} 
 stories: 1

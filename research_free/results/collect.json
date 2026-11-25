@@ -2,17 +2,15 @@
  "log": [
   "earlier stories still waiting for images: []",
   "instagram check: 100 recent posts read from both pages",
-  "write round: 10 news waiting in the queue (written in priority order)",
-  "candidate filter: collected=10",
-  "to write: 0 Rasipuram + 10 other district candidates (max 200 + 200 stories)",
-  "daily maximum 30: 4 written today - this round writes at most 0 + 26",
-  "candidates waiting: 0 Rasipuram, 10 Namakkal; time left 29 min",
+  "write round: 9 news waiting in the queue (written in priority order)",
+  "candidate filter: collected=9",
+  "to write: 0 Rasipuram + 9 other district candidates (max 200 + 200 stories)",
+  "daily maximum 30: 5 written today - this round writes at most 0 + 25",
+  "candidates waiting: 0 Rasipuram, 9 Namakkal; time left 29 min",
   "try (N) manual=False: இன்று இலவச கண் பரிசோதனை முகாம்",
-  "try (N) manual=False: காவிரி ஆறு வறண்டது ப.வேலூர் பகுதியில் குடிநீர் தட்டுப்பாடு அ",
   "try (N) manual=False: குப்பையை தரம் பிரிக்காத கடைகளுக்கு ரூ.20,000 பைன்",
-  "NOT filed (N) இன்று இலவச கண் பரிசோதனை முகாம்: all free models failed: no usable answer from the models",
   "try (N) manual=False: தர்பூசணி பயிரிட்ட விவசாயிகள் கவலை விளைச்சல் அதிகரிப்பால் வில",
-  "NOT filed (N) தர்பூசணி பயிரிட்ட விவசாயிகள் கவலை விளைச்சல் அதிகரி: all free models failed: no usable answer from the models",
+  "NOT filed (N) இன்று இலவச கண் பரிசோதனை முகாம்: all free models failed: no usable answer from the models",
   "try (N) manual=False: பள்ளி மாணவர்கள் 4,026 பேர்  கல்லூரி களப்பயணம் தொடக்கம்",
   "NOT filed (N) பள்ளி மாணவர்கள் 4,026 பேர்  கல்லூரி களப்பயணம் தொடக: all free models failed: no usable answer from the models",
   "try (N) manual=False: காங்., புதிய நிர்வாகிகள் அறிமுக கூட்டத்தில் கடும் கூச்சல், க",
@@ -22,18 +20,18 @@
   "try (N) manual=False: பயிர்கடன் முழு தள்ளுபடி கேட்டு கவன ஈர்ப்பு ஆர்ப்பாட்டம்",
   "NOT filed (N) பயிர்கடன் முழு தள்ளுபடி கேட்டு கவன ஈர்ப்பு ஆர்ப்பா: all free models failed: no usable answer from the models",
   "try (N) manual=False: மின்சாரம் துண்டிக்கப்பட்டதால் அங்கன்வாடி குழந்தைகள் தவிப்பு",
-  "NOT filed (N) மின்சாரம் துண்டிக்கப்பட்டதால் அங்கன்வாடி குழந்தைகள: all free models failed: no usable answer from the models",
+  "NOT filed (N) குப்பையை தரம் பிரிக்காத கடைகளுக்கு ரூ.20,000 பைன்: all free models failed: no usable answer from the models",
   "try (N) manual=False: தடை செய்த களைக்கொல்லி விற்றால் கடும் நடவடிக்கை",
+  "NOT filed (N) மின்சாரம் துண்டிக்கப்பட்டதால் அங்கன்வாடி குழந்தைகள: all free models failed: no usable answer from the models",
   "NOT filed (N) தடை செய்த களைக்கொல்லி விற்றால் கடும் நடவடிக்கை: all free models failed: no usable answer from the models",
   "auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})",
   "posting job started at once",
-  "NOT filed (N) குப்பையை தரம் பிரிக்காத கடைகளுக்கு ரூ.20,000 பைன்: all free models failed: no usable answer from the models",
-  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 10}, done={'R': 0, 'N': 1}, time left 27 min",
+  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 9}, done={'R': 0, 'N': 1}, time left 29 min",
   "carousel for 0 of 1 stories, the rest reel only",
   "filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)",
-  "queue: 9 news waiting to be written",
+  "queue: 8 news waiting to be written",
   "write_stories.yml started",
-  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":10}"
+  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":9}"
  ],
  "llm": [
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
@@ -46,32 +44,18 @@
   "dead for this round: gemini/gemini-3.6-flash",
   "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.5-flash",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing ",
-  "fail gemini/gemini-3.5-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)",
-  "poor answer - skipped for 30 min: gemini/gemini-3.5-flash",
-  "fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)",
-  "poor answer - skipped for 30 min: gemini/gemini-3-flash-preview",
+  "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
+  "dead for this round: gemini/gemini-3.5-flash",
+  "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, plea",
+  "dead for this round: gemini/gemini-3-flash-preview",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "dead for this round: groq/openai/gpt-oss-120b",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
   "dead for this round: groq/qwen/qwen3.8-27b",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok gemini/gemini-3-flash-preview (31s)",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
@@ -81,73 +65,74 @@
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)",
-  "poor answer - skipped for 30 min: gemini/gemini-3-flash-preview"
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok gemini/gemini-3-flash-preview (33s)",
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash"
  ],
  "stories": [
   {
-   "tamil_headline": "பரமத்தி வேலூரில் வறண்ட காவிரி ஆறு: குடிநீர் தட்டுப்பாடு அபாயத்தால் மக்கள் அவதி",
-   "english_headline": "Cauvery river dries up in Paramathi Velur; water shortage looms as groundwater levels drop",
-   "category": "Civic Issues",
-   "location": "Paramathi Velur town, Namakkal district",
-   "importance": "High",
+   "tamil_headline": "பரமத்தி வேலூர் பகுதியில் தர்பூசணி விலை கடும் வீழ்ச்சி: விவசாயிகள் கவலை",
+   "english_headline": "Watermelon prices crash in Paramathi Velur; farmers worried as prices drop to ₹10,000 per ton",
+   "category": "Weather & Agriculture",
+   "location": "Paramathi Velur, Namakkal district",
+   "importance": "Medium",
    "scope": "local",
    "post_to": "Namakkal 360",
    "slides_spec": {
     "v": 3,
-    "cat": "குடிநீர் தட்டுப்பாடு",
+    "cat": "விவசாயம்",
     "loc": "பரமத்தி வேலூர்",
-    "hl1": "பரமத்தி வேலூரில் குடிநீர் தட்டுப்பாடு",
-    "hl2": "வறண்டது காவிரி ஆறு",
+    "hl1": "பரமத்தி வேலூரில் தர்பூசணி விலை வீழ்ச்சி",
+    "hl2": "டன் ₹10,000 ஆக குறைந்தது",
     "slides": [
      {
-      "title": "என்ன நடந்தது?",
+      "title": "சாகுபடி விவரம்",
       "lines": [
-       "பருவமழை குறைவால் <b>காவிரி ஆறு</b> வறண்டது",
-       "பரமத்தி வேலூர் பகுதியில் நிலத்தடி நீர் மட்டம் குறைவு",
-       "ஆற்றில் நீர்வரத்து இன்றி பாலைவனம் போல் காட்சி"
+       "பரமத்தி வேலூர் சுற்றுவட்டாரத்தில் <b>100 ஏக்கரில்</b> சாகுபடி",
+       "கீழ்சாத்தம்பூர், வாழவந்தி உள்ளிட்ட பகுதிகளில் விளைச்சல்",
+       "<b>கிரேன்</b> ரக தர்பூசணிகள் தற்போது அறுவடை"
       ]
      },
      {
-      "title": "மக்கள் பாதிப்பு",
+      "title": "விலை நிலவரம்",
       "lines": [
-       "ஆற்றில் சேறு கலந்த நீர் வருவதால் மக்கள் அவதி",
-       "<b>30 ரூபாய்</b> கேன் தண்ணீர் <b>40 ரூபாய்க்கு</b> விற்பனை",
-       "தனியார் டேங்கர் லாரிகள் மூலம் தண்ணீர் விற்பனை"
+       "கடந்த ஆண்டு ஒரு டன் <b>₹20,000</b>-க்கு விற்பனை",
+       "இந்த ஆண்டு டன் <b>₹10,000</b> முதல் <b>₹12,000</b> மட்டுமே",
+       "விலை பாதியாக குறைந்ததால் விவசாயிகள் வேதனை"
       ]
      },
      {
-      "title": "அதிகாரிகள் தகவல்",
+      "title": "விவசாயிகள் கவலை",
       "lines": [
-       "<b>18 வார்டுகளுக்கும்</b> கிணறுகள் மூலம் நீர் விநியோகம்",
-       "குடிநீரை நன்றாக கொதிக்க வைத்து பருக அறிவுறுத்தல்",
-       "மோட்டார் பயன்படுத்தினால் பறிமுதல் செய்யப்படும்"
-      ]
-     },
-     {
-      "title": "தீர்வு என்ன?",
-      "lines": [
-       "அனிச்சம்பாளையம் அருகே புதிய நீரேற்று நிலையப் பணி",
-       "குடிநீரை செடிகளுக்கு ஊற்ற வேண்டாம் என வேண்டுகோள்",
-       "தண்ணீரை சிக்கனமாக பயன்படுத்த அதிகாரிகள் அறிவுறுத்தல்"
+       "ஏக்கருக்கு <b>₹50,000</b> வரை சாகுபடி செலவு",
+       "விலை குறைவால் வயல்களிலேயே தேங்கும் பழங்கள்",
+       "கூலிச் செலவிற்கே பணம் சரியாக இருப்பதாக தகவல்"
       ]
      }
     ],
     "carousel": false
    },
-   "reel_script": "பரமத்தி வேலூர் பகுதியில் காவிரி ஆறு வறண்டதால் கடும் குடிநீர் தட்டுப்பாடு ஏற்படும் அபாயம் ஏற்பட்டுள்ளது. நாமக்கல் மாவட்டம் பரமத்தி வேலூரில் பருவமழை குறைந்ததால் காவிரி ஆற்றில் நீர்வரத்து இன்றி பாலைவனம் போல் காட்சியளிக்கிறது. இதனால் குடியிருப்பு பகுதிகளில் நிலத்தடி நீர் மட்டம் வெகுவாக குறைந்து வீடுகளில் தண்ணீர் இல்லாத நிலை ஏற்பட்டுள்ளது. ஆற்றில் சேறு கலந்த தண்ணீர் வருவதால் பொதுமக்கள் கடைகளில் 40 ரூபாய் கொடுத்து குடிநீர் கேன்களை வாங்குகின்றனர். வழக்கமாக 30 ரூபாய்க்கு விற்ற தண்ணீர் கேன் விலை தற்போது 10 ரூபாய் உயர்த்தப்பட்டுள்ளது. குடிநீர் தட்டுப்பாட்டை போக்க அனிச்சம்பாளையம் தடுப்பணை அருகே புதிய நீரேற்று நிலையப் பணிகள் நடந்து வருகின்றன. 18 வார்டுகளுக்கும் பேரூராட்சி கிணறுகள் மூலம் குடிநீர் விநியோகம் செய்யப்படுகிறது. பொதுமக்கள் குடிநீரை நன்றாக கொதிக்க வைத்து ஆற வைத்த பின்னரே பருக வேண்டும் என அதிகாரிகள் அறிவுறுத்தியுள்ளனர். மின் மோட்டார் மூலம் குடிநீர் உறிஞ்சினால் மோட்டார் பறிமுதல் செய்யப்படும் என எச்சரிக்கை விடுக்கப்பட்டுள்ளது. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "💧 பரமத்தி வேலூரில் வறண்ட காவிரி ஆறு: குடிநீர் தட்டுப்பாடு அபாயத்தால் மக்கள் கவலை\n\n📰 முழு விவரம்:\nநாமக்கல் மாவட்டம் பரமத்தி வேலூர் பகுதியில் பருவமழை குறைந்ததால் காவிரி ஆறு வறண்டு பாலைவனம் போல் காட்சியளிக்கிறது. இதனால் நிலத்தடி நீர் மட்டம் குறைந்து வீடுகளில் தண்ணீர் தட்டுப்பாடு ஏற்பட்டுள்ளது. ஆற்றில் சேறு கலந்த நீர் வருவதால் பொதுமக்கள் 40 ரூபாய் கொடுத்து தண்ணீர் கேன்களை வாங்கும் நிலைக்குத் தள்ளப்பட்டுள்ளனர். 18 வார்டுகளுக்கும் பேரூராட்சி கிணறுகள் மூலம் நீர் விநியோகம் செய்யப்பட்டாலும், மக்கள் தண்ணீரை சிக்கனமாக பயன்படுத்த அதிகாரிகள் கேட்டுக்கொண்டுள்ளனர். அனிச்சம்பாளையம் அருகே புதிய நீரேற்று நிலையப் பணிகள் நடைபெற்று வருகின்றன.\n\n📍 இடம்: பரமத்தி வேலூர், நாமக்கல் மாவட்டம்\n🗓️ நாள்: 26 நவம்பர் 2026\nℹ️ மக்கள் கவனத்திற்கு: குடிநீரை நன்றாக கொதிக்க வைத்து ஆற வைத்து பருகவும். மின் மோட்டார் பயன்படுத்தினால் பறிமுதல் செய்யப்படும். குடிநீரை சிக்கனமாக பயன்படுத்தவும்.\n\nWater scarcity in Paramathi Velur as Cauvery river dries up | Namakkal news\n📍 Paramathi Velur, Namakkal | 26 November 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #ParamathiVelur #குடிநீர் #நாமக்கல்",
-   "prompts": "A wide shot of the dry Cauvery riverbed in Paramathi Velur, Namakkal district, showing vast stretches of sand like a desert with very little muddy water, the bridge visible in the distance under a bright morning sun. Natural daylight and warm colour grade. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nClose-up of a public drinking water tap in a residential street of Paramathi Velur, a person from behind filling a plastic pot with slightly turbid water, several empty colourful pots lined up on the ground. Natural daylight and warm colour grade. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/water-scarcity-risk-in-the-dry--area-of-the-cauvery-river/4386507",
-   "published": "2026-11-26T01:41:00+05:30",
-   "verification": "DRAFT (gemini/gemini-3-flash-preview) - NOT CLEAN, held from posting - problems: sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences; numbers not found in the article: 10; caption misses facts of the article (put every one in 📰 முழு விவரம்): 30 ('குடிநீர் தட்டுப்பாட்டை பயன்படுத்தி, சில தனியார் கேன் விற்பனை')",
-   "note": "free-model draft gemini/gemini-3-flash-preview, 1 attempt(s), 3 validator problem(s)",
+   "reel_script": "பரமத்தி வேலூர் பகுதியில் தர்பூசணி விலை பாதியாக குறைந்ததால் விவசாயிகள் கவலையில் உள்ளனர். பரமத்தி வேலூர் மற்றும் அதன் சுற்றுவட்டார கிராமங்களான கீழ்சாத்தம்பூர், வாழவந்தி, மணப்பள்ளி உள்ளிட்ட பகுதிகளில் சுமார் 100 ஏக்கரில் கிரேன் ரக தர்பூசணி சாகுபடி செய்யப்பட்டது. கடந்த செப்டம்பர் மற்றும் அக்டோபர் மாதங்களில் பயிரிடப்பட்ட தர்பூசணிகள் தற்போது அறுவடை செய்யப்பட்டு வருகின்றன. கடந்த ஆண்டு ஒரு டன் தர்பூசணி 20,000 ரூபாய் வரை விற்பனையானது. ஆனால் இந்த ஆண்டு ஒரு டன் 10,000 முதல் 12,000 ரூபாய் வரை மட்டுமே விற்கப்படுகிறது. ஒரு ஏக்கருக்கு சாகுபடி செய்ய 50,000 ரூபாய் வரை செலவாகிறது. விளைச்சல் அதிகரிப்பு மற்றும் இடையில் பெய்த மழையால் பழங்கள் சரியாகப் பெருக்கவில்லை எனக்கூறி வியாபாரிகள் விலையைக் குறைப்பதாக விவசாயிகள் கூறுகின்றனர். இங்கிருந்து சென்னை, பெங்களூரு மற்றும் ஆந்திரா மாநிலங்களுக்கு தர்பூசணிகள் அனுப்பி வைக்கப்படுகின்றன. போதிய விலை கிடைக்காததால் பல இடங்களில் தர்பூசணிகள் அறுவடை செய்யப்படாமல் வயல்களிலேயே தேங்கியுள்ளன. மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🍉 பரமத்தி வேலூர் பகுதியில் தர்பூசணி விலை கடும் வீழ்ச்சி - டன் ₹10,000 ஆக குறைந்தது\n\n📰 முழு விவரம்:\nபரமத்தி வேலூர் மற்றும் அதன் சுற்றுவட்டார கிராமங்களான கீழ்சாத்தம்பூர், வாழவந்தி, மணப்பள்ளி, பாலப்பட்டி, எம்.ராசாம்பாளையம், காளிபாளையம், நல்லூர், கந்தம்பாளையம், கருந்தேவம்பாளையம், மணியனூர், வைரம்பாளையம், கோலாரம் உள்ளிட்ட பகுதிகளில் சுமார் 100 ஏக்கரில் கிரேன் ரக தர்பூசணி சாகுபடி செய்யப்பட்டுள்ளது. கடந்த செப்டம்பர், அக்டோபர் மாதங்களில் பயிரிடப்பட்ட தர்பூசணிகள் தற்போது அறுவடை செய்யப்பட்டு வருகின்றன.\n\n💰 விலை நிலவரம்:\nகடந்த ஆண்டு ஒரு டன் தர்பூசணி ₹20,000 வரை விற்பனையான நிலையில், தற்போது ₹10,000 முதல் ₹12,000 வரை மட்டுமே விற்கப்படுகிறது. ஒரு ஏக்கருக்கு சாகுபடி செய்ய ₹50,000 வரை செலவாகிறது. விளைச்சல் அதிகரிப்பு மற்றும் போதிய அளவு பழங்கள் பெருக்காததை காரணம் காட்டி வியாபாரிகள் விலையை குறைப்பதாக விவசாயிகள் வேதனை தெரிவிக்கின்றனர். இதனால் பல இடங்களில் பழங்கள் அறுவடை செய்யப்படாமல் வயல்களிலேயே தேங்கியுள்ளன.\n\n📍 இடம்: பரமத்தி வேலூர் சுற்றுவட்டார கிராமங்கள்\n🗓️ அறுவடை காலம்: நவம்பர் 2026\n📉 விலை மாற்றம்: டன் ₹20,000-லிருந்து ₹10,000 ஆக குறைவு\n\nWatermelon price drop in Paramathi Velur | Namakkal news\n📍 Paramathi Velur, Namakkal | 26 November 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #ParamathiVelur #Agriculture #நாமக்கல்",
+   "prompts": "A vast watermelon field in Paramathi Velur, Namakkal district, under a bright morning sun. Hundreds of dark green watermelons are scattered across the dry soil among green vines. A farmer in a traditional dhoti is seen from behind, looking over the crop. Warm, natural daylight with a clear blue sky. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA close-up shot of several harvested watermelons stacked on the ground near a village road in Namakkal. The watermelons are large and dark green. In the background, a stationary truck is partially visible. The lighting is bright and natural, showing the texture of the fruit. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
+   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/watermelon-farmers-worried-as-yield-increases-prices-fall/4386518",
+   "published": "2026-11-26T01:47:00+05:30",
+   "verification": "DRAFT (gemini/gemini-3-flash-preview) - NOT CLEAN, held from posting - problems: caption misses facts of the article (put every one in 📰 முழு விவரம்): 18 ('ஒரு ஏக்கருக்கு, 18 முதல், 20 டன் வரை விளைச்சல் கிடைக்கும்.'); 20 ('ஒரு ஏக்கருக்கு, 18 முதல், 20 டன் வரை விளைச்சல் கிடைக்கும்.')",
+   "note": "free-model draft gemini/gemini-3-flash-preview, 1 attempt(s), 1 validator problem(s)",
    "post_time": "right after your reply, same day",
    "_area": "N",
-   "_score": 6.21,
+   "_score": 5.76,
    "images": [
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261125/a128e8555e320a69.jpg",
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261125/2e513da29dcf81cd.jpg"
+    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261125/84c4048dd3840274.jpg",
+    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261125/07409bc941e962f5.jpg"
    ]
   }
  ]
