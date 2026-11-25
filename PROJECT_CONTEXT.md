@@ -65,6 +65,25 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-25 | `41454ce` | R2: accept the Account ID pasted as a link or with spaces; clear message when it is another value |
+| 2026-11-25 | `2f33a7e` | stories shared / Instagram pause |
+| 2026-11-25 | `4825922` | posted report sent |
+| 2026-11-25 | `9bcf760` | stories shared / Instagram pause |
+| 2026-11-25 | `5065422` | stories shared / Instagram pause |
+| 2026-11-25 | `8754c05` | stories shared / Instagram pause |
+| 2026-11-25 | `6450597` | stories shared / Instagram pause |
+| 2026-11-25 | `1300db9` | stories shared / Instagram pause |
+| 2026-11-25 | `94ed545` | stories shared / Instagram pause |
+| 2026-11-25 | `9e716e6` | stories shared / Instagram pause |
+| 2026-11-25 | `bbe10b6` | stories shared / Instagram pause |
+| 2026-11-25 | `9db15eb` | facebook RN-832 |
+| 2026-11-25 | `c6bd46c` | posted RN-832 |
+| 2026-11-25 | `63cf48e` | stories shared / Instagram pause |
+| 2026-11-25 | `8408b4a` | stories shared / Instagram pause |
+| 2026-11-25 | `b1fd426` | facebook RN-831 |
+| 2026-11-25 | `8d9aa66` | posted RN-831 |
+| 2026-11-25 | `62b339c` | stories shared / Instagram pause |
+| 2026-11-25 | `41af5c5` | stories shared / Instagram pause |
 | 2026-11-25 | `ecfa024` | R2 check: manual workflow that uploads a test file and reads it back |
 | 2026-11-25 | `7c0e7ad` | stories shared / Instagram pause |
 | 2026-11-25 | `834d97c` | stories shared / Instagram pause |
@@ -76,23 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-25 | `105c6e1` | Cloudflare R2 (one shared bucket news360-media) replaces Cloudinary: R2 first, then Cloudinary, then the repo; nothing changes until the R2 secrets are saved; manual-post test uses today's date |
 | 2026-11-25 | `9be918e` | stories shared / Instagram pause |
 | 2026-11-25 | `b379232` | stories shared / Instagram pause |
-| 2026-11-25 | `67b48bc` | stories shared / Instagram pause |
-| 2026-11-25 | `12d2a2a` | stories shared / Instagram pause |
-| 2026-11-25 | `9630ec4` | stories shared / Instagram pause |
-| 2026-11-25 | `83365ce` | stories shared / Instagram pause |
-| 2026-11-25 | `fc46ffa` | stories shared / Instagram pause |
-| 2026-11-25 | `2775a7a` | stories shared / Instagram pause |
-| 2026-11-25 | `69ae705` | stories shared / Instagram pause |
-| 2026-11-25 | `c4888df` | stories shared / Instagram pause |
-| 2026-11-25 | `6229086` | stories shared / Instagram pause |
-| 2026-11-25 | `2f9bf77` | stories shared / Instagram pause |
-| 2026-11-25 | `99de1b9` | stories shared / Instagram pause |
-| 2026-11-25 | `b653aac` | Rasipalan: each page keeps the day's 12 rasi texts; when every AI writer is busy, a page uses the text another 360 page wrote that day |
-| 2026-11-25 | `a6581c2` | stories shared / Instagram pause |
-| 2026-11-25 | `a2e6c08` | stories shared / Instagram pause |
-| 2026-11-25 | `bae9355` | stories shared / Instagram pause |
-| 2026-11-25 | `d40b01c` | stories shared / Instagram pause |
-| 2026-11-25 | `55b34c7` | stories shared / Instagram pause |
-| 2026-11-25 | `24d3c5c` | autofix: corrected held news |
-| 2026-11-25 | `292fcdc` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
