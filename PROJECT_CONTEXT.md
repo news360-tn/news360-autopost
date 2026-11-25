@@ -65,6 +65,20 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-25 | `105c6e1` | Cloudflare R2 (one shared bucket news360-media) replaces Cloudinary: R2 first, then Cloudinary, then the repo; nothing changes until the R2 secrets are saved; manual-post test uses today's date |
+| 2026-11-25 | `9be918e` | stories shared / Instagram pause |
+| 2026-11-25 | `b379232` | stories shared / Instagram pause |
+| 2026-11-25 | `67b48bc` | stories shared / Instagram pause |
+| 2026-11-25 | `12d2a2a` | stories shared / Instagram pause |
+| 2026-11-25 | `9630ec4` | stories shared / Instagram pause |
+| 2026-11-25 | `83365ce` | stories shared / Instagram pause |
+| 2026-11-25 | `fc46ffa` | stories shared / Instagram pause |
+| 2026-11-25 | `2775a7a` | stories shared / Instagram pause |
+| 2026-11-25 | `69ae705` | stories shared / Instagram pause |
+| 2026-11-25 | `c4888df` | stories shared / Instagram pause |
+| 2026-11-25 | `6229086` | stories shared / Instagram pause |
+| 2026-11-25 | `2f9bf77` | stories shared / Instagram pause |
+| 2026-11-25 | `99de1b9` | stories shared / Instagram pause |
 | 2026-11-25 | `b653aac` | Rasipalan: each page keeps the day's 12 rasi texts; when every AI writer is busy, a page uses the text another 360 page wrote that day |
 | 2026-11-25 | `a6581c2` | stories shared / Instagram pause |
 | 2026-11-25 | `a2e6c08` | stories shared / Instagram pause |
@@ -81,18 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-25 | `40eafa5` | stories shared / Instagram pause |
 | 2026-11-25 | `6425877` | facebook RN-829 |
 | 2026-11-25 | `ab172db` | posted RN-829 |
-| 2026-11-25 | `89be0ec` | stories shared / Instagram pause |
-| 2026-11-25 | `c4bdbc7` | stories shared / Instagram pause |
-| 2026-11-25 | `b50a2e5` | stories shared / Instagram pause |
-| 2026-11-25 | `0505e84` | stories shared / Instagram pause |
-| 2026-11-25 | `2222f3b` | stories shared / Instagram pause |
-| 2026-11-25 | `8761c0a` | stories shared / Instagram pause |
-| 2026-11-25 | `a02ed22` | stories shared / Instagram pause |
-| 2026-11-25 | `3ca0971` | stories shared / Instagram pause |
-| 2026-11-25 | `a336684` | stories shared / Instagram pause |
-| 2026-11-25 | `21c7e19` | stories shared / Instagram pause |
-| 2026-11-25 | `3300696` | stories shared / Instagram pause |
-| 2026-11-25 | `e6ef27c` | stories shared / Instagram pause |
-| 2026-11-25 | `8a94e77` | stories shared / Instagram pause |
-| 2026-11-25 | `910c8dd` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
