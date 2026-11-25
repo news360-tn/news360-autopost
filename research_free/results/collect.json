@@ -2,209 +2,111 @@
  "log": [
   "earlier stories still waiting for images: []",
   "instagram check: 100 recent posts read from both pages",
-  "write round: 9 news waiting in the queue (written in priority order)",
-  "candidate filter: already filed=6, collected=3",
-  "to write: 1 Rasipuram + 2 other district candidates (max 200 + 200 stories)",
-  "daily maximum 30: 17 written today - this round writes at most 1 + 12",
-  "candidates waiting: 1 Rasipuram, 2 Namakkal; time left 29 min",
+  "write round: 1 news waiting in the queue (written in priority order)",
+  "candidate filter: collected=1",
+  "to write: 1 Rasipuram + 0 other district candidates (max 200 + 200 stories)",
+  "daily maximum 30: 19 written today - this round writes at most 1 + 10",
+  "candidates waiting: 1 Rasipuram, 0 Namakkal; time left 29 min",
   "try (R) manual=False: விபத்தில் தொழிலாளி பலி உடல் உறுப்புகள் தானம்",
-  "try (N) manual=False: போலீசாரை கண்டித்து வக்கீல்கள் ஆர்ப்பாட்டம்",
-  "try (N) manual=False: வள்ளிபுரத்தில் டாஸ்மாக் மதுக்கடையை மூடக்கோரி பொதுமக்கள் ஆர்ப",
-  "auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})",
+  "auto images: 1 of 1 stories ({'black-forest-labs/flux.1-schnell': 2})",
   "posting job started at once",
-  "auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 4})",
-  "NOT filed (R) விபத்தில் தொழிலாளி பலி உடல் உறுப்புகள் தானம்: not Namakkal district news (the story's first lines name another place and no Namakkal place)",
-  "candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 2}, done={'R': 0, 'N': 2}, time left 26 min",
-  "carousel for 0 of 2 stories, the rest reel only",
-  "filed: 0 Rasipuram + 2 Namakkal (targets 200 + 200)",
-  "queue: 1 news waiting to be written",
-  "write_stories.yml started",
-  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":3}"
+  "candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 0}, done={'R': 1, 'N': 0}, time left 27 min",
+  "carousel for 0 of 1 stories, the rest reel only",
+  "filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)",
+  "queue: 0 news waiting to be written",
+  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":1}"
  ],
  "llm": [
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "ok gemini/gemini-3.6-flash (27s)",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.6-flash",
   "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.5-flash",
-  "ok gemini/gemini-3.6-flash (53s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok gemini/gemini-3-flash-preview (27s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing high d",
-  "ok gemini/gemini-3-flash-preview (13s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing ",
-  "ok gemini/gemini-3.6-flash (22s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing ",
-  "ok gemini/gemini-3-flash-preview (18s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing ",
   "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing ",
   "switching away from gemini/gemini-3-flash-preview for 10 min",
-  "fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)",
-  "poor answer - skipped for 30 min: gemini/gemini-3-flash-preview",
-  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {\"error\":{\"message\":\"Failed to validate JSON. Please adjust your prompt. See 'failed_gener",
-  "ok groq/qwen/qwen3.8-27b (4s)",
+  "ok groq/qwen/qwen3.8-27b (5s)",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
+  "ok groq/openai/gpt-oss-120b (4s)",
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "switching away from groq/openai/gpt-oss-120b for 10 min",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "switching away from groq/qwen/qwen3.8-27b for 10 min",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
+  "ok groq/qwen/qwen3.8-27b (3s)",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
   "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)",
-  "poor answer - skipped for 30 min: gemini/gemini-3-flash-preview",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b"
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
+  "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5",
+  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash"
  ],
  "stories": [
   {
-   "tamil_headline": "நாமக்கல்லில் போலீசாரைக் கண்டித்து வழக்கறிஞர்கள் சாலை மறியல்: எஸ்பி அலுவலகம் முற்றுகை",
-   "english_headline": "Lawyers stage road blockade and besiege SP office in Namakkal over police inaction",
-   "category": "Crime & Safety",
-   "location": "Namakkal city, Namakkal district",
-   "importance": "High",
-   "scope": "district",
-   "post_to": "Namakkal 360 (collab: Rasipuram 360)",
-   "slides_spec": {
-    "v": 3,
-    "cat": "ஆர்ப்பாட்டம்",
-    "loc": "நாமக்கல்",
-    "hl1": "நாமக்கல்லில் வழக்கறிஞர்கள் சாலை மறியல்",
-    "hl2": "எஸ்பி அலுவலகம் முற்றுகை",
-    "slides": [
-     {
-      "title": "போராட்டம் ஏன்?",
-      "lines": [
-       "நாமக்கல்லில் <b>வழக்கறிஞர்கள்</b> சாலை மறியல் போராட்டம்",
-       "எஸ்பி <b>அலுவலகத்தை முற்றுகையிட்டு</b> போராட்டம்",
-       "நீதிமன்றப் பணிகளை புறக்கணித்து ஆர்ப்பாட்டம்"
-      ]
-     },
-     {
-      "title": "கடத்தல் வழக்கு",
-      "lines": [
-       "கள்ளக்குறிச்சி தொழிலதிபர் <b>கோபாலகிருஷ்ணன்</b> கடத்தல் வழக்கு",
-       "ராசிபுரம் போலீசார் <b>9 பேரைக்</b> கைது செய்தனர்",
-       "வழக்கறிஞர் அய்யாவு மீது புகார் தெரிவிக்கப்பட்டது"
-      ]
-     },
-     {
-      "title": "நடவடிக்கை இல்லை",
-      "lines": [
-       "அய்யாவு அளித்த புகார் மீது <b>நடவடிக்கை இல்லை</b>",
-       "போலீசாரைக் கண்டித்து மாநிலம் தழுவிய புறக்கணிப்பு",
-       "போலீசார் வழக்கறிஞர்களுடன் பேச்சுவார்த்தை"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "நாமக்கல்லில் காவல் கண்காணிப்பாளர் அலுவலகத்தை முற்றுகையிட்டு வழக்கறிஞர்கள் திடீர் மறியல் போராட்டத்தில் ஈடுபட்டனர். கள்ளக்குறிச்சி மாவட்டத்தைச் சேர்ந்த 65 வயது ரியல் எஸ்டேட் தொழிலதிபர் கோபாலகிருஷ்ணன் மற்றும் அவரது ஓட்டுநர் அஜ்மத் ஆகியோர் கடந்த நவம்பர் 5ம் தேதி ஆட்டையாம்பட்டி பிரிவு சாலையில் கடத்தப்பட்டனர். ராசிபுரம் போலீசார் இது தொடர்பாக வழக்குப்பதிவு செய்து 9 பேரைக் கைது செய்தனர். இந்நிலையில் வழக்கறிஞர்கள் சங்க கூட்டமைப்பு பொதுச்செயலாளர் அய்யாவுக்கு கடத்தலில் தொடர்பு இருப்பதாகக் கோபாலகிருஷ்ணன் நாமக்கல் காவல் கண்காணிப்பாளர் யாதவ் கிரிஷ் அசோக்கிடம் மனு அளித்தார். தம் மீது பொய் புகார் அளித்த கோபாலகிருஷ்ணன் மீது நடவடிக்கை எடுக்கக்கோரி அய்யாவு நாமக்கல் காவல் கண்காணிப்பாளர் மற்றும் நல்லிபாளையம் போலீசில் புகாரளித்தார். இந்த புகார் மீது போலீசார் நடவடிக்கை எடுக்காததால் கண்டித்து வழக்கறிஞர்கள் நீதிமன்ற புறக்கணிப்பு போராட்டத்தில் ஈடுபட்டனர். தொடர்ந்து பேரணியாகச் சென்று காவல் கண்காணிப்பாளர் அலுவலகத்தை முற்றுகையிட முயன்ற வழக்கறிஞர்களைப் போலீசார் தடுத்தனர். இதனால் சாலையில் அமர்ந்து வழக்கறிஞர்கள் மறியலில் ஈடுபட்டதால் போலீசார் பேச்சுவார்த்தை நடத்தினர். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "⚖️ நாமக்கல்லில் எஸ்பி அலுவலகத்தை முற்றுகையிட்டு வழக்கறிஞர்கள் சாலை மறியல் போராட்டம்!\n\n📰 முழு விவரம்:\nகள்ளக்குறிச்சி மாவட்டம் பங்காரம் கிராமத்தைச் சேர்ந்த கோபாலகிருஷ்ணன் (65 வயது) மற்றும் அவரது ஓட்டுநர் அஜ்மத் ஆகியோர் கடந்த நவம்பர் 5ல் ஆட்டையாம்பட்டி பிரிவு சாலையில் கடத்தப்பட்டனர். இது தொடர்பாக ராசிபுரம் போலீசார் வழக்குப்பதிவு செய்து 9 பேரைக் கைது செய்தனர். இந்நிலையில் வழக்கறிஞர் கூட்டமைப்பு பொதுச்செயலாளர் அய்யாவுக்கு இதில் தொடர்பு இருப்பதாகக் கூறி கோபாலகிருஷ்ணன் நாமக்கல் எஸ்பி யாதவ் கிரிஷ் அசோக்கிடம் மனு அளித்தார். தன் மீது தவறான புகார் அளித்தவர் மீது நடவடிக்கை எடுக்கக்கோரி அய்யாவு அளித்த புகார் மீது போலீசார் நடவடிக்கை எடுக்கவில்லை. இதைக் கண்டித்து வழக்கறிஞர்கள் நீதிமன்ற புறக்கணிப்பு, பேரணி, எஸ்பி அலுவலக முற்றுகை மற்றும் சாலை மறியல் போராட்டத்தில் ஈடுபட்டனர். போலீசார் அவர்களிடம் பேச்சுவார்த்தை நடத்தினர்.\n\n📍 இடம்: நாமக்கல் எஸ்பி அலுவலகம்\n🗓️ நாள்: 25 நவம்பர் 2026\n👮 நடவடிக்கை: போலீசார் வழக்கறிஞர்களுடன் பேச்சுவார்த்தை நடத்தினர்\n\nதேவைப்படுவோருக்கு Share செய்யுங்கள்\n\nNamakkal lawyers protest SP office blockade | Namakkal news\n📍 நாமக்கல் | 25 நவம்பர் 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #NamakkalNews #நாமக்கல் #ஆர்ப்பாட்டம்",
-   "prompts": "A large group of Indian lawyers in black coats walking in a protest rally along a main road in Namakkal, police barricades set up near the District Police Office entrance in daylight, realistic Tamil Nadu town environment. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nClose-up view of protesting lawyers seated on the road near police barricades in Namakkal, police officers in khaki uniform standing nearby and speaking with them, bright daylight. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-news/lawyers-protest-against-police-action/4386355",
-   "published": "2026-11-25T22:06:37+05:30",
-   "verification": "DRAFT (gemini/gemini-3.6-flash) - NOT CLEAN, held from posting - problems: caption misses facts of the article (put every one in 📰 முழு விவரம்): 6 ('தப்பிய இருவரும் அளித்த புகார்படி, கடந்த, 6ல், ராசிபுரம் போலீ'); நல்லிபாளையம் ('இதனால், வக்கீல் பெயருக்கு களங்கம் விளைவிக்கும் வகையில் செயல்')",
-   "note": "free-model draft gemini/gemini-3.6-flash, 1 attempt(s), 1 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 5.0,
-   "images": [
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261125/03aaa6b32a2f04dc.jpg",
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261125/74925b3d2b212784.jpg"
-   ]
-  },
-  {
-   "tamil_headline": "வள்ளிபுரத்தில் டாஸ்மாக் கடைக்கு எதிராக மக்கள் ஆர்ப்பாட்டம்",
-   "english_headline": "Public protest against TASMAC shop in Vallipuram, Namakkal",
-   "category": "Civic Issues",
-   "location": "Vallipuram, Namakkal district",
+   "tamil_headline": "வாழப்பாடியில் விபத்தில் கர்ணா உயிரிழப்பு; உடல் உறுப்புகள் தானம்",
+   "english_headline": "Construction worker Karnaa dies in accident; family donates organs in Vazhapadi",
+   "category": "Health",
+   "location": "Vazhapadi, Salem district",
    "importance": "Medium",
    "scope": "local",
-   "post_to": "Namakkal 360",
+   "post_to": "Rasipuram 360 (collab: Namakkal 360)",
    "slides_spec": {
     "v": 3,
-    "cat": "மதுக்கடை எதிர்ப்பு",
-    "loc": "வள்ளிபுரம், நாமக்கல்",
-    "hl1": "வள்ளிபுரத்தில் எதிராக ஆர்ப்பாட்டம்",
-    "hl2": "கடையை மாற்றக் கோரிக்கை",
+    "cat": "உடல் உறுப்பு தானம்",
+    "loc": "வாழப்பாடி, சேலம்",
+    "hl1": "வாழப்பாடியில் கர்ணா உயிரிழப்பு",
+    "hl2": "உடல் உறுப்புகள் தானம்",
     "slides": [
      {
-      "title": "எதற்கு",
+      "title": "சம்பவம்",
       "lines": [
-       "மதுப்பிரியர்கள் பாட்டில்களை ஏரியில் வீசுகின்றனர்",
-       "விவசாய நிலங்கள் மாசுபட்டு கால்நடைகளுக்கு பாதிப்பு",
-       "தோட்டங்களில் பணியிடும் பெண்களுக்கு அச்சுறுத்தல்"
+       "வாழப்பாடி இரட்டை பனங்காடையில் கர்ணா (25 வயது) கட்டட தொழிலாளி",
+       "அத்தனூர்பட்டி ஏரி அருகே இருசக்கர வாகனத்தில் விபத்து",
+       "நவம்பர் 22ஆம் தேதி நண்பர்களுடன் சென்றபோது விழுந்து படுகாயம்"
       ]
      },
      {
-      "title": "ஆர்ப்பாட்ட விவரம்",
+      "title": "மருத்துவமனை",
       "lines": [
-       "தமிழ் தேசிய கட்சி மாவட்ட செயலாளர் விவின் தலைமையில்",
-       "கடைக்கு முன்பு ஆர்ப்பாட்டம் நடைபெற்றது",
-       "சமூக ஆர்வலர் கிருஷ்ணகுமார் உள்ளிட்டோர் கலந்துகொண்டனர்"
+       "சேலம் அரசு மருத்துவமனையில் சிகிச்சை",
+       "நவம்பர் 25ஆம் தேதி மூளைச்சாவு அடைந்தார்",
+       "குடும்பத்தினர் உடல் உறுப்புகளை தானம் செய்தனர்"
       ]
      },
      {
-      "title": "அதிகாரிகள்",
+      "title": "தானம் விவரம்",
       "lines": [
-       "அதிகாரிகள் பேச்சுவார்த்தையில் ஈடுபட்டனர்",
-       "கோட்டாட்சியரிடம் தகவல் தெரிவிக்கப்படும்",
-       "உரிய நடவடிக்கை எடுக்கப்படும் என உறுதி"
+       "இதயம், கல்லீரல் கோவை தனியார் மருத்துவமனைக்கு",
+       "2 சிறுநீரகங்கள், 2 கண்கள் சேலம் அரசு மருத்துவமனைக்கு",
+       "மருத்துவர்கள் அரசு மரியாதை செலுத்தினர்"
       ]
      }
     ],
     "carousel": false
    },
-   "reel_script": "வள்ளிபுரம் நடுத்தோட்டத்தில் டாஸ்மாக் மதுக்கடைக்கு எதிராக மக்கள் ஆர்ப்பாட்டம் நடத்தினர். மது அருந்திவிட்டு பாட்டில்களை ஏரி மற்றும் விவசாய தோட்டங்களில் வீசிச் செல்வதால் மாசுபாடு ஏற்படுகிறது. இதனால் கால்நடைகளுக்கு பாதிப்பு ஏற்படுகிறது. மேலும் தோட்டங்களில் பணியில் ஈடுபடும் பெண்களின் பாதுகாப்புக்கும் அச்சுறுத்தல் உள்ளது. நேற்று தமிழ் தேசிய கட்சியின் மாவட்ட செயலாளர் விவின் தலைமையில் இந்த ஆர்ப்பாட்டம் நடைபெற்றது. சமூக ஆர்வலர் கிருஷ்ணகுமார் உள்ளிட்ட பலர் கலந்துகொண்டனர். அங்கு வந்த அதிகாரிகள் மற்றும் காவல்துறையினர் பேச்சுவார்த்தையில் ஈடுபட்டனர். நாமக்கல் கோட்டாட்சியரிடம் தகவல் தெரிவித்து உரிய நடவடிக்கை எடுக்கப்படும் என அதிகாரிகள் உறுதியளித்தனர். இதனால் பொதுமக்கள் அங்கிருந்து கலைந்து சென்றனர். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🍾 வள்ளிபுரத்தில் டாஸ்மாக் மதுக்கடைக்கு எதிராக மக்கள் ஆர்ப்பாட்டம் - கடையை மாற்றக் கோரிக்கை\n\n📰 முழு விவரம்:\nநாமக்கல் மாநகராட்சிக்குட்பட்ட வள்ளிபுரம் நடுத்தோட்டம் பகுதியில் டாஸ்மாக் மதுக்கடை அமைந்துள்ளது. இக்கடைக்கு வரும் மதுப்பிரியர்கள் மது அருந்திவிட்டு பாட்டில்கள் மற்றும் பிளாஸ்டிக் டம்ளர்களை அருகில் உள்ள ஏரி மற்றும் விவசாய தோட்டங்களில் வீசிச் செல்கின்றனர். இதனால் ஏரி மற்றும் விவசாய நிலங்கள் மாசுபடுவதுடன், கால்நடைகளுக்கும் பாதிப்பு ஏற்படுகிறது. மேலும், இந்த கடையால் அப்பகுதியில் உள்ள தோட்டங்களில் பணியில் ஈடுபடும் பெண்களின் பாதுகாப்புக்கும் அச்சுறுத்தல் ஏற்பட்டு, இயல்பு வாழ்க்கை பாதிக்கப்படுகிறது. இதைக் கண்டித்து வள்ளிபுரம் டாஸ்மாக் கடையை வேறு இடத்திற்கு மாற்றக்கோரி நேற்று தமிழ் தேசிய கட்சியின் மாவட்ட செயலாளர் விவின் தலைமையில் கடைக்கு முன்பு ஆர்ப்பாட்டம் நடைபெற்றது. சமூக ஆர்வலர் கிருஷ்ணகுமார் உள்ளிட்ட திரளான ஆண்கள் மற்றும் பெண்கள் ஆர்ப்பாட்டத்தில் ஈடுபட்டனர். அப்போது அங்கு வந்த அதிகாரிகள் மற்றும் காவல்துறையினர் அவர்களுடன் பேச்சுவார்த்தையில் ஈடுபட்டனர். நாமக்கல் கோட்டாட்சியரிவிடம் இது குறித்து தகவல் தெரிவித்து உரிய நடவடிக்கை எடுக்கப்படும் என அதிகாரிகள் உறுதியளித்ததால் பொதுமக்கள் அங்கிருந்து கலைந்துசென்றனர்.\n\n📍 இடம்: வள்ளிபுரம் நடுத்தோட்டம், நாமக்கல்\n🗓️ நாள்: நேற்று\n👮 நடவடிக்கை: அதிகாரிகள் பேச்சுவார்த்தை நடத்தி, கோட்டாட்சியரிடம் தகவல் தெரிவிக்க உறுதியளித்தனர்\nℹ️ மக்கள் கவனத்திற்கு: கடையை வேறு இடத்திற்கு மாற்ற கோரிக்கை முன்வைக்கப்பட்டது\n\nNamakkal TASMAC shop protest | Vallipuram Namakkal news\n📍 Vallipuram, Namakkal | 25 Nov 2026\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n#Namakkal360 #Namakkal #Vallipuram #NamakkalNews #நாமக்கல்",
-   "prompts": "Wide shot of a public protest in front of a small liquor shop in a Tamil Nadu village, with a crowd of men and women standing, daytime, clear sky, rural setting with trees in background Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nClose-up of plastic bottles and tumblers scattered on the ground near a small pond and agricultural field, showing pollution, daytime, natural light, no people visible Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://tamilmaninewstoday.com/tamilnadu/231787/",
-   "published": "2026-11-25T15:00:01+00:00",
-   "verification": "DRAFT (groq/qwen/qwen3.8-27b) - fact-check: no problems found",
-   "note": "free-model draft groq/qwen/qwen3.8-27b, 2 attempt(s), 0 validator problem(s)",
+   "reel_script": "வாழப்பாடியில் கட்டட தொழிலாளி கர்ணா (25 வயது) விபத்தில் உயிரிழந்துள்ளார். இரட்டை பனங்காடை சேர்ந்த இவர், நவம்பர் 22ஆம் தேதி நண்பர்களுடன் அத்தனூர்பட்டி ஏரி அருகே இருசக்கர வாகனத்தில் சென்றபோது தவறி விழுந்து படுகாயம் அடைந்தார். இதையடுத்து சேலம் அரசு மருத்துவமனையில் சிகிச்சை பெற்று வந்தார். நவம்பர் 25ஆம் தேதி மூளைச்சாவு அடைந்தார். இந்நிலையில் குடும்பத்தினர் உடல் உறுப்புகளை தானம் செய்தனர். தமிழக உடல் உறுப்பு மாற்று ஆணையம் வழிகாட்டுதலுடன் அறுவை சிகிச்சை நடந்தது. இதயம் மற்றும் கல்லீரல் கோவை தனியார் மருத்துவமனைக்கு அனுப்பப்பட்டன. ஒரு சிறுநீரகம் ஈரோடு தனியார் மருத்துவமனைக்கு அனுப்பப்பட்டது. மற்றொரு சிறுநீரகம் மற்றும் 2 கண்கள் சேலம் அரசு மருத்துவமனைக்கு அனுப்பப்பட்டன. மருத்துவர்கள் கர்ணாவின் உடலுக்கு அரசு மரியாதை செலுத்தி, பின்னர் குடும்பத்தினரிடம் ஒப்படைத்தனர். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
+   "caption": "🕊️ வாழப்பாடியில் கட்டட தொழிலாளி கர்ணா உயிரிழப்பு; குடும்பம் உடல் உறுப்புகளை தானம் செய்தது\n\n📰 முழு விவரம்:\nசேலம் மாவட்டம் வாழப்பாடி, இரட்டை பனங்காடை சேர்ந்த கர்ணா (25 வயது) கட்டட தொழிலாளி ஆவார். நவம்பர் 22ஆம் தேதி நண்பர்களுடன் அத்தனூர்பட்டி ஏரி அருகே இருசக்கர வாகனத்தில் சென்றபோது தவறி விழுந்து படுகாயம் அடைந்தார். மேல் சிகிச்சைக்காக சேலம் அரசு மருத்துவமனையில் சேர்க்கப்பட்டார். நவம்பர் 25ஆம் தேதி மூளைச்சாவு அடைந்தார். குடும்பத்தினர் உடல் உறுப்புகளை தானம் செய்வதாக தெரிவித்தனர். தமிழக உடல் உறுப்பு மாற்று ஆணையம் வழிகாட்டுதலுடன் இதயம், கல்லீரல், 2 சிறுநீரகங்கள், 2 கண்கள் எடுக்கப்பட்டன. இதயம், கல்லீரல் கோவை தனியார் மருத்துவமனைக்கு; ஒரு சிறுநீரகம் ஈரோடு தனியார் மருத்துவமனைக்கு; மற்றொரு சிறுநீரகம், கண்கள் சேலம் அரசு மருத்துவமனைக்கு வழங்கப்பட்டன. மருத்துவர்கள் அரசு மரியாதை செலுத்தி, உடலை குடும்பத்தினரிடம் ஒப்படைத்தனர்.\n\n📍 இடம்: வாழப்பாடி, சேலம் மாவட்டம்\n🗓️ நாள்: நவம்பர் 25, 2026\nℹ️ மக்கள் கவனத்திற்கு: உடல் உறுப்பு தானம் மூலம் பலருக்கு உதவுவது சிறந்த செயல்.\n\nVazhapadi organ donation news | Namakkal 360\n📍 Vazhapadi, Salem district | 25 Nov 2026\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #Vazhapadi #NamakkalNews #நாமக்கல்",
+   "prompts": "A wide shot of a rural road near a pond in Vazhapadi, Salem district, Tamil Nadu, during the day. A two-wheeler lies on the ground near the pond edge. The sky is overcast. No people are visible, just the accident scene and the surrounding greenery. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nA close-up view of a hospital corridor in Salem government hospital. A white sheet covers a stretcher. Medical staff in white coats stand in the background, paying respects. The lighting is soft and solemn, focusing on the dignity of the moment. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
+   "source": "https://www.dinamalar.com/amp/news/tamil-nadu-news/labourer-killed-in-accident-organs-donated/4386372",
+   "published": "2026-11-25T22:26:00+05:30",
+   "verification": "DRAFT (groq/qwen/qwen3.8-27b + proofread groq/qwen/qwen3.8-27b) - fact-check: no problems found",
+   "note": "free-model draft groq/qwen/qwen3.8-27b + proofread groq/qwen/qwen3.8-27b, 1 attempt(s), 0 validator problem(s)",
    "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 3.0,
+   "_area": "R",
+   "_score": 10.68,
    "images": [
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261125/cd8e95762be9d00e.jpg",
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261125/57d5bf98b9bcbd8e.jpg"
+    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261125/fceb02f5776c22f5.jpg",
+    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261125/b2855f3af0a7d152.jpg"
    ]
   }
  ]
