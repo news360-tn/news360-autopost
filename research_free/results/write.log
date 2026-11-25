@@ -1,84 +1,14 @@
-writing [R]: விபத்தில் தொழிலாளி பலி உடல் உறுப்புகள் தானம்
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing 
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing 
-switching away from gemini/gemini-3-flash-preview for 10 min
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 400: {"error":{"message":"Failed to validate JSON. Please adjust your prompt. See 'failed_gener
-ok groq/qwen/qwen3.8-27b (5s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-ok groq/openai/gpt-oss-120b (4s)
-factcheck by groq/openai/gpt-oss-120b: 3 problems
-  Slide spec incorrectly says both kidneys and eyes were given to Salem government hospital, omitting the kidney sent to a private hospital in Erode
-  Caption adds year 2026 to the November 25 date, which is not mentioned in the article
-  Reel script states the family 'donated' the organs, while the article says they only said they would donate
-attempt 1 groq/qwen/qwen3.8-27b: 3 problems
-  fact-check: Slide spec incorrectly says both kidneys and eyes were given to Salem government hospital, omitting the kidney sent to a private hospital in Erode
-  fact-check: Caption adds year 2026 to the November 25 date, which is not mentioned in the article
-  fact-check: Reel script states the family 'donated' the organs, while the article says they only said they would donate
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-switching away from groq/openai/gpt-oss-120b for 10 min
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
-claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-ok groq/qwen/qwen3.8-27b (3s)
-proofread by groq/qwen/qwen3.8-27b: 0 problems
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-image brief failed, using the writer's scenes: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to acces
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
-image brief failed, using the writer's scenes: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to acces
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
-real photo: vision check out of free quota
-imagegen: cloudflare black-forest-labs/flux-1-schnell 429: {"errors":[{"message":"AiError: AiError: you have used up your daily free allocation of 10,000 neurons, please upgrade to Cloudflare's Workers Paid plan if you would like 
-imagegen: pollinations 402: {"success":false,"error":{"message":"Insufficient balance. This request costs about $0.0020, but your available balance is $0.0000. Top up at https://enter.pollinations.ai/top-up?ref=agent_low_balance
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'Construction worker Karnaa dies in accid'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261125-2312","first":"RN-835"}
-posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 1 news waiting in the queue (written in priority order)
-candidate filter: collected=1
-to write: 1 Rasipuram + 0 other district candidates (max 200 + 200 stories)
-daily maximum 30: 19 written today - this round writes at most 1 + 10
-candidates waiting: 1 Rasipuram, 0 Namakkal; time left 29 min
-try (R) manual=False: விபத்தில் தொழிலாளி பலி உடல் உறுப்புகள் தானம்
-auto images: 1 of 1 stories ({'black-forest-labs/flux.1-schnell': 2})
-posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 0}, done={'R': 1, 'N': 0}, time left 27 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+write round: 4 news waiting in the queue (written in priority order)
+candidate filter: already filed=3, collected=1
+to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
+daily maximum 30: 0 written today - this round writes at most 0 + 30
+candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
+try (N) manual=False: போலீசாரை கண்டித்து வக்கீல்கள் ஆர்ப்பாட்டம்
+skip (N) same event as RN-833: போலீசாரை கண்டித்து வக்கீல்கள் ஆர்ப்பாட்டம்
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written 
+stories: 0
