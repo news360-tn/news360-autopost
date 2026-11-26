@@ -65,6 +65,13 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-26 | `19c0421` | Rasipuram collaboration: news about or near Rasipuram invites Rasipuram 360 as collaborator (Namakkal and Salem pages; towns in config collab_near_words) |
+| 2026-11-26 | `c36a2e5` | stories shared / Instagram pause |
+| 2026-11-26 | `7ca24c6` | powercut: notices written |
+| 2026-11-26 | `48008d8` | posted report sent |
+| 2026-11-26 | `7ea0f6d` | stories shared / Instagram pause |
+| 2026-11-26 | `da022b0` | posted report sent |
+| 2026-11-26 | `a19cfde` | stories shared / Instagram pause |
 | 2026-11-26 | `0a9f63a` | Daily lanes: district history/temple story reel and district jobs reel (dry-run only, nothing enabled, no schedule); fact gate, topic banks, official-source job rules, heritage and job-board reel designs, voice samples workflow, tests |
 | 2026-11-26 | `5f96f04` | stories shared / Instagram pause |
 | 2026-11-26 | `1d3f726` | stories shared / Instagram pause |
@@ -88,11 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-26 | `6de04e1` | stories shared / Instagram pause |
 | 2026-11-26 | `6966287` | stories shared / Instagram pause |
 | 2026-11-26 | `208b499` | stories shared / Instagram pause |
-| 2026-11-26 | `23ab24f` | stories shared / Instagram pause |
-| 2026-11-26 | `6eed6d4` | stories shared / Instagram pause |
-| 2026-11-26 | `7215341` | goldrate posted |
-| 2026-11-26 | `1edacdc` | stories shared / Instagram pause |
-| 2026-11-26 | `707f3ca` | stories shared / Instagram pause |
-| 2026-11-26 | `452a298` | stories shared / Instagram pause |
-| 2026-11-26 | `3af7c85` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
