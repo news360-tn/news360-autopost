@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-26 | `bfc5c05` | Backend site: top numbers and district cards follow Today/7/14 days, cards aligned (4+3 on big screens, no overflow), data age shown (amber when late); collector runs hourly |
+| 2026-11-26 | `b2e8bfc` | stories shared / Instagram pause |
 | 2026-11-26 | `6c8a2e3` | Picture sync: the website keeps its own small copy of each story's pictures (R2 links are deleted after 24 hours) |
 | 2026-11-26 | `4178d68` | stories shared / Instagram pause |
 | 2026-11-26 | `fd8750c` | facebook RN-852 |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-26 | `01a38aa` | Website gets each story's kind of news (safe note like the source comment); link sync puts Facebook and YouTube links on the website |
 | 2026-11-26 | `59da77a` | powercut: notices written |
 | 2026-11-26 | `c35f34a` | stories shared / Instagram pause |
-| 2026-11-26 | `e929df0` | Backend site: phone fixes - Posts table scrolls sideways with readable columns, platform tabs scroll inside their row, Overview top posts no longer widen the page |
-| 2026-11-26 | `c96d6f9` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
