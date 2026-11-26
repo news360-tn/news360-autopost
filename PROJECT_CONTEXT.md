@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-26 | `61d557e` | Dashboard collector renamed dash_collect.py (its name clashed with the news collector module in tests) |
 | 2026-11-26 | `8bd4993` | Team dashboard (view-only): private Apps Script store + login + page, and a separate read-only collector workflow; nothing in the posting workflows changes |
 | 2026-11-26 | `4b25edf` | stories shared / Instagram pause |
 | 2026-11-26 | `371cf7c` | stories shared / Instagram pause |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-26 | `ba94b30` | stories shared / Instagram pause |
 | 2026-11-26 | `2fe5a27` | stories shared / Instagram pause |
 | 2026-11-26 | `ad2ef8e` | stories shared / Instagram pause |
-| 2026-11-26 | `9fdc4f6` | goldrate posted |
 <!-- recent-changes:end -->
