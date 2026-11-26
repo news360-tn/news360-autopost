@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-26 | `6c8a2e3` | Picture sync: the website keeps its own small copy of each story's pictures (R2 links are deleted after 24 hours) |
+| 2026-11-26 | `4178d68` | stories shared / Instagram pause |
+| 2026-11-26 | `fd8750c` | facebook RN-852 |
+| 2026-11-26 | `8c738ae` | posted RN-852 |
+| 2026-11-26 | `8785ff7` | Backend site: posts are stacked cards on phones (all numbers visible, no sideways scroll) |
+| 2026-11-26 | `8b1ca77` | stories shared / Instagram pause |
+| 2026-11-26 | `923bf47` | stories shared / Instagram pause |
+| 2026-11-26 | `c94eba6` | stories shared / Instagram pause |
+| 2026-11-26 | `418f72e` | stories shared / Instagram pause |
+| 2026-11-26 | `6de04e1` | stories shared / Instagram pause |
+| 2026-11-26 | `6966287` | stories shared / Instagram pause |
+| 2026-11-26 | `208b499` | stories shared / Instagram pause |
+| 2026-11-26 | `23ab24f` | stories shared / Instagram pause |
+| 2026-11-26 | `6eed6d4` | stories shared / Instagram pause |
+| 2026-11-26 | `7215341` | goldrate posted |
+| 2026-11-26 | `1edacdc` | stories shared / Instagram pause |
+| 2026-11-26 | `707f3ca` | stories shared / Instagram pause |
+| 2026-11-26 | `452a298` | stories shared / Instagram pause |
+| 2026-11-26 | `3af7c85` | stories shared / Instagram pause |
+| 2026-11-26 | `cfa7ea6` | stories shared / Instagram pause |
+| 2026-11-26 | `9451066` | stories shared / Instagram pause |
+| 2026-11-26 | `e6ee8f6` | stories shared / Instagram pause |
+| 2026-11-26 | `95016e5` | stories shared / Instagram pause |
+| 2026-11-26 | `b7ea9c2` | stories shared / Instagram pause |
+| 2026-11-26 | `45be6cc` | stories shared / Instagram pause |
 | 2026-11-26 | `01a38aa` | Website gets each story's kind of news (safe note like the source comment); link sync puts Facebook and YouTube links on the website |
 | 2026-11-26 | `59da77a` | powercut: notices written |
 | 2026-11-26 | `c35f34a` | stories shared / Instagram pause |
 | 2026-11-26 | `e929df0` | Backend site: phone fixes - Posts table scrolls sideways with readable columns, platform tabs scroll inside their row, Overview top posts no longer widen the page |
 | 2026-11-26 | `c96d6f9` | stories shared / Instagram pause |
-| 2026-11-26 | `d9a89de` | powercut: notices written |
-| 2026-11-26 | `d8366eb` | stories shared / Instagram pause |
-| 2026-11-26 | `708de0d` | stories shared / Instagram pause |
-| 2026-11-26 | `2568d81` | stories shared / Instagram pause |
-| 2026-11-26 | `b773fb6` | News360 Backend design review fixes: labelled Today / Views columns on district cards, n/a instead of dashes, 'Views for' label, 'Mark comments seen', 40px touch targets and a scroll hint on phones |
-| 2026-11-26 | `ddad1b9` | stories shared / Instagram pause |
-| 2026-11-26 | `6c72426` | autofix: corrected held news |
-| 2026-11-26 | `3aa1f4f` | stories shared / Instagram pause |
-| 2026-11-26 | `d3458da` | posted report sent |
-| 2026-11-26 | `3a1a0bb` | News360 Backend: Home page, a separate link for each district (/erode, /salem ...), the 360 logo and each district's own logo, district list in the menu |
-| 2026-11-26 | `2ea92eb` | stories shared / Instagram pause |
-| 2026-11-26 | `9513c9f` | News360 Backend website for Cloudflare Pages (news360-backend.pages.dev): side menu with Overview, Instagram, Facebook, YouTube, Pages, Posts; desktop and phone layouts; store answers the website's sign-in and data requests; end-to-end test |
-| 2026-11-26 | `25a6bba` | stories shared / Instagram pause |
-| 2026-11-26 | `23a1d85` | stories shared / Instagram pause |
-| 2026-11-26 | `08e1fe9` | stories shared / Instagram pause |
-| 2026-11-26 | `f27d00e` | stories shared / Instagram pause |
-| 2026-11-26 | `4648c23` | facebook RN-850 |
-| 2026-11-26 | `6a67e60` | posted RN-850 |
-| 2026-11-26 | `27d69b2` | Dashboard design: platform logos, views-by-page and posts-per-day charts with tooltips, segmented filters, colour-blind-safe platform colours, light and dark themes |
-| 2026-11-26 | `f9d2818` | stories shared / Instagram pause |
-| 2026-11-26 | `e058a7e` | stories shared / Instagram pause |
-| 2026-11-26 | `91d2c99` | stories shared / Instagram pause |
-| 2026-11-26 | `61d557e` | Dashboard collector renamed dash_collect.py (its name clashed with the news collector module in tests) |
-| 2026-11-26 | `8bd4993` | Team dashboard (view-only): private Apps Script store + login + page, and a separate read-only collector workflow; nothing in the posting workflows changes |
-| 2026-11-26 | `4b25edf` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
