@@ -24,5 +24,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: "3.11"}
-      - run: pip install -q requests==2.32.5
+      - run: pip install -q requests==2.32.5 pillow
       - run: python dashboard/link_sync.py --days "${{ github.event.inputs.days || '3' }}"
+      # owner 26 Nov: the website keeps its own small copy of each story's pictures (the R2 links are deleted after 24 hours)
+      - run: python dashboard/thumb_sync.py
