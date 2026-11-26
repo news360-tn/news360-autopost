@@ -25,4 +25,4 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.11"}
       - run: pip install -q requests==2.32.5
-      - run: python dashboard/collect.py
+      - run: python dashboard/dash_collect.py

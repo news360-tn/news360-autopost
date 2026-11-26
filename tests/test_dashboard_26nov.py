@@ -5,7 +5,7 @@ from pathlib import Path
 from unittest import mock
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "dashboard"))
-import collect      # noqa: E402
+import dash_collect as collect      # noqa: E402
 
 NOW = datetime(2026, 11, 26, 6, 0, tzinfo=timezone.utc)
 HIST = {"111": {"page": "namakkal", "t": "2026-11-26T03:00:00+0000", "caption": "🔴 நாமக்கல்லில் நாளை மின் தடை\n\nவிவரம்", "topic": "power_cut",
