@@ -193,7 +193,18 @@ table.mini tr:last-child td{border-bottom:0}
 .login label{display:block;font-size:13px;color:var(--mute);margin-top:12px}
 .login input{width:100%;margin-top:4px}
 .err{color:var(--new);min-height:20px;font-size:13px;margin:8px 0}
-@media (prefers-reduced-motion:no-preference){.card,.nav a{transition:border-color .15s,background .15s}}
+/* owner 26 Nov (UX polish): smooth scrolling, press feedback, a soft fade when the screen changes, a shimmer while numbers load - all off for people who asked for reduced motion */
+.sk{background:var(--raise);border:1px solid var(--line);border-radius:var(--r);height:96px;margin-bottom:12px}
+@media (prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+  .card,.nav a,button,.seg button,.quick a{transition:border-color .15s,background .15s,transform .12s,box-shadow .18s}
+  button:active,.nav a:active,.quick a:active{transform:scale(.97)}
+  .pagecard:hover{transform:translateY(-2px);box-shadow:0 12px 28px -18px rgba(14,22,33,.45)}
+  #view.swap{animation:vin .24s ease both}
+  @keyframes vin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .sk{animation:shim 1.2s ease-in-out infinite}
+  @keyframes shim{50%{opacity:.45}}
+}
 </style>
 </head>
 <body>
@@ -333,6 +344,7 @@ document.addEventListener('click', function (e) {      // links inside the site 
 function start() { $('loginView').classList.add('hide'); $('appView').classList.remove('hide'); $('who').textContent = USER; load(); }
 function load() {
   $('upd').textContent = 'Loading…';
+  if (!DATA) $('view').innerHTML = '<div class="sk"></div><div class="sk"></div><div class="sk"></div>';      // shimmer instead of an empty screen
   ask('getData', [TOKEN], function (t) {
     var d; try { d = JSON.parse(t); } catch (e) { d = {error: 'bad'}; }
     if (d.error === 'login') { store('n360_token', ''); location.reload(); return; }
@@ -340,7 +352,7 @@ function load() {
     var ageH = d.updated ? (Date.now() - new Date(d.updated).getTime()) / 3600000 : 0;
     // owner 26 Nov: how old the numbers are is always visible; amber after 4 hours (the collector is late - GitHub sometimes skips a run)
     $('upd').textContent = d.updated ? 'Updated ' + new Date(d.updated).toLocaleString('en-IN', {timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'}) + ' IST · ' +
-      (ageH < 1 ? 'just now' : Math.floor(ageH) + ' h ago') + (ageH > 4 ? ' · late' : '') : 'No numbers yet';
+      (ageH < 0.03 ? 'just now' : ageH < 1 ? Math.round(ageH * 60) + ' min ago' : Math.floor(ageH) + ' h ago') + (ageH > 4 ? ' · late' : '') : 'No numbers yet';
     $('upd').style.color = ageH > 4 ? 'var(--wait)' : '';
     $('upd').style.fontWeight = ageH > 4 ? '600' : '';
     if (store('cmt_' + USER) === null) snapshot();
@@ -498,9 +510,12 @@ function render() {
     bar = filterBar({plat: true, page: true, sort: true, search: true});
     v = postsTable(pick({plat: S.plat, page: S.page, days: S.period, q: S.q}), {plat: true, page: true, ig: true, title: 'All posts'});
   }
-  if (!(DATA.posts || []).length) v = '<div class="card"><div class="empty"><b>No numbers yet.</b><br>The collector sends them every 3 hours. Press Refresh later.</div></div>';
+  if (!(DATA.posts || []).length) v = '<div class="card"><div class="empty"><b>No numbers yet.</b><br>The collector sends them every hour. Press Refresh later.</div></div>';
   $('bar').innerHTML = bar; $('view').innerHTML = v;
+  var key = IS_GAS ? location.hash : location.pathname;      // the soft fade only when the SCREEN changes (not on every filter click or key press)
+  if (key !== lastScreen) { lastScreen = key; var vw = $('view'); vw.classList.remove('swap'); void vw.offsetWidth; vw.classList.add('swap'); }
 }
+var lastScreen = '';
 
 /* filter clicks and changes (one listener for every screen) */
 document.addEventListener('click', function (e) {
