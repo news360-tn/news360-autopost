@@ -74,3 +74,15 @@ class Collect(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class InstagramLinkTest(unittest.TestCase):
+    def test_collector_passes_the_post_link_through(self):
+        import dash_collect as dc
+        from datetime import datetime, timezone
+        hist = {"111": {"page": "namakkal", "t": "2026-11-26T05:00:00+0000", "caption": "செய்தி", "views": 5, "permalink": "https://www.instagram.com/reel/AbC/"},
+                "222": {"page": "namakkal", "t": "2026-11-26T05:10:00+0000", "caption": "பழையது", "views": 1}}
+        with __import__("unittest.mock", fromlist=["patch"]).patch.object(dc, "raw", return_value=hist):
+            out = dc.instagram("news360-autopost", ["namakkal"], datetime(2026, 11, 1, tzinfo=timezone.utc))
+        urls = {o["id"]: o["url"] for o in out}
+        self.assertEqual(urls, {"111": "https://www.instagram.com/reel/AbC/", "222": ""})

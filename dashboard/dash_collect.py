@@ -74,7 +74,7 @@ def instagram(repo, pages, cut):
         out.append({"platform": "instagram", "page": v["page"], "id": str(mid), "title": headline(v.get("caption")) or "(no caption)",
                     "t": t.isoformat(), "kind": kind, "views": v.get("views"), "reach": v.get("reach"), "saves": v.get("saved"),
                     "shares": v.get("shares"), "interactions": v.get("total_interactions"), "likes": None, "comments": None,
-                    "topic": v.get("topic") or "", "url": ""})
+                    "topic": v.get("topic") or "", "url": str(v.get("permalink") or "")})      # owner 26 Nov: the post's own link (filled by the insights job)
     return out
 
 
