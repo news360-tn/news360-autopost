@@ -1,0 +1,28 @@
+name: link_sync
+# owner 26 Nov: puts each news story's Facebook and YouTube links on the public website (news360.pages.dev).
+# READ-ONLY towards posting: it reads the records the pages keep in their public repositories and sends only the two links to the
+# website's protected /api/links door (the secret WEBSITE_INGEST_KEY the pages already use). Commits nothing, never turns red.
+on:
+  schedule:
+    - cron: "40 */2 * * *"      # every 2 hours
+  workflow_dispatch:
+    inputs:
+      days: { description: "how many days back to read (3 is enough; 30 for a one-time catch-up)", default: "3" }
+permissions:
+  contents: read
+concurrency:
+  group: link_sync
+  cancel-in-progress: true
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      WEBSITE_INGEST_KEY: ${{ secrets.WEBSITE_INGEST_KEY }}
+      GITHUB_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: pip install -q requests==2.32.5
+      - run: python dashboard/link_sync.py --days "${{ github.event.inputs.days || '3' }}"
