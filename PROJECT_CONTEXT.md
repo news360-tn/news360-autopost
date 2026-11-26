@@ -65,6 +65,15 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-26 | `837d538` | Keywords after hashtags on Instagram/Facebook/YouTube; follower and subscriber counts in the backend (aligned); backend noindex |
+| 2026-11-26 | `b3ec5fa` | facebook RN-822 |
+| 2026-11-26 | `24a246d` | posted RN-822 |
+| 2026-11-26 | `3cc2b8a` | stories shared / Instagram pause |
+| 2026-11-26 | `ad8bbd5` | stories shared / Instagram pause |
+| 2026-11-26 | `de94137` | facebook RN-837 |
+| 2026-11-26 | `c874ecb` | posted RN-837 |
+| 2026-11-26 | `6520aff` | stories shared / Instagram pause |
+| 2026-11-26 | `d68ddf4` | autofix: corrected held news |
 | 2026-11-26 | `19c0421` | Rasipuram collaboration: news about or near Rasipuram invites Rasipuram 360 as collaborator (Namakkal and Salem pages; towns in config collab_near_words) |
 | 2026-11-26 | `c36a2e5` | stories shared / Instagram pause |
 | 2026-11-26 | `7ca24c6` | powercut: notices written |
@@ -86,13 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-26 | `6c8a2e3` | Picture sync: the website keeps its own small copy of each story's pictures (R2 links are deleted after 24 hours) |
 | 2026-11-26 | `4178d68` | stories shared / Instagram pause |
 | 2026-11-26 | `fd8750c` | facebook RN-852 |
-| 2026-11-26 | `8c738ae` | posted RN-852 |
-| 2026-11-26 | `8785ff7` | Backend site: posts are stacked cards on phones (all numbers visible, no sideways scroll) |
-| 2026-11-26 | `8b1ca77` | stories shared / Instagram pause |
-| 2026-11-26 | `923bf47` | stories shared / Instagram pause |
-| 2026-11-26 | `c94eba6` | stories shared / Instagram pause |
-| 2026-11-26 | `418f72e` | stories shared / Instagram pause |
-| 2026-11-26 | `6de04e1` | stories shared / Instagram pause |
-| 2026-11-26 | `6966287` | stories shared / Instagram pause |
-| 2026-11-26 | `208b499` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
