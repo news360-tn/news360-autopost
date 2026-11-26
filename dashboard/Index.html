@@ -144,7 +144,13 @@ tbody tr:hover{background:var(--raise)}
 .hero .stat b{font:600 20px/1 var(--font-head)}
 .hero .stat span{font-size:12px;color:var(--mute)}
 .pagecard .go{margin-top:12px;font-size:13px;color:var(--accent);font-weight:600}
-.pagecard .rows b{white-space:nowrap;font-size:12.5px}
+.na{color:var(--mute);font-size:.85em;font-weight:400;cursor:help}
+table.mini{margin-top:12px;font-size:13px}
+table.mini th,table.mini td{padding:5px 4px;border-bottom:1px solid var(--line)}
+table.mini td:first-child{display:flex;align-items:center;gap:6px;white-space:nowrap}
+table.mini tr:last-child td{border-bottom:0}
+@media (max-width:900px){.seg button{min-height:40px}.nav a{min-height:40px}.bar select,.bar input{min-height:40px}
+  .side{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}}
 @media (max-width:900px){.hero{gap:14px;padding:16px}.hero img{width:72px;height:72px}.hero .stats{margin-left:0;display:grid;grid-template-columns:repeat(3,1fr);width:100%}
   .hero .stat{flex-direction:column;align-items:flex-start;gap:4px;padding:8px}.hero .stat span{font-size:11px}}
 .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
@@ -218,7 +224,7 @@ tbody tr:hover{background:var(--raise)}
       <button class="iconbtn" id="bell" type="button" aria-label="New comments">
         <svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 6 2.5 7.5 2.5 7.5h-17S6 15 6 9z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><span class="dot hide" id="belln">0</span>
       </button>
-      <button id="seen" type="button" title="Mark the new comments as seen">Mark seen</button>
+      <button id="seen" type="button" title="The +new badges and the bell count start again from now">Mark comments seen</button>
       <button id="refresh" type="button">Refresh</button>
       <button id="out2" class="phone-only" type="button">Sign out</button>
     </header>
@@ -245,7 +251,7 @@ var SCREENS = {
 function $(id) { return document.getElementById(id); }
 function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} return null; }
 function logo(p) { return '<svg class="logo"><use href="#i-' + p + '"/></svg>'; }
-function fmt(n) { return n === null || n === undefined ? '—' : Number(n).toLocaleString('en-IN'); }
+function fmt(n) { return n === null || n === undefined ? '<span class="na" title="Not available yet - see the note on the platform screen">n/a</span>' : Number(n).toLocaleString('en-IN'); }
 function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
 function istDay(d) { return new Date(d.getTime() + 330 * 60000).toISOString().slice(0, 10); }
 function col(p) { return 'var(--' + (p === 'instagram' ? 'ig' : p === 'facebook' ? 'fb' : 'yt') + ')'; }
@@ -452,7 +458,7 @@ function render() {
         postsTable(lr, {page: true, ig: r === 'instagram', title: NAMES[r] + ' posts'});
   } else if (r === 'home') {
     $('h1').textContent = SCREENS[r][0]; $('hp').textContent = SCREENS[r][1];
-    bar = filterBar({});
+    bar = '<span class="mute" style="font-size:13px">Views for:</span>' + filterBar({});
     var today = pick({days: 1}), lh = pick({days: S.period});
     v = '<section class="hero">' + (LOGOS.main ? '<img src="' + LOGOS.main + '" alt="News360">' : '') +
         '<div><h2>News360</h2><div class="mute">7 districts · Instagram, Facebook and YouTube · ' + esc($('upd').textContent) + '</div>' +
@@ -460,9 +466,9 @@ function render() {
         '<div class="stats">' + PL.map(function (pl) { return '<div class="stat">' + logo(pl) + '<div><b>' + onPlat(today, pl).length + '</b><br><span>' + NAMES[pl] + ' posts today</span></div></div>'; }).join('') + '</div></section>' +
         '<div class="pagecards">' + Object.keys(DATA.pages || {}).map(function (k) {
           var mine = lh.filter(function (p) { return p.page === k; }), td = today.filter(function (p) { return p.page === k; });
-          return '<a class="card pagecard" href="' + href(k) + '" data-go="' + k + '"><div class="ph">' + plogo(k, 'lg') + '<div><h3>' + esc(DATA.pages[k].name) + '</h3><div class="ta">' + esc(DATA.pages[k].label) + '</div></div></div><div class="rows">' +
-            PL.map(function (pl) { var x = onPlat(mine, pl); return '<div>' + logo(pl) + NAMES[pl] + '<b>' + onPlat(td, pl).length + ' today · ' + fmt(sum(x, 'views')) + ' views</b></div>'; }).join('') +
-            '</div><div class="go">Open ' + esc(DATA.pages[k].name) + ' page →</div></a>';
+          return '<a class="card pagecard" href="' + href(k) + '" data-go="' + k + '"><div class="ph">' + plogo(k, 'lg') + '<div><h3>' + esc(DATA.pages[k].name) + '</h3><div class="ta">' + esc(DATA.pages[k].label) + '</div></div></div><table class="mini"><thead><tr><th></th><th class="n">Today</th><th class="n">Views (' + (S.period === 1 ? 'today' : S.period + ' days') + ')</th></tr></thead><tbody>' +
+            PL.map(function (pl) { var x = onPlat(mine, pl); return '<tr><td>' + logo(pl) + ' ' + NAMES[pl] + '</td><td class="n">' + onPlat(td, pl).length + '</td><td class="n">' + fmt(sum(x, 'views')) + '</td></tr>'; }).join('') + '</tbody></table>' +
+            '<div class="go">Open ' + esc(DATA.pages[k].name) + ' page →</div></a>';
         }).join('') + '</div>';
   } else if (r === 'posts') {
     $('h1').textContent = SCREENS[r][0]; $('hp').textContent = SCREENS[r][1];
