@@ -240,9 +240,19 @@ def pages_of(row):
     return ["namakkal"]
 
 
+def near_rasipuram(row):
+    """owner 26 Nov: news that is ABOUT or NEAR Rasipuram (config.json "collab_near_words": Rasipuram and the towns around it) invites
+    Rasipuram 360 as collaborator, the owner accepts it. Matched on the headline and the location only (the story's subject)."""
+    words = [str(w).lower() for w in (CONFIG.get("collab_near_words") or []) if str(w).strip()]
+    if not words:
+        return False
+    t = " ".join(str(row.get(k) or "") for k in ("headline_ta", "headline_en", "location")).lower()
+    return any(w in t for w in words)
+
+
 def collab_page(row, page):
-    """owner 23 Nov: only a Rasipuram-area news invites Rasipuram 360 (district-wide news: no collaborator)"""
-    return "rasipuram" if page == "namakkal" and is_rasipuram_news(row) else ""
+    """owner 23 Nov: a Rasipuram-area news invites Rasipuram 360. owner 26 Nov: also news near Rasipuram (near_rasipuram)"""
+    return "rasipuram" if page == "namakkal" and (is_rasipuram_news(row) or near_rasipuram(row)) else ""
 
 
 def page_done(row, page):
