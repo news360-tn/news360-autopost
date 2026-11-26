@@ -27,7 +27,8 @@ async function store(env, body) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (request.method === 'GET' && (url.pathname === '/' || url.pathname === '/index.html')) {
+    // owner 26 Nov: every screen has its own link (/erode, /salem, /overview, /posts ...) - all are the same page, which shows the right screen
+    if (request.method === 'GET' && (url.pathname === '/' || /^\/[a-z]{2,20}\/?$/.test(url.pathname))) {
       return new Response(PAGE, {headers: Object.assign({'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-cache'}, HEAD)});
     }
     if (request.method === 'POST' && (url.pathname === '/api/login' || url.pathname === '/api/data')) {

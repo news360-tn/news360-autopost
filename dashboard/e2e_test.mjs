@@ -24,7 +24,7 @@ const call = (path, body, method, e) => W.fetch(new Request('https://news360-bac
 const t = (n, ok) => { console.log((ok ? 'PASS ' : 'FAIL ') + n); if (!ok) process.exitCode = 1; };
 // collector puts data
 ctx.doPost({postData: {contents: JSON.stringify({action: 'put', key: 'k'.repeat(40), data: {posts: [{id: 1}], pages: {}, updated: 'x'}})}});
-let r = await call('/', null, 'GET'); let h = await r.text();
+let r = await call('/', null, 'GET'); let h = await r.text(); const r2 = await call('/erode', null, 'GET'); t('district link served', r2.status === 200 && (await r2.text()).includes('News360')); t('file paths not served', (await call('/x.php', null, 'GET')).status === 404);
 t('home page served', r.status === 200 && h.includes('News360') && r.headers.get('content-security-policy'));
 t('page does not contain the store link', !h.includes('script.example'));
 r = await call('/api/login', {user: 'siva', pass: 'abc123'}); let j = await r.json(); t('login works through the website', j.ok && j.token);

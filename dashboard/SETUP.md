@@ -1,6 +1,6 @@
 # News360 Backend - setup (owner, once)
 
-Website: **https://news360-backend.pages.dev** (Cloudflare Pages). Nothing here changes the posting workflows; the site only READS.
+Website: **https://news360-backend.pages.dev** (Cloudflare Pages). Home: / - each district has its own link: /namakkal /coimbatore /erode /karur /salem /tirupur /trichy - plus /overview /instagram /facebook /youtube /posts. Nothing here changes the posting workflows; the site only READS.
 
 How it fits: website (Cloudflare Pages, `pages/_worker.js`) -> private store + login (Google Apps Script, `Code.gs`) <- collector
 (GitHub Actions `dashboard.yml`, every 3 hours, read-only). The Apps Script link is never shown on the website.
