@@ -65,6 +65,17 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-26 | `9513c9f` | News360 Backend website for Cloudflare Pages (news360-backend.pages.dev): side menu with Overview, Instagram, Facebook, YouTube, Pages, Posts; desktop and phone layouts; store answers the website's sign-in and data requests; end-to-end test |
+| 2026-11-26 | `25a6bba` | stories shared / Instagram pause |
+| 2026-11-26 | `23a1d85` | stories shared / Instagram pause |
+| 2026-11-26 | `08e1fe9` | stories shared / Instagram pause |
+| 2026-11-26 | `f27d00e` | stories shared / Instagram pause |
+| 2026-11-26 | `4648c23` | facebook RN-850 |
+| 2026-11-26 | `6a67e60` | posted RN-850 |
+| 2026-11-26 | `27d69b2` | Dashboard design: platform logos, views-by-page and posts-per-day charts with tooltips, segmented filters, colour-blind-safe platform colours, light and dark themes |
+| 2026-11-26 | `f9d2818` | stories shared / Instagram pause |
+| 2026-11-26 | `e058a7e` | stories shared / Instagram pause |
+| 2026-11-26 | `91d2c99` | stories shared / Instagram pause |
 | 2026-11-26 | `61d557e` | Dashboard collector renamed dash_collect.py (its name clashed with the news collector module in tests) |
 | 2026-11-26 | `8bd4993` | Team dashboard (view-only): private Apps Script store + login + page, and a separate read-only collector workflow; nothing in the posting workflows changes |
 | 2026-11-26 | `4b25edf` | stories shared / Instagram pause |
@@ -84,15 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-26 | `ec4ff7b` | autofix: corrected held news |
 | 2026-11-26 | `75c9c1a` | stories shared / Instagram pause |
 | 2026-11-26 | `20060a4` | manual post e-mail RN-847 |
-| 2026-11-26 | `15e439c` | stories shared / Instagram pause |
-| 2026-11-26 | `1a8f2e2` | stories shared / Instagram pause |
-| 2026-11-26 | `6e69b78` | stories shared / Instagram pause |
-| 2026-11-26 | `aaf3dbd` | facebook RN-849 |
-| 2026-11-26 | `4a3e60b` | posted RN-849 |
-| 2026-11-26 | `370138f` | stories shared / Instagram pause |
-| 2026-11-26 | `aea800b` | facebook RN-848 |
-| 2026-11-26 | `6aceb56` | posted RN-848 |
-| 2026-11-26 | `ba94b30` | stories shared / Instagram pause |
-| 2026-11-26 | `2fe5a27` | stories shared / Instagram pause |
-| 2026-11-26 | `ad2ef8e` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
