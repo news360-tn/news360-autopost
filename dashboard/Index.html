@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>News360 Dashboard</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#14171c;--mute:#667085;--line:#e4e7ec;--accent:#e11d48;--ok:#12805c;--chip:#eef0f4}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1216;--card:#181c22;--ink:#eef0f3;--mute:#9aa3b2;--line:#2a2f38;--accent:#fb7185;--ok:#34d399;--chip:#232831}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Tamil",sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.hdr{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.hdr h1{font-size:19px;margin:0;flex:1}
+.mute{color:var(--mute);font-size:13px}
+button,select,input{font:inherit;color:var(--ink)}
+button{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 12px;cursor:pointer}
+button:hover{border-color:var(--mute)}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+select,input[type=text],input[type=password],input[type=search]{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:7px 10px;min-width:0}
+.bell{position:relative}
+.bell .n{position:absolute;top:-6px;right:-6px;background:var(--accent);color:#fff;border-radius:999px;font-size:11px;min-width:18px;padding:1px 5px;text-align:center}
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--chip);border-radius:999px;padding:6px 12px;cursor:pointer;user-select:none}
+.chip.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent) inset;font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin-bottom:12px}
+.tile h3{margin:0 0 8px;font-size:15px;display:flex;align-items:center;gap:8px}
+.tile .g{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center}
+.tile .g b{display:block;font-size:18px}
+.tile .g span{font-size:11px;color:var(--mute)}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:12px;color:var(--mute);font-weight:600;cursor:pointer;white-space:nowrap}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.scroll{overflow-x:auto}
+.title{max-width:430px;word-break:break-word}
+.badge{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;font-size:11px;padding:0 7px;margin-left:6px}
+.note{font-size:13px;color:var(--mute);margin:4px 0}
+.logo{width:20px;height:20px;flex:none;vertical-align:middle}
+.login{max-width:360px;margin:12vh auto}
+.login input{width:100%;margin:6px 0}
+.err{color:var(--accent);min-height:20px;font-size:13px}
+.hide{display:none}
+h2{font-size:16px;margin:14px 0 8px}
+a{color:inherit}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fdf497"/><stop offset=".25" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset="1" stop-color="#285AEB"/></linearGradient>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="1" y="1" width="22" height="22" rx="6" fill="url(#ig)"/><circle cx="12" cy="12" r="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.4" fill="#fff"/></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#1877f2"/><path fill="#fff" d="M13.4 21v-7.2h2.4l.4-2.9h-2.8V9.1c0-.8.2-1.4 1.4-1.4h1.5V5.1c-.3 0-1.1-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8v2.1H8v2.9h2.4V21z"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><rect x="1" y="4.5" width="22" height="15" rx="4.5" fill="#ff0000"/><path fill="#fff" d="M10 8.8v6.4l5.6-3.2z"/></symbol>
+  </defs>
+</svg>
+
+<div id="loginView" class="wrap">
+  <div class="card login">
+    <h1 style="margin:0 0 4px;font-size:20px">News360 Dashboard</h1>
+    <div class="mute" style="margin-bottom:10px">Team access only</div>
+    <input id="u" type="text" placeholder="Username" autocomplete="username" autocapitalize="none">
+    <input id="p" type="password" placeholder="Password" autocomplete="current-password">
+    <div class="err" id="err"></div>
+    <button class="primary" id="go" style="width:100%">Sign in</button>
+  </div>
+</div>
+
+<div id="appView" class="wrap hide">
+  <div class="hdr">
+    <h1>News360 Dashboard <span class="mute" id="upd"></span></h1>
+    <button class="bell" id="bell" title="New comments and messages">🔔<span class="n hide" id="belln">0</span></button>
+    <button id="seen" title="Mark the new comments as seen">Mark seen</button>
+    <button id="refresh">Refresh</button>
+    <button id="out">Sign out</button>
+  </div>
+
+  <div class="filters card">
+    <span class="chip on" data-p="all">All</span>
+    <span class="chip" data-p="instagram"><svg class="logo"><use href="#i-instagram"/></svg>Instagram</span>
+    <span class="chip" data-p="facebook"><svg class="logo"><use href="#i-facebook"/></svg>Facebook</span>
+    <span class="chip" data-p="youtube"><svg class="logo"><use href="#i-youtube"/></svg>YouTube</span>
+    <select id="page"><option value="all">All pages</option></select>
+    <select id="period"><option value="1">Today</option><option value="7" selected>Last 7 days</option><option value="14">Last 14 days</option></select>
+    <select id="sort">
+      <option value="views">Sort: Views</option><option value="likes">Sort: Likes</option><option value="comments">Sort: Comments</option>
+      <option value="new">Sort: New comments</option><option value="t">Sort: Newest</option>
+    </select>
+    <input id="q" type="search" placeholder="Search title…">
+  </div>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="card">
+    <h2 style="margin-top:0">Pages</h2>
+    <div class="scroll"><table id="pagesTbl"></table></div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2 style="margin-top:0">Posts <span class="mute" id="count"></span></h2>
+    <div class="scroll"><table id="postsTbl"></table></div>
+  </div>
+
+  <div class="card" style="margin-top:12px">
+    <h2 style="margin-top:0">Messages</h2>
+    <div class="note">New messages from Instagram and Facebook will show here with an unread count (phase 2: needs the Meta messaging permissions).</div>
+  </div>
+  <div id="notes" class="note"></div>
+</div>
+
+<script>
+var TOKEN = '', USER = '', DATA = null, PLAT = 'all';
+var LOGO = {instagram: 'i-instagram', facebook: 'i-facebook', youtube: 'i-youtube'};
+var NAMES = {instagram: 'Instagram', facebook: 'Facebook', youtube: 'YouTube'};
+function $(id) { return document.getElementById(id); }
+function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} return null; }
+function logo(p) { return '<svg class="logo"><use href="#' + LOGO[p] + '"/></svg>'; }
+function fmt(n) { return n === null || n === undefined ? '—' : Number(n).toLocaleString('en-IN'); }
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
+function istDay(d) { return new Date(d.getTime() + 330 * 60000).toISOString().slice(0, 10); }
+
+$('go').onclick = function () {
+  $('err').textContent = ''; $('go').disabled = true;
+  google.script.run.withSuccessHandler(function (r) {
+    $('go').disabled = false;
+    if (!r.ok) { $('err').textContent = r.error; return; }
+    TOKEN = r.token; USER = r.user; store('n360_token', TOKEN); store('n360_user', USER); start();
+  }).withFailureHandler(function () { $('go').disabled = false; $('err').textContent = 'Could not reach the server. Try again.'; })
+    .login($('u').value.trim(), $('p').value);
+};
+$('p').onkeydown = function (e) { if (e.key === 'Enter') $('go').click(); };
+$('out').onclick = function () { store('n360_token', ''); location.reload(); };
+$('refresh').onclick = load;
+$('seen').onclick = function () { snapshot(); render(); };
+document.querySelectorAll('.chip').forEach(function (c) {
+  c.onclick = function () {
+    PLAT = c.getAttribute('data-p');
+    document.querySelectorAll('.chip').forEach(function (x) { x.classList.toggle('on', x === c); });
+    render();
+  };
+});
+['page', 'period', 'sort', 'q'].forEach(function (id) { $(id).oninput = render; });
+
+function start() { $('loginView').classList.add('hide'); $('appView').classList.remove('hide'); load(); }
+
+function load() {
+  google.script.run.withSuccessHandler(function (t) {
+    var d; try { d = JSON.parse(t); } catch (e) { d = {error: 'bad'}; }
+    if (d.error === 'login') { store('n360_token', ''); location.reload(); return; }
+    DATA = d;
+    var sel = $('page'), cur = sel.value; sel.length = 1;
+    Object.keys(d.pages || {}).forEach(function (k) { var o = document.createElement('option'); o.value = k; o.textContent = d.pages[k].name + ' · ' + d.pages[k].label; sel.appendChild(o); });
+    sel.value = cur;
+    $('upd').textContent = d.updated ? 'updated ' + new Date(d.updated).toLocaleString('en-IN', {timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'}) + ' IST' : '';
+    if (store('cmt_' + USER) === null) snapshot();      // first visit: nothing counts as new
+    render();
+  }).getData(TOKEN);
+}
+
+function snapshot() {
+  var m = {};
+  (DATA.posts || []).forEach(function (p) { if (p.comments !== null && p.comments !== undefined) m[p.platform + ':' + p.id] = p.comments; });
+  store('cmt_' + USER, JSON.stringify(m));
+}
+function seenMap() { try { return JSON.parse(store('cmt_' + USER) || '{}'); } catch (e) { return {}; } }
+function newComments(p, seen) {
+  if (p.comments === null || p.comments === undefined) return 0;
+  var k = p.platform + ':' + p.id;
+  return k in seen ? Math.max(0, p.comments - seen[k]) : 0;
+}
+
+function filtered() {
+  var days = Number($('period').value), pg = $('page').value, q = $('q').value.trim().toLowerCase();
+  var now = new Date(), today = istDay(now);
+  return (DATA.posts || []).filter(function (p) {
+    if (PLAT !== 'all' && p.platform !== PLAT) return false;
+    if (pg !== 'all' && p.page !== pg) return false;
+    var t = new Date(p.t);
+    if (days === 1 ? istDay(t) !== today : (now - t) > days * 86400000) return false;
+    return !q || p.title.toLowerCase().indexOf(q) >= 0;
+  });
+}
+function sum(list, k) { var n = null; list.forEach(function (p) { if (p[k] !== null && p[k] !== undefined) n = (n || 0) + p[k]; }); return n; }
+
+function render() {
+  if (!DATA) return;
+  var seen = seenMap(), list = filtered();
+  list.forEach(function (p) { p._new = newComments(p, seen); });
+  var allNew = 0; (DATA.posts || []).forEach(function (p) { allNew += newComments(p, seen); });
+  $('belln').textContent = allNew; $('belln').classList.toggle('hide', !allNew);
+  $('bell').title = allNew + ' new comments · messages: phase 2';
+
+  var tiles = '';
+  ['instagram', 'facebook', 'youtube'].forEach(function (pl) {
+    var l = list.filter(function (p) { return p.platform === pl; });
+    tiles += '<div class="card tile"><h3>' + logo(pl) + NAMES[pl] + '</h3><div class="g">' +
+      '<div><b>' + l.length + '</b><span>posts</span></div><div><b>' + fmt(sum(l, 'views')) + '</b><span>views</span></div>' +
+      '<div><b>' + fmt(sum(l, 'likes')) + '</b><span>likes</span></div><div><b>' + fmt(sum(l, 'comments')) + '</b><span>comments</span></div></div></div>';
+  });
+  $('tiles').innerHTML = tiles;
+
+  var rows = '<tr><th>Page</th><th class="num">' + logo('instagram') + ' posts</th><th class="num">views</th><th class="num">' + logo('facebook') + ' posts</th><th class="num">' + logo('youtube') + ' posts</th><th class="num">views</th><th class="num">likes</th><th class="num">comments</th></tr>';
+  Object.keys(DATA.pages || {}).forEach(function (k) {
+    var l = list.filter(function (p) { return p.page === k; }), by = function (pl) { return l.filter(function (p) { return p.platform === pl; }); };
+    var ig = by('instagram'), fb = by('facebook'), yt = by('youtube');
+    rows += '<tr><td><b>' + esc(DATA.pages[k].name) + '</b> <span class="mute">' + esc(DATA.pages[k].label) + '</span></td><td class="num">' + ig.length + '</td><td class="num">' + fmt(sum(ig, 'views')) +
+      '</td><td class="num">' + fb.length + '</td><td class="num">' + yt.length + '</td><td class="num">' + fmt(sum(yt, 'views')) + '</td><td class="num">' + fmt(sum(yt, 'likes')) + '</td><td class="num">' + fmt(sum(yt, 'comments')) + '</td></tr>';
+  });
+  $('pagesTbl').innerHTML = rows;
+
+  var key = $('sort').value;
+  list.sort(function (a, b) {
+    if (key === 't') return a.t < b.t ? 1 : -1;
+    var f = key === 'new' ? '_new' : key, x = a[f] === null || a[f] === undefined ? -1 : a[f], y = b[f] === null || b[f] === undefined ? -1 : b[f];
+    return y - x || (a.t < b.t ? 1 : -1);
+  });
+  $('count').textContent = '(' + list.length + ')';
+  var h = '<tr><th>Platform</th><th>Page</th><th>Title</th><th>Posted (IST)</th><th class="num">Views</th><th class="num">Likes</th><th class="num">Comments</th><th class="num">Saves</th><th class="num">Shares</th></tr>';
+  list.slice(0, 400).forEach(function (p) {
+    var when = new Date(p.t).toLocaleString('en-IN', {timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'});
+    var title = esc(p.title); if (p.url) title = '<a href="' + esc(p.url) + '" target="_blank" rel="noopener">' + title + '</a>';
+    h += '<tr><td>' + logo(p.platform) + '</td><td>' + esc((DATA.pages[p.page] || {}).name || p.page) + '</td><td class="title">' + title + '</td><td>' + when + '</td>' +
+      '<td class="num">' + fmt(p.views) + '</td><td class="num">' + fmt(p.likes) + '</td><td class="num">' + fmt(p.comments) + (p._new ? '<span class="badge">+' + p._new + ' new</span>' : '') + '</td>' +
+      '<td class="num">' + fmt(p.saves) + '</td><td class="num">' + fmt(p.shares) + '</td></tr>';
+  });
+  $('postsTbl').innerHTML = h;
+  var n = DATA.notes || {}; $('notes').innerHTML = Object.keys(n).map(function (k) { return '• ' + esc(n[k]); }).join('<br>');
+}
+
+(function init() {
+  TOKEN = store('n360_token') || ''; USER = store('n360_user') || '';
+  if (TOKEN && USER) start();
+})();
+</script>
+</body>
+</html>
