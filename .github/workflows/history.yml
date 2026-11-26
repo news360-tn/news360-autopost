@@ -1,0 +1,108 @@
+name: history
+# owner 26 Nov: the daily district HISTORY / TEMPLE STORY reel (history/). Separate from news, rasipalan and gold.
+# SAFETY (owner 26 Nov): manual only - no schedule yet. DRY_RUN defaults to 1 = build the reel and post NOTHING. A real post needs ALL of:
+# dry=0 here AND LANE_POST=1 below AND the page listed in history/config.json "enabled_pages" AND (history) the owner's approval.
+on:
+  workflow_dispatch:
+    inputs:
+      dry:
+        description: "1 = build the reel only, post nothing (default). 0 = may post (only enabled pages)"
+        default: "1"
+      pages:
+        description: "pages to run, space separated (dry runs default to namakkal)"
+        default: "namakkal"
+      approve:
+        description: "optional: approve a held story, e.g.  namakkal:tiruchengode-ardhanareeswarar  (space separated)"
+        default: ""
+  # schedule: add it here only after the owner has approved the dry-run reels, e.g.  schedule: [{cron: "30 7 * * *"}]
+permissions:
+  contents: write
+concurrency:
+  group: history
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      DRY_RUN: ${{ inputs.dry }}
+      HISTORY_PAGES: ${{ inputs.pages }}
+      HISTORY_ALLOW_UNVERIFIED: "1"      # dry runs only: preview the starter topics (a live post still needs verified + sourced topics)
+      LANE_POST: ""      # the owner sets this to "1" (a repository variable or here) when the lane is allowed to post
+      GH_MEDIA_TOKEN: ${{ github.token }}      # the file is kept in this repository when R2 / Cloudinary refuse (poster/githost.py)
+      BRIDGE_URL: ${{ secrets.BRIDGE_URL }}
+      BRIDGE_KEY: ${{ secrets.BRIDGE_KEY }}
+      CLOUDINARY_CLOUD: ${{ secrets.CLOUDINARY_CLOUD }}
+      CLOUDINARY_PRESET: ${{ secrets.CLOUDINARY_PRESET }}
+      R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      R2_BUCKET: news360-media
+      R2_PUBLIC_URL: https://pub-ec316fa6a94f404c993596355ad19128.r2.dev
+      FB_PAGE_ID_NAMAKKAL: ${{ secrets.FB_PAGE_ID_NAMAKKAL }}
+      FB_TOKEN_NAMAKKAL: ${{ secrets.FB_TOKEN_NAMAKKAL }}
+      FB_PAGE_ID_RASIPURAM: ${{ secrets.FB_PAGE_ID_RASIPURAM }}
+      FB_TOKEN_RASIPURAM: ${{ secrets.FB_TOKEN_RASIPURAM }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      SARVAM_API_KEY: ${{ secrets.SARVAM_API_KEY }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      FAL_KEY: ${{ secrets.FAL_KEY }}
+      TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+      POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - name: Browser (cached)
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-lanes-1.56.0
+      - name: Install
+        timeout-minutes: 15
+        run: |
+          pip install -q requests==2.32.5 pillow==11.3.0 playwright==1.56.0 edge-tts==7.2.3 imageio-ffmpeg==0.6.0 numpy pypdf
+          python -m playwright install chromium
+          python -c "from playwright.sync_api import sync_playwright as s; p=s().start(); p.chromium.launch().close(); p.stop()" ||
+            sudo "$(command -v python)" -m playwright install-deps chromium
+      - name: Record approvals (the owner's go-ahead for held stories)
+        if: inputs.approve != ''
+        env:
+          APPROVE: ${{ inputs.approve }}
+        run: |
+          python history/history_daily.py approve $APPROVE
+          git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
+          git add -f history/state/approvals.json
+          git commit -qm "history approvals" || true
+          for i in 1 2 3 4 5; do git pull -q --rebase -X theirs && git push -q && break; sleep 5; done
+      - name: Build (and post only when allowed)
+        run: |
+          mkdir -p out/history
+          set -o pipefail
+          python history/history_daily.py 2>&1 | tee out/history/log.txt
+      - name: Keep the reels for review (dry runs)
+        if: always() && env.DRY_RUN != '0'
+        uses: actions/upload-artifact@v4
+        with:
+          name: history-preview
+          path: |
+            out/history/**/reel.mp4
+            out/history/**/cover.png
+            out/history/**/caption.txt
+            out/history/**/report.json
+            out/history/log.txt
+          retention-days: 7
+      - name: Remember what was posted
+        if: always() && env.DRY_RUN == '0'
+        run: |
+          [ -n "$(git status --porcelain history/state poster/fb_posted)" ] || exit 0
+          git config user.name "news360-bot"; git config user.email "news360-bot@users.noreply.github.com"
+          git add history/state 2>/dev/null || true; if [ -d poster/fb_posted ]; then git add -f poster/fb_posted; fi
+          git commit -qm "history posted"
+          for i in 1 2 3 4 5; do git pull -q --rebase -X theirs && git push -q && break; git rebase --abort 2>/dev/null || true; sleep 5; done
