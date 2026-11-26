@@ -32,3 +32,13 @@ class BackendSite(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class NoIndexTest(unittest.TestCase):
+    def test_the_private_dashboard_is_never_indexed(self):
+        html = (ROOT / "dashboard" / "Index.html").read_text(encoding="utf-8")
+        self.assertIn('name="robots" content="noindex, nofollow, noarchive"', html)
+        w = (ROOT / "dashboard" / "worker_template.js").read_text(encoding="utf-8")
+        self.assertIn("'X-Robots-Tag': 'noindex, nofollow, noarchive'", w)
+        self.assertIn("url.pathname === '/robots.txt'", w)
+        self.assertIn("Disallow: /", w)

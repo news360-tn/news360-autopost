@@ -138,6 +138,88 @@ def facebook(repo, pages, cut):
     return out
 
 
+def series(hist, page, key):
+    """[(day, value)] of one page from a {day: {page: {key: n}}} history, oldest first, numbers only"""
+    out = []
+    for day in sorted(hist or {}):
+        v = ((hist[day] or {}).get(page) or {}).get(key)
+        if isinstance(v, (int, float)):
+            out.append((day, int(v)))
+    return out
+
+
+def with_change(points):
+    """latest value + the change against about 7 days earlier (None when there is not enough history yet)"""
+    if not points:
+        return None
+    day, n = points[-1]
+    d7 = None
+    try:
+        last = datetime.fromisoformat(day)
+        gaps = [((last - datetime.fromisoformat(dd)).days, v) for dd, v in points[:-1]]
+        older = [v for g, v in gaps if g >= 7] or [v for g, v in gaps if g >= 6]      # about a week back (6 days only when that is all there is)
+        if older:
+            d7 = n - older[-1]
+    except Exception:
+        pass
+    return {"n": n, "d7": d7}
+
+
+def youtube_subscribers(yt_items, key):
+    """{page: {"n": subscribers or None, "hidden": bool, "videos": n}} from the public YouTube Data API. The channel of each page is found
+    from one of its uploaded videos (no channel id to keep); 2 calls in all."""
+    first = {}
+    for it in yt_items:
+        first.setdefault(it["page"], it["id"])
+    if not key or not first:
+        return {}
+    try:
+        r = requests.get("https://www.googleapis.com/youtube/v3/videos", timeout=60, params={"part": "snippet", "id": ",".join(first.values()), "key": key})
+        chan_of = {v["id"]: v["snippet"]["channelId"] for v in r.json().get("items", [])} if r.status_code == 200 else {}
+        ids = sorted(set(chan_of.values()))
+        if not ids:
+            return {}
+        r = requests.get("https://www.googleapis.com/youtube/v3/channels", timeout=60, params={"part": "statistics", "id": ",".join(ids), "key": key})
+        stats = {c["id"]: c.get("statistics", {}) for c in r.json().get("items", [])} if r.status_code == 200 else {}
+    except Exception as e:
+        log("YouTube subscribers not read:", str(e)[:100])
+        return {}
+    out = {}
+    for pg, vid in first.items():
+        st = stats.get(chan_of.get(vid), {})
+        if not st:
+            continue
+        hidden = bool(st.get("hiddenSubscriberCount"))
+        out[pg] = {"n": None if hidden or "subscriberCount" not in st else int(st["subscriberCount"]), "hidden": hidden,
+                   "videos": int(st.get("videoCount", 0))}
+    return out
+
+
+def followers(yt_items, yt_key, raw_fn=None):
+    """owner 26 Nov: followers / subscribers per page and platform:
+    {page: {"instagram": {"n", "d7"}, "facebook": {"n", "d7"}, "youtube": {"n", "hidden", "videos"}}}
+    Instagram: poster/insights/followers.json (daily, by the insights job). Facebook: poster/insights/fb_followers.json (same job, needs the
+    page's Facebook secrets). YouTube: the public channel statistics. A missing platform is simply left out (the dashboard shows n/a)."""
+    raw_fn = raw_fn or raw
+    out = {}
+    for repo, pages in REPOS.items():
+        ig = raw_fn(repo, "poster/insights/followers.json") or {}
+        fb = raw_fn(repo, "poster/insights/fb_followers.json") or {}
+        for pg in pages:
+            rec = {}
+            i = with_change(series(ig, pg, "followers"))
+            if i:
+                rec["instagram"] = i
+            f = with_change(series(fb, pg, "followers") or series(fb, pg, "fans"))
+            if f:
+                rec["facebook"] = f
+            if rec:
+                out[pg] = rec
+    for pg, y in youtube_subscribers(yt_items, yt_key).items():
+        out.setdefault(pg, {})["youtube"] = y
+    return out
+
+
 def build(now=None, yt_key=""):
     now = now or datetime.now(timezone.utc)
     cut = now - timedelta(days=DAYS)
@@ -151,11 +233,14 @@ def build(now=None, yt_key=""):
         posts += facebook(repo, pages, cut)
     if not youtube_stats(yt_all, yt_key):
         notes["youtube"] = "YouTube numbers need the YT_API_KEY secret" if not yt_key else "YouTube numbers could not be read this time"
+    fol = followers(yt_all, yt_key)
+    if not any("facebook" in v for v in fol.values()):
+        notes["followers_facebook"] = "Facebook followers appear after the daily insights job has read them (the page's Facebook access may still need a Meta permission)"
     notes["facebook"] = "Facebook views / likes / comments need the Meta read_insights and pages_read_engagement permissions (phase 2)"
     notes["instagram"] = "Instagram likes and comment counts, comment text and messages arrive in phase 2"
     posts.sort(key=lambda p: p["t"], reverse=True)
     pages = {pg: {"name": NAMES[pg][0], "label": NAMES[pg][1]} for ps in REPOS.values() for pg in ps if pg != "rasipuram"}
-    return {"updated": now.isoformat(timespec="seconds"), "days": DAYS, "pages": pages, "posts": posts, "notes": notes}
+    return {"updated": now.isoformat(timespec="seconds"), "days": DAYS, "pages": pages, "posts": posts, "notes": notes, "followers": fol}
 
 
 def send(payload):

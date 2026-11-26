@@ -841,7 +841,7 @@ class HashtagPattern2Nov(unittest.TestCase):
         old = post.TAG
         post.TAG = page_tag
         try:
-            return post.final_caption(row).strip().split("\n")[-1].split()
+            return [l for l in post.final_caption(row).strip().split("\n") if l.startswith("#")][-1].split()
         finally:
             post.TAG = old
 
@@ -1551,7 +1551,7 @@ class ReachPlan29Oct(unittest.TestCase):
             out = post.final_caption(dict(self.ROW))
         finally:
             post.TAG = old
-        return out, out.strip().split("\n")[-1].split()
+        return out, [l for l in out.strip().split("\n") if l.startswith("#")][-1].split()
 
     def test_five_focused_hashtags_both_pages(self):
         for page_tag, want in (("#Namakkal360", ("#Namakkal360", "#Namakkal", "#Rasipuram", "#NamakkalNews", "#நாமக்கல்")),

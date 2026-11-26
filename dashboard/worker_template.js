@@ -13,6 +13,7 @@ const HEAD = {
   'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
     "font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
   'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Frame-Options': 'DENY',
+  'X-Robots-Tag': 'noindex, nofollow, noarchive',      // owner 26 Nov: a private dashboard is never indexed
 };
 
 function json(obj, status) {
@@ -28,6 +29,9 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     // owner 26 Nov: every screen has its own link (/erode, /salem, /overview, /posts ...) - all are the same page, which shows the right screen
+    if (request.method === 'GET' && url.pathname === '/robots.txt') {
+      return new Response('User-agent: *\nDisallow: /\n', {headers: {'Content-Type': 'text/plain;charset=utf-8', 'Cache-Control': 'public, max-age=3600', 'X-Robots-Tag': 'noindex'}});
+    }
     if (request.method === 'GET' && (url.pathname === '/' || /^\/[a-z]{2,20}\/?$/.test(url.pathname))) {
       return new Response(PAGE, {headers: Object.assign({'Content-Type': 'text/html;charset=utf-8', 'Cache-Control': 'no-cache'}, HEAD)});
     }

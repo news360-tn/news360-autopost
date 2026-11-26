@@ -86,3 +86,45 @@ class InstagramLinkTest(unittest.TestCase):
             out = dc.instagram("news360-autopost", ["namakkal"], datetime(2026, 11, 1, tzinfo=timezone.utc))
         urls = {o["id"]: o["url"] for o in out}
         self.assertEqual(urls, {"111": "https://www.instagram.com/reel/AbC/", "222": ""})
+
+
+class FollowersTest(unittest.TestCase):
+    def test_series_and_the_weekly_change(self):
+        import dash_collect as dc
+        hist = {f"2026-11-{d:02d}": {"namakkal": {"followers": 10000 + d * 10}, "other": {"followers": 1}} for d in range(10, 27)}
+        hist["2026-11-26"]["namakkal"]["followers"] = None      # a day without a number is skipped
+        pts = dc.series(hist, "namakkal", "followers")
+        self.assertEqual(pts[-1], ("2026-11-25", 10250))
+        self.assertEqual(dc.with_change(pts), {"n": 10250, "d7": 70})      # against 25 - 7 days = 18 Nov, the newest day at least 6 days older
+        self.assertIsNone(dc.with_change([]))
+        self.assertEqual(dc.with_change([("2026-11-26", 5)]), {"n": 5, "d7": None})      # not enough history yet
+
+    def test_followers_from_the_repositories_and_youtube(self):
+        import dash_collect as dc
+        files = {("news360-autopost", "poster/insights/followers.json"): {"2026-11-19": {"namakkal": {"followers": 100}, "rasipuram": {"followers": 50}},
+                                                                        "2026-11-26": {"namakkal": {"followers": 130}, "rasipuram": {"followers": 55}}},
+                 ("news360-autopost", "poster/insights/fb_followers.json"): {"2026-11-26": {"namakkal": {"followers": 900, "fans": 880}}},
+                 ("salem360-autopost", "poster/insights/followers.json"): {"2026-11-26": {"salem": {"followers": 7830}}}}
+
+        def fake_get(url, **k):
+            if url.endswith("/videos"):
+                return mock.Mock(status_code=200, json=lambda: {"items": [{"id": "v1", "snippet": {"channelId": "C1"}}]})
+            return mock.Mock(status_code=200, json=lambda: {"items": [{"id": "C1", "statistics": {"subscriberCount": "321", "videoCount": "40"}}]})
+        with mock.patch.object(dc.requests, "get", side_effect=fake_get):
+            out = dc.followers([{"page": "salem", "id": "v1"}], "KEY", raw_fn=lambda repo, path: files.get((repo, path)))
+        self.assertEqual(out["namakkal"]["instagram"], {"n": 130, "d7": 30})
+        self.assertEqual(out["namakkal"]["facebook"], {"n": 900, "d7": None})
+        self.assertEqual(out["rasipuram"]["instagram"]["n"], 55)
+        self.assertEqual(out["salem"]["instagram"]["n"], 7830)
+        self.assertEqual(out["salem"]["youtube"], {"n": 321, "hidden": False, "videos": 40})
+        self.assertNotIn("facebook", out["salem"])      # not read yet: the dashboard shows n/a
+
+    def test_hidden_subscriber_counts_and_no_key(self):
+        import dash_collect as dc
+        self.assertEqual(dc.youtube_subscribers([{"page": "salem", "id": "v1"}], ""), {})
+        def fake_get(url, **k):
+            if url.endswith("/videos"):
+                return mock.Mock(status_code=200, json=lambda: {"items": [{"id": "v1", "snippet": {"channelId": "C1"}}]})
+            return mock.Mock(status_code=200, json=lambda: {"items": [{"id": "C1", "statistics": {"hiddenSubscriberCount": True, "videoCount": "3"}}]})
+        with mock.patch.object(dc.requests, "get", side_effect=fake_get):
+            self.assertEqual(dc.youtube_subscribers([{"page": "salem", "id": "v1"}], "K")["salem"], {"n": None, "hidden": True, "videos": 3})
