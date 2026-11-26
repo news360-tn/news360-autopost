@@ -127,7 +127,8 @@ tbody tr:hover{background:var(--raise)}
 .pill.new{background:var(--new-bg);color:var(--new);margin-left:6px;font-weight:600}
 .pill.wait{background:var(--wait-bg);color:var(--wait)}
 .help{display:flex;gap:10px;align-items:flex-start;background:var(--raise);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;color:var(--mute);margin-bottom:12px}
-.pagecards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.pagecards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+@media (min-width:1500px){.pagecards{grid-template-columns:repeat(4,1fr)}}
 .pagecard{display:block;text-decoration:none}
 .pagecard:hover{border-color:var(--accent)}
 .pagecard .ph{display:flex;align-items:center;gap:12px}
@@ -145,7 +146,8 @@ tbody tr:hover{background:var(--raise)}
 .hero .stat span{font-size:12px;color:var(--mute)}
 .pagecard .go{margin-top:12px;font-size:13px;color:var(--accent);font-weight:600}
 .na{color:var(--mute);font-size:.85em;font-weight:400;cursor:help}
-table.mini{margin-top:12px;font-size:13px}
+table.mini{margin-top:12px;font-size:13px;table-layout:fixed;width:100%}
+table.mini th:first-child{width:44%}table.mini th.n{width:28%}table.mini td.n{white-space:nowrap}
 table.mini th,table.mini td{padding:5px 4px;border-bottom:1px solid var(--line)}
 table.mini td:first-child{display:flex;align-items:center;gap:6px;white-space:nowrap}
 table.mini tr:last-child td{border-bottom:0}
@@ -335,7 +337,12 @@ function load() {
     var d; try { d = JSON.parse(t); } catch (e) { d = {error: 'bad'}; }
     if (d.error === 'login') { store('n360_token', ''); location.reload(); return; }
     DATA = d;
-    $('upd').textContent = d.updated ? 'Updated ' + new Date(d.updated).toLocaleString('en-IN', {timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'}) + ' IST' : 'No numbers yet';
+    var ageH = d.updated ? (Date.now() - new Date(d.updated).getTime()) / 3600000 : 0;
+    // owner 26 Nov: how old the numbers are is always visible; amber after 4 hours (the collector is late - GitHub sometimes skips a run)
+    $('upd').textContent = d.updated ? 'Updated ' + new Date(d.updated).toLocaleString('en-IN', {timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'}) + ' IST · ' +
+      (ageH < 1 ? 'just now' : Math.floor(ageH) + ' h ago') + (ageH > 4 ? ' · late' : '') : 'No numbers yet';
+    $('upd').style.color = ageH > 4 ? 'var(--wait)' : '';
+    $('upd').style.fontWeight = ageH > 4 ? '600' : '';
     if (store('cmt_' + USER) === null) snapshot();
     render();
   }, function () { $('upd').textContent = 'Could not load. Press Refresh.'; });
@@ -475,15 +482,15 @@ function render() {
   } else if (r === 'home') {
     $('h1').textContent = SCREENS[r][0]; $('hp').textContent = SCREENS[r][1];
     bar = '<span class="mute" style="font-size:13px">Views for:</span>' + filterBar({});
-    var today = pick({days: 1}), lh = pick({days: S.period});
+    var today = pick({days: 1}), lh = pick({days: S.period}), PLABEL = S.period === 1 ? 'today' : 'last ' + S.period + ' days';
     v = '<section class="hero">' + (LOGOS.main ? '<img src="' + LOGOS.main + '" alt="News360">' : '') +
         '<div><h2>News360</h2><div class="mute">7 districts · Instagram, Facebook and YouTube · ' + esc($('upd').textContent) + '</div>' +
         '<div class="quick"><a href="' + href('overview') + '" data-go="overview">See all numbers</a><a href="' + href('posts') + '" data-go="posts">All posts</a></div></div>' +
-        '<div class="stats">' + PL.map(function (pl) { return '<div class="stat">' + logo(pl) + '<div><b>' + onPlat(today, pl).length + '</b><br><span>' + NAMES[pl] + ' posts today</span></div></div>'; }).join('') + '</div></section>' +
+        '<div class="stats">' + PL.map(function (pl) { return '<div class="stat">' + logo(pl) + '<div><b>' + onPlat(lh, pl).length + '</b><br><span>' + NAMES[pl] + ' posts · ' + PLABEL + '</span></div></div>'; }).join('') + '</div></section>' +
         '<div class="pagecards">' + Object.keys(DATA.pages || {}).map(function (k) {
           var mine = lh.filter(function (p) { return p.page === k; }), td = today.filter(function (p) { return p.page === k; });
-          return '<a class="card pagecard" href="' + href(k) + '" data-go="' + k + '"><div class="ph">' + plogo(k, 'lg') + '<div><h3>' + esc(DATA.pages[k].name) + '</h3><div class="ta">' + esc(DATA.pages[k].label) + '</div></div></div><table class="mini"><thead><tr><th></th><th class="n">Today</th><th class="n">Views (' + (S.period === 1 ? 'today' : S.period + ' days') + ')</th></tr></thead><tbody>' +
-            PL.map(function (pl) { var x = onPlat(mine, pl); return '<tr><td>' + logo(pl) + ' ' + NAMES[pl] + '</td><td class="n">' + onPlat(td, pl).length + '</td><td class="n">' + fmt(sum(x, 'views')) + '</td></tr>'; }).join('') + '</tbody></table>' +
+          return '<a class="card pagecard" href="' + href(k) + '" data-go="' + k + '"><div class="ph">' + plogo(k, 'lg') + '<div><h3>' + esc(DATA.pages[k].name) + '</h3><div class="ta">' + esc(DATA.pages[k].label) + '</div></div></div><table class="mini"><thead><tr><th></th><th class="n">Posts</th><th class="n">Views</th></tr></thead><tbody>' +
+            PL.map(function (pl) { var x = onPlat(mine, pl); return '<tr><td>' + logo(pl) + ' ' + NAMES[pl] + '</td><td class="n">' + x.length + '</td><td class="n">' + fmt(sum(x, 'views')) + '</td></tr>'; }).join('') + '</tbody></table>' +
             '<div class="go">Open ' + esc(DATA.pages[k].name) + ' page →</div></a>';
         }).join('') + '</div>';
   } else if (r === 'posts') {

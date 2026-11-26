@@ -4,7 +4,7 @@ name: dashboard
 # posting workflows, commits nothing, and never turns red: without DASH_URL / DASH_WRITE_KEY it does nothing.
 on:
   schedule:
-    - cron: "25 */3 * * *"      # every 3 hours
+    - cron: "25 * * * *"      # every hour (GitHub sometimes skips a scheduled run; the dashboard shows how old its numbers are)
   workflow_dispatch:
 permissions:
   contents: read
