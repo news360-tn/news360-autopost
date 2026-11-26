@@ -2,247 +2,32 @@
  "log": [
   "earlier stories still waiting for images: []",
   "instagram check: 100 recent posts read from both pages",
-  "write round: 4 news waiting in the queue (written in priority order)",
-  "candidate filter: collected=4",
-  "to write: 0 Rasipuram + 4 other district candidates (max 200 + 200 stories)",
-  "daily maximum 30: 11 written today - this round writes at most 0 + 19",
-  "candidates waiting: 0 Rasipuram, 4 Namakkal; time left 29 min",
-  "try (N) manual=False: குப்பையை தரம் பிரிக்காத கடைகளுக்கு ரூ.20,000 பைன்",
-  "try (N) manual=False: 4.5 லட்சத்திலிருந்து 50 ஆயிரம் டன்னாக குறைந்த கரும்பு வரத்து",
-  "try (N) manual=False: மின்சாரம் துண்டிக்கப்பட்டதால் அங்கன்வாடி குழந்தைகள் தவிப்பு",
-  "auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 3})",
-  "posting job started at once",
+  "write round: 1 news waiting in the queue (written in priority order)",
+  "candidate filter: collected=1",
+  "to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)",
+  "daily maximum 30: 14 written today - this round writes at most 0 + 16",
+  "candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min",
   "try (N) manual=False: பயிர்கடன் முழு தள்ளுபடி கேட்டு கவன ஈர்ப்பு ஆர்ப்பாட்டம்",
-  "auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 5})",
-  "auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 7})",
   "NOT filed (N) பயிர்கடன் முழு தள்ளுபடி கேட்டு கவன ஈர்ப்பு ஆர்ப்பா: all free models failed: no usable answer from the models",
-  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 4}, done={'R': 0, 'N': 3}, time left 27 min",
-  "carousel for 0 of 3 stories, the rest reel only",
-  "filed: 0 Rasipuram + 3 Namakkal (targets 200 + 200)",
+  "candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min",
+  "carousel for 0 of 0 stories, the rest reel only",
+  "filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)",
   "queue: 1 news waiting to be written",
-  "write_stories.yml started",
-  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":4}"
+  "All News sheet: {\"ok\":true,\"added\":0,\"updated\":1}"
  ],
  "llm": [
   "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
+  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
   "fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.6-flash",
   "fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please che",
   "dead for this round: gemini/gemini-3.5-flash",
-  "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {\n  \"error\": {\n    \"code\": 503,\n    \"message\": \"This model is currently experiencing ",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, plea",
   "dead for this round: gemini/gemini-3-flash-preview",
   "fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {\"error\":{\"message\":\"Rate limit reached for model `openai/gpt-oss-120b` in organization `o",
   "dead for this round: groq/openai/gpt-oss-120b",
-  "ok groq/qwen/qwen3.8-27b (6s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
   "fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {\"error\":{\"message\":\"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m",
-  "dead for this round: groq/qwen/qwen3.8-27b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "ok gemini/gemini-3.6-flash (28s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "ok gemini/gemini-3-flash-preview (30s)",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b",
-  "gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash",
-  "groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b"
+  "dead for this round: groq/qwen/qwen3.8-27b"
  ],
- "stories": [
-  {
-   "tamil_headline": "தொட்டிப்பாளையம் அங்கன்வாடியில் 9 மாதமாக மின்சாரம் இல்லை",
-   "english_headline": "Anganwadi in Tottipalayam without power for 9 months",
-   "category": "Civic Issues",
-   "location": "Tottipalayam village, Naruvalur panchayat, Namakkal district",
-   "importance": "Medium",
-   "scope": "local",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "மின் தடை",
-    "loc": "தொட்டிப்பாளையம், நருவலூர்",
-    "hl1": "தொட்டிப்பாளையம் மின்சாரம் இல்லை",
-    "hl2": "9 மாதமாக குழந்தைகள் தவிப்பு",
-    "slides": [
-     {
-      "title": "மின்சாரம் இல்லை",
-      "lines": [
-       "தொட்டிப்பாளையம் அங்கன்வாடியில் மின்சாரம் இல்லை",
-       "மின் ஒயர்கள் 9 மாதங்களுக்கு முன் அறுந்து விழுந்தன",
-       "மின்விளக்குகள், மின்விசிறி இயங்கவில்லை"
-      ]
-     },
-     {
-      "title": "பாதுகாப்பு அபாயம்",
-      "lines": [
-       "அறுந்த ஒயர்கள் தாழ்வாக தொங்குகின்றன",
-       "குழந்தைகள் மீது விழும் அபாயம் உள்ளது",
-       "சமையலறை ஜன்னல்கள், கதவுகள் உடைந்துள்ளன"
-      ]
-     },
-     {
-      "title": "அதிகாரிகள்",
-      "lines": [
-       "விஷ ஜந்துக்கள் மையத்திற்குள் புகும் அபாயம்",
-       "சேதமடைந்த ஒயர்களை அகற்ற வேண்டும்",
-       "பாதுகாப்பு கம்பிகள், கதவுகள் பொருத்த வேண்டும்"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "தொட்டிப்பாளையம் அங்கன்வாடியில் 9 மாதமாக மின்சாரம் இல்லை. நாமக்கல் மாவட்டம், நருவலூர் பஞ்சாயத்திற்குட்பட்ட தொட்டிப்பாளையம் கிராமத்தில் அங்கன்வாடி மையம் செயல்பட்டு வருகிறது. சுற்றுவட்டாரத்தை சேர்ந்த குழந்தைகள் இந்த மையத்திற்கு வந்து செல்கின்றனர். மின் கம்பத்தில் இருந்து மையத்திற்கு செல்லும் மின் ஒயர்கள் 9 மாதங்களுக்கு முன் அறுந்து விழுந்தன. இதனால் பல மாதங்களாக மின்விளக்குகள் எரியவில்லை. மின்விசிறியும் இயங்குவதில்லை. மழைக்காலத்திலும், வெயில்காலத்திலும் குழந்தைகள் மிகவும் சிரமப்படுகின்றன. அறுந்து விழுந்த ஒயர்கள் மிகவும் தாழ்வாக தொங்கிக்கொண்டுள்ளன. இந்த ஒயர்கள் எந்த நேரத்திலும் அறுந்து குழந்தைகள் மீது விழும் அபாயம் உள்ளது. மையத்தின் சமையலறை பகுதியில் உள்ள ஜன்னல்கள், கதவுகள் உடைந்துள்ளன. இரவு நேரங்களில் விஷ ஜந்துக்கள் மையத்திற்குள் புகும் அபாயமும் உள்ளது. சம்பந்தப்பட்ட அதிகாரிகள் சேதமடைந்த மின் ஒயர்களை உடனடியாக அகற்ற வேண்டும். மின் இணைப்பை வழங்க வேண்டும். சமையலறை ஜன்னல்களுக்கு பாதுகாப்பு கம்பிகள் மற்றும் கதவுகளை பொருத்த வேண்டும். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "⚡ தொட்டிப்பாளையம் அங்கன்வாடியில் 9 மாதமாக மின்சாரம் இல்லை - குழந்தைகள் தவிப்பு\n\n📰 முழு விவரம்:\nநாமக்கல் மாவட்டம், நருவலூர் பஞ்சாயத்திற்குட்பட்ட தொட்டிப்பாளையம் கிராமத்தில் அங்கன்வாடி மையம் செயல்பட்டு வருகிறது. சுற்றுவட்டாரத்தை சேர்ந்த குழந்தைகள் இந்த மையத்திற்கு வந்து செல்கின்றனர். மின் கம்பத்தில் இருந்து மையத்திற்கு செல்லும் மின் ஒயர்கள் 9 மாதங்களுக்கு முன் அறுந்து விழுந்தன. இதனால் பல மாதங்களாக மின்விளக்குகள் எரியவில்லை, மின்விசிறியும் இயங்குவதில்லை. மழைக்காலத்திலும், வெயில்காலத்திலும் குழந்தைகள் மிகவும் சிரமப்படுகின்றன. அறுந்து விழுந்த ஒயர்கள் மிகவும் தாழ்வாக தொங்கிக்கொண்டுள்ளன, இதனால் குழந்தைகள் மீது விழும் அபாயம் உள்ளது. மையத்தின் சமையலறை பகுதியில் உள்ள ஜன்னல்கள், கதவுகள் உடைந்துள்ளன, இரவு நேரங்களில் விஷ ஜந்துக்கள் மையத்திற்குள் புகும் அபாயமும் உள்ளது. சம்பந்தப்பட்ட அதிகாரிகள் சேதமடைந்த மின் ஒயர்களை உடனடியாக அகற்றி மின் இணைப்பு வழங்க வேண்டும். சமையலறை ஜன்னல்களுக்கு பாதுகாப்பு கம்பிகள் மற்றும் கதவுகளை பொருத்த வேண்டும்.\n\n📍 இடம்: தொட்டிப்பாளையம் கிராமம், நருவலூர் பஞ்சாயத்து, நாமக்கல் மாவட்டம்\nℹ️ மக்கள் கவனத்திற்கு: சம்பந்தப்பட்ட அதிகாரிகள் உடனடியாக நடவடிக்கை எடுக்க வேண்டும்\n\nTottipalayam Anganwadi power cut news | Namakkal news\n📍 Tottipalayam, Namakkal | 26 Nov 2026\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n#Namakkal360 #Namakkal #Tottipalayam #NamakkalNews #நாமக்கல்",
-   "prompts": "Wide shot of an Anganwadi building exterior in a rural Tamil Nadu village during the day, showing a broken power pole with hanging wires, children walking towards the entrance, clear sky Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nClose-up view of the damaged kitchen area inside the Anganwadi, showing broken windows and doors, hanging electrical wires low to the ground, dusty floor, natural light coming through the broken openings Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/anganwadi-children-suffer-due-to-power-outage/4386514",
-   "published": "2026-11-26T01:45:00+05:30",
-   "verification": "DRAFT (groq/qwen/qwen3.8-27b) - NOT CLEAN, held from posting - problems: reel_script must tell how the story ENDED, as the article's last lines say ('மின்சாரம் துண்டிக்கப்பட்டதால் அங்கன்வாடி குழந்தைகள் தவிப்பு') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown; numbers not found in the article: 9",
-   "note": "free-model draft groq/qwen/qwen3.8-27b, 1 attempt(s), 2 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 3.0,
-   "images": [
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261126/9556e16066d3e232.jpg",
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261126/9fb5732bf079b487.jpg"
-   ]
-  },
-  {
-   "tamil_headline": "நாமக்கல்லில் குப்பையை தரம் பிரிக்காத கடைகளுக்கு ரூ.20,000 அபராதம்",
-   "english_headline": "Namakkal Corporation fines 4 shops ₹20,000 for failing to segregate waste on Salem Road",
-   "category": "Civic Issues",
-   "location": "Salem Road, Namakkal city, Namakkal district",
-   "importance": "Medium",
-   "scope": "local",
-   "post_to": "Namakkal 360",
-   "slides_spec": {
-    "v": 3,
-    "cat": "மாநகராட்சி நடவடிக்கை",
-    "loc": "நாமக்கல்",
-    "hl1": "நாமக்கல்லில் கடைகளுக்கு அபராதம்",
-    "hl2": "ரூ.20,000 வசூல்",
-    "slides": [
-     {
-      "title": "என்ன நடந்தது?",
-      "lines": [
-       "நாமக்கல் <b>சேலம் சாலையில்</b> அதிகாரிகள் ஆய்வு",
-       "குப்பையை தரம் பிரிக்காத <b>4 கடைகளுக்கு</b> அபராதம்",
-       "உணவகங்கள் மற்றும் பேக்கரிகளுக்கு தலா <b>ரூ.5,000</b> அபராதம்"
-      ]
-     },
-     {
-      "title": "யார் நடவடிக்கை?",
-      "lines": [
-       "மாநகராட்சி கமிஷனர் <b>செல்வபாலாஜி</b> உத்தரவு",
-       "துப்புரவு அலுவலர் திருமூர்த்தி தலைமையில் ஆய்வு",
-       "துப்புரவு ஆய்வாளர் நந்தினி முன்னிலையில் நடவடிக்கை"
-      ]
-     },
-     {
-      "title": "முக்கிய விதிகள்",
-      "lines": [
-       "தினமும் <b>100 கிலோ</b> மேல் குப்பை சேரும் கடைகள் கவனம்",
-       "ஈரக்கழிவுகளைத் தாங்களே மேலாண்மை செய்ய வேண்டும்",
-       "உலர் கழிவுகளைத் தரம் பிரித்து மாநகராட்சியிடம் வழங்கணும்"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "நாமக்கல்லில் குப்பையை தரம் பிரித்து வழங்காத 4 கடைகளுக்கு 20,000 ரூபாய் அபராதம் விதிக்கப்பட்டது. நாமக்கல் மாநகராட்சிக்கு உட்பட்ட சேலம் சாலையில் உள்ள உணவகங்கள் மற்றும் கடைகளில் நேற்று அதிகாரிகள் அதிரடி ஆய்வு மேற்கொண்டனர். மாநகராட்சி கமிஷனர் செல்வபாலாஜி உத்தரவுப்படி துப்புரவு அலுவலர் திருமூர்த்தி மற்றும் துப்புரவு ஆய்வாளர் நந்தினி ஆகியோர் இந்த ஆய்வை நடத்தினர். அப்போது குப்பையை தரம் பிரித்து வழங்காத 4 உணவகங்கள் மற்றும் பேக்கரி கடைகளுக்கு தலா 5,000 ரூபாய் வீதம் மொத்தம் 20,000 ரூபாய் அபராதம் விதிக்கப்பட்டது. கடந்த ஏப்ரல் 1ஆம் தேதி முதல் திடக்கழிவு மேலாண் விதிகள் 2026 அமலுக்கு வந்துள்ளது. தினமும் 100 கிலோவிற்கு மேல் குப்பையை உற்பத்தி செய்யும் வணிக நிறுவனங்கள் மொத்த கழிவு உற்பத்தியாளராகக் கருதப்படுவார்கள். இவர்கள் ஈரக்கழிவுகளைத் தாங்களே மேலாண்மை செய்ய வேண்டும். உலர் கழிவுகளை முறையாகத் தரம் பிரித்து மாநகராட்சியிடம் ஒப்படைக்க வேண்டும். விதிகளை மீறுவோர் மீது கடும் நடவடிக்கை எடுக்கப்படும் என அதிகாரிகள் எச்சரித்துள்ளனர். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🚨 நாமக்கல்லில் குப்பையை தரம் பிரிக்காத 4 கடைகளுக்கு ரூ.20,000 அபராதம்!\n\n📰 முழு விவரம்:\nநாமக்கல் மாநகராட்சிக்கு உட்பட்ட சேலம் சாலையில் உள்ள கடைகளில் அதிகாரிகள் நேற்று அதிரடி ஆய்வு நடத்தினர். மாநகராட்சி கமிஷனர் செல்வபாலாஜி உத்தரவுப்படி துப்புரவு அலுவலர் திருமூர்த்தி மற்றும் ஆய்வாளர் நந்தினி இந்த ஆய்வை மேற்கொண்டனர். அப்போது குப்பையை தரம் பிரித்து வழங்காத 4 உணவகங்கள் மற்றும் பேக்கரி கடைகளுக்கு தலா ரூ.5,000 வீதம் மொத்தம் ரூ.20,000 அபராதம் விதிக்கப்பட்டது. தினமும் 100 கிலோவிற்கு மேல் குப்பை சேரும் நிறுவனங்கள் ஈரக்கழிவுகளைத் தாங்களே மேலாண்மை செய்ய வேண்டும் மற்றும் உலர் கழிவுகளைத் தரம் பிரித்து வழங்க வேண்டும் என்பது விதியாகும்.\n\n📍 இடம்: சேலம் சாலை, நாமக்கல்\n🗓️ நாள்: 25 நவம்பர் 2026\n👮 நடவடிக்கை: மாநகராட்சி அதிகாரிகள் ஆய்வு மற்றும் அபராதம்\nℹ️ மக்கள் கவனத்திற்கு: வணிக நிறுவனங்கள் குப்பையை முறையாகத் தரம் பிரித்து வழங்காவிட்டால் கடும் நடவடிக்கை எடுக்கப்படும் என மாநகராட்சி எச்சரித்துள்ளது.\n\nதேவைப்படுவோருக்கு Share செய்யுங்கள்\n\nNamakkal corporation fine for waste segregation | Namakkal news\n📍 Salem Road, Namakkal | 26 November 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #NamakkalNews #நாமக்கல் #NamakkalCorporation",
-   "prompts": "Namakkal Municipal Corporation sanitary officials in uniform inspecting large waste bins outside a restaurant on Salem Road, busy morning traffic in the background, clear sunny weather. Same bright professional daylight and natural colour grade across this series. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nClose-up of a sanitary inspector writing an official fine receipt on a clipboard, a shop owner standing nearby, blue and green waste segregation bins visible in the background. Same bright professional daylight and natural colour grade across this series. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamalar.com/news/tamil-nadu-district-news-namakkal/rs-20000-pine-for-shops-that-do-not-grade-garbage/4386515",
-   "published": "2026-11-26T01:46:00+05:30",
-   "verification": "DRAFT (gemini/gemini-3-flash-preview) - NOT CLEAN, held from posting - problems: caption misses facts of the article (put every one in 📰 முழு விவரம்): 1 ('நாமக்கல்: இந்தியா முழுவதும், கடந்த ஏப்., 1 முதல், 'திடக்கழிவ'); 1 ('தினமும், 100 கிலோவிற்கு குப்பையை உற்பத்தி செய்யும் வணிக நிறு')",
-   "note": "free-model draft gemini/gemini-3-flash-preview, 1 attempt(s), 1 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 5.21,
-   "images": [
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261126/0c97eb7329064430.jpg",
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261126/e143167e8214df02.jpg"
-   ]
-  },
-  {
-   "tamil_headline": "மோகனூர் கூட்டுறவு சர்க்கரை ஆலையில் கரும்பு அரைவை தொடங்குவதில் தாமதம்: 50 ஆயிரம் டன்னாக குறைந்த கரும்பு வரத்து",
-   "english_headline": "Mohanur cooperative sugar mill delays crushing operations as sugarcane supply plummets to 50,000 tonnes",
-   "category": "Business & Prices",
-   "location": "Mohanur town, Namakkal district",
-   "importance": "Medium",
-   "scope": "district",
-   "post_to": "Namakkal 360 (collab: Rasipuram 360)",
-   "slides_spec": {
-    "v": 3,
-    "cat": "சர்க்கரை ஆலை",
-    "loc": "மோகனூர், நாமக்கல்",
-    "hl1": "மோகனூரில் கரும்பு அரைவை தாமதம்",
-    "hl2": "50,000 டன்னாக குறைந்த வரத்து",
-    "slides": [
-     {
-      "title": "கரும்பு வரத்து",
-      "lines": [
-       "முன்பு <b>4.5 லட்சம் டன்</b> வரை வந்த கரும்பு வரத்து",
-       "நிகழாண்டில் <b>50,000 டன்</b> ஆகக் குறைந்துள்ளது",
-       "அக்டோபரில் தொடங்க வேண்டிய அரைவை இன்னும் தொடங்கவில்லை"
-      ]
-     },
-     {
-      "title": "காரணம் என்ன?",
-      "lines": [
-       "தனியார் ஆலைகள் டன்னுக்கு <b>ரூ.4,000</b> மேல் வழங்குகின்றன",
-       "தனியார் ஆலைகளில் வெட்டுக்கூலியையும் அவர்களே ஏற்கின்றனர்",
-       "மழைப் பற்றாக்குறை, நோய்த்தாக்குதலாலும் சாகுபடி குறைவு"
-      ]
-     },
-     {
-      "title": "ஆலை நிலைமை",
-      "lines": [
-       "அரைவைத் தேதி இன்னும் முடிவு செய்யப்படவில்லை",
-       "எத்தனால், எரிசாராயம் தயாரிப்பில் கவனம் செலுத்த அறிவுறுத்தல்",
-       "நவீன எந்திரங்கள் நிறுவி ஆலையைச் சீரமைக்க கோரிக்கை"
-      ]
-     }
-    ],
-    "carousel": false
-   },
-   "reel_script": "மோகனூர் கூட்டுறவு சர்க்கரை ஆலையில் கரும்பு வரத்து 50,000 டன்னாகக் குறைந்ததால் அரைவைப் பணி இன்னும் தொடங்கப்படவில்லை. 1964ஆம் ஆண்டு தொடங்கப்பட்ட இந்த ஆலையில் முன்பு 4.5 லட்சம் டன் வரை கரும்பு அரைவை செய்யப்பட்டது. தற்போது கரும்பு வரத்து குறைந்ததால், வழக்கமாக அக்டோபரில் தொடங்க வேண்டிய அரைவைப் பணிகளை ஆலை நிர்வாகம் இன்னும் தொடங்கவில்லை. தனியார் ஆலைகள் ஒரு டன் கரும்புக்கு ரூ.4,000 மேல் வழங்குவதுடன் வெட்டுக்கூலியையும் ஏற்கின்றன. ஆனால் கூட்டுறவு ஆலையில் ஒரு டன்னுக்கு ரூ.3,290 மட்டுமே வழங்கப்படுவதால் விவசாயிகள் தனியார் ஆலைகளுக்குக் கரும்பை வழங்குகின்றனர். இதனால் சர்க்கரை உற்பத்திக்கு பதிலாக எரிசாராயம் மற்றும் எத்தனால் உற்பத்தியில் கவனம் செலுத்துமாறு அதிகாரிகள் அறிவுறுத்தியுள்ளனர். அரைவைத் தேதி இன்னும் முடிவு செய்யப்படவில்லை என ஆலையின் நிர்வாக இயக்குனர் கவிதா தெரிவித்துள்ளார். புதிய எந்திரங்களை நிறுவி ஆலையை லாபத்தில் இயக்க அரசு நடவடிக்கை எடுக்க வேண்டும் என விவசாயிகள் கோரிக்கை விடுத்துள்ளனர். மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.",
-   "caption": "🌾 மோகனூர் சர்க்கரை ஆலையில் கரும்பு வரத்து 50 ஆயிரம் டன்னாக சரிவு - அரைவை தொடங்குவதில் தாமதம்\n\n📰 முழு விவரம்:\nநாமக்கல் மாவட்டம் மோகனூர் கூட்டுறவு சர்க்கரை ஆலையில் வழக்கமாக அக்டோபர் மாதம் தொடங்க வேண்டிய கரும்பு அரைவைப் பணி இதுவரை தொடங்கப்படவில்லை. 1964-இல் தொடங்கப்பட்ட இந்த ஆலையில் முன்பு 4.5 லட்சம் டன் வரை கரும்பு அரைவை செய்யப்பட்டது. ஆனால், மழைப் பற்றாக்குறை, நோய்த்தாக்குதல் மற்றும் உரிய காலத்தில் பணம் கிடைக்காதது போன்ற காரணங்களால் சாகுபடி பரப்பளவு 5,000 ஏக்கரில் இருந்து 1,000 ஏக்கராகக் குறைந்துள்ளது.\n\nதனியார் ஆலைகள் ஒரு டன் கரும்புக்கு ரூ. 4,000-க்கும் மேல் வழங்குவதுடன் வெட்டுக்கூலியையும் ஏற்கின்றன. ஆனால் கூட்டுறவு ஆலையில் ஒரு டன்னுக்கு ரூ. 3,290 மற்றும் ஊக்கத்தொகை மட்டுமே வழங்கப்படுவதால் பெரும்பாலான விவசாயிகள் தனியார் ஆலைகளுக்குக் கரும்பை வழங்குகின்றனர்.\n\n📍 இடம்: மோகனூர் கூட்டுறவு சர்க்கரை ஆலை, நாமக்கல்\n🗓️ நிலைமை: கரும்பு வரத்து 50,000 டன்னாகக் குறைந்துள்ளதால் அரைவைத் தேதி இன்னும் முடிவு செய்யப்படவில்லை என ஆலை நிர்வாக இயக்குனர் கவிதா தெரிவித்துள்ளார்.\nℹ️ மக்கள் கவனத்திற்கு: ஆலையை நவீனப்படுத்தி மீண்டும் சீராக இயக்க அரசு நடவடிக்கை எடுக்க வேண்டும் என கரும்பு விவசாயிகள் கோரிக்கை விடுத்துள்ளனர்.\n\nMohanur sugar mill sugarcane crushing delayed | Namakkal news\n📍 Mohanur, Namakkal | 26 November 2026\n\nஉள்ளூர் செய்திகளுக்கு Follow செய்யுங்கள் 🙏\n\n#Namakkal360 #Namakkal #Mohanur #NamakkalNews #நாமக்கல்",
-   "prompts": "Wide view of the historic Mohanur Cooperative Sugar Mill building in Namakkal district under a bright morning sky, tall factory chimneys, quiet machinery yards, empty tractor trailers parked, warm sunlight. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).\n---\nClose-up of lush green sugarcane crops standing in a field in Mohanur, sunlight filtering through tall sugarcane stalks and leaves, dry soil beneath, quiet rural background. Photorealistic press photograph from Namakkal district, Tamil Nadu, India. One single continuous frame (no collage, no panels), tall vertical 9:16 composition, the main subject in the centre, shot on a full-frame camera, sharp focus across the frame, natural light, true-to-life colours, documentary photojournalism. No text, no letters, no numbers, no signboards, no logos, no watermarks, no brand names, no company logos, no product labels, no recognisable faces. Keep the lower third visually simple (road, wall, ground, sky).",
-   "source": "https://www.dinamani.com/all-editions/edition-dharmapuri/namakkal/2026/Nov/26/sugarcane-supply-drops-from-45-lakh-tonnes-to-50000-tonnes-crushing-operations-yet-to-begin-at-mohanur-cooperative-sugar-mill",
-   "published": "2026-11-26T00:17:38.254Z",
-   "verification": "DRAFT (gemini/gemini-3.6-flash) - NOT CLEAN, held from posting - problems: sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences; numbers not found in the article: 1000; caption misses facts of the article (put every one in 📰 முழு விவரம்): 25 ('25: மோகனூா் கூட்டுறவு சா்க்கரை ஆலைக்கான கரும்பு வரத்து 4.5 ல'); 2 ('இதனால், ஆலையின் கரும்பு அரைவை அளவு ஆண்டுதோறும் சரிந்து வந்தத'); 1 ('இதனால், ஆலையின் கரும்பு அரைவை அளவு ஆண்டுதோறும் சரிந்து வந்தத'); 74 ('இதனால், ஆலையின் கரும்பு அரைவை அளவு ஆண்டுதோறும் சரிந்து வந்தத'); 20 ('இதனால், ஆலையின் கரும்பு அரைவை அளவு ஆண்டுதோறும் சரிந்து வந்தத'); 65 ('இதனால், ஆலையின் கரும்பு அரைவை அளவு ஆண்டுதோறும் சரிந்து வந்தத')",
-   "note": "free-model draft gemini/gemini-3.6-flash, 1 attempt(s), 3 validator problem(s)",
-   "post_time": "right after your reply, same day",
-   "_area": "N",
-   "_score": 4.0,
-   "images": [
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261126/4dcbd5618693b7d0.jpg",
-    "https://pub-ec316fa6a94f404c993596355ad19128.r2.dev/news360/20261126/4e9c9d2eba9a9d16.jpg"
-   ]
-  }
- ]
+ "stories": []
 }
