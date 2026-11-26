@@ -65,6 +65,10 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-26 | `8bd4993` | Team dashboard (view-only): private Apps Script store + login + page, and a separate read-only collector workflow; nothing in the posting workflows changes |
+| 2026-11-26 | `4b25edf` | stories shared / Instagram pause |
+| 2026-11-26 | `371cf7c` | stories shared / Instagram pause |
+| 2026-11-26 | `5838f72` | stories shared / Instagram pause |
 | 2026-11-26 | `7298e32` | Clean-up: with Cloudflare R2 set up, Cloudinary credit/login problems are yellow warnings (backup only) and no longer turn the run red |
 | 2026-11-26 | `8ace647` | stories shared / Instagram pause |
 | 2026-11-26 | `bd06987` | stories shared / Instagram pause |
@@ -91,8 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-26 | `2fe5a27` | stories shared / Instagram pause |
 | 2026-11-26 | `ad2ef8e` | stories shared / Instagram pause |
 | 2026-11-26 | `9fdc4f6` | goldrate posted |
-| 2026-11-26 | `f4730c4` | stories shared / Instagram pause |
-| 2026-11-26 | `722ba3d` | stories shared / Instagram pause |
-| 2026-11-26 | `d5ab7d7` | stories shared / Instagram pause |
-| 2026-11-26 | `607277d` | posted report sent |
 <!-- recent-changes:end -->
