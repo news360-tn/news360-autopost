@@ -1,43 +1,34 @@
-01:38:55 hold lifted: RN-284 - not grounded: location 'பரமத்தி' is not in the article - the location IS in the article (checked again)
-01:39:02 hold lifted: RN-326 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-01:39:02 hold lifted: RN-329 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-01:39:07 hold lifted: RN-394 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-01:39:10 hold lifted: RN-422 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-01:39:14 hold lifted: RN-434 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-01:39:17 hold lifted: RN-461 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-01:39:20 hold lifted: RN-469 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-01:39:39 hold lifted: RN-553 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-01:39:44 hold lifted: RN-697 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-01:39:46 6 held news to fix: ['RN-816', 'RN-817', 'RN-818', 'RN-822', 'RN-823', 'RN-825']
+10:55:48 hold lifted: RN-284 - not grounded: location 'பரமத்தி' is not in the article - the location IS in the article (checked again)
+10:55:54 hold lifted: RN-326 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+10:55:55 hold lifted: RN-329 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+10:55:57 hold lifted: RN-394 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+10:56:00 hold lifted: RN-422 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+10:56:03 hold lifted: RN-434 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+10:56:05 hold lifted: RN-461 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+10:56:08 hold lifted: RN-469 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+10:56:27 hold lifted: RN-553 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+10:56:31 hold lifted: RN-697 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+10:56:37 6 held news to fix: ['RN-817', 'RN-818', 'RN-822', 'RN-823', 'RN-825', 'RN-836']
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail gemini/gemini-3.6-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3.6-flash
-ok gemini/gemini-3.5-flash (20s)
-attempt 1 gemini/gemini-3.5-flash: 2 problems
-  numbers not found in the article: 120, 120847, 220, 220847, 2655, 6654
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 1 ('1 லட்சத்து 20 ஆயிரத்திற்கு தேங்காய் ஏலம் நடைபெற்றது..பரமத்தி'); 20 ('1 லட்சத்து 20 ஆயிரத்திற்கு தேங்காய் ஏலம் நடைபெற்றது..பரமத்தி'); 6 ('அதேபோல தேங்காய்களை ஏலம் எடுப்பதற்காக பல்வேறு மாவட்டங்களில் இ'); 654 ('அதேபோல தேங்காய்களை ஏலம் எடுப்பதற்காக பல்வேறு மாவட்டங்களில் இ'); 2 ('2 லட்சத்து 20 ஆயிரத்து 847 க்கு தேஙகாய் விற்பனை நடைபெற்றது..'); 20 ('2 லட்சத்து 20 ஆயிரத்து 847 க்கு தேஙகாய் விற்பனை நடைபெற்றது..')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
 fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
   "error": {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 dead for this round: groq/openai/gpt-oss-120b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-dead for this round: groq/qwen/qwen3.8-27b
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
 claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-01:42:09 RN-816 NOT fixed (try 2 of 2 ): still held: held: fact-check problems - numbers not found in the article: 120, 120847, 220, 220847, 2655, 6654
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free models unavailable: no free model answered: None
-claude rewrite failed: anthropic 400 {"type":"error","error":{"type":"invalid_request_error","message":"Your credit balance is too low to access the Anthropic API. Please go
-01:42:10 RN-817 NOT fixed - the free AI writers are busy; tried again in a later run (this try is not counted): all free models failed: no usable answer from the models
+10:56:38 RN-817 NOT fixed - the free AI writers are busy; tried again in a later run (this try is not counted): all free models failed: no usable answer from the models
