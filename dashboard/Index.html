@@ -151,7 +151,20 @@ table.mini td:first-child{display:flex;align-items:center;gap:6px;white-space:no
 table.mini tr:last-child td{border-bottom:0}
 /* owner 26 Nov: on a phone the tab rows scroll inside themselves and the posts table keeps a readable width (it scrolls sideways) */
 @media (max-width:900px){.seg{max-width:100%;overflow-x:auto;scrollbar-width:none}.seg button{flex:none;white-space:nowrap}
-  .scroll table{min-width:640px}td.title{min-width:220px}}
+  }
+/* owner 26 Nov: on a phone every post is a stacked card (title first, then labelled numbers) - nothing hides off-screen */
+@media (max-width:700px){
+  table.posts,table.posts tbody,table.posts tr,table.posts td{display:block;width:100%}
+  table.posts thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  table.posts tr{display:grid;grid-template-columns:repeat(3,1fr);gap:2px 10px;padding:12px 0;border-bottom:1px solid var(--line)}
+  table.posts td{border:0;padding:0;min-width:0}
+  table.posts td.c-plat,table.posts td.c-page{grid-column:auto;grid-row:1}
+  table.posts td.c-plat{grid-column:1}table.posts td.c-page{grid-column:2 / 4}
+  table.posts td.title{grid-column:1 / -1;grid-row:2;max-width:none;padding:6px 0 4px;font-weight:500}
+  table.posts td.c-when{grid-column:1 / -1;grid-row:3;font-size:12px;color:var(--mute);padding-bottom:6px}
+  table.posts td.n{text-align:left;font-weight:600;font-size:15px}
+  table.posts td.n::before{content:attr(data-l);display:block;font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:var(--mute)}
+}
 @media (max-width:900px){.seg button{min-height:40px}.nav a{min-height:40px}.bar select,.bar input{min-height:40px}
   .side{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}}
 @media (max-width:900px){.hero{gap:14px;padding:16px}.hero img{width:72px;height:72px}.hero .stats{margin-left:0;display:grid;grid-template-columns:repeat(3,1fr);width:100%}
@@ -410,11 +423,11 @@ function postsTable(list, opt) {
   var rows = list.slice(0, 400).map(function (x) {
     var when = new Date(x.t).toLocaleString('en-IN', {timeZone: 'Asia/Kolkata', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'});
     var title = esc(x.title); if (x.url) title = '<a href="' + esc(x.url) + '" target="_blank" rel="noopener">' + title + '</a>';
-    return '<tr>' + (opt.plat ? '<td>' + logo(x.platform) + '</td>' : '') + (opt.page ? '<td><a class="pg" href="' + href(x.page) + '" data-go="' + x.page + '">' + plogo(x.page) + esc(pageName(x.page)) + '</a></td>' : '') +
-      '<td class="title">' + title + '</td><td>' + when + '</td><td class="n">' + fmt(x.views) + '</td><td class="n">' + fmt(x.likes) + '</td><td class="n">' + fmt(x.comments) +
-      (x._new ? '<span class="pill new">+' + x._new + ' new</span>' : '') + '</td>' + (opt.ig ? '<td class="n">' + fmt(x.saves) + '</td><td class="n">' + fmt(x.shares) + '</td>' : '') + '</tr>';
+    return '<tr>' + (opt.plat ? '<td class="c-plat" data-l="Platform">' + logo(x.platform) + '</td>' : '') + (opt.page ? '<td class="c-page" data-l="Page"><a class="pg" href="' + href(x.page) + '" data-go="' + x.page + '">' + plogo(x.page) + esc(pageName(x.page)) + '</a></td>' : '') +
+      '<td class="title" data-l="Title">' + title + '</td><td class="c-when" data-l="Posted">' + when + '</td><td class="n" data-l="Views">' + fmt(x.views) + '</td><td class="n" data-l="Likes">' + fmt(x.likes) + '</td><td class="n" data-l="Comments">' + fmt(x.comments) +
+      (x._new ? '<span class="pill new">+' + x._new + ' new</span>' : '') + '</td>' + (opt.ig ? '<td class="n" data-l="Saves">' + fmt(x.saves) + '</td><td class="n" data-l="Shares">' + fmt(x.shares) + '</td>' : '') + '</tr>';
   }).join('');
-  return '<div class="card"><div class="chead"><h2>' + esc(opt.title || 'Posts') + '</h2><span class="hint">' + list.length + ' posts' + (list.length > 400 ? ', first 400 shown' : '') + '</span></div><div class="scroll"><table><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div></div>';
+  return '<div class="card"><div class="chead"><h2>' + esc(opt.title || 'Posts') + '</h2><span class="hint">' + list.length + ' posts' + (list.length > 400 ? ', first 400 shown' : '') + '</span></div><div class="scroll"><table class="posts"><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div></div>';
 }
 function topPosts(list) {
   var top = list.filter(function (p) { return p.views != null; }).sort(function (a, b) { return b.views - a.views; }).slice(0, 5);
