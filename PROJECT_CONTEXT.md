@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-26 | `3a1a0bb` | News360 Backend: Home page, a separate link for each district (/erode, /salem ...), the 360 logo and each district's own logo, district list in the menu |
+| 2026-11-26 | `2ea92eb` | stories shared / Instagram pause |
 | 2026-11-26 | `9513c9f` | News360 Backend website for Cloudflare Pages (news360-backend.pages.dev): side menu with Overview, Instagram, Facebook, YouTube, Pages, Posts; desktop and phone layouts; store answers the website's sign-in and data requests; end-to-end test |
 | 2026-11-26 | `25a6bba` | stories shared / Instagram pause |
 | 2026-11-26 | `23a1d85` | stories shared / Instagram pause |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-26 | `b1e48aa` | facebook RN-847 |
 | 2026-11-26 | `2d724ad` | posted RN-847 |
 | 2026-11-26 | `ec4ff7b` | autofix: corrected held news |
-| 2026-11-26 | `75c9c1a` | stories shared / Instagram pause |
-| 2026-11-26 | `20060a4` | manual post e-mail RN-847 |
 <!-- recent-changes:end -->
