@@ -149,6 +149,9 @@ table.mini{margin-top:12px;font-size:13px}
 table.mini th,table.mini td{padding:5px 4px;border-bottom:1px solid var(--line)}
 table.mini td:first-child{display:flex;align-items:center;gap:6px;white-space:nowrap}
 table.mini tr:last-child td{border-bottom:0}
+/* owner 26 Nov: on a phone the tab rows scroll inside themselves and the posts table keeps a readable width (it scrolls sideways) */
+@media (max-width:900px){.seg{max-width:100%;overflow-x:auto;scrollbar-width:none}.seg button{flex:none;white-space:nowrap}
+  .scroll table{min-width:640px}td.title{min-width:220px}}
 @media (max-width:900px){.seg button{min-height:40px}.nav a{min-height:40px}.bar select,.bar input{min-height:40px}
   .side{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}}
 @media (max-width:900px){.hero{gap:14px;padding:16px}.hero img{width:72px;height:72px}.hero .stats{margin-left:0;display:grid;grid-template-columns:repeat(3,1fr);width:100%}
@@ -161,7 +164,7 @@ table.mini tr:last-child td{border-bottom:0}
 @media (max-width:900px){#distNav{flex-direction:row}}
 .empty{padding:28px 12px;text-align:center;color:var(--mute);font-size:14px}
 .sec{margin-bottom:12px}
-.toplist{display:grid;gap:8px}
+.toplist{display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
 .toplist .row{display:flex;align-items:center;gap:10px;font-size:14px}
 .toplist .row .tt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .toplist .row b{font-family:var(--font-head)}
