@@ -65,6 +65,13 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-26 | `0a9f63a` | Daily lanes: district history/temple story reel and district jobs reel (dry-run only, nothing enabled, no schedule); fact gate, topic banks, official-source job rules, heritage and job-board reel designs, voice samples workflow, tests |
+| 2026-11-26 | `5f96f04` | stories shared / Instagram pause |
+| 2026-11-26 | `1d3f726` | stories shared / Instagram pause |
+| 2026-11-26 | `b3bc05e` | stories shared / Instagram pause |
+| 2026-11-26 | `6a6f042` | stories shared / Instagram pause |
+| 2026-11-26 | `2ac7062` | Backend site UX polish: smooth scrolling, press feedback, soft fade when the screen changes, shimmer while loading, data age in minutes, reduced motion respected |
+| 2026-11-26 | `70455f6` | stories shared / Instagram pause |
 | 2026-11-26 | `7d1fca7` | stories shared / Instagram pause |
 | 2026-11-26 | `0f66b97` | stories shared / Instagram pause |
 | 2026-11-26 | `bfc5c05` | Backend site: top numbers and district cards follow Today/7/14 days, cards aligned (4+3 on big screens, no overflow), data age shown (amber when late); collector runs hourly |
@@ -88,11 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-26 | `707f3ca` | stories shared / Instagram pause |
 | 2026-11-26 | `452a298` | stories shared / Instagram pause |
 | 2026-11-26 | `3af7c85` | stories shared / Instagram pause |
-| 2026-11-26 | `cfa7ea6` | stories shared / Instagram pause |
-| 2026-11-26 | `9451066` | stories shared / Instagram pause |
-| 2026-11-26 | `e6ee8f6` | stories shared / Instagram pause |
-| 2026-11-26 | `95016e5` | stories shared / Instagram pause |
-| 2026-11-26 | `b7ea9c2` | stories shared / Instagram pause |
-| 2026-11-26 | `45be6cc` | stories shared / Instagram pause |
-| 2026-11-26 | `01a38aa` | Website gets each story's kind of news (safe note like the source comment); link sync puts Facebook and YouTube links on the website |
 <!-- recent-changes:end -->
