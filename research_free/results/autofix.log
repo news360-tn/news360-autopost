@@ -1,20 +1,16 @@
-18:37:57 hold lifted: RN-284 - not grounded: location 'பரமத்தி' is not in the article - the location IS in the article (checked again)
-18:38:04 hold lifted: RN-326 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-18:38:04 hold lifted: RN-329 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-18:38:08 hold lifted: RN-394 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-18:38:11 hold lifted: RN-422 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-18:38:13 hold lifted: RN-434 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-18:38:17 hold lifted: RN-461 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-18:38:21 hold lifted: RN-469 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-18:38:42 hold lifted: RN-553 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-18:38:46 hold lifted: RN-697 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-18:38:50 6 held news to fix: ['RN-818', 'RN-822', 'RN-823', 'RN-825', 'RN-836', 'RN-837']
+23:53:16 hold lifted: RN-284 - not grounded: location 'பரமத்தி' is not in the article - the location IS in the article (checked again)
+23:53:20 hold lifted: RN-326 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+23:53:20 hold lifted: RN-329 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+23:53:23 hold lifted: RN-394 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+23:53:25 hold lifted: RN-422 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+23:53:26 hold lifted: RN-434 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+23:53:28 hold lifted: RN-461 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+23:53:29 hold lifted: RN-469 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+23:53:39 hold lifted: RN-553 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+23:53:42 hold lifted: RN-697 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+23:53:45 6 held news to fix: ['RN-823', 'RN-825', 'RN-836', 'RN-840', 'RN-842', 'RN-844']
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing high d
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
   "error": {
     "code": 429,
@@ -25,234 +21,181 @@ fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
     "code": 429,
     "message": "You exceeded your current quota, please che
 dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
   "error": {
-    "code": 503,
-    "message": "This model is currently experiencing 
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing 
-switching away from gemini/gemini-3-flash-preview for 10 min
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
 fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
 dead for this round: groq/openai/gpt-oss-120b
 fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
 dead for this round: groq/qwen/qwen3.8-27b
 free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  hl1 (the first headline on screen) must name the place 'நாமக்கல் மண்டலம்', e.g. 'நாமக்கல் மண்டலம்: ...' or 'நாமக்கல் மண்டலம்-இல் ...' - viewers share news of their own area
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 8 ('27) வரை நீடிக்கும் என தேசிய முட்டை ஒருங்கிணைப்புக் குழு (என்'); 50 ('நாள்தோறும் 7.50 கோடி முட்டைகள் உற்பத்தியாகின்றன.'); 11 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம'); 20 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம'); 15 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம'); 25 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம')
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  hl1 is 41 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  hl1 (the first headline on screen) must name the place 'நாமக்கல் மண்டலம்', e.g. 'நாமக்கல் மண்டலம்: ...' or 'நாமக்கல் மண்டலம்-இல் ...' - viewers share news of their own area
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 8 ('27) வரை நீடிக்கும் என தேசிய முட்டை ஒருங்கிணைப்புக் குழு (என்'); 11 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம'); 20 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம'); 15 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம'); 25 ('6.70-ஆக இருந்த முட்டை விலை, 11ஆம் தேதி 20 காசுகள், 13, 15 ஆம'); 20, ('தொடா்ந்து 20, 22 ஆம் தேதிகளில் தலா 20 காசுகள் குறைந்து, திங்')
-hl1 shortened at a natural break: 'நாமக்கல் மண்டலம்: முட்டை விலை மாற்றமின்றி' -> 'நாமக்கல் மண்டலம் விலை மாற்றமின்றி'
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: no free model answered: None
-18:40:11 RN-818 FIXED - posts with the corrected text: நாமக்கல் மண்டலம்: நவ. 27 வரை முட்டை விலை ரூ. 5.40 ஆக நீடிக்கும்
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  slide 3 must have 2-3 lines
-  sentence 1 (one-line story) has 15 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  hl1 (the first headline on screen) must name the place 'கருங்கல்புதூர்', e.g. 'கருங்கல்புதூர்: ...' or 'கருங்கல்புதூர்-இல் ...' - viewers share news of their own area
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  hl1 is 43 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  stray Tamil sign 'ா' after 'ு' in «ல்புதுார் »
-  stray Tamil sign 'ா' after 'ு' in «ல்புதுார் »
-  stray Tamil sign 'ா' after 'ு' in «ல்புதுார் »
-  stray Tamil sign 'ா' after 'ு' in «ல்புதுார் »
-  stray Tamil sign 'ா' after 'ு' in «ல்புதுார்,»
-hl1 shortened at a natural break: 'கருங்கல்புதூர்: வேன் கவிழ்ந்து 9 பேர் காயம்' -> 'கருங்கல்புதூர்: வேன் 9 பேர் காயம்'
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-18:40:35 RN-822 FIXED - posts with the corrected text: நாமக்கல்: வேன் கவிழ்ந்து ஐயப்ப பக்தர்கள் 9 பேருக்கு காயம்
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  stray Tamil sign 'ா' after 'ு' in « மோகனுார் »
-  stray Tamil sign 'ா' after 'ு' in « மோகனுார் »
-  stray Tamil sign 'ா' after 'ு' in « மோகனுார் »
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The draft's reel_script and slides_spec say the banners were placed unauthorized (அனுமதியின்றி) throughout, but the article says banners were placed both with and without permission (அனுமதி பெற்றும், அனுமதி பெறாமலும்); the caption correctly says both, creating an inconsistency and overstating the claim in the headline and reel.
-  The draft's reel_script says the removal happened 'நேற்று' and the caption says 'நேற்று' — the article does say நேற்று, so this is fine; however the reel_script omits that the removal was carried out by the municipal workers in front of the police inspector as the key actor, which is partially covered, so no problem there.
-  The English line in the caption ('Flex banners removed in Namakkal city | Namakkal news') is an extra line outside the Tamil text and is not a claim requiring verification beyond the headline topic; not a problem.
-  The reel_script states the banners were removed 'முதலில்' at Mohanur Road Annadurai statue, and that 'மாநகரின் பல்வேறு இடங்களில்' banners were removed; this matches the article, so no issue.
-claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The draft's reel_script and slides_spec say the banners were placed unauthorized (அனுமதியின்றி) throughout, but the article says banners were placed both with and without permission (அனுமதி பெற்றும், அனுமதி பெறாமலும்); the caption correctly says both, creating an inconsistency and overstating the claim in the headline and reel.
-  fact-check: The draft's reel_script says the removal happened 'நேற்று' and the caption says 'நேற்று' — the article does say நேற்று, so this is fine; however the reel_script omits that the removal was carried out by the municipal workers in front of the police inspector as the key actor, which is partially covered, so no problem there.
-  fact-check: The English line in the caption ('Flex banners removed in Namakkal city | Namakkal news') is an extra line outside the Tamil text and is not a claim requiring verification beyond the headline topic; not a problem.
-  fact-check: The reel_script states the banners were removed 'முதலில்' at Mohanur Road Annadurai statue, and that 'மாநகரின் பல்வேறு இடங்களில்' banners were removed; this matches the article, so no issue.
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The reel_script says the banners were removed in the Namakkal municipal area and then lists 'மோகனூர் சாலை அண்ணாதுரை சிலை' first, but the article says the Mohanur Road removal was done in front of Annadurai statue after the municipality's order; the reel_script's claim that the removal was 'முதலில்' (first) at that spot is not stated in the article.
-  The slides_spec 'எங்கே?' slide lists 'பழைய பஸ் ஸ்டாண்ட் பூங்கா சாலை, பரமத்தி சாலை' as places of removal, but the article only lists these as places where banners were placed, not where they were removed.
-  The slides_spec and caption describe the removal as covering banners 'அனுமதி பெற்றும், பெறாமலும்' (both permitted and unpermitted), while the tamil_headline states the banners were unauthorised ('அனுமதியின்றி'), which the article does not say for all banners.
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The reel_script says the banners were removed in the Namakkal municipal area and then lists 'மோகனூர் சாலை அண்ணாதுரை சிலை' first, but the article says the Mohanur Road removal was done in front of Annadurai statue after the municipality's order; the reel_script's claim that the removal was 'முதலில்' (first) at that spot is not stated in the article.
-  fact-check: The slides_spec 'எங்கே?' slide lists 'பழைய பஸ் ஸ்டாண்ட் பூங்கா சாலை, பரமத்தி சாலை' as places of removal, but the article only lists these as places where banners were placed, not where they were removed.
-  fact-check: The slides_spec and caption describe the removal as covering banners 'அனுமதி பெற்றும், பெறாமலும்' (both permitted and unpermitted), while the tamil_headline states the banners were unauthorised ('அனுமதியின்றி'), which the article does not say for all banners.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: no free model answered: None
-18:41:06 RN-823 NOT fixed (try 1 of 2 ): still held: held: fact-check problems - fact-check: The reel_script says the banners were removed in the Namakkal municipal area and then lists 'மோகனூர் சாலை அண்ணாதுரை சிலை' first, but the article says the Mohanu
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The slides_spec line 'தமிழக மருத்துவத்துறை அமைச்சர் அருண்ராஜ்' drops the article's full department name (மருத்துவம் மற்றும் மக்கள் நல்வாழ்வுத்துறை); this is a shortened, slightly different title, though not a factual error in the reel script.
-  The slides_spec line 'திரளான பக்தர்கள் சுவாமி தரிசனம் செய்தனர' is missing its final letter (ஏ/ெ) and is ungrammatical Tamil text.
-  The caption's 'Deepa festival at Thiruchengode Ardhanareeswarar temple | Namakkal news' English line is an added translation outside the article's facts; the caption also adds a sentence 'இறைவன் ஜோதி ரூபத்தில் பக்தர்களுக்குக் காட்சி தருகிறார்' presented as current, which is a tense/meaning shift from the article's description of the annual event.
-  The 250 kg kopparai, 500 kg ghee and 500 kg wick are said in the article to be carried from Kailasanathar temple to be used for the lamp; the reel script and slides say they were 'used' and carried, which is consistent, but the slide line '250 கிலோ எடையுள்ள கொப்பரையில் தீபம் ஏற்றப்பட்டது' merges the lamp-lighting fact with the vessel's weight, mixing two facts into one sentence.
 claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The slides_spec line 'தமிழக மருத்துவத்துறை அமைச்சர் அருண்ராஜ்' drops the article's full department name (மருத்துவம் மற்றும் மக்கள் நல்வாழ்வுத்துறை); this is a shortened, slightly different title, though not a factual error in the reel script.
-  fact-check: The slides_spec line 'திரளான பக்தர்கள் சுவாமி தரிசனம் செய்தனர' is missing its final letter (ஏ/ெ) and is ungrammatical Tamil text.
-  fact-check: The caption's 'Deepa festival at Thiruchengode Ardhanareeswarar temple | Namakkal news' English line is an added translation outside the article's facts; the caption also adds a sentence 'இறைவன் ஜோதி ரூபத்தில் பக்தர்களுக்குக் காட்சி தருகிறார்' presented as current, which is a tense/meaning shift from the article's description of the annual event.
-  fact-check: The 250 kg kopparai, 500 kg ghee and 500 kg wick are said in the article to be carried from Kailasanathar temple to be used for the lamp; the reel script and slides say they were 'used' and carried, which is consistent, but the slide line '250 கிலோ எடையுள்ள கொப்பரையில் தீபம் ஏற்றப்பட்டது' merges the lamp-lighting fact with the vessel's weight, mixing two facts into one sentence.
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  reel_script says the 250 kg kopparai (deepa vessel) was itself lit/placed as the deepam at the 450-ft Uchipillaiyar shrine; the article only says the kopparai was carried from Kailasanathar temple, not that it was the lamp lit there (the article says deepam was lit at that shrine, the 250 kg detail is about carrying the vessel from Kailasanathar temple and reel_script/slides_spec 'மலை உச்சி தீபம' ties 250 kg to the lamp lighting, which is a slight misattribution)
-  reel_script says the 250 kg kopparai, 500 kg ghee and 500 kg wick were carried from Kailasanathar temple, which matches the article, but slides_spec describes '500 கிலோ நெய், 500 கிலோ காடா திரி பயன்பாடு' without the source temple; not an error in itself
-  reel_script states the Minister Arunraj carried the palanquin 'பல்லக்கைச் சுமந்தபடி வந்தார்' which matches the article, but the reel_script omits the key fact that the Minister took part in the event at the temple as the headline's main news point only in passing; no clear missing arrest or result exists in the article, so this is minor
-claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: reel_script says the 250 kg kopparai (deepa vessel) was itself lit/placed as the deepam at the 450-ft Uchipillaiyar shrine; the article only says the kopparai was carried from Kailasanathar temple, not that it was the lamp lit there (the article says deepam was lit at that shrine, the 250 kg detail is about carrying the vessel from Kailasanathar temple and reel_script/slides_spec 'மலை உச்சி தீபம' ties 250 kg to the lamp lighting, which is a slight misattribution)
-  fact-check: reel_script says the 250 kg kopparai, 500 kg ghee and 500 kg wick were carried from Kailasanathar temple, which matches the article, but slides_spec describes '500 கிலோ நெய், 500 கிலோ காடா திரி பயன்பாடு' without the source temple; not an error in itself
-  fact-check: reel_script states the Minister Arunraj carried the palanquin 'பல்லக்கைச் சுமந்தபடி வந்தார்' which matches the article, but the reel_script omits the key fact that the Minister took part in the event at the temple as the headline's main news point only in passing; no clear missing arrest or result exists in the article, so this is minor
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The reel_script says the 450 ft height refers to the Uchipillaiyar shrine ("மலை உச்சியில், மலைக்கோவிலுக்கு மேலே 450 அடி உயரத்தில் உள்ள உச்சிப்பிள்ளையார் சன்னதியில்"), which matches the article; however the slides_spec states the Kailasanathar temple transported items, which the article says 250 kg kopparai, 500 kg ghee and 500 kg kada thiri were carried from Kailasanathar temple, so this is consistent — no error there. The caption and reel_script both repeat that the deepam was lit at the Uchipillaiyar shrine, which matches the article.
-  The reel_script states the Ardhanareeswarar deity was carried on a palanquin during the prakara valam and that the minister carried the palanquin, which matches the article; but the reel_script omits the detail that the minister was specifically Arunraj, which is included — no omission there.
-  The slides_spec line 'கொப்பரை 250 கிலோ, நெய் 500 கிலோ, காடா திரி 500 கிலோ' is placed under the 'பக்தர்கள் தரிசனம்' (devotees' darshan) slide, mixing two different facts (the material quantities and devotee darshan) into one slide, and the slide title is not accurate for the quantities.
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The reel_script says the 450 ft height refers to the Uchipillaiyar shrine ("மலை உச்சியில், மலைக்கோவிலுக்கு மேலே 450 அடி உயரத்தில் உள்ள உச்சிப்பிள்ளையார் சன்னதியில்"), which matches the article; however the slides_spec states the Kailasanathar temple transported items, which the article says 250 kg kopparai, 500 kg ghee and 500 kg kada thiri were carried from Kailasanathar temple, so this is consistent — no error there. The caption and reel_script both repeat that the deepam was lit at the Uchipillaiyar shrine, which matches the article.
-  fact-check: The reel_script states the Ardhanareeswarar deity was carried on a palanquin during the prakara valam and that the minister carried the palanquin, which matches the article; but the reel_script omits the detail that the minister was specifically Arunraj, which is included — no omission there.
-  fact-check: The slides_spec line 'கொப்பரை 250 கிலோ, நெய் 500 கிலோ, காடா திரி 500 கிலோ' is placed under the 'பக்தர்கள் தரிசனம்' (devotees' darshan) slide, mixing two different facts (the material quantities and devotee darshan) into one slide, and the slide title is not accurate for the quantities.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-proofread skipped: no free model answered: None
-18:41:45 RN-825 NOT fixed (try 1 of 2 ): still held: held: fact-check problems - fact-check: The reel_script says the 450 ft height refers to the Uchipillaiyar shrine ("மலை உச்சியில், மலைக்கோவிலுக்கு மேலே 450 அடி உயரத்தில் உள்ள உச்சிப்பிள்ளையார் சன்னதிய
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 7 problems
-  Reel script says 'வெயிலின் தாக்கம் அதிகமாக உள்ளது' (heat is high) while the article says the afternoon heat is 'அதிகளவில் காணப்படுகிறது' — roughly consistent, no problem.
-  The article says the disrupted life was for a number of days but the reel says 'நேற்று மதியம் 1 மணிக்கு மேல்' correctly; however the reel and caption attribute the continuous drizzle to 'நேற்று' whereas the article says it was continuous from 1:00 pm yesterday — consistent.
-  Slide 3 line 'சாலையில் மழைநீர் சேறும் சகதியுமாக உள்ளது' says the road water is muddy now; the article says the rainwater was muddy at places ('ஆங்காங்கே') at the time, not a general present-tense state — minor overstatement.
-  Caption and reel say 'வர்த்தக நிறுவனங்களில் வியாபாரம் பாதிக்கப்பட்டது' which matches the article; no issue.
-  Slide 2 'குடை, ரெயின்கோட்டுடன் சென்ற மக்கள' is limited to people on the road as in article; no issue.
-  Headline 'மக்கள் வாழ்க்கை பாதிப்பு' is a reasonable paraphrase of 'இயல்வு வாழ்க்கை பாதிக்கப்பட்டது'; no issue.
-  Missing fact: the article says the rain was 'சாரல்' (drizzle) and that daily normal life was greatly affected ('வெகுவாக பாதிக்கப்பட்டது'); the reel does not mention that normal life was greatly affected, which is an important point of the article.
-claude rewrite 1 anthropic/claude-haiku-5-5: 7 problems
-  fact-check: Reel script says 'வெயிலின் தாக்கம் அதிகமாக உள்ளது' (heat is high) while the article says the afternoon heat is 'அதிகளவில் காணப்படுகிறது' — roughly consistent, no problem.
-  fact-check: The article says the disrupted life was for a number of days but the reel says 'நேற்று மதியம் 1 மணிக்கு மேல்' correctly; however the reel and caption attribute the continuous drizzle to 'நேற்று' whereas the article says it was continuous from 1:00 pm yesterday — consistent.
-  fact-check: Slide 3 line 'சாலையில் மழைநீர் சேறும் சகதியுமாக உள்ளது' says the road water is muddy now; the article says the rainwater was muddy at places ('ஆங்காங்கே') at the time, not a general present-tense state — minor overstatement.
-  fact-check: Caption and reel say 'வர்த்தக நிறுவனங்களில் வியாபாரம் பாதிக்கப்பட்டது' which matches the article; no issue.
-  fact-check: Slide 2 'குடை, ரெயின்கோட்டுடன் சென்ற மக்கள' is limited to people on the road as in article; no issue.
-  fact-check: Headline 'மக்கள் வாழ்க்கை பாதிப்பு' is a reasonable paraphrase of 'இயல்வு வாழ்க்கை பாதிக்கப்பட்டது'; no issue.
-  fact-check: Missing fact: the article says the rain was 'சாரல்' (drizzle) and that daily normal life was greatly affected ('வெகுவாக பாதிக்கப்பட்டது'); the reel does not mention that normal life was greatly affected, which is an important point of the article.
+  stray Tamil sign 'ா' after 'ு' in « மோகனுார் »
+  stray Tamil sign 'ா' after 'ு' in « மோகனுார் »
+  stray Tamil sign 'ா' after 'ு' in « மோகனுார் »
+  stray Tamil sign 'ா' after 'ு' in « மோகனுார் »
 ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 free fact-check unavailable, using Claude: no free model answered: None
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The article says the rain fell from about 1:00 PM onward; the draft's reel_script and slides say '1 மணிக்கு மேல்' which matches, but the slides' first line says the drizzle was 'தொடர்' and the draft's 'இயல்வு வாழ்க்கை வெகுவாக பாதிக்கப்பட்டது' is fine; however the draft's 'கடந்த சில நாட்களாக இரவு நேரங்களில் லேசான மழை' is placed in slides under 'எப்போது மழை?' as if it were the same timing, mixing two different facts (night drizzle over recent days vs. yesterday afternoon rain) into one slide line group
-  The draft's tamil_headline and reel_script say the rain was 'நேற்று' (yesterday), but the article only says 'நேற்று அதிகாலை முதல்' for the cloudy sky and never explicitly ties the rain to yesterday's date for the whole event; the reel_script's first sentence therefore asserts a date/timing mix not clearly supported
-  The caption and reel_script say 'மக்களின் இயல்வு வாழ்க்கை வெகுவாக பாதிக்கப்பட்டது' and 'மக்கள் நடமாட்டம் இன்றி வெறிச்சோடியது' attributed to the entire city's shopping street, while the article mentions the shopping street only as 'கடைவீதியில்' - acceptable, but the draft omits that the article mentions the sky being overcast since early morning and sometimes sunny, an important weather detail not missing per se
-  The caption's English line 'Namakkal drizzle disrupts daily life' is an extra claim not affecting Tamil text but the slide spec uses 'loc' as 'நாமக்கல் நகரம்' which is consistent; no further error
+  The reel_script says the banners were 'சட்டவிரோதமாக' (illegally) placed, but the article says some were placed with permission and some without; calling all of them illegal is not supported.
+  The reel_script and caption say the banners were removed from 'மாநகராட்சிப் பகுதி' and 'மாநகரின் பல்வேறு இடங்கள' generally, which is consistent, but the slides_spec 'ஏன் அகற்றம்' and 'எந்தெந்த இடங்கள்' lists include 'பலப்பட்டறை மாரியம்மன் கோவில் பகுதி', which the article lists only as a place where banners are placed, not as a place they were removed from (minor, but the slides present it as part of the removal scope).
+  The reel_script omits the 'பலப்பட்டறை மாரியம்மன் கோவில் பகுதி' from its list of places, while the slides_spec includes it, creating an inconsistency between the reel and slides.
+  The slides_spec 'என்ன நடந்தது?' slide says the banners were removed 'மாநகராட்சி உத்தரவுப்படி' and the headline 'சட்டவிரோத' label in the tamil_headline asserts illegality that the article does not state for all banners.
 claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The article says the rain fell from about 1:00 PM onward; the draft's reel_script and slides say '1 மணிக்கு மேல்' which matches, but the slides' first line says the drizzle was 'தொடர்' and the draft's 'இயல்வு வாழ்க்கை வெகுவாக பாதிக்கப்பட்டது' is fine; however the draft's 'கடந்த சில நாட்களாக இரவு நேரங்களில் லேசான மழை' is placed in slides under 'எப்போது மழை?' as if it were the same timing, mixing two different facts (night drizzle over recent days vs. yesterday afternoon rain) into one slide line group
-  fact-check: The draft's tamil_headline and reel_script say the rain was 'நேற்று' (yesterday), but the article only says 'நேற்று அதிகாலை முதல்' for the cloudy sky and never explicitly ties the rain to yesterday's date for the whole event; the reel_script's first sentence therefore asserts a date/timing mix not clearly supported
-  fact-check: The caption and reel_script say 'மக்களின் இயல்வு வாழ்க்கை வெகுவாக பாதிக்கப்பட்டது' and 'மக்கள் நடமாட்டம் இன்றி வெறிச்சோடியது' attributed to the entire city's shopping street, while the article mentions the shopping street only as 'கடைவீதியில்' - acceptable, but the draft omits that the article mentions the sky being overcast since early morning and sometimes sunny, an important weather detail not missing per se
-  fact-check: The caption's English line 'Namakkal drizzle disrupts daily life' is an extra claim not affecting Tamil text but the slide spec uses 'loc' as 'நாமக்கல் நகரம்' which is consistent; no further error
+  fact-check: The reel_script says the banners were 'சட்டவிரோதமாக' (illegally) placed, but the article says some were placed with permission and some without; calling all of them illegal is not supported.
+  fact-check: The reel_script and caption say the banners were removed from 'மாநகராட்சிப் பகுதி' and 'மாநகரின் பல்வேறு இடங்கள' generally, which is consistent, but the slides_spec 'ஏன் அகற்றம்' and 'எந்தெந்த இடங்கள்' lists include 'பலப்பட்டறை மாரியம்மன் கோவில் பகுதி', which the article lists only as a place where banners are placed, not as a place they were removed from (minor, but the slides present it as part of the removal scope).
+  fact-check: The reel_script omits the 'பலப்பட்டறை மாரியம்மன் கோவில் பகுதி' from its list of places, while the slides_spec includes it, creating an inconsistency between the reel and slides.
+  fact-check: The slides_spec 'என்ன நடந்தது?' slide says the banners were removed 'மாநகராட்சி உத்தரவுப்படி' and the headline 'சட்டவிரோத' label in the tamil_headline asserts illegality that the article does not state for all banners.
 ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 free fact-check unavailable, using Claude: no free model answered: None
 ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  slides_spec 'வர்த்தகம்' slide adds 'பகல் நேரத்தில் வெயிலின் தாக்கம் அதிகமாக இருந்தது' which is in the article but is a different fact (daytime heat) mixed into the trade slide, not a claim about trade
-  slides_spec 'வர்த்தகம்' slide line 'வானிலை மாற்றத்தால் மக்கள் கவனமாக இருங்கள்' is an invented advisory not stated in the article
-  caption 'ℹ️ மக்கள் கவனத்திற்கு: மழையில் நனையாமல் குடை, ரெயின்கோட் பயன்படுத்துங்கள்' is an invented advisory not in the article
-  caption states 'நேற்று அதிகாலை முதல் வானம் மேக மூட்டத்துடன்' and 'மதியம் 1 மணிக்கு மேல்' correctly, but the caption's drizzle-in-the-evening wording is fine; however caption headline 'மக்கள் வாழ்க்கை பாதிப்பு' is acceptable, so no further issue there
-  slides_spec 'மக்கள் பாதிப்பு' slide omits that the trade/shops were affected, which is a fact covered elsewhere, so no issue; the reel_script 'இயல்வு வாழ்க்கை' phrasing is a near-literal rendering and is acceptable
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: slides_spec 'வர்த்தகம்' slide adds 'பகல் நேரத்தில் வெயிலின் தாக்கம் அதிகமாக இருந்தது' which is in the article but is a different fact (daytime heat) mixed into the trade slide, not a claim about trade
-  fact-check: slides_spec 'வர்த்தகம்' slide line 'வானிலை மாற்றத்தால் மக்கள் கவனமாக இருங்கள்' is an invented advisory not stated in the article
-  fact-check: caption 'ℹ️ மக்கள் கவனத்திற்கு: மழையில் நனையாமல் குடை, ரெயின்கோட் பயன்படுத்துங்கள்' is an invented advisory not in the article
-  fact-check: caption states 'நேற்று அதிகாலை முதல் வானம் மேக மூட்டத்துடன்' and 'மதியம் 1 மணிக்கு மேல்' correctly, but the caption's drizzle-in-the-evening wording is fine; however caption headline 'மக்கள் வாழ்க்கை பாதிப்பு' is acceptable, so no further issue there
-  fact-check: slides_spec 'மக்கள் பாதிப்பு' slide omits that the trade/shops were affected, which is a fact covered elsewhere, so no issue; the reel_script 'இயல்வு வாழ்க்கை' phrasing is a near-literal rendering and is acceptable
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The reel_script says the banners were removed 'in the Namakkal Corporation area' and that 'many people complained' — the article says complaints came from 'various sections' (பல்வேறு தரப்பினரும்), which is consistent; no issue there. However, the caption's 'மக்கள் கவனத்திற்கு' line advises the public to take care when placing banners, which is an advisory not stated in the article.
+  The caption's 'மக்கள் கவனத்திற்கு' note (advice to be careful about placing banners at the listed roads) is an invented call to action not present in the article.
+  The slides_spec line 'மோகனூர் சாலை அண்ணாதுரை சிலை அருகில் முதலில் அகற்றம்' states the Annadurai statue location was cleared 'first' — the article does not say it was first, only that it was among the removals before the others.
+  The slides_spec line 'மாநகராட்சி பணியாளர்கள் பணியை மேற்கொண்டனர்' is a fair restatement, but the caption's 'நடவடிக்கை' line says the inspector was 'முன்னிலையில்' (in presence of) and the caption phrasing 'அகற்றினர்' attributes the removal to the staff under his presence, which matches the article; no issue there.
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The reel_script says the banners were removed 'in the Namakkal Corporation area' and that 'many people complained' — the article says complaints came from 'various sections' (பல்வேறு தரப்பினரும்), which is consistent; no issue there. However, the caption's 'மக்கள் கவனத்திற்கு' line advises the public to take care when placing banners, which is an advisory not stated in the article.
+  fact-check: The caption's 'மக்கள் கவனத்திற்கு' note (advice to be careful about placing banners at the listed roads) is an invented call to action not present in the article.
+  fact-check: The slides_spec line 'மோகனூர் சாலை அண்ணாதுரை சிலை அருகில் முதலில் அகற்றம்' states the Annadurai statue location was cleared 'first' — the article does not say it was first, only that it was among the removals before the others.
+  fact-check: The slides_spec line 'மாநகராட்சி பணியாளர்கள் பணியை மேற்கொண்டனர்' is a fair restatement, but the caption's 'நடவடிக்கை' line says the inspector was 'முன்னிலையில்' (in presence of) and the caption phrasing 'அகற்றினர்' attributes the removal to the staff under his presence, which matches the article; no issue there.
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 proofread skipped: no free model answered: None
-18:42:18 RN-836 NOT fixed (try 1 of 2 ): still held: held: fact-check problems - fact-check: The article says the rain fell from about 1:00 PM onward; fact-check: The draft's tamil_headline and reel_script say the rain was 'நேற்று' (yesterday), but the 
+23:54:19 RN-823 NOT fixed (try 2 of 2 ): still held: held: fact-check problems - fact-check: The reel_script says the banners were removed 'in the Namakkal Corporation area' and that 'many people complained' — the article says complaints came from 'vari
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
 ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 free fact-check unavailable, using Claude: no free model answered: None
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The caption adds advice 'மொபைல் சார்ஜ், தண்ணீர் போன்றவற்றை முன்கூட்டியே தயார் செய்துகொள்ளுங்கள்' (charge your mobile, prepare water in advance), which is not in the article.
-  The slides_spec 'தகவல்' slide adds 'முன்கூட்டியே தேவையான ஏற்பாடுகளைச் செய்யுங்கள்' (make necessary arrangements in advance), an advice not stated in the article.
-  The caption's English line 'Power cut in Cholasiramani tomorrow 10 AM to 3 PM | Namakkal news' is an added claim-bearing sentence not in the article (minor, but it restates the same facts in English).
+  Caption says 'கைலாசநாதர் ஆலயத்தில் இருந்து 250 கிலோ எடையுள்ள கொப்பரை' — the article says the 250 kg kopparai was carried from Kailasanathar temple, which is consistent, but the caption's line 'மலை உச்சியில், 450 அடி கூடுதல் உயரத்தில் உள்ள உச்சிப்பிள்ளையார் சன்னதியில்' is fine; however the reel_script states the 500 kg ghee and cotton wick were carried 'to' the temple rather than from it, which is a reversed/incorrect direction relative to the article's 'கைலாசநாதர் ஆலயத்தில் இருந்து கொண்டு செல்லப்பட்டு'
+  Reel_script says 'சொக்கப்பனை கொளுத்தப்பட்டது' occurs after the deepam, which is supported, but the reel_script says the deepam was lit with the 250 kg kopparai 'in' the temple, mixing the location: the article places the lighting at Uchi Pillaiyar sannadhi on the hill, not the main temple, so the phrase 'திருச்செங்கோடு அர்த்தநாரீஸ்வரர் மலைக்கோவிலில் 250 கிலோ எடையுள்ள கொப்பரையில்' conflates the main temple with the hilltop shrine
+  Caption and slides attribute the 250 kg kopparai and the 450 ft height correctly, but the slide 'உச்சிப்பிள்ளையார்' lines state the kopparai/ghee/wick were 'கைலாசநாதர் ஆலயத்தில் இருந்து கொண்டு சென்று தீபம்' which omits that the deepam was lit at the hilltop shrine, leaving the location of the lighting unclear
+claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: Caption says 'கைலாசநாதர் ஆலயத்தில் இருந்து 250 கிலோ எடையுள்ள கொப்பரை' — the article says the 250 kg kopparai was carried from Kailasanathar temple, which is consistent, but the caption's line 'மலை உச்சியில், 450 அடி கூடுதல் உயரத்தில் உள்ள உச்சிப்பிள்ளையார் சன்னதியில்' is fine; however the reel_script states the 500 kg ghee and cotton wick were carried 'to' the temple rather than from it, which is a reversed/incorrect direction relative to the article's 'கைலாசநாதர் ஆலயத்தில் இருந்து கொண்டு செல்லப்பட்டு'
+  fact-check: Reel_script says 'சொக்கப்பனை கொளுத்தப்பட்டது' occurs after the deepam, which is supported, but the reel_script says the deepam was lit with the 250 kg kopparai 'in' the temple, mixing the location: the article places the lighting at Uchi Pillaiyar sannadhi on the hill, not the main temple, so the phrase 'திருச்செங்கோடு அர்த்தநாரீஸ்வரர் மலைக்கோவிலில் 250 கிலோ எடையுள்ள கொப்பரையில்' conflates the main temple with the hilltop shrine
+  fact-check: Caption and slides attribute the 250 kg kopparai and the 450 ft height correctly, but the slide 'உச்சிப்பிள்ளையார்' lines state the kopparai/ghee/wick were 'கைலாசநாதர் ஆலயத்தில் இருந்து கொண்டு சென்று தீபம்' which omits that the deepam was lit at the hilltop shrine, leaving the location of the lighting unclear
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The reel_script and slides_spec say the 250 kg kopparai (copper lamp/bowl) was used for the lamp, but the article only says the kopparai (250 kg), ghee and wicks were carried from Kailasanathar temple to light the deepam; the slide line '250 கிலோ கொப்பரையில் தீபம் ஏற்றம்' is a slight distortion, but more notably the reel_script says the lamp items were carried 'to the temple' implicitly without the article's destination (the Uchchi Pillaiyar sannidhi) being stated in the reel_script, which omits that the lamp was lit at Uchchi Pillaiyar sannidhi on the hilltop.
+  The reel_script states the lamp materials were carried from Kailasanathar temple but does not name Uchchi Pillaiyar sannidhi as the place where the lamp was lit, while the slide and caption mention it, creating an inconsistency between outputs.
+  The caption says 'உச்சிப்பிள்ளையார் சன்னதியில் தீபம் ஏற்றப்பட்டது' and the slide says the 450 feet higher sannidhi is on the hilltop; the article says the sannidhi is 450 feet above the main hill temple, which the reel_script and slides render as 'மலை உச்சியில் 450 அடி கூடுதல் உயரத்தில்' – consistent, but the slide title 'மலை உச்சித் தீபம்' and line 'உச்சிப்பிள்ளையார் சன்னதி, மலை உச்சியில்' are fine.
 claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The caption adds advice 'மொபைல் சார்ஜ், தண்ணீர் போன்றவற்றை முன்கூட்டியே தயார் செய்துகொள்ளுங்கள்' (charge your mobile, prepare water in advance), which is not in the article.
-  fact-check: The slides_spec 'தகவல்' slide adds 'முன்கூட்டியே தேவையான ஏற்பாடுகளைச் செய்யுங்கள்' (make necessary arrangements in advance), an advice not stated in the article.
-  fact-check: The caption's English line 'Power cut in Cholasiramani tomorrow 10 AM to 3 PM | Namakkal news' is an added claim-bearing sentence not in the article (minor, but it restates the same facts in English).
+  fact-check: The reel_script and slides_spec say the 250 kg kopparai (copper lamp/bowl) was used for the lamp, but the article only says the kopparai (250 kg), ghee and wicks were carried from Kailasanathar temple to light the deepam; the slide line '250 கிலோ கொப்பரையில் தீபம் ஏற்றம்' is a slight distortion, but more notably the reel_script says the lamp items were carried 'to the temple' implicitly without the article's destination (the Uchchi Pillaiyar sannidhi) being stated in the reel_script, which omits that the lamp was lit at Uchchi Pillaiyar sannidhi on the hilltop.
+  fact-check: The reel_script states the lamp materials were carried from Kailasanathar temple but does not name Uchchi Pillaiyar sannidhi as the place where the lamp was lit, while the slide and caption mention it, creating an inconsistency between outputs.
+  fact-check: The caption says 'உச்சிப்பிள்ளையார் சன்னதியில் தீபம் ஏற்றப்பட்டது' and the slide says the 450 feet higher sannidhi is on the hilltop; the article says the sannidhi is 450 feet above the main hill temple, which the reel_script and slides render as 'மலை உச்சியில் 450 அடி கூடுதல் உயரத்தில்' – consistent, but the slide title 'மலை உச்சித் தீபம்' and line 'உச்சிப்பிள்ளையார் சன்னதி, மலை உச்சியில்' are fine.
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+hl1 shortened at a natural break: 'திருச்செங்கோடு மலைக்கோவிலில் தீபத்திருவிழா' -> 'திருச்செங்கோடு தீபத்திருவிழா'
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+proofread skipped: no free model answered: None
+23:54:53 RN-825 FIXED - posts with the corrected text: திருச்செங்கோடு மலைக்கோவிலில் தீபத்திருவிழா: அமைச்சர் பல்லக்கு சுமந்தார்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The draft's tamil_headline, reel_script and slides_spec describe the rain as falling 'முதல்' from yesterday's afternoon ('நேற்று மதியம் முதல்'), but the article says it was cloudy from early morning and it rained only from about 1:00 PM, so the headline wording mixes the morning cloud cover into the rain timing.
+  The reel_script's first sentence says the rain fell 'நேற்று மதியம் 1 மணிக்கு மேல்' while the next sentence says the sky was overcast from early morning; the cause/timing of the rain is presented in a way that merges the cloud and rain facts into one sequence that is not clearly stated in the article.
+  The reel_script omits that the drizzle was occurring 'நேற்று' specifically, and places the nightly light rain and daytime heat (பகல் நேரத்தில் வெயிலின் தாக்கம் அதிகம்) only partially; the caption's added sentence about daytime heat is not clearly reflected in the reel, and the article's point that sunshine was present at times before the rain is omitted.
+claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The draft's tamil_headline, reel_script and slides_spec describe the rain as falling 'முதல்' from yesterday's afternoon ('நேற்று மதியம் முதல்'), but the article says it was cloudy from early morning and it rained only from about 1:00 PM, so the headline wording mixes the morning cloud cover into the rain timing.
+  fact-check: The reel_script's first sentence says the rain fell 'நேற்று மதியம் 1 மணிக்கு மேல்' while the next sentence says the sky was overcast from early morning; the cause/timing of the rain is presented in a way that merges the cloud and rain facts into one sequence that is not clearly stated in the article.
+  fact-check: The reel_script omits that the drizzle was occurring 'நேற்று' specifically, and places the nightly light rain and daytime heat (பகல் நேரத்தில் வெயிலின் தாக்கம் அதிகம்) only partially; the caption's added sentence about daytime heat is not clearly reflected in the reel, and the article's point that sunshine was present at times before the rain is omitted.
 ok anthropic/claude-haiku-5-5
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 free fact-check unavailable, using Claude: no free model answered: None
 ok anthropic/claude-haiku-5-5
 factcheck by anthropic/claude-haiku-5-5: 0 problems
-claude rewrite 3 anthropic/claude-haiku-5-5: 0 problems
+claude rewrite 2 anthropic/claude-haiku-5-5: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+23:55:14 RN-836 FIXED - posts with the corrected text: நாமக்கல்லில் நேற்று மதியம் 1 மணிக்கு மேல் சாரல் மழை
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 18 ('காவிரி ஆற்றில் நீர்வரத்து குறைந்துள்ள போதிலும், 18 வார்டுகளு')
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 97 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 95 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
 proofread skipped: no free model answered: None
-18:42:40 RN-837 FIXED - posts with the corrected text: நாளை சோழசிராமணியில் மின்தடை: காலை 10 முதல் பிற்பகல் 3 மணி வரை
+23:55:49 RN-840 FIXED - posts with the corrected text: பரமத்தி வேலூர் காவிரி ஆறு வறண்டது: குடிநீர் தட்டுப்பாடு அபாயம்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free fact-check unavailable, using Claude: no free model answered: None
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  slides_spec 'எங்கே செல்வார்கள்?' line 'நாமக்கல் மாவட்டத்தில் உள்ள <b>30 உயர்கல்வி' is an unclosed, incomplete sentence with no clear meaning (missing the word நிறுவனங்கள்)
+  slides_spec 'எங்கே செல்வார்கள்?' line 'அரசு மருத்துவக் கல்லூரி, சட்டக் கல்லூரி உள்ளிட்டவை' lists colleges as the destinations but omits the category word that completes the fact; the phrasing is fragmented and does not form a clear sentence
+  slides_spec 'என்ன' slide title and the 'வேலைவாய்ப்புகள், கலைசார்ந்த விழாக்கள்' line: the article lists 'கலைசாரா விழாக்கள்' (non-art/cultural festivals), while the draft says 'கலைசார்ந்த', which changes the meaning
+  reel_script says students will learn about 'கலைசார்ந்த' items? No, reel_script omits 'கலை மற்றும் அறிவியல் கல்லூரி' from the list of institutions, which is a minor omission of an article detail, not a fabricated fact
+  caption lists 'கலைசார்ந்த விழாக்கள்' whereas the article says 'கலைசாரா விழாக்கள்', mistranslating the term
+claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: slides_spec 'எங்கே செல்வார்கள்?' line 'நாமக்கல் மாவட்டத்தில் உள்ள <b>30 உயர்கல்வி' is an unclosed, incomplete sentence with no clear meaning (missing the word நிறுவனங்கள்)
+  fact-check: slides_spec 'எங்கே செல்வார்கள்?' line 'அரசு மருத்துவக் கல்லூரி, சட்டக் கல்லூரி உள்ளிட்டவை' lists colleges as the destinations but omits the category word that completes the fact; the phrasing is fragmented and does not form a clear sentence
+  fact-check: slides_spec 'என்ன' slide title and the 'வேலைவாய்ப்புகள், கலைசார்ந்த விழாக்கள்' line: the article lists 'கலைசாரா விழாக்கள்' (non-art/cultural festivals), while the draft says 'கலைசார்ந்த', which changes the meaning
+  fact-check: reel_script says students will learn about 'கலைசார்ந்த' items? No, reel_script omits 'கலை மற்றும் அறிவியல் கல்லூரி' from the list of institutions, which is a minor omission of an article detail, not a fabricated fact
+  fact-check: caption lists 'கலைசார்ந்த விழாக்கள்' whereas the article says 'கலைசாரா விழாக்கள்', mistranslating the term
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+23:56:23 RN-842 FIXED - posts with the corrected text: நாமக்கல்: 88 பள்ளிகளின் 4,026 மாணவர்களுக்கு கல்லூரி களப்பயணம் தொடக்கம்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+free models unavailable: no free model answered: None
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  reel_script must have no English letters (write English words and abbreviations in Tamil script)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 46 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  stray Tamil sign 'ா' after 'ு' in « கல்லுாரி,»
+  stray Tamil sign 'ா' after 'ு' in « கல்லுாரி,»
+hl1 shortened at a natural break: 'குமாரபாளையத்தில் பெண்கள் விழிப்புணர்வுப் பேரணி' -> 'குமாரபாளையத்தில் விழிப்புணர்வுப் பேரணி'
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+23:56:52 RN-844 FIXED - posts with the corrected text: குமாரபாளையத்தில் சக்தி வாக்-2026 விழிப்புணர்வுப் பேரணி
