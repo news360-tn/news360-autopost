@@ -1,23 +1,30 @@
-# Team dashboard - setup (owner, once)
+# News360 Backend - setup (owner, once)
 
-Nothing here changes the posting workflows. The dashboard only READS.
+Website: **https://news360-backend.pages.dev** (Cloudflare Pages). Nothing here changes the posting workflows; the site only READS.
 
-## 1. The store + login (Google Apps Script, your Google account)
-1. script.google.com -> **New project** (name: News360 Dashboard).
-2. Replace the code in `Code.gs` with `dashboard/Code.gs`. Add a file: **+ -> HTML**, name it exactly `Index`, paste `dashboard/Index.html`.
-3. **Project Settings (gear) -> Script properties -> Add**:
-   - `DASH_USER` and `DASH_PASS` (one shared login) **or** `DASH_USERS` = `siva:password1,team1:password2` (a login per person)
-   - `DASH_WRITE_KEY` = about 40 random characters (the collector uses it)
-4. **Deploy -> New deployment -> Web app**: Execute as **Me**, Who has access **Anyone**. Authorize when asked. Copy the web-app link.
+How it fits: website (Cloudflare Pages, `pages/_worker.js`) -> private store + login (Google Apps Script, `Code.gs`) <- collector
+(GitHub Actions `dashboard.yml`, every 3 hours, read-only). The Apps Script link is never shown on the website.
 
-## 2. GitHub secrets (repository `news360-autopost` only): Settings -> Secrets and variables -> Actions
-- `DASH_URL` = the web-app link
-- `DASH_WRITE_KEY` = the same value as in step 1
-- `YT_API_KEY` = a YouTube Data API key (console.cloud.google.com -> any project -> APIs & Services -> Library -> YouTube Data API v3 -> Enable
-  -> Credentials -> Create credentials -> API key -> restrict it to "YouTube Data API v3"). Without it the YouTube numbers stay empty.
+## 1. Store + login (Google Apps Script) - already created
+1. script.google.com -> News360 Dashboard -> `Code.gs`: replace all with `dashboard/Code.gs` from GitHub -> Save.
+   (Optional: also replace `Index.html` with `dashboard/Index.html`.)
+2. Deploy -> Manage deployments -> pencil -> Version: **New version** -> Deploy. The Web app link stays the same.
+3. Script properties (already set): `DASH_USER` + `DASH_PASS` or `DASH_USERS`, and `DASH_WRITE_KEY`.
 
-## 3. First data
-Actions tab -> **dashboard** -> Run workflow. Open the web-app link, sign in, press Refresh. After that it updates every 3 hours.
+## 2. Website (Cloudflare Pages)
+1. dash.cloudflare.com -> Workers & Pages -> Create -> Pages -> **Upload assets** (Direct Upload).
+2. Project name: **news360-backend** -> Create project.
+3. Upload `dashboard/pages/news360-backend.zip` (download: https://github.com/news360-tn/news360-autopost/raw/main/dashboard/pages/news360-backend.zip) -> Deploy site.
+4. Project -> Settings -> Variables and secrets -> Add -> Type **Secret**, name `DASH_URL`, value = the Apps Script Web app link
+   (`https://script.google.com/macros/s/.../exec`, no `/u/1/`) -> Save.
+5. Deployments -> Create deployment -> upload the same zip again (a secret applies from the next deployment).
+6. Open https://news360-backend.pages.dev and sign in.
 
-Username / password: only in the Script properties and your own private note - never in chat, a page or a repository.
-Change a password: edit the property. Lock: 5 wrong tries lock that username for 15 minutes.
+## 3. GitHub secrets (repository `news360-autopost`) - already added
+`DASH_URL`, `DASH_WRITE_KEY`, `YT_API_KEY`. Actions -> dashboard -> Run workflow sends the first numbers.
+
+## Updating the website later
+After a change to `dashboard/Index.html`: `python dashboard/build_worker.py`, commit, then in Cloudflare upload the new zip
+(Deployments -> Create deployment).
+
+Username / password: only in the Apps Script properties and your own note - never in chat, a page or a repository.

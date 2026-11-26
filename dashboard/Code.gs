@@ -89,6 +89,9 @@ function getData(token) {
 function doPost(e) {
   try {
     var b = JSON.parse(e.postData.contents);
+    // owner 26 Nov: the page on its own address (Cloudflare Worker) asks the store the same two questions the Apps Script page does
+    if (b.action === 'login') return out_(login(String(b.user || ''), String(b.pass || '')));
+    if (b.action === 'data') return ContentService.createTextOutput(getData(b.token)).setMimeType(ContentService.MimeType.JSON);
     if (b.action !== 'put' || !prop_('DASH_WRITE_KEY') || !same_(b.key || '', prop_('DASH_WRITE_KEY'))) return out_({ ok: false, error: 'refused' });
     var text = JSON.stringify(b.data);
     var f = dataFile_();
