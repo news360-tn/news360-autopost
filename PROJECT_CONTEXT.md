@@ -65,6 +65,20 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-26 | `01a38aa` | Website gets each story's kind of news (safe note like the source comment); link sync puts Facebook and YouTube links on the website |
+| 2026-11-26 | `59da77a` | powercut: notices written |
+| 2026-11-26 | `c35f34a` | stories shared / Instagram pause |
+| 2026-11-26 | `e929df0` | Backend site: phone fixes - Posts table scrolls sideways with readable columns, platform tabs scroll inside their row, Overview top posts no longer widen the page |
+| 2026-11-26 | `c96d6f9` | stories shared / Instagram pause |
+| 2026-11-26 | `d9a89de` | powercut: notices written |
+| 2026-11-26 | `d8366eb` | stories shared / Instagram pause |
+| 2026-11-26 | `708de0d` | stories shared / Instagram pause |
+| 2026-11-26 | `2568d81` | stories shared / Instagram pause |
+| 2026-11-26 | `b773fb6` | News360 Backend design review fixes: labelled Today / Views columns on district cards, n/a instead of dashes, 'Views for' label, 'Mark comments seen', 40px touch targets and a scroll hint on phones |
+| 2026-11-26 | `ddad1b9` | stories shared / Instagram pause |
+| 2026-11-26 | `6c72426` | autofix: corrected held news |
+| 2026-11-26 | `3aa1f4f` | stories shared / Instagram pause |
+| 2026-11-26 | `d3458da` | posted report sent |
 | 2026-11-26 | `3a1a0bb` | News360 Backend: Home page, a separate link for each district (/erode, /salem ...), the 360 logo and each district's own logo, district list in the menu |
 | 2026-11-26 | `2ea92eb` | stories shared / Instagram pause |
 | 2026-11-26 | `9513c9f` | News360 Backend website for Cloudflare Pages (news360-backend.pages.dev): side menu with Overview, Instagram, Facebook, YouTube, Pages, Posts; desktop and phone layouts; store answers the website's sign-in and data requests; end-to-end test |
@@ -81,18 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-26 | `61d557e` | Dashboard collector renamed dash_collect.py (its name clashed with the news collector module in tests) |
 | 2026-11-26 | `8bd4993` | Team dashboard (view-only): private Apps Script store + login + page, and a separate read-only collector workflow; nothing in the posting workflows changes |
 | 2026-11-26 | `4b25edf` | stories shared / Instagram pause |
-| 2026-11-26 | `371cf7c` | stories shared / Instagram pause |
-| 2026-11-26 | `5838f72` | stories shared / Instagram pause |
-| 2026-11-26 | `7298e32` | Clean-up: with Cloudflare R2 set up, Cloudinary credit/login problems are yellow warnings (backup only) and no longer turn the run red |
-| 2026-11-26 | `8ace647` | stories shared / Instagram pause |
-| 2026-11-26 | `bd06987` | stories shared / Instagram pause |
-| 2026-11-26 | `36a0770` | stories shared / Instagram pause |
-| 2026-11-26 | `c93dd3b` | YouTube: a channel's own upload limit ('exceeded the number of videos') pauses that channel for 2 hours, not the whole day; Erode's day-block cleared |
-| 2026-11-26 | `ffef141` | stories shared / Instagram pause |
-| 2026-11-26 | `afb1d4f` | stories shared / Instagram pause |
-| 2026-11-26 | `6924c76` | stories shared / Instagram pause |
-| 2026-11-26 | `aa5e4ae` | stories shared / Instagram pause |
-| 2026-11-26 | `b1e48aa` | facebook RN-847 |
-| 2026-11-26 | `2d724ad` | posted RN-847 |
-| 2026-11-26 | `ec4ff7b` | autofix: corrected held news |
 <!-- recent-changes:end -->
