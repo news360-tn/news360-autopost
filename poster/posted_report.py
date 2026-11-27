@@ -27,7 +27,7 @@ REPOS = (("news360-autopost", ("namakkal", "rasipuram")), ("coimbatore360-autopo
          ("erode360-autopost", ("erode",)), ("karur360-autopost", ("karur",)), ("tirupur360-autopost", ("tirupur",)),
          ("trichy360-autopost", ("trichy",)))
 LABEL = {"namakkal": "Namakkal 360", "rasipuram": "Rasipuram 360", "coimbatore": "Coimbatore 360", "salem": "Salem 360",
-         "erode": "Erode 360", "karur": "Karur 360", "tirupur": "Tirupur 360", "trichy": "Trichy 360"}
+         "erode": "Erode 360", "karur": "Karur 360", "tirupur": "Tiruppur 360", "trichy": "Trichy 360"}
 STATE = HERE / "report_state.json"      # when the last report was sent (committed by posted_report.yml)
 API = "https://api.github.com"
 RAW = "https://raw.githubusercontent.com"
