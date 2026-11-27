@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-27 | `c6d7917` | Instagram handles: the real usernames of every page |
+| 2026-11-27 | `c0aced8` | stories shared / Instagram pause |
 | 2026-11-27 | `3c5448d` | Rasipuram 360 username is rasipuram360.official |
 | 2026-11-27 | `2ea843f` | stories shared / Instagram pause |
 | 2026-11-27 | `1a30a4d` | stories shared / Instagram pause |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-27 | `aa392b3` | stories shared / Instagram pause |
 | 2026-11-27 | `04d879b` | stories shared / Instagram pause |
 | 2026-11-27 | `0f91b4d` | stories shared / Instagram pause |
-| 2026-11-27 | `f032d5a` | stories shared / Instagram pause |
-| 2026-11-27 | `4d61a48` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
