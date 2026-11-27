@@ -1,219 +1,52 @@
-10:50:19 hold lifted: RN-284 - not grounded: location 'பரமத்தி' is not in the article - the location IS in the article (checked again)
-10:50:35 hold lifted: RN-326 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-10:50:36 hold lifted: RN-329 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-10:50:40 hold lifted: RN-394 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-10:50:43 hold lifted: RN-422 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-10:50:52 hold lifted: RN-434 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-10:50:56 hold lifted: RN-461 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-10:50:58 hold lifted: RN-469 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-10:51:59 hold lifted: RN-553 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-10:52:06 hold lifted: RN-697 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
-10:52:08 5 held news to fix: ['RN-851', 'RN-853', 'RN-857', 'RN-862', 'RN-867']
+13:42:32 hold lifted: RN-284 - not grounded: location 'பரமத்தி' is not in the article - the location IS in the article (checked again)
+13:42:36 hold lifted: RN-326 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+13:42:36 hold lifted: RN-329 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+13:42:41 hold lifted: RN-394 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+13:42:43 hold lifted: RN-422 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+13:42:44 hold lifted: RN-434 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+13:42:46 hold lifted: RN-461 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+13:42:48 hold lifted: RN-469 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+13:42:57 hold lifted: RN-553 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+13:43:00 hold lifted: RN-697 - not grounded: location 'நகரம்' is not in the article - the location IS in the article (checked again)
+13:43:02 2 held news to fix: ['RN-851', 'RN-862']
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, plea
-dead for this round: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-dead for this round: groq/qwen/qwen3.8-27b
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  slides_spec line 'பரமத்தி வேலூர் அருகே' (near Paramathi Velur) is an added location detail; the article only states the temple is in Paramathi Velur at the top dateline, which is not in the slide's claim of 'near' — acceptable but imprecise; the article dateline does say Paramathi Velur, so this is minor.
-  reel_script omits the sentence about the Mohanur temple being the Kumareeswarar temple and the deity details (Asaladeeswarar west-facing, Mathukaravenai Ambigai east-facing) — not essential, but the caption and reel are otherwise consistent.
-  caption omits 'பால், தயிர், ...' items consistently, but the caption includes 'மஞ்சள்' which is in the article; no issue there.
-  reel_script says 'சிவாச்சாரியார்கள் வேத மந்திரங்கள் ஓதி ஹோமம் செய்தனர்' correctly; no invented facts found in the main claims.
-claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: slides_spec line 'பரமத்தி வேலூர் அருகே' (near Paramathi Velur) is an added location detail; the article only states the temple is in Paramathi Velur at the top dateline, which is not in the slide's claim of 'near' — acceptable but imprecise; the article dateline does say Paramathi Velur, so this is minor.
-  fact-check: reel_script omits the sentence about the Mohanur temple being the Kumareeswarar temple and the deity details (Asaladeeswarar west-facing, Mathukaravenai Ambigai east-facing) — not essential, but the caption and reel are otherwise consistent.
-  fact-check: caption omits 'பால், தயிர், ...' items consistently, but the caption includes 'மஞ்சள்' which is in the article; no issue there.
-  fact-check: reel_script says 'சிவாச்சாரியார்கள் வேத மந்திரங்கள் ஓதி ஹோமம் செய்தனர்' correctly; no invented facts found in the main claims.
-ok anthropic/claude-haiku-5-5
+ok gemini/gemini-3.6-flash (16s)
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): பரமத்தி ('பரமத்தி வேலூர்,நாமக்கல் மாவட்டம் மோகனூர் அசலதீபேஸ்வரர் கோயில')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  reel_script says 'ஹோமம் செய்தனர்' tied to the fire pit correctly, but the caption and reel omit that the abhishekam list in the article includes மஞ்சள் and திருமஞ்சனம; the caption adds பன்னீர் and மஞ்சள while the reel omits பன்னீர், which is inconsistent with the article's list (minor omission)
-  slides_spec line 'மோகனூர் அசலதீபேஸ்வரர் கோயிலில் <b>108 வலம்புரி' is cut off mid-phrase (missing 'சங்காபிஷேகம்'), making the sentence ungrammatical/incomplete
-  slides_spec 'பால், தயிர், இளநீர், சந்தனம் உள்ளிட்ட <b>18 வகை</b>' is an incomplete sentence with no clear meaning (missing 'திரவியங்களால் அபிஷேகம்')
-  slides_spec 'hl2' text '108 வலம்புரி சங்குகள்' and the 'loc' field are fine, but the caption's use of 'அக்னி குண்டம் அமைக்கப்பட்டு' is supported; no invented fact found there
-  reel_script 'கோயிலில்' describes the temple as Mohanur Asaladeeswarar; article names it both as Asaladeeswarar and Kumareeswarar, which is acceptable
-claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: reel_script says 'ஹோமம் செய்தனர்' tied to the fire pit correctly, but the caption and reel omit that the abhishekam list in the article includes மஞ்சள் and திருமஞ்சனம; the caption adds பன்னீர் and மஞ்சள while the reel omits பன்னீர், which is inconsistent with the article's list (minor omission)
-  fact-check: slides_spec line 'மோகனூர் அசலதீபேஸ்வரர் கோயிலில் <b>108 வலம்புரி' is cut off mid-phrase (missing 'சங்காபிஷேகம்'), making the sentence ungrammatical/incomplete
-  fact-check: slides_spec 'பால், தயிர், இளநீர், சந்தனம் உள்ளிட்ட <b>18 வகை</b>' is an incomplete sentence with no clear meaning (missing 'திரவியங்களால் அபிஷேகம்')
-  fact-check: slides_spec 'hl2' text '108 வலம்புரி சங்குகள்' and the 'loc' field are fine, but the caption's use of 'அக்னி குண்டம் அமைக்கப்பட்டு' is supported; no invented fact found there
-  fact-check: reel_script 'கோயிலில்' describes the temple as Mohanur Asaladeeswarar; article names it both as Asaladeeswarar and Kumareeswarar, which is acceptable
-ok anthropic/claude-haiku-5-5
+ok gemini/gemini-3.6-flash (23s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The reel_script and slides_spec omit the 18 types of materials (திரவியங்கள்) and the second part of the list: திருமஞ்சனம் and பஞ்சாமிர்தம் are missing from the reel_script, but the slides list is cut off mid-sentence with 'உள்ளிட்ட' and no full clear meaning.
-  slides_spec 'அபிஷேகம்' slide line 'பால், தயிர், பன்னீர், இளநீர், சந்தனம், மஞ்சள் உள்ளிட்ட' is an incomplete sentence fragment with no clear meaning in Tamil.
-  slides_spec 'என்ன விழா?' slide line '<b>108 வலம்புரி' has an unclosed HTML tag and an incomplete phrase, making it ungrammatical/unclear.
-  slides_spec 'பக்தர்களுக்கு' slide line 'பக்தர்களுக்கு பிரசாதம் வழங்கப்பட்டது' and the slide 'பூஜை முறை' line '108 சங்குகளில்...' are fine, but the 'என்ன விழா?' slide mixes the event with the temple description and the 'பக்தர்கள் திரளாகக் கலந்துகொண்டனர்' claim ('திரளாக') is not stated in the article.
-  The 'அபிஷேகம்' slide states 'பின்னர் மலர் அலங்காரமும் தீபாராதனையும்' - acceptable, but the draft's 'வலம்புரி' claim in tamil_headline/hl2 phrase '108 வலம்புரி சங்குகளில்' is an incomplete headline fragment with no clear meaning as a standalone line.
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The reel_script and slides_spec omit the 18 types of materials (திரவியங்கள்) and the second part of the list: திருமஞ்சனம் and பஞ்சாமிர்தம் are missing from the reel_script, but the slides list is cut off mid-sentence with 'உள்ளிட்ட' and no full clear meaning.
-  fact-check: slides_spec 'அபிஷேகம்' slide line 'பால், தயிர், பன்னீர், இளநீர், சந்தனம், மஞ்சள் உள்ளிட்ட' is an incomplete sentence fragment with no clear meaning in Tamil.
-  fact-check: slides_spec 'என்ன விழா?' slide line '<b>108 வலம்புரி' has an unclosed HTML tag and an incomplete phrase, making it ungrammatical/unclear.
-  fact-check: slides_spec 'பக்தர்களுக்கு' slide line 'பக்தர்களுக்கு பிரசாதம் வழங்கப்பட்டது' and the slide 'பூஜை முறை' line '108 சங்குகளில்...' are fine, but the 'என்ன விழா?' slide mixes the event with the temple description and the 'பக்தர்கள் திரளாகக் கலந்துகொண்டனர்' claim ('திரளாக') is not stated in the article.
-  fact-check: The 'அபிஷேகம்' slide states 'பின்னர் மலர் அலங்காரமும் தீபாராதனையும்' - acceptable, but the draft's 'வலம்புரி' claim in tamil_headline/hl2 phrase '108 வலம்புரி சங்குகளில்' is an incomplete headline fragment with no clear meaning as a standalone line.
+ok gemini/gemini-3.6-flash (3s)
+factcheck by gemini/gemini-3.6-flash: 0 problems
+attempt 2 gemini/gemini-3.6-flash: 0 problems
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3.6-flash (11s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-10:52:42 RN-851 NOT fixed (try 1 of 2 ): still held: held: fact-check problems - fact-check: slides_spec line 'பரமத்தி வேலூர் அருகே' (near Paramathi Velur) is an added location detail; fact-check: reel_script omits the sentence about the Mohanur temple 
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  reel_script has 64 words; need 66-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  stray Tamil sign 'ா' after 'ு' in « கல்லுாரி,»
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-hl1 shortened at a natural break: 'குமாரபாளையத்தில் பெண்கள் விழிப்புணர்வு பேரணி' -> 'குமாரபாளையத்தில் விழிப்புணர்வு பேரணி'
+ok gemini/gemini-3.6-flash (49s)
+factcheck by gemini/gemini-3.6-flash: 0 problems
+proofread by gemini/gemini-3.6-flash: 0 problems
+13:44:47 RN-851 FIXED - posts with the corrected text: மோகனூர் அசலதீபேஸ்வரர் கோவிலில் 108 சங்காபிஷேக விழா விமரிசையாக நடைபெற்றது
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-10:53:11 RN-853 FIXED - posts with the corrected text: குமாரபாளையத்தில் பெண்கள் பாதுகாப்பு விழிப்புணர்வு பேரணி: சக்தி வாக்-2026
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 27 ('27: நாமக்கல் மாவட்ட கலெக்டர் அலுவலகம் முன், ஆதி தமிழர் பேரவை')
-ok anthropic/claude-haiku-5-5
-claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The slides_spec 'hl2' headline 'உதவித் தொகை நிதி கோரிக்கை' (scholarship fund demand) is loosely supported; the article says funds for selected students should be released immediately, which is roughly consistent, but the 'slides_spec' line 'ஆதி தமிழர் பேரவை சார்பில் ஆர்ப்பாட்டம்' omits that the protest was held on 'நேற்று' in the slide (not a problem), and the slide 'முக்கிய' title is an unclear, ungrammatical fragment that is cut off mid-sentence: 'ஆதிதிராவிடர், பழங்குடியினர் நலத்துறை தலைவர் முரளிதரனை பதவி' is incomplete and lacks the verb 'நீக்கம் செய்ய வேண்டும்', so it has no clear meaning.
-  The 'யார் பங்கேற்றனர்?' slide line 'கோரிக்கை வலியுறுத்தி கோஷமிட்டனர்' is not a participant and mixes the act of shouting slogans into the list of people who attended; the reel_script and caption also say the leaders 'கோஷமிட்டனர்' while the article says 'பலர் கலந்து கொண்டு கோரிக்கையை வலியுறுத்தி கோஷமிட்டனர்', which is consistent, but the reel_script sentence 'கோரிக்கையை வலியுறுத்தி கோஷமிட்டனர்' is a separate sentence without a subject, making it ambiguous about who shouted.
-  The reel_script omits the article's statement that the demands were raised in the protest in a 'வலியுறுத்தப்பட்டது' form for the second demand is present, but the article's core point that the protest was held in a 'கண்டன' (condemnation) protest is missing from the reel_script and caption, so the reason/cause of the protest (condemnation) is not conveyed.
-claude rewrite 3 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The slides_spec 'hl2' headline 'உதவித் தொகை நிதி கோரிக்கை' (scholarship fund demand) is loosely supported; the article says funds for selected students should be released immediately, which is roughly consistent, but the 'slides_spec' line 'ஆதி தமிழர் பேரவை சார்பில் ஆர்ப்பாட்டம்' omits that the protest was held on 'நேற்று' in the slide (not a problem), and the slide 'முக்கிய' title is an unclear, ungrammatical fragment that is cut off mid-sentence: 'ஆதிதிராவிடர், பழங்குடியினர் நலத்துறை தலைவர் முரளிதரனை பதவி' is incomplete and lacks the verb 'நீக்கம் செய்ய வேண்டும்', so it has no clear meaning.
-  fact-check: The 'யார் பங்கேற்றனர்?' slide line 'கோரிக்கை வலியுறுத்தி கோஷமிட்டனர்' is not a participant and mixes the act of shouting slogans into the list of people who attended; the reel_script and caption also say the leaders 'கோஷமிட்டனர்' while the article says 'பலர் கலந்து கொண்டு கோரிக்கையை வலியுறுத்தி கோஷமிட்டனர்', which is consistent, but the reel_script sentence 'கோரிக்கையை வலியுறுத்தி கோஷமிட்டனர்' is a separate sentence without a subject, making it ambiguous about who shouted.
-  fact-check: The reel_script omits the article's statement that the demands were raised in the protest in a 'வலியுறுத்தப்பட்டது' form for the second demand is present, but the article's core point that the protest was held in a 'கண்டன' (condemnation) protest is missing from the reel_script and caption, so the reason/cause of the protest (condemnation) is not conveyed.
-hl1 shortened at a natural break: 'நாமக்கல் கலெக்டர் அலுவலகம் முன் ஆர்ப்பாட்டம்' -> 'நாமக்கல் கலெக்டர் முன் ஆர்ப்பாட்டம்'
+fail gemini/gemini-3.6-flash: Expecting ',' delimiter: line 41 column 3 (char 1365)
+poor answer - skipped for 30 min: gemini/gemini-3.6-flash
+ok gemini/gemini-3.5-flash (24s)
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-10:53:40 RN-857 FIXED - posts with the corrected text: நாமக்கல் கலெக்டர் அலுவலகம் முன் ஆதி தமிழர் பேரவை ஆர்ப்பாட்டம்
+fail gemini/gemini-3.5-flash: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3.5-flash
+ok gemini/gemini-3-flash-preview (8s)
+factcheck by gemini/gemini-3-flash-preview: 0 problems
+attempt 1 gemini/gemini-3.5-flash: 0 problems
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 3 problems
-  The article says the road is Mohanur - P. Velur road (ப.வேலுார்), but the draft calls it Paramathi Velur road (பரமத்தி வேலூர்), a place name not in the article.
-  The draft's caption and reel_script mention the road and the railway bridge with the same details; however the caption also adds an English line 'Heavy rain floods Mohanur roads for an hour | Namakkal news' which is outside the allowed footer, and this is not a claim from the article but is an extra English headline not in the Tamil source, so it should be treated as an invented element.
-  The article says heavy rain started at 2:30 pm and lasted one hour, but the draft's slide 'என்ன நடந்தது?' lists the time as 'மதியம் 2:30 மணிக்கு கனமழை' while the article only says the rain started at that time; the draft's reel_script states 'கனமழை பெய்யத் தொடங்கியது' correctly, so this is fine, but the reel_script says roads 'வெள்ளக்காடாக மாறின' (turned into flood-like waterlogging), an exaggeration not stated in the article, which only says water ran like a flood in low-lying areas.
-claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
-  fact-check: The article says the road is Mohanur - P. Velur road (ப.வேலுார்), but the draft calls it Paramathi Velur road (பரமத்தி வேலூர்), a place name not in the article.
-  fact-check: The draft's caption and reel_script mention the road and the railway bridge with the same details; however the caption also adds an English line 'Heavy rain floods Mohanur roads for an hour | Namakkal news' which is outside the allowed footer, and this is not a claim from the article but is an extra English headline not in the Tamil source, so it should be treated as an invented element.
-  fact-check: The article says heavy rain started at 2:30 pm and lasted one hour, but the draft's slide 'என்ன நடந்தது?' lists the time as 'மதியம் 2:30 மணிக்கு கனமழை' while the article only says the rain started at that time; the draft's reel_script states 'கனமழை பெய்யத் தொடங்கியது' correctly, so this is fine, but the reel_script says roads 'வெள்ளக்காடாக மாறின' (turned into flood-like waterlogging), an exaggeration not stated in the article, which only says water ran like a flood in low-lying areas.
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 4 problems
-  The draft says 'பரமத்தி வேலூர்' (Paramathi Velur) for the road, but the article says 'ப.வேலூர்' (P. Velur); the road is named 'மோகனூர் - ப.வேலூர் சாலை', so the place name is altered/expanded inconsistently with the article.
-  The reel_script says the rain began 'நேற்று' (yesterday) in the caption and reel, but the article only says 'நேற்று காலை' for the cloudy weather and places the rain start at 'மதியம் 2:30 மணிக்கு' without explicitly stating the day of the rain; the caption adds 'நேற்று' which is an unverified time reference attached to the rain event.
-  The caption adds the sentence about Namakkal district having had heavy and light rain 'கடந்த சில நாட்களாக' — this background is from the article, but the caption places it after the closing statements, which is acceptable; however, the reel_script and slides say 'தாழ்வான பகுதிகளில்' and the caption says the same, so no problem there.
-  The reel_script states 'மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்' which is the permitted closing sentence and is not a problem.
-claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
-  fact-check: The draft says 'பரமத்தி வேலூர்' (Paramathi Velur) for the road, but the article says 'ப.வேலூர்' (P. Velur); the road is named 'மோகனூர் - ப.வேலூர் சாலை', so the place name is altered/expanded inconsistently with the article.
-  fact-check: The reel_script says the rain began 'நேற்று' (yesterday) in the caption and reel, but the article only says 'நேற்று காலை' for the cloudy weather and places the rain start at 'மதியம் 2:30 மணிக்கு' without explicitly stating the day of the rain; the caption adds 'நேற்று' which is an unverified time reference attached to the rain event.
-  fact-check: The caption adds the sentence about Namakkal district having had heavy and light rain 'கடந்த சில நாட்களாக' — this background is from the article, but the caption places it after the closing statements, which is acceptable; however, the reel_script and slides say 'தாழ்வான பகுதிகளில்' and the caption says the same, so no problem there.
-  fact-check: The reel_script states 'மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்' which is the permitted closing sentence and is not a problem.
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 1 problems
-  The article says 'மோகனுார் - ப.வேலுார் சாலை' (Mohanur - P. Velur road), but the draft writes 'மோகனூர் - பரமத்தி வேலூர் சாலை' (Mohanur - Paramathi Velur road), changing the place name 'P. Velur' to 'Paramathi Velur' (a place not in the article).
-claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
-  fact-check: The article says 'மோகனுார் - ப.வேலுார் சாலை' (Mohanur - P. Velur road), but the draft writes 'மோகனூர் - பரமத்தி வேலூர் சாலை' (Mohanur - Paramathi Velur road), changing the place name 'P. Velur' to 'Paramathi Velur' (a place not in the article).
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-10:54:10 RN-862 NOT fixed (try 1 of 2 ): still held: held: fact-check problems - fact-check: The article says 'மோகனுார் - ப.வேலுார் சாலை' (Mohanur - P. Velur road), but the draft writes 'மோகனூர் - பரமத்தி வேலூர் சாலை' (Mohanur - Paramathi Velur road), c
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free models unavailable: no free model answered: None
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
-  reel_script writes ages as newspaper shorthand (அறிகுறிகளுடனும், 1,); say it as a news reader: '12 வயது மகன் ராஜா', 'கவுசிக் (14 வயது)' -> '14 வயதான கவுசிக்'
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  slides_spec 'அரசின் நடவடிக்கை' slide says the camp is run under the leadership of the health inspector Selvakumar, but the article only says the camps are held on the district deputy director's order and the inspector only spoke about them; leadership attribution is an invented detail
-  slides_spec 'அரசின் நடவடிக்கை' slide says 'அனைவரும் அரசு மருத்துவமனையில் சிகிச்சை' (all are being treated in government hospitals), which the article states only in the inspector's quote about the 32 dengue patients, not for all cases; the claim is overgeneralized
-  slides_spec '1,000-க்கும் மேற்பட்டோர்' line says they are under treatment for viral fever, and the slides also state 100+ dengue-symptom cases are under treatment without noting they are not confirmed dengue; the slide mixes confirmed dengue patients with symptomatic/viral cases in a misleading way
-  caption says the 32 figure rose ('உயர்வு'), and the caption describes the spread as 'வேகமாகப் பரவி வருகிறது' while the article says 'வேகமாக பரவி வருவதால்' - acceptable, but the caption headline states 'பாதிப்பு 32 ஆக உயர்வு' implying an increase from a previous count that the article does not state
-  reel_script says camps are led/conducted under the health inspector's leadership ('சுகாதார ஆய்வாளர் செல்வகுமார் தலைமையில்' in the caption and 'தலைமையில்' in the reel's line about the camps), which is not in the article
-claude rewrite 2 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: slides_spec 'அரசின் நடவடிக்கை' slide says the camp is run under the leadership of the health inspector Selvakumar, but the article only says the camps are held on the district deputy director's order and the inspector only spoke about them; leadership attribution is an invented detail
-  fact-check: slides_spec 'அரசின் நடவடிக்கை' slide says 'அனைவரும் அரசு மருத்துவமனையில் சிகிச்சை' (all are being treated in government hospitals), which the article states only in the inspector's quote about the 32 dengue patients, not for all cases; the claim is overgeneralized
-  fact-check: slides_spec '1,000-க்கும் மேற்பட்டோர்' line says they are under treatment for viral fever, and the slides also state 100+ dengue-symptom cases are under treatment without noting they are not confirmed dengue; the slide mixes confirmed dengue patients with symptomatic/viral cases in a misleading way
-  fact-check: caption says the 32 figure rose ('உயர்வு'), and the caption describes the spread as 'வேகமாகப் பரவி வருகிறது' while the article says 'வேகமாக பரவி வருவதால்' - acceptable, but the caption headline states 'பாதிப்பு 32 ஆக உயர்வு' implying an increase from a previous count that the article does not state
-  fact-check: reel_script says camps are led/conducted under the health inspector's leadership ('சுகாதார ஆய்வாளர் செல்வகுமார் தலைமையில்' in the caption and 'தலைமையில்' in the reel's line about the camps), which is not in the article
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 5 problems
-  The draft places the outbreak in 'பரமத்தி வேலூர்' (Paramathi Velur) as one place, while the article describes Paramathi Velur as the taluk covering Velur, Paramathi, Nallur and Pottanur, which is acceptable; however, the reel_script claims 'பரமத்தி வேலூர் வட்டாரம்' which matches. No issue there.
-  The reel_script states '1,000-க்கும் மேற்பட்டோர்' are treated 'மருத்துவமனைகளில்' — the article says over 1,000 have normal viral fever and are treated in hospitals, so this is accurate.
-  The reel_script says the disease spread 'வேகமாகப் பரவி வருகிறது' — the article says dengue and viral fever are spreading fast, which is consistent.
-  The caption says 'டெங்கு பாதிப்பு 32 ஆக உயர்வு' (rose to 32), which is an inferred claim of increase not explicitly stated, though the article says the impact is increasing; minor wording issue.
-  The reel_script says 'பாதிப்பு உள்ள பகுதிகளில் சிறப்பு மருத்துவ முகாம்கள் நடத்தப்பட்டு வருவதாக மாவட்ட இணை இயக்குநர் உத்தரவின் பேரில் சுகாதாரத் துறை தெரிவித்துள்ளது' — the article says the camps are conducted on the orders of the district joint director, which matches, but the article attributes the statement to the health inspector, not the health department generally; acceptable.
-claude rewrite 3 anthropic/claude-haiku-5-5: 5 problems
-  fact-check: The draft places the outbreak in 'பரமத்தி வேலூர்' (Paramathi Velur) as one place, while the article describes Paramathi Velur as the taluk covering Velur, Paramathi, Nallur and Pottanur, which is acceptable; however, the reel_script claims 'பரமத்தி வேலூர் வட்டாரம்' which matches. No issue there.
-  fact-check: The reel_script states '1,000-க்கும் மேற்பட்டோர்' are treated 'மருத்துவமனைகளில்' — the article says over 1,000 have normal viral fever and are treated in hospitals, so this is accurate.
-  fact-check: The reel_script says the disease spread 'வேகமாகப் பரவி வருகிறது' — the article says dengue and viral fever are spreading fast, which is consistent.
-  fact-check: The caption says 'டெங்கு பாதிப்பு 32 ஆக உயர்வு' (rose to 32), which is an inferred claim of increase not explicitly stated, though the article says the impact is increasing; minor wording issue.
-  fact-check: The reel_script says 'பாதிப்பு உள்ள பகுதிகளில் சிறப்பு மருத்துவ முகாம்கள் நடத்தப்பட்டு வருவதாக மாவட்ட இணை இயக்குநர் உத்தரவின் பேரில் சுகாதாரத் துறை தெரிவித்துள்ளது' — the article says the camps are conducted on the orders of the district joint director, which matches, but the article attributes the statement to the health inspector, not the health department generally; acceptable.
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-10:54:51 RN-867 FIXED - posts with the corrected text: பரமத்தி வேலூர் வட்டாரத்தில் டெங்கு காய்ச்சலில் 32 பேர் பாதிப்பு
+ok gemini/gemini-3-flash-preview (11s)
+proofread rejected (2 problems)
+  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
+  caption needs 5 hashtags (Instagram max), has 7
+13:46:55 RN-862 FIXED - posts with the corrected text: மோகனூரில் 1 மணி நேரம் கொட்டிய கனமழை: மேம்பாலத்தின் கீழ் தண்ணீர் தேங்கி இயல்பு வா
