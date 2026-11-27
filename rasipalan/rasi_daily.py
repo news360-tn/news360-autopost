@@ -29,10 +29,10 @@ REPOST = os.environ.get("REPOST", "") == "1"      # by hand: today's post was de
 FORCE_DATE = os.environ.get("RASI_DATE", "")      # testing only: YYYY-MM-DD
 PAGES = {
     # owner 23 Nov: Rasipuram 360 no longer posts on its own - the daily rasipalan goes out on Namakkal 360 (PAGE=namakkal)
-    "namakkal": {"brand": "நாமக்கல் 360", "town": "நாமக்கல்", "design": "temple", "logo": "logo_namakkal.png", "handle": "namakkal.360",
+    "namakkal": {"brand": "நாமக்கல் 360", "town": "நாமக்கல்", "design": "temple", "logo": "logo_namakkal.png", "handle": "namakkal360.official",
                  "collab": "", "tags": ["#ராசிபலன்", "#RasiPalan", "#இன்றையராசிபலன்", "#Namakkal", "#Namakkal360"]},
     "rasipuram": {"brand": "இராசிபுரம் 360", "town": "இராசிபுரம்", "design": "temple", "logo": "logo_rasipuram.png",
-                  "collab": "namakkal.360", "tags": ["#ராசிபலன்", "#RasiPalan", "#இன்றையராசிபலன்", "#Namakkal360", "#Rasipuram360"]},
+                  "collab": "namakkal360.official", "tags": ["#ராசிபலன்", "#RasiPalan", "#இன்றையராசிபலன்", "#Namakkal360", "#Rasipuram360"]},
     "coimbatore": {"brand": "கோயம்புத்தூர் 360", "town": "கோவை", "design": "calendar", "logo": "logo_coimbatore.png",
                    "collab": "", "tags": ["#ராசிபலன்", "#RasiPalan", "#இன்றையராசிபலன்", "#Coimbatore", "#Coimbatore360"]},
 }
@@ -395,7 +395,7 @@ def main():
         import facebook
         if reel:      # owner 20 Nov: the reel goes to Facebook as a reel
             facebook.share(PAGE, f"rasipalan-{day.isoformat()}", "reel", [reel[0]], reel[1], cfg["tags"][-1], tags=cfg["tags"][:2], always=True)      # owner 11 Nov: the daily rasipalan always goes to Facebook
-            if PAGE == "rasipuram" and cfg.get("collab") == "namakkal.360":      # owner 22 Nov: Namakkal 360 gets it on Facebook too (on Instagram it is the collaborator)
+            if PAGE == "rasipuram" and cfg.get("collab") == "namakkal360.official":      # owner 22 Nov: Namakkal 360 gets it on Facebook too (on Instagram it is the collaborator)
                 facebook.share("namakkal", f"rasipalan-{day.isoformat()}", "reel", [reel[0]], reel[1], "#Namakkal360", tags=cfg["tags"][:2], always=True)
         else:
             facebook.share(PAGE, f"rasipalan-{day.isoformat()}", "photos", urls, cap, cfg["tags"][-1], tags=cfg["tags"][:2], always=True)      # owner 11 Nov: the daily rasipalan always goes to Facebook

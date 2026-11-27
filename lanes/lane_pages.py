@@ -3,11 +3,11 @@ its names, handle, hashtag, logo size, the words that mark a story as belonging 
 official job notices are published (jobs/sources/<page>.json, confirmed by the owner before the lane posts anything).
 Rasipuram is a page of Namakkal district. Handles are placeholders until the page's token can read the real one (same as goldrate)."""
 PAGES = {
-    'namakkal': {"town": 'நாமக்கல்', "district_ta": 'நாமக்கல்', "district_en": 'Namakkal', "handle": 'namakkal.360', "tag": '#Namakkal360', "brand_px": 54,
+    'namakkal': {"town": 'நாமக்கல்', "district_ta": 'நாமக்கல்', "district_en": 'Namakkal', "handle": 'namakkal360.official', "tag": '#Namakkal360', "brand_px": 54,
            "official_site": 'namakkal.nic.in', "aliases": ['Kolli Hills', 'Kumarapalayam', 'Mohanur', 'Namakkal', 'Paramathi Velur', 'Rasipuram', 'Sendamangalam', 'Tiruchengode', 'Velur', 'இராசிபுரம்', 'குமாரபாளையம்', 'கொல்லிமலை', 'சேந்தமங்கலம்', 'திருச்செங்கோடு', 'நாமக்கல்', 'மோகனூர்', 'ராசிபுரம்', 'வேலூர்']},
     'rasipuram': {"town": 'இராசிபுரம்', "district_ta": 'நாமக்கல்', "district_en": 'Namakkal', "handle": 'rasipuram360.official', "tag": '#Rasipuram360', "brand_px": 50,
            "official_site": 'namakkal.nic.in', "aliases": ['Kolli Hills', 'Kumarapalayam', 'Mohanur', 'Namakkal', 'Paramathi Velur', 'Rasipuram', 'Sendamangalam', 'Tiruchengode', 'Velur', 'இராசிபுரம்', 'குமாரபாளையம்', 'கொல்லிமலை', 'சேந்தமங்கலம்', 'திருச்செங்கோடு', 'நாமக்கல்', 'மோகனூர்', 'ராசிபுரம்', 'வேலூர்']},
-    'coimbatore': {"town": 'கோவை', "district_ta": 'கோயம்புத்தூர்', "district_en": 'Coimbatore', "handle": 'coimbatore360_official', "tag": '#Coimbatore360', "brand_px": 54,
+    'coimbatore': {"town": 'கோவை', "district_ta": 'கோயம்புத்தூர்', "district_en": 'Coimbatore', "handle": 'coimbatore360.official', "tag": '#Coimbatore360', "brand_px": 54,
            "official_site": 'coimbatore.nic.in', "aliases": ['Anaimalai', 'Annur', 'Coimbatore', 'Kinathukadavu', 'Madukkarai', 'Mettupalayam', 'Pollachi', 'Sulur', 'Valparai', 'அன்னூர்', 'ஆனைமலை', 'கிணத்துக்கடவு', 'கோயம்புத்தூர்', 'கோவை', 'சூலூர்', 'பொள்ளாச்சி', 'மதுக்கரை', 'மேட்டுப்பாளையம்', 'வால்பாறை']},
     'salem': {"town": 'சேலம்', "district_ta": 'சேலம்', "district_en": 'Salem', "handle": 'salem360.official', "tag": '#Salem360', "brand_px": 54,
            "official_site": 'salem.nic.in', "aliases": ['Attur', 'Edappadi', 'Gangavalli', 'Kadayampatti', 'Mettur', 'Omalur', 'Pethanaickenpalayam', 'Salem', 'Sankagiri', 'Vazhapadi', 'Yercaud', 'ஆத்தூர்', 'எடப்பாடி', 'ஏற்காடு', 'ஓமலூர்', 'காடையாம்பட்டி', 'கெங்கவல்லி', 'சங்ககிரி', 'சேலம்', 'பெத்தநாயக்கன்பாளையம்', 'மேட்டூர்', 'வாழப்பாடி']},

@@ -1,6 +1,6 @@
 # news360-autopost - project context
 
-Automatic Namakkal-district news for Instagram pages **நாமக்கல் 360** (@namakkal.360) and **இராசிபுரம் 360** (@rasipuram360.official),
+Automatic Namakkal-district news for Instagram pages **நாமக்கல் 360** (@namakkal360.official) and **இராசிபுரம் 360** (@rasipuram360.official),
 and for the website **www.namakkal360.workers.dev** (repo: news360-tn/namakkal360-web).
 Everything runs on GitHub Actions; the Google Sheet (through the Apps Script bridge) is the working store.
 

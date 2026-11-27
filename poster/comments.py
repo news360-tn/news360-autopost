@@ -25,7 +25,7 @@ DRY = os.environ.get("DRY_RUN", "") in ("1", "true", "yes")
 # (never e-mailed, never checked again).
 CRITICAL = set((os.environ.get("COMMENT_KINDS") or "question,doubt_or_fake_claim,complaint,info_from_viewer,spam_or_abuse").split(","))
 IGNORED = HERE / "comments_ignored.json"      # hashed comment ids only (the repo is public - never the text)
-HANDLES = {"namakkal": "namakkal.360", "rasipuram": "rasipuram360.official", "coimbatore": "coimbatore.360"}
+HANDLES = {"namakkal": "namakkal360.official", "rasipuram": "rasipuram360.official", "coimbatore": "coimbatore360.official"}
 
 SYSTEM = """You help the owner of a Tamil local-news Instagram page reply to viewers' comments. You NEVER post anything - the owner chooses.
 Return JSON: {"kind": one of "question" | "doubt_or_fake_claim" | "complaint" | "praise" | "info_from_viewer" | "spam_or_abuse" | "other",

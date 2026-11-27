@@ -1322,7 +1322,7 @@ def collab_user():
     """the account invited as collaborator: Namakkal 360 on Rasipuram 360 posts, Rasipuram 360 on district-wide Namakkal 360 posts"""
     if COLLAB == "rasipuram":
         return CONFIG.get("collab_username", "rasipuram360.official")
-    return CONFIG.get("collab_namakkal_username", "namakkal.360")
+    return CONFIG.get("collab_namakkal_username", "namakkal360.official")
 
 
 def accept_collab(page, mid):
