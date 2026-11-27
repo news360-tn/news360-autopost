@@ -48,7 +48,7 @@ class CollabTest(unittest.TestCase):
                 self.assertEqual(post.collab_page(r, "salem"), "rasipuram")
                 self.assertEqual(post.collab_page(other, "salem"), "")
                 with mock.patch.object(post, "COLLAB", "rasipuram"):
-                    self.assertEqual(post.collab_user(), "rasipuram.360")      # the account invited
+                    self.assertEqual(post.collab_user(), "rasipuram360.official")      # the account invited
         with mock.patch.object(post, "CONFIG", dict(CFG, collab_username="")):
             if post.PAGE == "salem":
                 self.assertEqual(post.collab_page(r, "salem"), "")      # no collaborator account set: off

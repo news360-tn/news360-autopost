@@ -1,6 +1,6 @@
 # News360 – நாமக்கல் 360 auto-posting
 
-Automatic Namakkal-district news reels for **நாமக்கல் 360** (@namakkal.360) and **இராசிபுரம் 360** (@rasipuram.360),
+Automatic Namakkal-district news reels for **நாமக்கல் 360** (@namakkal.360) and **இராசிபுரம் 360** (@rasipuram360.official),
 also sent to the website www.namakkal360.workers.dev. Everything runs on GitHub Actions; the Google Sheet (through the
 Apps Script bridge) is the working store. Owner rules, main files and recent changes: see `PROJECT_CONTEXT.md`.
 

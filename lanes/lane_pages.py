@@ -5,7 +5,7 @@ Rasipuram is a page of Namakkal district. Handles are placeholders until the pag
 PAGES = {
     'namakkal': {"town": 'நாமக்கல்', "district_ta": 'நாமக்கல்', "district_en": 'Namakkal', "handle": 'namakkal.360', "tag": '#Namakkal360', "brand_px": 54,
            "official_site": 'namakkal.nic.in', "aliases": ['Kolli Hills', 'Kumarapalayam', 'Mohanur', 'Namakkal', 'Paramathi Velur', 'Rasipuram', 'Sendamangalam', 'Tiruchengode', 'Velur', 'இராசிபுரம்', 'குமாரபாளையம்', 'கொல்லிமலை', 'சேந்தமங்கலம்', 'திருச்செங்கோடு', 'நாமக்கல்', 'மோகனூர்', 'ராசிபுரம்', 'வேலூர்']},
-    'rasipuram': {"town": 'இராசிபுரம்', "district_ta": 'நாமக்கல்', "district_en": 'Namakkal', "handle": 'rasipuram.360', "tag": '#Rasipuram360', "brand_px": 50,
+    'rasipuram': {"town": 'இராசிபுரம்', "district_ta": 'நாமக்கல்', "district_en": 'Namakkal', "handle": 'rasipuram360.official', "tag": '#Rasipuram360', "brand_px": 50,
            "official_site": 'namakkal.nic.in', "aliases": ['Kolli Hills', 'Kumarapalayam', 'Mohanur', 'Namakkal', 'Paramathi Velur', 'Rasipuram', 'Sendamangalam', 'Tiruchengode', 'Velur', 'இராசிபுரம்', 'குமாரபாளையம்', 'கொல்லிமலை', 'சேந்தமங்கலம்', 'திருச்செங்கோடு', 'நாமக்கல்', 'மோகனூர்', 'ராசிபுரம்', 'வேலூர்']},
     'coimbatore': {"town": 'கோவை', "district_ta": 'கோயம்புத்தூர்', "district_en": 'Coimbatore', "handle": 'coimbatore360_official', "tag": '#Coimbatore360', "brand_px": 54,
            "official_site": 'coimbatore.nic.in', "aliases": ['Anaimalai', 'Annur', 'Coimbatore', 'Kinathukadavu', 'Madukkarai', 'Mettupalayam', 'Pollachi', 'Sulur', 'Valparai', 'அன்னூர்', 'ஆனைமலை', 'கிணத்துக்கடவு', 'கோயம்புத்தூர்', 'கோவை', 'சூலூர்', 'பொள்ளாச்சி', 'மதுக்கரை', 'மேட்டுப்பாளையம்', 'வால்பாறை']},
