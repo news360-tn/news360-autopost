@@ -1,14 +1,524 @@
+writing [N]: அர்த்தநாரீஸ்வரர் உப கோவில்களில் பக்தர்கள் ரூ.8.16 லட்சம் காண
+writing [N]: 22 கிலோ குட்கா பறிமுதல்: இருவர் கைது
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+writing [N]: ஒரு மணி நேரம் கொட்டிய கனமழை மோகனூரில் இயல்பு வாழ்க்கை பாதிப்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok groq/qwen/qwen3.8-27b (3s)
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 44 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): திருச்செங்கோடு ('போலீசார் விசாரணையில், திருச்செங்கோடு அருகே ஆண்டிபாளையத்தை சே')
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 2 problems
+  The caption's body text contains an English line ("Tiruchengode temple hundi Rs 8.16 lakh | Namakkal news") that is not part of the allowed footer (the 📍 place | posting-date line, Follow line, hashtags); it is an extra English sentence not in the article.
+  The caption's 'நாள்: 27 நவம்பர் 2026' line is an extra date line in the body; it is not the allowed posting-date footer and presents a date not stated in the article.
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  fact-check: The caption's body text contains an English line ("Tiruchengode temple hundi Rs 8.16 lakh | Namakkal news") that is not part of the allowed footer (the 📍 place | posting-date line, Follow line, hashtags); it is an extra English sentence not in the article.
+  fact-check: The caption's 'நாள்: 27 நவம்பர் 2026' line is an extra date line in the body; it is not the allowed posting-date footer and presents a date not stated in the article.
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  slide 3 line 3 longer than 60 characters
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The article calls the road 'மோகனூர் - ப.வேலூர் சாலை' (Mohanur - P. Velur road), but the draft changes it to 'மோகனூர் - பரமத்தி வேலூர் சாலை' (Mohanur - Paramathi Velur road) in the reel_script, slides_spec and caption, which is not in the article.
+  The reel_script does not mention that the rain lasted exactly one hour as stated in the article's headline, which is present, but it omits the article's note that farmers were happy, which is included; however the article's key fact that rain began at 2:30 pm 'yesterday' is stated, so no issue there. (Minor: the article says 'ஒரு மணி நேரம் நீடித்த மழை' which is covered.)
+  The caption states the Chennai Meteorological Centre warned of 'பலத்த காற்றுடன் கனமழை' (heavy rain with strong winds) for Tamil Nadu broadly, while the article says it warned of this for various districts; the draft generalizes it, which is a slight misrepresentation but not a clear error in the reel.
+attempt 1 groq/qwen/qwen3.8-27b: 3 problems
+  fact-check: The article calls the road 'மோகனூர் - ப.வேலூர் சாலை' (Mohanur - P. Velur road), but the draft changes it to 'மோகனூர் - பரமத்தி வேலூர் சாலை' (Mohanur - Paramathi Velur road) in the reel_script, slides_spec and caption, which is not in the article.
+  fact-check: The reel_script does not mention that the rain lasted exactly one hour as stated in the article's headline, which is present, but it omits the article's note that farmers were happy, which is included; however the article's key fact that rain began at 2:30 pm 'yesterday' is stated, so no issue there. (Minor: the article says 'ஒரு மணி நேரம் நீடித்த மழை' which is covered.)
+  fact-check: The caption states the Chennai Meteorological Centre warned of 'பலத்த காற்றுடன் கனமழை' (heavy rain with strong winds) for Tamil Nadu broadly, while the article says it warned of this for various districts; the draft generalizes it, which is a slight misrepresentation but not a clear error in the reel.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  caption must contain the exact follow line
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1269. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): திருச்செங்கோடு ('போலீசார் விசாரணையில், திருச்செங்கோடு அருகே ஆண்டிபாளையத்தை சே')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1432. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
+real photo: vision check out of free quota
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The draft names the road as 'பரமத்தி வேலூர்' (Paramathi Velur), but the article says 'ப.வேலூர்' (P. Velur, i.e. Paramathi Velur); this is a minor naming variance, not a substantive error.
+  The reel_script states the rain fell 'நேற்று' (yesterday) at 2:30 PM, which matches the article's 'நேற்று' and '2:30 மணி', so no issue there; however the reel_script says 'ஓட்டுநர்கள் அவற்றைத் தள்ளிக்கொண்டு செல்ல வேண்டிய நிலை' (drivers had to push them), while the article says the two-wheelers were pushed by unspecified riders, which is an unsupported specification of the drivers as the ones pushing.
+  The caption says 'ஒரு மணி நேரம் நீடித்த இந்த மழையால்... வெள்ளம்போல் ஓடியது' and the slides say 'மோகனூர் - பரமத்தி வேலூர் சாலையில்', consistent with the article; no mixing error found.
+claude rewrite 1 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The draft names the road as 'பரமத்தி வேலூர்' (Paramathi Velur), but the article says 'ப.வேலூர்' (P. Velur, i.e. Paramathi Velur); this is a minor naming variance, not a substantive error.
+  fact-check: The reel_script states the rain fell 'நேற்று' (yesterday) at 2:30 PM, which matches the article's 'நேற்று' and '2:30 மணி', so no issue there; however the reel_script says 'ஓட்டுநர்கள் அவற்றைத் தள்ளிக்கொண்டு செல்ல வேண்டிய நிலை' (drivers had to push them), while the article says the two-wheelers were pushed by unspecified riders, which is an unsupported specification of the drivers as the ones pushing.
+  fact-check: The caption says 'ஒரு மணி நேரம் நீடித்த இந்த மழையால்... வெள்ளம்போல் ஓடியது' and the slides say 'மோகனூர் - பரமத்தி வேலூர் சாலையில்', consistent with the article; no mixing error found.
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Devotees offer Rs 8.16 lakh in hundi at '
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261127-0836","first":"RN-860"}
+posting job started at once
+real photo: no picture on the source page -> AI pictures
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The reel_script and caption say the road is 'மோகனூர் - பரமத்தி வேலூர்' (Paramathi Velur), while the article says 'மோகனூர் - ப.வேலூர்' (P. Velur / Paramathi-Velur is an interpretation that is not clearly stated in the article; the article only gives 'ப.வேலூர்'), so the place name is altered or expanded beyond the source.
+  The reel_script states the rain is what made farmers happy ('இந்த மழையால் விவசாயிகள் மகிழ்ச்சியடைந்தனர்'), which is accurate, but the slides_spec 'என்ன பாதிப்பு?' slide and the reel_script do not mention that the rain started after an overcast morning with intermittent sunshine; this is minor, not a required fact.
+  The caption's date line 'நேற்று (நவம்பர் 26, 2026)' gives a specific date for the event that is not stated in the article; the article only says 'நேற்று' (yesterday), so the date is an invented detail.
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The reel_script and caption say the road is 'மோகனூர் - பரமத்தி வேலூர்' (Paramathi Velur), while the article says 'மோகனூர் - ப.வேலூர்' (P. Velur / Paramathi-Velur is an interpretation that is not clearly stated in the article; the article only gives 'ப.வேலூர்'), so the place name is altered or expanded beyond the source.
+  fact-check: The reel_script states the rain is what made farmers happy ('இந்த மழையால் விவசாயிகள் மகிழ்ச்சியடைந்தனர்'), which is accurate, but the slides_spec 'என்ன பாதிப்பு?' slide and the reel_script do not mention that the rain started after an overcast morning with intermittent sunshine; this is minor, not a required fact.
+  fact-check: The caption's date line 'நேற்று (நவம்பர் 26, 2026)' gives a specific date for the event that is not stated in the article; the article only says 'நேற்று' (yesterday), so the date is an invented detail.
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+writing [N]: மீனவர் கூட்டுறவு சங்க பேரவை கூட்டம் கூச்சல் குழப்பத்தால் ஒத்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for '22 kg gutka seized in Paramathi Velur, t'
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261127-0836","first":"RN-861"}
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The article says the road is 'மோகனூர் - ப.வேலூர்' (Mohanur - P. Velur), but the draft changes it to 'மோகனூர் - பரமத்தி வேலூர்', which is a different place name than the article gives.
+  The slides_spec slide 4 line 'வாகன ஓட்டிகள் கவனமாகச் செல்லுங்கள்' is an advisory added by the draft; the article does not contain this warning.
+  The slides_spec slide 4 line 'நாமக்கல் மாவட்டத்தில் சில நாட்களாக பரவலாக மழை' is in the article's background, but placed under the farmers heading it mixes two separate facts into one slide section.
+  The caption's English line 'Heavy rain disrupts normal life in Mohanur | Namakkal news' is an English translation of the story and is not a Tamil sentence; this is not a claim problem by itself but the caption also states 'வாகன ஓட்டிகள் ஊர்ந்து செல்லும் நிலை ஏற்பட்டது; பல டூவீலர்கள்... தள்ளிச் செல்லப்பட்டன' which matches the article, so no extra issue here.
+claude rewrite 3 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The article says the road is 'மோகனூர் - ப.வேலூர்' (Mohanur - P. Velur), but the draft changes it to 'மோகனூர் - பரமத்தி வேலூர்', which is a different place name than the article gives.
+  fact-check: The slides_spec slide 4 line 'வாகன ஓட்டிகள் கவனமாகச் செல்லுங்கள்' is an advisory added by the draft; the article does not contain this warning.
+  fact-check: The slides_spec slide 4 line 'நாமக்கல் மாவட்டத்தில் சில நாட்களாக பரவலாக மழை' is in the article's background, but placed under the farmers heading it mixes two separate facts into one slide section.
+  fact-check: The caption's English line 'Heavy rain disrupts normal life in Mohanur | Namakkal news' is an English translation of the story and is not a Tamil sentence; this is not a claim problem by itself but the caption also states 'வாகன ஓட்டிகள் ஊர்ந்து செல்லும் நிலை ஏற்பட்டது; பல டூவீலர்கள்... தள்ளிச் செல்லப்பட்டன' which matches the article, so no extra issue here.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1432. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+writing [N]: குப்பையில்லா மாநகரம்: எம்.எல்.ஏ., வலியுறுத்தல்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 48 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+ok anthropic/claude-haiku-5-5
+real photo: no picture on the source page -> AI pictures
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 43 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  sentence 1 (one-line story) has 18 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+images made: 2 for 'One-hour heavy rain disrupts normal life'
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The caption's 'முழு விவரம்' section says the meeting was held at Avarangadu 'நகராட்சி மண்டபத்தில்' which is consistent, but the caption's 'நடவடிக்கை: கூட்டம் ஒத்திவைக்கப்பட்டது' line is a result label not in the article as an action taken; the article only says the meeting was postponed, so this is acceptable, however the caption also says 'பொதுப் பேரவைக் கூட்டம' (general assembly meeting) which matches the article's 'பொது பேரவை கூட்டம'.
+  The reel_script states the meeting was held 'நேற்று' (yesterday), which matches the article, but the caption's '🗓️ நாள்: 26 நவம்பர் 2026' is a posting date and is excluded from review.
+  The reel_script says 'சங்கத்தில் தகுதியற்றவர்களை அதிகாரிகள் உறுப்பினர்களாகச் சேர்த்ததாக மீனவர்கள் குற்றம்சாட்டினர்' — the article says fishermen said officials added many members, and that people unrelated to fishing were added; 'தகுதியற்றவர்கள்' (unqualified persons) is a reasonable paraphrase, so this is not a clear error.
+  The slides_spec 'மீனவர்களின்' title and its lines are a fragmentary heading ('மீனவர்களின்' followed by unrelated lines), making the slide heading ungrammatical and without clear meaning in Tamil.
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The caption's 'முழு விவரம்' section says the meeting was held at Avarangadu 'நகராட்சி மண்டபத்தில்' which is consistent, but the caption's 'நடவடிக்கை: கூட்டம் ஒத்திவைக்கப்பட்டது' line is a result label not in the article as an action taken; the article only says the meeting was postponed, so this is acceptable, however the caption also says 'பொதுப் பேரவைக் கூட்டம' (general assembly meeting) which matches the article's 'பொது பேரவை கூட்டம'.
+  fact-check: The reel_script states the meeting was held 'நேற்று' (yesterday), which matches the article, but the caption's '🗓️ நாள்: 26 நவம்பர் 2026' is a posting date and is excluded from review.
+  fact-check: The reel_script says 'சங்கத்தில் தகுதியற்றவர்களை அதிகாரிகள் உறுப்பினர்களாகச் சேர்த்ததாக மீனவர்கள் குற்றம்சாட்டினர்' — the article says fishermen said officials added many members, and that people unrelated to fishing were added; 'தகுதியற்றவர்கள்' (unqualified persons) is a reasonable paraphrase, so this is not a clear error.
+  fact-check: The slides_spec 'மீனவர்களின்' title and its lines are a fragmentary heading ('மீனவர்களின்' followed by unrelated lines), making the slide heading ungrammatical and without clear meaning in Tamil.
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261127-0836","first":"RN-862"}
+ok anthropic/claude-haiku-5-5
+writing [R]: சோதனை சாவடி பதிவுகளை கலெக்டர் ஆய்வு
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 3 problems
+  The draft calls Dilip a 'சட்டமன்ற உறுப்பினர்' (MLA) in reel_script, which matches the article's 'எம்.எல்.ஏ.'; no problem here. However, the reel_script and caption omit the article's point that Dilip is from த.வெ.க. (the party), while slides_spec includes it; this is a minor inconsistency rather than an error.
+  The reel_script states 'நவீன குப்பை மேலாண் முறைகளை' is absent: the reel_script omits the article's call to implement modern garbage management methods, which is present in the caption, creating an inconsistency between the reel and caption.
+  The caption adds 'நவீன குப்பை மேலாண்மை முறைகளை செயல்படுத்த வேண்டும்' and the headline's 'குப்பையில்லா மாநகரமாக மாற்ற எம்.எல்.ஏ. வலியுறுத்தல்' is an acceptable summary; no invented facts were found beyond these omissions.
+claude rewrite 2 anthropic/claude-haiku-5-5: 3 problems
+  fact-check: The draft calls Dilip a 'சட்டமன்ற உறுப்பினர்' (MLA) in reel_script, which matches the article's 'எம்.எல்.ஏ.'; no problem here. However, the reel_script and caption omit the article's point that Dilip is from த.வெ.க. (the party), while slides_spec includes it; this is a minor inconsistency rather than an error.
+  fact-check: The reel_script states 'நவீன குப்பை மேலாண் முறைகளை' is absent: the reel_script omits the article's call to implement modern garbage management methods, which is present in the caption, creating an inconsistency between the reel and caption.
+  fact-check: The caption adds 'நவீன குப்பை மேலாண்மை முறைகளை செயல்படுத்த வேண்டும்' and the headline's 'குப்பையில்லா மாநகரமாக மாற்ற எம்.எல்.ஏ. வலியுறுத்தல்' is an acceptable summary; no invented facts were found beyond these omissions.
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 52 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+hl1 shortened at a natural break: 'பள்ளிப்பாளையத்தில் மீனவர் சங்கக் கூட்டம் ஒத்திவைப்பு' -> 'பள்ளிப்பாளையத்தில் கூட்டம் ஒத்திவைப்பு'
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1436. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  reel_script has 99 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 30 ('அரசு மற்றும் அரசு உதவி பெறும் பள்ளிகளில், தேசிய வருவாய் வழி '); 12 ('உயர்கல்வி வழிகாட்டி திட்டத்தின் கீழ், 2026-27-ம் கல்வியாண்டி')
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 43 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+hl1 shortened at a natural break: 'நாமக்கல் மாநகராட்சி குப்பையில்லா நகரமாகுமா?' -> 'நாமக்கல் குப்பையில்லா நகரமாகுமா?'
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1436. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok anthropic/claude-haiku-5-5
+real photo: vision check resting (free quota busy)
+ok anthropic/claude-haiku-5-5
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Meeting of Pallipalayam fishermen's coop'
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  reel_script has 90 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  reel_script has 96 words; need 100-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 30 ('அரசு மற்றும் அரசு உதவி பெறும் பள்ளிகளில், தேசிய வருவாய் வழி ')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1432. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok anthropic/claude-haiku-5-5
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261127-0837","first":"RN-863"}
+real photo: vision check resting (free quota busy)
+writing [R]: பா.ஜ., சார்பில் இன்று தீப்பந்த போராட்டம்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Namakkal Collector Madhubalan inspects s'
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): ராசிபுரம் ('ராசிபுரம்;'திருப்பரங்குன்றம் மலை மீதுள்ள தீபத்தூணில், தீபம் '); 5 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 30 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்')
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261127-0837","first":"RN-864"}
+real photo: no picture on the source page -> AI pictures
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Garbage-free city: MLA Dilip urges full '
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  hl1 (the first headline on screen) must name the place 'தமிழகம் முழுவதும்', e.g. 'தமிழகம் முழுவதும்: ...' or 'தமிழகம் முழுவதும்-இல் ...' - viewers share news of their own area
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261127-0838","first":"RN-865"}
+writing [N]: 40 வயதுக்கு மேற்பட்டோருக்கு கண் பரிசோதனை அவசியம் கண் பார்வை 
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+writing [N]: டெங்கு காய்ச்சலில் 32 பேர் பாதிப்பு: சுகாதாரத்துறை எச்சரிக்க
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 43 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): ராசிபுரம் ('ராசிபுரம்;'திருப்பரங்குன்றம் மலை மீதுள்ள தீபத்தூணில், தீபம் '); 20 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 5 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 30 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்')
+hl1 shortened at a natural break: 'தமிழகம் முழுவதும்: இன்று தீப்பந்த போராட்டம்' -> 'தமிழகம் முழுவதும் தீப்பந்த போராட்டம்'
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1432. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The reel_script says the event was held at 'நாமக்கல் - திருச்சி சாலை ஸ்ரீமஹால்' — this matches the article, so no problem there; however the reel_script attributes the 'six months or yearly' advice and the 'kidney, heart' warning to Dr. Senthilkumar, who is the general manager, not a doctor — the article does state he said it, so this is acceptable.
+  The reel_script states Dr. Gautam said 40-60 year olds should check eye power; the article attributes this to the chief doctor Gautam, which matches.
+  The caption's headline sentence 'நாமக்கல் மருத்துவர் அறிவுரை' and the reel_script's claim that the three organisations 'jointly conducted' the event are supported, but the reel_script omits the key fact that the free check-up was given to all attendees at the event itself, which the article states ('அனைவருக்கும் இலவசமாக கண் பரிசோதனை செய்யப்பட்டது'); instead it only mentions the later free check-up for members, leaving out this important result.
+  The reel_script says the eye check-up is needed 'for people above 40' in its opening sentence, but the article's central advice concerns those over 40 generally; the specific 40-60 age instruction is attributed to Dr. Gautam, so the phrasing 'நாமக்கல்லில் 40 வயதுக்கு மேற்பட்டோர் கண் பரிசோதனை செய்வது அவசியம் என மருத்துவர்கள் அறிவுறுத்தினர்' is consistent with the article.
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The reel_script says the event was held at 'நாமக்கல் - திருச்சி சாலை ஸ்ரீமஹால்' — this matches the article, so no problem there; however the reel_script attributes the 'six months or yearly' advice and the 'kidney, heart' warning to Dr. Senthilkumar, who is the general manager, not a doctor — the article does state he said it, so this is acceptable.
+  fact-check: The reel_script states Dr. Gautam said 40-60 year olds should check eye power; the article attributes this to the chief doctor Gautam, which matches.
+  fact-check: The caption's headline sentence 'நாமக்கல் மருத்துவர் அறிவுரை' and the reel_script's claim that the three organisations 'jointly conducted' the event are supported, but the reel_script omits the key fact that the free check-up was given to all attendees at the event itself, which the article states ('அனைவருக்கும் இலவசமாக கண் பரிசோதனை செய்யப்பட்டது'); instead it only mentions the later free check-up for members, leaving out this important result.
+  fact-check: The reel_script says the eye check-up is needed 'for people above 40' in its opening sentence, but the article's central advice concerns those over 40 generally; the specific 40-60 age instruction is attributed to Dr. Gautam, so the phrasing 'நாமக்கல்லில் 40 வயதுக்கு மேற்பட்டோர் கண் பரிசோதனை செய்வது அவசியம் என மருத்துவர்கள் அறிவுறுத்தினர்' is consistent with the article.
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 5 problems
+  The draft says the 32 Dengue cases are 'நேற்று வரை' (up to yesterday); the article says 32 people were affected by dengue, but the draft's caption adds 'ஆக உயர்வு' (rose to), an implied increase not stated in the article.
+  The reel_script and caption say 'வைரஸ் காய்ச்சல்' cases are over 1,000 and 'மருத்துவமனைகளில் சிகிச்சை' — the article says over 1,000 with ordinary viral fever, and mentions private hospitals too, but the draft omits that the count may rise if private hospital patients are included, which is an important caveat from the article.
+  The reel_script says 'பரமத்தி வேலூர், பரமத்தி, நல்லூர், பொத்தனூர் ஆகிய பகுதிகளில் டெங்கு பாதிப்பு அதிகரித்துள்ளது' — acceptable, but the slide text 'அதிக பாதிப்புள்ள இடங்களில் சிறப்பு முகாம்' and the caption's 'அந்தப் பகுதிகளில் முகாம் நடத்தக் கோரிக்கை வைக்கப்பட்டுள்ளது' conflate the request for camps with camps being held, since the article says special camps are being held in areas identified, whereas the request is only for the three named areas.
+  The caption's 'மாவட்ட இணை இயக்குநர் டாக்டர் பூங்கொடியின் உத்தரவின்படி சிறப்பு மருத்துவ முகாம்கள் நடத்தப்பட்டு வருகின்றன' is a sentence mixing the health inspector's account with the camp request, merging two distinct facts into one.
+  The reel_script omits the health authorities' warning/advice to the public to be cautious as the main message framing, and omits that the 32 patients are all receiving treatment at government hospitals, an important fact of the article.
+claude rewrite 1 anthropic/claude-haiku-5-5: 5 problems
+  fact-check: The draft says the 32 Dengue cases are 'நேற்று வரை' (up to yesterday); the article says 32 people were affected by dengue, but the draft's caption adds 'ஆக உயர்வு' (rose to), an implied increase not stated in the article.
+  fact-check: The reel_script and caption say 'வைரஸ் காய்ச்சல்' cases are over 1,000 and 'மருத்துவமனைகளில் சிகிச்சை' — the article says over 1,000 with ordinary viral fever, and mentions private hospitals too, but the draft omits that the count may rise if private hospital patients are included, which is an important caveat from the article.
+  fact-check: The reel_script says 'பரமத்தி வேலூர், பரமத்தி, நல்லூர், பொத்தனூர் ஆகிய பகுதிகளில் டெங்கு பாதிப்பு அதிகரித்துள்ளது' — acceptable, but the slide text 'அதிக பாதிப்புள்ள இடங்களில் சிறப்பு முகாம்' and the caption's 'அந்தப் பகுதிகளில் முகாம் நடத்தக் கோரிக்கை வைக்கப்பட்டுள்ளது' conflate the request for camps with camps being held, since the article says special camps are being held in areas identified, whereas the request is only for the three named areas.
+  fact-check: The caption's 'மாவட்ட இணை இயக்குநர் டாக்டர் பூங்கொடியின் உத்தரவின்படி சிறப்பு மருத்துவ முகாம்கள் நடத்தப்பட்டு வருகின்றன' is a sentence mixing the health inspector's account with the camp request, merging two distinct facts into one.
+  fact-check: The reel_script omits the health authorities' warning/advice to the public to be cautious as the main message framing, and omits that the 32 patients are all receiving treatment at government hospitals, an important fact of the article.
+ok anthropic/claude-haiku-5-5
+writing [N]: மத்திய அரசை கண்டித்து ஐக்கிய விவசாயிகள் முன்னணி ஆர்ப்பாட்டம்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` i
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  hl1 (the first headline on screen) must name the place 'நாமக்கல்', e.g. 'நாமக்கல்: ...' or 'நாமக்கல்-இல் ...' - viewers share news of their own area
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 4 problems
+  The reel_script and caption say 'Town Panchayat' administration gave the private-hospital remark, which matches the article; no problem there. However, the reel_script states that the 32 people are receiving treatment in a government hospital and that 'the figure would be higher if private hospital patients were counted' - this matches the article. The article says the 100+ and 1,000+ figures are people currently in hospitals; the draft says 1,000+ have 'simple viral fever' and 100+ have 'dengue symptoms', which is consistent, so no problem.
+  The reel_script says the government/health department reported the figures 'up to yesterday' (நேற்று வரை); the article supports this, so no problem.
+  The slides_spec line 'பரமத்தி வேலூர், பரமத்தி, நல்லூர், பொத்தனூர்' and related content match the article; no invented detail found in the slides beyond the article's facts.
+  The reel_script omits the article's named officials (health inspector Selvakumar and District Joint Director Dr. Poongodi), which are important actors behind the special camps; this is a missing fact of the article (who ordered the camps).
+claude rewrite 2 anthropic/claude-haiku-5-5: 4 problems
+  fact-check: The reel_script and caption say 'Town Panchayat' administration gave the private-hospital remark, which matches the article; no problem there. However, the reel_script states that the 32 people are receiving treatment in a government hospital and that 'the figure would be higher if private hospital patients were counted' - this matches the article. The article says the 100+ and 1,000+ figures are people currently in hospitals; the draft says 1,000+ have 'simple viral fever' and 100+ have 'dengue symptoms', which is consistent, so no problem.
+  fact-check: The reel_script says the government/health department reported the figures 'up to yesterday' (நேற்று வரை); the article supports this, so no problem.
+  fact-check: The slides_spec line 'பரமத்தி வேலூர், பரமத்தி, நல்லூர், பொத்தனூர்' and related content match the article; no invented detail found in the slides beyond the article's facts.
+  fact-check: The reel_script omits the article's named officials (health inspector Selvakumar and District Joint Director Dr. Poongodi), which are important actors behind the special camps; this is a missing fact of the article (who ordered the camps).
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  reel_script says 'நவம்பர் முதல் டிசம்பர் 15ஆம் தேதி வரை' (November to December 15) — the article says 'நவ., முதல், டிச., 15 வரை', which refers to November to December 15; this is consistent, but the slide 'நவ. முதல் டிச. 15 வரை' is also fine — no error here
+  reel_script omits the article's key fact that the free check-up is for members of the Tamil Nadu Traders' Federation (வணிகர் சங்கங்களின் பேரமைப்பு) 'and their families' in the body text — it mentions members and family, so no omission
+  slides_spec hl2 'இலவச பரிசோதனை: நவ. முதல்' is a truncated/unclear headline sentence that omits the end date and the audience, making it misleading as a standalone headline
+  reel_script attributes the statement 'சர்க்கரை நோயால் கண்ணில் சிறிய பாதிப்பு தொடங்கினாலும், கிட்னி, இதயம் போன்ற உறுப்புகள் பாதிக்கப்படலாம்' to the general warning correctly, but the caption says the 40 vs 60 age group advice and the 'படிப்பது சிரமம்' point are attributed to Dr. Gautam, which matches the article — no issue
+  slides_spec slide 'என்ன நிகழ்ச்சி?' line 'நாமக்கல்-திருச்சி சாலை ஸ்ரீமஹாலில் நடைபெற்றது' and 'உலக நீரிழிவு தினத்தையொட்டி நடைபெற்றது' are fine, but the slide line 'குடும்பத்தினருக்கும் பொருந்தும்' is vague about who the families belong to (members of the traders' federation), which the reel and slides do not state clearly
+  caption contains an English line 'Namakkal eye check-up for people above 40 | Namakkal news' that is not a claim from the article but is an extra non-footer line; it is a translation summary and not a factual error
+claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: reel_script says 'நவம்பர் முதல் டிசம்பர் 15ஆம் தேதி வரை' (November to December 15) — the article says 'நவ., முதல், டிச., 15 வரை', which refers to November to December 15; this is consistent, but the slide 'நவ. முதல் டிச. 15 வரை' is also fine — no error here
+  fact-check: reel_script omits the article's key fact that the free check-up is for members of the Tamil Nadu Traders' Federation (வணிகர் சங்கங்களின் பேரமைப்பு) 'and their families' in the body text — it mentions members and family, so no omission
+  fact-check: slides_spec hl2 'இலவச பரிசோதனை: நவ. முதல்' is a truncated/unclear headline sentence that omits the end date and the audience, making it misleading as a standalone headline
+  fact-check: reel_script attributes the statement 'சர்க்கரை நோயால் கண்ணில் சிறிய பாதிப்பு தொடங்கினாலும், கிட்னி, இதயம் போன்ற உறுப்புகள் பாதிக்கப்படலாம்' to the general warning correctly, but the caption says the 40 vs 60 age group advice and the 'படிப்பது சிரமம்' point are attributed to Dr. Gautam, which matches the article — no issue
+  fact-check: slides_spec slide 'என்ன நிகழ்ச்சி?' line 'நாமக்கல்-திருச்சி சாலை ஸ்ரீமஹாலில் நடைபெற்றது' and 'உலக நீரிழிவு தினத்தையொட்டி நடைபெற்றது' are fine, but the slide line 'குடும்பத்தினருக்கும் பொருந்தும்' is vague about who the families belong to (members of the traders' federation), which the reel and slides do not state clearly
+  fact-check: caption contains an English line 'Namakkal eye check-up for people above 40 | Namakkal news' that is not a claim from the article but is an extra non-footer line; it is a translation summary and not a factual error
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1436. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+free fact-check unavailable, using Claude: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model 
+ok anthropic/claude-haiku-5-5
+ok anthropic/claude-haiku-5-5
+factcheck by anthropic/claude-haiku-5-5: 6 problems
+  Caption headline says the dengue count rose to 32 ("பாதிப்பு 32 ஆக உயர்வு"), but the article only states 32 cases as of yesterday, with no rise described; this is a change in meaning.
+  Reel script and slides say the 32 people were infected by dengue 'as of yesterday' correctly, but the caption 'முகாம் கோரிக்கை' line places the camp requests as if camps are being requested in the same areas, which is accurate; however the caption says camps are conducted under the joint director's order, consistent with the article.
+  Reel script says 'முகாம் நடத்தக் கோரிக்கை' areas are the same areas as high impact in Sultanpet etc.; the article says these areas have high impact and a camp request is made, consistent. No issue there.
+  Reel script omits that all 32 dengue patients are receiving treatment at government hospitals, an important fact from the article.
+  Reel script and slides say the reel gives 'வைரஸ் காய்ச்சல்' 1,000 people treated in hospitals; the article says 1,000+ are treated in hospitals, consistent. No issue.
+  Slide 2 says 'சுல்தான்பேட்டை, தெற்கு நல்லியம்பாளையம், வெட்டுக்காட்டுப்புதார் பகுதிகளில் அதிக பாதிப்பு' and the slide also lists these under 'எந்தப் பகுதிகள்?' as high impact; the article says high impact there, consistent.
+claude rewrite 3 anthropic/claude-haiku-5-5: 6 problems
+  fact-check: Caption headline says the dengue count rose to 32 ("பாதிப்பு 32 ஆக உயர்வு"), but the article only states 32 cases as of yesterday, with no rise described; this is a change in meaning.
+  fact-check: Reel script and slides say the 32 people were infected by dengue 'as of yesterday' correctly, but the caption 'முகாம் கோரிக்கை' line places the camp requests as if camps are being requested in the same areas, which is accurate; however the caption says camps are conducted under the joint director's order, consistent with the article.
+  fact-check: Reel script says 'முகாம் நடத்தக் கோரிக்கை' areas are the same areas as high impact in Sultanpet etc.; the article says these areas have high impact and a camp request is made, consistent. No issue there.
+  fact-check: Reel script omits that all 32 dengue patients are receiving treatment at government hospitals, an important fact from the article.
+  fact-check: Reel script and slides say the reel gives 'வைரஸ் காய்ச்சல்' 1,000 people treated in hospitals; the article says 1,000+ are treated in hospitals, consistent. No issue.
+  fact-check: Slide 2 says 'சுல்தான்பேட்டை, தெற்கு நல்லியம்பாளையம், வெட்டுக்காட்டுப்புதார் பகுதிகளில் அதிக பாதிப்பு' and the slide also lists these under 'எந்தப் பகுதிகள்?' as high impact; the article says high impact there, consistent.
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1432. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+real photo: vision check resting (free quota busy)
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  hl1 is 41 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+hl1 shortened at a natural break: 'நாமக்கல்லில் விவசாயிகள் கண்டனப் போராட்டம்' -> 'நாமக்கல்லில் கண்டனப் போராட்டம்'
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+proofread skipped: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5enxj94ehaa58b82eyehvhp` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 1436. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing","type":"tokens","code":"rate_limit_exceeded"}}
+
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+images made: 2 for 'Eye check-up essential for people above '
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Request too large for model `qwen/qwen3.8-27b` in organization `org_01m5
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261127-0839","first":"RN-866"}
+real photo: no picture on the source page -> AI pictures
+ok anthropic/claude-haiku-5-5
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
+images made: 2 for 'Dengue affects 32 people in Paramathi Ve'
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261127-0839","first":"RN-867"}
+write_stories.yml started
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 4 news waiting in the queue (written in priority order)
-candidate filter: already filed=3, collected=1
-to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
-daily maximum 30: 5 written today - this round writes at most 0 + 25
-candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
+write round: 14 news waiting in the queue (written in priority order)
+candidate filter: collected=12, already filed=2
+to write: 2 Rasipuram + 10 other district candidates (max 200 + 200 stories)
+daily maximum 30: 5 written today - this round writes at most 2 + 23
+candidates waiting: 2 Rasipuram, 10 Namakkal; time left 29 min
+try (N) manual=False: 22 கிலோ குட்கா பறிமுதல்: இருவர் கைது
+try (N) manual=False: ஒரு மணி நேரம் கொட்டிய கனமழை மோகனூரில் இயல்பு வாழ்க்கை பாதிப்
+try (N) manual=False: அர்த்தநாரீஸ்வரர் உப கோவில்களில் பக்தர்கள் ரூ.8.16 லட்சம் காண
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
+posting job started at once
+try (N) manual=False: மீனவர் கூட்டுறவு சங்க பேரவை கூட்டம் கூச்சல் குழப்பத்தால் ஒத்
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 4})
+try (N) manual=False: குப்பையில்லா மாநகரம்: எம்.எல்.ஏ., வலியுறுத்தல்
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 6})
+try (R) manual=False: சோதனை சாவடி பதிவுகளை கலெக்டர் ஆய்வு
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 8})
+try (R) manual=False: பா.ஜ., சார்பில் இன்று தீப்பந்த போராட்டம்
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 10})
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 12})
+try (N) manual=False: 40 வயதுக்கு மேற்பட்டோருக்கு கண் பரிசோதனை அவசியம் கண் பார்வை 
+try (N) manual=False: ஆதித்தமிழர் பேரவை கண்டன ஆர்ப்பாட்டம்
+skip (N) similar to a filed story: ஆதித்தமிழர் பேரவை கண்டன ஆர்ப்பாட்டம்
+try (N) manual=False: டெங்கு காய்ச்சலில் 32 பேர் பாதிப்பு: சுகாதாரத்துறை எச்சரிக்க
+NOT filed (R) பா.ஜ., சார்பில் இன்று தீப்பந்த போராட்டம்: not Namakkal district news (the story's first lines name another place and no Namakkal place)
+try (N) manual=False: மத்திய அரசை கண்டித்து ஐக்கிய விவசாயிகள் முன்னணி ஆர்ப்பாட்டம்
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 14})
 try (N) manual=False: பயிா்க் கடன் நிலுவையை நவ. 30-க்குள் செலுத்த அழைப்பு
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 16})
+NOT filed (N) மத்திய அரசை கண்டித்து ஐக்கிய விவசாயிகள் முன்னணி ஆர: duplicate after write
 skip (N) similar to a filed story: பயிா்க் கடன் நிலுவையை நவ. 30-க்குள் செலுத்த அழைப்ப
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 0}, time left 29 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
-stories: 0
+candidate loop ended: left R=0 N=0, tried={'R': 2, 'N': 10}, done={'R': 1, 'N': 7}, time left 26 min
+carousel for 0 of 8 stories, the rest reel only
+filed: 1 Rasipuram + 7 Namakkal (targets 200 + 200)
+queue: 2 news waiting to be written
+write_stories.yml started
+All News sheet: {"ok":true,"added":0,"updated":10} 
+stories: 8
