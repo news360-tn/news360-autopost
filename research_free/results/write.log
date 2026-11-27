@@ -1,92 +1,16 @@
-writing [R]: பா.ஜ., சார்பில் இன்று தீப்பந்த போராட்டம்
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.6-flash
-fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
-  "error": {
-    "code": 429,
-    "message": "You exceeded your current quota, please che
-dead for this round: gemini/gemini-3.5-flash
-ok gemini/gemini-3-flash-preview (11s)
-attempt 1 gemini/gemini-3-flash-preview: 3 problems
-  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  reel_script sentence 1 (heard in the first 3 seconds) must name the place 'ராசிபுரம்' and the news itself, e.g. 'ராசிபுரம்-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 20 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 5 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 30 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 6 ('மாலை, 6:00 மணிக்கு உச்சநீதிமன்ற உத்தரவை மீறி தீபத்தூணில் தீப')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 503: {
-  "error": {
-    "code": 503,
-    "message": "This model is currently experiencing 
-fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
-poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
-fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
-dead for this round: groq/openai/gpt-oss-120b
-ok groq/qwen/qwen3.8-27b (3s)
-attempt 2 groq/qwen/qwen3.8-27b: 1 problems
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 5 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 30 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
-switching away from groq/qwen/qwen3.8-27b for 10 min
-free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
-ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  reel_script sentence 1 (heard in the first 3 seconds) must name the place 'ராசிபுரம்' and the news itself, e.g. 'ராசிபுரம்-இல் ... 3 பேர் கைது.' - viewers decide in 3 seconds whether the news is about their area
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 20 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 5 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 30 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 6 ('மாலை, 6:00 மணிக்கு உச்சநீதிமன்ற உத்தரவை மீறி தீபத்தூணில் தீப')
-ok anthropic/claude-haiku-5-5
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-free fact-check unavailable, using Claude: no free model answered: None
-ok anthropic/claude-haiku-5-5
-factcheck by anthropic/claude-haiku-5-5: 2 problems
-  The draft says the protest is 'இன்று' in Rasipuram and across Tamil Nadu, but the article's date context (27th) matches; however the reel_script says 'மாலை 6 மணி வரை' for the government's failure to act, while the article says until 5:30 pm (நவ. 24 மாலை 5:30 மணி வரை), and 6:00 pm is when the lamp was not lit. This misstates the time of inaction.
-  The reel_script says the Supreme Court order was issued 'on the 20th' and asks for lighting on Nov 24, which is consistent, but the slides_spec says 'நவ. 24 அன்று தீபம் ஏற்றவில்லை' and the reel says 'தீபம் ஏற்ற வேண்டும்' without noting the order was by the Supreme Court bench; this is acceptable. However the slides_spec line 'பலர் கைது செய்யப்பட்டனர்' (many were arrested) is not in the article, which only says the police lathi-charged and arrested the devotees without a number or 'many' qualifier, and the reel_script omits the arrest of devotees entirely, so the key fact of the arrests (who was arrested) is missing from the reel_script.
-claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
-  fact-check: The draft says the protest is 'இன்று' in Rasipuram and across Tamil Nadu, but the article's date context (27th) matches; however the reel_script says 'மாலை 6 மணி வரை' for the government's failure to act, while the article says until 5:30 pm (நவ. 24 மாலை 5:30 மணி வரை), and 6:00 pm is when the lamp was not lit. This misstates the time of inaction.
-  fact-check: The reel_script says the Supreme Court order was issued 'on the 20th' and asks for lighting on Nov 24, which is consistent, but the slides_spec says 'நவ. 24 அன்று தீபம் ஏற்றவில்லை' and the reel says 'தீபம் ஏற்ற வேண்டும்' without noting the order was by the Supreme Court bench; this is acceptable. However the slides_spec line 'பலர் கைது செய்யப்பட்டனர்' (many were arrested) is not in the article, which only says the police lathi-charged and arrested the devotees without a number or 'many' qualifier, and the reel_script omits the arrest of devotees entirely, so the key fact of the arrests (who was arrested) is missing from the reel_script.
-ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 9 problems
-  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  reel_script must end with exactly: மேலும் செய்திகளுக்கு நாமக்கல் த்ரீ சிக்ஸ்டி பக்கத்தை பின்தொடருங்கள்.
-  reel_script has 32 words; need 80-160 (the key facts once each, in at most 90 seconds; every other detail goes in the caption's 📰 முழு விவரம் block)
-  sentence 1 (one-line story) has 13 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  caption must contain the exact follow line
-  caption needs 5 hashtags (Instagram max), has 0
-  hl1 (the first headline on screen) must name the place 'ராசிபுரம்', e.g. 'ராசிபுரம்: ...' or 'ராசிபுரம்-இல் ...' - viewers share news of their own area
-  caption has no "📰 முழு விவரம்:" block - put the whole story (every fact) in the caption
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 27 ('ராசிபுரம்;'திருப்பரங்குன்றம் மலை மீதுள்ள தீபத்தூணில், தீபம் '); ராசிபுரம் ('ராசிபுரம்;'திருப்பரங்குன்றம் மலை மீதுள்ள தீபத்தூணில், தீபம் '); 24 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 20 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 5 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்'); 30 ('கார்த்திகை தீபத் திருநாளான நவ., 24-ம் தேதி திருப்பரங்குன்றம்')
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-proofread skipped: no free model answered: None
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok anthropic/claude-haiku-5-5
-real photo: no picture on the source page -> AI pictures
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-image match check unavailable: gemini-3.5-flash: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/g
-images made: 2 for 'BJP torch protest in Rasipuram over Tiru'
-bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261127-1646","first":"RN-869"}
-posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 1 news waiting in the queue (written in priority order)
-candidate filter: collected=1
-to write: 1 Rasipuram + 0 other district candidates (max 200 + 200 stories)
-daily maximum 30: 14 written today - this round writes at most 1 + 15
-candidates waiting: 1 Rasipuram, 0 Namakkal; time left 29 min
-try (R) manual=False: பா.ஜ., சார்பில் இன்று தீப்பந்த போராட்டம்
-auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
-posting job started at once
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 0}, done={'R': 1, 'N': 0}, time left 27 min
-carousel for 0 of 1 stories, the rest reel only
-filed: 1 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":1} 
-stories: 1
+write round: 5 news waiting in the queue (written in priority order)
+candidate filter: already filed=3, collected=2
+to write: 0 Rasipuram + 2 other district candidates (max 200 + 200 stories)
+daily maximum 30: 15 written today - this round writes at most 0 + 15
+candidates waiting: 0 Rasipuram, 2 Namakkal; time left 29 min
+try (N) manual=False: ஆள் கடத்தல் வழக்கில் வழக்குரைஞா் மீது புகாா்: காவல் துறையை க
+try (N) manual=False: 4.5 லட்சத்திலிருந்து 50 ஆயிரம் டன்னாக குறைந்த கரும்பு வரத்து
+skip (N) similar to a filed story: 4.5 லட்சத்திலிருந்து 50 ஆயிரம் டன்னாக குறைந்த கரும
+skip (N) same event as RN-833: ஆள் கடத்தல் வழக்கில் வழக்குரைஞா் மீது புகாா்: காவல
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 2}, done={'R': 0, 'N': 0}, time left 29 min
+carousel for 0 of 0 stories, the rest reel only
+filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written 
+stories: 0
