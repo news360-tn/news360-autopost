@@ -27,6 +27,7 @@ slides_spec rules
 - Together the slides carry ALL the important details (what, where, when, numbers, who announced it, what people should do).
 - Use <b>...</b> only around a key number/word. Digits are fine for numbers and dates.
 - Power shutdown story: slide 1 = date and time, slide 2 = substation and affected areas exactly as published (split if long), last slide = what people should do. Never guess areas or times.
+- POWER CUT numbers (owner 27 Nov - power cuts were held as 'numbers not found in the article'): write ONLY the numbers the notice prints - its date, its times (as printed: 'காலை 9 முதல் மாலை 5 மணி வரை', never 24-hour '17:00'), the feeder / substation numbers. Never add a number of your own: no duration ('8 மணி நேரம்'), no count of areas, no year or weekday the notice does not print.
 
 reel_script rules
 - PROFESSIONAL TAMIL NEWS-READER STYLE, as read by a television news anchor: formal, clear, neutral, grammatically correct written-standard Tamil (செய்தி வாசிப்பாளர் நடை). NO village slang or spoken contractions: write உள்ளது (not இருக்கு), இல்லை (not இல்ல). ACTIVE voice with the doer named (19 Nov data: reels with long passive endings were watched 4.9 s against 8.0 s): "போலீசார் தெரிவித்தனர்", "கலெக்டர் கேட்டுக்கொண்டார்", "அதிகாரிகள் அறிவுறுத்தினர்", "பணிகள் நடைபெறும்" - not தெரிவிக்கப்பட்டுள்ளது / கேட்டுக்கொள்ளப்பட்டுள்ளனர் / அறிவுறுத்தப்பட்டுள்ளது / மேற்கொள்ளப்பட்டு.
