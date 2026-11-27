@@ -65,6 +65,8 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-27 | `5e318f7` | Rasipalan theme: Coimbatore page named in full (கோயம்புத்தூர்) gets its colour too |
+| 2026-11-27 | `0d4f168` | stories shared / Instagram pause |
 | 2026-11-27 | `4e84e9e` | Gold rate and rasipalan reels: each page its own colour theme |
 | 2026-11-27 | `5f71603` | stories shared / Instagram pause |
 | 2026-11-27 | `378f4be` | Power cuts are never missed: held notices are rewritten at once |
@@ -93,6 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-27 | `d96a35e` | stories shared / Instagram pause |
 | 2026-11-27 | `ac7adc3` | stories shared / Instagram pause |
 | 2026-11-27 | `27e76a7` | powercut: notices written |
-| 2026-11-27 | `f4c93f5` | stories shared / Instagram pause |
-| 2026-11-27 | `8f078ab` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
