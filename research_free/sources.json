@@ -34,5 +34,23 @@
   "url": "https://www.vikatan.com/topics/namakkal",
   "link_regex": "href=\"(https://www\\.vikatan\\.com/(?!live/|topics/)[a-z-]+/[^\"#?]{20,})\"",
   "limit": 30
+ },
+ {
+  "name": "தினத்தந்தி நாமக்கல்",
+  "url": "https://www.dailythanthi.com/news/tamilnadu",
+  "link_regex": "href=\"((?:https://www\\.dailythanthi\\.com)?/news/tamilnadu/(?:[a-z0-9]+-)*(?:namakkal|rasipuram|tiruchengode|kumarapalayam|paramathi|mohanur|sendamangalam|kolli|pallipalayam|vennandur|namagiripettai)(?:-[a-z0-9]+)*)\"",
+  "limit": 15
+ },
+ {
+  "name": "மாலைமலர் நாமக்கல்",
+  "url": "https://www.maalaimalar.com/news/district",
+  "link_regex": "href=\"((?:https://www\\.maalaimalar\\.com)?/news/(?:district|tamilnadu)/(?:[a-z0-9]+-)*(?:namakkal|rasipuram|tiruchengode|kumarapalayam|paramathi|mohanur|sendamangalam|kolli|pallipalayam|vennandur|namagiripettai)(?:-[a-z0-9]+)*)\"",
+  "limit": 15
+ },
+ {
+  "name": "மாலைமலர் நாமக்கல் (TN)",
+  "url": "https://www.maalaimalar.com/news/tamilnadu",
+  "link_regex": "href=\"((?:https://www\\.maalaimalar\\.com)?/news/tamilnadu/(?:[a-z0-9]+-)*(?:namakkal|rasipuram|tiruchengode|kumarapalayam|paramathi|mohanur|sendamangalam|kolli|pallipalayam|vennandur|namagiripettai)(?:-[a-z0-9]+)*)\"",
+  "limit": 15
  }
 ]
