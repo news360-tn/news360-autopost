@@ -65,6 +65,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-27 | `b1563bc` | Page names as the owner writes them: Tiruppur 360 |
 | 2026-11-27 | `c6d7917` | Instagram handles: the real usernames of every page |
 | 2026-11-27 | `c0aced8` | stories shared / Instagram pause |
 | 2026-11-27 | `3c5448d` | Rasipuram 360 username is rasipuram360.official |
@@ -94,5 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-27 | `54bf355` | stories shared / Instagram pause |
 | 2026-11-27 | `aa392b3` | stories shared / Instagram pause |
 | 2026-11-27 | `04d879b` | stories shared / Instagram pause |
-| 2026-11-27 | `0f91b4d` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
