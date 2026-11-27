@@ -67,6 +67,7 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-27 | `4d00b1b` | Tests: Facebook retry plan is 10 min x5 then 1 h once (7 tries) |
 | 2026-11-27 | `8e266a4` | Posting rules 27 Nov: 30 news a day per platform by views, 06:00-22:00 (urgent any time), retry 10 min x5 then 1 h, block wait as stated else 2 h, collect every 2 h |
 | 2026-11-27 | `bcf9f5d` | stories shared / Instagram pause |
 | 2026-11-27 | `27751b5` | stories shared / Instagram pause |
@@ -96,5 +97,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-27 | `df2371d` | stories shared / Instagram pause |
 | 2026-11-27 | `430eafa` | stories shared / Instagram pause |
 | 2026-11-27 | `46e9fff` | stories shared / Instagram pause |
-| 2026-11-27 | `81e136c` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
