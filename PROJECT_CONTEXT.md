@@ -65,34 +65,34 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
-| 2026-11-26 | `837d538` | Keywords after hashtags on Instagram/Facebook/YouTube; follower and subscriber counts in the backend (aligned); backend noindex |
-| 2026-11-26 | `b3ec5fa` | facebook RN-822 |
-| 2026-11-26 | `24a246d` | posted RN-822 |
-| 2026-11-26 | `3cc2b8a` | stories shared / Instagram pause |
-| 2026-11-26 | `ad8bbd5` | stories shared / Instagram pause |
-| 2026-11-26 | `de94137` | facebook RN-837 |
-| 2026-11-26 | `c874ecb` | posted RN-837 |
-| 2026-11-26 | `6520aff` | stories shared / Instagram pause |
-| 2026-11-26 | `d68ddf4` | autofix: corrected held news |
-| 2026-11-26 | `19c0421` | Rasipuram collaboration: news about or near Rasipuram invites Rasipuram 360 as collaborator (Namakkal and Salem pages; towns in config collab_near_words) |
-| 2026-11-26 | `c36a2e5` | stories shared / Instagram pause |
-| 2026-11-26 | `7ca24c6` | powercut: notices written |
-| 2026-11-26 | `48008d8` | posted report sent |
-| 2026-11-26 | `7ea0f6d` | stories shared / Instagram pause |
-| 2026-11-26 | `da022b0` | posted report sent |
-| 2026-11-26 | `a19cfde` | stories shared / Instagram pause |
-| 2026-11-26 | `0a9f63a` | Daily lanes: district history/temple story reel and district jobs reel (dry-run only, nothing enabled, no schedule); fact gate, topic banks, official-source job rules, heritage and job-board reel designs, voice samples workflow, tests |
-| 2026-11-26 | `5f96f04` | stories shared / Instagram pause |
-| 2026-11-26 | `1d3f726` | stories shared / Instagram pause |
-| 2026-11-26 | `b3bc05e` | stories shared / Instagram pause |
-| 2026-11-26 | `6a6f042` | stories shared / Instagram pause |
-| 2026-11-26 | `2ac7062` | Backend site UX polish: smooth scrolling, press feedback, soft fade when the screen changes, shimmer while loading, data age in minutes, reduced motion respected |
-| 2026-11-26 | `70455f6` | stories shared / Instagram pause |
-| 2026-11-26 | `7d1fca7` | stories shared / Instagram pause |
-| 2026-11-26 | `0f66b97` | stories shared / Instagram pause |
-| 2026-11-26 | `bfc5c05` | Backend site: top numbers and district cards follow Today/7/14 days, cards aligned (4+3 on big screens, no overflow), data age shown (amber when late); collector runs hourly |
-| 2026-11-26 | `b2e8bfc` | stories shared / Instagram pause |
-| 2026-11-26 | `6c8a2e3` | Picture sync: the website keeps its own small copy of each story's pictures (R2 links are deleted after 24 hours) |
-| 2026-11-26 | `4178d68` | stories shared / Instagram pause |
-| 2026-11-26 | `fd8750c` | facebook RN-852 |
+| 2026-11-27 | `81eebdc` | Blocked Google News links: also look for the same headline at another trusted outlet |
+| 2026-11-27 | `587c040` | stories shared / Instagram pause |
+| 2026-11-27 | `575dbb0` | stories shared / Instagram pause |
+| 2026-11-27 | `305f817` | stories shared / Instagram pause |
+| 2026-11-27 | `0470d67` | Sources: Dailythanthi and Maalaimalar Tamil Nadu / district lists (this district's links only) |
+| 2026-11-27 | `5c0611d` | stories shared / Instagram pause |
+| 2026-11-27 | `dd0bfcf` | stories shared / Instagram pause |
+| 2026-11-27 | `7d26ebf` | goldrate posted |
+| 2026-11-27 | `8ae0795` | stories shared / Instagram pause |
+| 2026-11-27 | `ec4948d` | stories shared / Instagram pause |
+| 2026-11-27 | `54bf355` | stories shared / Instagram pause |
+| 2026-11-27 | `aa392b3` | stories shared / Instagram pause |
+| 2026-11-27 | `04d879b` | stories shared / Instagram pause |
+| 2026-11-27 | `0f91b4d` | stories shared / Instagram pause |
+| 2026-11-27 | `f032d5a` | stories shared / Instagram pause |
+| 2026-11-27 | `4d61a48` | stories shared / Instagram pause |
+| 2026-11-27 | `d96a35e` | stories shared / Instagram pause |
+| 2026-11-27 | `ac7adc3` | stories shared / Instagram pause |
+| 2026-11-27 | `27e76a7` | powercut: notices written |
+| 2026-11-27 | `f4c93f5` | stories shared / Instagram pause |
+| 2026-11-27 | `8f078ab` | stories shared / Instagram pause |
+| 2026-11-27 | `1e080fb` | stories shared / Instagram pause |
+| 2026-11-27 | `7b23f0e` | powercut: notices written |
+| 2026-11-27 | `5804dd5` | facebook RN-851 |
+| 2026-11-27 | `87816ad` | posted RN-851 |
+| 2026-11-27 | `d1cd3df` | stories shared / Instagram pause |
+| 2026-11-27 | `eef8d77` | stories shared / Instagram pause |
+| 2026-11-27 | `3839641` | facebook RN-862 |
+| 2026-11-27 | `e0cc21e` | posted RN-862 |
+| 2026-11-27 | `2d069b6` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
