@@ -65,6 +65,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-27 | `19bb5a5` | Power cuts: never post a cut that is over; post cancellations and reschedules |
+| 2026-11-27 | `21a213f` | stories shared / Instagram pause |
+| 2026-11-27 | `31150b9` | stories shared / Instagram pause |
 | 2026-11-27 | `b1563bc` | Page names as the owner writes them: Tiruppur 360 |
 | 2026-11-27 | `c6d7917` | Instagram handles: the real usernames of every page |
 | 2026-11-27 | `c0aced8` | stories shared / Instagram pause |
@@ -92,7 +95,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-27 | `7d26ebf` | goldrate posted |
 | 2026-11-27 | `8ae0795` | stories shared / Instagram pause |
 | 2026-11-27 | `ec4948d` | stories shared / Instagram pause |
-| 2026-11-27 | `54bf355` | stories shared / Instagram pause |
-| 2026-11-27 | `aa392b3` | stories shared / Instagram pause |
-| 2026-11-27 | `04d879b` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
