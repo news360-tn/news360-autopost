@@ -3,12 +3,7 @@ name: research-free
 # (quality-checked) and sends ONE images-needed e-mail - only when there is news. Stories still waiting for images from an earlier round are listed again in it.
 on:
   schedule:
-    - cron: "30 22 * * *"      # 04:00 IST (owner 21 Nov: collection every 4 hours - ready when posting opens at 05:00)
-    - cron: "30 2 * * *"       # 08:00 IST
-    - cron: "30 6 * * *"       # 12:00 IST
-    - cron: "30 10 * * *"      # 16:00 IST
-    - cron: "30 14 * * *"      # 20:00 IST (nothing posts 00:00-05:00, so no midnight round)
-    - cron: "30 16 * * *"      # 22:00 IST (owner 22 Nov: news of the late evening still goes out the same day)
+    - cron: "30 0,2,4,6,8,10,12,14,16,18,20,22 * * *"      # owner 27 Nov: collection every 2 hours, day and night (IST 06:00, 08:00 ... 04:00; at night only urgent news posts)
   workflow_dispatch:
     inputs:
       dry:
