@@ -67,6 +67,11 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-27 | `8e266a4` | Posting rules 27 Nov: 30 news a day per platform by views, 06:00-22:00 (urgent any time), retry 10 min x5 then 1 h, block wait as stated else 2 h, collect every 2 h |
+| 2026-11-27 | `bcf9f5d` | stories shared / Instagram pause |
+| 2026-11-27 | `27751b5` | stories shared / Instagram pause |
+| 2026-11-27 | `b77d7e8` | posted report sent |
+| 2026-11-27 | `40ecbaf` | stories shared / Instagram pause |
 | 2026-11-27 | `9e2b697` | No manual work: stop the manual-post and Facebook-share e-mails (config.json owner_emails false); only automatic posting |
 | 2026-11-27 | `ae9079a` | stories shared / Instagram pause |
 | 2026-11-27 | `c599ab3` | stories shared / Instagram pause |
@@ -92,9 +97,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-27 | `430eafa` | stories shared / Instagram pause |
 | 2026-11-27 | `46e9fff` | stories shared / Instagram pause |
 | 2026-11-27 | `81e136c` | stories shared / Instagram pause |
-| 2026-11-27 | `0e0e06a` | stories shared / Instagram pause |
-| 2026-11-27 | `c8ed2a9` | stories shared / Instagram pause |
-| 2026-11-27 | `c2cfb56` | stories shared / Instagram pause |
-| 2026-11-27 | `e677290` | stories shared / Instagram pause |
-| 2026-11-27 | `1afab36` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
