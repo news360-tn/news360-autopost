@@ -68,6 +68,22 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-28 | `b8b954f` | YouTube: 40 hashtags on every Short (owner 28 Nov) - 25 for the video, 5 page, 5 district, 5 area (poster/yt_hashtags.py); title, first line, hidden tags, Instagram and Facebook unchanged |
+| 2026-11-28 | `c9d574a` | stories shared / Instagram pause |
+| 2026-11-28 | `a792c89` | stories shared / Instagram pause |
+| 2026-11-28 | `3dd2d68` | comments: normal comments recorded (not e-mailed) |
+| 2026-11-28 | `372a1f5` | autofix: corrected held news |
+| 2026-11-28 | `4db06c2` | stories shared / Instagram pause |
+| 2026-11-28 | `2eddb5c` | stories shared / Instagram pause |
+| 2026-11-28 | `de97e31` | stories shared / Instagram pause |
+| 2026-11-28 | `ac830b0` | stories shared / Instagram pause |
+| 2026-11-28 | `9f994ef` | stories shared / Instagram pause |
+| 2026-11-28 | `2a4842a` | stories shared / Instagram pause |
+| 2026-11-28 | `797578b` | stories shared / Instagram pause |
+| 2026-11-28 | `e79c632` | stories shared / Instagram pause |
+| 2026-11-28 | `0cf2359` | stories shared / Instagram pause |
+| 2026-11-28 | `09b74f7` | stories shared / Instagram pause |
+| 2026-11-28 | `0114290` | stories shared / Instagram pause |
 | 2026-11-28 | `3b6bf76` | Top 5: headline at most 3 lines (never over the 5-4-3-2-1 row), the row a little lower, 'nettru' for yesterday's news |
 | 2026-11-28 | `c903354` | stories shared / Instagram pause |
 | 2026-11-28 | `2543db3` | stories shared / Instagram pause |
@@ -82,20 +98,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-28 | `f4df757` | stories shared / Instagram pause |
 | 2026-11-28 | `6389528` | facebook RN-884 |
 | 2026-11-28 | `f1c341d` | posted RN-884 |
-| 2026-11-28 | `415cd1b` | autofix: corrected held news |
-| 2026-11-28 | `9983e52` | stories shared / Instagram pause |
-| 2026-11-28 | `6d300f4` | stories shared / Instagram pause |
-| 2026-11-28 | `9cb130d` | facebook RN-883 |
-| 2026-11-28 | `99996b3` | posted RN-883 |
-| 2026-11-28 | `ae5406e` | stories shared / Instagram pause |
-| 2026-11-28 | `35d6c9b` | stories shared / Instagram pause |
-| 2026-11-28 | `a3dbb54` | facebook RN-881 |
-| 2026-11-28 | `eeb8236` | posted RN-881 |
-| 2026-11-28 | `e820916` | stories shared / Instagram pause |
-| 2026-11-28 | `1a6c7ee` | stories shared / Instagram pause |
-| 2026-11-28 | `43efa30` | facebook RN-882 |
-| 2026-11-28 | `d493d0c` | posted RN-882 |
-| 2026-11-28 | `58476ea` | stories shared / Instagram pause |
-| 2026-11-28 | `bb29793` | stories shared / Instagram pause |
-| 2026-11-28 | `891be2c` | goldrate posted |
 <!-- recent-changes:end -->
