@@ -68,6 +68,11 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-28 | `ec6e074` | Hashtag fixes (owner 28 Nov): a source link's #part is no longer a hidden YouTube tag (district-section); a Facebook hashtag is never repeated and the top 5 reel gets topic + district + page tag |
+| 2026-11-28 | `fcf144d` | stories shared / Instagram pause |
+| 2026-11-28 | `fcf044e` | stories shared / Instagram pause |
+| 2026-11-28 | `4aa044f` | stories shared / Instagram pause |
+| 2026-11-28 | `2a2923e` | powercut: notices written |
 | 2026-11-28 | `7a3d613` | reel: design A + improvements on every page (owner 28 Nov, the sample the owner chose) - with 2+ pictures they take turns every second cut, a BREAKING tag only on serious news, a place card with the district map and the town pin after the headline; no clock-hand line across the picture (soft dissolve). One layer over the finished page (reel/live360.py), inside the area that is free on Instagram, Facebook and YouTube Shorts; it never fails the reel. District map built for this page (OpenStreetMap) |
 | 2026-11-28 | `f466bcd` | posted report sent |
 | 2026-11-28 | `97dd9b3` | stories shared / Instagram pause |
@@ -93,9 +98,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-28 | `a447642` | stories shared / Instagram pause |
 | 2026-11-28 | `5864866` | Rasipalan and top 5: the page's real Instagram username as the fallback (never a made-up Tamil name on the follow card) |
 | 2026-11-28 | `88eb470` | stories shared / Instagram pause |
-| 2026-11-28 | `07cd523` | stories shared / Instagram pause |
-| 2026-11-28 | `9c5fab1` | New reels: parrot rasipalan (kili josiyam) with panchangam, rasi times and first comment; evening top 5 |
-| 2026-11-28 | `997ed11` | stories shared / Instagram pause |
-| 2026-11-28 | `328a379` | stories shared / Instagram pause |
-| 2026-11-28 | `a3e5666` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
