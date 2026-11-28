@@ -96,7 +96,7 @@ def details(m, page, uname):
     suffix = f" | {name} {search_word(cap)}"      # owner 25 Nov: an English search word (people search YouTube in English too)
     room = TITLE_MAX - len(suffix)
     title = (head if len(head) <= room else head[:room - 1].rstrip() + "…") + suffix      # owner 25 Nov: about 70 characters (Shorts feed)
-    tags = [t.lstrip("#") for t in re.findall(r"#[^\s#]+", cap)][:12]
+    tags = [t.lstrip("#") for t in re.findall(r"#[^\s#]+", re.sub(r"https?://\S+", "", cap))][:12]      # owner 28 Nov: a link's own #part ("...#district-section") is not a tag
     kw_line = next((x for x in lines if x.startswith("🔎")), "")      # owner 26 Nov: the keyword line: last in the description + in the hidden Tags
     body = [x for x in lines[1:] if x and not x.startswith("#") and not x.startswith("🤝 Sponsored") and not x.startswith("🔎")]
     for kwd in [w.strip() for w in kw_line.lstrip("🔎").split(",") if w.strip()][:6]:
