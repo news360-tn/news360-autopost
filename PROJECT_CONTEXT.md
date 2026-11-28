@@ -67,6 +67,10 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-28 | `3b6bf76` | Top 5: headline at most 3 lines (never over the 5-4-3-2-1 row), the row a little lower, 'nettru' for yesterday's news |
+| 2026-11-28 | `c903354` | stories shared / Instagram pause |
+| 2026-11-28 | `2543db3` | stories shared / Instagram pause |
+| 2026-11-28 | `a447642` | stories shared / Instagram pause |
 | 2026-11-28 | `5864866` | Rasipalan and top 5: the page's real Instagram username as the fallback (never a made-up Tamil name on the follow card) |
 | 2026-11-28 | `88eb470` | stories shared / Instagram pause |
 | 2026-11-28 | `07cd523` | stories shared / Instagram pause |
@@ -93,8 +97,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-28 | `58476ea` | stories shared / Instagram pause |
 | 2026-11-28 | `bb29793` | stories shared / Instagram pause |
 | 2026-11-28 | `891be2c` | goldrate posted |
-| 2026-11-28 | `a1d53b5` | stories shared / Instagram pause |
-| 2026-11-28 | `cd3c5e2` | facebook RN-885 |
-| 2026-11-28 | `2626c8f` | posted RN-885 |
-| 2026-11-28 | `b90e81c` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
