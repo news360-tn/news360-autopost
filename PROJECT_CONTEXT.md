@@ -68,6 +68,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-28 | `6c7409b` | yt_hashtags: a page's tag lists are also found by the channel name (Tiruppur 360: page tirupur, tag #Tiruppur360) - no change for this page |
+| 2026-11-28 | `1a5de67` | stories shared / Instagram pause |
+| 2026-11-28 | `52abcd2` | powercut: notices written |
 | 2026-11-28 | `ec6e074` | Hashtag fixes (owner 28 Nov): a source link's #part is no longer a hidden YouTube tag (district-section); a Facebook hashtag is never repeated and the top 5 reel gets topic + district + page tag |
 | 2026-11-28 | `fcf144d` | stories shared / Instagram pause |
 | 2026-11-28 | `fcf044e` | stories shared / Instagram pause |
@@ -95,7 +98,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-28 | `3b6bf76` | Top 5: headline at most 3 lines (never over the 5-4-3-2-1 row), the row a little lower, 'nettru' for yesterday's news |
 | 2026-11-28 | `c903354` | stories shared / Instagram pause |
 | 2026-11-28 | `2543db3` | stories shared / Instagram pause |
-| 2026-11-28 | `a447642` | stories shared / Instagram pause |
-| 2026-11-28 | `5864866` | Rasipalan and top 5: the page's real Instagram username as the fallback (never a made-up Tamil name on the follow card) |
-| 2026-11-28 | `88eb470` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
