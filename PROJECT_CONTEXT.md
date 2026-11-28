@@ -68,6 +68,9 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-28 | `7a3d613` | reel: design A + improvements on every page (owner 28 Nov, the sample the owner chose) - with 2+ pictures they take turns every second cut, a BREAKING tag only on serious news, a place card with the district map and the town pin after the headline; no clock-hand line across the picture (soft dissolve). One layer over the finished page (reel/live360.py), inside the area that is free on Instagram, Facebook and YouTube Shorts; it never fails the reel. District map built for this page (OpenStreetMap) |
+| 2026-11-28 | `f466bcd` | posted report sent |
+| 2026-11-28 | `97dd9b3` | stories shared / Instagram pause |
 | 2026-11-28 | `b8b954f` | YouTube: 40 hashtags on every Short (owner 28 Nov) - 25 for the video, 5 page, 5 district, 5 area (poster/yt_hashtags.py); title, first line, hidden tags, Instagram and Facebook unchanged |
 | 2026-11-28 | `c9d574a` | stories shared / Instagram pause |
 | 2026-11-28 | `a792c89` | stories shared / Instagram pause |
@@ -95,7 +98,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-28 | `997ed11` | stories shared / Instagram pause |
 | 2026-11-28 | `328a379` | stories shared / Instagram pause |
 | 2026-11-28 | `a3e5666` | stories shared / Instagram pause |
-| 2026-11-28 | `f4df757` | stories shared / Instagram pause |
-| 2026-11-28 | `6389528` | facebook RN-884 |
-| 2026-11-28 | `f1c341d` | posted RN-884 |
 <!-- recent-changes:end -->
