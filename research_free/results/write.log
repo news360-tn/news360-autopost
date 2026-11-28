@@ -1,121 +1,105 @@
-writing [N]: மாநில சிலம்பாட்ட போட்டி
-writing [N]: பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+writing [N]: முதுபெரும் பெரியார் பெருந்தொண்டர் பொத்தனூர் க.சண்முகம் அவர
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (16s)
-attempt 1 gemini/gemini-3.6-flash: 2 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-  numbers not found in the article: 1000, 6, 8
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-ok gemini/gemini-3.6-flash (16s)
-attempt 1 gemini/gemini-3.6-flash: 1 problems
-  numbers not found in the article: 1000
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (21s)
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (21s)
-attempt 2 gemini/gemini-3.6-flash: 1 problems
-  numbers not found in the article: 6, 8
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (9s)
-factcheck by gemini/gemini-3.6-flash: 0 problems
-attempt 2 gemini/gemini-3.6-flash: 0 problems
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
 ok gemini/gemini-3.6-flash (15s)
-proofread rejected (1 problems)
-  sentence 1 (one-line story) has 14 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+attempt 1 gemini/gemini-3.6-flash: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (44s)
-attempt 3 gemini/gemini-3.6-flash: 2 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+ok gemini/gemini-3.6-flash (37s)
+attempt 2 gemini/gemini-3.6-flash: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: Expecting ',' delimiter: line 1 column 1111 (char 1110)
+poor answer - skipped for 30 min: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+ok gemini/gemini-3-flash-preview (14s)
+attempt 3 gemini/gemini-3-flash-preview: 2 problems
   sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok gemini/gemini-3-flash-preview (11s)
+attempt 4 gemini/gemini-3-flash-preview: 2 problems
+  caption needs 5 hashtags (Instagram max), has 6
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (28s)
-ok gemini/gemini-3.6-flash (28s)
-attempt 4 gemini/gemini-3.6-flash: 2 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-  numbers not found in the article: 1000, 6, 8
+ok gemini/gemini-3-flash-preview (11s)
+attempt 5 gemini/gemini-3-flash-preview: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (24s)
-attempt 5 gemini/gemini-3.6-flash: 2 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-  numbers not found in the article: 1000, 6, 8
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (27s)
-attempt 6 gemini/gemini-3.6-flash: 3 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  numbers not found in the article: 6, 8
-gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (19s)
-attempt 7 gemini/gemini-3.6-flash: 1 problems
-  numbers not found in the article: 1000, 6, 8
+ok gemini/gemini-3-flash-preview (12s)
+attempt 6 gemini/gemini-3-flash-preview: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (18s)
-attempt 8 gemini/gemini-3.6-flash: 1 problems
-  numbers not found in the article: 1000, 6, 8
+ok gemini/gemini-3-flash-preview (11s)
+attempt 7 gemini/gemini-3-flash-preview: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (22s)
-attempt 9 gemini/gemini-3.6-flash: 2 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-  numbers not found in the article: 1000, 6, 8
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (11s)
+attempt 8 gemini/gemini-3-flash-preview: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
-ok gemini/gemini-3.6-flash (19s)
-attempt 10 gemini/gemini-3.6-flash: 2 problems
-  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-  numbers not found in the article: 1000, 6, 8
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok gemini/gemini-3-flash-preview (14s)
+attempt 9 gemini/gemini-3-flash-preview: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+fail gemini/gemini-3-flash-preview: HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=60)
+poor answer - skipped for 30 min: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+dead for this round: groq/qwen/qwen3.8-27b
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
 ok anthropic/claude-haiku-5-5
-claude rewrite 1 anthropic/claude-haiku-5-5: 2 problems
-  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
-  caption misses facts of the article (put every one in 📰 முழு விவரம்): 1,000 ('நாமக்கல் மண்டலத்தில், 1,000க்கும் மேற்பட்ட கோழிப்பண்ணைகள் உள')
+claude rewrite 1 anthropic/claude-haiku-5-5: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 28 ('பொத்தனூர், நவ.28 முதுபெரும் பெரியார் பெருந்தொண்டர், பெரியார'); 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
 ok anthropic/claude-haiku-5-5
 claude rewrite 2 anthropic/claude-haiku-5-5: 1 problems
-  numbers not found in the article: 6, 8
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 28 ('பொத்தனூர், நவ.28 முதுபெரும் பெரியார் பெருந்தொண்டர், பெரியார')
 ok anthropic/claude-haiku-5-5
-claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
-  sentence 1 (one-line story) has 12 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+claude rewrite 3 anthropic/claude-haiku-5-5: 1 problems
+  caption misses facts of the article (put every one in 📰 முழு விவரம்): 28 ('பொத்தனூர், நவ.28 முதுபெரும் பெரியார் பெருந்தொண்டர், பெரியார'); 11 ('சண்முகம் அவர்களது படத்திறப்பும்,புகழ் சூட்டும், வீரவணக்க கூட')
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
 groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (12s)
-proofread rejected (3 problems)
-  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
-  sentence 1 (one-line story) has 22 words; make it 6-9 words (about 2-3 seconds), the details follow in the next sentences
-  numbers not found in the article: 6, 8
+proofread skipped: no free model answered: None
 gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
-groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
-ok gemini/gemini-3.6-flash (11s)
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+ok anthropic/claude-haiku-5-5
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+real photo: vision check unavailable: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:ge
+real photo too small to be presentable (666x217): https://viduthalai.in/wp-content/uploads/code-and-core-smart-image-ratio/2026/11
+real photo too small to be presentable (592x190): https://viduthalai.in/wp-content/uploads/2026/11/7-23.jpg
+real photo: vision check out of free quota
+image match: True The photo shows a photo unveiling ceremony with an audience, featuring a garlanded portrait, Dravidian movement (black a
+image match: True The image depicts a framed portrait of an elderly man wearing traditional attire, adorned with a marigold garland, along
+images made: 2 for 'Photo unveiling and tribute meeting for '
+bridge: 200 {"ok":true,"added":1,"auto_queued":1,"emailed":0,"reoffered":0,"batch":"B20261128-1842","first":"RN-887"}
+posting job started at once
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 3 news waiting in the queue (written in priority order)
-candidate filter: collected=3
-to write: 0 Rasipuram + 3 other district candidates (max 200 + 200 stories)
+write round: 1 news waiting in the queue (written in priority order)
+candidate filter: collected=1
+to write: 0 Rasipuram + 1 other district candidates (max 200 + 200 stories)
 daily maximum 30: 17 written today - this round writes at most 0 + 13
-candidates waiting: 0 Rasipuram, 3 Namakkal; time left 29 min
-try (N) manual=False: கொல்லிமலையில் பனி இயல்பு வாழ்க்கை பாதிப்பு
-try (N) manual=False: மாநில சிலம்பாட்ட போட்டி
-try (N) manual=False: பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்
-skip (N) similar to a filed story: கொல்லிமலையில் பனி இயல்பு வாழ்க்கை பாதிப்பு
-NOT filed (N) மாநில சிலம்பாட்ட போட்டி: duplicate after write
-NOT filed (N) பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பர: duplicate after write
-candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 3}, done={'R': 0, 'N': 0}, time left 24 min
-carousel for 0 of 0 stories, the rest reel only
-filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 2 news waiting to be written
-All News sheet: {"ok":true,"added":0,"updated":2} 
-stories: 0
+candidates waiting: 0 Rasipuram, 1 Namakkal; time left 29 min
+try (N) manual=False: முதுபெரும் பெரியார் பெருந்தொண்டர் பொத்தனூர் க.சண்முகம் அவர
+auto images: 1 of 1 stories ({'black-forest-labs/flux-1-schnell': 2})
+posting job started at once
+candidate loop ended: left R=0 N=0, tried={'R': 0, 'N': 1}, done={'R': 0, 'N': 1}, time left 23 min
+carousel for 0 of 1 stories, the rest reel only
+filed: 0 Rasipuram + 1 Namakkal (targets 200 + 200)
+queue: 0 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
+stories: 1
