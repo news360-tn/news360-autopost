@@ -68,6 +68,10 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 <!-- recent-changes:start (updated automatically by .github/workflows/context.yml - do not edit by hand) -->
 | Date | Commit | Change |
 |---|---|---|
+| 2026-11-28 | `ab24a20` | reel: the NEWS360-TN news reader in a round window on every news reel (owner 28 Nov) - the owner's own 9 drawings, the mouth chosen from the reel's voice (closed in every pause, open while the news is read); the place card sits beside it. Top 5 reel: headline clear of the buttons, the time chip above the caption area, the 5-4-3-2-1 row down the left side - one video for Instagram, Facebook and YouTube Shorts |
+| 2026-11-28 | `b5c0b71` | stories shared / Instagram pause |
+| 2026-11-28 | `9eed645` | stories shared / Instagram pause |
+| 2026-11-28 | `736b84b` | stories shared / Instagram pause |
 | 2026-11-28 | `6c7409b` | yt_hashtags: a page's tag lists are also found by the channel name (Tiruppur 360: page tirupur, tag #Tiruppur360) - no change for this page |
 | 2026-11-28 | `1a5de67` | stories shared / Instagram pause |
 | 2026-11-28 | `52abcd2` | powercut: notices written |
@@ -94,8 +98,4 @@ python3 tools/repost.py RN-158                   # (Actions: repost) post a reel
 | 2026-11-28 | `e79c632` | stories shared / Instagram pause |
 | 2026-11-28 | `0cf2359` | stories shared / Instagram pause |
 | 2026-11-28 | `09b74f7` | stories shared / Instagram pause |
-| 2026-11-28 | `0114290` | stories shared / Instagram pause |
-| 2026-11-28 | `3b6bf76` | Top 5: headline at most 3 lines (never over the 5-4-3-2-1 row), the row a little lower, 'nettru' for yesterday's news |
-| 2026-11-28 | `c903354` | stories shared / Instagram pause |
-| 2026-11-28 | `2543db3` | stories shared / Instagram pause |
 <!-- recent-changes:end -->
