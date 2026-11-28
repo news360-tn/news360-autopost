@@ -1,20 +1,66 @@
+writing [N]: பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, openai/gpt-oss-20b, allam-2-7b
+fail gemini/gemini-3.6-flash: gemini gemini-3.6-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.6-flash
+fail gemini/gemini-3.5-flash: gemini gemini-3.5-flash 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, please che
+dead for this round: gemini/gemini-3.5-flash
+fail gemini/gemini-3-flash-preview: gemini gemini-3-flash-preview 429: {
+  "error": {
+    "code": 429,
+    "message": "You exceeded your current quota, plea
+dead for this round: gemini/gemini-3-flash-preview
+fail groq/openai/gpt-oss-120b: groq openai/gpt-oss-120b 429: {"error":{"message":"Rate limit reached for model `openai/gpt-oss-120b` in organization `o
+dead for this round: groq/openai/gpt-oss-120b
+fail groq/qwen/qwen3.8-27b: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` in organization `org_01m
+dead for this round: groq/qwen/qwen3.8-27b
+free models unavailable: no free model answered: groq qwen/qwen3.8-27b 429: {"error":{"message":"Rate limit reached for model `qwen/qwen3.8-27b` 
+ok anthropic/claude-haiku-5-5
+claude rewrite 1 anthropic/claude-haiku-5-5: 4 problems
+  hl1 is 42 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+  numbers not found in the article: 6, 8
+  slides_spec.loc 'நாமக்கல் மாவட்டம்' is only the district: write the town / village / area the article names (people share news of their own area)
+ok anthropic/claude-haiku-5-5
+claude rewrite 2 anthropic/claude-haiku-5-5: 2 problems
+  hl1 is 41 characters (max 40) - write a SHORTER COMPLETE phrase with fewer words that still ends with its key word (what happened: e.g. 'X அருகே வீட்டில் கொள்ளை'); never stop a phrase in the middle
+  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+ok anthropic/claude-haiku-5-5
+claude rewrite 3 anthropic/claude-haiku-5-5: 2 problems
+  reel_script must tell how the story ENDED, as the article's last lines say ('பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்துறை நடவடிக்கை') - say what finally happened (complaint, action promised, released, arrested, case filed, how long it lasted); never write that details are unknown
+  numbers not found in the article: 6, 8
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+proofread skipped: no free model answered: None
+gemini models: gemini-3.6-flash, gemini-3.5-flash, gemini-3-flash-preview, gemini-2.5-flash, gemini-omni-1.2-flash, gemini-omni-1.1-flash
+groq models: openai/gpt-oss-120b, qwen/qwen3.8-27b, allam-2-7b, openai/gpt-oss-20b
+ok anthropic/claude-haiku-5-5
 earlier stories still waiting for images: []
 instagram check: 100 recent posts read from both pages
-write round: 4 news waiting in the queue (written in priority order)
-candidate filter: collected=4
-to write: 1 Rasipuram + 3 other district candidates (max 200 + 200 stories)
-daily maximum 30: 17 written today - this round writes at most 1 + 12
-candidates waiting: 1 Rasipuram, 3 Namakkal; time left 29 min
+write round: 5 news waiting in the queue (written in priority order)
+candidate filter: collected=5
+to write: 2 Rasipuram + 3 other district candidates (max 200 + 200 stories)
+daily maximum 30: 17 written today - this round writes at most 2 + 11
+candidates waiting: 2 Rasipuram, 3 Namakkal; time left 29 min
 try (R) manual=False: ராசிபுரம் அருகே இன்று அதிகாலை பழுதாகி நின்ற லாரி மீது மற்றொர
-try (N) manual=False: மாநில சிலம்பாட்ட போட்டி
 try (N) manual=False: கொல்லிமலையில் பனி இயல்பு வாழ்க்கை பாதிப்பு
+try (N) manual=False: மாநில சிலம்பாட்ட போட்டி
 skip (R) similar to a filed story: ராசிபுரம் அருகே இன்று அதிகாலை பழுதாகி நின்ற லாரி ம
-try (N) manual=False: ப.வேலூரில் 80 ஆக்கிரமிப்பு கடைகள் அகற்றம்
-skip (N) same event as RN-870: மாநில சிலம்பாட்ட போட்டி
+try (R) manual=False: கல்குவாரிக்கு எதிர்ப்பு தெரிவித்து அதிகாரிகளை முற்றுகையிட்ட 
 skip (N) similar to a filed story: கொல்லிமலையில் பனி இயல்பு வாழ்க்கை பாதிப்பு
-skip (N) similar to a filed story: ப.வேலூரில் 80 ஆக்கிரமிப்பு கடைகள் அகற்றம்
-candidate loop ended: left R=0 N=0, tried={'R': 1, 'N': 3}, done={'R': 0, 'N': 0}, time left 29 min
+try (N) manual=False: பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பராமரிப்புத்
+skip (R) similar to a filed story: கல்குவாரிக்கு எதிர்ப்பு தெரிவித்து அதிகாரிகளை முற்
+skip (N) same event as RN-870: மாநில சிலம்பாட்ட போட்டி
+NOT filed (N) பறவை காய்ச்சல் குறித்து கண்காணிக்க குழு கால்நடை பர: duplicate after write
+candidate loop ended: left R=0 N=0, tried={'R': 2, 'N': 3}, done={'R': 0, 'N': 0}, time left 29 min
 carousel for 0 of 0 stories, the rest reel only
 filed: 0 Rasipuram + 0 Namakkal (targets 200 + 200)
-queue: 0 news waiting to be written 
+queue: 1 news waiting to be written
+All News sheet: {"ok":true,"added":0,"updated":1} 
 stories: 0
